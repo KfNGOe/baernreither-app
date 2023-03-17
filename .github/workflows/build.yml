@@ -22,7 +22,7 @@ jobs:
         with: 
           node-version: "14.x"
       - name: Install xml-js        
-        run: npm install -g xml-js
+        run: npm i xml-js --save        
       - name: Build
         run: sudo bash build_test.sh
       
