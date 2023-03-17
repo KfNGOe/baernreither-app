@@ -24,5 +24,5 @@ jobs:
       - name: Install xml-js        
         run: npm install -g xml-js
       - name: Build
-        run: build_test.sh
+        run: sudo bash build_test.sh
       
