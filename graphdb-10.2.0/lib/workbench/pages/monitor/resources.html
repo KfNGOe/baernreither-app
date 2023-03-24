@@ -1,0 +1,111 @@
+<link href="css/jmx.css?v=2.2.1" rel="stylesheet"/>
+
+<!-- 	nvd3 css and js  starts-->
+<link href="js/lib/nvd3/nv.d3.css?v=2.2.1" rel="stylesheet"/>
+
+
+<div class="hiddenVariables" style="display: none;">
+    <div class="localUse">${localUse}</div>
+    <div class="jmxServer">${jmxServer}</div>
+</div>
+
+<h1>
+    {{title}}
+    <span class="btn btn-link"
+          popover-template="'js/angular/templates/titlePopoverTemplate.html'"
+          popover-trigger="mouseenter"
+          popover-placement="bottom-right"
+          popover-append-to-body="true"><span class="icon-info"></span></span>
+</h1>
+
+<div id="wb-monitoringResources" class="ot-owlim-resources">
+    <div class="row ng-scope" ng-show="!loader && error">
+        <div class="alert alert-danger errors">
+            <div class="error" ng-repeat="monitor in monitors" ng-if="monitor.error.hasError">
+                {{'common.error' | translate}}: {{monitor.error.message}} {{'monitor.retrying' | translate: {retry: monitor.error.retries} }}
+            </div>
+            <br/>
+            {{'refresh.to.retry' | translate}}
+        </div>
+    </div>
+
+    <div class="ot-loader ot-main-loader" onto-loader size="50" ng-if="loader"></div>
+
+    <div ng-if="!loader" class="graphics row">
+                <div class="monitor-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="resource-tab nav-item">
+                            <span class="nav-link" ng-click="switchTab('resourceMonitor')" ng-class="activeTab == 'resourceMonitor' ? 'active':''">{{'monitor.resource' | translate}}</span>
+                        </li>
+                        <li class="performance-tab nav-item">
+                            <span class="nav-link" ng-click="switchTab('performanceMonitor')" ng-class="activeTab == 'performanceMonitor' ? 'active':''">{{'monitor.performance.label' | translate}}</span>
+                        </li>
+                        <li class="cluster-tab nav-item">
+                            <span class="nav-link" ng-click="switchTab('clusterHealth')" ng-class="activeTab == 'clusterHealth' ? 'active':''">{{'monitor.cluster' | translate}}</span>
+                        </li>
+                    </ul>
+                    <div class="tabs ml-2 mr-2">
+                        <div class="tab-pane fade in" ng-if="activeTab === 'resourceMonitor'" id="resourceTab">
+                            <div class="row mt-2">
+                                <div id="CPUUsageGraphic" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="resourceMonitorData.cpuLoad.chartOptions" data="resourceMonitorData.cpuLoad.dataHolder"></div>
+                                </div>
+                                <div id="openFileDescriptors" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="resourceMonitorData.fileDescriptors.chartOptions" data="resourceMonitorData.fileDescriptors.dataHolder"></div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div id="heapMemoryGraphic" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="resourceMonitorData.heapMemory.chartOptions" data="resourceMonitorData.heapMemory.dataHolder"></div>
+                                </div>
+                                <div id="offHeapMemoryGraphic" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="resourceMonitorData.offHeapMemory.chartOptions" data="resourceMonitorData.offHeapMemory.dataHolder"></div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div id="diskStorage" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="resourceMonitorData.diskStorage.chartOptions" data="resourceMonitorData.diskStorage.dataHolder"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" ng-if="activeTab === 'performanceMonitor'" id="performanceMonitorTab">
+                            <div class="row mt-2">
+                                <div class="alert lead alert-info" ng-show="!getActiveRepository()">
+                                    {{'monitor.performance.no_repository' | translate}}
+                                </div>
+                            </div>
+                            <div ng-if="getActiveRepository()">
+                                <div class="row mt-2">
+                                    <div id="activeQueries" class="col-lg-12 col-xl-6">
+                                        <div nvd3 options="performanceMonitorData.queriesChart.chartOptions" data="performanceMonitorData.queriesChart.dataHolder"></div>
+                                    </div>
+                                    <div id="globalCache" class="col-lg-12 col-xl-6">
+                                        <div nvd3 options="structuresMonitorData.globalCacheChart.chartOptions" data="structuresMonitorData.globalCacheChart.dataHolder"></div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div id="epool" class="col-lg-12 col-xl-6">
+                                        <div nvd3 options="performanceMonitorData.epoolChart.chartOptions" data="performanceMonitorData.epoolChart.dataHolder"></div>
+                                    </div>
+                                    <div id="connections" class="col-lg-12 col-xl-6">
+                                        <div nvd3 options="performanceMonitorData.connectionsChart.chartOptions" data="performanceMonitorData.connectionsChart.dataHolder"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" ng-if="activeTab === 'clusterHealth'" id="clusterHealthMonitorTab">
+                            <div class="row mt-2">
+                                <div class="alert lead alert-info" ng-show="!hasCluster">
+                                    {{'monitor.cluster.no_cluster' | translate}}
+                                </div>
+                            </div>
+                            <div ng-if="hasCluster" class="row mt-2">
+                                <div id="clusterHealth" class="col-lg-12 col-xl-6">
+                                    <div nvd3 options="clusterHealthChart.chartOptions" data="clusterHealthChart.dataHolder"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>

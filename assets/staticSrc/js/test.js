@@ -1,24 +1,26 @@
 const { EnapsoGraphDBClient } = require('@innotrade/enapso-graphdb-client') ;
-//var convert = require("xml-js") ;
+const { EnapsoGraphDBAdmin } = require('@innotrade/enapso-graphdb-admin');
+var convert = require("xml-js") ;
 
-//console.log(convert.xml2json("<xml>test</xml>")) ;
+console.log(convert.xml2json("<xml>test</xml>")) ;
 
 //console.log(EnapsoGraphDBClient) ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     baseURL: 'http://localhost:7200',
     repository: 'Test',
-    triplestore: 'graphdb', // 'graphdb' or 'fuseki' or 'stardog'
     prefixes: [
         {
             prefix: 'entest',
             iri: 'http://ont.enapso.com/test#'
         }
     ],
-    transform: 'toCSV'
+    triplestore: 'graphdb',
+    version: 9,
+    apiType: 'RDF4J'
 });
 
-//console.log(graphDBEndpoint) ;
+console.log(graphDBEndpoint) ;
 
 graphDBEndpoint.login('admin','root').then((result) => {
     console.log(result);

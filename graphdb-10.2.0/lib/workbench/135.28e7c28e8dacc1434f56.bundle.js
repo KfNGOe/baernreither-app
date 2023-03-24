@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[135],{57:function(n,t,i){"use strict";i.r(t),i.d(t,"YasrUtils",(function(){return o}));const o=function(){const n=function(){return{enableColumnResizingOnWindowWidth:768}};return{getYasrConfiguration:function(t){const i={table:n()};return angular.extend({},i,t)},getDefaultTablePluginConfiguration:n}}()}}]);
+//# sourceMappingURL=135.28e7c28e8dacc1434f56.bundle.js.map
