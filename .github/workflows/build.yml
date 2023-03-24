@@ -17,8 +17,10 @@ jobs:
         with:
           java-version: "11"
           distribution: "adopt"
+      - name: set permission
+        run: chmod +x install_gph.sh
       - name: Install graphdb
-        run: sudo bash install_gph.sh
+        run: . install_gph.sh
       - name: Test graphdb
         run: telnet localhost 7200
       #- name: Set up Node.js
