@@ -18,11 +18,9 @@ jobs:
           java-version: "11"
           distribution: "adopt"
       - name: Install graphdb
-        run: |
-          . install_gph.sh
+        run: sudo bash install_gph.sh
       - name: Test graphdb
-        run: |
-          telnet localhost 7200
+        run: telnet localhost 7200
       #- name: Set up Node.js
       #  uses: actions/setup-node@v2
       #  with: 
