@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[69],{72:function(r,e,t){"use strict";t.r(e);t(4);angular.module("graphdb.framework.externalsync.directives",[]).directive("createProgress",(function(){return{templateUrl:"pages/connectorProgress.html",controller:"CreateProgressCtrl",restrict:"EA"}}))}}]);
-//# sourceMappingURL=69.8a131154f64aa7cc2bc4.bundle.js.map
