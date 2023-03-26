@@ -16,9 +16,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "11"
-          distribution: "adopt"
-      - name: set permission
-        run: chmod +x install_gph.sh
+          distribution: "adopt"      
       - name: Install graphdb
         run: . install_gph.sh
       - name: Test graphdb
