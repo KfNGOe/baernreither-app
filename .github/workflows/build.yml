@@ -16,7 +16,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "11"
-          distribution: "adopt"      
+          distribution: "adopt"            
+      - name: Install
+        run: |
+          sudo bash install.sh
       #- name: Install graphdb
       #  run: . install_gph.sh
       #- name: Test graphdb
