@@ -25,11 +25,9 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: "14.x"
-      - name: Get graphdb.js
-        run: |
-          sudo bash install.sh
       - name: Install graphdb.js
-        run: npm install graphdb
+        run: |
+          sudo bash install.sh      
       #- name: Install xml-js        
       #  run: npm i xml-js --save        
       #- name: Build
