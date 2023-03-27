@@ -18,9 +18,8 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     apiType: 'RDF4J'
 });
 
-do {
-    console.log('Waiting for GraphDB to start...');
-    await new Promise(resolve => setTimeout(resolve, 1000));
+console.log('Waiting for GraphDB to start...');    
+do {    
 } while (!graphDBEndpoint.isReady());
 
 graphDBEndpoint.login('admin','root').then((result) => {
