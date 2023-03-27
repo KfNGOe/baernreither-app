@@ -24,7 +24,9 @@ jobs:
       - name: Install graphdb
         run: sudo bash install.sh &
       - name: Test graphdb
-        run: telnet localhost 7200
+        timeout-minutes: 1
+        run: |
+          telnet localhost 7200
       
       #- name: Install xml-js        
       #  run: npm i xml-js --save        
