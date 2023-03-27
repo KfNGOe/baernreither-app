@@ -21,12 +21,12 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: "14.x"
-      - name: Install graphdb
-        run: sudo bash install.sh &
-      - name: Test graphdb
-        timeout-minutes: 1
-        run: |
-          telnet localhost 7200
+      - name: Install
+        run: sudo bash install.sh
+      - name: Start graphdb
+        run: sudo bash start_graphdb.sh &      
+      - name: Connect to graphdb
+        run: sudo bash connect_graphdb.sh
       
       #- name: Install xml-js        
       #  run: npm i xml-js --save        

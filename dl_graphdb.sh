@@ -1,5 +1,6 @@
-echo "start graphdb"
-cd graphdb-10.2.0
-./bin/graphdb
+echo "install graphdb client"
+npm i @innotrade/enapso-graphdb-client --save
 
+echo "install graphdb admin"
+npm i @innotrade/enapso-graphdb-admin --save
 
