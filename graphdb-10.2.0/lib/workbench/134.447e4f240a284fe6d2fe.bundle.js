@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[134],{39:function(t,n){function o(t,n){return{showToastMessageWithDelay:function(o){return new Promise(s=>{t.success(n.instant(o)),setTimeout(s,200)})}}}angular.module("graphdb.framework.utils.notifications",[]).factory("Notifications",o),o.$inject=["toastr","$translate"]}}]);
+//# sourceMappingURL=134.447e4f240a284fe6d2fe.bundle.js.map

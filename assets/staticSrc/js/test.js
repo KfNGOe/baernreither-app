@@ -1,10 +1,8 @@
 const { EnapsoGraphDBClient } = require('@innotrade/enapso-graphdb-client') ;
 const { EnapsoGraphDBAdmin } = require('@innotrade/enapso-graphdb-admin');
-var convert = require("xml-js") ;
+//var convert = require("xml-js") ;
 
-console.log(convert.xml2json("<xml>test</xml>")) ;
-
-//console.log(EnapsoGraphDBClient) ;
+//console.log(convert.xml2json("<xml>test</xml>")) ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     baseURL: 'http://localhost:7200',
@@ -19,8 +17,6 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     version: 9,
     apiType: 'RDF4J'
 });
-
-console.log(graphDBEndpoint) ;
 
 graphDBEndpoint.login('admin','root').then((result) => {
     console.log(result);
@@ -37,5 +33,4 @@ graphDBEndpoint.query('select * where {?class rdf:type owl:Class filter(regex(st
         console.log(err);
     });
 */
-
 

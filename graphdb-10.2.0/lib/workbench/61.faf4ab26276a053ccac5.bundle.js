@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[61],{43:function(a,e){angular.module("graphdb.framework.core.directives.paginations",[]).directive("paginations",(function(){return{template:'<pagination class="nav navbar-right" total-items="matchedElements.length" items-per-page="pageSize" ng-model="page" ng-change="changePagination()" direction-links="false" boundary-links="true" max-size="5" rotate="true"></pagination>'}}))}}]);
+//# sourceMappingURL=61.faf4ab26276a053ccac5.bundle.js.map

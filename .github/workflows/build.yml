@@ -16,18 +16,16 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "11"
-          distribution: "adopt"
-      #- name: Install graphdb
-      #  run: . install_gph.sh
-      #- name: Test graphdb
-      #  run: telnet localhost 7200
+          distribution: "adopt"      
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with: 
           node-version: "14.x"
-      - name: Install graphdb.js
-        run: |
-          sudo bash install.sh      
+      - name: Install graphdb
+        run: sudo bash install.sh
+      - name: Test graphdb
+        run: telnet localhost 7200
+      
       #- name: Install xml-js        
       #  run: npm i xml-js --save        
       #- name: Build
