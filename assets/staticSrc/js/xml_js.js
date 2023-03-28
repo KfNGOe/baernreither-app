@@ -19,4 +19,6 @@ async function readXml() {
     }) ;
         var result = convert.xml2js(xml, {compact: false, spaces: 2});
         console.log('result: ', result);
+        console.log('elements: ', result.elements[0]);
+
   })() ; 
