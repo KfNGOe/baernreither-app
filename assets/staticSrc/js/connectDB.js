@@ -34,7 +34,7 @@ connect = async function() {
   connect().then(value => {
     connectFlag = value ;
     console.log("Connect =", connectFlag) ;
-}) ;
+  }) ;
 
 
 
