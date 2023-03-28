@@ -15,9 +15,8 @@ async function readXml() {
 
 (async () => {        
     await readXml().then(value => {
-        xml = value ;}) ;
+        xml = value ;
+    }) ;
         var result = convert.xml2js(xml, {compact: false, spaces: 2});
         console.log('result: ', result);
   })() ; 
-  
-

@@ -19,7 +19,7 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     apiType: 'RDF4J'
 });
 
-connect = async function() {
+async function connect() {
     try {
         const result =  await graphDBEndpoint.login('admin','root');
         console.log('result= ', result.success);
@@ -29,12 +29,16 @@ connect = async function() {
     } catch (err) {
         console.log('result error = ', err.success);
     };
-  }
+  } 
 
-  connect().then(value => {
-    connectFlag = value ;
+  (async () => {    
+    await connect().then(value => {
+        connectFlag = value ;
+    }) ;
+
     console.log("Connect =", connectFlag) ;
-  }) ;
+        
+  })() ;
 
 
 
