@@ -35,26 +35,6 @@ connect = async function() {
     connectFlag = value ;
     console.log("Connect =", connectFlag) ;
 }) ;
-   
-
-     
-/*
-graphDBEndpoint.login('admin','root').then((result) => {
-    console.log('result= ', result.success);    
-})
-.catch((err) => {
-    console.log('result= ', err.success);
-});
-*
 
 
-
-/*
-graphDBEndpoint.query('select * where {?class rdf:type owl:Class filter(regex(str(?class), "http://ont.enapso.com/test#TestClass", "i"))}', { transform: 'toJSON' }).then((result) => {
-        console.log('Read the classes name:\n' + JSON.stringify(result, null, 2));
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-*/
 
