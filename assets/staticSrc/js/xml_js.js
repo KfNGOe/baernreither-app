@@ -13,12 +13,25 @@ async function readXml() {
     }
 }
 
+async function writeJson() {
+    try {        
+        const data = await fs.readFile('data/tei/Tagebuch_Baernreither_8.xml', { encoding: 'utf8' });
+        
+        return data;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 (async () => {        
     await readXml().then(value => {
         xml = value ;
     }) ;
-        var result = convert.xml2js(xml, {compact: false, spaces: 2});
-        console.log('result: ', result);
-        console.log('elements: ', result.elements[0]);
+    var result = convert.xml2json(xml, {compact: false, spaces: 2});
+    console.log('result: ', result);
+    console.log('elements: ', result.elements[0]);
+
+
 
   })() ; 
