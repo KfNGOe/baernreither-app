@@ -27,8 +27,8 @@ async function writeJson(result) {
         xml = value ;
     }) ;
     var result = convert.xml2json(xml, {compact: false, spaces: 2});
-    console.log('result: ', result);
-    console.log('elements: ', result.elements[0]);
+    //console.log('result: ', result);
+    //console.log('elements: ', result.elements[0]);
 
     await writeJson(result).then(value => {
         xml = value ;
