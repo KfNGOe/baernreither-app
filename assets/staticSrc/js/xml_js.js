@@ -13,12 +13,10 @@ async function readXml() {
     }
 }
 
-async function writeJson() {
+async function writeJson(result) {
     try {        
-        const data = await fs.readFile('data/tei/Tagebuch_Baernreither_8.xml', { encoding: 'utf8' });
-        
-        return data;
-
+        await fs.writeFile('data/json/Tagebuch_Baernreither_8.json', result) ;
+                
     } catch (err) {
         console.log(err);
     }
@@ -31,6 +29,10 @@ async function writeJson() {
     var result = convert.xml2json(xml, {compact: false, spaces: 2});
     console.log('result: ', result);
     console.log('elements: ', result.elements[0]);
+
+    await writeJson(result).then(value => {
+        xml = value ;
+    }) ;
 
 
 
