@@ -6,7 +6,8 @@ var xml = '' ;
 async function readXml() {
     try {        
         const data = await fsp.readFile('data/tei/Tagebuch_Baernreither_8.xml', { encoding: 'utf8' });
-        
+        console.log('xml data read: ', data.length, ' bytes')
+
         return data;
 
     } catch (err) {
@@ -22,6 +23,7 @@ async function writeJson(result) {
         }       
         
         await fsp.writeFile('./data/json/Tagebuch_Baernreither_8.json', result) ;
+        console.log('json data written: ', result.length, ' bytes')
                 
     } catch (err) {
         console.log(err);

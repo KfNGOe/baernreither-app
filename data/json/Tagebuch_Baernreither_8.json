@@ -1,0 +1,2010 @@
+{
+  "elements": [
+    {
+      "type": "element",
+      "name": "TEI",
+      "attributes": {
+        "xmlns": "http://www.tei-c.org/ns/1.0"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "teiHeader",
+          "elements": [
+            {
+              "type": "element",
+              "name": "fileDesc",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "titleStmt",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "title",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Die Tagebücher von Joseph Maria Baernreither"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "title",
+                      "attributes": {
+                        "type": "volume"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Tagebuch 8 (1905–1909)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "author",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "attributes": {
+                            "ref": "https://d-nb.info/gnd/118505858"
+                          },
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "forename",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Joseph\n                            Maria"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "surname",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Baernreither"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "editor",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "attributes": {
+                            "ref": "https://d-nb.info/gnd/131898248"
+                          },
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "forename",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Doris"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "surname",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Corradini"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "respStmt",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "resp"
+                        },
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Kommission für Neuere Geschichte Österreichs"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "editionStmt",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "edition",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Digitale Edition von Tagebüchern und Lebenserinnerungen"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "extent",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "measure",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "[Seitenzahl]"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "publicationStmt",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "publisher",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Kommission für Neuere Geschichte Österreichs"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "address",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "addrLine",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "c/o Universität Innsbruck, Institut für Geschichtswissenschaften und Europäische Ethnologie, Innrain 52, 6020 Innsbruck"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "pubPlace",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Wien"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "date"
+                    },
+                    {
+                      "type": "element",
+                      "name": "availability",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "p"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "sourceDesc",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "msDesc",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "msIdentifier",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "repository",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Österreichisches Staatsarchiv"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "idno",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Signatur"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "physDesc",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "typeDesc",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "p",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "Kurrent und Gabelsberger Kurzschrift"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "encodingDesc",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "editorialDecl",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "[Angaben zu den Transkriptionsrichtlinien]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "[sonstige Angaben zur Transkription]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "profileDesc",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "langUsage",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "language",
+                      "attributes": {
+                        "ident": "deu"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Deutsch"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "comment",
+                      "comment": " andere Sprachen? "
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "textClass",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "classCode",
+                      "attributes": {
+                        "scheme": ""
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Tagebuch"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "comment",
+                      "comment": " wo findet man die URLs der DTA-Hauptklassifikation "
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "text",
+          "elements": [
+            {
+              "type": "element",
+              "name": "body",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "div",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "head",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Die Wahlreform"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "div",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "p"
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "["
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "attributes": {
+                            "key": "lunz",
+                            "ref": "2772186",
+                            "xml:id": "tb_001"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Lünz"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ", am\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "13.4.06"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Die drei ersten Monate des Jahres 1906 bieten politisch ein geradezu widerliches\n                    Bild. Eine Regierung, die aus Gründen, die nicht zu ergründen sind, einem\n                    Schlagworte politische Geltung verschaffen will, ohne sich über die großen\n                    Zusammenhänge staatlicher Wirkungen und Gegenwirkungen Rechenschaft geben zu\n                    wollen – politische Parteien, die zerfaren u. unaufrichtig diesem Plan der\n                    Regierung ohne Halt, ohne Ideen u. ohne Willen entgegenstehen – die\n                    Socialdemokraten, die alles an Terrorismus u. Einschüchterung leisten, um eine\n                    Beute, die ihnen unerwartet winkt, in Sicherheit zu bringen – eine Presse die\n                    ebenso feig wie falsch gegen ihre Überzeugung zu gleicher Zeit für und gegen die\n                    Wahlreform schreibt – endlich die Abgeordneten persönlich, jeder nur an "
+                        },
+                        {
+                          "type": "element",
+                          "name": "hi",
+                          "attributes": {
+                            "rendition": "#u"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "seinen"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " zukünftigen Wahlbezirk denkend, käuflich durch\n                    die Wahlkreiseinteilung – das ist der Sumpf, in dem wir seit Beginn dieses\n                    Jahres stecken. Es ist nicht nur ein Niedergang jeder politischen Führung eines\n                    Staates, ein Niedergang jeder politischen Moral im Abg.Hause, sondern eine\n                    Verwirrung und Verknotung unserer Verhältnisse, die jeden halbwegs vernünftigen\n                    Ausweg zu versperren droht."
+                        },
+                        {
+                          "type": "element",
+                          "name": "note",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Mit Bleistift stenographisch ergänzt, in\n                        Manuskript „Fragmente“ wiedergegeben: Prade, den ich in dieser Zeit einmal\n                        zur Rede stellte, sagte mir: „Was wollen Sie, die Deutschen in Österreich\n                        sind so zermürbt, dass sie an einen planmäßigen Widerstand gar nicht\n                        denken.“"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": " Ich will hier nicht die schmutzigen Peripetien dieses Processes schildern,\n                    sondern nur Streiflichter fixieren, von denen ein falsches in die Öffentlichkeit\n                    gedrungen ist."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Zuerst die "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "attributes": {
+                            "key": "PacakBedrich",
+                            "ref": "1024898318",
+                            "xml:id": "tb_002"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "-"
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Frage."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Der Eintritt dieser beiden Herren in das "
+                        },
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "M[inisterium]"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " von der\n                    Regierung – wenn man den kleinlich beschränkten Kreis ihrer Mittel überhaupt\n                    ernst nimmt – ein begreiflicher Versuch!"
+                        },
+                        {
+                          "type": "element",
+                          "name": "note",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Mit Bleistift stenographisch\n                        ergänzt, in Manuskript „Fragmente“ wiedergegeben: Zunächst hatte in unserem\n                        Klub die engherzige Auffassung der Lage Oberwasser.\n                            "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Stürgkh"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ", vollkommen intransigent und borniert, jene\n                        Herren bei uns, die am wenigsten parlamentarisch gearbeitet hatten, am\n                        meisten schreiend, unmöglich einen Gegenplan zur Verhandlung, geschweige\n                        denn zur Annahme zu bringen. Persönlich behielt ich enge Fühlung mit jenem\n                        Teil der deutschen Abgeordneten, die nicht ganz den Kopf verloren hatten,\n                        besonders mit dem allezeit grundehrlichen "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Pergelt"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ", mit\n                        dem ich die Chancen der Deutschböhmen bei der zu erwartenden Wahlreform\n                        durcharbeitete. Er versammelte bei sich eine Anzahl von deutsch-böhmischen\n                        Abgeordneten, meines Wissens die Einzigen, welche wenigsten von dem\n                        allgemeinen Standpunkt Deutschböhmens aus, und nicht bloß von einzelnen\n                        Wahlbezirken ausgehend, den Stoff zum Gegenstand eines eingehenden Studiums\n                        machten. Meine Bemühungen und Anregungen, um ein deutsches Gesamtelaborat\n                        für alle Kronländer zustande zu bringen, scheiterten an der Zersplitterung\n                        der einzelnen Interessen, an der Eifersucht der Parteien, die die Regierung\n                        klug zu benützen verstand."
+                            },
+                            {
+                              "type": "element",
+                              "name": "p"
+                            },
+                            {
+                              "type": "text",
+                              "text": "Charakteristisch war der Versuch\n                            "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Gautschs"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ", eine teilweise Parlamentarisierung der\n                        Regierung zustande zu bringen. Dies spielte im Jänner 1906. Er wollte damit\n                        die Wahlreform sichern, hatte die Absicht, "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Prade"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": " und\n                            "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Pacák"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": " zu Landsmannministern zu machen und\n                            "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Derschatta"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": " zum Eisenbahnminister. Sie sollte ihm\n                        als"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "pb"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Vorspann für die Wahlreform. Aber ja keine Fühlung,\n                    Verständigung mit den Parteien. Nicht der leiseste Versuch einer wirklichen\n                    Raillirung, sondern clandestine Benützung des persönlichen Ergeizes u.\n                    persönlicher Verhältnisse. Hat man die beiden Obmänner der grossen čech. u.\n                    deutschen Parteien gefangen, dann kann man mittelst ihrer Beziehungen u.\n                    Ambitionen diese Parteien beeinflussen, "
+                        },
+                        {
+                          "type": "element",
+                          "name": "del",
+                          "attributes": {
+                            "rendition": "#s"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "eventuell\n                    sprengen"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " hier im Word eine Streichung, ist das so richtig ausgezeichnet? "
+                        },
+                        {
+                          "type": "text",
+                          "text": ",\n                    bereden, die Widerstrebenden an die Wand drücken. Beileibe also nicht Ideen,\n                    polit. klare Ziele, sondern einfach das Einfangen der wilden Elefanten d[urc]h\n                    die gezämten."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Es misslingt. Es wird von dem Plan zuviel den Zeitungen mitgeteilt, die sofort\n                    ihr doppeltes Spiel spielen, loben u. tadeln zugleich, die ganze Aufmerksamkeit\n                    auf die Vorgänge, welche zur „Parlamentarisierung“ führen sollen lenken u.\n                    zugleicherzeit contra geben, gegen die Sache hetzen. Die "
+                        },
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "N[eue] fr[eie]\n                        Presse"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " voran. Ihre Unterredakteure laufen herum bei den\n                    Abgeordneten, die Gegner der Sache sind u. sammeln Gift und Galle, die dann\n                    sorgfältig verzapft werden."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Derschatta benimmt sich ebenso hinterhältig als dumm. Er will die Sache um jeden\n                    Preis, aber er weicht uns aus, lässt sich vom 4 Ausschuss nicht"
+                        },
+                        {
+                          "type": "element",
+                          "name": "pb",
+                          "attributes": {
+                            "facs": "fac_001",
+                            "n": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "finden, eine\n                    lächerliche Suche nach ihm wird veranstaltet bis man ihn stellt u. er den\n                    bereits gescheiterten Plan beichten muss. Ein Kartenbrief der ihn am 22.1.\n                    rechtzeitig zu einer Besprechung einladet trifft ihn „unmittelbar“ vor Abgang\n                    des letzten Zuges nach "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Graz"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ": Telegramm N. 1. Durch\n                    wichtige Kanzleigeschäfte ist er bis Freitag „festgenagelt“: Telegramm N. 2.\n                    Einer abermaligen dringenden Aufforderung setzt er eine Conferenz mit den\n                    Steirern entgegen: Telegramm N. 3. Endlich gehe ich zu\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Chiari"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " u. expectorire mich; er telegrafirt, dass es\n                    unmöglich sei sich länger zu entziehen – er kommt: Telegramm N. 4."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "pb"
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Endlich kommt die Stunde der Beichte. Sie wird von\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " im Stande des unterdrückten u. schlecht\n                    verhehlten Zornes abgelegt. Sie folgt hier nach den unmittelbar während der\n                    Erzählung "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta‘s"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " gemachten Aufzeichnungen. Nicht ein\n                    politischer Gedanke in den ganzen Verhandlungen, nicht ein Plan, sondern der\n                    alte Schacher um die alten Postulate, der Versuch eine „Situation“ zu schaffen\n                    ohne politischen Boden. Das Ganze ein jämmerliches Beispiel für das Niveau\n                    unserer Politik u. unserer Politiker."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "pb"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "div",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Diarium"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": " der Verhandlungen des Herrn von Derschatta mit Gautsch,\n                        aufgenommen in der Sitzung des 4 Ausschusses vom 25.1.1906."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "comment",
+                      "comment": " an der Stelle eine lange Einfügung durch eingeklebtes Blatt, diese Einfügung ist aber selbst wiederum mit Absätzen strukturiert, aber das offenbar nicht zugelassen ... wie damit umgehen? "
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Freitag den 12.1.1906"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Telegrafische Einladung von\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " zu einer Besprechung."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Samstag den 13. Vormittag"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " bei "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ".\n                    Mitteilung der Wahlordnung unter Ehrenwort. 205 deutsche Mandate bei einer\n                    Vermehrung der Gesamtzahl. Auf die Ziffern für "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Galizien"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    wurde nicht eingegangen. Allgemeine politische Erörterungen über die Wahlreform\n                    die er machen will, Schwierigkeiten und Erörterungen über die Parteien, die\n                    geneigt sind."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Sonntag den 14., 11 Uhr Vorm."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " abermalige Conferenz bei\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " mit "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Chiari"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". Dieselben\n                    Erörterungen. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " spricht den Gedanken aus: ob es nicht\n                    möglich wäre dass von Seite der Czechen und Deutschen je eine Persönlichkeit ins\n                    Ministerium treten könnte. Er stelle sich vor, dass es auf diese Weise leichter\n                    sein werde bezüglich der Wahlreform die Schlusszusammenstellungen zu machen und\n                    "
+                        },
+                        {
+                          "type": "element",
+                          "name": "pb"
+                        },
+                        {
+                          "type": "text",
+                          "text": "dass dann auch größere Aussicht vorhanden wäre die Verhandlungen über die\n                    Wahlreform vor den grössten Gefaren zu schützen."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " u. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "attributes": {
+                            "place": "across"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Chiari"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " hier ist in der Worddatei eine FN, in der steht, dass man das korrigiert aus Prade ist, kann soll man das hier auch in einer FN wiedergeben oder gibt es die Möglichkeit, das mit dem add Element und entsprechendem attribut zu erledigen oder ist das umgekehrt eine Tilgung durch Überschreibung? "
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    erwidern: 1) es ist ausgeschlossen, dass durch so einen Eintritt die deutsche\n                    Volkspartei gebunden werden kann 2) "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " tut allein\n                    nicht mit, es muss ein Deutschböhme dabei sein: "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ".\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " erwidert, er denke nicht daran die Partei\n                    dadurch zu binden, bittet aber die Sache geheim zu halten."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Montag den 15.1."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "Erste Notiz im "
+                        },
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prager\n                        Tagblatt"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " (Abendblatt)!"
+                        },
+                        {
+                          "type": "element",
+                          "name": "note",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prager Tagblatt vom 16. Jänner\n                        1906"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " hier wäre ein Link zu ANNO - wie soll das augezeichnet werden? "
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    Conferenz "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta’s"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " mit einer andern "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "nicht\n                        genannten"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Persönlichkeit über die "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "attributes": {
+                            "place": "across"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Fragen"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " hier dieselbe Problematik wie oben "
+                        },
+                        {
+                          "type": "text",
+                          "text": " ob man nicht die\n                    Wahlreform einverständlich verhindern könne."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Dienstag 16.1."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "Telegramm "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade’s"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " läuft\n                    ein, dass er von "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Meran"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " kommt."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Mittwoch 17.1. nichts."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Donnerstag 18.1."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Ankunft "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade’s"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " von\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Meran"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". Er ist der Meinung die Sache weiter zu\n                    verfolgen. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " spricht am Abend allein mit\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "pb"
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Freitag den 19.1. nichts."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Samstag den 20.1. Nachmittag 3 Uhr"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Besprechung bei\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ": "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ",\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Chiari"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ",\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Es wird mit der Wahlreform angefangen. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " verlangt\n                    nicht die Bindung irgend einer Partei, er setzt nur voraus, dass jene Personen,\n                    welche eintreten die Pflicht übernehmen die Wahlordnung durchzusetzen. Grundzüge\n                    der Wahlreform wurden mitgeteilt u. es haben sich Hindernisse nicht ergeben. Von\n                    Seite der Regierung wurde nun der Wunsch geäussert, dass der "
+                        },
+                        {
+                          "type": "element",
+                          "name": "orgName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "böhm.\n                        Landtag"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " die böhm. Wahlreform und das Curiengesetz erledigen solle,\n                    wogegen weder "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " noch "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " eine\n                    Einwendung erhoben. Nun kamen die böhm. „Querelen“ dran. 1) Kreisgericht\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Trauttenau"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " verlangte die\n                    Aktivirung ohne "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Eipel"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " wollte\n                    sie nur mit "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Eipel"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " zugestehen. Keine Einigung, wurde von\n                    der Tagesordnung abgesetzt. 2) Verordnung, welche bestimmen soll dass in\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Böhmen"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " bei den Staats- u. Landesanstellungen die\n                    Nationalitäten wie 2:3 berücksichtigt werden sollen.\n                    "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "pb"
+                        },
+                        {
+                          "type": "text",
+                          "text": "stellt fest dass dies eine neue Norm sei,\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "stimmt aber zu"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " dass sie, wenn die Combination gelingt,\n                    hinausgegeben werde. 3) Amtssprache via facti wurde lange discutirt. Frage wurde\n                    vertagt, da "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " sich ohne "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Kramář"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    nicht entscheiden wollte. 4) Universität in "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Mähren"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ".\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " erklärte sofort, dass er es ohne dieselbe nicht\n                    machen könne. 5) Verstaatlichungen der Eisenbahnen. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    verlangt zwei Direktionen in Deutschböhmen, was "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": "\n                    zusagt."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": " Gautsch erklärt, dass er sich die Durchfürung derartig denke, dass 2 Deutsche\n                            "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "("
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Derschatta"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": " und\n                        "
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Prade"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ")"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " ins Ministerium treten, einer als\n                    Ressortminister, der andere als Landsmannminister, dagegen ein Czeche\n                            "
+                        },
+                        {
+                          "type": "element",
+                          "name": "add",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "("
+                            },
+                            {
+                              "type": "element",
+                              "name": "persName",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Pacák"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ")"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " als Landsman Minister.\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Pacák"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " widerspricht u. verlangt für diese Combination\n                    auch einen Ressortminister für die Czechen, was die Deutschen als indiscutabel\n                    erklären. "
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Sonntag 21.1."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " Neuerliche Conferenz zwischen denselben\n                    Herren, zu denen "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Zaczek"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " noch dazukommt. Es wurde Alles noch\n                    einmal durchgesprochen mit demselben Resultat, wobei\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " den Standpunkt vertrat, dass aus diesem\n                    Anlass die böhm. Frage ja nicht |gelöst werden könne. In der Frage der mähr.\n                    Universität offener Dissens. "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Zaczek"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " verlangt wenn nicht\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Brünn"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ", so doch "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Olmütz"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". Lange\n                    Discussion ohne Erfolg. Die Deutschen resumieren, dass von der Combination nur\n                    die Rede sein könne wenn innere Amtssprache u. Universität vollständig\n                    ausgeschaltet werden, indem sie das eine wie das andere ablehnen müssen. Damit\n                    waren die gemeinsamen Conferenzen beendet. Dr. v.\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " reiste noch Sonntag Abend nach\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Graz"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Prade"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " am Montag nach\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "placeName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Reichenberg"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ". --- "
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "date",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Donnerstag den 25."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Dr. v. Derschatta"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " um ½ 11 Uhr bei\n                        "
+                        },
+                        {
+                          "type": "element",
+                          "name": "persName",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Gautsch"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": ", der die Combination als aufgegeben\n                    erklärt."
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " bis hier ginge die Einklebung! "
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
