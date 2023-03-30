@@ -15,7 +15,7 @@ async function readXml() {
 
 async function writeJson(result) {
     try {        
-        await fs.writeFile('data/json/Tagebuch_Baernreither_8.json', result) ;
+        await fs.writeFile('./data/json/Tagebuch_Baernreither_8.json', result) ;
                 
     } catch (err) {
         console.log(err);
@@ -30,10 +30,6 @@ async function writeJson(result) {
     //console.log('result: ', result);
     //console.log('elements: ', result.elements[0]);
 
-    await writeJson(result).then(value => {
-        xml = value ;
-    }) ;
-
-
-
+    await writeJson(result) ;
+    
   })() ; 
