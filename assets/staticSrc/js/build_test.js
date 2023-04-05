@@ -20,12 +20,17 @@ var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-console.log('xmlJs: ', xmlJs);
+console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
 
+
+xmlJs.elements ;
+xmlJs.elements[0] ;
+
+/*
 var xmlJsString = JSON.stringify(xmlJs);
 
 fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
         console.log('js data written: ', xmlJsString.length, ' bytes')
-
+*/
 
 
