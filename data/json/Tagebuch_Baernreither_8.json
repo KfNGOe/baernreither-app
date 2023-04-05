@@ -1,5 +1,16 @@
 {
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "UTF-8"
+    }
+  },
   "elements": [
+    {
+      "type": "instruction",
+      "name": "xml-model",
+      "instruction": "href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\" schematypens=\"http://purl.oclc.org/dsdl/schematron\""
+    },
     {
       "type": "element",
       "name": "TEI",
@@ -357,7 +368,7 @@
                       "type": "element",
                       "name": "classCode",
                       "attributes": {
-                        "scheme": ""
+                        "scheme": "xxxx"
                       },
                       "elements": [
                         {
@@ -384,6 +395,13 @@
               "type": "element",
               "name": "body",
               "elements": [
+                {
+                  "type": "element",
+                  "name": "pb",
+                  "attributes": {
+                    "n": "4"
+                  }
+                },
                 {
                   "type": "element",
                   "name": "div",
@@ -457,7 +475,22 @@
                       "elements": [
                         {
                           "type": "text",
-                          "text": "Die drei ersten Monate des Jahres 1906 bieten politisch ein geradezu widerliches\n                    Bild. Eine Regierung, die aus Gründen, die nicht zu ergründen sind, einem\n                    Schlagworte politische Geltung verschaffen will, ohne sich über die großen\n                    Zusammenhänge staatlicher Wirkungen und Gegenwirkungen Rechenschaft geben zu\n                    wollen – politische Parteien, die zerfaren u. unaufrichtig diesem Plan der\n                    Regierung ohne Halt, ohne Ideen u. ohne Willen entgegenstehen – die\n                    Socialdemokraten, die alles an Terrorismus u. Einschüchterung leisten, um eine\n                    Beute, die ihnen unerwartet winkt, in Sicherheit zu bringen – eine Presse die\n                    ebenso feig wie falsch gegen ihre Überzeugung zu gleicher Zeit für und gegen die\n                    Wahlreform schreibt – endlich die Abgeordneten persönlich, jeder nur an "
+                          "text": "Die drei ersten Monate des Jahres 1906 bieten politisch ein geradezu widerliches\n                    Bild. Eine Regierung, die aus Gründen, die nicht zu ergründen sind, einem\n                    Schlagworte politische Geltung verschaffen will, ohne sich über die großen\n                    Zusammenhänge staatlicher Wirkungen"
+                        },
+                        {
+                          "type": "element",
+                          "name": "pb",
+                          "attributes": {
+                            "n": "5"
+                          }
+                        },
+                        {
+                          "type": "comment",
+                          "comment": " RH: warum nicht ausgezeichnet "
+                        },
+                        {
+                          "type": "text",
+                          "text": "und Gegenwirkungen Rechenschaft geben zu\n                    wollen – politische Parteien, die zerfaren u. unaufrichtig diesem Plan der\n                    Regierung ohne Halt, ohne Ideen u. ohne Willen entgegenstehen – die\n                    Socialdemokraten, die alles an Terrorismus u. Einschüchterung leisten, um eine\n                    Beute, die ihnen unerwartet winkt, in Sicherheit zu bringen – eine Presse die\n                    ebenso feig wie falsch gegen ihre Überzeugung zu gleicher Zeit für und gegen die\n                    Wahlreform schreibt – endlich die Abgeordneten persönlich, jeder nur an "
                         },
                         {
                           "type": "element",
@@ -494,7 +527,7 @@
                       "elements": [
                         {
                           "type": "text",
-                          "text": " Ich will hier nicht die schmutzigen Peripetien dieses Processes schildern,\n                    sondern nur Streiflichter fixieren, von denen ein falsches in die Öffentlichkeit\n                    gedrungen ist."
+                          "text": "Ich will hier nicht die schmutzigen Peripetien dieses Processes schildern,\n                    sondern nur Streiflichter fixieren, von denen ein falsches in die Öffentlichkeit\n                    gedrungen ist."
                         }
                       ]
                     },
@@ -567,6 +600,10 @@
                           "type": "element",
                           "name": "note",
                           "elements": [
+                            {
+                              "type": "comment",
+                              "comment": " RH warum hier verweis auf die Fragmente = druckfassung? "
+                            },
                             {
                               "type": "text",
                               "text": "Mit Bleistift stenographisch\n                        ergänzt, in Manuskript „Fragmente“ wiedergegeben: Zunächst hatte in unserem\n                        Klub die engherzige Auffassung der Lage Oberwasser.\n                            "
@@ -667,7 +704,10 @@
                         },
                         {
                           "type": "element",
-                          "name": "pb"
+                          "name": "pb",
+                          "attributes": {
+                            "n": "6"
+                          }
                         },
                         {
                           "type": "text",
@@ -733,7 +773,7 @@
                           "name": "pb",
                           "attributes": {
                             "facs": "fac_001",
-                            "n": ""
+                            "n": "7"
                           }
                         },
                         {
@@ -775,6 +815,10 @@
                       "name": "pb"
                     },
                     {
+                      "type": "comment",
+                      "comment": " RH: warum hier pb? "
+                    },
+                    {
                       "type": "element",
                       "name": "p",
                       "elements": [
@@ -814,27 +858,29 @@
                     },
                     {
                       "type": "element",
-                      "name": "pb"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "name": "div",
-                  "elements": [
+                      "name": "pb",
+                      "attributes": {
+                        "n": "8"
+                      }
+                    },
+                    {
+                      "type": "comment",
+                      "comment": " RH: pb falsch gesetzt "
+                    },
+                    {
+                      "type": "element",
+                      "name": "addSpan",
+                      "attributes": {
+                        "spanTo": "#"
+                      }
+                    },
                     {
                       "type": "element",
                       "name": "p",
                       "elements": [
                         {
-                          "type": "element",
-                          "name": "add",
-                          "elements": [
-                            {
-                              "type": "text",
-                              "text": "Diarium"
-                            }
-                          ]
+                          "type": "text",
+                          "text": "Diarium "
                         }
                       ]
                     },
@@ -843,14 +889,8 @@
                       "name": "p",
                       "elements": [
                         {
-                          "type": "element",
-                          "name": "add",
-                          "elements": [
-                            {
-                              "type": "text",
-                              "text": " der Verhandlungen des Herrn von Derschatta mit Gautsch,\n                        aufgenommen in der Sitzung des 4 Ausschusses vom 25.1.1906."
-                            }
-                          ]
+                          "type": "text",
+                          "text": "der Verhandlungen des Herrn von Derschatta mit Gautsch, aufgenommen in der Sitzung des 4 Ausschusses vom 25.1.1906."
                         }
                       ]
                     },
@@ -874,7 +914,7 @@
                         },
                         {
                           "type": "text",
-                          "text": " Telegrafische Einladung von\n                        "
+                          "text": " Telegrafische Einladung von "
                         },
                         {
                           "type": "element",
@@ -922,7 +962,7 @@
                         },
                         {
                           "type": "text",
-                          "text": ".\n                    Mitteilung der Wahlordnung unter Ehrenwort. 205 deutsche Mandate bei einer\n                    Vermehrung der Gesamtzahl. Auf die Ziffern für "
+                          "text": ". Mitteilung der Wahlordnung unter Ehrenwort. 205 deutsche Mandate bei einer Vermehrung der Gesamtzahl. Auf die Ziffern für "
                         },
                         {
                           "type": "element",
@@ -936,7 +976,7 @@
                         },
                         {
                           "type": "text",
-                          "text": "\n                    wurde nicht eingegangen. Allgemeine politische Erörterungen über die Wahlreform\n                    die er machen will, Schwierigkeiten und Erörterungen über die Parteien, die\n                    geneigt sind."
+                          "text": " wurde nicht eingegangen. Allgemeine politische Erörterungen über die Wahlreform die er machen will, Schwierigkeiten und Erörterungen über die Parteien, die geneigt sind."
                         }
                       ]
                     },
@@ -956,7 +996,7 @@
                         },
                         {
                           "type": "text",
-                          "text": " abermalige Conferenz bei\n                        "
+                          "text": " abermalige Conferenz bei "
                         },
                         {
                           "type": "element",
@@ -1002,7 +1042,10 @@
                         },
                         {
                           "type": "element",
-                          "name": "pb"
+                          "name": "pb",
+                          "attributes": {
+                            "n": "9"
+                          }
                         },
                         {
                           "type": "text",
@@ -1336,7 +1379,10 @@
                     },
                     {
                       "type": "element",
-                      "name": "pb"
+                      "name": "pb",
+                      "attributes": {
+                        "n": "10"
+                      }
                     },
                     {
                       "type": "element",
@@ -1604,7 +1650,10 @@
                         },
                         {
                           "type": "element",
-                          "name": "pb"
+                          "name": "pb",
+                          "attributes": {
+                            "n": "11"
+                          }
                         },
                         {
                           "type": "text",
@@ -1997,6 +2046,13 @@
                           "comment": " bis hier ginge die Einklebung! "
                         }
                       ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "anchor",
+                      "attributes": {
+                        "xml:id": "xxxx"
+                      }
                     }
                   ]
                 }
