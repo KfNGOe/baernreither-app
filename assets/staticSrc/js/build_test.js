@@ -61,21 +61,7 @@ function getObject(obj) {
             break ;
       }
             
-      /*if(key === 'elements') {
-         console.log('result: ',obj[key]) ;
-
-         if(Array.isArray(obj[key])) {               
-            console.log('Hello elements array') ;            
-         } else {
-            console.log(obj.constructor.name, 'property is not an array: ', key) ;
-         }        
-      }
-/*
-      if (typeof obj[key] === 'object') {
-         getObject(obj[key]) ;
-      }
-      */
-   
+        
    }) ;
    //console.log('result', length) ;
 } ; 
