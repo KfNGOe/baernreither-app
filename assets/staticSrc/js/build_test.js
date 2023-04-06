@@ -18,19 +18,61 @@ const jquery = require("jquery")(dom.window);
 
 function getObject(obj) {
    let length = Object.keys(obj).length ;
-   Object.keys(obj).forEach((subobj) => { console.log(subobj)
-      if(subobj === 'elements') {
-         console.log('result: ',obj[subobj]) ;
+   console.log('object length =', length) ;
+   Object.keys(obj).forEach((key) => {
+      console.log('key = ', key, ', value = ', obj[key]) ;       
+      switch(key) {
+         case 'declaration':
+            console.log('declaration = ', obj[key]) ;
+            break ;
+         case 'instruction':
+            console.log('instruction = ', obj[key]) ;
+            break ;
+         case 'elements':
+            console.log('elements = ',obj[key]) ;
+            if(Array.isArray(obj[key])) {
+               console.log('Hello elements array') ;
+               getArray(obj[key]) ;               
+            } else {
+               console.log(obj.constructor.name, 'property is not an array: ', key) ;
+            }
+            break ;            
+         case 'attributes':
+            console.log('attributes =  ', obj[key]) ;
+            if (typeof obj[key] === 'object') {
+               //obj[key]["xml:id"] = 'test' ;
+               //console.log('attributes = ', obj[key]) ;
+            }
+            break ;         
+         case 'type':
+            console.log('result: ',obj[key]) ;
+            break ;
+         case 'name':
+            console.log('result: ',obj[key]) ;
+            break ;
+         case 'text':
+            console.log('result: ',obj[key]) ;
+            break ;
+         case 'comment':
+            console.log('comment = ', obj[key]) ;            
+            break ;
+         default:
+            console.log('no case') ;
+            break ;
+      }
+            
+      /*if(key === 'elements') {
+         console.log('result: ',obj[key]) ;
 
-         if(Array.isArray(obj[subobj])) {               
+         if(Array.isArray(obj[key])) {               
             console.log('Hello elements array') ;            
          } else {
-            console.log(obj.constructor.name, 'property is not an array: ', subobj) ;
+            console.log(obj.constructor.name, 'property is not an array: ', key) ;
          }        
       }
 /*
-      if (typeof obj[subobj] === 'object') {
-         getObject(obj[subobj]) ;
+      if (typeof obj[key] === 'object') {
+         getObject(obj[key]) ;
       }
       */
    
@@ -38,7 +80,17 @@ function getObject(obj) {
    //console.log('result', length) ;
 } ; 
 
-function getArray(arr) {} ;
+function getArray(arr) {
+   let length = arr.length ;   
+   console.log('array length =', length) ;
+   arr.forEach((item, index, array) => {
+      if (typeof item === 'object') {
+         console.log('item = ', item, ', index = ', index) ;          
+         getObject(item) ;
+      }
+   }) ;
+   //console.log('result: ',arr) ;   
+} ;
 
 var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
