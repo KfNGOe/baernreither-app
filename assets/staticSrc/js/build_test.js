@@ -16,15 +16,44 @@ const dom = new jsdom.JSDOM(`
 const jquery = require("jquery")(dom.window);
 // Appending a paragraph tag to the body
 
+function getObject(obj) {
+   let length = Object.keys(obj).length ;
+   Object.keys(obj).forEach((subobj) => { console.log(subobj)
+      if(subobj === 'elements') {
+         console.log('result: ',obj[subobj]) ;
+
+         if(Array.isArray(obj[subobj])) {               
+            console.log('Hello elements array') ;            
+         } else {
+            console.log(obj.constructor.name, 'property is not an array: ', subobj) ;
+         }        
+      }
+/*
+      if (typeof obj[subobj] === 'object') {
+         getObject(obj[subobj]) ;
+      }
+      */
+   
+   }) ;
+   //console.log('result', length) ;
+} ; 
+
+function getArray(arr) {} ;
+
 var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
-
-
 xmlJs.elements ;
 xmlJs.elements[0] ;
+//console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
+
+getObject(xmlJs) ;
+
+
+
+
+
 
 /*
 var xmlJsString = JSON.stringify(xmlJs);
