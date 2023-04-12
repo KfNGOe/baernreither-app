@@ -3,8 +3,6 @@ const jsdom = require("jsdom") ;
 const fs = require('fs');
 var convert = require('xml-js');
 var i_xmlId = 0 ;
-//var xmlserializer = require('xmlserializer');
-
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -15,7 +13,6 @@ const dom = new jsdom.JSDOM(`
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);
-
 
 function getObject(obj) {
    console.log('i_xmlId = ', i_xmlId) ;     
@@ -131,9 +128,9 @@ getObject(xmlJs) ;
 //write xml file
 xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
 fs.writeFileSync('./data/tei_xmlId/Tagebuch_Baernreither_8.xml', xml ) ;
-        console.log('xml data written: ', xml.length, ' bytes')
+console.log('xml data written: ', xml.length, ' bytes')
 
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-        console.log('json data written: ', xmlJsString.length, ' bytes')
+console.log('json data written: ', xmlJsString.length, ' bytes')

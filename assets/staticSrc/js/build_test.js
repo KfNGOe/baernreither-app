@@ -2,8 +2,8 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 var convert = require('xml-js');
-//var xmlserializer = require('xmlserializer');
-
+var i_N = 0 ;
+var N = 0 ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -14,11 +14,39 @@ const dom = new jsdom.JSDOM(`
 // Importing the jquery and providing it
 // with the window
 const jquery = require("jquery")(dom.window);
-// Appending a paragraph tag to the body
 
 function getObject(obj) {
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
+   console.log('first object key  =', Object.keys(obj)[0]) ;
+
+   if (Object.keys(obj)[0] === 'type') {
+      switch (obj['type']) {
+         case 'element':
+            console.log('element type') ;
+            if ('elements' in obj) {
+               i_N = i_N + 2 ; 
+            } else {
+               i_N++ ;
+            }
+            console.log('i_N = ', i_N) ;
+            break ;
+         case 'text':
+            console.log('text type') ;
+            i_N++ ;
+            console.log('i_N = ', i_N) ;
+            break ;
+         case 'comment':
+            console.log('comment type') ;
+            i_N++ ;
+            console.log('i_N = ', i_N) ;
+            break ;
+         default:
+            console.log('no case') ;
+            break ;      
+      }
+   }
+   
    Object.keys(obj).forEach((key) => {
       console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
@@ -60,35 +88,38 @@ function getObject(obj) {
             console.log('no case') ;
             break ;
       } 
-   }) ;
-   //console.log('result', length) ;
+   }) ;   
 } ; 
 
 function getArray(arr) {
    let length = arr.length ;   
    console.log('array length =', length) ;
+
    arr.forEach((item, index, array) => {
       if (typeof item === 'object') {
          console.log('item = ', item, ', index = ', index) ;          
          getObject(item) ;
       }
-   }) ;
-   //console.log('result: ',arr) ;   
+   }) ;   
 } ;
 
-var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
+var xml = fs.readFileSync('data/tei_xmlId/test.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-xmlJs.elements ;
-xmlJs.elements[0] ;
-//console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
 
 getObject(xmlJs) ;
+N = i_N ;
+console.log('N = ', N) ;
 
+//write xml file
+xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
+fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
+console.log('xml data written: ', xml.length, ' bytes')
+
+//write json file
 var xmlJsString = JSON.stringify(xmlJs);
-
-fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-        console.log('js data written: ', xmlJsString.length, ' bytes')
+fs.writeFileSync('./data/json/test.json', xmlJsString ) ;
+console.log('json data written: ', xmlJsString.length, ' bytes')
 
 
