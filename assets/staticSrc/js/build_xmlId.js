@@ -32,8 +32,7 @@ function getObject(obj) {
             break ;
          case 'elements':
             console.log('elements = ',obj[key]) ;
-            if(Array.isArray(obj[key])) {
-               console.log('Hello elements array') ;
+            if(Array.isArray(obj[key])) {               
                getArray(obj[key]) ;               
             } else {
                console.log(obj.constructor.name, 'property is not an array: ', key) ;
@@ -100,8 +99,7 @@ function getObject(obj) {
             console.log('no case') ;
             break ;
       } 
-   }) ;
-   //console.log('result', length) ;
+   }) ;   
 } ; 
 
 function getArray(arr) {
@@ -113,8 +111,7 @@ function getArray(arr) {
          console.log('item = ', item, ', index = ', index) ;          
          getObject(item) ;
       }
-   }) ;
-   //console.log('result: ',arr) ;   
+   }) ;   
 } ;
 
 var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');

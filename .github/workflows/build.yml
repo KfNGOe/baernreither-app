@@ -27,8 +27,8 @@ jobs:
         run: sudo bash start_graphdb.sh &      
       - name: Connect to graphdb
         run: sudo bash connect_graphdb.sh
-      - name: build .json
-        run: sudo bash build_test.sh
+      - name: build xml ID
+        run: sudo bash build_xmlId.sh
       
         
         #https://stackoverflow.com/questions/70231685/github-actions-run-server-frontend-then-execute-tests
