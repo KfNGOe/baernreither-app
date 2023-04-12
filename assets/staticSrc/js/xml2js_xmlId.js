@@ -2,6 +2,7 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 var convert = require('xml-js');
+var i_xmlId = 0 ;
 //var xmlserializer = require('xmlserializer');
 
 
@@ -14,9 +15,10 @@ const dom = new jsdom.JSDOM(`
 // Importing the jquery and providing it
 // with the window
 const jquery = require("jquery")(dom.window);
-// Appending a paragraph tag to the body
+
 
 function getObject(obj) {
+   console.log('i_xmlId = ', i_xmlId) ;     
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
    Object.keys(obj).forEach((key) => {
@@ -39,13 +41,51 @@ function getObject(obj) {
             break ;            
          case 'attributes':
             console.log('attributes =  ', obj[key]) ;
-            if (typeof obj[key] === 'object') {
-               //obj[key]["xml:id"] = 'test' ;
-               //console.log('attributes = ', obj[key]) ;
+            if (typeof obj[key] === 'object') {               
+               if ('xml:id' in obj[key]) {
+                  console.log('xml:id = ', obj[key]["xml:id"]) ;
+                  //delete old xml:id ;
+                  delete obj[key]["xml:id"] ;                  
+               } else {
+                  console.log('xml:id not found') ;
+               }
+               //add new xml:id
+               obj[key]["xml:id"] = i_xmlId_str ;
+               console.log('attributes = ', obj[key]) ;
+            } else {
+               console.log(obj.constructor.name, 'property is not an object: ', key) ;
             }
             break ;         
          case 'type':
             console.log('result: ',obj[key]) ;
+            switch (obj[key]) {
+               case 'element':
+                  //xmlId + 1 ; 
+                  i_xmlId++ ;
+                  i_xmlId_str = '' + i_xmlId ;
+                  if('attributes' in obj) {
+                     console.log('attributes = ', obj.attributes) ;                  
+                  } else {
+                     console.log('attributes not found') ;
+                     //create attributes object                  
+                     obj.attributes = {} ;
+                     console.log('attributes = ', obj.attributes) ;
+                     //add xml:id
+                     obj.attributes["xml:id"] = i_xmlId_str ;
+                     console.log('attributes = ', obj.attributes) ;
+                  }
+                  break ;
+               case 'text':                  
+                  console.log('text = ', obj[key]) ;                  
+                  break ;
+                  Comment
+               case 'comment':
+                  console.log('comment = ', obj[key]) ;                  
+                  break ;
+               default:
+                  console.log('no case') ;
+                  break ;                  
+            }                      
             break ;
          case 'name':
             console.log('result: ',obj[key]) ;
@@ -65,6 +105,7 @@ function getObject(obj) {
 } ; 
 
 function getArray(arr) {
+   console.log('i_xmlId = ', i_xmlId) ;     
    let length = arr.length ;   
    console.log('array length =', length) ;
    arr.forEach((item, index, array) => {
@@ -82,12 +123,12 @@ console.log('tei data read: ', xml.length, ' bytes')
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 xmlJs.elements ;
 xmlJs.elements[0] ;
-//console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
 
+//start with xml:id = 0
 getObject(xmlJs) ;
 
+//write json file
 var xmlJsString = JSON.stringify(xmlJs);
-
 fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
         console.log('js data written: ', xmlJsString.length, ' bytes')
 
