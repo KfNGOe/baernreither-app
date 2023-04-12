@@ -14,7 +14,7 @@ const dom = new jsdom.JSDOM(`
 
 // Importing the jquery and providing it
 // with the window
-const jquery = require("jquery")(dom.window);
+const $ = require("jquery")(dom.window);
 
 
 function getObject(obj) {
@@ -62,7 +62,7 @@ function getObject(obj) {
                case 'element':
                   //xmlId + 1 ; 
                   i_xmlId++ ;
-                  i_xmlId_str = '' + i_xmlId ;
+                  i_xmlId_str = '' + titleShort + '_' + i_xmlId ;
                   if('attributes' in obj) {
                      console.log('attributes = ', obj.attributes) ;                  
                   } else {
@@ -118,18 +118,25 @@ function getArray(arr) {
 } ;
 
 var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
-console.log('tei data read: ', xml.length, ' bytes')
+console.log('tei data read: ', xml.length, ' bytes') ;
+
+xmlDoc = $.parseXML( xml ),
+$xml = $( xmlDoc ),
+titleShort = $xml.find( "[type='short']" ).text();
+//$titleAttr = $title.attr('type') ;
+console.log('title = ', titleShort) ;
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-xmlJs.elements ;
-xmlJs.elements[0] ;
 
 //start with xml:id = 0
 getObject(xmlJs) ;
 
+//write xml file
+xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
+fs.writeFileSync('./data/tei_xmlId/Tagebuch_Baernreither_8.xml', xml ) ;
+        console.log('xml data written: ', xml.length, ' bytes')
+
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-        console.log('js data written: ', xmlJsString.length, ' bytes')
-
-
+        console.log('json data written: ', xmlJsString.length, ' bytes')
