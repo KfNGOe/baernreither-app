@@ -4,6 +4,12 @@ const fs = require('fs');
 var convert = require('xml-js');
 var i_N = 0 ;
 var N = 0 ;
+var i_level = 0 ;
+var i_startTag = 0 ; 
+var i_endTag = 0 ;
+//var level = 0 ;
+//var startTag = 0 ;
+//var endTag = 0 ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -46,7 +52,15 @@ function getObject(obj) {
             break ;      
       }
    }
-   
+
+   //start tag + 1
+   if('attributes' in obj) {      
+   } else {
+      obj['attributes'] = {} ;      
+   }
+   obj['attributes']['startTag'] = i_startTag++ ;
+   obj['attributes']['level'] = i_level ;
+
    Object.keys(obj).forEach((key) => {
       console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
@@ -88,19 +102,47 @@ function getObject(obj) {
             console.log('no case') ;
             break ;
       } 
-   }) ;   
+   }) ;
+   
+   //end tag + 1 if level = level of start tag and if elements exist
+   if(obj['attributes']['level'] === i_level) {
+      if('elements' in obj) {
+         obj['attributes']['endTag'] = i_endTag++ ;      
+      } else {
+         obj['attributes']['endTag'] = 0 ;      
+      }
+   } else {
+      
+   }
+
+
+
+   if('attributes' in obj) {
+      if ('startTag' in obj['attributes']) {
+         if ('elements' in obj) {
+            obj['attributes']['endTag'] = i_endTag++ ;      
+         } else {
+            obj['attributes']['endTag'] = i_endTag++ ;      
+         }
+      } else {
+         obj['attributes']['endTag'] = i_endTag++ ;      
+      }
+   }
 } ; 
 
 function getArray(arr) {
    let length = arr.length ;   
    console.log('array length =', length) ;
 
+//level + 1
    arr.forEach((item, index, array) => {
       if (typeof item === 'object') {
          console.log('item = ', item, ', index = ', index) ;          
          getObject(item) ;
       }
-   }) ;   
+   }) ;
+//level - 1
+
 } ;
 
 var xml = fs.readFileSync('data/tei_xmlId/test.xml', 'utf8');
