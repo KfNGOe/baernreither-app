@@ -26,6 +26,7 @@ function getObject(obj) {
    console.log('object length =', length) ;
    console.log('first object key  =', Object.keys(obj)[0]) ;
 
+
    if (Object.keys(obj)[0] === 'type') {
       switch (obj['type']) {
          case 'element':
@@ -109,25 +110,11 @@ function getObject(obj) {
       if('elements' in obj) {
          obj['attributes']['endTag'] = i_endTag++ ;      
       } else {
-         obj['attributes']['endTag'] = 0 ;      
-      }
-   } else {
-      
-   }
-
-
-
-   if('attributes' in obj) {
-      if ('startTag' in obj['attributes']) {
-         if ('elements' in obj) {
-            obj['attributes']['endTag'] = i_endTag++ ;      
-         } else {
-            obj['attributes']['endTag'] = i_endTag++ ;      
+         if('endTag' in obj['attributes']) {
+            delete obj['attributes']['endTag'] ;
          }
-      } else {
-         obj['attributes']['endTag'] = i_endTag++ ;      
       }
-   }
+   }   
 } ; 
 
 function getArray(arr) {
@@ -148,7 +135,8 @@ function getArray(arr) {
 var xml = fs.readFileSync('data/tei_xmlId/test.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
-var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
+var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
+console.log('xmlJs = ', xmlJs) ;
 
 getObject(xmlJs) ;
 N = i_N ;
