@@ -1,15 +1,13 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
+
 var convert = require('xml-js');
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
 var i_startTag = 0 ; 
 var i_endTag = 0 ;
-//var level = 0 ;
-//var startTag = 0 ;
-//var endTag = 0 ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -58,11 +56,7 @@ function getObject(obj) {
             }
             break ;            
          case 'attributes':
-            console.log('attributes =  ', obj[key]) ;
-            if (typeof obj[key] === 'object') {
-               //obj[key]["xml:id"] = 'test' ;
-               //console.log('attributes = ', obj[key]) ;
-            }
+            console.log('attributes =  ', obj[key]) ;            
             break ;         
          case 'type':
             console.log('result: ',obj[key]) ;
@@ -83,8 +77,6 @@ function getObject(obj) {
    }) ;
    
    //end tag + 1 if level = level of start tag and if elements exist
-   //console.log('end tag of element = ', obj['type'], 'with start tag = ', obj['attributes']['startTagNr']) ;
-
    //no declaration or instruction
    if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {
       if(obj['attributes']['level'] === i_level) {
@@ -139,9 +131,10 @@ xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
 fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
 console.log('xml data written: ', xml.length, ' bytes')
 */
+
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
+fs.writeFileSync('./data/json_tag/Tagebuch_Baernreither_8.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
 
 
