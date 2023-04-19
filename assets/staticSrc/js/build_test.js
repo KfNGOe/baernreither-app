@@ -26,41 +26,18 @@ function getObject(obj) {
    console.log('object length =', length) ;
    console.log('first object key  =', Object.keys(obj)[0]) ;
 
-
-   if (Object.keys(obj)[0] === 'type') {
-      switch (obj['type']) {
-         case 'element':
-            console.log('element type') ;
-            if ('elements' in obj) {
-               i_N = i_N + 2 ; 
-            } else {
-               i_N++ ;
-            }
-            console.log('i_N = ', i_N) ;
-            break ;
-         case 'text':
-            console.log('text type') ;
-            i_N++ ;
-            console.log('i_N = ', i_N) ;
-            break ;
-         case 'comment':
-            console.log('comment type') ;
-            i_N++ ;
-            console.log('i_N = ', i_N) ;
-            break ;
-         default:
-            console.log('no case') ;
-            break ;      
-      }
-   }
-
    //start tag + 1
-   if('attributes' in obj) {      
-   } else {
-      obj['attributes'] = {} ;      
+   //no declaration or instruction
+   if(Object.keys(obj)[0] !== 'declaration' && Object.keys(obj)[0] !== 'instruction') {
+      if('attributes' in obj) {      
+      } else {
+         obj['attributes'] = {} ;      
+      }
+      i_startTag++ ;
+      obj['attributes']['startTagNr'] = i_startTag ;
+      obj['attributes']['level'] = i_level ;
    }
-   obj['attributes']['startTag'] = i_startTag++ ;
-   obj['attributes']['level'] = i_level ;
+
 
    Object.keys(obj).forEach((key) => {
       console.log('key = ', key, ', value = ', obj[key]) ;       
@@ -106,15 +83,24 @@ function getObject(obj) {
    }) ;
    
    //end tag + 1 if level = level of start tag and if elements exist
-   if(obj['attributes']['level'] === i_level) {
-      if('elements' in obj) {
-         obj['attributes']['endTag'] = i_endTag++ ;      
-      } else {
-         if('endTag' in obj['attributes']) {
-            delete obj['attributes']['endTag'] ;
+   //console.log('end tag of element = ', obj['type'], 'with start tag = ', obj['attributes']['startTagNr']) ;
+
+   //no declaration or instruction
+   if(Object.keys(obj)[0] !== 'declaration' && Object.keys(obj)[0] !== 'instruction') {
+      if(obj['attributes']['level'] === i_level) {
+         if('elements' in obj) {
+            i_endTag = i_startTag ;            
+            i_endTag++ ;
+            i_startTag = i_endTag ;
+            obj['attributes']['endTagNr'] = i_endTag ;      
+         } else {
+            if('endTagNr' in obj['attributes']) {
+               delete obj['attributes']['endTagNr'] ;
+            }
          }
       }
-   }   
+   }
+      
 } ; 
 
 function getArray(arr) {
@@ -139,14 +125,20 @@ var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
 console.log('xmlJs = ', xmlJs) ;
 
 getObject(xmlJs) ;
-N = i_N ;
+if (i_startTag > i_endTag) {
+   N = i_startTag ;
+} else {
+   N = i_endTag ;
+}
 console.log('N = ', N) ;
+i_startTag, i_endTag = 0 ;
 
 //write xml file
+/*
 xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
 fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
 console.log('xml data written: ', xml.length, ' bytes')
-
+*/
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync('./data/json/test.json', xmlJsString ) ;
