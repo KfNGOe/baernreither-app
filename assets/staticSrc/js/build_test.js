@@ -28,7 +28,7 @@ function getObject(obj) {
 
    //start tag + 1
    //no declaration or instruction
-   if(Object.keys(obj)[0] !== 'declaration' && Object.keys(obj)[0] !== 'instruction') {
+   if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {
       if('attributes' in obj) {      
       } else {
          obj['attributes'] = {} ;      
@@ -86,7 +86,7 @@ function getObject(obj) {
    //console.log('end tag of element = ', obj['type'], 'with start tag = ', obj['attributes']['startTagNr']) ;
 
    //no declaration or instruction
-   if(Object.keys(obj)[0] !== 'declaration' && Object.keys(obj)[0] !== 'instruction') {
+   if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {
       if(obj['attributes']['level'] === i_level) {
          if('elements' in obj) {
             i_endTag = i_startTag ;            
@@ -118,7 +118,7 @@ function getArray(arr) {
 
 } ;
 
-var xml = fs.readFileSync('data/tei_xmlId/test.xml', 'utf8');
+var xml = fs.readFileSync('data/tei_xmlId/Tagebuch_Baernreither_8.xml', 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
@@ -141,7 +141,7 @@ console.log('xml data written: ', xml.length, ' bytes')
 */
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json/test.json', xmlJsString ) ;
+fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
 
 
