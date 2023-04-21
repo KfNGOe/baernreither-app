@@ -4,18 +4,16 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 var convert = require('xml-js');
-var stmtsList = {} ;
-var stmts = {} ;
-var stmt = {
-   "subject": "",
-   "predicate": "",
-   "object": "",
-} ;
+var stmtsListJs = { "statements": [] } ;
+var stmtsList = [] ;
+var stmts = [] ;
+var stmt = {} ;
 var prefInstance = "kfngoei:" ;
 var prefOntology = "kfngoeo:" ;
+var resourceIri = "" ;
 var prefTei = "tei:" ;
 var bnAttr = "_:attr" ;
-var i_stmt = 0 ;
+var i_stmt = 1 ;
 var N = 0 ;
 
 // Creating a window with a document
@@ -31,17 +29,29 @@ const jquery = require("jquery")(dom.window);
 /////////////////////////// Functions ///////////////////////////
 
 function buildStmt( subj, pred, obj ) {
-   stmt.subject = subj ;
-   stmt.predicate = pred ;
-   stmt.object = obj ;   
+   stmt["subject"] = subj ;
+   stmt["predicate"] = pred ;
+   stmt["object"] = obj ;   
 }
 
-function buildStmts( n ) {
-   stmts[n] = stmt ;
+function buildStmts() {   
+   stmts.push(stmt) ;
+   stmt = {} ;
 }
 
-function buildStmtsList( n ) {
-   stmtsList[n] = stmts ;
+function addStmt( subj, pred, obj ){
+   buildStmt( subj, pred, obj ) ;
+   console.log( 'stmt = ', stmt ) ;
+   buildStmts() ;
+   console.log( 'stmts = ', stmts ) ;
+   i_stmt++ ;   
+}
+
+function addAttrStmt( iri, bn, attrName, attrValue ) {
+   let i_attr = i_stmt ;                                    
+   addStmt( iri, prefOntology + 'hasAttr', bn + i_attr ) ;   
+   addStmt( bn + i_attr, prefOntology + 'attrName', attrName  ) ;   
+   addStmt( bn + i_attr, prefOntology + 'attrValue', attrValue ) ;   
 }
 
 function buildAttrStmt( obj ) {
@@ -51,68 +61,114 @@ function buildAttrStmt( obj ) {
       console.log('key = ', key, ', value = ', objAttr[key]) ;
       switch(key) {
          case 'xml:id':
-            console.log('xml:id = ', objAttr[key]) ;
-            let i_attr = i_stmt
-            buildStmt( resourceIri, prefOntology + 'hasAttr', bnAttr + i_attr ) ;
-            console.log( 'stmt = ', stmt ) ;
-            buildStmts( i_stmt ) ;
-            console.log( 'stmts = ', stmts ) ;
-            i_stmt++ ;
-            buildStmt( bnAttr + i_attr, prefOntology + 'attrName', key ) ;
-            console.log( 'stmt = ', stmt ) ;
-            i_stmt++ ;
-            buildStmts( i_stmt ) ;
-            console.log( 'stmts = ', stmts ) ;
-            
+            console.log('xml:id = ', objAttr[key]) ;            
+            addAttrStmt( resourceIri, bnAttr, key, objAttr[key] ) ;
             break ;
-         case 'startTagNr':
+            case 'startTagNr':
             console.log('startTagNr = ', objAttr[key]) ;
             break ;
          case 'endTagNr':
             console.log('endTagNr = ', objAttr[key]) ;
-            break ;
+            break ;         
          case 'level':
             console.log('type = ', objAttr[key]) ;
             break ;                           
          default:
-            console.log('no case') ;
+            console.log('attrName = ', key) ;            
+            console.log('attrValue = ', objAttr[key]) ;            
+            addAttrStmt( resourceIri, bnAttr, key, objAttr[key] ) ;
             break ;
       }
    }) ;
 }
 
-function buildElementStmt( obj ) {
-   let resourceIri = prefInstance + uuidv4() ;
-   console.log( 'resourceIri = ', resourceIri ) ;
-
-   //build tag type statement
-   buildStmt( resourceIri, 'a', prefOntology + 'startTag' ) ;
-   console.log( 'stmt = ', stmt ) ;
-   buildStmts( i_stmt ) ;
-   i_stmt++ ;
-   console.log( 'stmts = ', stmts ) ;
-   //build element name statement
-   buildStmt( resourceIri, prefOntology + 'elementName', prefTei + obj['name'] ) ;
-   buildStmts( i_stmt ) ;
-   i_stmt++ ;
+function buildStartTagStmts( iri, obj ) {
+   //build tag type statement   
+   addStmt( iri, 'a', prefOntology + 'StartTag' ) ;   
+   //build element name statement   
+   addStmt( iri, prefOntology + 'elementName', prefTei + obj['name'] ) ;
    //build element attributes statement   
    buildAttrStmt( obj ) ;
+   //build element position statement
+   addStmt( iri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   //reset stmt counter   
+   i_stmt = 1 ;
+}
+
+function buildEndTagStmts( iri, obj ) {
+   //build tag type statement   
+   addStmt( iri, 'a', prefOntology + 'EndTag' ) ;   
+   //build element name statement   
+   addStmt( iri, prefOntology + 'elementName', prefTei + obj['name'] ) ;
+   //build element attributes statement   
+   addAttrStmt( iri, bnAttr, 'xml:id', obj['attributes']['xml:id'] ) ; ;
+   //build element position statement
+   addStmt( iri, prefOntology + 'elementPos', obj['attributes']['endTagNr'] ) ;
+   //reset stmt counter   
+   i_stmt = 1 ;
+}
+
+function buildStmtsList( index ) {
+   stmtsList[index] = stmts ;
+   stmts = [] ;
+}
+
+
+
+function buildElementStmt( obj ) {
+   resourceIri = prefInstance + uuidv4() ;
+   console.log( 'resourceIri = ', resourceIri ) ;
    
+   //build start tag statements
+   buildStartTagStmts( resourceIri, obj ) ;
+   //build list of statements
+   buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
+   console.log( 'stmtsList = ', stmtsList ) ;
+
    //check single tag
-   if ('endTagNr' in obj['attributes']) {
-      //console.log('endTagNr = ', obj['attributes']['endTagNr']) ;
-      
-      //build end tag statement
-   }
-   
+   if ('endTagNr' in obj['attributes']) {      
+      //build end tag statements
+      buildEndTagStmts( resourceIri, obj ) ;
+      //build list of statements
+      buildStmtsList( obj['attributes']['endTagNr'] - 1 ) ;
+      console.log( 'stmtsList = ', stmtsList ) ;
+   }   
 }
 
 function buildTextStmt( obj ) {
+   resourceIri = prefInstance + uuidv4() ;
+   console.log( 'resourceIri = ', resourceIri ) ;
 
+   //build Text type statement   
+   addStmt( resourceIri, 'a', prefOntology + 'Text' ) ;   
+   //build text content statement   
+   addStmt( resourceIri, prefOntology + 'hasContent', obj['text'] ) ;   
+   //build element position statement
+   addStmt( resourceIri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   //reset stmt counter   
+   i_stmt = 1 ;
+
+   //build list of statements
+   buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
+   console.log( 'stmtsList = ', stmtsList ) ;
 }
 
 function buildCommentStmt( obj ) {
+   resourceIri = prefInstance + uuidv4() ;
+   console.log( 'resourceIri = ', resourceIri ) ;
 
+   //build Text type statement   
+   addStmt( resourceIri, 'a', prefOntology + 'Comment' ) ;   
+   //build text content statement   
+   addStmt( resourceIri, prefOntology + 'hasContent', obj['comment'] ) ;   
+   //build element position statement
+   addStmt( resourceIri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   //reset stmt counter   
+   i_stmt = 1 ;
+
+   //build list of statements
+   buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
+   console.log( 'stmtsList = ', stmtsList ) ;
 }
 
 function buildRdfJs( obj ) {
@@ -140,7 +196,7 @@ function getObject(obj) {
    console.log('object length =', length) ;
    console.log('first object key  =', Object.keys(obj)[0]) ;
    
-   if(obj['name'] === 'TEI') {
+   if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {   
       buildRdfJs(obj) ;
    }   
 
@@ -188,8 +244,8 @@ function getArray(arr) {
 
 } ;
 
-//////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////
 
 var json = fs.readFileSync('data/json_tag/Tagebuch_Baernreither_8.json', 'utf8');
 console.log('json data read: ', json.length, ' bytes')
@@ -199,7 +255,9 @@ console.log('jsonJs = ', jsonJs) ;
 
 //get N
 getObject(jsonJs) ;
-console.log('N = ', N) ;
+//build statements list as js object
+stmtsListJs['statements'] = stmtsList ;
+
 
 //write xml file
 /*
@@ -208,9 +266,7 @@ fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
 console.log('xml data written: ', xml.length, ' bytes')
 */
 //write json file
-/*
-var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-console.log('json data written: ', xmlJsString.length, ' bytes')
-*/
 
+var stmtsListJsString = JSON.stringify(stmtsListJs);
+fs.writeFileSync('./data/json_rdf/Tagebuch_Baernreither_8.json', stmtsListJsString ) ;
+console.log('json data written: ', stmtsListJsString.length  , ' bytes')
