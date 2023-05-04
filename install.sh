@@ -9,6 +9,9 @@ echo "Install jquery for Node.js"
 npm install jquery
 npm install jsdom
 
+echo "Install excel to xml library"
+npm install aspose.cells
+
 #echo "install localtunnel"
 #npm install -g localtunnel
 
