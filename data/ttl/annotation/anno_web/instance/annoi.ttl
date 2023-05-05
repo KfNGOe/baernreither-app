@@ -1,0 +1,106 @@
+
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bfo: <http://id.loc.gov/ontologies/bibframe.rdf> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix oa:<http://www.w3.org/ns/oa#> .
+@prefix as: <http://www.w3.org/ns/activitystreams#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
+@prefix dhplusi: <http://dhplus.sbg.ac.at/instance/> .
+@base <https://dhplus.sbg.ac.at/ontology/person> .
+
+#dhplus
+dhplusi:53e3d929-3106-4822-bbcd-d132011a7ed2
+    #:_Annoxxx = class of an Annotation Level of a project
+    #_:Annoxxx subClass of dhpluso:Annotation
+    # _: placeholder for project ontology namespace e.g. ebnero, mhdbdbo
+    a _:Annoxxx ;
+
+    #administrative
+    ##description of annotation level
+    rdfs:label "NN"@en ;
+    rdfs:comment "NN"@en ;
+    ##description with controlled vocabulary
+    dhpluso:description <URI> ;
+
+    dhpluso:creator <URI> ;
+    #OR
+    dhpluso:creator "NN"^^xsd:string ;
+    dhpluso:created "0001-01-01T00:00:00"^^xsd:dateTime ;
+    dhpluso:modified "0001-01-01T00:00:00"^^xsd:dateTime ;
+
+    #relation to target
+    dhpluso:hasTarget <URI> ;
+    #OR
+    dhpluso:hasTarget [
+        #scope of target e.g. text
+        dhpluso:hasScope <http://dhplus.sbg.ac.at/vocabulary/text> ;
+        #source e.g. TEI-text
+        dhpluso:hasSource <URI> ;
+        #selector e.g. xml ID's of TEI tags
+        dhpluso:hasSelector <URI1> ;
+        dhpluso:hasSelector <URI2> ;
+        #...
+    ] ;
+    #OR
+    dhpluso:hasTarget [
+      #scope of target e.g. biographic dataset
+      dhpluso:hasScope <http://dhplus.sbg.ac.at/vocabulary/person> ;
+      #source e.g. collection of datasets
+        dhpluso:hasSource <URI> ;
+        dhpluso:hasSelector [
+            a dhpluso:RangeSelector ;
+            #selector e.g. from dataset 1 to 3
+            dhpluso:hasStartSelector <URIStart> ;
+            dhpluso:hasEndSelector <URIEnd> ;
+       ] ;
+    ] ;
+
+    #relation to body
+    dhpluso:hasBody <URI> ;
+    #OR
+    dhpluso:hasBody [
+        #purpose of annotation
+        dhpluso:hasPurpose <http://dhplus.sbg.ac.at/vocabulary/translation> ;
+        #choice between multiple annotations
+        a dhpluso:Choice ;
+        dhpluso:items (<URI1> <URI2>) ;
+
+    ] ;
+    #OR
+    dhpluso:hasBody [
+        #purpose of annotation
+        dhpluso:hasPurpose <http://dhplus.sbg.ac.at/vocabulary/biography> ;
+        #source e.g. TEI-text as annotation
+        dhpluso:hasSource <URI> ;
+        #selector e.g. xml ID's of TEI tags
+        dhpluso:hasSelector <URI1> ;
+        dhpluso:hasSelector <URI2> ;
+        #...
+    ] ;
+    #OR
+    dhpluso:hasBody [
+        #purpose of annotation
+        dhpluso:hasPurpose <http://dhplus.sbg.ac.at/vocabulary/biography> ;
+        #source e.g. collection of datasets as annotation
+        dhpluso:hasSource <URI> ;
+        dhpluso:hasSelector [
+            a dhpluso:RangeSelector ;
+            #selector e.g. from dataset 1 to 3
+            dhpluso:hasStartSelector <URIStart> ;
+            dhpluso:hasEndSelector <URIEnd> ;
+       ] ;
+    ] ;
+.

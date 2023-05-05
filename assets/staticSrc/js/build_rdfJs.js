@@ -247,7 +247,7 @@ function getArray(arr) {
 
 //////////////////////////////////////////////////////
 
-var json = fs.readFileSync('data/json_tag/Tagebuch_Baernreither_8.json', 'utf8');
+var json = fs.readFileSync('data/json_tei/Tagebuch_Baernreither_8.json', 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;

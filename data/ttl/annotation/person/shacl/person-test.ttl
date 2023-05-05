@@ -1,0 +1,51 @@
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix ex: <http://example.org/> .
+@prefix spr: <http://www.w3.org/TR/rdf-sparql-query/> .
+@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
+@prefix ebneri: <http://dhplus.sbg.ac.at/ebneri/instance/> .
+
+
+######################################## Data ########################################
+
+#_:p234 a _:WikiDataItem ; # V Passes as :ProductShape
+#<http://www.wikidata.org/entity/Q34713>
+#    a wikibase:Item ;
+
+        #rdfs:label "Salzburg"@jv, "Salzburgo"@eu, "Salzburg"@pl, "Salzburg"@qu, "Salzburg"@gd, "Salzburg"@bs, "Salzburg"@vo, "Salzburgo"@es, "Salzburg"@af, "Salzborg"@oc, "Salzburg"@hu, "Salzburg"@ms, "Зальцбург"@ce, "Salzburg"@sw, "Salzburg"@et, "জালৎস্‌বুর্গ"@bn, "Salzburg"@br, "Salzburg"@sq, "Σάλτσμπουργκ"@el, "Salzburg"@ia, "Salzburg"@ga, "Salzburg"@nl, "سالزبورغ"@ar, "Salzburg"@sv, "Salzburgo"@pt, "Salzburg"@eo, "Salzburg"@is, "זאלצבורג"@yi, "Зальцбург"@ru, "Салцбург"@sr, "Salzburg"@tr, "Salzburg"@fi, "Зальцбург"@uk, "Зальцбург"@be-tarask, "Salzburg"@nn, "સાલ્ઝબર્ગ"@gu, "Salzburg"@io, "Salzburg"@hr, "Zaltsburq"@az, "Salisburgh"@lmo, "Salzburg"@tl, "Зальцбург"@kk, "Salzburgo"@an, "Salzburg"@da, "Salzburg"@nan, "Sałisburgo"@vec, "Salzburg"@gsw, "זלצבורג"@he, "Зальцбург"@be, "Salzbourg"@fr, "잘츠부르크"@ko, "Saltzburg"@ug, "Salzburgo"@lad, "Såizburg"@bar, "Zalcburga"@lv, "Salisburgo"@it, "Estado de Salzburgo"@gl, "Salzburg"@id, "Salzburg"@de, "ザルツブルク"@ja, "Salzburg"@vi, "Salzburg"@en, "Salzburg"@sh, "Salisburgu"@scn, "Salzburg"@hsb, "साल्ज़बोर्ग"@hi, "柴尔兹孛格"@wuu, "Salzburg"@sk, "Иёлати Залтсбург"@tg, "ಸಾಲ್ಜ್‌ಬರ್ಗ್‌"@kn, "ซาลซ์บูร์ก"@th, "Salzburg"@ro, "Salzburg"@ca, "Salisburgum"@la, "Salzburg"@cy, "Salzburg"@sl, "Salzburg"@war, "Зальцбург"@os, "Зальцбург"@mhr, "Salzburg"@cs, "زالتسبورگ"@fa, "Залцбург"@bg, "जाल्त्सबुर्ग"@mr, "ზალცბურგი"@ka, "سالزبرگ"@ur, "Zalcburgas"@lt, "Salzburg"@nb, "Salzburg"@gv, "Զալցբուրգ"@hy, "Salzburgo"@pt-br, "Salzburg"@en-gb, "薩爾茨堡"@zh-hant, "萨尔茨堡"@zh-hans, "Salzburg"@de-ch, "Salzburg"@en-ca, "Зальцбург"@mn, "Zalsburg"@uz, "萨尔茨堡"@zh, "Salisborgh"@pms, "Salzburg"@dsb, "Salzburg"@sco, "Salisburgu"@co, "Салцбург"@mk, "Salzburg"@ie, "Salzburg"@nah, "Salzburg"@tw, "Zalsburg"@kaa, "Salzburg"@sc, "Зальцбург"@tt, "Salzburg"@lb, "薩爾斯堡"@yue, "Zalsburg"@tk, "Salzburg Stadt"@ceb, "Зальцбург"@lez, "ሳልጽቡርግ"@am, "Salzburg"@pap, "زالتسبورق"@azb, "Salzburg"@szl, "சால்ஸபர்க்"@ta, "సాల్జ్ బర్గ్"@te, "Saliżburgu"@mt, "සලස්බර්ග්"@si, "薩爾斯堡"@zh-tw, "Salzburg"@se, "Salzburgu"@ast, "Soltborg"@nds, "Salzburg"@vls, "Зальцбург"@ba, "സാൽസ്ബുർഗ്"@ml, "Սալզպուրկ"@hyw, "Zaltsburg"@crh, "Zaltsburg"@crh-latn .
+        #rdfs:label "Salzburg"@id, "Salzburg"@de, "ザルツブルク"@ja, "Salzburg"@vi, "Salzburg"@en-cn .
+        #rdfs:label "jamón"@es, "ham"@en, "Schinken"@de
+
+<https://d-nb.info/gnd/11873931X>
+    a gndo:Person;
+.
+
+<https://d-nb.info/gnd/11873931X>
+    gndo:gender <https://d-nb.info/standards/vocab/gnd/gender#male>;
+.
+
+######################################## Shapes ########################################
+
+<https://d-nb.info/standards/elementset/gnd#Person>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#gender> ;
+                    sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#male>
+                ]
+.

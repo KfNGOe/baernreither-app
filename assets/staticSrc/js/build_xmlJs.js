@@ -134,7 +134,7 @@ console.log('xml data written: ', xml.length, ' bytes')
 
 //write json file
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json_tag/Tagebuch_Baernreither_8.json', xmlJsString ) ;
+fs.writeFileSync('./data/json_tei/Tagebuch_Baernreither_8.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
 
 
