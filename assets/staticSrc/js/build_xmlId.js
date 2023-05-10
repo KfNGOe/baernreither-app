@@ -1,3 +1,10 @@
+/*
+better?:
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+*/
+
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
