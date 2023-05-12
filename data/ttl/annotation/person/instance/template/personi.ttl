@@ -25,15 +25,22 @@
 
 #kfngoei
 kfngoei:nnnnnn
-    a   kfngoeo:Person ; #subclass of gndo:DifferentiatedPerson, schema:Person, dct:Agent
-    rdfs:label  "NN"@en , "NN"@de ; #from wikidata
+    a   kfngoeo:Person ; #subclass of gndo:DifferentiatedPerson, schema:Person, dct:Agent    
 
     #administrative    
     kfngoeo:modified "0001-01-01T00:00:00"^^xsd:dateTime ; #subprop of dct:modified
     kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/>; #subprop of dct:license
     kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ; #subprop of dct:source
-    #name    
-    kfngoeo:preferredNameForThePerson "NN"^^xsd:string ;
+    #name
+    kfngoeo:preferredNameEntityForThePerson [ 
+        a kfngoeo:NameOfThePerson ; #subprop of gndo:NameOfThePerson
+        rdfs:label  "NN"@en , "NN"@de ; #from wikidata
+        kfngoeo:preferredNameForThePerson "NN"^^xsd:string ; #subprop of gndo:preferredNameForThePerson
+        kfngoeo:forename "NN"^^xsd:string ; #subprop of gndo:forename
+        kfngoeo:surname "NN"^^xsd:string ; #subprop of gndo:surname
+        kfngoeo:nameAddition "NN"^^xsd:string ; #subprop of gndo:nameAddition
+    ] ; #subprop of gndo:preferredNameEntityForThePerson
+
     #gender
     kfngoeo:gender <https://d-nb.info/standards/vocab/gnd/gender#male> ; #subprop of gndo:gender
     #birth
