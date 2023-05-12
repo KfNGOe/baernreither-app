@@ -8,11 +8,29 @@ const SPACE = " " ;
 const SQBRACKET_OPEN = "[" ;
 const SQBRACKET_CLOSE = "]" ;
 const BN = "_:" ;
+const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF 
+               + "@prefix kfngeoi: <https://github.com/KfNGOe/kfngeoi/> ." + LF
+               + "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ." + LF
+               + "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ." + LF
+               + "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ." + LF
+               + "@prefix owl: <http://www.w3.org/2002/07/owl#> ." + LF
+               + "@prefix dc: <http://purl.org/dc/elements/1.1/> ." + LF
+               + "@prefix dcterms: <http://purl.org/dc/terms/> ." + LF
+               + "@prefix foaf: <http://xmlns.com/foaf/0.1/> ." + LF
+               + "@prefix skos: <http://www.w3.org/2004/02/skos/core#> ." + LF
+               + "@prefix schema: <http://schema.org/> ." + LF
+               + "@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> ." + LF
+               + "@prefix geonames: <http://www.geonames.org/ontology#> ." + LF             
+               + "@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> ." + LF
+               + "@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> ." + LF
+              ;
 
 
 var s_ttl, p_ttl, o_ttl = "" ;
 var ttl_template = s_ttl + p_ttl + o_ttl  ;
 var ttl = "" ;
+
+ttl = ttl + prefix + LF ;
 
 function getTTL(item_obj) {
    if(item_obj.object === "kfngoeo:StartTag" || item_obj.object === "kfngoeo:EndTag" || item_obj.object === "kfngoeo:Text" || item_obj.object === "kfngoeo:Comment") {

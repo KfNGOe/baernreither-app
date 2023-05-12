@@ -1,3 +1,5 @@
+//https://www.npmjs.com/package/sparql-http-client
+
 const SparqlClient = require('sparql-http-client')
 
 const endpointUrl = 'https://query.wikidata.org/sparql'
@@ -8,10 +10,10 @@ const query = `
     PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
 
     SELECT ?value WHERE {
-    wd:Q243 p:P2048 ?height.
+        wd:Q243 p:P2048 ?height.
 
-    ?height pq:P518 wd:Q24192182;
-        ps:P2048 ?value .
+        ?height pq:P518 wd:Q24192182;
+            ps:P2048 ?value .
 }`
 
 async function sparqlHttpClient (endpointUrl) {

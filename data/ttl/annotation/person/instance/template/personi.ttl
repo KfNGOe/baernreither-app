@@ -4,8 +4,6 @@
 @prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-
-
 @prefix wdt: <http://www.wikidata.org/prop/direct/> .
 @prefix wikibase: <http://wikiba.se/ontology#Statement> .
 @prefix p: <http://www.wikidata.org/prop/> .
@@ -20,13 +18,15 @@
 @prefix dhplusi: <http://dhplus.sbg.ac.at/instance/> .
 @prefix ebneri: <http://dhplus.sbg.ac.at/ebner/instance/> .
 @prefix mhdbdbi: <http://dhplus.sbg.ac.at/mhdbdb/instance/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix kfngoei: <http://dhplus.sbg.ac.at/kfngoe/instance/> .
 @prefix kfngoeo: <http://dhplus.sbg.ac.at/kfngoe/ontology#> .
 
 
-#dhplus
-kfngoei:828f9830-91b1-11ea-bb37-0242ac130002
+#kfngoei
+kfngoei:nnnnnn
     a   kfngoeo:Person ; #subclass of gndo:DifferentiatedPerson, schema:Person, dct:Agent
+    rdfs:label  "NN"@en , "NN"@de ; #from wikidata
 
     #administrative    
     kfngoeo:modified "0001-01-01T00:00:00"^^xsd:dateTime ; #subprop of dct:modified
@@ -55,8 +55,7 @@ kfngoei:828f9830-91b1-11ea-bb37-0242ac130002
         schema:value "xxxxxxxxx"^^xsd:string ;
     ] #subprop of schema:identifier
 .
-#gnd api
-#https://d-nb.info/gnd/119148331/about/lds
+
 
 
 

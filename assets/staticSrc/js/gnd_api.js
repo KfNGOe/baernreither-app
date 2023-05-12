@@ -1,17 +1,25 @@
 const axios = require('axios');
 
-let config = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  url: 'https://d-nb.info/gnd/119148331/about/lds',
-  headers: { }
-};
+async function getGNDData(gndUrl) {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: gndUrl,
+    headers: { }
+  };
 
-axios.request(config)
-.then((response) => {
-  console.log(response.data) ;
-  //console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
+  const response = await axios.request(config) ;
+  return response ;
+}
+
+(async () => {    
+  await getGNDData('https://d-nb.info/gnd/119148331/about/lds').then(response => {
+    console.log(response.data) ;    
+  })
+  //error handling    
+  .catch(error => {
+    console.log(error) ;
+  } ) ;        
+})() ;
+
+
