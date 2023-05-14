@@ -1,4 +1,4 @@
-import { groupBy } from "core-js/actual/array/group-by";
+const { groupBy } = require("core-js/actual/array/group-by") ;
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
@@ -86,7 +86,7 @@ console.log('jsonJS: ', persons[0]) ;
 
 //group by gnd
 var personsGND = persons.groupBy(person => {
-    return person.GND ;
+    return person.G ;
 }) ;
 console.log('personsGND: ', personsGND) ;
 
