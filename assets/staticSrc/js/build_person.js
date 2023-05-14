@@ -1,3 +1,4 @@
+import { groupBy } from "core-js/actual/array/group-by";
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
@@ -76,19 +77,24 @@ function getArray(arr) {
    //console.log('result: ',arr) ;   
 } ;
 
-var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
-console.log('tei data read: ', xml.length, ' bytes')
+var json = fs.readFileSync('data/json_xlsx/Baernreither_Personenregister_2023.json', 'utf8');
+console.log('json data read: ', json.length, ' bytes')
 
-var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-xmlJs.elements ;
-xmlJs.elements[0] ;
-//console.log('xmlJs: ', Object.keys(xmlJs).forEach((item) => { console.log(item)})) ;
+var jsonJS = JSON.parse(json) ;
+var persons = jsonJS.Tabelle1 ;
+console.log('jsonJS: ', persons[0]) ;
 
-getObject(xmlJs) ;
+//group by gnd
+var personsGND = persons.groupBy(person => {
+    return person.GND ;
+}) ;
+console.log('personsGND: ', personsGND) ;
 
-var xmlJsString = JSON.stringify(xmlJs);
 
-fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-        console.log('js data written: ', xmlJsString.length, ' bytes')
+
+//var xmlJsString = JSON.stringify(xmlJs);
+
+//fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
+//        console.log('js data written: ', xmlJsString.length, ' bytes')
 
 
