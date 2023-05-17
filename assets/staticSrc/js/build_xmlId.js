@@ -9,17 +9,22 @@ const $ = require( "jquery" )( window );
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 var convert = require('xml-js');
-var i_xmlId = 0 ;
-
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);
-
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);
+
+var path = './data/tei/' ;
+const filename = process.env.inputfile; 
+console.log(filename);
+var filepath = path + filename + '.xml' ;
+console.log(filepath);
+
+var i_xmlId = 0 ;
 
 function getObject(obj) {
    console.log('i_xmlId = ', i_xmlId) ;     
@@ -118,7 +123,7 @@ function getArray(arr) {
    }) ;   
 } ;
 
-var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
+var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
 
 xmlDoc = $.parseXML( xml ),
@@ -133,8 +138,12 @@ var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 getObject(xmlJs) ;
 
 //write xml file
+var path = './data/tei_xmlId/' ;
+var filepath = path + filename + '.xml' ;
+console.log(filepath);
+
 xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
-fs.writeFileSync('./data/tei_xmlId/Tagebuch_Baernreither_8.xml', xml ) ;
+fs.writeFileSync(filepath, xml ) ;
 console.log('xml data written: ', xml.length, ' bytes')
 
 //write json file
