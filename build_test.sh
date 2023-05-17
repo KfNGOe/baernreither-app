@@ -1,14 +1,8 @@
 echo "build tei to ttl"
-#create a variable for the filename
-PATH='./data/tei/'
+PATHNAME='./data/tei/'
 FILENAME='Bae_TB_8'
-EXT='.xml'
-#echo "normalize whitespace"
-node assets/staticSrc/js/normalize_ws.js
+EXTENSION='.xml'
 
-#echo "build xml ID"
-#path=$PATH file=$FILENAME node assets/staticSrc/js/build_xmlId.js
+echo "normalize whitespace"
+path=$PATHNAME file=$FILENAME ext=$EXTENSION node assets/staticSrc/js/normalize_ws.js
 
-
-#ant -f ./build_test.xml
-#./dl_assets.sh
