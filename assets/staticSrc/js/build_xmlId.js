@@ -18,10 +18,16 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const $ = require("jquery")(dom.window);
 
-var path = './data/tei/' ;
-const filename = process.env.inputfile; 
+const path_in=process.env.path_in 
+const path_out=process.env.path_out
+const path_out1=process.env.path_out1 
+const filename = process.env.file; 
+const ext_in=process.env.ext_in
+const ext_out=process.env.ext_out
+const ext_out1=process.env.ext_out1
+
 console.log(filename);
-var filepath = path + filename + '.xml' ;
+var filepath = path_in + filename + ext_in ;
 console.log(filepath);
 
 var i_xmlId = 0 ;
@@ -125,7 +131,7 @@ function getArray(arr) {
 
 var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
-
+/*
 xmlDoc = $.parseXML( xml ),
 $xml = $( xmlDoc ),
 titleShort = $xml.find( "[type='short']" ).text();
@@ -150,3 +156,4 @@ console.log('xml data written: ', xml.length, ' bytes')
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
+*/
