@@ -25,6 +25,11 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
                + "@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> ." + LF
               ;
 
+const path_in_json=process.env.path_in_json ;
+const path_out_ttl=process.env.path_out_ttl ;
+const filename = process.env.file ;
+const ext_json=process.env.ext_json ;
+const ext_ttl=process.env.ext_ttl ;
 
 var s_ttl, p_ttl, o_ttl = "" ;
 var ttl_template = s_ttl + p_ttl + o_ttl  ;
@@ -60,9 +65,12 @@ function getTTL(item_obj) {
       ttl = ttl + DOT + LF + LF ;
    }
    //console.log('ttl = ', ttl) ;        
-} 
+}
 
-var json = fs.readFileSync('data/json_rdf/Tagebuch_Baernreither_8.json', 'utf8');
+//read json file
+var filepath = path_in_json + filename + ext_json ;
+console.log(filepath);
+var json = fs.readFileSync(filepath, 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;
@@ -75,5 +83,8 @@ jsonJs.statements.forEach((item, index, array) => {
    } ) ;
 } ) ;
 
-fs.writeFileSync('./data/ttl/Tagebuch_Baernreither_8.ttl', ttl ) ;
+//write ttl file
+filepath = path_out_ttl + filename + ext_ttl ;
+console.log(filepath);
+fs.writeFileSync(filepath, ttl ) ;
 console.log('ttl data written: ', ttl.length  , ' bytes')

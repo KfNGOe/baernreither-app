@@ -19,6 +19,12 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const jquery = require("jquery")(dom.window);
 
+const path_in_tei=process.env.path_in_tei 
+const path_out_json=process.env.path_out_json
+const filename = process.env.file; 
+const ext_xml=process.env.ext_xml
+const ext_json=process.env.ext_json
+
 function getObject(obj) {
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
@@ -109,8 +115,10 @@ function getArray(arr) {
 //level - 1
 
 } ;
-
-var xml = fs.readFileSync('data/tei_xmlId/Tagebuch_Baernreither_8.xml', 'utf8');
+//read xml file
+var filepath = path_in_tei + filename + ext_xml ;
+console.log(filepath);
+var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
@@ -125,16 +133,11 @@ if (i_startTag > i_endTag) {
 console.log('N = ', N) ;
 i_startTag, i_endTag = 0 ;
 
-//write xml file
-/*
-xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
-fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
-console.log('xml data written: ', xml.length, ' bytes')
-*/
-
 //write json file
+filepath = path_out_json + filename + ext_json ;
+console.log(filepath);
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json_tei/Tagebuch_Baernreither_8.json', xmlJsString ) ;
+fs.writeFileSync(filepath, xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
 
 

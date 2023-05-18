@@ -26,6 +26,11 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const jquery = require("jquery")(dom.window);
 
+const path_in_json=process.env.path_in_json 
+const path_out_json=process.env.path_out_json
+const filename = process.env.file;
+const ext_json=process.env.ext_json
+
 /////////////////////////// Functions ///////////////////////////
 
 function buildStmt( subj, pred, obj ) {
@@ -112,8 +117,6 @@ function buildStmtsList( index ) {
    stmtsList[index] = stmts ;
    stmts = [] ;
 }
-
-
 
 function buildElementStmt( obj ) {
    resourceIri = prefInstance + uuidv4() ;
@@ -246,8 +249,10 @@ function getArray(arr) {
 
 
 //////////////////////////////////////////////////////
-
-var json = fs.readFileSync('data/json_tei/Tagebuch_Baernreither_8.json', 'utf8');
+//read json file
+var filepath = path_in_json + filename + ext_json ;
+console.log(filepath);
+var json = fs.readFileSync(filepath, 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;
@@ -258,15 +263,9 @@ getObject(jsonJs) ;
 //build statements list as js object
 stmtsListJs['statements'] = stmtsList ;
 
-
-//write xml file
-/*
-xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
-fs.writeFileSync('./data/tei_xmlId/test.xml', xml ) ;
-console.log('xml data written: ', xml.length, ' bytes')
-*/
 //write json file
-
+filepath = path_out_json + filename + ext_json ;
+console.log(filepath);
 var stmtsListJsString = JSON.stringify(stmtsListJs);
-fs.writeFileSync('./data/json_rdf/Tagebuch_Baernreither_8.json', stmtsListJsString ) ;
+fs.writeFileSync(filepath, stmtsListJsString ) ;
 console.log('json data written: ', stmtsListJsString.length  , ' bytes')

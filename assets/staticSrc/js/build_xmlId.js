@@ -18,17 +18,12 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const $ = require("jquery")(dom.window);
 
-const path_in=process.env.path_in 
-const path_out=process.env.path_out
-const path_out1=process.env.path_out1 
+const path_in_tei=process.env.path_in_tei 
+const path_out_json=process.env.path_out_json
+const path_out_tei=process.env.path_out_tei
 const filename = process.env.file; 
-const ext_in=process.env.ext_in
-const ext_out=process.env.ext_out
-const ext_out1=process.env.ext_out1
-
-console.log(filename);
-var filepath = path_in + filename + ext_in ;
-console.log(filepath);
+const ext_xml=process.env.ext_xml
+const ext_json=process.env.ext_json
 
 var i_xmlId = 0 ;
 
@@ -128,10 +123,12 @@ function getArray(arr) {
       }
    }) ;   
 } ;
-
+//read xml file
+var filepath = path_in_tei + filename + ext_xml ;
+console.log(filepath);
 var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
-/*
+
 xmlDoc = $.parseXML( xml ),
 $xml = $( xmlDoc ),
 titleShort = $xml.find( "[type='short']" ).text();
@@ -144,16 +141,15 @@ var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 getObject(xmlJs) ;
 
 //write xml file
-var path = './data/tei_xmlId/' ;
-var filepath = path + filename + '.xml' ;
+filepath = path_out_tei + filename + ext_xml ;
 console.log(filepath);
-
 xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
 fs.writeFileSync(filepath, xml ) ;
 console.log('xml data written: ', xml.length, ' bytes')
 
 //write json file
+filepath = path_out_json + filename + ext_json ;
+console.log(filepath);
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
+fs.writeFileSync(filepath, xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length, ' bytes')
-*/
