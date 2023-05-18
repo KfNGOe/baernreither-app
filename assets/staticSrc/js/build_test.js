@@ -1,3 +1,3 @@
-var filename = process.env.inputfile; 
-console.log(filename);
+const date = new Date() ;
+console.log(date.toISOString()) ;
 
