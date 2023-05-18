@@ -27,8 +27,8 @@ const ext_json=process.env.ext_json
 
 function getObject(obj) {
    let length = Object.keys(obj).length ;
-   console.log('object length =', length) ;
-   console.log('first object key  =', Object.keys(obj)[0]) ;
+   ////console.log('object length =', length) ;
+   //console.log('first object key  =', Object.keys(obj)[0]) ;
 
    //start tag + 1
    //no declaration or instruction
@@ -44,40 +44,40 @@ function getObject(obj) {
 
 
    Object.keys(obj).forEach((key) => {
-      console.log('key = ', key, ', value = ', obj[key]) ;       
+      //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
          case 'declaration':
-            console.log('declaration = ', obj[key]) ;
+            //console.log('declaration = ', obj[key]) ;
             break ;
          case 'instruction':
-            console.log('instruction = ', obj[key]) ;
+            //console.log('instruction = ', obj[key]) ;
             break ;
          case 'elements':
-            console.log('elements = ',obj[key]) ;
+            //console.log('elements = ',obj[key]) ;
             if(Array.isArray(obj[key])) {
-               console.log('Hello elements array') ;
+               //console.log('Hello elements array') ;
                getArray(obj[key]) ;               
             } else {
-               console.log(obj.constructor.name, 'property is not an array: ', key) ;
+               //console.log(obj.constructor.name, 'property is not an array: ', key) ;
             }
             break ;            
          case 'attributes':
-            console.log('attributes =  ', obj[key]) ;            
+            //console.log('attributes =  ', obj[key]) ;            
             break ;         
          case 'type':
-            console.log('result: ',obj[key]) ;
+            //console.log('result: ',obj[key]) ;
             break ;
          case 'name':
-            console.log('result: ',obj[key]) ;
+            //console.log('result: ',obj[key]) ;
             break ;
          case 'text':
-            console.log('result: ',obj[key]) ;
+            //console.log('result: ',obj[key]) ;
             break ;
          case 'comment':
-            console.log('comment = ', obj[key]) ;            
+            //console.log('comment = ', obj[key]) ;            
             break ;
          default:
-            console.log('no case') ;
+            //console.log('no case') ;
             break ;
       } 
    }) ;
@@ -103,12 +103,12 @@ function getObject(obj) {
 
 function getArray(arr) {
    let length = arr.length ;   
-   console.log('array length =', length) ;
+   //console.log('array length =', length) ;
 
 //level + 1
    arr.forEach((item, index, array) => {
       if (typeof item === 'object') {
-         console.log('item = ', item, ', index = ', index) ;          
+         //console.log('item = ', item, ', index = ', index) ;          
          getObject(item) ;
       }
    }) ;
@@ -122,7 +122,7 @@ var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
-console.log('xmlJs = ', xmlJs) ;
+//console.log('xmlJs = ', xmlJs) ;
 
 getObject(xmlJs) ;
 if (i_startTag > i_endTag) {

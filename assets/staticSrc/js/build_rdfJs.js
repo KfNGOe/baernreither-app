@@ -46,9 +46,9 @@ function buildStmts() {
 
 function addStmt( subj, pred, obj ){
    buildStmt( subj, pred, obj ) ;
-   console.log( 'stmt = ', stmt ) ;
+   ////console.log( 'stmt = ', stmt ) ;
    buildStmts() ;
-   console.log( 'stmts = ', stmts ) ;
+   //console.log( 'stmts = ', stmts ) ;
    i_stmt++ ;   
 }
 
@@ -63,24 +63,24 @@ function buildAttrStmt( obj ) {
    let objAttr = obj.attributes ;
    let length = Object.keys(objAttr).length ;
    Object.keys(objAttr).forEach((key) => {
-      console.log('key = ', key, ', value = ', objAttr[key]) ;
+      //console.log('key = ', key, ', value = ', objAttr[key]) ;
       switch(key) {
          case 'xml:id':
-            console.log('xml:id = ', objAttr[key]) ;            
+            //console.log('xml:id = ', objAttr[key]) ;            
             addAttrStmt( resourceIri, bnAttr, key, objAttr[key] ) ;
             break ;
             case 'startTagNr':
-            console.log('startTagNr = ', objAttr[key]) ;
+            //console.log('startTagNr = ', objAttr[key]) ;
             break ;
          case 'endTagNr':
-            console.log('endTagNr = ', objAttr[key]) ;
+            //console.log('endTagNr = ', objAttr[key]) ;
             break ;         
          case 'level':
-            console.log('type = ', objAttr[key]) ;
+            //console.log('type = ', objAttr[key]) ;
             break ;                           
          default:
-            console.log('attrName = ', key) ;            
-            console.log('attrValue = ', objAttr[key]) ;            
+            //console.log('attrName = ', key) ;            
+            //console.log('attrValue = ', objAttr[key]) ;            
             addAttrStmt( resourceIri, bnAttr, key, objAttr[key] ) ;
             break ;
       }
@@ -120,13 +120,13 @@ function buildStmtsList( index ) {
 
 function buildElementStmt( obj ) {
    resourceIri = prefInstance + uuidv4() ;
-   console.log( 'resourceIri = ', resourceIri ) ;
+   //console.log( 'resourceIri = ', resourceIri ) ;
    
    //build start tag statements
    buildStartTagStmts( resourceIri, obj ) ;
    //build list of statements
    buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
-   console.log( 'stmtsList = ', stmtsList ) ;
+   //console.log( 'stmtsList = ', stmtsList ) ;
 
    //check single tag
    if ('endTagNr' in obj['attributes']) {      
@@ -134,13 +134,13 @@ function buildElementStmt( obj ) {
       buildEndTagStmts( resourceIri, obj ) ;
       //build list of statements
       buildStmtsList( obj['attributes']['endTagNr'] - 1 ) ;
-      console.log( 'stmtsList = ', stmtsList ) ;
+      //console.log( 'stmtsList = ', stmtsList ) ;
    }   
 }
 
 function buildTextStmt( obj ) {
    resourceIri = prefInstance + uuidv4() ;
-   console.log( 'resourceIri = ', resourceIri ) ;
+   //console.log( 'resourceIri = ', resourceIri ) ;
 
    //build Text type statement   
    addStmt( resourceIri, 'a', prefOntology + 'Text' ) ;   
@@ -153,12 +153,12 @@ function buildTextStmt( obj ) {
 
    //build list of statements
    buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
-   console.log( 'stmtsList = ', stmtsList ) ;
+   //console.log( 'stmtsList = ', stmtsList ) ;
 }
 
 function buildCommentStmt( obj ) {
    resourceIri = prefInstance + uuidv4() ;
-   console.log( 'resourceIri = ', resourceIri ) ;
+   //console.log( 'resourceIri = ', resourceIri ) ;
 
    //build Text type statement   
    addStmt( resourceIri, 'a', prefOntology + 'Comment' ) ;   
@@ -171,61 +171,61 @@ function buildCommentStmt( obj ) {
 
    //build list of statements
    buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
-   console.log( 'stmtsList = ', stmtsList ) ;
+   //console.log( 'stmtsList = ', stmtsList ) ;
 }
 
 function buildRdfJs( obj ) {
    switch( obj['type'] ) {
       case 'element':
-         console.log( 'element = ', obj['name'] ) ;
+         //console.log( 'element = ', obj['name'] ) ;
          buildElementStmt(obj) ;
          break ;
       case 'text':
-         console.log( 'text = ', obj['text'] ) ;
+         //console.log( 'text = ', obj['text'] ) ;
          buildTextStmt(obj) ;
          break ;
       case 'comment':
-         console.log( 'comment = ', obj['comment'] ) ;
+         //console.log( 'comment = ', obj['comment'] ) ;
          buildCommentStmt(obj) ;
          break ;
       default:
-         console.log( 'no case' ) ;
+         //console.log( 'no case' ) ;
          break ;
    }
 }
 
 function getObject(obj) {
    let length = Object.keys(obj).length ;
-   console.log('object length =', length) ;
-   console.log('first object key  =', Object.keys(obj)[0]) ;
+   //console.log('object length =', length) ;
+   //console.log('first object key  =', Object.keys(obj)[0]) ;
    
    if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {   
       buildRdfJs(obj) ;
    }   
 
    Object.keys(obj).forEach((key) => {
-      console.log('key = ', key, ', value = ', obj[key]) ;       
+      //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {         
          case 'elements':
-            console.log('elements = ',obj[key]) ;
+            //console.log('elements = ',obj[key]) ;
             if(Array.isArray(obj[key])) {
-               console.log('Hello elements array') ;
+               //console.log('Hello elements array') ;
                getArray(obj[key]) ;               
             } else {
-               console.log(obj.constructor.name, 'property is not an array: ', key) ;
+               //console.log(obj.constructor.name, 'property is not an array: ', key) ;
             }
             break ;         
          case 'name':
-            console.log('result: ',obj[key]) ;            
+            //console.log('result: ',obj[key]) ;            
             break ;
          case 'text':
-            console.log('result: ',obj[key]) ;
+            //console.log('result: ',obj[key]) ;
             break ;
          case 'comment':
-            console.log('comment = ', obj[key]) ;            
+            //console.log('comment = ', obj[key]) ;            
             break ;
          default:
-            //console.log('no case') ;
+            ////console.log('no case') ;
             break ;
       } 
    }) ;
@@ -234,12 +234,12 @@ function getObject(obj) {
 
 function getArray(arr) {
    let length = arr.length ;   
-   console.log('array length =', length) ;
+   //console.log('array length =', length) ;
 
 //level + 1
    arr.forEach((item, index, array) => {
       if (typeof item === 'object') {
-         console.log('item = ', item, ', index = ', index) ;          
+         //console.log('item = ', item, ', index = ', index) ;          
          getObject(item) ;
       }
    }) ;
@@ -256,7 +256,7 @@ var json = fs.readFileSync(filepath, 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;
-console.log('jsonJs = ', jsonJs) ;
+//console.log('jsonJs = ', jsonJs) ;
 
 //get N
 getObject(jsonJs) ;

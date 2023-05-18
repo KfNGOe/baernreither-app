@@ -37,6 +37,13 @@ var ttl = "" ;
 
 ttl = ttl + prefix + LF ;
 
+//convert special characters to html encoding
+function convertChar2Html(str) {
+   return str.replace(/'/g,"&apos;")       
+       .replace(/"/g, "&quot;")
+   ;
+}
+
 function getTTL(item_obj) {
    if(item_obj.object === "kfngoeo:StartTag" || item_obj.object === "kfngoeo:EndTag" || item_obj.object === "kfngoeo:Text" || item_obj.object === "kfngoeo:Comment") {
          if (item_obj.predicate === "a") {
@@ -63,6 +70,7 @@ function getTTL(item_obj) {
    if(item_obj.predicate === "kfngoeo:elementPos") {
       ttl = ttl + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;
       ttl = ttl + DOT + LF + LF ;
+      ttl = convertChar2Html(ttl) ;
    }
    //console.log('ttl = ', ttl) ;        
 }
