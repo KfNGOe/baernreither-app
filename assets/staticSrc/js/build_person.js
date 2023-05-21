@@ -1,8 +1,12 @@
 const { groupBy } = require("core-js/actual/array/group-by") ;
 // Importing the jsdom module
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 const date = new Date() ;
 console.log(date);
+
+var prefInstance = "kfngoei:" ;
+var prefOntology = "kfngoeo:" ;
 
 const dateMod = '"' + date.toISOString() + '"' ;
 const lic = '<http://creativecommons.org/publicdomain/zero/1.0/>' ;
@@ -45,9 +49,11 @@ var ttl = prefix + LF + LF ;
 function getObject(obj) {
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
+   resourceIri = prefInstance + uuidv4() ;
+   //console.log( 'resourceIri = ', resourceIri ) ;
    prefName = obj.A + COMMA + obj.C + SPACE + obj.B ;
    var ttl_tmp = '' ;
-   ttl_tmp = ttl_tmp + 'kfngoei:nnnnnn' + LF ;
+   ttl_tmp = ttl_tmp + resourceIri + LF ;
    ttl_tmp = ttl_tmp + TAB + 'a kfngoeo:Person ;' + LF ;
    ttl_tmp = ttl_tmp + TAB + 'kfngoeo:modified' + SPACE + dateMod + '^^xsd:dateTime ;' + LF ; 
    ttl_tmp = ttl_tmp + TAB + 'kfngoeo:license' + SPACE + lic + ' ;' + LF ;
@@ -84,7 +90,7 @@ function getArray(arr) {
    console.log('array length =', length) ;
    arr.forEach((item, index, array) => {
       if (typeof item === 'object') {
-         console.log('item = ', item, ', index = ', index) ;          
+         console.log('index = ', index) ;          
          getObject(item) ;
       }
    }) ;
