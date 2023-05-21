@@ -38,35 +38,7 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
                + "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ." + LF
                + "@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> ." + LF
             ;
-
-var template_ttl = 'kfngoei:nnnnnn' + LF +
-                        'a kfngoeo:Person ;' + LF +
-                        'kfngoeo:modified' + dateMod + '^^xsd:dateTime ;' + LF +
-                        'kfngoeo:license' + lic + ' ;' + LF +
-                        'kfngoeo:source' + src + ' ;' + LF +
-                        'kfngoeo:preferredNameEntityForThePerson [' + LF +
-                           'a kfngoeo:NameOfThePerson ;' + LF +
-                           'rdfs:label' + label_en + '@en' + ',' + label_de + '@de ;' + LF +
-                           'kfngoeo:preferredNameForThePerson' + prefName + '^^xsd:string ;' + LF +
-                           'kfngoeo:forename' + forename + '^^xsd:string ;' + LF +
-                           'kfngoeo:surname' + surname + '^^xsd:string ;' + LF +
-                           'kfngoeo:nameAddition' + nameAdd + '^^xsd:string ;' + LF +
-                        '] ;' + LF +
-                        'kfngoeo:gender' + gender + '; ' + LF +  
-                        'kfngoeo:dateOfBirth' + birth + '^^xsd:date ;' + LF +
-                        'kfngoeo:dateOfDeath' + death + '^^xsd:date ;' + LF +
-                        'kfngoeo:biographicalOrHistoricalInformation' + bio + '^^xsd:string ;' + LF +
-                        'kfngoeo:identifier [' + LF +
-                           'a kfngoeo:PropertyValue ;' + LF +
-                           'kfngoeo:propertyID "GND"^^xsd:string ;' + LF +
-                           'kfngoeo:value' + propVal_gnd + '^^xsd:string ;' + LF +
-                        '] ;' + LF +
-                        'kfngoeo:identifier [' + LF +
-                           'a kfngoeo:PropertyValue ;' + LF +
-                           'kfngoeo:propertyID "CamelCase"^^xsd:string ;' + LF +
-                           'kfngoeo:value' + propVal_cc + '^^xsd:string ;' + LF +
-                        '] ;' 
-                        ;    
+    
 
 var ttl = prefix + LF + LF ;
 
@@ -103,9 +75,8 @@ function getObject(obj) {
    ttl_tmp = ttl_tmp + TAB + TAB + 'kfngoeo:value' + SPACE + QUOT + obj.H + QUOT + '^^xsd:string ;' + LF ;
    ttl_tmp = ttl_tmp + TAB + SQBRACKET_CLOSE + ' .' + LF + LF ;
    ttl = ttl + ttl_tmp ;
-   console.log('ttl = ', ttl) ;
-   
-   //console.log('result', length) ;
+   //console.log('ttl = ', ttl) ;
+      
 } ; 
 
 function getArray(arr) {
@@ -127,19 +98,16 @@ var jsonJS = JSON.parse(json) ;
 var persons = jsonJS.Tabelle1 ;
 //console.log('jsonJS: ', persons[0]) ;
 getArray(persons) ;
-console.log('ttl = ', ttl) ;
+//console.log('ttl = ', ttl) ;
+
+//write ttl file
+//filepath = path_out_ttl + filename + ext_ttl ;
+//console.log(filepath);
+fs.writeFileSync('./data/ttl/annotation/person/instance/personi.ttl', ttl ) ;
+console.log('ttl data written: ', ttl.length  , ' bytes')
 
 //group by gnd
 //var personsGND = persons.groupBy(person => {
 //    return person.G ;
 //}) ;
 //console.log('personsGND: ', personsGND) ;
-
-
-
-//var xmlJsString = JSON.stringify(xmlJs);
-
-//fs.writeFileSync('./data/json/Tagebuch_Baernreither_8.json', xmlJsString ) ;
-//        console.log('js data written: ', xmlJsString.length, ' bytes')
-
-

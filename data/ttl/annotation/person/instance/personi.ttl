@@ -1,190 +1,3759 @@
-
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
-@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/terms/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix wdt: <http://www.wikidata.org/prop/direct/> .
-@prefix wikibase: <http://wikiba.se/ontology#Statement> .
-@prefix p: <http://www.wikidata.org/prop/> .
-@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix schema: <http://schema.org/> .
-@prefix cc: <http://creativecommons.org/ns#> .
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix kfngeoi: <https://github.com/KfNGOe/kfngeoi/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
-@prefix dhplusi: <http://dhplus.sbg.ac.at/instance/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
 
-#dhplus
-<http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002>
-    a   <https://dhplus.sbg.ac.at/ontology#E21_Person> ;
-##administrative
-    <https://dhplus.sbg.ac.at/ontology#creator> "NN"^^xsd:string ;
-    #OR
-    <https://dhplus.sbg.ac.at/ontology#creator> <URI> ;
-    <https://dhplus.sbg.ac.at/ontology#dateCreated> "0001-01-01T00:00:00"^^xsd:dateTime ;
-    <https://dhplus.sbg.ac.at/ontology#dateModified> "0001-01-01T00:00:00"^^xsd:dateTime ;
-    <https://dhplus.sbg.ac.at/ontology#datePublished> "0001-01-01T00:00:00"^^xsd:dateTime ;
-    #relation
-    owl:sameAs <http://viaf.org/viaf/00000000> ;
-    owl:sameAs <https://orcid.org/0000-0000-0000-0000> ;
 
-##birth
-    <https://dhplus.sbg.ac.at/ontology#P98i_was_born> <http://dhplus.sbg.ac.at/instance/126b6a72-eebb-11ea-adc1-0242ac120002> ;
-##death
-    <https://dhplus.sbg.ac.at/ontology#P100i_died_in> <http://dhplus.sbg.ac.at/instance/3536ba8e-eebb-11ea-adc1-0242ac120002> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Nachname, Vorname Namenszusatz"@de ;
+		kfngoeo:preferredNameForThePerson "Nachname, Vorname Namenszusatz"^^xsd:string ;
+		kfngoeo:forename "Vorname"^^xsd:string ;
+		kfngoeo:surname "Nachname"^^xsd:string ;
+		kfngoeo:nameAddition "Namenszusatz"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "Geburtsjahr"^^xsd:date ;
+	kfngoeo:dateOfDeath "Sterbejahr"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Bezeichnung"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "GND"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Keywert"^^xsd:string ;
+	] .
 
-    <https://dhplus.sbg.ac.at/ontology#source>
-        <http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/gnd-local> ,
-        <http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/wikiData-local> ,
-        <http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/projSpec> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "undefined, undefined undefined"@de ;
+		kfngoeo:preferredNameForThePerson "undefined, undefined undefined"^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "undefined"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] .
 
-    #name
-    <https://dhplus.sbg.ac.at/ontology#P1_is_identified_by> [
-        a <https://dhplus.sbg.ac.at/ontology#NameOfThePerson> ;
-        rdfs:label  "NN"@en , "NN"@de ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Abrahamowicz, Dawid Ritter von"@de ;
+		kfngoeo:preferredNameForThePerson "Abrahamowicz, Dawid Ritter von"^^xsd:string ;
+		kfngoeo:forename "Dawid"^^xsd:string ;
+		kfngoeo:surname "Abrahamowicz"^^xsd:string ;
+		kfngoeo:nameAddition "Ritter von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1839"^^xsd:date ;
+	kfngoeo:dateOfDeath "1926"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1875-1914 MgalLt, 1881-1909 u. 1911-1918 MöAH (Polenklub), 20.11.1907-3.3.1909 M. o. P. (Galizien)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/143832883"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "AbrahamowiczDawid"^^xsd:string ;
+	] .
 
-        <https://dhplus.sbg.ac.at/ontology#preferredNameForThePerson> "Scharr, Kurt"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#variantNameForThePerson> "NN"^^xsd:string ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Adler, Victor Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Adler, Victor Dr."^^xsd:string ;
+		kfngoeo:forename "Victor"^^xsd:string ;
+		kfngoeo:surname "Adler"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1889 Gründer d. "Arbeiter-Zeitung", 1901 MnöLt, 1905-1918 MöAH (soz.dem.), 30.X.1918-11.XI.1918 österr. Staatssekr. d. Äußern"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118647075"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "AdlerVictor"^^xsd:string ;
+	] .
 
-        <https://dhplus.sbg.ac.at/ontology#forename> "Kurt"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#prefix> "NN"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#surname> "Scharr"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#personalName> "NN"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#counting> "NN"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#nameAddition> "NN"^^xsd:string ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Amruš, Milan Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Amruš, Milan Dr."^^xsd:string ;
+		kfngoeo:forename "Milan"^^xsd:string ;
+		kfngoeo:surname "Amruš"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1919"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1890-1892 u. 1904-1910 Bürgermeister von Agram"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/143840010"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "AmrusMilan"^^xsd:string ;
+	] .
 
-        <https://dhplus.sbg.ac.at/ontology#academicDegree> "Dr. rer. nat."^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#biographicalOrHistoricalInformation> "NN"^^xsd:string ;
-        <https://dhplus.sbg.ac.at/ontology#functionOrRole> "NN"^^xsd:string ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Andrássy, Gyula Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Andrássy, Gyula Graf"^^xsd:string ;
+		kfngoeo:forename "Gyula"^^xsd:string ;
+		kfngoeo:surname "Andrássy"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1860"^^xsd:date ;
+	kfngoeo:dateOfDeath "1929"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1906-17.1.1910 ungar. Innenminister, 24.10.-2.11.1918 österr.-ungar. Außenminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118502875"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "AndrassyGyula"^^xsd:string ;
+	] .
 
-    ] ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Apponyi, Albert Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Apponyi, Albert Graf"^^xsd:string ;
+		kfngoeo:forename "Albert"^^xsd:string ;
+		kfngoeo:surname "Apponyi"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1933"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1872 MuAH, 8.4.1906-17.1.1910 u. 15.6.1917-8.5.1918 ungar. Unterrichtsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118645501"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ApponyiAlbert"^^xsd:string ;
+	] .
 
-    #gender
-    <https://dhplus.sbg.ac.at/ontology#P2_has_type> [
-        a   <https://dhplus.sbg.ac.at/ontology#Gender> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Bonaparte, undefined undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Bonaparte, undefined undefined"^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "Bonaparte"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] .
 
-        <https://dhplus.sbg.ac.at/ontology#gender> <https://d-nb.info/standards/vocab/gnd/gender#male> ;
-        #or
-        <https://dhplus.sbg.ac.at/ontology#gender> <https://d-nb.info/standards/vocab/gnd/gender#female> ;
-        #or
-        <https://dhplus.sbg.ac.at/ontology#gender> <https://d-nb.info/standards/vocab/gnd/gender#notKnown> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Bülow, Maria Fürstin, geb. Beccadelli di Bologna, Principessa di Camporeale"@de ;
+		kfngoeo:preferredNameForThePerson "Bülow, Maria Fürstin, geb. Beccadelli di Bologna, Principessa di Camporeale"^^xsd:string ;
+		kfngoeo:forename "Maria"^^xsd:string ;
+		kfngoeo:surname "Bülow"^^xsd:string ;
+		kfngoeo:nameAddition "Fürstin, geb. Beccadelli di Bologna, Principessa di Camporeale"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1929"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Ehefrau von Bernhard von Bülow"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116133783"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "BuelowMaria"^^xsd:string ;
+	] .
 
-        <https://dhplus.sbg.ac.at/ontology#P21> <http://www.wikidata.org/entity/Q00000> ;
-    ]
-.
-_:StmtPrefName
-    a rdf:Statement ;
-    rdf:subject [] ;
-    rdf:predicate dhpluso:preferredNameForThePerson ;
-    rdf:object "NN"^^xsd:string ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Bülow, Bernhard Fürst von"@de ;
+		kfngoeo:preferredNameForThePerson "Bülow, Bernhard Fürst von"^^xsd:string ;
+		kfngoeo:forename "Bernhard"^^xsd:string ;
+		kfngoeo:surname "Bülow"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1929"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1900-1909 dt. Reichskanzler, 1914-1915 ao. Botschafter in Rom"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118517023"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "BuelowBernhard"^^xsd:string ;
+	] .
 
-    #subprop of dct:source
-    dhpluso:value-source-uri <http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/gnd-local> ;
-    dhpluso:value-source-prop gndo:preferredNameForThePerson ;
-    #subprop of dct:description
-    dhpluso:value-code <https://dhplus.sbg.ac.at/vocabulary#default> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Buquoy, Ferdinand Graf de Longueval"@de ;
+		kfngoeo:preferredNameForThePerson "Buquoy, Ferdinand Graf de Longueval"^^xsd:string ;
+		kfngoeo:forename "Ferdinand"^^xsd:string ;
+		kfngoeo:surname "Buquoy"^^xsd:string ;
+		kfngoeo:nameAddition "Graf de Longueval"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1909"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "26.10.1904-2.6.1906 österr. Ackerbauminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1056847239"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "BuquoyFerdinand"^^xsd:string ;
+	] .
 
-    <https://dhplus.sbg.ac.at/ontology#creator> "NN"^^xsd:string ;
-    <https://dhplus.sbg.ac.at/ontology#dateCreated> "0001-01-01T00:00:00"^^xsd:dateTime ;
-    <https://dhplus.sbg.ac.at/ontology#dateModified> "0001-01-01T00:00:00"^^xsd:dateTime ;
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Bylandt-Rheidt, Arthur Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Bylandt-Rheidt, Arthur Graf"^^xsd:string ;
+		kfngoeo:forename "Arthur"^^xsd:string ;
+		kfngoeo:surname "Bylandt-Rheidt"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1854"^^xsd:date ;
+	kfngoeo:dateOfDeath "1915"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1898 österr. Ackerbauminister, 1898-1899 Unterrichtsminister, 1905-1906 Innenminister, 1900-1915 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1049718305"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Bylandt-RheidtArthur"^^xsd:string ;
+	] .
 
-#gnd
-<http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/gnd-local>
-    a   <https://dhplus.sbg.ac.at/ontology#Gnd-local> ;
-    <https://dhplus.sbg.ac.at/ontology#hasPart> [
-        a   <http://d-nb.info/standards/elementset/gnd#Person> ;
-        wdrs:describedby <https://d-nb.info/gnd/123191254/about> ;
-        gndo:gndIdentifier "123191254"^^xsd:string ;
-        owl:sameAs <http://viaf.org/viaf/8288651>, <http://isni.org/isni/0000000118857158>, <http://www.wikidata.org/entity/Q98555088>, <http://id.loc.gov/rwo/agents/no2002097801> ;
-        gndo:oldAuthorityNumber "(DE-588a)123191254"^^xsd:string ;
-        gndo:variantNameForThePerson "Šarr, Kurt"^^xsd:string ;
-        gndo:variantNameEntityForThePerson [
-        gndo:forename "Kurt"^^xsd:string ;
-        gndo:surname "Šarr"^^xsd:string
-        ] ;
-        gndo:preferredNameForThePerson "Scharr, Kurt"^^xsd:string ;
-        gndo:preferredNameEntityForThePerson [
-        gndo:forename "Kurt"^^xsd:string ;
-        gndo:surname "Scharr"^^xsd:string
-        ] ;
-        gndo:academicDegree "Dr. rer. nat."^^xsd:string ;
-        gndo:professionOrOccupation <https://d-nb.info/gnd/4025098-2>, <https://d-nb.info/gnd/4020214-8>, <https://d-nb.info/gnd/4025243-7> ;
-        gndo:fieldOfStudy <https://d-nb.info/gnd/4020216-1>, <https://d-nb.info/gnd/4020517-4>, <https://d-nb.info/gnd/4051038-4> ;
-        gndo:geographicAreaCode <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-AT> ;
-        gndo:gender <https://d-nb.info/standards/vocab/gnd/gender#male> ;
-        gndo:dateOfBirth "1970"^^xsd:gYear ;
-    ]
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Call zu Rosenburg und Kulmbach, Guido Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Call zu Rosenburg und Kulmbach, Guido Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Guido"^^xsd:string ;
+		kfngoeo:surname "Call zu Rosenburg und Kulmbach"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1927"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1900-1905 österr. Handelsminister, 1909-1911 Botschafter in Tokio"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/136187226"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "CallGuido"^^xsd:string ;
+	] .
 
-<https://d-nb.info/gnd/123191254/about>
-  dc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
-  dc:modified "2020-08-31T14:22:06.000"^^xsd:dateTime
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Caprivi, Leo Graf von"@de ;
+		kfngoeo:preferredNameForThePerson "Caprivi, Leo Graf von"^^xsd:string ;
+		kfngoeo:forename "Leo"^^xsd:string ;
+		kfngoeo:surname "Caprivi"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1831"^^xsd:date ;
+	kfngoeo:dateOfDeath "1899"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1890-1894 dt. Reichskanzler"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/11851900X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "CapriviLeo"^^xsd:string ;
+	] .
 
-#wikidata
-<http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/wikiData-local>
-    a   <https://dhplus.sbg.ac.at/ontology#WikiData-local> ;
-    <https://dhplus.sbg.ac.at/ontology#hasPart> [
-        a schema:Dataset ;
-        schema:about <http://www.wikidata.org/entity/Q98555088> ;
-        cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
-        schema:softwareVersion "1.0.0" ;
-        schema:version 1293440440 ;
-        schema:dateModified "2020-10-17T18:59:37Z"^^xsd:dateTime ;
-        wikibase:statements 12 ;
-        wikibase:identifiers 2 ;
-        wikibase:sitelinks 1 ;
-    ]
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Chiari, Karl Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Chiari, Karl Dr."^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Chiari"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1912"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Industrieller, 1897-1911 MöAH (Dt. Volkspartei), 1912 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116504765"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ChiariKarl"^^xsd:string ;
+	] .
 
-<http://www.wikidata.org/entity/Q00000>
-    a           <http://wikiba.se/ontology#Item> ;
-    #name
-    rdfs:label  "NN"@en , "NN"@de ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Chlumecký, Johann Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Chlumecký, Johann Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Johann"^^xsd:string ;
+		kfngoeo:surname "Chlumecký"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1834"^^xsd:date ;
+	kfngoeo:dateOfDeath "1924"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1873-1879, 1880-1897 MöAH und 1893-1897 Präs. d. ÖAH, ab 1897 MöHH, 1871-1875 österr. Ackerbauminister, 1875-1879 österr. Handelsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116505907"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ChlumeckyJohann"^^xsd:string ;
+	] .
 
-    #gender
-    <http://www.wikidata.org/prop/direct/P21> <http://www.wikidata.org/entity/Q00000> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Clam-Martinic, Heinrich Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Clam-Martinic, Heinrich Graf"^^xsd:string ;
+		kfngoeo:forename "Heinrich"^^xsd:string ;
+		kfngoeo:surname "Clam-Martinic"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1863"^^xsd:date ;
+	kfngoeo:dateOfDeath "1932"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "ab 1894 MböhmLt, 1902-1918 MöHH (Obmann der Partei der Rechten), 31.10.-23.6.1917 Ackerbauminister, 20.12.1916-23.6.1917 Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118676245"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Clam-MartinicHeinrich"^^xsd:string ;
+	] .
 
-    #birth
-    <http://www.wikidata.org/prop/direct/P569> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #Statement to Date of Birth
-    <http://www.wikidata.org/prop/P569> [
-        a   <http://wikiba.se/ontology#Statement> ;
-    #earliest date
-        <http://www.wikidata.org/prop/qualifier/P1319> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #latest date
-        <http://www.wikidata.org/prop/qualifier/P1326> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #circa
-        <http://www.wikidata.org/prop/qualifier/P1480> <http://www.wikidata.org/entity/Q5727902> ;
-    #time precision
-        <http://www.wikidata.org/prop/qualifier/P2803> +00 ; #xsd:decimal
-    ] ;
-    #place of birth
-    <http://www.wikidata.org/prop/direct/P19> <http://www.wikidata.org/entity/Q00000> ;
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Coudenhove, Karl Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Coudenhove, Karl Graf"^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Coudenhove"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1855"^^xsd:date ;
+	kfngoeo:dateOfDeath "1913"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1911 Statthalter in Böhmen"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/143806920"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "CoudenhoveKarl"^^xsd:string ;
+	] .
 
-    #death
-    <http://www.wikidata.org/prop/direct/P570> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #Statement to Date of death
-    <http://www.wikidata.org/prop/P570> [
-        a   <http://wikiba.se/ontology#Statement> ;
-    #earliest date
-        <http://www.wikidata.org/prop/qualifier/P1319> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #latest date
-        <http://www.wikidata.org/prop/qualifier/P1326> "0001-01-01T08:00:00.000"^^xsd:dateTime ;
-    #circa
-        <http://www.wikidata.org/prop/qualifier/P1480> <http://www.wikidata.org/entity/Q5727902> ;
-    #time precision
-        <http://www.wikidata.org/prop/qualifier/P2803> +00 ; #xsd:decimal
-    ] ;
-    #place of death
-    <http://www.wikidata.org/prop/direct/P20> <http://www.wikidata.org/entity/Q00000> ;
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Czernin von und zu Chudenitz, Ottokar Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Czernin von und zu Chudenitz, Ottokar Graf"^^xsd:string ;
+		kfngoeo:forename "Ottokar"^^xsd:string ;
+		kfngoeo:surname "Czernin von und zu Chudenitz"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1872"^^xsd:date ;
+	kfngoeo:dateOfDeath "1932"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "ab 1903 MbLt, 1912-1918 MöHH, 1913-1916 österr.-ungar. Gesandter in Bukarest, 22.12.1916-14.4.1918 Außenminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118677659"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "CzerninOttokar"^^xsd:string ;
+	] .
 
-#projspec
-<http://dhplus.sbg.ac.at/instance/828f9830-91b1-11ea-bb37-0242ac130002/projSpec>
-    a       <https://dhplus.sbg.ac.at/ontology#ProjectSpecific> ;
-.
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Damm, Hans (Johann) Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Damm, Hans (Johann) Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Hans (Johann)"^^xsd:string ;
+		kfngoeo:surname "Damm"^^xsd:string ;
+		kfngoeo:nameAddition "Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1860"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1913 MböhmLt, 1897-1917 MöAH (Verfassungstr. Großgrundbesitz, dt. Agrarierpartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1056935251"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DammHans"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Daszyński, Ignacy undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Daszyński, Ignacy undefined"^^xsd:string ;
+		kfngoeo:forename "Ignacy"^^xsd:string ;
+		kfngoeo:surname "Daszyński"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1866"^^xsd:date ;
+	kfngoeo:dateOfDeath "1936"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1918 MöAH (poln. Sozialdem.), 1918 poln. Ministerpräs. u. Außenminister, 1920 stellv. Ministerpräs., 1928-1930 Marschall des Sejm"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118934481"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DaszynskiIgnacy"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Demelius, Ernst Prof."@de ;
+		kfngoeo:preferredNameForThePerson "Demelius, Ernst Prof."^^xsd:string ;
+		kfngoeo:forename "Ernst"^^xsd:string ;
+		kfngoeo:surname "Demelius"^^xsd:string ;
+		kfngoeo:nameAddition "Prof."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1859"^^xsd:date ;
+	kfngoeo:dateOfDeath "1904"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897 o. Prof. f. Zivilrecht Univ. Innsbruck"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/141880414"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DemeliusErnst"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Derschatta, Julius von Standhalt Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Derschatta, Julius von Standhalt Dr."^^xsd:string ;
+		kfngoeo:forename "Julius"^^xsd:string ;
+		kfngoeo:surname "Derschatta"^^xsd:string ;
+		kfngoeo:nameAddition "von Standhalt Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1924"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1892 u. 1901-1909 MöAH (Dt. Volkspartei), 2.6.1906-15.11.1908 österr. Eisenbahnminister, 1909-1918 Präs. d. österr. Lloyd"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/136192165"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DerschattaJulius"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Deym, Friedrich Karl Graf Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Deym, Friedrich Karl Graf Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Friedrich Karl"^^xsd:string ;
+		kfngoeo:surname "Deym"^^xsd:string ;
+		kfngoeo:nameAddition "Graf Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1866"^^xsd:date ;
+	kfngoeo:dateOfDeath "1929"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1907 MöAH (böhm. kons. Großgrundbesitzer), 1900-1913 MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116095660"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DeymFriedrich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Dzieduszycki, Wojciech/Adalbert Graf Dr. phil."@de ;
+		kfngoeo:preferredNameForThePerson "Dzieduszycki, Wojciech/Adalbert Graf Dr. phil."^^xsd:string ;
+		kfngoeo:forename "Wojciech/Adalbert"^^xsd:string ;
+		kfngoeo:surname "Dzieduszycki"^^xsd:string ;
+		kfngoeo:nameAddition "Graf Dr. phil."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1909"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1877-1895 u. 1901-1909 MgalLt, 1879-1887 u. 1895-1909 MöAH (Polenklub), 1896 ao. Prof. f. Geschichte der Philosophie und Ästhetik Univ. Lemberg, 2.6.1906-20.11.1907 österr. Minister o. P."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/119285320"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "DzieduszyckiWojciech"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Ehrenfels, Bernhard Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Ehrenfels, Bernhard Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Bernhard"^^xsd:string ;
+		kfngoeo:surname "Ehrenfels"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1864"^^xsd:date ;
+	kfngoeo:dateOfDeath "1940"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Gutsbesitzer, 1896-1918 MnöLt, 1897-1907 MöAH (Verfassungstr. Großgrundbesitzer), 1917-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/132868369"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "EhrenfelsBernhard"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Erler, Eduard Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Erler, Eduard Dr."^^xsd:string ;
+		kfngoeo:forename "Eduard"^^xsd:string ;
+		kfngoeo:surname "Erler"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1861"^^xsd:date ;
+	kfngoeo:dateOfDeath "1949"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Rechtsanwalt in Innsbruck, 1901-1908 u. 1911-1918 MöAH (Dt. Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1066387540"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ErlerEduard"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Fabricius, undefined undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Fabricius, undefined undefined"^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "Fabricius"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Ungar. Oberst"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Fabricius"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Falkenhayn, Julius Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Falkenhayn, Julius Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Julius"^^xsd:string ;
+		kfngoeo:surname "Falkenhayn"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1829"^^xsd:date ;
+	kfngoeo:dateOfDeath "1899"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1879-1893 österr. Ackerbauminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/135963850"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "FalkenhaynJulius"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Fejérváry, Géza Freiherr von Komlós-Keresztes"@de ;
+		kfngoeo:preferredNameForThePerson "Fejérváry, Géza Freiherr von Komlós-Keresztes"^^xsd:string ;
+		kfngoeo:forename "Géza"^^xsd:string ;
+		kfngoeo:surname "Fejérváry"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von Komlós-Keresztes"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1833"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "General d. Inf., 1884-1903 ungar. Landesverteidigungsminister, 18.6.1905-8.4.1906 ungar. Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/130147729"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "FejervaryGeza"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Francke, Ernst Dr. oec. publ."@de ;
+		kfngoeo:preferredNameForThePerson "Francke, Ernst Dr. oec. publ."^^xsd:string ;
+		kfngoeo:forename "Ernst"^^xsd:string ;
+		kfngoeo:surname "Francke"^^xsd:string ;
+		kfngoeo:nameAddition "Dr. oec. publ."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1881-1893 Chefred. "Münchener Neueste Nachrichten", ab 1896 Hg. "Soziale Praxis", Sozialpolitiker"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116697407"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "FranckeErnst"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Fürstenberg, Maximilian Egon Fürst zu"@de ;
+		kfngoeo:preferredNameForThePerson "Fürstenberg, Maximilian Egon Fürst zu"^^xsd:string ;
+		kfngoeo:forename "Maximilian Egon"^^xsd:string ;
+		kfngoeo:surname "Fürstenberg"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst zu"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1863"^^xsd:date ;
+	kfngoeo:dateOfDeath "1941"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1887-1918 MöHH, 1901-1906 MböhmLt, ab 1907 Vizepräs. d. ÖHH, MpreußHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116847034"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "FuerstenbergMax Egon"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Gautsch, Paul Freiherr von Frankenthurn"@de ;
+		kfngoeo:preferredNameForThePerson "Gautsch, Paul Freiherr von Frankenthurn"^^xsd:string ;
+		kfngoeo:forename "Paul"^^xsd:string ;
+		kfngoeo:surname "Gautsch"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von Frankenthurn"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1851"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1893 u. 1895-1897 österr. Unterrichtsminister, 1897-1898 Innenminister, 1897-1898, 1905-1906 und 25.6.-28.10.1911 österr. Ministerpräs., 1906-1911 Präs. d. Obersten Rechnungshofes, 1895-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/137078080"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GautschPaul"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Gertscher, Adalbert Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Gertscher, Adalbert Dr."^^xsd:string ;
+		kfngoeo:forename "Adalbert"^^xsd:string ;
+		kfngoeo:surname "Gertscher"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Oberlandesgerichtspräsident"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117543586"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GertscherAdalbert"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Gołuchowski, Agenor Graf von Gołuchowo"@de ;
+		kfngoeo:preferredNameForThePerson "Gołuchowski, Agenor Graf von Gołuchowo"^^xsd:string ;
+		kfngoeo:forename "Agenor"^^xsd:string ;
+		kfngoeo:surname "Gołuchowski"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von Gołuchowo"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1875-1918 MöHH, 1887-1894 österr.-ungar. Gesandter in Bukarest, 1895-1906 österr.-ungar. Außenminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1011172178"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GoluchowskiAgenor"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Grabmayr, Karl von Angerheim Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Grabmayr, Karl von Angerheim Dr."^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Grabmayr"^^xsd:string ;
+		kfngoeo:nameAddition "von Angerheim Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1923"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1907 MöAH, 1907-1918 MöHH, 1913 Präs. d. Reichsgerichts"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/11869684X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GrabmayrKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Groß, Gustav Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Groß, Gustav Dr."^^xsd:string ;
+		kfngoeo:forename "Gustav"^^xsd:string ;
+		kfngoeo:surname "Groß"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1935"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1889-1918 MöAH (dt.fortschr.), 1902-1912 MmährLt, 1917-1918 Präs. ÖAH, 1905-1925 Obmann des Deutschen Schulvereins"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/134055136"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GroßGustav"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "György, Andreas/Endre von"@de ;
+		kfngoeo:preferredNameForThePerson "György, Andreas/Endre von"^^xsd:string ;
+		kfngoeo:forename "Andreas/Endre"^^xsd:string ;
+		kfngoeo:surname "György"^^xsd:string ;
+		kfngoeo:nameAddition "von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1927"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "18.6.-18.10.1905 ungar. Ackerbauminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "GyoergyAndreas"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Habsburg-Lothringen, Franz Joseph I. Kaiser von Österreich"@de ;
+		kfngoeo:preferredNameForThePerson "Habsburg-Lothringen, Franz Joseph I. Kaiser von Österreich"^^xsd:string ;
+		kfngoeo:forename "Franz Joseph I."^^xsd:string ;
+		kfngoeo:surname "Habsburg-Lothringen"^^xsd:string ;
+		kfngoeo:nameAddition "Kaiser von Österreich"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1930"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "2.12.1848-21.11.1916 Kaiser von Österreich, König von Ungarn"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118535013"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KaiserFranzJosef"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Herold, Josef Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Herold, Josef Dr."^^xsd:string ;
+		kfngoeo:forename "Josef"^^xsd:string ;
+		kfngoeo:surname "Herold"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1908"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "ab 1883 MböhmLt, 1888-1908 MöAH, 1889 Dir. d. Böhmischen Landesbank"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1011806606"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HeroldJosef"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Hertzka, Theodor/Tivadar Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Hertzka, Theodor/Tivadar Dr."^^xsd:string ;
+		kfngoeo:forename "Theodor/Tivadar"^^xsd:string ;
+		kfngoeo:surname "Hertzka"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1845"^^xsd:date ;
+	kfngoeo:dateOfDeath "1924"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Red. "Neue Freie Presse", 1874 Mitbegr. Gesellschaft österreichischer Volkswirte, 1879-1896 Begr. u. Hg. "Wiener Allgemeine Zeitung""^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118825186"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HertzkaTivadar"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Hieronymi, Karl/Károly von"@de ;
+		kfngoeo:preferredNameForThePerson "Hieronymi, Karl/Károly von"^^xsd:string ;
+		kfngoeo:forename "Karl/Károly"^^xsd:string ;
+		kfngoeo:surname "Hieronymi"^^xsd:string ;
+		kfngoeo:nameAddition "von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1836"^^xsd:date ;
+	kfngoeo:dateOfDeath "1911"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1903-1905 u. 1910-1911 ungar. Handelsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1011856727"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HieronymiKaroly"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Hofmann, Franz undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Hofmann, Franz undefined"^^xsd:string ;
+		kfngoeo:forename "Franz"^^xsd:string ;
+		kfngoeo:surname "Hofmann"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1907"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1873 Lehrer an Lehrerbildungsanstalt in Brünn, 1876 Prof. Oberralschule in Troppau, 1897-1904 MöAH (Dt. Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1209783282"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HofmannFranz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Hohenlohe-Waldenburg-Schillingsfürst von Ratibor und Corvey, Konrad Prinz zu"@de ;
+		kfngoeo:preferredNameForThePerson "Hohenlohe-Waldenburg-Schillingsfürst von Ratibor und Corvey, Konrad Prinz zu"^^xsd:string ;
+		kfngoeo:forename "Konrad"^^xsd:string ;
+		kfngoeo:surname "Hohenlohe-Waldenburg-Schillingsfürst von Ratibor und Corvey"^^xsd:string ;
+		kfngoeo:nameAddition "Prinz zu"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1863"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1.5.-28.5.1906 österr. Ministerpräs. u. Innenminister, 1906-1915 Statthalter in Triest, 1915 Präs. d. Obersten Rechnungshofes, 1.12.1915-29.8.1916 österr. Innenminister, 2.12.-22.12.1916 österr.-ungar. Finanzminister, 1917 Erster Obersthofmeister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/137601816"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HohenloheKonrad"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Holló, Ludwig/Lajos undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Holló, Ludwig/Lajos undefined"^^xsd:string ;
+		kfngoeo:forename "Ludwig/Lajos"^^xsd:string ;
+		kfngoeo:surname "Holló"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Mitbegr. u. Hg. d. "Magyarország", ab 1887 MuAH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1012033074"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "HolloLajos"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Jelačić, Josip/Joseph Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Jelačić, Josip/Joseph Graf"^^xsd:string ;
+		kfngoeo:forename "Josip/Joseph"^^xsd:string ;
+		kfngoeo:surname "Jelačić"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1801"^^xsd:date ;
+	kfngoeo:dateOfDeath "1859"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Feldherr, Banus von Kroatien, Feldzeugmeister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118776088"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "JelacicJosip"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Jesser, Franz undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Jesser, Franz undefined"^^xsd:string ;
+		kfngoeo:forename "Franz"^^xsd:string ;
+		kfngoeo:surname "Jesser"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1869"^^xsd:date ;
+	kfngoeo:dateOfDeath "1954"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Journalist, 1911-1919 Hg. "Deutsche soziale Rundschau",  1907-1918 MöAH (dt. Agrarpartei, dt. Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118722999"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "JesserFranz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Justh de Neczpál, Gyula/Julius undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Justh de Neczpál, Gyula/Julius undefined"^^xsd:string ;
+		kfngoeo:forename "Gyula/Julius"^^xsd:string ;
+		kfngoeo:surname "Justh de Neczpál"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1884-1917 MuAH (Führer der Unabhängigkeitspartei), 1905-1909 Präs. d. ungar. AH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1012930025"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "JusthGyula"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kathrein, Theodor Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Kathrein, Theodor Dr."^^xsd:string ;
+		kfngoeo:forename "Theodor"^^xsd:string ;
+		kfngoeo:surname "Kathrein"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1842"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Advokat, 1883-1916 MtirLt, 1884-1907 MöAH (kath. Volkspartei), 1907-1916 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/11903235X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KathreinTheodor"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kaufmann, Paul Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Kaufmann, Paul Dr."^^xsd:string ;
+		kfngoeo:forename "Paul"^^xsd:string ;
+		kfngoeo:surname "Kaufmann"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1945"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1906-1923 Präs. d. deutschen Reichsversicherungsamtes"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116074965"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KaufmannPaul"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Khevenhüller-Metsch, Alfred Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Khevenhüller-Metsch, Alfred Graf"^^xsd:string ;
+		kfngoeo:forename "Alfred"^^xsd:string ;
+		kfngoeo:surname "Khevenhüller-Metsch"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1911"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Rittmeister, 1901-1907 MöAH (Verfassungstr. Großgrundbesitzer)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KhevenhüllerAlfred"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kielmansegg, Erich Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Kielmansegg, Erich Graf"^^xsd:string ;
+		kfngoeo:forename "Erich"^^xsd:string ;
+		kfngoeo:surname "Kielmansegg"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1847"^^xsd:date ;
+	kfngoeo:dateOfDeath "1923"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1889-1911 Statthalter von NÖ, 1895 österr. Ministerpräs., 1917-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/107511584"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KielmanseggErich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kienmann, Emerich undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Kienmann, Emerich undefined"^^xsd:string ;
+		kfngoeo:forename "Emerich"^^xsd:string ;
+		kfngoeo:surname "Kienmann"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1854"^^xsd:date ;
+	kfngoeo:dateOfDeath "1912"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1907 MöAH (Verband d. dt. Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1136597980"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KienmannEmerich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Koerber, Ernest von"@de ;
+		kfngoeo:preferredNameForThePerson "Koerber, Ernest von"^^xsd:string ;
+		kfngoeo:forename "Ernest"^^xsd:string ;
+		kfngoeo:surname "Koerber"^^xsd:string ;
+		kfngoeo:nameAddition "von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1898 österr. Handelsminister, 1899 Innenminister, 1900-1904 Ministerpräsident, 1915-1916 Gemeinsamer Finanzminister, 28.X.-13.XII.1916 Ministerpräsident"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118713434"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KoerberErnest"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kolowrat-Krakowski, Leopold Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Kolowrat-Krakowski, Leopold Graf"^^xsd:string ;
+		kfngoeo:forename "Leopold"^^xsd:string ;
+		kfngoeo:surname "Kolowrat-Krakowski"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1910"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1907-1910 MöAH (Dt. Nationalverband), 1908-1910 MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/129225088"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KolowratLeopold"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kopp, Georg Kardinal von"@de ;
+		kfngoeo:preferredNameForThePerson "Kopp, Georg Kardinal von"^^xsd:string ;
+		kfngoeo:forename "Georg"^^xsd:string ;
+		kfngoeo:surname "Kopp"^^xsd:string ;
+		kfngoeo:nameAddition "Kardinal von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1837"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1881-1887 Bischof von Fulda, 1887-1914 Fürstbischof von Breslau"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118714031"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KoppGeorg"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kornfeld, Sigmund Baron"@de ;
+		kfngoeo:preferredNameForThePerson "Kornfeld, Sigmund Baron"^^xsd:string ;
+		kfngoeo:forename "Sigmund"^^xsd:string ;
+		kfngoeo:surname "Kornfeld"^^xsd:string ;
+		kfngoeo:nameAddition "Baron"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1852"^^xsd:date ;
+	kfngoeo:dateOfDeath "1909"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1878 Dir. u. 1900 Gen.Dir. d. Ungar. Allg. Kreditbank, 1902-1909 MuMH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/136423078"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KornfeldSigmund"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kosel, Mansuet Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Kosel, Mansuet Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Mansuet"^^xsd:string ;
+		kfngoeo:surname "Kosel"^^xsd:string ;
+		kfngoeo:nameAddition "Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1919"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1900 Dir. d. Postsparkassenamtes, 26.10.1904-2.6.1906 österr. Finanzminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/130214094"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KoselMansuet"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kossuth, Ferenc undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Kossuth, Ferenc undefined"^^xsd:string ;
+		kfngoeo:forename "Ferenc"^^xsd:string ;
+		kfngoeo:surname "Kossuth"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1841"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Eisenbahningenieur, 1895 MuAH (1897 Führer der Unabhängigkeitspartei), 8.4.1906-17.1.1910 ungar. Handelsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/138888744"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KossuthFerenc"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kossuth, Lajos undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Kossuth, Lajos undefined"^^xsd:string ;
+		kfngoeo:forename "Lajos"^^xsd:string ;
+		kfngoeo:surname "Kossuth"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1802"^^xsd:date ;
+	kfngoeo:dateOfDeath "1894"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Rechtsanwalt, 1848 ungar. Finanzminister,  Anführer der ungar. Unabhängigkeitsbewegung, 1849 ungar. Reichsverweser"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118565702"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KossuthLajos"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kramář, Karel Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Kramář, Karel Dr."^^xsd:string ;
+		kfngoeo:forename "Karel"^^xsd:string ;
+		kfngoeo:surname "Kramář"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1860"^^xsd:date ;
+	kfngoeo:dateOfDeath "1937"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1891-1916 MöAH, 1894-1913 MböhmLt,  Zeitungsherausgeber, 1908 Mitbesitzer der "Národní listy", 1916 von österr. Militärgericht zum Tod verurteilt, 1917 begnadigt, 1918-1919 tschech. Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/122305116"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KramarKarel"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kristóffy, József von Csejte"@de ;
+		kfngoeo:preferredNameForThePerson "Kristóffy, József von Csejte"^^xsd:string ;
+		kfngoeo:forename "József"^^xsd:string ;
+		kfngoeo:surname "Kristóffy"^^xsd:string ;
+		kfngoeo:nameAddition "von Csejte"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1857"^^xsd:date ;
+	kfngoeo:dateOfDeath "1928"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "18.6.1905-8.4.1906 ungar. Innenminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/124554865"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KristoffyJozsef"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kuenburg, Gandolph Graf von Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Kuenburg, Gandolph Graf von Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Gandolph"^^xsd:string ;
+		kfngoeo:surname "Kuenburg"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1841"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1888-1897 MöAH (Vereinigte dt. Linke), 1891-1892 österr. Minister o.P. (dt. Landsmannminister), 1892 Senatspräs. Oberster Gerichtshof, 1897-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1017823952"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KuenburgGandolph"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Kürnberger, Ferdinand undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Kürnberger, Ferdinand undefined"^^xsd:string ;
+		kfngoeo:forename "Ferdinand"^^xsd:string ;
+		kfngoeo:surname "Kürnberger"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1821"^^xsd:date ;
+	kfngoeo:dateOfDeath "1879"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Österr. Schriftsteller"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118567764"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "KuernbergerFerdinand"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lányi, Bertalan von Káposztafalva"@de ;
+		kfngoeo:preferredNameForThePerson "Lányi, Bertalan von Káposztafalva"^^xsd:string ;
+		kfngoeo:forename "Bertalan"^^xsd:string ;
+		kfngoeo:surname "Lányi"^^xsd:string ;
+		kfngoeo:nameAddition "von Káposztafalva"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1851"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1905-1906 ungar. Justizminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1018262903"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LanyiBertalan"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Larisch-Moennich, Heinrich Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Larisch-Moennich, Heinrich Graf"^^xsd:string ;
+		kfngoeo:forename "Heinrich"^^xsd:string ;
+		kfngoeo:surname "Larisch-Moennich"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1884-1918 MschlesLt u. MöHH, 1886-1918 schlesischer Landespräsident"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/136310915"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LarischHeinrich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Larisch-Moennich, Johann Graf Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Larisch-Moennich, Johann Graf Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Johann"^^xsd:string ;
+		kfngoeo:surname "Larisch-Moennich"^^xsd:string ;
+		kfngoeo:nameAddition "Graf Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1872"^^xsd:date ;
+	kfngoeo:dateOfDeath "1962"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1902-1918 MschlesLt, 1904-1907 MöAH (Verfassungstr. Großgrundbesitz)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1116288745"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LarischJohann"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lecher, Otto Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Lecher, Otto Dr."^^xsd:string ;
+		kfngoeo:forename "Otto"^^xsd:string ;
+		kfngoeo:surname "Lecher"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1861"^^xsd:date ;
+	kfngoeo:dateOfDeath "1939"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1889-1906 Sekr. d. Brünner Handels- und Gewerbekammer, 1897-1918 MöAH (dt.fortschr.)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/141657472"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LecherOtto"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Liechtenstein, Alois (Louis) Prinz"@de ;
+		kfngoeo:preferredNameForThePerson "Liechtenstein, Alois (Louis) Prinz"^^xsd:string ;
+		kfngoeo:forename "Alois (Louis)"^^xsd:string ;
+		kfngoeo:surname "Liechtenstein"^^xsd:string ;
+		kfngoeo:nameAddition "Prinz"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1920"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1878-89 u. 1891-1911 MöAH (Christlichsoz.), ab 1910 Führer der Christlichsozialen, 1906-1918 Landmarschall von NÖ, 1912-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/120125838"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LiechtensteinAlois"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Liechtenstein, Eduard Prinz"@de ;
+		kfngoeo:preferredNameForThePerson "Liechtenstein, Eduard Prinz"^^xsd:string ;
+		kfngoeo:forename "Eduard"^^xsd:string ;
+		kfngoeo:surname "Liechtenstein"^^xsd:string ;
+		kfngoeo:nameAddition "Prinz"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1872"^^xsd:date ;
+	kfngoeo:dateOfDeath "1951"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1906-1910 Bezirkshauptmann von Marienbad, Statthaltereirat"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118838814"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LiechtensteinEduard"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lindau, Rudolf Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Lindau, Rudolf Dr."^^xsd:string ;
+		kfngoeo:forename "Rudolf"^^xsd:string ;
+		kfngoeo:surname "Lindau"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1829"^^xsd:date ;
+	kfngoeo:dateOfDeath "1910"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Diplomat u. Schriftsteller"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117014613"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LindauRudolf"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lobkowitz, Georg Fürst"@de ;
+		kfngoeo:preferredNameForThePerson "Lobkowitz, Georg Fürst"^^xsd:string ;
+		kfngoeo:forename "Georg"^^xsd:string ;
+		kfngoeo:surname "Lobkowitz"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1835"^^xsd:date ;
+	kfngoeo:dateOfDeath "1908"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1871-1872 u. 1883-1907 Oberstlandmarschall von Böhmen, 1879-1883 MöAH (kons. Großgrundbesitz)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117074128"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LobkowitzGeorg"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lobkowitz, Ferdinand Prinz"@de ;
+		kfngoeo:preferredNameForThePerson "Lobkowitz, Ferdinand Prinz"^^xsd:string ;
+		kfngoeo:forename "Ferdinand"^^xsd:string ;
+		kfngoeo:surname "Lobkowitz"^^xsd:string ;
+		kfngoeo:nameAddition "Prinz"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1926"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1883-1908 MböhmLt, 1892 MöHH, Vizepräs. ÖHH, 1908-1913 Oberstlandmarschall von Böhmen"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117143952"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LobkowitzFerdinand"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Löcker, Julius Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Löcker, Julius Dr."^^xsd:string ;
+		kfngoeo:forename "Julius"^^xsd:string ;
+		kfngoeo:surname "Löcker"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1860"^^xsd:date ;
+	kfngoeo:dateOfDeath "1945"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1907 MöAH (dt. Volkspartei), Advokat in Linz, 1920 Senatspräs. am Verwaltungsgerichtshof"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/137851227"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LöckerJulius"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Ludwigstorff, Anton Graf von"@de ;
+		kfngoeo:preferredNameForThePerson "Ludwigstorff, Anton Graf von"^^xsd:string ;
+		kfngoeo:forename "Anton"^^xsd:string ;
+		kfngoeo:surname "Ludwigstorff"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1845"^^xsd:date ;
+	kfngoeo:dateOfDeath "1929"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Gutsbesitzer in Deutsch-Altenburg, 1885-1907 MöAH (Verfassungstr. Großgrundbesitzer)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/132995271"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LudwigstorffAnton"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Lueger, Karl Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Lueger, Karl Dr."^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Lueger"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1844"^^xsd:date ;
+	kfngoeo:dateOfDeath "1910"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1910 MöAH (Chistlichsoz.), 1897-1910 Wiener Bürgermeister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118729578"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "LuegerKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Marchet, Gustav Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Marchet, Gustav Dr."^^xsd:string ;
+		kfngoeo:forename "Gustav"^^xsd:string ;
+		kfngoeo:surname "Marchet"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1883 o. Prof. f. Verwaltungs- und Rechtslehre Hochschule für Bodenkultur Wien, 1891-1897 u. 1901-1907 MöAH, 1906-1908 österr. Unterrichtsminister, 1907-1916 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/129095648"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "MarchetGustav"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Méline, Félix Jules undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Méline, Félix Jules undefined"^^xsd:string ;
+		kfngoeo:forename "Félix Jules"^^xsd:string ;
+		kfngoeo:surname "Méline"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1838"^^xsd:date ;
+	kfngoeo:dateOfDeath "1925"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1896-1898 franz. Premierminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117560707"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "MelineFelix"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Mladota von Solopisk, Nepomuk (Muki) Baron"@de ;
+		kfngoeo:preferredNameForThePerson "Mladota von Solopisk, Nepomuk (Muki) Baron"^^xsd:string ;
+		kfngoeo:forename "Nepomuk (Muki)"^^xsd:string ;
+		kfngoeo:surname "Mladota von Solopisk"^^xsd:string ;
+		kfngoeo:nameAddition "Baron"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "MladotaNepomuk"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Nostitz-Rieneck, Erwein Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Nostitz-Rieneck, Erwein Graf"^^xsd:string ;
+		kfngoeo:forename "Erwein"^^xsd:string ;
+		kfngoeo:surname "Nostitz-Rieneck"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1863"^^xsd:date ;
+	kfngoeo:dateOfDeath "1931"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1891-1918 MöHH, 1901-1913 MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/13012589X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "NostitzErwein"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pacák, Bedřich undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Pacák, Bedřich undefined"^^xsd:string ;
+		kfngoeo:forename "Bedřich"^^xsd:string ;
+		kfngoeo:surname "Pacák"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1891-1914 MÖAH, 1889-1913 MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1024898318"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PacakBedrich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Palmer, undefined undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Palmer, undefined undefined"^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "Palmer"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Palmer"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pejačević, Teodor/Tivadar Graf von Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Pejačević, Teodor/Tivadar Graf von Dr."^^xsd:string ;
+		kfngoeo:forename "Teodor/Tivadar"^^xsd:string ;
+		kfngoeo:surname "Pejačević"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1855"^^xsd:date ;
+	kfngoeo:dateOfDeath "1928"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1903-1907 Banus (Vizekönig) von Kroatien"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1025703324"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PejacevicTivadar"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pergelt, Anton Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Pergelt, Anton Dr."^^xsd:string ;
+		kfngoeo:forename "Anton"^^xsd:string ;
+		kfngoeo:surname "Pergelt"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1853"^^xsd:date ;
+	kfngoeo:dateOfDeath "1910"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1892-1910 MöAH (dt.-fortschr.), 1895-1910 MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/102579642X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PergeltAnton"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pernersdorfer, Engelbert undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Pernersdorfer, Engelbert undefined"^^xsd:string ;
+		kfngoeo:forename "Engelbert"^^xsd:string ;
+		kfngoeo:surname "Pernersdorfer"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1850"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1897 u. 1901-1918 MöAH (soz.dem.), 1883 Hg. "Deutsche Worte""^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/119148331"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PernerstorferEngelbert"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Peschka, Franz undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Peschka, Franz undefined"^^xsd:string ;
+		kfngoeo:forename "Franz"^^xsd:string ;
+		kfngoeo:surname "Peschka"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1908"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1891-1908 MöAH, 9.11.1907-1.5.1908 M. o. P. (dt. Landmannminister)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/127901221"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PeschkaFranz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pestalozza, Hugo Graf von"@de ;
+		kfngoeo:preferredNameForThePerson "Pestalozza, Hugo Graf von"^^xsd:string ;
+		kfngoeo:forename "Hugo"^^xsd:string ;
+		kfngoeo:surname "Pestalozza"^^xsd:string ;
+		kfngoeo:nameAddition "Graf von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1847"^^xsd:date ;
+	kfngoeo:dateOfDeath "1907"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PestalozzaHugo"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Petrzikowsky, undefined Hofrat"@de ;
+		kfngoeo:preferredNameForThePerson "Petrzikowsky, undefined Hofrat"^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "Petrzikowsky"^^xsd:string ;
+		kfngoeo:nameAddition "Hofrat"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Petrzikowsky"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Philippovich von Philippsberg, Eugen von Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Philippovich von Philippsberg, Eugen von Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Eugen"^^xsd:string ;
+		kfngoeo:surname "Philippovich von Philippsberg"^^xsd:string ;
+		kfngoeo:nameAddition "von Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1858"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1888 o. Prof. f. Nationalökonomie Univ. Freiburg i.B., 1893-1917 o. Prof. f. politische Ökonomie Univ. Wien, 1896-1902 u. 1905-1906 MnöLt (Obmann Sozialpolit. Partei  1909-1917 MöHH (Verfassungspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116176199"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PhilippovichEugen"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Pohl, undefined Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Pohl, undefined Dr."^^xsd:string ;
+		kfngoeo:forename "undefined"^^xsd:string ;
+		kfngoeo:surname "Pohl"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "undefined"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Pohl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Prade, Heinrich undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Prade, Heinrich undefined"^^xsd:string ;
+		kfngoeo:forename "Heinrich"^^xsd:string ;
+		kfngoeo:surname "Prade"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1853"^^xsd:date ;
+	kfngoeo:dateOfDeath "1927"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1911 MöAH, 2.6.1906-9.11.1907 österr. Minister o. P. (Dt. Landsmannminister)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/127915672"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PradeHeinrich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Prášek, Karel undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Prášek, Karel undefined"^^xsd:string ;
+		kfngoeo:forename "Karel"^^xsd:string ;
+		kfngoeo:surname "Prášek"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1868"^^xsd:date ;
+	kfngoeo:dateOfDeath "1932"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1899-1907 MböhmLt, 1901-1918 MöAH, 9.11.1907-15.11.1908 österr. Minister o.P. (tschech. Landsmannminister), Nov. 1918-1920 tschech. Landwirtschaftsminister, 1920-1924 Präs. d. tschech. Senats"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1026693365"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "PrasekKarel"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Randa, Antonín von Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Randa, Antonín von Dr."^^xsd:string ;
+		kfngoeo:forename "Antonín"^^xsd:string ;
+		kfngoeo:surname "Randa"^^xsd:string ;
+		kfngoeo:nameAddition "von Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1834"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1868 o. Prof. f. Privatrecht Univ. Prag, dann auch f. Handes- u. Wechselrecht tschech. Univ. Prag, 1881-1914 MöHH, 1904-1906 österr. Minister o.P. (tschech. Landsmannminister)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116328185"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "RandaAntonin"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Remusat, Charles de"@de ;
+		kfngoeo:preferredNameForThePerson "Remusat, Charles de"^^xsd:string ;
+		kfngoeo:forename "Charles"^^xsd:string ;
+		kfngoeo:surname "Remusat"^^xsd:string ;
+		kfngoeo:nameAddition "de"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1797"^^xsd:date ;
+	kfngoeo:dateOfDeath "1875"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "franz. Politiker und Philosoph"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/119441284"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "RemusatCharles"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Rössler, Mauriz Ritter von"@de ;
+		kfngoeo:preferredNameForThePerson "Rössler, Mauriz Ritter von"^^xsd:string ;
+		kfngoeo:forename "Mauriz"^^xsd:string ;
+		kfngoeo:surname "Rössler"^^xsd:string ;
+		kfngoeo:nameAddition "Ritter von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1857"^^xsd:date ;
+	kfngoeo:dateOfDeath "1912"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1903-1909 Sektionschef im österr. Handelsminister, 1909-1913 im österr.-ungar. Außenministerium, 3.11.1911-20.9.1912 österr. Handelsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1028553323"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "RoesslerMauriz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Rohan, Alain Fürst (1892)"@de ;
+		kfngoeo:preferredNameForThePerson "Rohan, Alain Fürst (1892)"^^xsd:string ;
+		kfngoeo:forename "Alain"^^xsd:string ;
+		kfngoeo:surname "Rohan"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst (1892)"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1853"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1893-1914 MöHH (Verfassungspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/139262210"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "RohanAlain"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Ruber, Ignaz Freiherr von Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Ruber, Ignaz Freiherr von Dr."^^xsd:string ;
+		kfngoeo:forename "Ignaz"^^xsd:string ;
+		kfngoeo:surname "Ruber"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1845"^^xsd:date ;
+	kfngoeo:dateOfDeath "1933"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-99 österr. Justizminister, 1907-1918 Präs. d. Obersten Gerichtshofes, 1902-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1028692110"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "RuberIgnaz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schäffle, Albert Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Schäffle, Albert Dr."^^xsd:string ;
+		kfngoeo:forename "Albert"^^xsd:string ;
+		kfngoeo:surname "Schäffle"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1831"^^xsd:date ;
+	kfngoeo:dateOfDeath "1903"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1860 Prof. f. Volkswirtschaft Univ. Tübingen, 1862-1865 Abg. württembergischer Landtag, 1868 Prof. f. Politikwissenschaft Univ. Wien, 1871 österr. Handelsminister u. Ackerbauminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/11860628X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchaeffleAlbert"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schalk, Anton Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Schalk, Anton Dr."^^xsd:string ;
+		kfngoeo:forename "Anton"^^xsd:string ;
+		kfngoeo:surname "Schalk"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1869"^^xsd:date ;
+	kfngoeo:dateOfDeath "1951"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1907 MöAH u. MböhmLt"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchalkAnton"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schmoller, Gustav Dr. von"@de ;
+		kfngoeo:preferredNameForThePerson "Schmoller, Gustav Dr. von"^^xsd:string ;
+		kfngoeo:forename "Gustav"^^xsd:string ;
+		kfngoeo:surname "Schmoller"^^xsd:string ;
+		kfngoeo:nameAddition "Dr. von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1838"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1865 o. Prof. f. Nationalökonomie Univ. Halle, 1872 Univ. Straßburg, 1882 Univ. Berlin, 1872 Mitbegr. d. Vereins für Socialpolitik"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118609378"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchmollerGustav"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schönborn-Buchheim, Friedrich Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Schönborn-Buchheim, Friedrich Graf"^^xsd:string ;
+		kfngoeo:forename "Friedrich"^^xsd:string ;
+		kfngoeo:surname "Schönborn-Buchheim"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1841"^^xsd:date ;
+	kfngoeo:dateOfDeath "1907"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1881-1907 MöHH, 1888-1895 österr. Justizminister, 1895-1907 Präs. d. Verwaltungsgerichtshofs"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116863854"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchoenbornFriedrich"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schönerer, Georg Ritter von"@de ;
+		kfngoeo:preferredNameForThePerson "Schönerer, Georg Ritter von"^^xsd:string ;
+		kfngoeo:forename "Georg"^^xsd:string ;
+		kfngoeo:surname "Schönerer"^^xsd:string ;
+		kfngoeo:nameAddition "Ritter von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1842"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1878-1884 MnöLt, 1873-1888 u. 1897-1907 MöAH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118610163"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchoenererGeorg"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schwartzenau, Erwin Freiherr von Dr. iur."@de ;
+		kfngoeo:preferredNameForThePerson "Schwartzenau, Erwin Freiherr von Dr. iur."^^xsd:string ;
+		kfngoeo:forename "Erwin"^^xsd:string ;
+		kfngoeo:surname "Schwartzenau"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von Dr. iur."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1858"^^xsd:date ;
+	kfngoeo:dateOfDeath "1926"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1906 Statthalter in Tirol, ab 1911 Vors. d. Verwaltungsreformkommission, 30.10.-20.12.1916 österr. Innenminister, 1916-1918 MöHH, 1917 Präs. d. Verwaltungsgerichtshofes"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1033476587"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchwartzenauErwin"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schwarzenberg, Karl Fürst"@de ;
+		kfngoeo:preferredNameForThePerson "Schwarzenberg, Karl Fürst"^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Schwarzenberg"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1859"^^xsd:date ;
+	kfngoeo:dateOfDeath "1913"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1889-1913 MböhmLt, 1891-1895 MöAH, 1904-1913 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1021821535"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchwarzenbergKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Schwegel, Joseph Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Schwegel, Joseph Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Joseph"^^xsd:string ;
+		kfngoeo:surname "Schwegel"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1836"^^xsd:date ;
+	kfngoeo:dateOfDeath "1914"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1879-1907 MöAH, ab 1884 MkrainLt, 1907-1914 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/130652784"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SchwegelJoseph"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Sieghart, Rudolf Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Sieghart, Rudolf Dr."^^xsd:string ;
+		kfngoeo:forename "Rudolf"^^xsd:string ;
+		kfngoeo:surname "Sieghart"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1866"^^xsd:date ;
+	kfngoeo:dateOfDeath "1934"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1902-1910 Vorstand der Präsidialkanzlei des Ministerpräsidiums, 18.10.1910-Dez. 1916 Gouverneur u. 21.11.1919 bis 1929 Präs. d. Bodenkreditanstalt, 1912-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117364452"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SieghartRudolf"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Silva-Tarouca, Ernst Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Silva-Tarouca, Ernst Graf"^^xsd:string ;
+		kfngoeo:forename "Ernst"^^xsd:string ;
+		kfngoeo:surname "Silva-Tarouca"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1860"^^xsd:date ;
+	kfngoeo:dateOfDeath "1936"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1892-1913 MböhmLt, 1891-1907 MöAH, 1907-1918 MöHH, 30.8.1917-11.11.1918 österr. Ackerbauminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/127064842"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "Silva-TaroucaErnst"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Singer, Wilhelm undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Singer, Wilhelm undefined"^^xsd:string ;
+		kfngoeo:forename "Wilhelm"^^xsd:string ;
+		kfngoeo:surname "Singer"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1847"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Ab 1891 Chefred. d. "Neuen Wiener Tagblatt""^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117402834"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SingerWilhelm"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Skene, Alfred Freiherr von"@de ;
+		kfngoeo:preferredNameForThePerson "Skene, Alfred Freiherr von"^^xsd:string ;
+		kfngoeo:forename "Alfred"^^xsd:string ;
+		kfngoeo:surname "Skene"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1917"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Zuckerindustrieller, 1883-1899 u. 1904-1910 MmährLt, 1900-1907 MöAH, 1907-1917 MöHH (Mittelpartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/133135829"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SkeneAlfred"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Starčević, Ante undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Starčević, Ante undefined"^^xsd:string ;
+		kfngoeo:forename "Ante"^^xsd:string ;
+		kfngoeo:surname "Starčević"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1823"^^xsd:date ;
+	kfngoeo:dateOfDeath "1896"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Ab 1861 MkroatLt, Schriftsteller"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/119559013"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "StarcevicAnte"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Stein, Franz (Franko) undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Stein, Franz (Franko) undefined"^^xsd:string ;
+		kfngoeo:forename "Franz (Franko)"^^xsd:string ;
+		kfngoeo:surname "Stein"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1869"^^xsd:date ;
+	kfngoeo:dateOfDeath "1943"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1907 MöAH, Journalist, Zeitungsherausgeber"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/129277169"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SteinFranko"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Steinbach, Emil von"@de ;
+		kfngoeo:preferredNameForThePerson "Steinbach, Emil von"^^xsd:string ;
+		kfngoeo:forename "Emil"^^xsd:string ;
+		kfngoeo:surname "Steinbach"^^xsd:string ;
+		kfngoeo:nameAddition "von"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1907"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1886-1891 Sektionschef im Justizministerium, 1891-1893 österr. Finanzminister, ab 1904 Präs. d. Obersten Gerichtshofes, ab 1899 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/129263958"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SteinbachEmil"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Strossmayer, Josip Juraj undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Strossmayer, Josip Juraj undefined"^^xsd:string ;
+		kfngoeo:forename "Josip Juraj"^^xsd:string ;
+		kfngoeo:surname "Strossmayer"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1815"^^xsd:date ;
+	kfngoeo:dateOfDeath "1905"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1849 Bischof von Đakovo, Bosnien und Syrmien mit Sitz in Đakovo, 1860-1873 MuAH (Führer der Kroatischen Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118799185"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "StrossmayerJosip"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Stürgkh, Karl Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Stürgkh, Karl Graf"^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Stürgkh"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1859"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916 (ermordet)"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1891-1894 u. 1897-1907 MöAH, ab 1907 MöHH, 10.2.1909-3.11.1911 österr. Unterrichtsminister, 3.11.1911-21.10.1916 österr. Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117677957"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "StuergkhKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Széll, Kálmán undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Széll, Kálmán undefined"^^xsd:string ;
+		kfngoeo:forename "Kálmán"^^xsd:string ;
+		kfngoeo:surname "Széll"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1843"^^xsd:date ;
+	kfngoeo:dateOfDeath "1915"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1865-1911 MuAH (liberal), 1875-1878 ungar. Finanzminister, 26.2.1899-1903 ungar. Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1084341417"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SzellKalman"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Szilágyi, Arthur Charles Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Szilágyi, Arthur Charles Dr."^^xsd:string ;
+		kfngoeo:forename "Arthur Charles"^^xsd:string ;
+		kfngoeo:surname "Szilágyi"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "undefined"^^xsd:date ;
+	kfngoeo:dateOfDeath "undefined"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Honvédmajor, Advokat"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SzilagyiArthur"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Szterényi von Brassó, Jószef/Josef Freiherr (1918)"@de ;
+		kfngoeo:preferredNameForThePerson "Szterényi von Brassó, Jószef/Josef Freiherr (1918)"^^xsd:string ;
+		kfngoeo:forename "Jószef/Josef"^^xsd:string ;
+		kfngoeo:surname "Szterényi von Brassó"^^xsd:string ;
+		kfngoeo:nameAddition "Freiherr (1918)"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1861"^^xsd:date ;
+	kfngoeo:dateOfDeath "1941"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Staatssekretär im ungar. Handelsministerium, 1906-1918 MuAH, 1917-1918 ungar. Handelsminister, 1920-26 Abg. ungar. Parlament"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/126999007"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "SzterenyiJozsef"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Taaffe, Eduard Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Taaffe, Eduard Graf"^^xsd:string ;
+		kfngoeo:forename "Eduard"^^xsd:string ;
+		kfngoeo:surname "Taaffe"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1833"^^xsd:date ;
+	kfngoeo:dateOfDeath "1895"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1863-1867 Landeschef in Salzburg, 1867 Statthalter von OÖ, 1867 österr. Innenminister, 1867-1868 Minister für Landesverteidigung, 1869-1870 Ministerpräs., 1870-1871 u. 1879 Innenminister, 1879-1893 Ministerpräs."^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118620428"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "TaaffeEduard"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Terlago, Robert Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Terlago, Robert Graf"^^xsd:string ;
+		kfngoeo:forename "Robert"^^xsd:string ;
+		kfngoeo:surname "Terlago"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1842"^^xsd:date ;
+	kfngoeo:dateOfDeath "1927"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1877-1885 u. 1891-1907 MöAH (Verfassungstr. Großgrundbesitz), 1912 MöHH (Verfassungspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117273228"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "TerlagoRobert"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Thun-Hohenstein, Franz Graf, ab 1911 Fürst"@de ;
+		kfngoeo:preferredNameForThePerson "Thun-Hohenstein, Franz Graf, ab 1911 Fürst"^^xsd:string ;
+		kfngoeo:forename "Franz"^^xsd:string ;
+		kfngoeo:surname "Thun-Hohenstein"^^xsd:string ;
+		kfngoeo:nameAddition "Graf, ab 1911 Fürst"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1847"^^xsd:date ;
+	kfngoeo:dateOfDeath "1916"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1881-1916 MöHH (Kons. Großgrundbesitz), 1889-1896 Statthalter von Böhmen, 1898-1899 österr. Ministerpräsident u. Innenminister, 1911-1915 Statthalter von Böhmen"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117626651"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ThunFranz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Thun-Hohenstein-Salm-Reifferscheid, Oswald Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Thun-Hohenstein-Salm-Reifferscheid, Oswald Graf"^^xsd:string ;
+		kfngoeo:forename "Oswald"^^xsd:string ;
+		kfngoeo:surname "Thun-Hohenstein-Salm-Reifferscheid"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1913"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1880-1913 MböhmLt, 1883-1913 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/108021190X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ThunOswald"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Tisza, István Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Tisza, István Graf"^^xsd:string ;
+		kfngoeo:forename "István"^^xsd:string ;
+		kfngoeo:surname "Tisza"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1861"^^xsd:date ;
+	kfngoeo:dateOfDeath "1918 (ermordet)"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "3.11.1903-18.6.1905 u. 10.6.1913-15.6.1917 ungar. Ministerpräsident"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/118998897"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "TiszaIstvan"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Tollinger, Johann Dr. phil."@de ;
+		kfngoeo:preferredNameForThePerson "Tollinger, Johann Dr. phil."^^xsd:string ;
+		kfngoeo:forename "Johann"^^xsd:string ;
+		kfngoeo:surname "Tollinger"^^xsd:string ;
+		kfngoeo:nameAddition "Dr. phil."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1847"^^xsd:date ;
+	kfngoeo:dateOfDeath "1926"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1879 Privatdoz. f. Experimentalphysik Univ. Innsbruck, 1898-1907 MöAH (Kathol. Volkspartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1081488964"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "TollingerJohann"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Trauttmansdorff, Karl Fürst, Erbgraf"@de ;
+		kfngoeo:preferredNameForThePerson "Trauttmansdorff, Karl Fürst, Erbgraf"^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Trauttmansdorff"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst, Erbgraf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1845"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Besitzer Fideikommiss Bischofteinitz, 1883-1885 u. 1902-1913 MböhmLt, 1870 MöHH (Mittelpartei)"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "TrauttmansdorffKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Urban, Karl Dr."@de ;
+		kfngoeo:preferredNameForThePerson "Urban, Karl Dr."^^xsd:string ;
+		kfngoeo:forename "Karl"^^xsd:string ;
+		kfngoeo:surname "Urban"^^xsd:string ;
+		kfngoeo:nameAddition "Dr."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1855"^^xsd:date ;
+	kfngoeo:dateOfDeath "1940"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1901-1918 MöAH (dt.fortschr.), 20.12.1916-23.6.1917 österr. Handelsminister, 31.10.1918-15.3.1919 österr. Staatssekr. für Handel"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1148771107"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "UrbanKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Veigelsberg, Leo undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Veigelsberg, Leo undefined"^^xsd:string ;
+		kfngoeo:forename "Leo"^^xsd:string ;
+		kfngoeo:surname "Veigelsberg"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1846"^^xsd:date ;
+	kfngoeo:dateOfDeath "1907"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Arzt, Publizist, ab 1906 Chefredakteur des „Pester Lloyd“"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/117360430"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "VeigelsbergLeo"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Vészi, József undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Vészi, József undefined"^^xsd:string ;
+		kfngoeo:forename "József"^^xsd:string ;
+		kfngoeo:surname "Vészi"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1858"^^xsd:date ;
+	kfngoeo:dateOfDeath "1940"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "Hg. "Budapester Tagblatt", 1894 Chefred. "Pesti Napló", 1899 MuAH, 1905 Ministerialrat im ung. Ministerratspräs., MuMH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1172479844"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "VesziJozsef"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Vetter von der Lilie, Moritz Graf Dr. med."@de ;
+		kfngoeo:preferredNameForThePerson "Vetter von der Lilie, Moritz Graf Dr. med."^^xsd:string ;
+		kfngoeo:forename "Moritz"^^xsd:string ;
+		kfngoeo:surname "Vetter von der Lilie"^^xsd:string ;
+		kfngoeo:nameAddition "Graf Dr. med."^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1856"^^xsd:date ;
+	kfngoeo:dateOfDeath "1945"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1907 MöAH, 1901-1907 Präs. d. ÖAH, 1900-1918 MmährLt, 1920-1925 Mitgl. tschechoslowak. Senat"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/110638972"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "VetterMoritz"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Vörös, László von Farád"@de ;
+		kfngoeo:preferredNameForThePerson "Vörös, László von Farád"^^xsd:string ;
+		kfngoeo:forename "László"^^xsd:string ;
+		kfngoeo:surname "Vörös"^^xsd:string ;
+		kfngoeo:nameAddition "von Farád"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1925"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1905-1906 ungar. Handelsminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/116588352X"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "VoeroesLaszlo"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Wekerle, Sándor/Alexander undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Wekerle, Sándor/Alexander undefined"^^xsd:string ;
+		kfngoeo:forename "Sándor/Alexander"^^xsd:string ;
+		kfngoeo:surname "Wekerle"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1848"^^xsd:date ;
+	kfngoeo:dateOfDeath "1921"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1892-1895, 8.4.1906-17.1.1910 u. 20.8.1917-30.10.1918 ungar. Ministerpräs., u.a. 1889-1895 u. 1906-1910 ungar. Finanzminister"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/119128691"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "WekerleSandor"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Windischgrätz, Alfred Fürst zu"@de ;
+		kfngoeo:preferredNameForThePerson "Windischgrätz, Alfred Fürst zu"^^xsd:string ;
+		kfngoeo:forename "Alfred"^^xsd:string ;
+		kfngoeo:surname "Windischgrätz"^^xsd:string ;
+		kfngoeo:nameAddition "Fürst zu"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1851"^^xsd:date ;
+	kfngoeo:dateOfDeath "1927"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1893-1895 österr. Ministerpräsident, 1879-1918 MöHH, 1897-1918 Präs. d. öHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1019805544"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "WindischgraetzAlfred"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Wolf, Karl Hermann undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Wolf, Karl Hermann undefined"^^xsd:string ;
+		kfngoeo:forename "Karl Hermann"^^xsd:string ;
+		kfngoeo:surname "Wolf"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1862"^^xsd:date ;
+	kfngoeo:dateOfDeath "1941"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1897-1913 MböhmLt, 1897-1918 MöAH (dt.rad.), Schriftsteller"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1013678079"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "WolfKarl"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Žáček, Jan/Johann undefined"@de ;
+		kfngoeo:preferredNameForThePerson "Žáček, Jan/Johann undefined"^^xsd:string ;
+		kfngoeo:forename "Jan/Johann"^^xsd:string ;
+		kfngoeo:surname "Žáček"^^xsd:string ;
+		kfngoeo:nameAddition "undefined"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1849"^^xsd:date ;
+	kfngoeo:dateOfDeath "1934"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1885-1911 MöAH (Alttschechen), 9.11.1908-30.10.1909 österr. Minister o.P. (Tschech. Landsmannminister), 1912-1918 MöHH"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/1267714182"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ZacekJan"^^xsd:string ;
+	] .
+
+kfngoei:nnnnnn
+	a kfngoeo:Person ;
+	kfngoeo:modified "2023-05-21T21:26:27.519Z"^^xsd:dateTime ;
+	kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	kfngoeo:source <http://d-nb.info/standards/elementset/gnd#> ;
+	kfngoeo:preferredNameEntityForThePerson [
+		a kfngoeo:NameOfThePerson ;
+		rdfs:label ""@en,  "Zichy, Aladár Graf"@de ;
+		kfngoeo:preferredNameForThePerson "Zichy, Aladár Graf"^^xsd:string ;
+		kfngoeo:forename "Aladár"^^xsd:string ;
+		kfngoeo:surname "Zichy"^^xsd:string ;
+		kfngoeo:nameAddition "Graf"^^xsd:string ;
+	] ;
+	kfngoeo:gender "" ;
+	kfngoeo:dateOfBirth "1864"^^xsd:date ;
+	kfngoeo:dateOfDeath "1937"^^xsd:date ;
+	kfngoeo:biographicalOrHistoricalInformation "1906-1910 u. 1917-1918 ungar. Minister am allerh. Hoflager"^^xsd:string ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "GND"^^xsd:string ;
+		kfngoeo:value "https://d-nb.info/gnd/171366980"^^xsd:string ;
+	] ;
+	kfngoeo:identifier [
+		a kfngoeo:PropertyValue ;
+		kfngoeo:propertyID "CamelCase"^^xsd:string ;
+		kfngoeo:value "ZichyAladar"^^xsd:string ;
+	] .
 
