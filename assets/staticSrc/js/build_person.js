@@ -46,11 +46,19 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
 
 var ttl = prefix + LF + LF ;
 
+//convert special characters to html encoding
+function convertChar2Html(str) {
+   return str.replace(/'/g,"&apos;")       
+       .replace(/"/g, "&quot;")
+   ;
+}
+
 function getObject(obj) {
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
    resourceIri = prefInstance + uuidv4() ;
    //console.log( 'resourceIri = ', resourceIri ) ;
+   obj.F = convertChar2Html(obj.F) ;
    prefName = obj.A + COMMA + obj.C + SPACE + obj.B ;
    var ttl_tmp = '' ;
    ttl_tmp = ttl_tmp + resourceIri + LF ;
