@@ -247,8 +247,8 @@ function getArray(arr) {
 
 } ;
 
-
 //////////////////////////////////////////////////////
+
 //read json file
 var filepath = path_in_json + filename + ext_json ;
 console.log(filepath);
