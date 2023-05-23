@@ -58,6 +58,15 @@ function getObject(obj) {
    console.log('object length =', length) ;
    resourceIri = prefInstance + uuidv4() ;
    //console.log( 'resourceIri = ', resourceIri ) ;
+   //test if key exists
+   if ('A' in obj) {
+      //console.log('key A exists') ;
+   } else {
+      //console.log('key A does not exist') ;
+      obj.A = '' ;
+   }
+   console.log('obj = ', obj.F) ;
+         
    obj.F = convertChar2Html(obj.F) ;
    prefName = obj.A + COMMA + obj.C + SPACE + obj.B ;
    var ttl_tmp = '' ;
