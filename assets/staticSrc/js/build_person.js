@@ -81,6 +81,7 @@ function checkKeys(obj) {
       obj.F = '' ;
    }
    if ('G' in obj) {
+      obj.G = obj.G.replace('https://d-nb.info/gnd/', '') ;
    } else {
       obj.G = '' ;
    }
