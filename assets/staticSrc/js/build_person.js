@@ -53,22 +53,94 @@ function convertChar2Html(str) {
    ;
 }
 
+function checkKeys(obj) {
+   //test if key exists
+   if ('A' in obj) {      
+   } else {      
+      obj.A = '' ;
+   }
+   if ('B' in obj) {      
+   } else {
+      obj.B = '' ;
+   }
+   if ('C' in obj) {
+   } else {
+      obj.C = '' ;
+   }
+   if ('D' in obj) {
+   } else {
+      obj.D = '' ;
+   }
+   if ('E' in obj) {
+   } else {
+      obj.E = '' ;
+   }
+   if ('F' in obj) {      
+      obj.F = convertChar2Html(obj.F) ;
+   } else {      
+      obj.F = '' ;
+   }
+   if ('G' in obj) {
+   } else {
+      obj.G = '' ;
+   }
+   if ('H' in obj) {
+   } else {
+      obj.H = '' ;
+   }
+   if ('I' in obj) {
+   } else {
+      obj.I = '' ;
+   }
+   if ('J' in obj) {
+   } else {
+      obj.J = '' ;
+   }
+}
+
+function getPrefName(obj) {
+   //build preferred name
+   if(obj.A != '') {
+      if (obj.C != '' || obj.B != '') {
+         if (obj.C != '') {
+            if (obj.B != '') {
+               prefName = obj.A + COMMA + obj.C + SPACE + obj.B ;            
+            } else {
+               prefName = obj.A + COMMA + obj.C ;
+            }             
+         } else {
+            prefName = obj.A + SPACE + obj.B ;
+         }
+      }
+      else {
+         prefName = obj.A ;       
+      }
+   } else {
+      if (obj.C != '' || obj.B != '') {
+         if (obj.C != '') {
+            if (obj.B != '') {
+               prefName = obj.C + SPACE + obj.B ;            
+            } else {
+               prefName = obj.C ;
+            }             
+         } else {
+            prefName = obj.B ;
+         }
+      }
+      else {
+         prefName = '' ;       
+      }
+   }
+}
+
 function getObject(obj) {
    let length = Object.keys(obj).length ;
    console.log('object length =', length) ;
    resourceIri = prefInstance + uuidv4() ;
    //console.log( 'resourceIri = ', resourceIri ) ;
-   //test if key exists
-   if ('A' in obj) {
-      //console.log('key A exists') ;
-   } else {
-      //console.log('key A does not exist') ;
-      obj.A = '' ;
-   }
-   console.log('obj = ', obj.F) ;
-         
-   obj.F = convertChar2Html(obj.F) ;
-   prefName = obj.A + COMMA + obj.C + SPACE + obj.B ;
+   checkKeys(obj) ;
+   getPrefName(obj) ;
+   
    var ttl_tmp = '' ;
    ttl_tmp = ttl_tmp + resourceIri + LF ;
    ttl_tmp = ttl_tmp + TAB + 'a' + SPACE + prefOntology + 'Person' + SEMICOLON + LF ;
