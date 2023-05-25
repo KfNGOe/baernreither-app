@@ -6,6 +6,18 @@ var gndSets = "" ;
 var gndSet = "" ;
 var gndUrl = "" ;
 
+async function getGNDData(gndUrl) {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: gndUrl,
+    headers: { }
+  };
+
+  const response = await axios.request(config) ;
+  return response ;
+}
+
 async function getObject(obj) {
   let length = Object.keys(obj).length ;
   console.log('object length =', length) ;    
@@ -13,7 +25,16 @@ async function getObject(obj) {
   if ('G' in obj) {        
       gndUrl = obj.G.concat('/about/lds') ;
       console.log('gndUrl = ', gndUrl) ;
-      gndSet = gnd_api(gndUrl) ;        
+      
+      await getGNDData(gndUrl).then(response => {
+        console.log(response.data) ;
+        gndSet = response.data ;
+      })
+      //error handling
+      .catch(error => {
+        console.log(error) ;
+      }) ;
+
       //gnd_api('https://d-nb.info/gnd/119148331/about/lds') ;
       gndSets = gndSets + gndSet ;
    }
@@ -32,32 +53,15 @@ async function getArray(arr) {
   //console.log('result: ',arr) ;   
 } ;
 
-async function getGNDData(gndUrl) {
-  let config = {
-    method: 'get',
-    maxBodyLength: Infinity,
-    url: gndUrl,
-    headers: { }
-  };
-
-  const response = await axios.request(config) ;
-  return response ;
-}
 
 (async () => {
 
   var json = fs.readFileSync('./data/json_xlsx/Baernreither_Personenregister_2023.json', 'utf8');
   console.log('json data read: ', json.length, ' bytes')
+  var jsonJS = JSON.parse(json) ;
+  var persons = jsonJS.Tabelle1 ;
 
-  await getGNDData(gndUrl).then(response => {
-    console.log(response.data) ;
-    gndSet = response.data ;
-  })
-  //error handling
-  .catch(error => {
-    console.log(error) ;
-  })
-
+  await getArray(persons) ;
   
 })() ;
 
