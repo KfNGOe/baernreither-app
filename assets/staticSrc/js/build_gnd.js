@@ -29,25 +29,24 @@ async function getObject(obj) {
       await getGNDData(gndUrl).then(response => {
         console.log(response.data) ;
         gndSet = response.data ;
+        gndSets = gndSets + gndSet ;
       })
       //error handling
       .catch(error => {
         console.log(error) ;
       }) ;
-
-      //gnd_api('https://d-nb.info/gnd/119148331/about/lds') ;
-      gndSets = gndSets + gndSet ;
+      //gnd_api('https://d-nb.info/gnd/119148331/about/lds') ;      
    }
   
 } ;
 
-async function getArray(arr) {
+function getArray(arr) {
   let length = arr.length ;   
   console.log('array length =', length) ;
-  arr.forEach((item, index, array) => {
+  arr.forEach(async (item, index, array) => {
      if (typeof item === 'object') {
         console.log('index = ', index) ;          
-        getObject(item) ;
+        await getObject(item) ;
      }
   }) ;
   //console.log('result: ',arr) ;   
@@ -61,7 +60,9 @@ async function getArray(arr) {
   var jsonJS = JSON.parse(json) ;
   var persons = jsonJS.Tabelle1 ;
 
-  await getArray(persons) ;
+  getArray(persons) ;
+  
+  //console.log('gndSets: ', gndSets) ;
   
 })() ;
 
