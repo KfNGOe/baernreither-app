@@ -4,9 +4,12 @@ const TAB = "\t" ;
 const COMMA = ", " ;
 const DOT = " ." ;
 const SEMICOLON = " ;" ;
+const QUOT = '"' ;
 const SPACE = " " ;
 const SQBRACKET_OPEN = "[" ;
 const SQBRACKET_CLOSE = "]" ;
+const ANGLEBRACKET_OPEN = "<" ;
+const ANGLEBRACKET_CLOSE = ">" ;
 const BN = "_:" ;
 const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF 
                + "@prefix kfngeoi: <https://github.com/KfNGOe/kfngeoi/> ." + LF
@@ -23,6 +26,7 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
                + "@prefix geonames: <http://www.geonames.org/ontology#> ." + LF             
                + "@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> ." + LF
                + "@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> ." + LF
+               + "@prefix tei: <http://www.tei-c.org/ns/1.0> ." + LF
               ;
 
 const path_in_json=process.env.path_in_json ;
@@ -55,22 +59,28 @@ function getTTL(item_obj) {
       ttl = ttl + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;      
    }
    if (item_obj.predicate === "kfngoeo:hasContent") {
-      ttl = ttl + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;
+      item_obj.object = convertChar2Html(item_obj.object) ;
+      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + SEMICOLON + LF ;
    }
    if(item_obj.predicate === "kfngoeo:hasAttr" && item_obj.object.includes(BN)) {
       ttl = ttl + TAB + item_obj.predicate + SPACE + SQBRACKET_OPEN + LF ;
    }
    if(item_obj.subject.includes(BN) && item_obj.predicate === "kfngoeo:attrName") {
-      ttl = ttl + TAB + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;
+      ttl = ttl + TAB + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:string' + SEMICOLON + LF ;
    }
    if(item_obj.subject.includes(BN) && item_obj.predicate === "kfngoeo:attrValue") {
-      ttl = ttl + TAB + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;
+      if(item_obj.object.includes("http")) {
+         ttl = ttl + TAB + TAB + item_obj.predicate + SPACE + ANGLEBRACKET_OPEN + item_obj.object + ANGLEBRACKET_CLOSE + SEMICOLON + LF ;
+      }
+      else {
+         ttl = ttl + TAB + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:string' + SEMICOLON + LF ;
+      }
       ttl = ttl + TAB + SQBRACKET_CLOSE + SEMICOLON + LF ;
    }
    if(item_obj.predicate === "kfngoeo:elementPos") {
-      ttl = ttl + TAB + item_obj.predicate + SPACE + item_obj.object + SEMICOLON + LF ;
+      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:integer' + SEMICOLON + LF ;
       ttl = ttl + DOT + LF + LF ;
-      ttl = convertChar2Html(ttl) ;
+      //ttl = convertChar2Html(ttl) ;
    }
    //console.log('ttl = ', ttl) ;        
 }

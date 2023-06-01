@@ -86,8 +86,7 @@ function getObject(obj) {
                   break ;
                case 'text':                  
                   //console.log('text = ', obj[key]) ;                  
-                  break ;
-                  Comment
+                  break ;                  
                case 'comment':
                   //console.log('comment = ', obj[key]) ;                  
                   break ;
