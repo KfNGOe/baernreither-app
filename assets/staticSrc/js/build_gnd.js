@@ -5,6 +5,7 @@ const fs = require('fs');
 var gndSets = "" ;
 var gndSet = "" ;
 var gndUrl = "" ;
+var gndUrls = [] ;
 
 async function getGNDData(gndUrl) {
   let config = {
@@ -22,19 +23,10 @@ async function getObject(obj) {
   let length = Object.keys(obj).length ;
   console.log('object length =', length) ;    
   //console.log( 'resourceIri = ', resourceIri ) ;
-  if ('G' in obj) {        
+  if ('G' in obj && obj.G.includes('https')) {        
       gndUrl = obj.G.concat('/about/lds') ;
       console.log('gndUrl = ', gndUrl) ;
-      
-      await getGNDData(gndUrl).then(response => {
-        console.log(response.data) ;
-        gndSet = response.data ;
-        gndSets = gndSets + gndSet ;
-      })
-      //error handling
-      .catch(error => {
-        console.log(error) ;
-      }) ;
+      gndUrls.push(gndUrl) ;      
       //gnd_api('https://d-nb.info/gnd/119148331/about/lds') ;      
    }
   
@@ -46,7 +38,7 @@ function getArray(arr) {
   arr.forEach(async (item, index, array) => {
      if (typeof item === 'object') {
         console.log('index = ', index) ;          
-        await getObject(item) ;
+        getObject(item) ;
      }
   }) ;
   //console.log('result: ',arr) ;   
@@ -61,8 +53,29 @@ function getArray(arr) {
   var persons = jsonJS.Tabelle1 ;
 
   getArray(persons) ;
+  console.log('gndUrls: ', gndUrls) ;
+
+  console.log('start gnd api calls') ;
+
+  for (const item of gndUrls) {
+    console.log('item = ', item) ;
+    await getGNDData(item).then(response => {
+      //console.log(response.data) ;
+      gndSet = response.data ;
+      gndSets = gndSets + gndSet ;
+    })
+    //error handling
+    .catch(error => {
+      console.log(error) ;
+    }) ;
+  }  
   
-  //console.log('gndSets: ', gndSets) ;
+  console.log('end gnd api calls') ;
+  
+  //console.log('gndSets: ', gndSets) ;  
+  
+  fs.writeFileSync('./data/ttl/annotation/person/instance/gnd/gnd.ttl', gndSets ) ;
+  console.log('ttl data written: ', gndSets.length  , ' bytes')
   
 })() ;
 
