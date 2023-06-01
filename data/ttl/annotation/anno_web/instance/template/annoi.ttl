@@ -28,9 +28,9 @@ kfngoei:nnnnnn
     ##description of annotation level
     rdfs:label "Annotation level of Persons"@en ;    
 
-    #relation to target    
+    #relation to target = the resource that is annotated
     kfngoeo:hasTarget kfngoei:nnnnnn;
 
-    #relation to body
+    #relation to body = the annotation itself
     kfngoeo:hasBody kfngoei:nnnnnn ;    
 .
