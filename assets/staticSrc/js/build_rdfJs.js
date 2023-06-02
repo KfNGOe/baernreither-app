@@ -130,6 +130,7 @@ function buildElementStmt( obj ) {
 
    //check single tag
    if ('endTagNr' in obj['attributes']) {      
+      resourceIri = prefInstance + uuidv4() ;
       //build end tag statements
       buildEndTagStmts( resourceIri, obj ) ;
       //build list of statements
