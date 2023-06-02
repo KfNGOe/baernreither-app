@@ -1,51 +1,51 @@
 CONSTRUCT {
-                $this a dhpluso:E21_Person ;
-                      owl:sameAs ?sameAs ;
-                      dhpluso:creator ?c_pers ;
-                      dhpluso:dateCreated ?dC_pers ;
-                      dhpluso:dateModified ?dM_pers ;
-                      dhpluso:datePublished ?dP_pers ;
+    $this a dhpluso:E21_Person ;
+            owl:sameAs ?sameAs ;
+            dhpluso:creator ?c_pers ;
+            dhpluso:dateCreated ?dC_pers ;
+            dhpluso:dateModified ?dM_pers ;
+            dhpluso:datePublished ?dP_pers ;
 
-                      dhpluso:P98i_was_born ?born ;
-                      dhpluso:P100i_died_in ?died ;
+            dhpluso:P98i_was_born ?born ;
+            dhpluso:P100i_died_in ?died ;
 
-                      dhpluso:source ?sgnd, ?swiki, ?sproj ;
+            dhpluso:source ?sgnd, ?swiki, ?sproj ;
 
-                      dhpluso:P1_is_identified_by ?_name ;
-                      dhpluso:P2_has_type ?_gender .
+            dhpluso:P1_is_identified_by ?_name ;
+            dhpluso:P2_has_type ?_gender .
 
-                ?_name  a dhpluso:NameOfThePerson ;
-                        rdfs:label ?label_wiki ;
+    ?_name  a dhpluso:NameOfThePerson ;
+            rdfs:label ?label_wiki ;
 
-                        ?propName ?name ;
-                        ?propNameEnt ?nameEnt .
+            ?propName ?name ;
+            ?propNameEnt ?nameEnt .
 
-                ?nameEnt    ?propNames ?names .
+    ?nameEnt    ?propNames ?names .
 
-                ?_gender    a dhpluso:Gender ;
-                            dhpluso:gender ?gender .
+    ?_gender    a dhpluso:Gender ;
+                dhpluso:gender ?gender .
 
-                ?stmt_name  a rdf:Statement ;
+    ?stmt_name  a rdf:Statement ;
 
-                            rdf:subject ?_name ;
-                            rdf:predicate ?propName ;
-                            rdf:object ?name ;
+                rdf:subject ?_name ;
+                rdf:predicate ?propName ;
+                rdf:object ?name ;
 
-                            dhpluso:value-source-uri ?sgnd ;
-                            dhpluso:value-source-prop ?p_name ;
-                            dhpluso:value-code dhplusv:default .
+                dhpluso:value-source-uri ?sgnd ;
+                dhpluso:value-source-prop ?p_name ;
+                dhpluso:value-code dhplusv:default .
 
-                ?stmt_names a rdf:Statement ;
+    ?stmt_names a rdf:Statement ;
 
-                            rdf:subject ?nameEnt ;
-                            rdf:predicate ?propNames ;
-                            rdf:object ?names ;
+    rdf:subject ?nameEnt ;
+    rdf:predicate ?propNames ;
+    rdf:object ?names ;
 
-                            dhpluso:value-source-uri ?sgnd ;
-                            dhpluso:value-source-prop ?p_Names ;
-                            dhpluso:value-code dhplusv:default .
-            }
-            WHERE {
+    dhpluso:value-source-uri ?sgnd ;
+    dhpluso:value-source-prop ?p_Names ;
+    dhpluso:value-code dhplusv:default .
+}
+WHERE {
                     {
                     SELECT $this ?sameAs ?c_pers ?dC_pers ?dM_pers ?dP_pers
                     WHERE
