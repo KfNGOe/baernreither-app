@@ -1,0 +1,46 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#result of the query are the volume nr in ?volnr and the work cited in ?cit of datatype string
+#SELECT ?name_dis
+SELECT ?volnr ( CONCAT(?name_dis, ?mainTitle_dis, ?subTitle_dis, ?partNr_dis, ?partName_dis, ?respStmt_dis, ?provStmt_dis) AS ?cit )
+#, ?provStmt_dis
+WHERE
+{ 
+    ?s  a dhpluso:Work ;
+        dhpluso:contribution ?s_contr ;
+    .
+    #works only if work dataset is connected with a person dataset    
+    OPTIONAL { ?s_contr dhpluso:agent/dhpluso:P1_is_identified_by/rdfs:label ?name;
+			  			dhpluso:role <http://id.loc.gov/vocabulary/relators/aut> ;
+    		   .
+        	   FILTER (lang(?name) = "de") .
+    }
+    BIND (IF (BOUND(?name), CONCAT (?name, ": "), "") AS ?name_dis ) . 
+    
+    ?s_I a dhpluso:Instance ;
+         dhpluso:title/dhpluso:mainTitle ?mainTitle ;
+    .
+    BIND (IF (BOUND(?mainTitle), CONCAT (?mainTitle, ". "), "") AS ?mainTitle_dis ) .    
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:subtitle ?subTitle . }    				
+    BIND (IF (BOUND(?subTitle), CONCAT (?subTitle, ". "), "") AS ?subTitle_dis ) .    
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:partNumber ?partNr . }
+    BIND (IF (BOUND(?partNr), CONCAT (?partNr, ". "), "") AS ?partNr_dis ) . 
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:partName ?partName . }
+    BIND (IF (BOUND(?partNr), CONCAT (?partNr, ". "), "") AS ?partName_dis ) . 
+    
+    OPTIONAL { ?s_I dhpluso:responsibilityStatement ?respStmt . }
+    BIND (IF (BOUND(?respStmt), CONCAT (?respStmt, ". "), "") AS ?respStmt_dis ) .    
+    
+    OPTIONAL { ?s_I dhpluso:provisionActivityStatement ?provStmt . }
+    BIND (IF (BOUND(?provStmt), CONCAT (?provStmt, ". "), "") AS ?provStmt_dis ) .    
+    
+    ?s_I dhpluso:hasSeries/dhpluso:seriesEnumeration ?volnr ;
+    .    
+}
+
+#<autor: ><mainTitle. ><subTitle .><partNumber .><partName .><responsibilityStatement .><provStmt .>

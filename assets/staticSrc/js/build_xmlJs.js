@@ -1,6 +1,7 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
+const normalize = require('normalize-space') ;
 
 var convert = require('xml-js');
 var i_N = 0 ;
@@ -71,6 +72,7 @@ function getObject(obj) {
             //console.log('result: ',obj[key]) ;
             break ;
          case 'text':
+            obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
             //console.log('result: ',obj[key]) ;
             break ;
          case 'comment':

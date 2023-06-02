@@ -1,0 +1,36 @@
+PREFIX dhpluso: <https://dh.plus.ac.at/ontology#>
+PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#>
+
+CONSTRUCT {
+    ?s dhpluso:source/dhpluso:hasPart/gndo:gndIdentifier ?o ;
+	.
+}
+WHERE {
+    ?s dhpluso:source/dhpluso:hasPart/gndo:gndIdentifier ?o ;
+    .
+    #?s_ges dhpluso:source/dhpluso:hasPart/gndo:gndIdentifier ?o_ges ;
+    #.
+    #BIND(IF ( ?s_res = ?s_ges, ?nothing, ?s_ges) AS ?s) .    
+    #BIND(IF ( ?o_res = ?o_ges, ?nothing, ?o_ges) AS ?o) .    
+    
+    {
+        SELECT DISTINCT ?s_res ?o_res
+        #?s ?o #?s_test ?o_test
+        WHERE { 
+            ?s_res dhpluso:source/dhpluso:hasPart/gndo:gndIdentifier ?o_res ;
+            .
+            {
+                SELECT ?s_test ?o_test
+                WHERE { 
+                    ?s_test dhpluso:source/dhpluso:hasPart/gndo:gndIdentifier ?o_test ;
+                    .
+
+                }
+            }   
+
+            FILTER (?s_res != ?s_test && ?o_res = ?o_test)
+        } 
+    }
+    #FILTER isURI(?s_res)
+}
+

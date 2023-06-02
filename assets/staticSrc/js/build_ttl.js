@@ -60,7 +60,7 @@ function getTTL(item_obj) {
    }
    if (item_obj.predicate === "kfngoeo:hasContent") {
       item_obj.object = convertChar2Html(item_obj.object) ;
-      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + SEMICOLON + LF ;
+      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:string' + SEMICOLON + LF ;
    }
    if(item_obj.predicate === "kfngoeo:hasAttr" && item_obj.object.includes(BN)) {
       ttl = ttl + TAB + item_obj.predicate + SPACE + SQBRACKET_OPEN + LF ;
