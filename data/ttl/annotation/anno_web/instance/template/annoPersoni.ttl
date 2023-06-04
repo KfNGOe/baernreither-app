@@ -25,8 +25,11 @@ kfngoei:nnnnnn
     a kfngoeo:AnnoPerson ;
 
     #administrative
-    ##description of annotation level
-    rdfs:label "Annotation level of Persons"@en ;    
+    #description of annotation level
+    rdfs:label "Annotation level of Persons"@en ;
+    
+    #key identifier for person
+    rdfs:isDefinedBy ""^^xsd:string ;
 
     #relation to target = the resource that is annotated
     kfngoeo:hasTarget kfngoei:nnnnnn;
