@@ -1,0 +1,46 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <http://schema.org/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX geonames: <http://www.geonames.org/ontology#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX gnd: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0>
+
+CONSTRUCT { 
+    #kfngoei
+	$this a kfngoeo:AnnoPerson ;
+        rdfs:label "Annotation level of Persons"@en ;
+        
+        #key identifier for person
+    	rdfs:isDefinedBy ?o_key ;
+
+        #relation to target = the resource that is annotated
+        kfngoeo:hasTarget kfngoei:nnnnnn ;
+
+        #relation to body = the annotation itself
+        kfngoeo:hasBody kfngoei:nnnnnn ;
+	.
+}
+WHERE {
+    {
+		SELECT DISTINCT ?o_key (?s_anno AS $this)
+        WHERE {
+            OPTIONAL {
+                ?s rdf:type kfngoeo:AnnoPerson ;
+                      rdfs:isDefinedBy ?o_key ;
+				.                            
+            }    
+            BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
+        } GROUP BY ?o_key ?s_anno
+        #LIMIT 3        
+    }    
+}

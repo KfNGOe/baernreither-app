@@ -14,38 +14,35 @@ PREFIX geonames: <http://www.geonames.org/ontology#>
 PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
 PREFIX gnd: <http://d-nb.info/standards/elementset/gnd#>
 PREFIX tei: <http://www.tei-c.org/ns/1.0>
-PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 
 CONSTRUCT { 
     #kfngoei
-	?s_anno a kfngoeo:AnnoPerson ;
+	kfngoei:nnnn a kfngoeo:AnnoPerson ;
         rdfs:label "Annotation level of Persons"@en ;
         
         #key identifier for person
     	rdfs:isDefinedBy ?o_key ;
 
         #relation to target = the resource that is annotated
-        kfngoeo:hasTarget ?o_target;
+        kfngoeo:hasTarget kfngoei:nnnnnn;
 
         #relation to body = the annotation itself
         kfngoeo:hasBody kfngoei:nnnnnn ;
         .
 }
 WHERE {
-    {
-        SELECT DISTINCT ?s_anno ?o_key ?o_target
-        WHERE {
-            OPTIONAL {
-                $this rdf:type kfngoeo:StartTag ;
-                      kfngoeo:elementName tei:persName ;
-                      kfngoeo:hasAttr ?_bn ;
-               .
-                ?_bn kfngoeo:attrName "key" ;
-					 kfngoeo:attrValue ?o_key ;
-      			.                
-            }
-            BIND ( $this AS ?o_target )
-            BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
-        } #LIMIT 3
-    } .
-} 
+    SELECT DISTINCT ?o_key
+    WHERE {
+        OPTIONAL {
+            ?s rdf:type kfngoeo:StartTag ;
+                  kfngoeo:elementName tei:persName ;
+                  kfngoeo:hasAttr ?_bn ;
+                  .
+            ?_bn kfngoeo:attrName "key" ;
+                 kfngoeo:attrValue ?o_key ;
+            .                
+        }    
+        #BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
+    } GROUP BY ?o_key #?s_anno
+}
+#LIMIT 3

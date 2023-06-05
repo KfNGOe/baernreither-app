@@ -1,5 +1,5 @@
 PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
-PREFIX kfngeoi: <https://github.com/KfNGOe/kfngeoi/>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -15,7 +15,7 @@ PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
 PREFIX gnd: <http://d-nb.info/standards/elementset/gnd#>
 PREFIX tei: <http://www.tei-c.org/ns/1.0>
 
-PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+
 select ?s_str ?o where { 
 	?s rdf:type ?o .
     BIND(str(?s) as ?s_str) 
