@@ -1,3 +1,6 @@
+#build Annotation level of Persons
+#group keys from TEI statements
+
 PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -41,8 +44,7 @@ WHERE {
             ?_bn kfngoeo:attrName "key" ;
                  kfngoeo:attrValue ?o_key ;
             .                
-        }    
-        #BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
-    } GROUP BY ?o_key #?s_anno
+        }   
+        
+    } GROUP BY ?o_key 
 }
-#LIMIT 3
