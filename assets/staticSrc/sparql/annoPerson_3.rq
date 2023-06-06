@@ -1,5 +1,5 @@
 PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
-PREFIX kfngoei: <https://github.com/KfNGOe/kfngeoi/>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -38,8 +38,7 @@ WHERE {
 				.                            
     #}
     {
-	SELECT DISTINCT ?o_key_text
-        (?s_text AS ?target_text)
+	SELECT DISTINCT ?o_key_text (?s_text AS ?target_text)
     WHERE {
             OPTIONAL {
                 ?s_text rdf:type kfngoeo:StartTag ;
