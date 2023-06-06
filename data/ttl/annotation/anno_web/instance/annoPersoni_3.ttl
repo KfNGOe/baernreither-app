@@ -1,0 +1,397 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngeoi/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix geonames: <http://www.geonames.org/ontology#> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+<https://github.com/KfNGOe/kfngoei/1e89407a-5708-46fa-869a-8e75580d8bf7> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "BaernreitherJosephMaria";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/ad3de3e4-c98b-4f3a-9f6f-da12d6a10718>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/7dac4de7-3de5-416e-b1bb-55f1d58bcc36> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PacakBedrich";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/1133d7a9-2ba3-44b3-ae81-a488c07e2dae>,
+    <https://github.com/KfNGOe/kfngoei/f76f985a-583f-4135-9461-b7bc711b9392>, <https://github.com/KfNGOe/kfngoei/52727c87-9ea6-46a2-9d92-21925d0e50bd>,
+    <https://github.com/KfNGOe/kfngoei/abd4fb77-7a81-4960-9c0b-c8b2422cc8e3>, <https://github.com/KfNGOe/kfngoei/43170fbf-78ac-454a-b407-222bf4a87e97>,
+    <https://github.com/KfNGOe/kfngoei/5c6cd7b7-f381-4bc1-a8c3-8a18f10f6f62>, <https://github.com/KfNGOe/kfngoei/217fc425-a19b-4df6-9783-aa367f20c090>,
+    <https://github.com/KfNGOe/kfngoei/37c8b2ce-4a98-4deb-a2c0-69f789940e15>, <https://github.com/KfNGOe/kfngoei/d76a7aec-0655-4ac0-a604-dde7bfb06086>,
+    <https://github.com/KfNGOe/kfngoei/64b5beb5-c49b-4603-a73b-1785c2678b7a>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/8d51fe05-b78f-4aa2-a72a-8023a47fbc1f> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DerschattaJulius";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/5336adae-8c2f-44b6-a2ce-c549d4011b2d>,
+    <https://github.com/KfNGOe/kfngoei/25e9343b-b675-4ac0-94e8-82cdaf508994>, <https://github.com/KfNGOe/kfngoei/233549eb-0761-4772-8eda-37197f1359fe>,
+    <https://github.com/KfNGOe/kfngoei/c0d16f9a-de5b-46ad-b46a-d24a1d775d4d>, <https://github.com/KfNGOe/kfngoei/8d96ba40-4765-4c64-9147-51b8d746dc3e>,
+    <https://github.com/KfNGOe/kfngoei/26a30c26-8118-49f3-8c81-cc341028dc4a>, <https://github.com/KfNGOe/kfngoei/7e176f1d-ec4d-4dbb-8103-26332981bdd5>,
+    <https://github.com/KfNGOe/kfngoei/7dd9bf50-d4c1-44af-9551-6e788aa4cfe8>, <https://github.com/KfNGOe/kfngoei/d886fd55-a5bc-4f1a-bd3f-04adcf4021ff>,
+    <https://github.com/KfNGOe/kfngoei/c4d314f8-3fac-4d63-bfa1-d2cb28d97a29>, <https://github.com/KfNGOe/kfngoei/bed0631f-079a-49cc-93c3-7ca0d426b96c>,
+    <https://github.com/KfNGOe/kfngoei/33ecb937-e538-4c88-909d-449eb265e21b>, <https://github.com/KfNGOe/kfngoei/9fadebc0-e066-4627-881c-ce662c8ae83d>,
+    <https://github.com/KfNGOe/kfngoei/a53faf8f-efc8-4ce2-b343-299bd492e1c3>, <https://github.com/KfNGOe/kfngoei/37259e26-100e-44af-a240-d0f3519ed60a>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/16ec04e6-8cda-4474-8e19-e0d8e1c5d4c0> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "StürgkhKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/06feca14-a76c-4acf-8e36-4cdf35a10fad>,
+    <https://github.com/KfNGOe/kfngoei/ad700266-ea98-4b16-95f8-5d3cc0453ffb>, <https://github.com/KfNGOe/kfngoei/b453c3d1-b371-4ff3-9270-962a88803a8b>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/3182c083-d072-4aff-ab5a-0f108ab44592> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ChiariKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/32885c60-20c5-4226-be23-6f9aa3a2efeb>,
+    <https://github.com/KfNGOe/kfngoei/c1e8694c-140b-4314-9cda-ab3514e90990>, <https://github.com/KfNGOe/kfngoei/f4ec19b0-a6f8-4486-9a66-bc1c96d16619>,
+    <https://github.com/KfNGOe/kfngoei/d5ca64f1-7670-4121-8daa-a0943b8024c1>, <https://github.com/KfNGOe/kfngoei/5d3e8f21-8138-4775-ae83-9804eefc71c2>,
+    <https://github.com/KfNGOe/kfngoei/801b6309-1284-4deb-bd05-dd1730d9afa9>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/fc2bdae4-9bea-4382-9731-c83e1217bedc> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GautschPaul";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/9efef3e0-02b9-4681-8c5f-8273f17774c8>,
+    <https://github.com/KfNGOe/kfngoei/98b424aa-f274-4781-afbc-cade1f44bb7a>, <https://github.com/KfNGOe/kfngoei/1d0c7573-07d7-4afa-b21a-e7f8bcce0156>,
+    <https://github.com/KfNGOe/kfngoei/71f83892-e052-486b-8b62-2fdf1df71aaa>, <https://github.com/KfNGOe/kfngoei/b21a5d46-da3e-4bd4-bd96-d354ef5fabc2>,
+    <https://github.com/KfNGOe/kfngoei/65c2c9dd-200c-42d3-9e56-2b481ac494ca>, <https://github.com/KfNGOe/kfngoei/3d4a16c3-06a0-473e-a4c7-f5e36a6a6016>,
+    <https://github.com/KfNGOe/kfngoei/cfe8addf-82db-42fb-a42c-cbeaa4cc45a5>, <https://github.com/KfNGOe/kfngoei/d2d1d916-0863-43fb-be8f-340c1360870a>,
+    <https://github.com/KfNGOe/kfngoei/46fba8d4-c402-4acb-bdfe-4b1eb51e0da2>, <https://github.com/KfNGOe/kfngoei/26e9e9f2-7906-47d3-9c1c-4ed226689e6b>,
+    <https://github.com/KfNGOe/kfngoei/e76e8ee5-2508-4bed-8c8b-73882e152f64>, <https://github.com/KfNGOe/kfngoei/69c52438-2af0-4e56-aeee-6837483fda6f>,
+    <https://github.com/KfNGOe/kfngoei/2d99b5f8-11a8-4d19-90ef-0f364782f146>, <https://github.com/KfNGOe/kfngoei/57be1ab9-646b-41c0-9ff0-769e612515c5>,
+    <https://github.com/KfNGOe/kfngoei/b836f07b-6adc-4de1-ae78-5b266ce5f96f>, <https://github.com/KfNGOe/kfngoei/90a687dc-cd0f-4dc1-bc49-8b8c1544398c>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/bc6ccfa1-6f72-4a47-b8ee-f64cacd69186> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PradeHeinrich";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/faa1ad81-00c1-4aec-ac14-ccd13f323ab7>,
+    <https://github.com/KfNGOe/kfngoei/9e106746-71b5-4692-8935-a072df9c8e67>, <https://github.com/KfNGOe/kfngoei/9b0135dc-fb2a-4543-81b5-94962896bccf>,
+    <https://github.com/KfNGOe/kfngoei/b72dc82b-c8db-4477-b97d-05cc185013ec>, <https://github.com/KfNGOe/kfngoei/d3b7f32c-9667-4b24-99fd-6014adfd54d5>,
+    <https://github.com/KfNGOe/kfngoei/78b0ccf4-0941-42d4-b22d-e6ffa20a9339>, <https://github.com/KfNGOe/kfngoei/82a37602-ee4d-4509-8b5a-48b839c60a67>,
+    <https://github.com/KfNGOe/kfngoei/4d11e4ed-99ba-4dd4-a7ee-389a9bfac789>, <https://github.com/KfNGOe/kfngoei/dc097a21-1f84-4c5f-aa08-b5a989cb76db>,
+    <https://github.com/KfNGOe/kfngoei/29649472-2406-4df3-882f-c409f72c5814>, <https://github.com/KfNGOe/kfngoei/f767a94f-ce20-4a7b-b8a9-fe1de7c86425>,
+    <https://github.com/KfNGOe/kfngoei/b18c74e3-ca46-496c-a24c-d42e56bf6acf>, <https://github.com/KfNGOe/kfngoei/ebf2686b-4c9c-479b-a21f-6a21294a0435>,
+    <https://github.com/KfNGOe/kfngoei/ae5b6a43-caaf-47b6-9810-eccc37a7c75d>, <https://github.com/KfNGOe/kfngoei/49b8c932-1683-4eff-834f-6202fb489d9f>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/ebd178d5-afe6-40c4-902c-c008bfa2ae47> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KramarKarel";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/b9253cd1-3358-43cc-b52c-202b82472779>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/39f2c1d6-1d47-445c-99ea-a98c6251f185> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ZacekJan";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/350f2273-b605-4a93-9614-d83a5be8702f>,
+    <https://github.com/KfNGOe/kfngoei/189e3f07-f35e-4916-b2a9-8b27381ad434>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/d0c11ada-c879-4b8f-a19b-e662db498569> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PergeltAnton";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/f6b85528-becc-4d54-a7ee-d42e61bd8fd0>,
+    <https://github.com/KfNGOe/kfngoei/9e251c86-f1b0-499d-b51b-3f229c4c88e3>, <https://github.com/KfNGOe/kfngoei/bd1d9342-9d6d-4882-8ac7-92369c8398a3>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/05d285a6-da1e-41d4-ac8b-0badf40eb21d> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GroßGustav";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/6512e9c9-e7fe-4c40-b798-e95e5ecdebad>,
+    <https://github.com/KfNGOe/kfngoei/d06b9447-ce2e-41ee-b6d1-6449e4f2cea1>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/f8135932-d459-4bf1-91eb-e00fc71899ab> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KoerberErnest";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/4fb7645a-b7f3-4525-8a90-c0dff5fc0c9a>,
+    <https://github.com/KfNGOe/kfngoei/2c46dd60-5e4d-4dd7-a6e0-19fd44e22513>, <https://github.com/KfNGOe/kfngoei/eae1b9f6-8cab-42c7-b131-e812be4b66f6>,
+    <https://github.com/KfNGOe/kfngoei/0b658538-c8a1-4524-b1c4-bf2d8f93f8f9>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/f198cceb-4b07-4dbf-a421-8d70332d5089> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SteinFranko";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/78901dd0-d414-47db-a45c-853324b0fb61>,
+    <https://github.com/KfNGOe/kfngoei/c2d0fec1-a30f-4a38-b2b1-5a243f0a9a72>, <https://github.com/KfNGOe/kfngoei/3c0c40e9-9c4f-49d1-a6c7-66a2cfb03c31>,
+    <https://github.com/KfNGOe/kfngoei/0f9ba4e7-76aa-4ddd-a5d6-759a8dcc3fc4>, <https://github.com/KfNGOe/kfngoei/ffb2e380-1230-40d3-9305-e74f52d5e5dc>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/c15d4471-0487-4abf-9a8c-905372992e46> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KaiserFranzJosef";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/4f78e3a5-35d9-41c4-a0ce-b184c278adc7>,
+    <https://github.com/KfNGOe/kfngoei/4c42de87-8ae0-4a51-8488-0c618abdfdb9>, <https://github.com/KfNGOe/kfngoei/d353b498-dd00-43c3-8b09-d280fb094089>,
+    <https://github.com/KfNGOe/kfngoei/c6c94222-065f-41df-9587-d1711fb2a35a>, <https://github.com/KfNGOe/kfngoei/1deb4a9c-0e54-4ed7-9b54-43a0b95544f0>,
+    <https://github.com/KfNGOe/kfngoei/9a9b7e01-92e9-48c3-8523-9e320639a4bf>, <https://github.com/KfNGOe/kfngoei/21f45ab9-9753-4d0d-a0d3-6f45d6279d94>,
+    <https://github.com/KfNGOe/kfngoei/3ca6702d-56ea-4fbd-985b-fe909a0c713e>, <https://github.com/KfNGOe/kfngoei/6c51fe2a-fb47-4914-be4c-70ad3a780b21>,
+    <https://github.com/KfNGOe/kfngoei/7cb1f257-a2d0-4369-b0de-d6470173aa22>, <https://github.com/KfNGOe/kfngoei/1b4a976c-85d9-46f2-9f04-69f91a89ad98>,
+    <https://github.com/KfNGOe/kfngoei/de37b266-c875-45c4-b47c-11a8fed7db45>, <https://github.com/KfNGOe/kfngoei/1e86226e-8a96-4817-b35c-f620fe8db298>,
+    <https://github.com/KfNGOe/kfngoei/011e6bd8-a333-4d37-927a-3cde4a57963c>, <https://github.com/KfNGOe/kfngoei/7dceadb6-828c-4e2b-87a8-20960c7b784b>,
+    <https://github.com/KfNGOe/kfngoei/044db84b-24a8-484f-b7ba-633e2370c816>, <https://github.com/KfNGOe/kfngoei/cde2423b-0609-4274-babe-2ae5914013e9>,
+    <https://github.com/KfNGOe/kfngoei/0c092890-355f-451b-b932-1bcbd447ba35>, <https://github.com/KfNGOe/kfngoei/fd9a8988-28ee-469b-9849-6eb0e6ea15c8>,
+    <https://github.com/KfNGOe/kfngoei/311b2dfd-ad1b-4a6c-832d-2febda48bcdd>, <https://github.com/KfNGOe/kfngoei/c9980894-65ea-462f-90cf-95ee91e9be56>,
+    <https://github.com/KfNGOe/kfngoei/4bd69081-6d19-4d28-9a3d-ab0ffcf4d4fe>, <https://github.com/KfNGOe/kfngoei/d1595806-0109-4007-ac01-34bf59565df7>,
+    <https://github.com/KfNGOe/kfngoei/1fa32a56-be3c-4f0b-90a4-4c08bb9c500b>, <https://github.com/KfNGOe/kfngoei/ee8d2b6f-572b-4055-96f0-487a62cb4ad0>,
+    <https://github.com/KfNGOe/kfngoei/60a0df53-d899-4a52-8c0e-f9f30ae9a01c>, <https://github.com/KfNGOe/kfngoei/c18a3cac-fe3a-440b-b0c2-ca4ff9ea84fe>,
+    <https://github.com/KfNGOe/kfngoei/76bc68ea-bb94-466a-8a59-889e6f1c4f68>, <https://github.com/KfNGOe/kfngoei/1a1ee607-05e4-4f6e-bece-7a05af4d6b28>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/2a5b4d9c-8357-4e39-b232-63e97995cd3e> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "NostitzErwein";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/3cdfcac4-f457-4ad2-91c1-364757c7d26e>,
+    <https://github.com/KfNGOe/kfngoei/438fdce7-7108-4782-b837-07712b3d9242>, <https://github.com/KfNGOe/kfngoei/041199df-826e-4d47-9db8-eb2544fdd91a>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/96151793-cad0-4560-845c-a07f26021f8f> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "FuerstenbergMaxEgon";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/38578b0e-3fdf-4203-acc5-892cc9ae6c10>,
+    <https://github.com/KfNGOe/kfngoei/28ff90a7-c2f3-42f5-8893-376f8a2a58a5>, <https://github.com/KfNGOe/kfngoei/d2bf6d8a-8371-4ca5-b5ed-1e099af70d4a>,
+    <https://github.com/KfNGOe/kfngoei/2f440587-ae16-4a57-a6e8-0dc676ee3112>, <https://github.com/KfNGOe/kfngoei/c1846d49-3694-4ea2-9bba-7559838a19ac>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/4b60d793-6de2-4f07-a783-c08c4b47506c> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "LobkowitzFerdinand";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/f92145f5-38b7-4f6a-8b30-87a404b48046>,
+    <https://github.com/KfNGOe/kfngoei/58f6d66d-9a6a-4d30-b158-5c3e356791d4>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/8918a1d3-a04e-43b2-97c7-7c7ff4e749bb> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "RohanAlain";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/183eab5a-ddb5-4e77-a394-1d2d0f240d8a>,
+    <https://github.com/KfNGOe/kfngoei/7e347fae-306d-4033-be58-718f20bf8e06>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/7a7646a6-ab93-44b3-b4f3-3bd04d6e32c2> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SchwarzenbergKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/6a0dca15-fdbd-4ba6-9e3c-8dd0d119cc8d>,
+    <https://github.com/KfNGOe/kfngoei/fbe71144-f51b-4140-a7bf-91e28df39559>, <https://github.com/KfNGOe/kfngoei/229fe1c7-06f8-489b-937a-ded5d0d02504>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/265211eb-f238-4a57-b2f1-a46c339782a1> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "Silva-TaroucaErnst";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/bc5f90d1-4899-4bf5-b8cf-044c69297ac1>,
+    <https://github.com/KfNGOe/kfngoei/7763d117-ab6d-4f41-9e53-a3afa2ba5830>, <https://github.com/KfNGOe/kfngoei/d25dbeee-d511-4895-8e88-e85cd05f0e08>,
+    <https://github.com/KfNGOe/kfngoei/c69ffce0-490f-46db-a18d-08b94c2ae3a1>, <https://github.com/KfNGOe/kfngoei/18a1e73e-2a3c-4560-9453-98007d9d3479>,
+    <https://github.com/KfNGOe/kfngoei/1298344f-1cd3-4382-b7f4-bf3d5c3c0d2f>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/83a24e12-1eb1-4700-8c52-03070ac7290e> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "Clam-MartinicHeinrich";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/3e398706-9af8-41f3-a935-ca6397b4221d>,
+    <https://github.com/KfNGOe/kfngoei/839b9a48-d965-4cdc-b9b0-02e64e186234>, <https://github.com/KfNGOe/kfngoei/48fc6adf-e6f8-49ec-bd84-42c11f6bdbcb>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/b7dc538f-7c7d-44a2-9db3-1d39806e1526> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "CzerninOttokar";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/4a3d5234-3766-4a44-a6ff-cf9049b2530b>,
+    <https://github.com/KfNGOe/kfngoei/058f196f-59cd-4ece-99de-571293a50cda>, <https://github.com/KfNGOe/kfngoei/a99f8c70-e3e0-4767-82f7-e942d1e59e61>,
+    <https://github.com/KfNGOe/kfngoei/c8a2e4b3-c09c-424b-8a90-bebc30ec3f16>, <https://github.com/KfNGOe/kfngoei/6c470c90-db81-4a94-aebb-561d06a05c79>,
+    <https://github.com/KfNGOe/kfngoei/4f0004b7-5089-4c53-986e-b46f21b060ff>, <https://github.com/KfNGOe/kfngoei/ed4a8800-1489-45b2-8ae0-f8c929a86229>,
+    <https://github.com/KfNGOe/kfngoei/61895fec-1bad-4c66-b987-803ea5c0cc78>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/0212b32e-cf7d-4e48-989f-11811570f661> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ThunFranz";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/241d3d84-e8e0-4fc1-94f1-ac648caac1e9>,
+    <https://github.com/KfNGOe/kfngoei/07ea50c7-e990-48a3-9623-4cb2bb8c8ede>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/42d51dfe-d846-49fc-ad0a-f273cf56346e> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "HohenwartKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/1dbe0384-0b3e-4a09-9db4-3a65a52f81f7>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/b644c541-cf2e-4293-acc6-c8a6ed4deee9> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SchaeffleAlbert";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/ab9ae9d4-4bf3-44f7-bafb-0d8a7de5f58f>,
+    <https://github.com/KfNGOe/kfngoei/7d1b1f66-2d65-40f8-97f8-a4cf8e6c4c15>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/32f078a2-a6b8-48b2-8810-4690f062b7df> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GrabmayrKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/c2ba577e-403f-42ec-a58f-64c76a105123>,
+    <https://github.com/KfNGOe/kfngoei/dabedb00-92d6-4c2b-8557-2cffaa7854b4>, <https://github.com/KfNGOe/kfngoei/9c7c3650-a8fb-4794-b4c2-22b0e0e75d7b>,
+    <https://github.com/KfNGOe/kfngoei/8cace170-160b-4698-a4cb-e2f5bd38e05b>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/de2b7a8a-26f3-43ea-aa3d-07848ced4833> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GoluchowskiAgenor";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/f6360584-087f-4426-8d6e-a434d9f79ff8>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/e7a6720c-1dcb-4eaf-890c-7a14451c3a81> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "WekerleSandor";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/02d6c813-ff43-487c-8be8-4a3b1ca56289>,
+    <https://github.com/KfNGOe/kfngoei/34ab724d-6d76-4bb0-b917-bc8e0042ba6f>, <https://github.com/KfNGOe/kfngoei/b3c059b2-016c-4160-b9b5-f19c45e5eb00>,
+    <https://github.com/KfNGOe/kfngoei/d54ce213-4d19-40e4-8755-51dddc5be27a>, <https://github.com/KfNGOe/kfngoei/728c7d60-b9f2-4c85-8d0d-087b1d402a47>,
+    <https://github.com/KfNGOe/kfngoei/ef121e43-66de-4461-8985-356e7c6ecc77>, <https://github.com/KfNGOe/kfngoei/183c7e8d-8a68-4dab-bc9b-fcefdb96e567>,
+    <https://github.com/KfNGOe/kfngoei/c46562e7-9b43-4e5a-b2df-009644197076>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/2e9cfcd3-540e-4b97-9c49-0937f5695c2c> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "AndrassyGyula";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/3ac546c2-34ab-409c-85f8-22d0a024063a>,
+    <https://github.com/KfNGOe/kfngoei/c7570e32-0b6e-40da-a0a1-bc0d9f7aa979>, <https://github.com/KfNGOe/kfngoei/ae7d905f-2a08-49e0-966e-19d7930d0449>,
+    <https://github.com/KfNGOe/kfngoei/eaf31326-2da8-4704-8634-b2f820c9f337>, <https://github.com/KfNGOe/kfngoei/a9350403-47fb-4f64-b3ad-def1bad84dd8>,
+    <https://github.com/KfNGOe/kfngoei/27cc020f-370c-4219-9a25-4eb4b5516937>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/8bc0d192-2f9e-4be9-9698-3788048fc182> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "BismarckOtto";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/5c2ea0b9-1a97-4728-a0ee-9a7b7ffc3fb4>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/97006c5b-29b4-4e3b-8280-2b7b6f7bfd4f> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KaiserWilhelmII.";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/24b64aae-465f-461f-87f1-62aa43bf4ea6>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/30c6e274-f03d-4942-8dff-46b932e359ca> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "HohenloheKonrad";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/aa94f98b-fa2b-4dda-ac1e-b2932166f110>,
+    <https://github.com/KfNGOe/kfngoei/39e4e835-cc01-47d3-8534-3777b24ef271>, <https://github.com/KfNGOe/kfngoei/2cae1fae-4594-406b-aee7-8276bd67b50f>,
+    <https://github.com/KfNGOe/kfngoei/f5a1e729-7535-4fc5-be19-62806b1399b5>, <https://github.com/KfNGOe/kfngoei/1d4707b6-8b9a-4c32-839b-3d236a71ce1e>,
+    <https://github.com/KfNGOe/kfngoei/e7afb91c-11cf-4001-bdfc-615909231005>, <https://github.com/KfNGOe/kfngoei/b6adea13-2c35-4cf1-a2c9-88d066ec1337>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/c597d364-563c-41ae-96f0-30c3aa203683> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "BeckMaxWladimir";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/00e2ed2c-38c3-43dc-87e7-5e965338aab6>,
+    <https://github.com/KfNGOe/kfngoei/8e002ba5-6d44-4c50-aeef-7a05e4c312c2>, <https://github.com/KfNGOe/kfngoei/e51c5e7a-ac04-48c2-81f7-4aeda6145a66>,
+    <https://github.com/KfNGOe/kfngoei/bc2b6325-4c76-4b98-b1af-677b603a24d2>, <https://github.com/KfNGOe/kfngoei/f5d97d6d-4a7c-436c-80bd-bedfa0ea831d>,
+    <https://github.com/KfNGOe/kfngoei/e72a8e01-a110-4c81-8767-4dd50a5c7286>, <https://github.com/KfNGOe/kfngoei/415bbe46-709e-4bc7-ba2c-740da5c7a3dc>,
+    <https://github.com/KfNGOe/kfngoei/922f7495-48d2-41c9-bdb3-d4e279f46785>, <https://github.com/KfNGOe/kfngoei/c515a658-73db-4a7d-8401-8ea90720e74d>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/d5c54916-8996-492d-95f1-23ad67bf63f5> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "CoudenhoveKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/3311bf06-dbd9-4c4a-a525-d5324899355e>,
+    <https://github.com/KfNGOe/kfngoei/db8c45bd-f2e9-4309-85c9-fdc98714bd91>, <https://github.com/KfNGOe/kfngoei/27f908ff-733d-4e67-950a-f3c28a85103b>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/0c1a213e-a021-43ef-a564-29e65389f7ab> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DaszynskiIgnacy";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/2a7b526b-5609-4735-8203-b44bec55299d>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/4dcb4fea-7e42-4add-81a9-1a2f0681568a> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DzieduszyckiWojciech";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/905c78ff-a8bc-4371-8702-684cbe483ed9>,
+    <https://github.com/KfNGOe/kfngoei/970beef9-4a8c-4ffe-97fb-97b761012bc0>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/c38f10b5-830d-4899-bdc9-4398f1eb9d6a> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "UrbanKarl";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/ea749cbc-dfac-4fb4-9393-67a192f8400f>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/9ddff20d-1de8-4b1a-a413-86772e1b6e48> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "LecherOtto";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/34d9910c-65c4-4be5-a22f-cd5553ad34a7>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/e88f8fbf-b1a3-4e6b-b1ff-51fc8629b6ee> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "LoeckerJulius";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/cc56b598-e1d9-4bb1-9528-d69c8b194555>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/206d72bb-a8dd-47fe-b5b2-3d77ce5d008e> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "MarchetGustav";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/b2bc93fc-2924-4981-8a79-cb05201f4a17>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/bf649557-5375-4571-a51d-825875349a8b> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "VetterMoritz";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/2bebb8ce-06ec-4001-b253-a54ab379b3e9>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/6d0e00b7-4bef-4c53-97d0-764c597038dd> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TerlagoRobert";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/c5736487-dfe1-4ef9-851a-6e6a87d2ffb4>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/aef465dd-4082-4e07-bf86-7199392bd2aa> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TollingerJohann";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/ece9242d-d791-4810-9a66-c678b1c066f8>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/11f69df5-e467-45ab-882c-6455e0ea6244> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ChlumeckyJohann";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/de82e639-6588-4e88-867d-4fbc9dfa25d1>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/b392dd61-da0c-4f7a-bbde-c1e6f51bd665> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TaaffeEduard";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/99c6b442-5742-4340-a96f-02a791a943d1>,
+    <https://github.com/KfNGOe/kfngoei/377bbf7a-c851-4461-86a4-7e8659e62b4f>, <https://github.com/KfNGOe/kfngoei/4867dfc5-c46b-40c7-a096-99f115f74d07>,
+    <https://github.com/KfNGOe/kfngoei/90a080f8-76d8-444c-93d2-adf9be8cc22a>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/c3e7a109-bb82-4bc8-9200-a4c2d575b429> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SteinbachEmil";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/a330d325-4207-4d35-9789-c2282854909c>,
+    <https://github.com/KfNGOe/kfngoei/e77e73fe-1e52-4539-ab8e-b536d08349d4>, <https://github.com/KfNGOe/kfngoei/63f93f66-fe6e-4548-b9dd-2364419c3f83>,
+    <https://github.com/KfNGOe/kfngoei/dd70a69c-954f-47f7-88f2-a74fc86c5fa8>, <https://github.com/KfNGOe/kfngoei/fc6ea0f8-5007-4f65-a3b3-5fe94a7c5d63>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/11178b56-2eb9-4dcd-ba30-bf74e7138c8f> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "FejervaryGeza";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/1037aa56-0f58-49fd-b5a8-23f00f899064>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+<https://github.com/KfNGOe/kfngoei/87a86a4d-bc83-44e0-bcdc-ab5255709b60> a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KristoffyJozsef";
+  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/fbb39fc2-5fb1-40e0-94f2-9962d263ea96>;
+  kfngoeo:hasBody kfngoei:nnnnnn .
