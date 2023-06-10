@@ -1,9 +1,11 @@
-
+const LF = '\n' ;
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
+const header = require('./build_head.js') ;
+const body = require('./build_body.js') ;
 
 const path_in_tei=process.env.path_in_tei 
 const path_out_json=process.env.path_out_json
@@ -13,16 +15,27 @@ const ext_xml=process.env.ext_xml
 const ext_json=process.env.ext_json
 
 var i_xmlId = 0 ;
+var index_html = '' ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM (
-    `<!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml">`
+    '<!DOCTYPE html>' + LF + 
+    '<html xmlns="http://www.w3.org/1999/xhtml">' + LF
 ) ;
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);
-console.log(dom.serialize()) ;
+
+//build head
+var head = header ;
+$('html').append(head) ;
+
+//build nav bar
+
+
+index_html = dom.serialize() ;
+console.log('index.html =' + LF, index_html) ;
+
 /*
 (async () => {
     const dom = await JSDOM.fromFile("html/index.html") ;
@@ -30,6 +43,8 @@ console.log(dom.serialize()) ;
     const $ = require("jquery")(dom.window) ;
 }) () ;
 */
+
+/*
 //read xml file
 var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
@@ -40,7 +55,7 @@ titleShort = $xml.find( "[type='sub']" ).text();
 //$titleAttr = $title.attr('type') ;
 console.log('title = ', titleShort) ;
 
-/*
+
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 
 //start with xml:id = 0
