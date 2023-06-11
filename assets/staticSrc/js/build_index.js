@@ -5,7 +5,8 @@ const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 const header = require('./build_head.js') ;
-const body = require('./build_body.js') ;
+const navbar = require('./build_navbar.js') ;
+const footer = require('./build_footer.js') ;
 
 const path_in_tei=process.env.path_in_tei 
 const path_out_json=process.env.path_out_json
@@ -21,6 +22,17 @@ var index_html = '' ;
 const dom = new jsdom.JSDOM (
     '<!DOCTYPE html>' + LF + 
     '<html xmlns="http://www.w3.org/1999/xhtml">' + LF
+    + '<head>' + LF
+    + '</head>' + LF
+    + '<body>' + LF
+    + '<header>' + LF
+    + '</header>' + LF
+    + '<main>' + LF
+    + '</main>' + LF
+    + '<footer>' + LF
+    + '</footer>' + LF
+    + '</body>' + LF    
+    + '</html>' + LF
 ) ;
 // Importing the jquery and providing it
 // with the window
@@ -28,13 +40,29 @@ const $ = require("jquery")(dom.window);
 
 //build head
 var head = header ;
-$('html').append(head) ;
+$('html').find('head').append(head) ;
+
+//insert title
+//read about file
+var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
+console.log('tei data read: ', xml.length, ' bytes') ;
+
+xmlDoc = $.parseXML( xml ) ,
+$xml = $( xmlDoc ),
+titleSub = $xml.find( "[type='sub']" ).text();
+
+$('html').find('head').append('<title>' + titleSub + '</title>') ;
 
 //build nav bar
+var nav = navbar ;
+$('html').find('header').append(nav) ;
 
+//build footer
+$('html').find('footer').append(footer) ;
 
 index_html = dom.serialize() ;
 console.log('index.html =' + LF, index_html) ;
+
 
 /*
 (async () => {
@@ -45,17 +73,6 @@ console.log('index.html =' + LF, index_html) ;
 */
 
 /*
-//read xml file
-var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-console.log('tei data read: ', xml.length, ' bytes') ;
-
-xmlDoc = $.parseXML( xml ) ,
-$xml = $( xmlDoc ),
-titleShort = $xml.find( "[type='sub']" ).text();
-//$titleAttr = $title.attr('type') ;
-console.log('title = ', titleShort) ;
-
-
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 
 //start with xml:id = 0
