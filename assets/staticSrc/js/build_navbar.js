@@ -8,7 +8,7 @@ const navbar =
             '</a>' + LF +
             '<hr />' + LF +
             '<a href="./" style="flex: 0 0 50%;display: flex; justify-content: center;">' + LF +
-                '<img style=" max-width: 100% !important;max-height: 100% !important;margin: 0;" src="dist/assets/images/mockup/schriftzug_de.png" title="Edition der Tagebücher Karl Grafen Zinzendorfs" />' + LF +
+                '<img style=" max-width: 100% !important;max-height: 100% !important;margin: 0;" src="dist/assets/images/mockup/schriftzug_de.png" title="Digitale Edition von Tagebüchern und Lebenserinnerungen Josef Maria Baernreithers" />' + LF +
             '</a>' + LF +
             '<hr />' + LF +
         '</div>' + LF +
@@ -22,13 +22,7 @@ const navbar =
                         '<span class="navbar-toggler-icon"></span>' + LF +
                     '</button>' + LF +
                     '<div class="collapse navbar-collapse" id="navbarResponsive">' + LF +
-                        '<ul class="navbar-nav">' + LF +
-                            '<li class="nav-item">' + LF +
-                                '<a class="nav-link" href="index.html">' + LF +
-                                    '<span class="de">Start</span>' + LF +
-                                    '<span class="en"></span>' + LF +
-                                '</a>' + LF +
-                            '</li>' + LF +
+                        '<ul class="navbar-nav">' + LF +                            
                             '<li class="nav-item">' + LF +
                                 '<a class="nav-link" href="register.html">' + LF +
                                     '<span class="de">Register</span>' + LF +

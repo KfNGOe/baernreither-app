@@ -29,7 +29,7 @@ const dom = new jsdom.JSDOM (
     + '</header>' + LF
     + '<main>' + LF
     + '</main>' + LF
-    + '<footer>' + LF
+    + '<footer class="footer mt-auto pt-5">' + LF
     + '</footer>' + LF
     + '</body>' + LF    
     + '</html>' + LF
@@ -61,8 +61,13 @@ $('html').find('header').append(nav) ;
 $('html').find('footer').append(footer) ;
 
 index_html = dom.serialize() ;
-console.log('index.html =' + LF, index_html) ;
+//console.log('index.html =' + LF, index_html) ;
 
+//write html file
+//filepath = path_out_tei + filename + ext_xml ;
+//console.log(filepath);
+fs.writeFileSync('html/index.html', index_html ) ;
+console.log('xml data written: ', index_html.length, ' bytes')
 
 /*
 (async () => {

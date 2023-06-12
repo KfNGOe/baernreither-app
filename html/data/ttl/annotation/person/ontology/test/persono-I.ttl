@@ -1,0 +1,499 @@
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bfo: <http://id.loc.gov/ontologies/bibframe.rdf> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
+@base <https://dhplus.sbg.ac.at/ontology/person> .
+
+<https://dhplus.sbg.ac.at/ontology/person>
+  a owl:Ontology ;
+  dc:title "dhPLUS Ontologie"@de ;
+  dc:title "dhPLUS Ontology"@en ;
+  dct:creator "Richard Hörmann" ;
+  owl:comment "This is an ontology of the dhPLUS repository for Digital Humanities Projects of the University of Salzburg."@en ;
+  owl:versionInfo "0.1"^^xsd:string, "2019-12-27"^^xsd:date ;
+  owl:versionIRI <https://dhplus.sbg.ac.at/ontology#/0.1> ;
+  owl:imports
+        <https://d-nb.info/standards/elementset/gnd> ,
+        ecrm: ,
+        bfo: ,
+        <http://www.lexinfo.net/ontology/3.0/lexinfo> ,
+        <http://www.w3.org/ns/lemon/ontolex> ;
+.
+
+#################################################################
+#    Classes
+#################################################################
+
+#dhplus
+<https://dhplus.sbg.ac.at/ontology#E21_Person>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+
+#owl classification
+    rdfs:subClassOf
+      <http://erlangen-crm.org/current/E21_Person> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ,
+      <https://dhplus.sbg.ac.at/ontology#PersonSet> ;
+
+
+#shacl validation
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#creator>;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#dateCreated>;
+                    sh:datatype xsd:dateTime
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#dateModified>;
+                    sh:datatype xsd:dateTime
+                ] ;
+    sh:property [
+                   sh:path <https://dhplus.sbg.ac.at/ontology#datePublished>;
+                   sh:datatype xsd:dateTime
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#source> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://viaf.org/viaf/"
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#source> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "https://orcid.org/"
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#P98i_was_born> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "/birth"
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#P100i_died_in> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "/death"
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#source> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "/gnd-local"
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#source> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "/wikiData-local"
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#source> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "/projSpec"
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#P1_is_identified_by> ;
+                    sh:class <https://dhplus.sbg.ac.at/ontology#NameOfThePerson> ;
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#P2_has_type> ;
+                    sh:class <https://dhplus.sbg.ac.at/ontology#E55_Type> ;
+                ] ;
+
+
+#sparql generation
+sh:rule [
+                a sh:SPARQLRule ;
+                sh:construct """
+        PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+            CONSTRUCT {
+                ?s ?p ?o
+            }
+            WHERE {
+                ?s dhpluso:source ?o
+            }
+      """ ;
+#sh:condition dhpluso:E71_Human-Made_Thing ;
+]
+.
+<http://erlangen-crm.org/current/E21_Person>
+    a owl:Class, sh:NodeShape ;
+#owl classification
+    rdfs:subClassOf
+      <https://dhplus.sbg.ac.at/ontology#Mapping> ,
+      <https://dhplus.sbg.ac.at/ontology#CidocCRM> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ;
+.
+
+#name
+<https://dhplus.sbg.ac.at/ontology#NameOfThePerson>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+
+#owl classification
+    rdfs:subClassOf
+      <http://erlangen-crm.org/current/E42_Identifier> ,
+      <http://d-nb.info/standards/elementset/gnd#NameOfThePerson> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ,
+      <https://dhplus.sbg.ac.at/ontology#PersonSet> ;
+
+#shacl validation
+    sh:property [
+                    sh:path rdfs:label ;
+                    sh:datatype rdf:langString ;
+                    sh:maxCount "1" ;
+                    sh:languageIn "de" ;
+                ] ;
+    sh:property [
+                    sh:path rdfs:label ;
+                    sh:datatype rdf:langString ;
+                    sh:maxCount "1" ;
+                    sh:languageIn "en" ;
+                ] ;
+
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#isDefinedBy> ;
+                    sh:nodeKind sh:BlankNode ;
+                ] ;
+
+#sparql generation
+    sh:rule [
+                a sh:SPARQLRule ;
+                sh:construct """
+        PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+            CONSTRUCT {
+                ?s ?p ?o
+            }
+            WHERE {
+                ?s dhpluso:source ?o
+            }
+      """ ;
+            #sh:condition dhpluso:E71_Human-Made_Thing ;
+            ]
+.
+<http://d-nb.info/standards/elementset/gnd#NameOfThePerson>
+    a owl:Class, sh:NodeShape ;
+#owl classification
+    rdfs:subClassOf
+      <https://dhplus.sbg.ac.at/ontology#Mapping> ,
+      <https://dhplus.sbg.ac.at/ontology#GND> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ;
+.
+<http://erlangen-crm.org/current/E42_Identifier>
+    a owl:Class, sh:NodeShape ;
+#owl classification
+    rdfs:subClassOf
+      <https://dhplus.sbg.ac.at/ontology#Mapping> ,
+      <https://dhplus.sbg.ac.at/ontology#CidocCRM> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ;
+.
+
+_:NameShape
+    a sh:NodeShape ;
+
+#shacl validation
+    sh:targetSubjectsOf [ sh:path <https://dhplus.sbg.ac.at/ontology#preferredNameForThePerson> ] ;
+    sh:property [
+                    sh:path rdf:type ;
+                    sh:class rdfs:Class ;
+                ];
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#preferredNameForThePerson> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#variantNameForThePerson> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#forename> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#prefix> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#surname> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#personalName> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#counting> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#nameAddition> ;
+                    sh:datatype xsd:string
+                ] ;
+
+#sparql generation
+    sh:rule [
+                a sh:SPARQLRule ;
+                sh:construct """
+        PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+            CONSTRUCT {
+                ?s ?p ?o
+            }
+            WHERE {
+                ?s dhpluso:source ?o
+            }
+      """ ;
+            #sh:condition dhpluso:E71_Human-Made_Thing ;
+            ]
+.
+
+<https://dhplus.sbg.ac.at/ontology#Gender>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+
+#owl classification
+    rdfs:subClassOf
+      <http://erlangen-crm.org/current/E55_Type> ,
+      <http://schema.org/GenderType> ,
+      <https://dhplus.sbg.ac.at/ontology#Entity> ,
+      <https://dhplus.sbg.ac.at/ontology#PersonSet> ;
+
+#shacl validation
+    sh:property [
+        sh:path <https://dhplus.sbg.ac.at/ontology#gender> ;
+        sh:or (
+                  [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#male> ]
+                  [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#female> ]
+                  [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#notKnown> ]
+              )
+    ] ;
+
+#sparql generation
+    sh:rule [
+                a sh:SPARQLRule ;
+                sh:construct """
+        PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+            CONSTRUCT {
+                ?s ?p ?o
+            }
+            WHERE {
+                ?s dhpluso:source ?o
+            }
+      """ ;
+            #sh:condition dhpluso:E71_Human-Made_Thing ;
+            ]
+.
+<http://schema.org/GenderType>
+    a owl:Class, sh:NodeShape ;
+#owl classification
+    rdfs:subClassOf
+        <https://dhplus.sbg.ac.at/ontology#Mapping> ,
+        <https://dhplus.sbg.ac.at/ontology#Schema> ,
+        <https://dhplus.sbg.ac.at/ontology#Entity> ;
+.
+
+#gnd
+<https://dhplus.sbg.ac.at/ontology#Gnd-local>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+
+#owl classification
+
+#shacl validation
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#hasPart> ;
+                    sh:nodeKind sh:BlankNode
+                ] ;
+
+#sparql generation
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+                CONSTRUCT {
+                    ?s ?p ?o
+                }
+                WHERE {
+                    ?s ?p ?o
+                }
+        """ ;
+        sh:condition dhpluso:E71_Human-Made_Thing ;
+    ]
+.
+
+<https://d-nb.info/standards/elementset/gnd#Person>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path wdrs:describedby ;
+                    sh:property [
+                                    sh:path dc:license ;
+                                    sh:nodeKind sh:IRI ;
+                                    sh:pattern "http://creativecommons.org/publicdomain/"
+                                ] ;
+                    sh:property [
+                                   sh:path dc:modified ;
+                                   sh:datatype xsd:dateTime
+                                ]
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#gndIdentifier> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path owl:sameAs ;
+                    sh:nodeKind sh:IRI
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> ;
+                    sh:datatype xsd:string
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> ;
+                    sh:datatype xsd:string ;
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#forename> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#prefix> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#surname> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#personalName> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#counting> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                    sh:property [
+                                    sh:path <https://d-nb.info/standards/elementset/gnd#nameAddition> ;
+                                    sh:datatype xsd:string ;
+                                ] ;
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#gender> ;
+                    sh:or (
+                              [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#male> ]
+                              [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#female> ]
+                              [ sh:hasValue <https://d-nb.info/standards/vocab/gnd/gender#notKnown> ]
+                          )
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#dateOfBirth> ;
+                    sh:or (
+                              [ sh:datatype xsd:date ]
+                              [ sh:datatype xsd:gYear ]
+                          )
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#dateOfDeath> ;
+                    sh:or (
+                              [ sh:datatype xsd:date ]
+                              [ sh:datatype xsd:gYear ]
+                          )
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#placeOfBirth> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "https://d-nb.info/gnd/"
+                ] ;
+    sh:property [
+                    sh:path <https://d-nb.info/standards/elementset/gnd#placeOfDeath> ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "https://d-nb.info/gnd/"
+                ]
+.
+
+#wikidata
+<https://dhplus.sbg.ac.at/ontology#WikiData-local>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#hasPart> ;
+                    sh:nodeKind sh:BlankNode ;
+                ] .
+
+<http://schema.org/Dataset>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path schema:about ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] ;
+    sh:property [
+                    sh:path cc:license ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://creativecommons.org/publicdomain/"
+                ] ;
+    sh:property [
+                    sh:path schema:version ;
+                    sh:datatype xsd:integer
+                ] ;
+    sh:property [
+                    sh:path schema:dateModified ;
+                    sh:datatype xsd:dateTime
+                ] ;
+.
+
+<http://wikiba.se/ontology#Item>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:not [ sh:property [
+                             sh:path rdfs:label ;
+                             sh:not [
+                                        sh:languageIn ("de")
+                                    ]
+                         ]
+           ] ;
+    sh:not [ sh:property [
+                             sh:path rdfs:label ;
+                             sh:not [
+                                        sh:languageIn ("en")
+                                    ]
+                         ]
+           ] ;
+    sh:property [
+                    sh:path wdt:P569 ;
+                    sh:datatype xsd:dateTime
+                ] ;
+    sh:property [
+                    sh:path wdt:P570 ;
+                    sh:datatype xsd:dateTime
+                ] ;
+    sh:property [
+                    sh:path wdt:P19 ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] ;
+    sh:property [
+                    sh:path wdt:P20 ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] ;
+    sh:property [
+                    sh:path wdt:P21 ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] ;
+.
+
+#projspec
+<https://dhplus.sbg.ac.at/ontology#ProjectSpecific>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
