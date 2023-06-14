@@ -1,2 +1,5 @@
-echo "get current date"
-node ./assets/staticSrc/js/build_gnd.js
+echo "build register.html"
+node assets/staticSrc/js/build_register.js
+echo "build register.html done"
+
+./dl_assets.sh

@@ -68,32 +68,3 @@ index_html = dom.serialize() ;
 //console.log(filepath);
 fs.writeFileSync('html/index.html', index_html ) ;
 console.log('xml data written: ', index_html.length, ' bytes')
-
-/*
-(async () => {
-    const dom = await JSDOM.fromFile("html/index.html") ;
-    //console.log(dom.serialize()) ;
-    const $ = require("jquery")(dom.window) ;
-}) () ;
-*/
-
-/*
-var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
-
-//start with xml:id = 0
-getObject(xmlJs) ;
-
-//write xml file
-filepath = path_out_tei + filename + ext_xml ;
-console.log(filepath);
-xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
-fs.writeFileSync(filepath, xml ) ;
-console.log('xml data written: ', xml.length, ' bytes')
-
-//write json file
-filepath = path_out_json + filename + ext_json ;
-console.log(filepath);
-var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync(filepath, xmlJsString ) ;
-console.log('json data written: ', xmlJsString.length, ' bytes')
-*/

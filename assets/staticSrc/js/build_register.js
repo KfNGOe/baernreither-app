@@ -20,9 +20,30 @@ var index_html = '' ;
 
 
 (async () => {
-    const dom = await JSDOM.fromFile("html/index.html") ;
+    const dom = await JSDOM.fromFile("data/html/register_temp.html") ;
     //console.log(dom.serialize()) ;
     const $ = require("jquery")(dom.window) ;
+    
+    //build head
+    var head = header ;
+    $('html').find('head').append(head) ;
+
+    //build nav bar
+    var nav = navbar ;
+    $('html').find('header').append(nav) ;
+
+    //table    
+    var table = fs.readFileSync("data/html/register_table_temp.html", 'utf8');
+    console.log('html data read: ', table.length, ' bytes') ;
+    //console.log('table =', table) ;
+    $('html').find('.register-menue').append(table) ;
+
+    //write html file
+    var html = dom.serialize() ;
+    //filepath = path_out_tei + filename + ext_xml ;
+    //console.log(filepath);
+    fs.writeFileSync('html/register.html', html ) ;
+    console.log('html data written: ', html.length, ' bytes')
 }) () ;
 
 /*
