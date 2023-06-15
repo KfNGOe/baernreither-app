@@ -18,6 +18,11 @@ PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#>
 PREFIX gnd: <http://d-nb.info/standards/elementset/gnd#>
 PREFIX tei: <http://www.tei-c.org/ns/1.0>
 
+#CONSTRUCT {
+ #   ?s_person ?p_person ?o_person ;
+  #            kfngoeo:gender ?gender ;
+   # .    
+#}
 SELECT DISTINCT (?s_person AS ?localID) ?entry_person
 WHERE {
     ?s_anno rdf:type kfngoeo:AnnoPerson ;
@@ -25,9 +30,22 @@ WHERE {
             kfngoeo:hasBody ?s_person ;
     .
     ?s_person rdf:type kfngoeo:Person ;
-         	kfngoeo:preferredNameEntityForThePerson [
-                a kfngoeo:NameOfThePerson ;
-                kfngoeo:preferredNameForThePerson ?entry_person ;                
-             ]
-	.    
+			#?p_person ?o_person ;
+            kfngoeo:preferredNameEntityForThePerson [
+            	a kfngoeo:NameOfThePerson ;
+            	kfngoeo:preferredNameForThePerson ?entry_person ;                
+            ] ;
+            kfngoeo:identifier [
+        		a kfngoeo:PropertyValue ;
+				kfngoeo:propertyID "GND" ;
+				kfngoeo:value ?gnd_person ;
+    		]              
+	.
+    BIND(URI(CONCAT("https://d-nb.info/gnd/", ?gnd_person)) AS ?s_gnd)
+    ?s_gnd rdf:type gndo:DifferentiatedPerson ;
+           gndo:gndIdentifier ?gnd_gnd;
+           gndo:preferredNameForThePerson ?name_gnd;
+           gndo:gender ?gender;
+	.
+    #FILTER (?gnd_person = ?gnd_gnd)		    
 }
