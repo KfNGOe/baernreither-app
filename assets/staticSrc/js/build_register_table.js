@@ -16,6 +16,53 @@ var i_xmlId = 0 ;
 var index_html = '' ;
 var html = '' ;
 
+function getObject(obj) {
+    let length = Object.keys(obj).length ;
+    console.log('object length =', length) ;
+    Object.keys(obj).forEach((key) => {
+       console.log('key = ', key) ;       
+       switch(key) {
+          case 'nnnn':
+             console.log('nnnn = ', obj[key]) ;
+             break ;
+          case 'bindings':
+             //console.log('bindings = ',obj[key]) ;
+             if(Array.isArray(obj[key])) {
+                console.log('Hello, ', key,' is an array') ;
+                getArray(obj[key]) ;               
+             } else {
+                console.log('parsing json failed, ', key, ' is not an array') ;
+             }
+             break ;            
+          case 'results':
+             //console.log('results =  ', obj[key]) ;
+             if (typeof obj[key] === 'object') {                    
+                console.log('Hello, ', key, ' is an object') ;
+                getObject(obj[key]) ;
+             } else {
+                console.log('parsing json failed, ', key, ' is not an object') ;
+             }
+             break ;                  
+          default:
+             console.log('no case') ;
+             break ;
+       } 
+    }) ;
+    //console.log('result', length) ;
+} ; 
+ 
+function getArray(arr) {
+    let length = arr.length ;   
+    console.log('array length =', length) ;
+    arr.forEach((item, index, array) => {
+       if (typeof item === 'object') {
+          console.log('index = ', index) ;          
+          getObject(item) ;
+       }
+    }) ;
+    //console.log('result: ',arr) ;   
+} ;
+
 
 (async () => {
     const dom = await JSDOM.fromFile("data/html/register_table_temp.html") ;
@@ -26,55 +73,11 @@ var html = '' ;
     console.log('json data read: ', json.length, ' bytes')
     var jsonJs = JSON.parse(json) ;
     //console.log('jsonJs = ', jsonJs) ;
-    
+      
+    getObject(jsonJs) ;
+        
     html = $('html').find('body').html() ;
-    console.log('html = ', html) ;
-
-    function getObject(obj) {
-        let length = Object.keys(obj).length ;
-        console.log('object length =', length) ;
-        Object.keys(obj).forEach((key) => {
-           console.log('key = ', key, ', value = ', obj[key]) ;       
-           switch(key) {
-              case 'nnnn':
-                 console.log('nnnn = ', obj[key]) ;
-                 break ;
-              case 'nnnnn':
-                 console.log('nnnnn = ',obj[key]) ;
-                 if(Array.isArray(obj[key])) {
-                    console.log('Hello nnnnn array') ;
-                    getArray(obj[key]) ;               
-                 } else {
-                    console.log(obj.constructor.name, 'property is not an array: ', key) ;
-                 }
-                 break ;            
-              case 'nnnnnn':
-                 console.log('nnnnnn =  ', obj[key]) ;
-                 if (typeof obj[key] === 'object') {
-                    //obj[key]["xml:id"] = 'test' ;
-                    //console.log('attributes = ', obj[key]) ;
-                 }
-                 break ;                  
-              default:
-                 console.log('no case') ;
-                 break ;
-           } 
-        }) ;
-        //console.log('result', length) ;
-     } ; 
-     
-     function getArray(arr) {
-        let length = arr.length ;   
-        console.log('array length =', length) ;
-        arr.forEach((item, index, array) => {
-           if (typeof item === 'object') {
-              console.log('item = ', item, ', index = ', index) ;          
-              getObject(item) ;
-           }
-        }) ;
-        //console.log('result: ',arr) ;   
-     } ;
-     
+    //console.log('html = ', html) ;
 
     //write html file    
     //filepath = path_out_tei + filename + ext_xml ;

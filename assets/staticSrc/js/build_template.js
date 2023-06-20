@@ -28,17 +28,18 @@ function getObject(obj) {
          case 'nnnnn':
             console.log('nnnnn = ',obj[key]) ;
             if(Array.isArray(obj[key])) {
-               console.log('Hello nnnnn array') ;
+               console.log('Hello, ', obj[key],' is an array') ;
                getArray(obj[key]) ;               
             } else {
-               console.log(obj.constructor.name, 'property is not an array: ', key) ;
+               console.log('parsing failed, ', obj[key], ' is not an array') ;
             }
             break ;            
          case 'nnnnnn':
             console.log('nnnnnn =  ', obj[key]) ;
-            if (typeof obj[key] === 'object') {
-               //obj[key]["xml:id"] = 'test' ;
-               //console.log('attributes = ', obj[key]) ;
+            if (typeof obj[key] === 'object') {                    
+               console.log('Hello, ', obj[key], ' is an object') ;
+            } else {
+               console.log('parsing failed, ', obj[key], ' is not an object') ;
             }
             break ;                  
          default:
