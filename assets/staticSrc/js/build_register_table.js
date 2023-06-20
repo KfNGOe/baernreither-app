@@ -14,6 +14,7 @@ const ext_json=process.env.ext_json
 
 var i_xmlId = 0 ;
 var index_html = '' ;
+var html = '' ;
 
 
 (async () => {
@@ -25,16 +26,61 @@ var index_html = '' ;
     console.log('json data read: ', json.length, ' bytes')
     var jsonJs = JSON.parse(json) ;
     //console.log('jsonJs = ', jsonJs) ;
+    
+    html = $('html').find('body').html() ;
+    console.log('html = ', html) ;
 
-    //$('#table-register').get() ;
-    console.log('html = ', $('#table-register').get()) ;
+    function getObject(obj) {
+        let length = Object.keys(obj).length ;
+        console.log('object length =', length) ;
+        Object.keys(obj).forEach((key) => {
+           console.log('key = ', key, ', value = ', obj[key]) ;       
+           switch(key) {
+              case 'nnnn':
+                 console.log('nnnn = ', obj[key]) ;
+                 break ;
+              case 'nnnnn':
+                 console.log('nnnnn = ',obj[key]) ;
+                 if(Array.isArray(obj[key])) {
+                    console.log('Hello nnnnn array') ;
+                    getArray(obj[key]) ;               
+                 } else {
+                    console.log(obj.constructor.name, 'property is not an array: ', key) ;
+                 }
+                 break ;            
+              case 'nnnnnn':
+                 console.log('nnnnnn =  ', obj[key]) ;
+                 if (typeof obj[key] === 'object') {
+                    //obj[key]["xml:id"] = 'test' ;
+                    //console.log('attributes = ', obj[key]) ;
+                 }
+                 break ;                  
+              default:
+                 console.log('no case') ;
+                 break ;
+           } 
+        }) ;
+        //console.log('result', length) ;
+     } ; 
+     
+     function getArray(arr) {
+        let length = arr.length ;   
+        console.log('array length =', length) ;
+        arr.forEach((item, index, array) => {
+           if (typeof item === 'object') {
+              console.log('item = ', item, ', index = ', index) ;          
+              getObject(item) ;
+           }
+        }) ;
+        //console.log('result: ',arr) ;   
+     } ;
+     
 
-    //write html file
-    html = dom.serialize() ;
+    //write html file    
     //filepath = path_out_tei + filename + ext_xml ;
     //console.log(filepath);
     fs.writeFileSync('html/register_person.html', html ) ;
-    console.log('html data written: ', html.length, ' bytes')
+    console.log('html data written: ', html.length, ' bytes') ;
 
 }) () ;
 /*

@@ -22,40 +22,25 @@ function getObject(obj) {
    Object.keys(obj).forEach((key) => {
       console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
-         case 'declaration':
-            console.log('declaration = ', obj[key]) ;
+         case 'nnnn':
+            console.log('nnnn = ', obj[key]) ;
             break ;
-         case 'instruction':
-            console.log('instruction = ', obj[key]) ;
-            break ;
-         case 'elements':
-            console.log('elements = ',obj[key]) ;
+         case 'nnnnn':
+            console.log('nnnnn = ',obj[key]) ;
             if(Array.isArray(obj[key])) {
-               console.log('Hello elements array') ;
+               console.log('Hello nnnnn array') ;
                getArray(obj[key]) ;               
             } else {
                console.log(obj.constructor.name, 'property is not an array: ', key) ;
             }
             break ;            
-         case 'attributes':
-            console.log('attributes =  ', obj[key]) ;
+         case 'nnnnnn':
+            console.log('nnnnnn =  ', obj[key]) ;
             if (typeof obj[key] === 'object') {
                //obj[key]["xml:id"] = 'test' ;
                //console.log('attributes = ', obj[key]) ;
             }
-            break ;         
-         case 'type':
-            console.log('result: ',obj[key]) ;
-            break ;
-         case 'name':
-            console.log('result: ',obj[key]) ;
-            break ;
-         case 'text':
-            console.log('result: ',obj[key]) ;
-            break ;
-         case 'comment':
-            console.log('comment = ', obj[key]) ;            
-            break ;
+            break ;                  
          default:
             console.log('no case') ;
             break ;
