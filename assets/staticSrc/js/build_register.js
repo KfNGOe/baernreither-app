@@ -33,16 +33,16 @@ var index_html = '' ;
     $('html').find('header').append(nav) ;
 
     //table    
-    var table = fs.readFileSync("data/html/register_table_temp.html", 'utf8');
+    var table = fs.readFileSync("html/register_person.html", 'utf8');
     console.log('html data read: ', table.length, ' bytes') ;
     //console.log('table =', table) ;
-    $('html').find('.register-menue').append(table) ;
+    $('html').find('#pageContent div.row').append(table) ;
 
     //write html file
     var html = dom.serialize() ;
     //filepath = path_out_tei + filename + ext_xml ;
     //console.log(filepath);
-    fs.writeFileSync('html/register.html', html ) ;
+    fs.writeFileSync('html/register_person.html', html ) ;
     console.log('html data written: ', html.length, ' bytes')
 }) () ;
 

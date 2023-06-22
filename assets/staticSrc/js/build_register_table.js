@@ -50,7 +50,7 @@ function getObject(obj) {
             $('tbody').find('tr').last().append('<td>' + obj[key].value + '</td>') ;
             break ;
          case 'gender':            
-            $('tbody').find('tr').last().append('<td>' + obj[key].value + '</td>') ;
+            $('tbody').find('tr').last().append('<td style="display: none">' + obj[key].value + '</td>') ;
             break ;
          case 'birth':            
             $('tbody').find('tr').last().append('<td>' + obj[key].value + '</td>') ;
@@ -61,8 +61,9 @@ function getObject(obj) {
          case 'bio':            
             $('tbody').find('tr').last().append('<td>' + obj[key].value + '</td>') ;
             break ;
-         case 'pid':            
-            $('tbody').find('tr').last().append('<td>' + obj[key].value + '</td>') ;
+         case 'pid':
+            let href = 'https://d-nb.info/gnd/' + obj[key].value ;
+            $('tbody').find('tr').last().append('<td><a href="' + href + '" target="_blank">' + obj[key].value + '</a></td>') ;
             break ;            
          default:
             console.log('no case');
@@ -97,7 +98,7 @@ var jsonJs = JSON.parse(json) ;
 //console.log('jsonJs = ', jsonJs) ;
 
 getObject(jsonJs);
-html = $('html').html() ;
+html = $('html').find('body').html() ;
 
 //write html file    
 //filepath = path_out_tei + filename + ext_xml ;
