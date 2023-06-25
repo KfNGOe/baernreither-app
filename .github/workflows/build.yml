@@ -27,5 +27,5 @@ jobs:
         run: sudo bash start_graphdb.sh &      
       - name: Connect to graphdb
         run: sudo bash connect_graphdb.sh
-      - name: build xml ID
-        run: sudo bash build_xmlId.sh
+      #- name: build xml ID
+      #  run: sudo bash build_xmlId.sh
