@@ -10,7 +10,8 @@ npm install jquery
 npm install jsdom
 
 echo "Install excel to xml library"
-npm install aspose.cells
+npm install convert-excel-to-json
+#npm install aspose.cells
 
 #echo "install localtunnel"
 #npm install -g localtunnel
