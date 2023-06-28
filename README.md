@@ -8,3 +8,7 @@ dev-baernreither-app
 - https://fleetdm.com/engineering/tips-for-github-actions-usability
 
 - https://www.testmo.com/guides/github-actions-parallel-testing
+
+- https://github.com/localtunnel/localtunnel
+
+- https://fleetdm.com/engineering/tips-for-github-actions-usability
