@@ -42,14 +42,14 @@ graphDBEndpoint
     var sparql = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
     console.log('sparql data read: ', sparql.length, ' bytes')
     
-    await graphDBEndpoint.query(sparql).then((result) => {
-        console.log(
-            'Read result:\n' + JSON.stringify(result, null, 2)
-        );
-    })
-    .catch((err) => {
+    let result = await graphDBEndpoint.query(sparql).catch((err) => {
         console.log(err);
     });
+
+    let result_json = JSON.stringify(result) ;
+
+    fs.writeFileSync('./data/json/test.json', result_json, 'utf8') ;
+        console.log('json data written: ', result_json.length, ' bytes')
     
 })() ;
 

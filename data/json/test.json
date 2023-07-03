@@ -1,0 +1,395 @@
+{
+    "head": {
+        "vars": [
+            "s_str",
+            "p",
+            "o"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/gnd/119033364"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Douglas_Adams"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://isni.org/isni/0000000080456315"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://www.wikidata.org/entity/Q42"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://id.loc.gov/rwo/agents/n80076765"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2002/07/owl#sameAs"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://viaf.org/viaf/113230702"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2007/05/powder-s#describedby"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/gnd/119033364/about"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://xmlns.com/foaf/0.1/page"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://de.wikipedia.org/wiki/Douglas_Adams"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#dateOfBirth"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                    "type": "literal",
+                    "value": "1952-03-11"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#dateOfDeath"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                    "type": "literal",
+                    "value": "2001-05-11"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#gender"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/vocab/gnd/gender#male"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#geographicAreaCode"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#geographicAreaCode"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#gndIdentifier"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "119033364"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#gndSubjectCategory"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "(DE-588a)119033364"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "(DE-588c)4283975-0"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#placeOfBirth"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/gnd/4009351-7"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#placeOfDeath"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/gnd/4118400-2"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson"
+                },
+                "o": {
+                    "type": "bnode",
+                    "value": "node1"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "Adams, Douglas"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "Science-fiction-autor"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson"
+                },
+                "o": {
+                    "type": "bnode",
+                    "value": "node2"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "https://d-nb.info/standards/elementset/gnd#variantNameForThePerson"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "Adams, Douglas Noe͏̈l"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364/about"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://purl.org/dc/terms/license"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://creativecommons.org/publicdomain/zero/1.0/"
+                }
+            },
+            {
+                "s_str": {
+                    "type": "literal",
+                    "value": "https://d-nb.info/gnd/119033364/about"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://purl.org/dc/terms/modified"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "type": "literal",
+                    "value": "2016-10-14T16:03:35.000"
+                }
+            }
+        ]
+    },
+    "success": true
+}
