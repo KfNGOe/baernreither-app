@@ -14,35 +14,33 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
             prefix: 'entest',
             iri: 'http://ont.enapso.com/test#'
         }
-    ],
+    ], 
+    //format: 'text/turtle',   
     triplestore: 'graphdb',
     version: 10,
     apiType: 'RDF4J'
 }) ;
 
-//graphdb clear a repository
-/*
 graphDBEndpoint
     .query(
-        'select * where {' + 
-            '?s ?p ?o .' +
-        '}',        
+        'SELECT ?s ?p ?o WHERE { ?s ?p ?o }',
+        { transform: 'toJSON' }
     )
     .then((result) => {
         console.log(
-            'Read result:\n' + JSON.stringify(result, null, 2)
+            'Read the classes name:\n' + JSON.stringify(result, null, 2)
         );
     })
     .catch((err) => {
         console.log(err);
     });
-*/
 
+/*
 (async () => {    
     var sparql = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
     console.log('sparql data read: ', sparql.length, ' bytes')
     
-    let result = await graphDBEndpoint.query(sparql).catch((err) => {
+    let result = await graphDBEndpoint.query(sparql, {format: 'text/turtle'}).catch((err) => {
         console.log(err);
     });
 
@@ -52,4 +50,4 @@ graphDBEndpoint
         console.log('json data written: ', result_json.length, ' bytes')
     
 })() ;
-
+*/
