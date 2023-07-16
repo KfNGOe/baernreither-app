@@ -1,11 +1,50 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
-@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+rredNameEntityForThePerson> .
 
-rdf:type a rdf:Property .
+<https://d-nb.info/standards/elementset/gnd#forename> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#forename> .
 
-rdfs:subPropertyOf a rdf:Property, owl:TransitiveProperty .
+<https://d-nb.info/standards/elementset/gnd#surname> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#surname> .
+
+<https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> .
+
+<https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> .
+
+<https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> .
+
+<https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> .
+
+<http://purl.org/dc/terms/license> a rdf:Property;
+  rdfs:subPropertyOf <http://purl.org/dc/terms/license> .
+
+<http://purl.org/dc/terms/modified> a rdf:Property;
+  rdfs:subPropertyOf <http://purl.org/dc/terms/modified> .
+
+rdfs:isDefinedBy rdfs:subPropertyOf rdfs:seeAlso .
+
+rdf:Alt rdfs:subClassOf rdfs:Container .
+
+rdf:Bag rdfs:subClassOf rdfs:Container .
+
+rdf:Seq rdfs:subClassOf rdfs:Container .
+
+rdfs:ContainerMembershipProperty rdfs:subClassOf rdf:Property .
+
+rdfs:Datatype rdfs:subClassOf rdfs:Class .
+
+rdfs:comment rdfs:range rdfs:Literal .
+
+rdfs:label rdfs:range rdfs:Literal .
+
+_:node1 <https://d-nb.info/standards/elementset/gnd#forename> "Douglas";
+  <https://d-nb.info/standards/elementset/gnd#surname> "Adams" .
+
+_:node2 <https://d-nb.info/standards/elementset/gnd#forename> "Douglas Noe͏̈l";
+  <https://d-nb.info/standards/elementset/gnd#surname> "Adams" .
+
+<https://d-nb.info/gnd/119033364/about> <http://purl.org/dc/terms/license> <http://creativecommons.org/publicdomain/zero/1.0/>;
+  <http://purl.org/dc/terms/modified> "2016-10-14T16:03:35.000"^^xsd:dateTime .

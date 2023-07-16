@@ -1,4 +1,5 @@
 const fs = require('fs') ;
+const normalize = require('normalize-space') ;
 
 const RDFMimeType = require('graphdb/lib/http/rdf-mime-type');
 //const SparqlJsonResultParser = require('graphdb/lib/parser/sparql-json-result-parser');
@@ -36,33 +37,36 @@ console.log('repository: ', repository.repositoryClientConfig) ;
 //repository.registerParser(new SparqlJsonResultParser()) ;
 
 (async () => {
-    const payload = new GetQueryPayload()
-    .setResponseType(mimeType)
-    .setQuery(query)
-    .setQueryType(queryType)
-    .setLimit(3) ;
-
     //get namespaced prefixes
     const prefixes = await repository.getNamespaces() ;
     console.log('prefixes: ', prefixes) ;
-
-    var sparql = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
-    console.log('sparql data read: ', sparql.length, ' bytes')
+/*
+    const query_wn = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
+    console.log('query data read: ', query_wn.length, ' bytes') ;
+    const query = normalize(query_wn) ;
+    console.log('query not normalized: ', query_wn) ;
+    console.log('query normalized: ', query) ;
+*/
+    const payload = new GetQueryPayload()
+    .setResponseType(mimeType)
+    .setQuery(query)
+    .setQueryType(queryType) ;
+    //.setLimit(3)     
     
     let result = await repository.query(payload).catch((err) => {
         console.log(err);
     }) ;
-    //console.log('result: ', result) ;
+    console.log('result: ', result) ;
     result.on('data', (data) => {
         // handle data
         console.log('data: ', data.toString()) ;
         //let result_json = data.toString() ;
-        let result_ttl = data.toString() ;
+        //let result_ttl = data.toString() ;
         
         //fs.writeFileSync('./data/json/test.json', result_json, 'utf8') ;        
-        fs.writeFileSync('./data/ttl/test.ttl', result_ttl, 'utf8') ;
+        //fs.writeFileSync('./data/ttl/test.ttl', result_ttl, 'utf8') ;
         //console.log('json data written: ', result_json.length, ' bytes')
-        console.log('ttl data written: ', result_ttl.length, ' bytes')
+        //console.log('ttl data written: ', result_ttl.length, ' bytes')
     }) ;
 })() ;
 
