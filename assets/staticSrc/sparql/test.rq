@@ -1,8 +1,6 @@
-construct {
+CONSTRUCT {
     ?s ?p ?o .
 }
-where { 
-    ?s ?p ?o .
-    #BIND(STR(?s) AS ?s_str)
-    #FILTER(CONTAINS(?s_str, "https://d-nb.info/gnd"))
+WHERE { 
+    ?s ?p ?o .    
 }

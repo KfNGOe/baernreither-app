@@ -35,7 +35,7 @@ graphDBEndpoint
         console.log(err);
     });
 
-/*
+
 (async () => {    
     var sparql = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
     console.log('sparql data read: ', sparql.length, ' bytes')
@@ -50,4 +50,4 @@ graphDBEndpoint
         console.log('json data written: ', result_json.length, ' bytes')
     
 })() ;
-*/
+
