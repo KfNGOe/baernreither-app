@@ -1,13 +1,13 @@
 const fs = require('fs') ;
 
-const RDFMimeType = require('graphdb/lib/http/rdf-mime-type');
-//const SparqlJsonResultParser = require('graphdb/lib/parser/sparql-json-result-parser');
-//const SparqlXmlResultParser = require('graphdb/lib/parser/sparql-xml-result-parser');
-const {TurtleParser} = require('graphdb').parser ;
-
 //RDF repository client
 const {RDFRepositoryClient, RepositoryClientConfig} = require('graphdb').repository ;
 const {GetQueryPayload, QueryType} = require('graphdb').query ;
+
+const RDFMimeType = require('graphdb').http ;
+//const SparqlJsonResultParser = require('graphdb/lib/parser/sparql-json-result-parser');
+//const SparqlXmlResultParser = require('graphdb/lib/parser/sparql-xml-result-parser');
+//const {TurtleParser} = require('graphdb').parser ;
 
 const query = 'CONSTRUCT {?s ?p ?o} WHERE {?s ?p ?o}' ;
 //const query = 'SELECT * WHERE { ?s ?p ?o }' ;

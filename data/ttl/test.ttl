@@ -1,4 +1,260 @@
-rredNameEntityForThePerson> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+rdf:type a rdf:Property;
+  rdfs:subPropertyOf rdf:type;
+  <http://proton.semanticweb.org/protonsys#transitiveOver> rdfs:subClassOf .
+
+rdfs:subPropertyOf a rdf:Property, owl:TransitiveProperty;
+  rdfs:subPropertyOf rdfs:subPropertyOf;
+  <http://proton.semanticweb.org/protonsys#transitiveOver> rdfs:subPropertyOf .
+
+rdfs:subClassOf a rdf:Property, owl:TransitiveProperty;
+  rdfs:subPropertyOf rdfs:subClassOf;
+  rdfs:domain rdfs:Class;
+  rdfs:range rdfs:Class;
+  <http://proton.semanticweb.org/protonsys#transitiveOver> rdfs:subClassOf .
+
+rdfs:domain a rdf:Property;
+  rdfs:subPropertyOf rdfs:domain;
+  rdfs:range rdfs:Class .
+
+rdfs:range a rdf:Property;
+  rdfs:subPropertyOf rdfs:range;
+  rdfs:range rdfs:Class .
+
+owl:sameAs a rdf:Property;
+  rdfs:subPropertyOf owl:sameAs .
+
+owl:equivalentProperty a owl:SymmetricProperty, owl:TransitiveProperty;
+  rdfs:subPropertyOf rdfs:subPropertyOf;
+  <http://proton.semanticweb.org/protonsys#transitiveOver> owl:equivalentProperty;
+  owl:inverseOf owl:equivalentProperty .
+
+owl:equivalentClass a owl:SymmetricProperty, owl:TransitiveProperty;
+  rdfs:subPropertyOf rdfs:subClassOf;
+  <http://proton.semanticweb.org/protonsys#transitiveOver> owl:equivalentClass;
+  owl:inverseOf owl:equivalentClass .
+
+<http://proton.semanticweb.org/protonsys#transitiveOver> a rdf:Property;
+  rdfs:subPropertyOf <http://proton.semanticweb.org/protonsys#transitiveOver> .
+
+owl:inverseOf a rdf:Property, owl:SymmetricProperty;
+  rdfs:subPropertyOf owl:inverseOf;
+  owl:inverseOf owl:inverseOf .
+
+rdf:subject a rdf:Property;
+  rdfs:domain rdf:Statement .
+
+rdf:predicate a rdf:Property;
+  rdfs:domain rdf:Statement .
+
+rdf:object a rdf:Property;
+  rdfs:domain rdf:Statement .
+
+rdf:first a rdf:Property;
+  rdfs:domain rdf:List .
+
+rdf:rest a rdf:Property;
+  rdfs:domain rdf:List;
+  rdfs:range rdf:List .
+
+rdf:value a rdf:Property .
+
+rdf:nil a rdf:List .
+
+rdf:XMLLiteral a rdfs:Class, rdfs:Datatype;
+  rdfs:subClassOf rdfs:Literal, rdf:XMLLiteral .
+
+owl:differentFrom a owl:SymmetricProperty;
+  owl:inverseOf owl:differentFrom .
+
+xsd:nonNegativeInteger a rdfs:Class, rdfs:Datatype;
+  rdfs:subClassOf xsd:nonNegativeInteger .
+
+xsd:string a rdfs:Class, rdfs:Datatype;
+  rdfs:subClassOf xsd:string .
+
+rdf:_1 a rdf:Property, rdfs:ContainerMembershipProperty .
+
+<https://d-nb.info/gnd/119033364> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://dbpedia.org/resource/Douglas_Adams> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://isni.org/isni/0000000080456315> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://www.wikidata.org/entity/Q42> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://id.loc.gov/rwo/agents/n80076765> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://viaf.org/viaf/113230702> a <https://d-nb.info/standards/elementset/gnd#DifferentiatedPerson>;
+  owl:sameAs <https://d-nb.info/gnd/119033364>, <http://dbpedia.org/resource/Douglas_Adams>,
+    <http://isni.org/isni/0000000080456315>, <http://www.wikidata.org/entity/Q42>, <http://id.loc.gov/rwo/agents/n80076765>,
+    <http://viaf.org/viaf/113230702>;
+  <http://www.w3.org/2007/05/powder-s#describedby> <https://d-nb.info/gnd/119033364/about>;
+  <http://xmlns.com/foaf/0.1/page> <https://de.wikipedia.org/wiki/Douglas_Adams>;
+  <https://d-nb.info/standards/elementset/gnd#dateOfBirth> "1952-03-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#dateOfDeath> "2001-05-11"^^xsd:date;
+  <https://d-nb.info/standards/elementset/gnd#gender> <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-GB>,
+    <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XD-US>;
+  <https://d-nb.info/standards/elementset/gnd#gndIdentifier> "119033364";
+  <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> <https://d-nb.info/standards/vocab/gnd/gnd-sc#12.2p>;
+  <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> "(DE-588a)119033364",
+    "(DE-588c)4283975-0";
+  <https://d-nb.info/standards/elementset/gnd#placeOfBirth> <https://d-nb.info/gnd/4009351-7>;
+  <https://d-nb.info/standards/elementset/gnd#placeOfDeath> <https://d-nb.info/gnd/4118400-2>;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> _:node1;
+  <https://d-nb.info/standards/elementset/gnd#preferredNameForThePerson> "Adams, Douglas";
+  <https://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral> "Science-fiction-autor";
+  <https://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson> _:node2;
+  <https://d-nb.info/standards/elementset/gnd#variantNameForThePerson> "Adams, Douglas Noe͏̈l" .
+
+<http://www.w3.org/2007/05/powder-s#describedby> a rdf:Property;
+  rdfs:subPropertyOf <http://www.w3.org/2007/05/powder-s#describedby> .
+
+<http://xmlns.com/foaf/0.1/page> a rdf:Property;
+  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/page> .
+
+<https://d-nb.info/standards/elementset/gnd#dateOfBirth> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#dateOfBirth> .
+
+<https://d-nb.info/standards/elementset/gnd#dateOfDeath> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#dateOfDeath> .
+
+<https://d-nb.info/standards/elementset/gnd#gender> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#gender> .
+
+<https://d-nb.info/standards/elementset/gnd#geographicAreaCode> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#geographicAreaCode> .
+
+<https://d-nb.info/standards/elementset/gnd#gndIdentifier> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#gndIdentifier> .
+
+<https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#gndSubjectCategory> .
+
+<https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#oldAuthorityNumber> .
+
+<https://d-nb.info/standards/elementset/gnd#placeOfBirth> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#placeOfBirth> .
+
+<https://d-nb.info/standards/elementset/gnd#placeOfDeath> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#placeOfDeath> .
+
+<https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> a rdf:Property;
+  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson> .
 
 <https://d-nb.info/standards/elementset/gnd#forename> a rdf:Property;
   rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#forename> .

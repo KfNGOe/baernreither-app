@@ -1,16 +1,16 @@
 const fs = require('fs') ;
-const normalize = require('normalize-space') ;
-
-const RDFMimeType = require('graphdb/lib/http/rdf-mime-type');
+//const normalize = require('normalize-space') ;
 //const SparqlJsonResultParser = require('graphdb/lib/parser/sparql-json-result-parser');
 //const SparqlXmlResultParser = require('graphdb/lib/parser/sparql-xml-result-parser');
-const {TurtleParser} = require('graphdb').parser ;
+//const {TurtleParser} = require('graphdb').parser ;
 
 //RDF repository client
 const {RDFRepositoryClient, RepositoryClientConfig} = require('graphdb').repository ;
 const {GetQueryPayload, QueryType} = require('graphdb').query ;
 
-const query = 'CONSTRUCT {?s ?p ?o} WHERE {?s ?p ?o}' ;
+const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
+
+//const query = 'PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#> CONSTRUCT {?s a gndo:DifferentiatedPerson} WHERE {?s a gndo:DifferentiatedPerson}' ;
 //const query = 'SELECT * WHERE { ?s ?p ?o }' ;
 
 const mimeType = RDFMimeType.TURTLE ;
@@ -32,6 +32,8 @@ const config = new RepositoryClientConfig(endpoint)
 const repository = new RDFRepositoryClient(config) ;
 console.log('repository: ', repository.repositoryClientConfig) ;
 
+let body = '' ;
+
 //RDF query
 //repository.registerParser(new TurtleParser()) ;
 //repository.registerParser(new SparqlJsonResultParser()) ;
@@ -40,26 +42,24 @@ console.log('repository: ', repository.repositoryClientConfig) ;
     //get namespaced prefixes
     const prefixes = await repository.getNamespaces() ;
     console.log('prefixes: ', prefixes) ;
-/*
-    const query_wn = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
-    console.log('query data read: ', query_wn.length, ' bytes') ;
-    const query = normalize(query_wn) ;
-    console.log('query not normalized: ', query_wn) ;
-    console.log('query normalized: ', query) ;
-*/
+
+    const query = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
+    console.log('query data read: ', query.length, ' bytes') ;    
+
     const payload = new GetQueryPayload()
     .setResponseType(mimeType)
     .setQuery(query)
-    .setQueryType(queryType) ;
-    //.setLimit(3)     
+    .setQueryType(queryType) 
+    //.setLimit(3) ;
     
     let result = await repository.query(payload).catch((err) => {
         console.log(err);
     }) ;
-    console.log('result: ', result) ;
-    result.on('data', (data) => {
+    //console.log('result: ', result) ;
+    result.on('data', (chunk) => {
         // handle data
-        console.log('data: ', data.toString()) ;
+        body += chunk;
+        console.log('data: ', chunk.toString()) ;
         //let result_json = data.toString() ;
         //let result_ttl = data.toString() ;
         
@@ -68,6 +68,19 @@ console.log('repository: ', repository.repositoryClientConfig) ;
         //console.log('json data written: ', result_json.length, ' bytes')
         //console.log('ttl data written: ', result_ttl.length, ' bytes')
     }) ;
+    result.on('end', () => {
+        // handle end of data
+        console.log('end: ', body) ;
+        fs.writeFileSync('./data/ttl/test.ttl', body, 'utf8') ;
+        console.log('ttl data written: ', body.length, ' bytes') ;
+    }) ;
+    result.on('error', (err) => {
+        // handle error
+        console.log('error: ', err) ;
+    }
+    ) ;
 })() ;
+
+    
 
 
