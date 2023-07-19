@@ -13,12 +13,12 @@ const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 //const query = 'PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#> CONSTRUCT {?s a gndo:DifferentiatedPerson} WHERE {?s a gndo:DifferentiatedPerson}' ;
 //const query = 'SELECT * WHERE { ?s ?p ?o }' ;
 
-const mimeType = RDFMimeType.TURTLE ;
+//const mimeType = RDFMimeType.TURTLE ;
 //const mimeType = RDFMimeType.RDF_JSON ;
-//const mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;
+const mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;
 
-const queryType = QueryType.CONSTRUCT ;
-//const queryType = QueryType.SELECT ;
+//const queryType = QueryType.CONSTRUCT ;
+const queryType = QueryType.SELECT ;
 
 const endpoint = 'http://localhost:7200' ;
 const readTimeout = 30000 ;
@@ -27,10 +27,11 @@ const config = new RepositoryClientConfig(endpoint)
     .setEndpoints(['http://localhost:7200/repositories/kfngoe_test'])
     //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')
     .setReadTimeout(readTimeout)
-    .setWriteTimeout(writeTimeout) ;
+    .setWriteTimeout(writeTimeout) ;    
     
 const repository = new RDFRepositoryClient(config) ;
 console.log('repository: ', repository.repositoryClientConfig) ;
+//console.log('repository: ', repository) ;
 
 let body = '' ;
 
@@ -49,9 +50,9 @@ let body = '' ;
     const payload = new GetQueryPayload()
     .setResponseType(mimeType)
     .setQuery(query)
-    .setQueryType(queryType) 
-    //.setLimit(3) ;
-    
+    .setQueryType(queryType) ;
+    //.setLimit(3)
+       
     let result = await repository.query(payload).catch((err) => {
         console.log(err);
     }) ;
