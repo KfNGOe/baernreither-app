@@ -2,7 +2,6 @@
   "head" : {
     "vars" : [
       "s",
-      "p",
       "o"
     ]
   },
@@ -11,43 +10,11 @@
       {
         "s" : {
           "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "p" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+          "value" : "https://d-nb.info/gnd/119033364"
         },
         "o" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-        }
-      },
-      {
-        "s" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
-        },
-        "p" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-        }
-      },
-      {
-        "s" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
-        },
-        "p" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o" : {
-          "type" : "uri",
-          "value" : "http://www.w3.org/2002/07/owl#TransitiveProperty"
+          "type" : "literal",
+          "value" : "Douglas"
         }
       }
     ]

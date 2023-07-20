@@ -72,8 +72,10 @@ let body = '' ;
     result.on('end', () => {
         // handle end of data
         console.log('end: ', body) ;
-        fs.writeFileSync('./data/ttl/test.ttl', body, 'utf8') ;
-        console.log('ttl data written: ', body.length, ' bytes') ;
+        fs.writeFileSync('./data/json/test.json', body, 'utf8') ;        
+        //fs.writeFileSync('./data/ttl/test.ttl', body, 'utf8') ;
+        console.log('json data written: ', body.length, ' bytes')
+        //console.log('ttl data written: ', body.length, ' bytes') ;
     }) ;
     result.on('error', (err) => {
         // handle error
