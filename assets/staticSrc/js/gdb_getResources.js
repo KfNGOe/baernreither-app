@@ -1,13 +1,10 @@
 const { EnapsoGraphDBClient } = require('@innotrade/enapso-graphdb-client') ;
 const { EnapsoGraphDBAdmin } = require('@innotrade/enapso-graphdb-admin');
 var connectFlag = false ;
-//var convert = require("xml-js") ;
-
-//console.log(convert.xml2json("<xml>test</xml>")) ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     baseURL: 'http://localhost:7200',
-    repository: 'kfngoe_test',
+    repository: 'Test',
     prefixes: [
         {
             prefix: 'entest',
@@ -19,15 +16,12 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     apiType: 'RDF4J'
 }) ;
 
-//graphdb clear a repository
+//get resources
 graphDBEndpoint
-    .clearRepository()
+    .getResources()
     .then((result) => {
-        console.log("result: ", result);
-    }
-    )
+        console.log("results: ", result);
+    })
     .catch((err) => {
-        console.log(err);
-    }
-    );
-
+        console.log(err, 'process error here...');
+    });
