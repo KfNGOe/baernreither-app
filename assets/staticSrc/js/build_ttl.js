@@ -12,7 +12,7 @@ const ANGLEBRACKET_OPEN = "<" ;
 const ANGLEBRACKET_CLOSE = ">" ;
 const BN = "_:" ;
 const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF 
-               + "@prefix kfngeoi: <https://github.com/KfNGOe/kfngeoi/> ." + LF
+               + "@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> ." + LF
                + "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ." + LF
                + "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ." + LF
                + "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ." + LF
@@ -26,7 +26,7 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
                + "@prefix geonames: <http://www.geonames.org/ontology#> ." + LF             
                + "@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> ." + LF
                + "@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> ." + LF
-               + "@prefix tei: <http://www.tei-c.org/ns/1.0> ." + LF
+               + "@prefix tei: <http://www.tei-c.org/ns/1.0/> ." + LF
               ;
 
 const path_in_json=process.env.path_in_json ;

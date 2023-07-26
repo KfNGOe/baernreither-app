@@ -22,7 +22,9 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
 //graphdb upload a file
 graphDBEndpoint
     .uploadFromFile({
-        filename: 'data/ttl/annotation/person/example/DouglasAdams/DouglasAdams-gnd.ttl',        
+        
+        filename: 'data/ttl/text/Bae_TB_8.ttl',        
+        //filename: 'data/ttl/annotation/person/example/DouglasAdams/DouglasAdams-gnd.ttl',        
         format: 'text/turtle',
         //baseIRI: 'http://ont.enapso.com/test#',
         //context: 'http://ont.enapso.com/test'
