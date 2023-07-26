@@ -1,3 +1,4 @@
+//convert json to turtle for person register
 const { groupBy } = require("core-js/actual/array/group-by") ;
 // Importing the jsdom module
 const fs = require('fs');
@@ -37,7 +38,7 @@ var propVal_gnd = '""' ;
 var propVal_cc = '""' ;
 
 const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF 
-               + "@prefix kfngeoi: <https://github.com/KfNGOe/kfngeoi/> ." + LF               
+               + "@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> ." + LF               
                + "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ." + LF
                + "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ." + LF
                + "@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> ." + LF
@@ -186,7 +187,7 @@ function getArray(arr) {
    //console.log('result: ',arr) ;   
 } ;
 
-var json = fs.readFileSync('./data/json_xlsx/Baernreither_Personenregister_2023.json', 'utf8');
+var json = fs.readFileSync('./data/json_xlsx/register_person_xlsx.json', 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJS = JSON.parse(json) ;

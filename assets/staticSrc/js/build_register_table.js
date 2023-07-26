@@ -1,3 +1,4 @@
+//build register table from json
 const LF = '\n';
 const fs = require('fs');
 var convert = require('xml-js');

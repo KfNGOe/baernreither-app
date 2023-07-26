@@ -1,3 +1,4 @@
+//convert xlsx to json
 const fs = require('fs');
 const excelToJson = require('convert-excel-to-json');
  
@@ -7,5 +8,5 @@ const result = excelToJson({
 
 //write json file
 var xmlJsString = JSON.stringify(result);
-fs.writeFileSync('./data/json_xlsx/Baernreither_Personenregister_2023.json', xmlJsString ) ;
+fs.writeFileSync('./data/json_xlsx/register_person_xlsx.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length , ' bytes')

@@ -13,12 +13,12 @@ const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 //const query = 'PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#> CONSTRUCT {?s a gndo:DifferentiatedPerson} WHERE {?s a gndo:DifferentiatedPerson}' ;
 //const query = 'SELECT * WHERE { ?s ?p ?o }' ;
 
-//const mimeType = RDFMimeType.TURTLE ;
+const mimeType = RDFMimeType.TURTLE ;
 //const mimeType = RDFMimeType.RDF_JSON ;
-const mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;
+//const mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;
 
-//const queryType = QueryType.CONSTRUCT ;
-const queryType = QueryType.SELECT ;
+const queryType = QueryType.CONSTRUCT ;
+//const queryType = QueryType.SELECT ;
 
 const endpoint = 'http://localhost:7200' ;
 const readTimeout = 30000 ;
@@ -42,9 +42,9 @@ let body = '' ;
 (async () => {
     //get namespaced prefixes
     const prefixes = await repository.getNamespaces() ;
-    console.log('prefixes: ', prefixes) ;
-
-    const query = fs.readFileSync('assets/staticSrc/sparql/test.rq', 'utf8');
+    //console.log('prefixes: ', prefixes) ;
+    
+    const query = fs.readFileSync('assets/staticSrc/sparql/annoPerson_1.rq', 'utf8');
     console.log('query data read: ', query.length, ' bytes') ;    
 
     const payload = new GetQueryPayload()
@@ -60,7 +60,7 @@ let body = '' ;
     result.on('data', (chunk) => {
         // handle data
         body += chunk;
-        console.log('data: ', chunk.toString()) ;
+        //console.log('data: ', chunk.toString()) ;
         //let result_json = data.toString() ;
         //let result_ttl = data.toString() ;
         
@@ -71,11 +71,11 @@ let body = '' ;
     }) ;
     result.on('end', () => {
         // handle end of data
-        console.log('end: ', body) ;
-        fs.writeFileSync('./data/json/test.json', body, 'utf8') ;        
-        //fs.writeFileSync('./data/ttl/test.ttl', body, 'utf8') ;
-        console.log('json data written: ', body.length, ' bytes')
-        //console.log('ttl data written: ', body.length, ' bytes') ;
+        console.log('end: ', body) ;        
+        //fs.writeFileSync('./data/json/test.json', body, 'utf8') ;        
+        fs.writeFileSync('./data/ttl/annotation/anno_web/instance/annoPersoni_1.ttl', body, 'utf8') ;
+        //console.log('json data written: ', body.length, ' bytes')
+        console.log('ttl data written: ', body.length, ' bytes') ;
     }) ;
     result.on('error', (err) => {
         // handle error
