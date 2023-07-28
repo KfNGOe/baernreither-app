@@ -13,4 +13,5 @@ dev-baernreither-app
 
 - https://fleetdm.com/engineering/tips-for-github-actions-usability
 
-# Workflows register
+# Workflow register
+*.xml -> build_tei2ttl.sh -> *,ttl
