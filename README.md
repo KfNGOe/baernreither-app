@@ -12,3 +12,5 @@ dev-baernreither-app
 - https://github.com/localtunnel/localtunnel
 
 - https://fleetdm.com/engineering/tips-for-github-actions-usability
+
+# Workflows register
