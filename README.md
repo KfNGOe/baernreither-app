@@ -15,4 +15,5 @@ dev-baernreither-app
 
 # Workflow register
 *.xml -> build_tei2ttl.sh -> *.ttl
-*.xlsx -> build_xlsx2json -> register_xlsx.json
+*.xlsx -> build_xlsx2json.sh -> register_*_xlsx.json
+register_*_xlsx.json -> build_*_json2ttl.sh -> *i.ttl
