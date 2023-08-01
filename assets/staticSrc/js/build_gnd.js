@@ -47,7 +47,7 @@ function getArray(arr) {
 
 (async () => {
 
-  var json = fs.readFileSync('./data/json_xlsx/register_person_xlsx', 'utf8');
+  var json = fs.readFileSync('./data/json_xlsx/person_xlsx', 'utf8');
   console.log('json data read: ', json.length, ' bytes')
   var jsonJS = JSON.parse(json) ;
   var persons = jsonJS.Tabelle1 ;

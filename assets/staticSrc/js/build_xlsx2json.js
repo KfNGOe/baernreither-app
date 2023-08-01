@@ -8,5 +8,5 @@ const result = excelToJson({
 
 //write json file
 var xmlJsString = JSON.stringify(result);
-fs.writeFileSync('./data/json_xlsx/register_person_xlsx.json', xmlJsString ) ;
+fs.writeFileSync('./data/json_xlsx/person_xlsx.json', xmlJsString ) ;
 console.log('json data written: ', xmlJsString.length , ' bytes')

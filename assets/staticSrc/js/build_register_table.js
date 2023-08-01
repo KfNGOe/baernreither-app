@@ -93,7 +93,7 @@ console.log('html data read: ', html.length, ' bytes') ;
 $('html').find('body').append(html) ;
 html = $('html').html() ;
 
-var json = fs.readFileSync("data/json/register/register_person.json", 'utf8');
+var json = fs.readFileSync("data/json/register/person.json", 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 var jsonJs = JSON.parse(json) ;
 //console.log('jsonJs = ', jsonJs) ;
@@ -104,5 +104,5 @@ html = $('html').find('body').html() ;
 //write html file    
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/register_person.html', html) ;
+fs.writeFileSync('html/person.html', html) ;
 console.log('html data written: ', html.length, ' bytes') ;

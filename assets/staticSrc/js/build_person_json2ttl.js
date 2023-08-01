@@ -187,7 +187,7 @@ function getArray(arr) {
    //console.log('result: ',arr) ;   
 } ;
 
-var json = fs.readFileSync('./data/json_xlsx/register_person_xlsx.json', 'utf8');
+var json = fs.readFileSync('./data/json_xlsx/person_xlsx.json', 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 
 var jsonJS = JSON.parse(json) ;
