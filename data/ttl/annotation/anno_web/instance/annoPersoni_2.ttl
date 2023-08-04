@@ -1,306 +1,297 @@
 @prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix schema: <http://schema.org/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix geonames: <http://www.geonames.org/ontology#> .
-@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
-@prefix tei: <http://www.tei-c.org/ns/1.0> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
 @prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-kfngoei:2e9cfcd3-540e-4b97-9c49-0937f5695c2c a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "AndrassyGyula";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:3182c083-d072-4aff-ab5a-0f108ab44592 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "ChiariKarl";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:11f69df5-e467-45ab-882c-6455e0ea6244 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "ChlumeckyJohann";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:83a24e12-1eb1-4700-8c52-03070ac7290e a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "Clam-MartinicHeinrich";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:d5c54916-8996-492d-95f1-23ad67bf63f5 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "CoudenhoveKarl";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:b7dc538f-7c7d-44a2-9db3-1d39806e1526 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "CzerninOttokar";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:0c1a213e-a021-43ef-a564-29e65389f7ab a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "DaszynskiIgnacy";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:8d51fe05-b78f-4aa2-a72a-8023a47fbc1f a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "DerschattaJulius";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:4dcb4fea-7e42-4add-81a9-1a2f0681568a a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "DzieduszyckiWojciech";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:11178b56-2eb9-4dcd-ba30-bf74e7138c8f a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "FejervaryGeza";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:fc2bdae4-9bea-4382-9731-c83e1217bedc a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "GautschPaul";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:de2b7a8a-26f3-43ea-aa3d-07848ced4833 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "GoluchowskiAgenor";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:32f078a2-a6b8-48b2-8810-4690f062b7df a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "GrabmayrKarl";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:05d285a6-da1e-41d4-ac8b-0badf40eb21d a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "GroßGustav";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:c15d4471-0487-4abf-9a8c-905372992e46 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "KaiserFranzJosef";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:30c6e274-f03d-4942-8dff-46b932e359ca a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "HohenloheKonrad";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:f8135932-d459-4bf1-91eb-e00fc71899ab a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "KoerberErnest";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:ebd178d5-afe6-40c4-902c-c008bfa2ae47 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "KramarKarel";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:87a86a4d-bc83-44e0-bcdc-ab5255709b60 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "KristoffyJozsef";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:9ddff20d-1de8-4b1a-a413-86772e1b6e48 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "LecherOtto";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:4b60d793-6de2-4f07-a783-c08c4b47506c a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "LobkowitzFerdinand";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:206d72bb-a8dd-47fe-b5b2-3d77ce5d008e a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "MarchetGustav";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:2a5b4d9c-8357-4e39-b232-63e97995cd3e a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "NostitzErwein";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:7dac4de7-3de5-416e-b1bb-55f1d58bcc36 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "PacakBedrich";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:d0c11ada-c879-4b8f-a19b-e662db498569 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "PergeltAnton";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:bc6ccfa1-6f72-4a47-b8ee-f64cacd69186 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "PradeHeinrich";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:8918a1d3-a04e-43b2-97c7-7c7ff4e749bb a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "RohanAlain";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:b644c541-cf2e-4293-acc6-c8a6ed4deee9 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "SchaeffleAlbert";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:7a7646a6-ab93-44b3-b4f3-3bd04d6e32c2 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "SchwarzenbergKarl";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:265211eb-f238-4a57-b2f1-a46c339782a1 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "Silva-TaroucaErnst";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:f198cceb-4b07-4dbf-a421-8d70332d5089 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "SteinFranko";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:c3e7a109-bb82-4bc8-9200-a4c2d575b429 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "SteinbachEmil";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:b392dd61-da0c-4f7a-bbde-c1e6f51bd665 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "TaaffeEduard";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:6d0e00b7-4bef-4c53-97d0-764c597038dd a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "TerlagoRobert";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:0212b32e-cf7d-4e48-989f-11811570f661 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "ThunFranz";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:aef465dd-4082-4e07-bf86-7199392bd2aa a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "TollingerJohann";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:c38f10b5-830d-4899-bdc9-4398f1eb9d6a a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "UrbanKarl";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:bf649557-5375-4571-a51d-825875349a8b a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "VetterMoritz";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:e7a6720c-1dcb-4eaf-890c-7a14451c3a81 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "WekerleSandor";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:39f2c1d6-1d47-445c-99ea-a98c6251f185 a kfngoeo:AnnoPerson;
-  rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "ZacekJan";
-  kfngoeo:hasTarget kfngoei:nnnnnn;
-  kfngoeo:hasBody kfngoei:nnnnnn .
-
-kfngoei:1e89407a-5708-46fa-869a-8e75580d8bf7 a kfngoeo:AnnoPerson;
+kfngoei:0986a75c-c503-4b41-9a33-e7d7924e2181 a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "BaernreitherJosephMaria";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:16ec04e6-8cda-4474-8e19-e0d8e1c5d4c0 a kfngoeo:AnnoPerson;
+kfngoei:6280ded1-bd1c-4736-97d2-69cff8b089cd a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PacakBedrich";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:18a5e741-9349-46cb-86d4-09d36b1dc548 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DerschattaJulius";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:8b332b27-21a6-45fc-942a-1b0773996439 a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "StürgkhKarl";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:96151793-cad0-4560-845c-a07f26021f8f a kfngoeo:AnnoPerson;
+kfngoei:e6179437-c7c6-470e-8d5e-6afffd0b17c4 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ChiariKarl";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:36fd227c-4180-4aef-9e41-f101118db2a1 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GautschPaul";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:6ed54c81-0cf8-4e2b-87cc-5d95b909a54a a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PradeHeinrich";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:f91d7043-ee65-44b3-b49b-c68376b8cb7d a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KramarKarel";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:9b09b439-7c62-4819-b5d1-d9a1aef0c949 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ZacekJan";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:236d7ffe-e90b-488b-b287-2be810cfcc18 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "PergeltAnton";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:a8fdabff-50f7-4071-a4e3-7d18b1c4d732 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GroßGustav";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:55e7dc7f-8a33-4f78-a2ca-b57b6c87c5e3 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KoerberErnest";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:bc959428-bb7a-446f-b6db-022c3e377821 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SteinFranko";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:0596697b-856b-4c75-bd31-ca5f51965a01 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KaiserFranzJosef";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:a6dfd12f-a69d-438f-a750-da45eb8fe75b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "NostitzErwein";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:44e32312-3121-4346-8259-cfb8efd37dba a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "FuerstenbergMaxEgon";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:42d51dfe-d846-49fc-ad0a-f273cf56346e a kfngoeo:AnnoPerson;
+kfngoei:6c61936e-fd72-4668-a805-8ec60a904c74 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "LobkowitzFerdinand";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:5ce13ed5-e974-4acf-8604-2db7ce9177f1 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "RohanAlain";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:0b3be3a8-e284-422a-824e-f5c1aa15005e a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SchwarzenbergKarl";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:67203521-ec73-4826-acb6-8a6dcc24be41 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "Silva-TaroucaErnst";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:aa5c3dfb-5c26-48c6-a917-6c4b28a718df a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "Clam-MartinicHeinrich";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:3c53637f-72fb-480c-a15d-7ad6aa1cd647 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "CzerninOttokar";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:7fb5e506-07ae-4444-bd5b-779f43444d3b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ThunFranz";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:3fcda314-0269-465d-8091-b6d490770e31 a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "HohenwartKarl";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:8bc0d192-2f9e-4be9-9698-3788048fc182 a kfngoeo:AnnoPerson;
+kfngoei:76e72ee4-15ba-404e-8c33-92adb4b08c60 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SchaeffleAlbert";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:f842fd2f-d109-401e-a0db-0f7e46aff327 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GrabmayrKarl";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:f164cd61-caf5-47f7-bde4-8e05500609f1 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "GoluchowskiAgenor";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:e5b3d25d-1e9a-4030-91d3-d775905462b3 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "WekerleSandor";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:e7ac22a8-13af-4f6e-99aa-05d23d51a81b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "AndrassyGyula";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:c4cc22ff-db1b-4c59-a142-4926144536be a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "BismarckOtto";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:97006c5b-29b4-4e3b-8280-2b7b6f7bfd4f a kfngoeo:AnnoPerson;
+kfngoei:59966eca-3792-4308-9674-437eb00f0daf a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "KaiserWilhelmII.";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:c597d364-563c-41ae-96f0-30c3aa203683 a kfngoeo:AnnoPerson;
+kfngoei:68f2fdb3-2268-4877-ab96-cc3b8b1c9bf2 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "HohenloheKonrad";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:6a296aaa-afbf-472d-8a2e-81760d693bfe a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "BeckMaxWladimir";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
 
-kfngoei:e88f8fbf-b1a3-4e6b-b1ff-51fc8629b6ee a kfngoeo:AnnoPerson;
+kfngoei:382ab348-c0f3-464d-aeba-41f7da778aef a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "CoudenhoveKarl";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:37e9987e-26a9-45b3-b302-380a4500f8b6 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DaszynskiIgnacy";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:9f69f0cc-4308-4384-b553-13fc31455a47 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "DzieduszyckiWojciech";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:7739278f-47ef-4965-bb89-db90f3fe2719 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "UrbanKarl";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:595dbe5d-9cf3-4aca-bb7b-58af46bba15b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "LecherOtto";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:9354569c-4160-4eac-87da-ea0ebbb4f45f a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
   rdfs:isDefinedBy "LoeckerJulius";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:a9075585-af23-40ee-8fb7-686c065f588f a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "MarchetGustav";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:e96dee31-2b5a-472a-88cc-028f020d82b6 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "VetterMoritz";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:cc669b00-b6a2-4f36-8f18-ac418d3fd745 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TerlagoRobert";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:4cc941c3-f801-496c-912f-05b2b609bd76 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TollingerJohann";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:932ba794-22e8-432b-826b-21bf45e2cbb9 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "ChlumeckyJohann";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:e19af3f7-f07d-41c9-9e49-49c5a617f863 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "TaaffeEduard";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:6d2083d8-56b7-4b6d-8c41-c69349f130ab a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "SteinbachEmil";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:910bd756-678c-4fad-8f3f-11a784498a56 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "FejervaryGeza";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .
+
+kfngoei:fa0f7457-9778-4271-846a-1a6dff1d9329 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "KristoffyJozsef";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
