@@ -1,0 +1,31 @@
+echo "build ttl to html"
+
+ENDPOINT='http://localhost:7200'
+REPO_NAME='kfngoe_test'
+
+PATH_IN='data/ttl/text/'
+FILENAME_IN='Bae_TB_8'
+EXTENSION_IN='.ttl'
+
+PATH_RQ='assets/staticSrc/sparql/'
+FILENAME_RQ='annoPerson_1'
+EXTENSION_RQ='.rq'
+
+PATH_OUT='./data/ttl/annotation/anno_web/instance/'
+FILENAME_OUT='annoPersoni_1'
+EXTENSION_OUT='.ttl'
+
+MIME_TYPE='RDFMimeType.TURTLE'
+QUERY_TYPE='QueryType.CONSTRUCT'
+
+echo "clear graphdb repo"
+endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
+
+MIME_TYPE='RDFMimeType.TURTLE'
+
+echo "import file to graphdb repo"
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
+
+echo "query graphdb repo"
+echo "group keys from TEI statements"
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_rq=$PATH_RQ file_rq=$FILENAME_RQ ext_rq=$EXTENSION_RQ mime_type=$MIME_TYPE query_type=$QUERY_TYPE path_out=$PATH_OUT file_out=$FILENAME_OUT ext_out=$EXTENSION_OUT node assets/staticSrc/js/gdb_queryRepo.js

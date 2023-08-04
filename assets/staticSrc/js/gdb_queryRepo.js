@@ -1,89 +1,61 @@
 const fs = require('fs') ;
-//const normalize = require('normalize-space') ;
-//const SparqlJsonResultParser = require('graphdb/lib/parser/sparql-json-result-parser');
-//const SparqlXmlResultParser = require('graphdb/lib/parser/sparql-xml-result-parser');
-//const {TurtleParser} = require('graphdb').parser ;
-
 //RDF repository client
 const {RDFRepositoryClient, RepositoryClientConfig} = require('graphdb').repository ;
 const {GetQueryPayload, QueryType} = require('graphdb').query ;
-
 const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 
-//const query = 'PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#> CONSTRUCT {?s a gndo:DifferentiatedPerson} WHERE {?s a gndo:DifferentiatedPerson}' ;
-//const query = 'SELECT * WHERE { ?s ?p ?o }' ;
+const endpoint = process.env.GDB_ENDPOINT ; // 'http://localhost:7200'
+const repo_name = process.env.GDB_REPO_NAME ; // 'kfngoe_test'
 
-const mimeType = RDFMimeType.TURTLE ;
-//const mimeType = RDFMimeType.RDF_JSON ;
-//const mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;
+const path_rq = process.env.path_rq ; // 'assets/staticSrc/sparql/'
+const filename_rq = process.env.filename_rq ; // 'annoPerson_1.rq'
+const ext_rq = process.env.ext_rq ; // '.rq'
+const filepath_rq = path_rq + filename_rq + ext_rq ;
 
-const queryType = QueryType.CONSTRUCT ;
-//const queryType = QueryType.SELECT ;
+const mimeType = process.env.mimeType ; //RDFMimeType.TURTLE
+const queryType = process.env.queryType ; //QueryType.CONSTRUCT
 
-const endpoint = 'http://localhost:7200' ;
+const path_out = process.env.path_out ; // '.data/ttl/annotation/anno_web/instance/'
+const filename_out = process.env.filename_out ; // 'annoPersoni_1'
+const ext_out = process.env.ext_out ; // '.ttl'
+const filepath_out = path_out + filename_out + ext_out ; // '.data/ttl/annotation/anno_web/instance/annoPerson_1.ttl'
+
 const readTimeout = 30000 ;
 const writeTimeout = 30000 ;
 const config = new RepositoryClientConfig(endpoint)
-    .setEndpoints(['http://localhost:7200/repositories/kfngoe_test'])
+    .setEndpoints([ endpoint + '/repositories/' + repo_name])
     //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')
     .setReadTimeout(readTimeout)
     .setWriteTimeout(writeTimeout) ;    
     
 const repository = new RDFRepositoryClient(config) ;
 console.log('repository: ', repository.repositoryClientConfig) ;
-//console.log('repository: ', repository) ;
 
 let body = '' ;
 
 //RDF query
-//repository.registerParser(new TurtleParser()) ;
-//repository.registerParser(new SparqlJsonResultParser()) ;
-
 (async () => {
-    //get namespaced prefixes
-    const prefixes = await repository.getNamespaces() ;
-    //console.log('prefixes: ', prefixes) ;
-    
-    const query = fs.readFileSync('assets/staticSrc/sparql/annoPerson_1.rq', 'utf8');
-    console.log('query data read: ', query.length, ' bytes') ;    
-
+    const query = fs.readFileSync(filepath_rq, 'utf8');
+    console.log('query data read: ', query.length, ' bytes') ;
     const payload = new GetQueryPayload()
     .setResponseType(mimeType)
     .setQuery(query)
-    .setQueryType(queryType) ;
-    //.setLimit(3)
+    .setQueryType(queryType) ;    
        
     let result = await repository.query(payload).catch((err) => {
         console.log(err);
-    }) ;
-    //console.log('result: ', result) ;
+    }) ;    
     result.on('data', (chunk) => {
         // handle data
-        body += chunk;
-        //console.log('data: ', chunk.toString()) ;
-        //let result_json = data.toString() ;
-        //let result_ttl = data.toString() ;
-        
-        //fs.writeFileSync('./data/json/test.json', result_json, 'utf8') ;        
-        //fs.writeFileSync('./data/ttl/test.ttl', result_ttl, 'utf8') ;
-        //console.log('json data written: ', result_json.length, ' bytes')
-        //console.log('ttl data written: ', result_ttl.length, ' bytes')
+        body += chunk;        
     }) ;
     result.on('end', () => {
-        // handle end of data
-        console.log('end: ', body) ;        
-        //fs.writeFileSync('./data/json/test.json', body, 'utf8') ;        
-        fs.writeFileSync('./data/ttl/annotation/anno_web/instance/annoPersoni_1.ttl', body, 'utf8') ;
-        //console.log('json data written: ', body.length, ' bytes')
-        console.log('ttl data written: ', body.length, ' bytes') ;
+        // handle end of data        
+        fs.writeFileSync(filepath_out, body, 'utf8') ;        
+        console.log('data written: ', body.length, ' bytes') ;
     }) ;
     result.on('error', (err) => {
         // handle error
         console.log('error: ', err) ;
-    }
-    ) ;
+    }) ;
 })() ;
-
-    
-
-

@@ -15,22 +15,22 @@ dev-baernreither-app
 
 # Workflow register
 
-*.xlsx -> build_xlsx2json.sh -> person_xlsx.json
-person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl
+*.xlsx -> build_xlsx2json.sh -> person_xlsx.json<br>
+person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl<br>
 
-*.xml -> build_tei2ttl.sh -> *.ttl
-*.ttl -> gdb_queryRepo.sh -> annoPerson_1.rq -> annoPersoni_1.ttl
-annoPersoni_1.ttl -> gdb_queryRepo.sh -> annoPerson_2.rq -> annoPersoni_2.ttl
-annoPersoni_2.ttl + *.ttl -> gdb_queryRepo.sh -> annoPerson_3.rq -> annoPersoni_3.ttl
-annoPersoni_3.ttl + personi.ttl -> gdb_queryRepo.sh -> annoPerson_4.rq -> annoPersoni.ttl
+*.xml -> build_tei2ttl.sh -> *.ttl<br>
+*.ttl -> gdb_queryRepo.sh -> annoPerson_1.rq -> annoPersoni_1.ttl<br>
+annoPersoni_1.ttl -> gdb_queryRepo.sh -> annoPerson_2.rq -> annoPersoni_2.ttl<br>
+annoPersoni_2.ttl + *.ttl -> gdb_queryRepo.sh -> annoPerson_3.rq -> annoPersoni_3.ttl<br>
+annoPersoni_3.ttl + personi.ttl -> gdb_queryRepo.sh -> annoPerson_4.rq -> annoPersoni.ttl<br>
 
-//add gender
-personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl
+//add gender<br>
+personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl<br>
 
-personi.ttl + gnd.ttl + annoPersoni.ttl -> gdb_queryRepo.sh -> person.rq -> person.json
+personi.ttl + gnd.ttl + annoPersoni.ttl -> gdb_queryRepo.sh -> person.rq -> person.json<br>
 
-person.json + register_table_temp.html -> build_register_table.sh -> person.html
-person.html + register_temp.html -> build_register.sh -> person.html
+person.json + register_table_temp.html -> build_register_table.sh -> person.html<br>
+person.html + register_temp.html -> build_register.sh -> person.html<br>
 
-*.xlsx -> build_xlsx2json.sh -> person_xlsx.json
-person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl
+*.xlsx -> build_xlsx2json.sh -> person_xlsx.json<br>
+person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl<br>
