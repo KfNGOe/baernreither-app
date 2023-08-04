@@ -15,13 +15,11 @@ PATH_OUT='./data/ttl/annotation/anno_web/instance/'
 FILENAME_OUT='annoPersoni_1'
 EXTENSION_OUT='.ttl'
 
-MIME_TYPE='RDFMimeType.TURTLE'
-QUERY_TYPE='QueryType.CONSTRUCT'
+MIME_TYPE='text/turtle'
+QUERY_TYPE='CONSTRUCT'
 
 echo "clear graphdb repo"
 endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
-
-MIME_TYPE='RDFMimeType.TURTLE'
 
 echo "import file to graphdb repo"
 endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js

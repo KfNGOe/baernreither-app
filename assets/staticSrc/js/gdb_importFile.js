@@ -1,13 +1,20 @@
 const { EnapsoGraphDBClient } = require('@innotrade/enapso-graphdb-client') ;
 const { EnapsoGraphDBAdmin } = require('@innotrade/enapso-graphdb-admin');
 var connectFlag = false ;
-//var convert = require("xml-js") ;
 
-//console.log(convert.xml2json("<xml>test</xml>")) ;
+const endpoint = process.env.endpoint ;
+const repo_name = process.env.repo_name ;
+
+const path_in = process.env.path_in ;
+const file_in = process.env.file_in ;
+const ext_in = process.env.ext_in ;
+const filepath = path_in + file_in + ext_in ;
+
+const mime_type = process.env.mime_type ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
-    baseURL: 'http://localhost:7200',
-    repository: 'kfngoe_test',
+    baseURL: endpoint ,
+    repository: repo_name ,
     prefixes: [
         {
             prefix: 'entest',
@@ -21,20 +28,13 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
 
 //graphdb upload a file
 graphDBEndpoint
-    .uploadFromFile({
-        
-        filename: 'data/ttl/text/Bae_TB_8.ttl',        
-        //filename: 'data/ttl/annotation/person/example/DouglasAdams/DouglasAdams-gnd.ttl',        
-        format: 'text/turtle',
-        //baseIRI: 'http://ont.enapso.com/test#',
-        //context: 'http://ont.enapso.com/test'
+    .uploadFromFile({        
+        filename: filepath ,
+        format: mime_type ,
     })
     .then((result) => {
         console.log(result) ;
     })
     .catch((err) => {
         console.log(err, 'process error here...') ;
-    });
-
-
-
+    }) ;

@@ -4,21 +4,18 @@ const {RDFRepositoryClient, RepositoryClientConfig} = require('graphdb').reposit
 const {GetQueryPayload, QueryType} = require('graphdb').query ;
 const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 
-const endpoint = process.env.GDB_ENDPOINT ; // 'http://localhost:7200'
-const repo_name = process.env.GDB_REPO_NAME ; // 'kfngoe_test'
+const endpoint = process.env.endpoint ; // 'http://localhost:7200'
+const repo_name = process.env.repo_name ; // 'kfngoe_test'
 
 const path_rq = process.env.path_rq ; // 'assets/staticSrc/sparql/'
-const filename_rq = process.env.filename_rq ; // 'annoPerson_1.rq'
+const file_rq = process.env.file_rq ; // 'annoPerson_1.rq'
 const ext_rq = process.env.ext_rq ; // '.rq'
-const filepath_rq = path_rq + filename_rq + ext_rq ;
-
-const mimeType = process.env.mimeType ; //RDFMimeType.TURTLE
-const queryType = process.env.queryType ; //QueryType.CONSTRUCT
+const filepath_rq = path_rq + file_rq + ext_rq ;
 
 const path_out = process.env.path_out ; // '.data/ttl/annotation/anno_web/instance/'
-const filename_out = process.env.filename_out ; // 'annoPersoni_1'
+const file_out = process.env.file_out ; // 'annoPersoni_1'
 const ext_out = process.env.ext_out ; // '.ttl'
-const filepath_out = path_out + filename_out + ext_out ; // '.data/ttl/annotation/anno_web/instance/annoPerson_1.ttl'
+const filepath_out = path_out + file_out + ext_out ; // '.data/ttl/annotation/anno_web/instance/annoPerson_1.ttl'
 
 const readTimeout = 30000 ;
 const writeTimeout = 30000 ;
@@ -31,10 +28,33 @@ const config = new RepositoryClientConfig(endpoint)
 const repository = new RDFRepositoryClient(config) ;
 console.log('repository: ', repository.repositoryClientConfig) ;
 
+var mimeType = process.env.mime_type ; //RDFMimeType.TURTLE
+var queryType = process.env.query_type ; //QueryType.CONSTRUCT
+
 let body = '' ;
 
 //RDF query
-(async () => {
+(async () => {    
+    switch (mimeType) {
+        case 'text/turtle':
+            mimeType = RDFMimeType.TURTLE ;            
+            break;
+        case 'application/sparql-results+json':
+            mimeType = RDFMimeType.SPARQL_RESULTS_JSON ;            
+            break;
+        default:
+            break;
+    }
+    switch (queryType) {
+        case 'CONSTRUCT':
+            queryType = QueryType.CONSTRUCT ;            
+            break;
+        case 'SELECT':
+            queryType = QueryType.SELECT ;            
+            break;
+        default:
+            break;
+    }
     const query = fs.readFileSync(filepath_rq, 'utf8');
     console.log('query data read: ', query.length, ' bytes') ;
     const payload = new GetQueryPayload()
