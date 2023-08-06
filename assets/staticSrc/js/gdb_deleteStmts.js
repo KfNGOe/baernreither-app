@@ -2,7 +2,7 @@ const fs = require('fs') ;
 //RDF repository client
 const {RDFRepositoryClient, RepositoryClientConfig} = require('graphdb').repository ;
 const {GetQueryPayload, QueryType} = require('graphdb').query ;
-const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
+//const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 
 const endpoint = process.env.endpoint ; // 'http://localhost:7200'
 const repo_name = process.env.repo_name ; // 'kfngoe_test'
@@ -26,7 +26,8 @@ console.log('repository: ', repository.repositoryClientConfig) ;
 //RDF delete query
 (async () => {
     const query = fs.readFileSync(filepath_rq, 'utf8');
-    console.log('query data read: ', query.length, ' bytes') ;    
+    console.log('query data read: ', query.length, ' bytes') ;
+    console.log('query: ', query) ;    
         
     let result = await repository.deleteStatements(query).catch((err) => {
         console.log(err);
