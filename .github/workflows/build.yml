@@ -25,6 +25,9 @@ jobs:
         run: sudo bash install.sh
       - name: Start graphdb
         run: sudo bash gdb_start.sh &
+      - name: Wait for graphdb
+        run: sleep 15s
+        shell: bash
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
