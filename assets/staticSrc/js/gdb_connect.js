@@ -7,38 +7,24 @@ var connectFlag = false ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     baseURL: 'http://localhost:7200',
-    repository: 'Test',
+    repository: 'Test',    
     prefixes: [
         {
             prefix: 'entest',
             iri: 'http://ont.enapso.com/test#'
         }
-    ],
+    ],    
     triplestore: 'graphdb',
     version: 10,
     apiType: 'RDF4J'
 });
 
-async function connect() {
-    try {
-        const result =  await graphDBEndpoint.login('admin','root');
-        console.log('result= ', result.success);
-
-        return result.success ;      
-      
-    } catch (err) {
-        console.log('result error = ', err.success);
-    };
-  } 
-
-  (async () => {    
-    await connect().then(value => {
-        connectFlag = value ;
-    }) ;
-
-    console.log("Connect =", connectFlag) ;
-        
-  })() ;
-
+graphDBEndpoint.login('admin','root')
+               .then((result) => {
+                    console.log('result = ', result) ;
+                })
+                .catch((err) => {
+                    console.log('error = ', err) ;
+                }) ;
 
 

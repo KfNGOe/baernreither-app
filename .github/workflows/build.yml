@@ -24,9 +24,11 @@ jobs:
       - name: Install
         run: sudo bash install.sh
       - name: Start graphdb
-        run: sudo bash gdb_start.sh &      
-      - name: Connect to graphdb
-        run: sudo bash gdb_connect.sh
+        run: sudo bash gdb_start.sh &
+      #- name: Connect to graphdb
+        #run: sudo bash gdb_connect.sh
+      - name: Get repo list
+        run: sudo bash gdb_getRepo.sh
       
         #- name: build xml ID
       #  run: sudo bash build_xmlId.sh
