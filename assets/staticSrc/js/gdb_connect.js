@@ -15,7 +15,7 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
         }
     ],
     triplestore: 'graphdb',
-    version: 9,
+    version: 10,
     apiType: 'RDF4J'
 });
 
