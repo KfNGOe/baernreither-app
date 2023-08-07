@@ -29,7 +29,7 @@ jobs:
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh
-      - name: Clear repo
-        run: sudo bash gdb_clearRepo.sh        
+      #- name: Clear repo
+      #  run: sudo bash gdb_clearRepo.sh        
      #- name: build xml ID
      #  run: sudo bash build_xmlId.sh      
