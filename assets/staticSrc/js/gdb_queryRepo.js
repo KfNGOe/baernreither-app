@@ -70,7 +70,8 @@ let body = '' ;
         body += chunk;        
     }) ;
     result.on('end', () => {
-        // handle end of data        
+        // handle end of data
+        console.log('data: ', body) ;        
         fs.writeFileSync(filepath_out, body, 'utf8') ;        
         console.log('data written: ', body.length, ' bytes') ;
     }) ;
