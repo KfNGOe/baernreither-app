@@ -26,5 +26,3 @@ graphDBEndpoint.login('admin','root')
                 .catch((err) => {
                     console.log('error = ', err) ;
                 }) ;
-
-
