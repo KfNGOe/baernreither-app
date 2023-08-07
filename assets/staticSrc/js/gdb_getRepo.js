@@ -18,10 +18,7 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
 
 //get repo list
 graphDBEndpoint.getRepositories().then((res) => {
-    console.log(res) ;    
+    console.log('result = ', res) ;    
 }).catch((err) => {
-    console.log(err) ;
+    console.log('error = ' , err) ;
 }) ;
-
-
-

@@ -26,8 +26,8 @@ graphDBEndpoint.createRepository({
         location: '',        
     })
     .then((result) => {
-        console.log(result);
+        console.log('result = ', result);
     })
     .catch((err) => {
-        console.log(err);
+        console.log('error = ', err);
     });
