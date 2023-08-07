@@ -1,5 +1,8 @@
 
-echo "Install graphdb.js"
+echo "Install uuid"
+npm install uuid
+
+echo "Install graphdb tools"
 sudo bash ./dl_graphdb.sh
 
 echo "Install xml-js"
@@ -9,8 +12,10 @@ echo "Install jquery for Node.js"
 npm install jquery
 npm install jsdom
 
-echo "Install excel to xml library"
+echo "Install excel to json library"
 npm install convert-excel-to-json
+
+#COMMENTED OUT FOR NOW
 #npm install aspose.cells
 
 #echo "install localtunnel"
