@@ -35,6 +35,8 @@ jobs:
       - name: Clear repo
         run: sudo bash gdb_clearRepo.sh
       - name: Import data
-        run: sudo bash gdb_importFile.sh        
+        run: sudo bash gdb_importFile.sh
+      - name: Query data
+        run: sudo bash gdb_queryRepo.sh
      #- name: build xml ID
      #  run: sudo bash build_xmlId.sh      
