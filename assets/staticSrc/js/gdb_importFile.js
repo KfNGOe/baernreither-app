@@ -33,8 +33,8 @@ graphDBEndpoint
         format: mime_type ,
     })
     .then((result) => {
-        console.log(result) ;
+        console.log('result = ', result) ;
     })
     .catch((err) => {
-        console.log(err, 'process error here...') ;
+        console.log('error = ', err) ;
     }) ;

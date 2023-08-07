@@ -26,6 +26,6 @@ graphDBEndpoint
         console.log("result: ", result);
     })
     .catch((err) => {
-        console.log(err);
+        console.log('error = ', err);
     }) ;
 
