@@ -31,12 +31,12 @@ jobs:
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
-        run: sudo bash gdb_getRepo.sh
-      - name: Clear repo
-        run: sudo bash gdb_clearRepo.sh
-      - name: Import data
-        run: sudo bash gdb_importFile.sh
-      - name: Query data
-        run: sudo bash gdb_queryRepo.sh
+        run: sudo bash gdb_getRepo.sh      
+      - name: Build ttl to ttl
+        run: sudo bash build_ttl2ttl.sh
+      #- name: Import data
+      #  run: sudo bash gdb_importFile.sh
+      #- name: Query data
+      #  run: sudo bash gdb_queryRepo.sh
      #- name: build xml ID
      #  run: sudo bash build_xmlId.sh      
