@@ -40,8 +40,9 @@ const filepath_out = path_out + file_out + ext_out ;
     var foot = footer ;
     $('html').find('footer').append(foot) ;
 
-    //write html file
-    var html = dom.serialize() ;    
+    //write html file    
+    var html = dom.serialize() ;
+    console.log('data: ', html) ;    
     fs.writeFileSync(filepath_out, html ) ;
     console.log('html data written: ', html.length, ' bytes')
 }) () ;
