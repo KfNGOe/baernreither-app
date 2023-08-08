@@ -1,3 +1,5 @@
+echo "Install normalize space"
+npm i normalize-space
 
 echo "Install uuid"
 npm install uuid
