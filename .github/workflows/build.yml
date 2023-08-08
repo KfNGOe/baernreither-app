@@ -31,7 +31,9 @@ jobs:
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
-        run: sudo bash gdb_getRepo.sh      
+        run: sudo bash gdb_getRepo.sh
+      - name: Build tei to ttl
+        run: sudo bash build_tei2ttl.sh
       - name: Build ttl to ttl
         run: sudo bash build_ttl2ttl.sh
       #- name: Import data
