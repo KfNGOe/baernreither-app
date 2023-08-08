@@ -35,7 +35,9 @@ jobs:
       - name: Build tei to ttl
         run: sudo bash build_tei2ttl.sh
       - name: Build ttl to ttl
-        run: sudo bash build_ttl2ttl.sh
+        run: sudo bash build_ttl2ttl.sh        
+      - name: Build ttl to json
+        run: sudo bash build_ttl2json.sh
       #- name: Import data
       #  run: sudo bash gdb_importFile.sh
       #- name: Query data

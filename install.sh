@@ -1,8 +1,8 @@
-echo "Install normalize space"
-npm i normalize-space
-
 echo "Install uuid"
 npm install uuid
+
+echo "Install normalize space"
+npm i normalize-space
 
 echo "Install graphdb tools"
 sudo bash ./dl_graphdb.sh
