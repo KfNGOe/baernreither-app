@@ -25,44 +25,84 @@ const filename = process.env.file;
 const ext_xml=process.env.ext_xml
 const ext_json=process.env.ext_json
 
-var i_xmlId = 0 ;
-var i_xmlId_new = 0 ;
-var i_elements = 0 ;
+var i_xmlId = 0 ; //number of actual not empty xml:id's
+var i_xmlId_new = 0 ; //number of new xml:id's
+var i_elements = 0 ; //number of all tei elements
+
+function countElements(obj) {   
+   Object.keys(obj).forEach((key) => {      
+      switch(key) {         
+         case 'elements':            
+            if(Array.isArray(obj[key])) {               
+               obj[key].forEach((item, index, array) => {
+                  if (typeof item === 'object') {                     
+                     countElements(item) ;
+                  }
+               }) ;                  
+            }
+            break ;
+            case 'attributes':            
+            if (typeof obj[key] === 'object') {               
+               if ('xml:id' in obj[key]) {                  
+                  //check if xml:id is empty
+                  if (obj[key]["xml:id"] === '') {                     
+                     //delete empty xml:id ;
+                     delete obj[key]["xml:id"] ;
+                     console.log('xml:id is empty at element position: ', i_elements, ' and deleted') ;
+                  } else {
+                     //number of actual not empty xml:id's + 1
+                     i_xmlId++ ;
+                     //check if xml:id is valid
+                     if (obj[key]["xml:id"].includes(titleShort) && obj[key]["xml:id"].includes('_', 8) && obj[key]["xml:id"].slice(9).match(/^\d+$/)) {
+                        //console.log('xml:id is valid') ;
+                     } else {
+                        console.log('xml:id is not valid at element position: ', i_elements) ;
+                        console.log('xml:id = ', obj[key]["xml:id"]) ;
+                     }
+                  }
+               } else {
+                  console.log('xml:id not found at element position: ', i_elements) ;                  
+               }
+            }
+            break ;         
+         case 'type':            
+            switch (obj[key]) {
+               case 'element':
+                  //number of tei elements + 1                  
+                  i_elements++ ;
+                  //element without attributes
+                  if (!('attributes' in obj)) {
+                     console.log('element without attributes at element position: ', i_elements) ;
+                  }                  
+                  break ;               
+               default:
+                  break ;                  
+            }                      
+            break ;         
+         default:            
+            break ;
+      } 
+   }) ;   
+}
 
 function getObject(obj) {
-   ////console.log('i_xmlId = ', i_xmlId) ;     
-   let length = Object.keys(obj).length ;
-   //console.log('object length =', length) ;
-   Object.keys(obj).forEach((key) => {
-      //console.log('key = ', key, ', value = ', obj[key]) ;       
-      switch(key) {
-         case 'declaration':
-            //console.log('declaration = ', obj[key]) ;
-            break ;
-         case 'instruction':
-            //console.log('instruction = ', obj[key]) ;
-            break ;
-         case 'elements':
-            //console.log('elements = ',obj[key]) ;
+   //start with xml:id = 0
+   Object.keys(obj).forEach((key) => {      
+      switch(key) {         
+         case 'elements':            
             if(Array.isArray(obj[key])) {               
                getArray(obj[key]) ;               
-            } else {
-               //console.log(obj.constructor.name, 'property is not an array: ', key) ;
             }
             break ;            
-         case 'attributes':
-            //console.log('attributes =  ', obj[key]) ;
+         case 'attributes':            
             if (typeof obj[key] === 'object') {               
                if ('xml:id' in obj[key]) {
-                  //console.log('xml:id = ', obj[key]["xml:id"]) ;
-                  //delete old xml:id ;
-                  //delete obj[key]["xml:id"] ;
                   //check if xml:id is empty
-                  if (Object.keys(obj[key]).length === 0) {
+                  if (obj[key]["xml:id"] === '') {
                      //console.log('attributes is empty') ;
-                     obj[key]["xml:id"] = i_xmlId_str ;
-                  } else {
-                     //console.log('attributes is not empty') ;
+                     //obj[key]["xml:id"] = i_xmlId_str ;
+                     //delete wrong xml:id ;
+                     delete obj[key]["xml:id"] ;
                   }
                } else {
                   //console.log('xml:id not found') ;
@@ -78,17 +118,13 @@ function getObject(obj) {
          case 'type':
             //console.log('result: ',obj[key]) ;
             switch (obj[key]) {
-               case 'element':
-                  //number of tei elements + 1                  
-                  i_elements++ ;
+               case 'element':                  
                   //xmlId + 1 ; 
                   i_xmlId++ ;
                   i_xmlId_str = '' + titleShort + '_' + i_xmlId ;
                   if('attributes' in obj) {
                      //console.log('attributes = ', obj.attributes) ;                  
-                  } else {
-                     //number of new xml:id + 1
-                     i_xmlId_new++ ;
+                  } else {                     
                      //console.log('attributes not found') ;
                      //create attributes object                  
                      obj.attributes = {} ;
@@ -136,6 +172,7 @@ function getArray(arr) {
       }
    }) ;   
 } ;
+
 //read xml file
 var filepath = path_in_tei + filename + ext_xml ;
 console.log(filepath);
@@ -148,10 +185,15 @@ titleShort = $xml.find( "[type='short']" ).text();
 //$titleAttr = $title.attr('type') ;
 //console.log('title = ', titleShort) ;
 
-var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
+var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
 
-//start with xml:id = 0
-getObject(xmlJs) ;
+//count and check tei elements
+countElements(xmlJs) ;
+console.log('number of tei elements = ', i_elements) ;
+console.log('number of xml:id = ', i_xmlId) ;
+
+//check and add new xml:id
+//getObject(xmlJs) ;
 
 //write xml file
 filepath = path_out_tei + filename + ext_xml ;
