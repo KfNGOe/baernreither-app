@@ -1,6 +1,6 @@
 name: Build project
 
-#on: 
+on: 
   push:
     branches:
       - main
@@ -32,24 +32,24 @@ jobs:
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh
-      - name: Build tei to ttl
-        run: sudo bash build_tei2ttl.sh
-      - name: Build ttl to ttl
-        run: sudo bash build_ttl2ttl.sh        
-      - name: Build ttl to json
-        run: sudo bash build_ttl2json.sh
-      - name: Build json to html
-        run: sudo bash build_json2html.sh
-      - name: Pushes to baernreither-page
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          source-directory: "html"
-          destination-github-username: "KfNGOe"
-          destination-repository-name: "baernreither-page"
-          user-email: baernreither-app@github.io
-          target-branch: main
+      #- name: Build tei to ttl
+      #  run: sudo bash build_tei2ttl.sh
+      #- name: Build ttl to ttl
+      #  run: sudo bash build_ttl2ttl.sh        
+      #- name: Build ttl to json
+      #  run: sudo bash build_ttl2json.sh
+      #- name: Build json to html
+      #  run: sudo bash build_json2html.sh
+      #- name: Pushes to baernreither-page
+      #  uses: cpina/github-action-push-to-another-repository@main
+      #  env:
+      #    API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+      #  with:
+      #    source-directory: "html"
+      #    destination-github-username: "KfNGOe"
+      #    destination-repository-name: "baernreither-page"
+      #    user-email: baernreither-app@github.io
+      #    target-branch: main
       #- name: Import data
       #  run: sudo bash gdb_importFile.sh
       #- name: Query data

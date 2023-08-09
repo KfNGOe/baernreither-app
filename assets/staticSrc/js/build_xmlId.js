@@ -26,6 +26,8 @@ const ext_xml=process.env.ext_xml
 const ext_json=process.env.ext_json
 
 var i_xmlId = 0 ;
+var i_xmlId_new = 0 ;
+var i_elements = 0 ;
 
 function getObject(obj) {
    ////console.log('i_xmlId = ', i_xmlId) ;     
@@ -54,12 +56,20 @@ function getObject(obj) {
                if ('xml:id' in obj[key]) {
                   //console.log('xml:id = ', obj[key]["xml:id"]) ;
                   //delete old xml:id ;
-                  delete obj[key]["xml:id"] ;                  
+                  //delete obj[key]["xml:id"] ;
+                  //check if xml:id is empty
+                  if (Object.keys(obj[key]).length === 0) {
+                     //console.log('attributes is empty') ;
+                     obj[key]["xml:id"] = i_xmlId_str ;
+                  } else {
+                     //console.log('attributes is not empty') ;
+                  }
                } else {
                   //console.log('xml:id not found') ;
+                  //add new xml:id
+                  obj[key]["xml:id"] = i_xmlId_str ;
                }
-               //add new xml:id
-               obj[key]["xml:id"] = i_xmlId_str ;
+               
                //console.log('attributes = ', obj[key]) ;
             } else {
                //console.log(obj.constructor.name, 'property is not an object: ', key) ;
@@ -69,12 +79,16 @@ function getObject(obj) {
             //console.log('result: ',obj[key]) ;
             switch (obj[key]) {
                case 'element':
+                  //number of tei elements + 1                  
+                  i_elements++ ;
                   //xmlId + 1 ; 
                   i_xmlId++ ;
                   i_xmlId_str = '' + titleShort + '_' + i_xmlId ;
                   if('attributes' in obj) {
                      //console.log('attributes = ', obj.attributes) ;                  
                   } else {
+                     //number of new xml:id + 1
+                     i_xmlId_new++ ;
                      //console.log('attributes not found') ;
                      //create attributes object                  
                      obj.attributes = {} ;
