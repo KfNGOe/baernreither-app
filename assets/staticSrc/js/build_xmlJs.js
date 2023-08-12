@@ -123,8 +123,8 @@ console.log(filepath);
 var xml = fs.readFileSync(filepath, 'utf8');
 console.log('tei data read: ', xml.length, ' bytes')
 
+//convert xml to js object
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
-//console.log('xmlJs = ', xmlJs) ;
 
 getObject(xmlJs) ;
 if (i_startTag > i_endTag) {
