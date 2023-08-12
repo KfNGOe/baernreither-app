@@ -1,13 +1,13 @@
 echo "build tei to ttl"
 
-PATH_TEI='./data/tei_xmlId/'
+PATH_TEI='./data/tei/'
 PATH_TEI_XMLID='./data/tei_xmlId/'
 PATH_TTL='./data/ttl/text/'
 PATH_JSON_XMLID='./data/json_xmlId/'
 PATH_JSON_RDF='./data/json_rdf/'
 PATH_JSON_XMLJS='./data/json_xmlJs/'
 
-FILENAME='Tagebuch_Baernreither_8'
+FILENAME='Bae_TB_8'
 #FILENAME='Bae_TB_7'
 #FILENAME='Bae_MF_6-2'
 #FILENAME='Bae_MF_6-1'

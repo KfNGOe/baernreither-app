@@ -154,7 +154,11 @@ function countElements() {
    //number of actual valid xml:id's
    i_xmlId = arr_xmlId.filter(x => !isNaN(x)).length ;
    //number of last value of xml:id
-   i_xmlId_last = Math.max(...arr_xmlId.filter(x => !isNaN(x))) ;
+   if (i_xmlId === 0) {
+      i_xmlId_last = 0 ;
+   } else {
+      i_xmlId_last = Math.max(...arr_xmlId.filter(x => !isNaN(x))) ;
+   }
 }
 
 function addXmlid(obj) {
