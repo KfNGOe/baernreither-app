@@ -1,9 +1,1 @@
-PREFIX gndo: <https://d-nb.info/standards/elementset/gnd#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-select ?s ?o where { 
-	?s 	rdf:type gndo:DifferentiatedPerson;
-     gndo:preferredNameEntityForThePerson [
-        gndo:forename ?o
-    ]
-    FILTER (STRSTARTS(str(?s),"https://d-nb.info/gnd/"))
-}
+#put triples in named graph

@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf:    <http://xmlns.com/foaf/0.1/>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix ldp:     <http://www.w3.org/ns/ldp#>.
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+
+kfngoei:7f61c113-cae7-4637-a5ef-389a7c809903 a ldp:Container ;
+    dcterms:title "Baernreither Project" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:d15ddd68-3934-11ee-be56-0242ac120002, kfngoei:05beb17c-3935-11ee-be56-0242ac120002 ;
+    .
+
+kfngoei:d15ddd68-3934-11ee-be56-0242ac120002 a ldp:Container ;
+    dcterms:title "Tagebuch" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    .
+
+kfngoei:05beb17c-3935-11ee-be56-0242ac120002 a ldp:Container ;
+    dcterms:title "Manuskript Fragmente" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    .
+
