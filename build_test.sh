@@ -1,5 +1,16 @@
-echo "build register.html"
-node assets/staticSrc/js/build_register.js
-echo "build register.html done"
+echo "build ttl to ttl"
 
-./dl_assets.sh
+ENDPOINT='http://localhost:7200'
+REPO_NAME='kfngoe_test'
+
+echo "clear graphdb repo"
+endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
+
+PATH_IN='./data/ttl/text/'
+FILENAME_IN='Bae_TB_8'
+EXTENSION_IN='.ttl'
+
+MIME_TYPE='text/turtle'
+
+#echo "import graph to graphdb repo"
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importGraph.js

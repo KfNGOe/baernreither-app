@@ -161,7 +161,7 @@ function countElements() {
    }
 }
 
-function addXmlid(obj) {
+function addXmlId(obj) {
    //start with xml:id = 0
    Object.keys(obj).forEach((key) => {      
       switch(key) {         
@@ -169,7 +169,7 @@ function addXmlid(obj) {
             if(Array.isArray(obj[key])) {               
                obj[key].forEach((item, index, array) => {
                   if (typeof item === 'object') {                     
-                     addXmlid(item) ;
+                     addXmlId(item) ;
                   }
                }) ;                  
             }            
@@ -248,7 +248,7 @@ console.log('number of xml:id = ', i_xmlId) ;
 console.log('number of last xml:id = ', i_xmlId_last) ;
 
 //add new xml:id
-addXmlid(xmlJs) ;
+addXmlId(xmlJs) ;
 console.log('new xml:id added') ;
 console.log('number of new xml:id = ', i_xmlId_new) ;
 

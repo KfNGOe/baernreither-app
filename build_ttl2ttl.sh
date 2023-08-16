@@ -13,7 +13,7 @@ EXTENSION_IN='.ttl'
 MIME_TYPE='text/turtle'
 
 echo "import file to graphdb repo"
-endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importGraph.js
 
 QUERY_TYPE='CONSTRUCT'
 

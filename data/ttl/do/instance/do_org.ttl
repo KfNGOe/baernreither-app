@@ -14,12 +14,35 @@ kfngoei:7f61c113-cae7-4637-a5ef-389a7c809903 a ldp:Container ;
 kfngoei:d15ddd68-3934-11ee-be56-0242ac120002 a ldp:Container ;
     dcterms:title "Tagebuch" ;
     ldp:membershipResource kfngoei: ;
-    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    ldp:contains kfngoei:fac1afa5-a74a-456c-84a1-112f37af4bff, kfngoei:764e6488-3b4b-11ee-be56-0242ac120002 ;
     .
 
 kfngoei:05beb17c-3935-11ee-be56-0242ac120002 a ldp:Container ;
     dcterms:title "Manuskript Fragmente" ;
     ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:881327bc-3b4b-11ee-be56-0242ac120002, kfngoei:92862172-3b4b-11ee-be56-0242ac120002 ;
+    .
+
+kfngoei:fac1afa5-a74a-456c-84a1-112f37af4bff a ldp:Container ;
+    dcterms:title "Bae_TB_7" ;
+    ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
     .
 
+kfngoei:764e6488-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+    dcterms:title "Bae_TB_8" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    .
+
+kfngoei:881327bc-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+    dcterms:title "Bae_MF_6-1" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    .
+
+kfngoei:92862172-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+    dcterms:title "Bae_MF_6-2" ;
+    ldp:membershipResource kfngoei: ;
+    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    .
