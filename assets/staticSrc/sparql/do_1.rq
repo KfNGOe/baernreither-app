@@ -1,0 +1,22 @@
+#Select all stmts of a text in the project
+PREFIX ldp: <http://www.w3.org/ns/ldp#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?s_do ?o_do ?pos ?title_short ?s_text ?o_text
+WHERE {	
+    ?s_do a ldp:Container ;
+          dcterms:title "Baernreither Project" ;
+		  ldp:contains+ ?o_do
+    .
+    ?o_do a kfngoeo:StartTag ;
+          kfngoeo:elementPos ?pos
+	.
+    BIND(substr(?pos,1,strlen(?pos)-1) AS ?title_short)
+    ?s_text kfngoeo:elementPos ?o_text ;
+    .
+    FILTER(STRSTARTS(?o_text, ?title_short))
+}

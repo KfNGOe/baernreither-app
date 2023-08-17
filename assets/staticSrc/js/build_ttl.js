@@ -78,7 +78,7 @@ function getTTL(item_obj) {
       ttl = ttl + TAB + SQBRACKET_CLOSE + SEMICOLON + LF ;
    }
    if(item_obj.predicate === "kfngoeo:elementPos") {
-      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:integer' + SEMICOLON + LF ;
+      ttl = ttl + TAB + item_obj.predicate + SPACE + QUOT + item_obj.object + QUOT + '^^xsd:string' + SEMICOLON + LF ;
       ttl = ttl + DOT + LF + LF ;
       //ttl = convertChar2Html(ttl) ;
    }
