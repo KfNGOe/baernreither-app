@@ -6,22 +6,20 @@ REPO_NAME='kfngoe_test'
 echo "clear graphdb repo"
 endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
 
+#GRAPH='https://github.com/KfNGOe/kfngoei/Bae_TB_8'
 PATH_IN='data/ttl/text/'
 FILENAME_IN='Bae_TB_8'
 EXTENSION_IN='.ttl'
-
 MIME_TYPE='text/turtle'
 
-echo "import file to graphdb repo"
-endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importGraph.js
+echo "import file to graph"
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
 
 QUERY_TYPE='CONSTRUCT'
-
 PATH_RQ='assets/staticSrc/sparql/'
 FILENAME_RQ='annoPerson_1'
 EXTENSION_RQ='.rq'
-
-PATH_OUT='./data/ttl/annotation/anno_web/instance/'
+PATH_OUT='data/ttl/annotation/anno_web/instance/'
 FILENAME_OUT='annoPersoni_1'
 EXTENSION_OUT='.ttl'
 

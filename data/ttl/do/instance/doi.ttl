@@ -2,47 +2,60 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/>.
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix ldp:     <http://www.w3.org/ns/ldp#>.
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
 
+
 kfngoei:7f61c113-cae7-4637-a5ef-389a7c809903 a ldp:Container ;
     dcterms:title "Baernreither Project" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Collection" ;
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:d15ddd68-3934-11ee-be56-0242ac120002, kfngoei:05beb17c-3935-11ee-be56-0242ac120002 ;
     .
 
 kfngoei:d15ddd68-3934-11ee-be56-0242ac120002 a ldp:Container ;
     dcterms:title "Tagebuch" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Collection" ;
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:fac1afa5-a74a-456c-84a1-112f37af4bff, kfngoei:764e6488-3b4b-11ee-be56-0242ac120002 ;
     .
 
 kfngoei:05beb17c-3935-11ee-be56-0242ac120002 a ldp:Container ;
     dcterms:title "Manuskript Fragmente" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Collection" ;
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:881327bc-3b4b-11ee-be56-0242ac120002, kfngoei:92862172-3b4b-11ee-be56-0242ac120002 ;
     .
 
-kfngoei:fac1afa5-a74a-456c-84a1-112f37af4bff a ldp:Container ;
+kfngoei:fac1afa5-a74a-456c-84a1-112f37af4bff a ldp:Container, ebucore:Asset ;
     dcterms:title "Bae_TB_7" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Text" ;
+    ebucore:hasMimeType "text/turtle" ;    
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
     .
 
-kfngoei:764e6488-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+kfngoei:764e6488-3b4b-11ee-be56-0242ac120002 a ldp:Container, ebucore:Asset ;
     dcterms:title "Bae_TB_8" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Text" ;
+    ebucore:hasMimeType "text/turtle" ;
     ldp:membershipResource kfngoei: ;
-    ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
+    ldp:contains kfngoei:66b4c90f-d424-454c-870f-6610d63cc55e ;
     .
 
-kfngoei:881327bc-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+kfngoei:881327bc-3b4b-11ee-be56-0242ac120002 a ldp:Container, ebucore:Asset ;
     dcterms:title "Bae_MF_6-1" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Text" ;
+    ebucore:hasMimeType "text/turtle" ;
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
     .
 
-kfngoei:92862172-3b4b-11ee-be56-0242ac120002 a ldp:Container ;
+kfngoei:92862172-3b4b-11ee-be56-0242ac120002 a ldp:Container, ebucore:Asset ;
     dcterms:title "Bae_MF_6-2" ;
+    dcterms:type "http://purl.org/dc/dcmitype/Text" ;
+    ebucore:hasMimeType "text/turtle" ;
     ldp:membershipResource kfngoei: ;
     ldp:contains kfngoei:nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn ;
     .

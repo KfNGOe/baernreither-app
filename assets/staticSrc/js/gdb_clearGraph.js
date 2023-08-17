@@ -5,14 +5,8 @@ var connectFlag = false ;
 
 const endpoint = process.env.endpoint ;
 const repo_name = process.env.repo_name ;
+
 const graph = process.env.graph ;
-
-const path_in = process.env.path_in ;
-const file_in = process.env.file_in ;
-const ext_in = process.env.ext_in ;
-const filepath = path_in + file_in + ext_in ;
-
-const mime_type = process.env.mime_type ;
 
 let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     baseURL: endpoint ,
@@ -23,17 +17,13 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     //ATTENTION: no api type rdf4j here!
     apiType: 'REST'
 }) ;
-console.log('graph =', graph) ;
-//graphdb upload a file into graph
+
+//graphdb clear graph
 graphDBEndpoint
-    .uploadFromFile({        
-        filename: filepath ,
-        format: mime_type ,        
-        context: graph ,
-    })
+    .clearContext(graph)
     .then((result) => {
-        console.log('result = ', result) ;        
+        console.log(result);
     })
     .catch((err) => {
-        console.log('error = ', err) ;
-    }) ;
+        console.log(err);
+    });

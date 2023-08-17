@@ -15,16 +15,7 @@ var prefTei = "tei:" ;
 var bnAttr = "_:attr" ;
 var i_stmt = 1 ;
 var N = 0 ;
-
-// Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
+var titleShort = "" ;
 
 const path_in_json=process.env.path_in_json 
 const path_out_json=process.env.path_out_json
@@ -94,8 +85,8 @@ function buildStartTagStmts( iri, obj ) {
    addStmt( iri, prefOntology + 'elementName', prefTei + obj['name'] ) ;
    //build element attributes statement   
    buildAttrStmt( obj ) ;
-   //build element position statement
-   addStmt( iri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   //build element position statement   
+   addStmt( iri, prefOntology + 'elementPos', titleShort + obj['attributes']['startTagNr'] ) ;
    //reset stmt counter   
    i_stmt = 1 ;
 }
@@ -108,7 +99,7 @@ function buildEndTagStmts( iri, obj ) {
    //build element attributes statement   
    addAttrStmt( iri, bnAttr, 'xml:id', obj['attributes']['xml:id'] ) ; ;
    //build element position statement
-   addStmt( iri, prefOntology + 'elementPos', obj['attributes']['endTagNr'] ) ;
+   addStmt( iri, prefOntology + 'elementPos', titleShort + obj['attributes']['endTagNr'] ) ;
    //reset stmt counter   
    i_stmt = 1 ;
 }
@@ -119,15 +110,12 @@ function buildStmtsList( index ) {
 }
 
 function buildElementStmt( obj ) {
-   resourceIri = prefInstance + uuidv4() ;
-   //console.log( 'resourceIri = ', resourceIri ) ;
-   
+   resourceIri = prefInstance + uuidv4() ;      
    //build start tag statements
    buildStartTagStmts( resourceIri, obj ) ;
    //build list of statements
    buildStmtsList( obj['attributes']['startTagNr'] - 1 ) ;
-   //console.log( 'stmtsList = ', stmtsList ) ;
-
+   
    //check single tag
    if ('endTagNr' in obj['attributes']) {      
       resourceIri = prefInstance + uuidv4() ;
@@ -148,7 +136,7 @@ function buildTextStmt( obj ) {
    //build text content statement   
    addStmt( resourceIri, prefOntology + 'hasContent', obj['text'] ) ;   
    //build element position statement
-   addStmt( resourceIri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   addStmt( resourceIri, prefOntology + 'elementPos', titleShort + obj['attributes']['startTagNr'] ) ;
    //reset stmt counter   
    i_stmt = 1 ;
 
@@ -166,7 +154,7 @@ function buildCommentStmt( obj ) {
    //build text content statement   
    addStmt( resourceIri, prefOntology + 'hasContent', obj['comment'] ) ;   
    //build element position statement
-   addStmt( resourceIri, prefOntology + 'elementPos', obj['attributes']['startTagNr'] ) ;
+   addStmt( resourceIri, prefOntology + 'elementPos', titleShort + obj['attributes']['startTagNr'] ) ;
    //reset stmt counter   
    i_stmt = 1 ;
 
@@ -175,10 +163,14 @@ function buildCommentStmt( obj ) {
    //console.log( 'stmtsList = ', stmtsList ) ;
 }
 
-function buildRdfJs( obj ) {
+function buildRdfStmts( obj ) {
    switch( obj['type'] ) {
       case 'element':
-         //console.log( 'element = ', obj['name'] ) ;
+         if (obj['name'] === 'TEI') {            
+            //get titleShort            
+            titleShort = obj['attributes']['xml:id'].slice(0, -1) ;
+            console.log( 'titleShort = ', titleShort ) ;
+         }         
          buildElementStmt(obj) ;
          break ;
       case 'text':
@@ -195,57 +187,33 @@ function buildRdfJs( obj ) {
    }
 }
 
-function getObject(obj) {
+function buildRdf(obj) {
    let length = Object.keys(obj).length ;
    //console.log('object length =', length) ;
-   //console.log('first object key  =', Object.keys(obj)[0]) ;
-   
+   //console.log('first object key  =', Object.keys(obj)[0]) ;   
    if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {   
-      buildRdfJs(obj) ;
-   }   
-
+      buildRdfStmts(obj) ;
+   }
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {         
          case 'elements':
-            //console.log('elements = ',obj[key]) ;
-            if(Array.isArray(obj[key])) {
-               //console.log('Hello elements array') ;
-               getArray(obj[key]) ;               
-            } else {
-               //console.log(obj.constructor.name, 'property is not an array: ', key) ;
-            }
+            if(Array.isArray(obj[key])) {               
+               //level + 1
+               obj[key].forEach((item, index, array) => {
+                  if (typeof item === 'object') {                     
+                     buildRdf(item) ;
+                  }
+               }) ;
+               //level - 1
+            }            
             break ;         
-         case 'name':
-            //console.log('result: ',obj[key]) ;            
-            break ;
-         case 'text':
-            //console.log('result: ',obj[key]) ;
-            break ;
-         case 'comment':
-            //console.log('comment = ', obj[key]) ;            
-            break ;
          default:
             ////console.log('no case') ;
             break ;
       } 
    }) ;
       
-} ; 
-
-function getArray(arr) {
-   let length = arr.length ;   
-   //console.log('array length =', length) ;
-
-//level + 1
-   arr.forEach((item, index, array) => {
-      if (typeof item === 'object') {
-         //console.log('item = ', item, ', index = ', index) ;          
-         getObject(item) ;
-      }
-   }) ;
-//level - 1
-
 } ;
 
 //////////////////////////////////////////////////////
@@ -260,7 +228,7 @@ var jsonJs = JSON.parse(json) ;
 //console.log('jsonJs = ', jsonJs) ;
 
 //get N
-getObject(jsonJs) ;
+buildRdf(jsonJs) ;
 //build statements list as js object
 stmtsListJs['statements'] = stmtsList ;
 

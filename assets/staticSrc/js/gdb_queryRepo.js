@@ -57,6 +57,7 @@ let body = '' ;
     }
     const query = fs.readFileSync(filepath_rq, 'utf8');
     console.log('query data read: ', query.length, ' bytes') ;
+    
     const payload = new GetQueryPayload()
     .setResponseType(mimeType)
     .setQuery(query)
