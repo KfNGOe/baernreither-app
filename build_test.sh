@@ -1,33 +1,36 @@
-echo "build tei to ttl"
+echo "build ttl to ttl"
 
-PATH_TEI='./data/tei/'
-PATH_TEI_XMLID='./data/tei_xmlId/'
-PATH_TTL='./data/ttl/text/'
-PATH_JSON_XMLID='./data/json_xmlId/'
-PATH_JSON_RDF='./data/json_rdf/'
-PATH_JSON_XMLJS='./data/json_xmlJs/'
+ENDPOINT='http://localhost:7200'
+REPO_NAME='kfngoe_test'
 
-FILENAME='Bae_TB_8'
-#FILENAME='Bae_TB_7'
-#FILENAME='Bae_MF_6-2'
-#FILENAME='Bae_MF_6-1'
+echo "clear graphdb repo"
+endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
 
-EXTENSION_XML='.xml'
-EXTENSION_TTL='.ttl'
-EXTENSION_JSON='.json'
+echo "import file to graphdb"
+PATH_IN='data/ttl/text/'
+FILENAME_IN='Bae_TB_8'
+EXTENSION_IN='.ttl'
+MIME_TYPE='text/turtle'
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
 
-echo "normalize whitespace"
-path=$PATH_TEI file=$FILENAME ext=$EXTENSION_XML node assets/staticSrc/js/normalize_ws.js
+echo "import do to graphdb"
+PATH_IN='data/ttl/do/instance/'
+FILENAME_IN='doi'
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
 
-echo "build xml ID"
-#path_in_tei=$PATH_TEI path_out_json=$PATH_JSON_XMLID path_out_tei=$PATH_TEI_XMLID file=$FILENAME ext_xml=$EXTENSION_XML ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_xmlId.js
+echo "connect text to do"
+QUERY_TYPE='CONSTRUCT'
+PATH_RQ='assets/staticSrc/sparql/'
+FILENAME_RQ='do_2'
+EXTENSION_RQ='.rq'
+PATH_OUT='data/ttl/do/instance/'
+FILENAME_OUT='doi'
+EXTENSION_OUT='.ttl'
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_rq=$PATH_RQ file_rq=$FILENAME_RQ ext_rq=$EXTENSION_RQ mime_type=$MIME_TYPE query_type=$QUERY_TYPE path_out=$PATH_OUT file_out=$FILENAME_OUT ext_out=$EXTENSION_OUT node assets/staticSrc/js/gdb_queryRepo.js
 
-echo "build xml JS"
-#path_in_tei=$PATH_TEI_XMLID path_out_json=$PATH_JSON_XMLJS file=$FILENAME ext_xml=$EXTENSION_XML ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_xmlJs.js
-
-echo "build rdf JS"
-path_in_json=$PATH_JSON_XMLJS path_out_json=$PATH_JSON_RDF file=$FILENAME ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_rdfJs.js
-
-echo "build ttl"
-#path_in_json=$PATH_JSON_RDF path_out_ttl=$PATH_TTL file=$FILENAME ext_json=$EXTENSION_JSON ext_ttl=$EXTENSION_TTL node assets/staticSrc/js/build_ttl.js
-
+echo "update do"
+echo "delete statements"
+FILENAME_RQ='del_do_2'
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_rq=$PATH_RQ file_rq=$FILENAME_RQ ext_rq=$EXTENSION_RQ node assets/staticSrc/js/gdb_deleteStmts.js
+echo "import statements"
+endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js

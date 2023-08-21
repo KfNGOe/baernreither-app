@@ -1,2 +1,4 @@
-echo "test graphdb repo"
-node assets/staticSrc/js/gdb_test.js
+echo "test update.sh"
+A="test"
+export A 
+./gdb_update.sh
