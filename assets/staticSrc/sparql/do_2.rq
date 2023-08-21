@@ -16,11 +16,10 @@ WHERE {
     ?s_do a ldp:Container ;
           ?p ?o ;
           dcterms:title ?title_short ;
-          dcterms:type <http://purl.org/dc/dcmitype/Text> ;		  
     .
     BIND (  IF ( ?p = ldp:contains, ?nothing, ?p) AS ?p_do)
+    BIND (  IF ( ?p = ldp:contains, ?nothing, ?o) AS ?o_do)    
     BIND (  IF ( ?p = ldp:contains, 
-            	IF ( STRSTARTS(?pos, ?title_short), ?s_do, ?o), 
+            	IF ( STRSTARTS(?pos, ?title_short), ?s_text, ?nothing), 
                 ?nothing) AS ?o_s_text)    
-    BIND (  ?o AS ?o_do)    
 }
