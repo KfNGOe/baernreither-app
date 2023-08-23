@@ -24,7 +24,7 @@ jobs:
       - name: Install
         run: sudo bash install.sh
       - name: Start graphdb
-        run: sudo bash gdb_start.sh
+        run: sudo bash gdb_start.sh &
       - name: Ping graphdb until it is ready
         run: sudo bash gdb_ping.sh
         shell: bash
