@@ -10,5 +10,5 @@ do
         echo "$ENDPOINT is reachable"
         break
     fi
-    sleep 1
+    sleep .5
 done
