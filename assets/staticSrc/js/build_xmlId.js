@@ -89,9 +89,10 @@ function checkElements(obj) {
                      arr_xmlId.push(NaN) ;
                   } else {                     
                      //check if xml:id is valid
-                     if (obj[key]["xml:id"].includes(titleShort) && obj[key]["xml:id"].includes('_', 8) && obj[key]["xml:id"].slice(9).match(/^\d+$/)) {
-                        //console.log('xml:id is valid') ;
-                        arr_xmlId.push(obj[key]["xml:id"].slice(9)) ;
+                     let index = obj[key]["xml:id"].lastIndexOf('_') + 1 ;          
+                     if (obj[key]["xml:id"].includes(titleShort) && obj[key]["xml:id"].slice(index).match(/^\d+$/)) {                     
+                        //console.log('xml:id is valid') ;                        
+                        arr_xmlId.push(obj[key]["xml:id"].slice(index)) ;                        
                      } else {
                         console.log('xml:id is not valid and deleted') ;
                         console.log('xml:id = ', obj[key]["xml:id"]) ;
