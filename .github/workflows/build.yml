@@ -26,7 +26,7 @@ jobs:
       - name: Start graphdb
         run: sudo bash gdb_start.sh &
       - name: Wait for graphdb
-        run: gdb_start.sh
+        run: sudo bash gdb_ping.sh
         shell: bash
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
