@@ -3,7 +3,7 @@ name: Build project
 on:
   push:
     branches:
-      - ping_test
+      - main
 
 jobs:
   build_infra:
