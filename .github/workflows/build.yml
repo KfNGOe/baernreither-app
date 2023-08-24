@@ -1,9 +1,9 @@
 name: Build project
 
-on: 
+on:
   push:
     branches:
-      - main
+      - ping_test
 
 jobs:
   build_infra:
@@ -16,17 +16,17 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "11"
-          distribution: "adopt"      
+          distribution: "adopt"
       - name: Set up Node.js
         uses: actions/setup-node@v2
-        with: 
+        with:
           node-version: "14.x"
       - name: Install
         run: sudo bash install.sh
       - name: Start graphdb
         run: sudo bash gdb_start.sh &
       - name: Wait for graphdb
-        run: sleep 15s
+        run: sudo bash gdb_ping.sh
         shell: bash
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
@@ -35,7 +35,7 @@ jobs:
       #- name: Build tei to ttl
       #  run: sudo bash build_tei2ttl.sh
       #- name: Build ttl to ttl
-      #  run: sudo bash build_ttl2ttl.sh        
+      #  run: sudo bash build_ttl2ttl.sh
       #- name: Build ttl to json
       #  run: sudo bash build_ttl2json.sh
       #- name: Build json to html
@@ -54,5 +54,5 @@ jobs:
       #  run: sudo bash gdb_importFile.sh
       #- name: Query data
       #  run: sudo bash gdb_queryRepo.sh
-     #- name: build xml ID
-     #  run: sudo bash build_xmlId.sh
+      #- name: build xml ID
+      #  run: sudo bash build_xmlId.sh
