@@ -1,12 +1,14 @@
-#Pings the graph database until it is up and running
-ENDPOINT='http://localhost:7200'
-REPO_NAME='kfngoe_test'
+#checks if the database website is reachable until it is reachable
 
-while true; do
-    STATUS=$(curl -s -o /dev/null -w '%{http_code}' $ENDPOINT)
-    if [ $STATUS -eq 200 ]; then
+ENDPOINT="http://localhost:7200/"
+
+while true;
+do
+    echo "checking if $ENDPOINT is reachable"
+    curl -s -o /dev/null $ENDPOINT
+    if [ $? -eq 0 ]; then
+        echo "$ENDPOINT is reachable"
         break
     fi
-    echo "Waiting for the graph database to be up and running..."
     sleep 1
 done
