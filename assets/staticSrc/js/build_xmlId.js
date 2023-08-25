@@ -1,13 +1,10 @@
-// Importing the jsdom module
+// Importing the jsdom module 
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 var convert = require('xml-js');
 const { exit } = require("process");
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
+const dom = new jsdom.JSDOM('<!DOCTYPE html><body></body>') ;
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);
@@ -85,7 +82,7 @@ function checkElements(obj) {
                   if (obj[key]["xml:id"] === '') {                     
                      //delete empty xml:id ;
                      delete obj[key]["xml:id"] ;
-                     console.log('xml:id is empty and deleted') ;
+                     //console.log('xml:id is empty and deleted') ;
                      arr_xmlId.push(NaN) ;
                   } else {                     
                      //check if xml:id is valid
@@ -94,15 +91,15 @@ function checkElements(obj) {
                         //console.log('xml:id is valid') ;                        
                         arr_xmlId.push(obj[key]["xml:id"].slice(index)) ;                        
                      } else {
-                        console.log('xml:id is not valid and deleted') ;
-                        console.log('xml:id = ', obj[key]["xml:id"]) ;
+                        //console.log('xml:id is not valid and deleted') ;
+                        //console.log('xml:id = ', obj[key]["xml:id"]) ;
                         //delete not valid xml:id ;
                         delete obj[key]["xml:id"] ;
                         arr_xmlId.push(NaN) ;
                      }
                   }
                } else {
-                  console.log('xml:id not found') ;
+                  //console.log('xml:id not found') ;
                   arr_xmlId.push(NaN) ;
                }
             }
@@ -112,7 +109,7 @@ function checkElements(obj) {
                case 'element':                  
                   //element without attributes
                   if (!('attributes' in obj)) {
-                     console.log('xml:id not found') ;
+                     //console.log('xml:id not found') ;
                      arr_xmlId.push(NaN) ;                     
                   }                  
                   break ;               
@@ -123,7 +120,7 @@ function checkElements(obj) {
          default:            
             break ;
       } 
-   }) ;
+   }) ;   
 }
 
 function isUnique() {
@@ -235,6 +232,9 @@ console.log('xml data escaped') ;
 
 //check elements
 checkElements(xmlJs) ;
+//count NaN in array
+let countNaN = arr_xmlId.filter(x => isNaN(x)).length ;
+console.log('number of xmlIds not found, not valid or empty = ', countNaN) ;
 console.log('xml data checked') ;
 
 //check if xml:id's are unique
