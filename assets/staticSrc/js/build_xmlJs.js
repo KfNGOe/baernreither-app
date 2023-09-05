@@ -55,9 +55,15 @@ function getObject(obj) {
             break ;
          case 'elements':
             //console.log('elements = ',obj[key]) ;
-            if(Array.isArray(obj[key])) {
-               //console.log('Hello elements array') ;
-               getArray(obj[key]) ;               
+            if(Array.isArray(obj[key])) {               
+               //level + 1
+               obj[key].forEach((item, index, array) => {
+                  if (typeof item === 'object') {
+                     //console.log('item = ', item, ', index = ', index) ;          
+                     getObject(item) ;
+                  }
+               }) ;
+               //level - 1               
             } else {
                //console.log(obj.constructor.name, 'property is not an array: ', key) ;
             }
@@ -99,24 +105,9 @@ function getObject(obj) {
             }
          }
       }
-   }
-      
+   }      
 } ; 
 
-function getArray(arr) {
-   let length = arr.length ;   
-   //console.log('array length =', length) ;
-
-//level + 1
-   arr.forEach((item, index, array) => {
-      if (typeof item === 'object') {
-         //console.log('item = ', item, ', index = ', index) ;          
-         getObject(item) ;
-      }
-   }) ;
-//level - 1
-
-} ;
 //read xml file
 var filepath = path_in_tei + filename + ext_xml ;
 console.log(filepath);
