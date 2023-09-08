@@ -5,8 +5,8 @@
 
 echo starting tei ttl transformation
  
-inputDir="./data/tei_xmlId/"
-outputDir="./data/ttl/text/"
+inputDir="data/tei_xmlId/"
+outputDir="data/ttl/text/"
 #changes="data/tei/Bae_TB_8.xml"
 
 filesChanged=false;
@@ -15,7 +15,7 @@ dir data/tei_xmlId/
 
 echo $inputDir
 
-if ! test -f "$inputDir"
+if ! test -d "$inputDir"
 then
     echo "no input dir"
 else
