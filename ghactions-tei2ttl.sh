@@ -11,6 +11,8 @@ outputDir="./data/ttl/text/"
 
 filesChanged=false;
 
+dir data
+
 echo $inputDir
 
 if ! test -f "$inputDir"
