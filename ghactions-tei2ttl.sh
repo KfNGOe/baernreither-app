@@ -11,7 +11,7 @@ outputDir="./data/ttl/text/"
 
 filesChanged=false;
 
-dir data
+dir data/tei_xmlId/
 
 echo $inputDir
 
