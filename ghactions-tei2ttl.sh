@@ -11,6 +11,8 @@ outputDir="data/ttl/text/"
 
 filesChanged=false;
 
+echo $inputDir
+
 if ! test -f "$inputDir"
 then
     echo "no input dir"
