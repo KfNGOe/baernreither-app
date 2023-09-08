@@ -103,6 +103,6 @@ jsonJs.statements.forEach((item, index, array) => {
 
 //write ttl file
 filepath = path_out_ttl + filename + ext_ttl ;
-console.log('data: ', ttl);
+//console.log('data: ', ttl);
 fs.writeFileSync(filepath, ttl ) ;
 console.log('ttl data written: ', ttl.length  , ' bytes')

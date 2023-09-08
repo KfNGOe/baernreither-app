@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+      - id: files
+        uses: jitterbit/get-changed-files@v1
       - name: Install
         run: sudo bash install.sh
       - name: Start graphdb
@@ -33,7 +35,9 @@ jobs:
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh
       - name: Build tei to ttl
-        run: sudo bash build_tei2ttl.sh
+        run: . ghactions-tei2ttl.sh
+        env:
+          changes: ${{ steps.files.outputs.all }}
       #- name: Build ttl to ttl
       #  run: sudo bash build_ttl2ttl.sh
       #- name: Build ttl to json
