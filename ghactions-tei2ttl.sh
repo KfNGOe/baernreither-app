@@ -11,10 +11,6 @@ outputDir="data/ttl/text/"
 
 filesChanged=false;
 
-dir data/tei_xmlId/
-
-echo $inputDir
-
 if ! test -d "$inputDir"
 then
     echo "no input dir"
@@ -43,7 +39,7 @@ else
                         rm "$outputDir$name.ttl"
                     fi
 
-                    if ! test -f "$outputDir"
+                    if ! test -d "$outputDir"
                     then
                         echo "creating output dir"
                         mkdir -p "$outputDir"
