@@ -1,0 +1,674 @@
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix spr: <http://www.w3.org/TR/rdf-sparql-query/> .
+@prefix dhplusPlace: <https://dhplus.sbg.ac.at/place/> .
+
+<https://dhplus.sbg.ac.at/shapes/place/>
+  a <http://owl.org/Ontology> ;
+  dc11:title "dhPLUS Place SHACL" ;
+  dc11:creator "Richard Hörmann" ;
+  owl:comment "This is a SHACL shape graph for validating annd generating the data graph of the dhPLUS OWL ontology ."@en .
+  # owl:imports <http://njh.me/> .
+
+#dhplus
+_:E53_PlaceShape
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/E48_Place_Name>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/E47_Spatial_Coordinates>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/DefinedPlaceOrGeographicName>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/ReplacedPlaceOrGeographicName>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/DefinedFeature>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+<https://dhplus.sbg.ac.at/place/ReplacedFeature>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.
+
+_:E53_PlaceRuleShape
+    a sh:NodeShape ;
+    sh:targetClass <https://dhplus.sbg.ac.at/place/E53_Place> ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:condition _:E53_PlaceShape ;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:E53_Place
+            ] , [
+                    a sh:TripleRule ;
+                    sh:condition _:E53_PlaceShape ;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:P87_is_identified_by ;
+                    sh:object [sh:path dhplusPlace:P87_is_identified_by]
+                ] , [
+                        a sh:TripleRule ;
+                        sh:condition _:E53_PlaceShape ;
+                        sh:subject sh:this ;
+                        sh:predicate dhplusPlace:source ;
+                        sh:object [
+                                      spr:deriveURI (
+                                                        sh:this
+                                                        "#gnd-local"
+                                                    ) ;
+                                  ] ;
+                    ] , [
+                            a sh:TripleRule ;
+                            sh:condition _:E53_PlaceShape ;
+                            sh:subject sh:this ;
+                            sh:predicate dhplusPlace:source ;
+                            sh:object [
+                                          spr:deriveURI (
+                                                            sh:this
+                                                            "#wikiData-local"
+                                                        ) ;
+                                      ] ;
+                        ] , [
+                                a sh:TripleRule ;
+                                sh:condition _:E53_PlaceShape ;
+                                sh:subject sh:this ;
+                                sh:predicate dhplusPlace:source ;
+                                sh:object [
+                                              spr:deriveURI (
+                                                                sh:this
+                                                                "#projSpec"
+                                                            ) ;
+                                          ] ;
+                            ] , [
+                                    a sh:TripleRule ;
+                                    sh:condition _:E53_PlaceShape ;
+                                    sh:subject [
+                                                   spr:deriveURI (
+                                                                     sh:this
+                                                                     "#gnd-local"
+                                                                 ) ;
+                                               ] ;
+                                    sh:predicate rdf:type ;
+                                    sh:object dhplusPlace:Gnd-local ;
+                                ] , [
+                                        a sh:TripleRule ;
+                                        sh:condition _:E53_PlaceShape ;
+                                        sh:subject [
+                                                       spr:deriveURI (
+                                                                         sh:this
+                                                                         "#gnd-local"
+                                                                     ) ;
+                                                   ] ;
+                                        sh:predicate dhplusPlace:hasPart ;
+                                        sh:object dhplusPlace:b0-gnd ;
+                                    ] , [
+                                            a sh:TripleRule ;
+                                            sh:condition _:E53_PlaceShape ;
+                                            sh:subject [
+                                                           spr:deriveURI (
+                                                                             sh:this
+                                                                             "#wikiData-local"
+                                                                         ) ;
+                                                       ] ;
+                                            sh:predicate rdf:type ;
+                                            sh:object dhplusPlace:WikiData-local ;
+                                        ] , [
+                                                a sh:TripleRule ;
+                                                sh:condition _:E53_PlaceShape ;
+                                                sh:subject [
+                                                               spr:deriveURI (
+                                                                                 sh:this
+                                                                                 "#wikiData-local"
+                                                                             ) ;
+                                                           ] ;
+                                                sh:predicate dhplusPlace:hasPart ;
+                                                sh:object dhplusPlace:b0-wikiData ;
+                                            ] , [
+                                                    a sh:TripleRule ;
+                                                    sh:condition _:E53_PlaceShape ;
+                                                    sh:subject [
+                                                                   spr:deriveURI (
+                                                                                     sh:this
+                                                                                     "#projSpec"
+                                                                                 ) ;
+                                                               ] ;
+                                                    sh:predicate rdf:type ;
+                                                    sh:object dhplusPlace:ProjectSpecific ;
+                                                ]
+.
+spr:deriveURI
+    rdf:type sh:SPARQLFunction ;
+    rdfs:label "derive URI" ;
+    sh:parameter [
+                     sh:path spr:base ;
+                     sh:description "The base URI to derive from." ;
+                     sh:name "base" ;
+                     sh:nodeKind sh:IRI ;
+                 ] ;
+    sh:parameter [
+                     sh:path spr:concat ;
+                     sh:datatype xsd:string ;
+                     sh:description "The text to concatenate to the base to produce the result." ;
+                     sh:name "concat" ;
+                 ] ;
+#sh:prefixes <http://datashapes.org/shasf/tests/rules/triple/person2schema.test> ;
+    sh:returnType rdfs:Resource ;
+    sh:select """SELECT ?result
+WHERE {
+    BIND (IRI(CONCAT(str($base), $concat)) AS ?result)
+}""" ;
+.
+
+_:E48_Place_NameRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:E48_Place_Name ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:E48_Place_Name
+            ] , [
+                    a sh:TripleRule;
+                    sh:subject sh:this ;
+                    sh:predicate rdfs:label ;
+                    sh:object [
+                                  sh:path (
+                                              [ sh:inversePath dhplusPlace:P87_is_identified_by]
+                                              dhplusPlace:source
+                                              dhplusPlace:hasPart
+                                              schema:about
+                                              rdfs:label
+                                          )
+                              ]
+                ] , [
+                        a sh:TripleRule ;
+                        sh:subject sh:this ;
+                        sh:predicate dhplusPlace:isDefinedBy ;
+                        sh:object [ sh:path dhplusPlace:isDefinedBy ]
+                    ] , [
+                            a sh:TripleRule ;
+                            sh:subject sh:this ;
+                            sh:predicate dhplusPlace:isReplacedBy ;
+                            sh:object [ sh:path dhplusPlace:isReplacedBy ]
+                        ]
+.
+
+_:DefinedPlaceOrGeographicNameRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:DefinedPlaceOrGeographicName ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:DefinedPlaceOrGeographicName
+            ] , [
+                    a sh:TripleRule;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:preferredNameForThePlaceOrGeographicName ;
+                    sh:object [
+                                  sh:path (
+                                              [ sh:inversePath dhplusPlace:isDefinedBy]
+                                              [ sh:inversePath dhplusPlace:P87_is_identified_by]
+                                              dhplusPlace:source
+                                              dhplusPlace:hasPart
+                                              gndo:preferredNameForThePlaceOrGeographicName
+                                          )
+                              ]
+                ] , [
+                        a sh:TripleRule;
+                        sh:subject sh:this ;
+                        sh:predicate dhplusPlace:variantNameForThePlaceOrGeographicName ;
+                        sh:object [
+                                      sh:path (
+                                                  [ sh:inversePath dhplusPlace:isDefinedBy]
+                                                  [ sh:inversePath dhplusPlace:P87_is_identified_by]
+                                                  dhplusPlace:source
+                                                  dhplusPlace:hasPart
+                                                  gndo:variantNameForThePlaceOrGeographicName
+                                              )
+
+                                  ]
+                    ]
+.
+
+_:ReplacedPlaceOrGeographicNameRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:ReplacedPlaceOrGeographicName ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:ReplacedPlaceOrGeographicName ;
+            ] , [
+                    a sh:TripleRule;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:preferredNameForThePlaceOrGeographicName ;
+                    sh:object () ;
+                ] , [
+                        a sh:TripleRule;
+                        sh:subject sh:this ;
+                        sh:predicate dhplusPlace:variantNameForThePlaceOrGeographicName ;
+                        sh:object () ;
+                    ]
+.
+
+_:E47_Spatial_CoordinatesRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:E47_Spatial_Coordinates ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:E47_Spatial_Coordinates
+            ] , [
+                    a sh:TripleRule ;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:isDefinedBy ;
+                    sh:object [ sh:path dhplusPlace:isDefinedBy ]
+                ] , [
+                        a sh:TripleRule ;
+                        sh:subject sh:this ;
+                        sh:predicate dhplusPlace:isReplacedBy ;
+                        sh:object [ sh:path dhplusPlace:isReplacedBy ]
+                    ]
+.
+
+_:DefinedFeatureRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:DefinedFeature ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:DefinedFeature
+            ], [
+                   a sh:TripleRule ;
+                   sh:subject sh:this ;
+                   sh:predicate dhplusPlace:hasDefinedGeometry ;
+                   sh:object [sh:path dhplusPlace:hasDefinedGeometry]
+               ]
+.
+
+_:ReplacedFeatureRuleShape
+    a sh:NodeShape ;
+    sh:targetClass dhplusPlace:ReplacedFeature ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object dhplusPlace:ReplacedFeature
+            ] , [
+                    a sh:TripleRule ;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:hasReplacedGeometry ;
+                    sh:object [sh:path dhplusPlace:hasReplacedGeometry]
+                ]
+.
+
+_:DefinedGeometryRuleShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf dhplusPlace:hasDefinedGeometry ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object [
+                              sh:path (
+                                          [sh:inversePath dhplusPlace:hasDefinedGeometry]
+                                          [sh:inversePath dhplusPlace:isDefinedBy]
+                                          [sh:inversePath dhplusPlace:P87_is_identified_by]
+                                          dhplusPlace:source
+                                          dhplusPlace:hasPart
+                                          geo:hasGeometry
+                                          rdf:type
+                                      )
+                          ]
+            ] , [
+                    a sh:TripleRule;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:asWKT ;
+                    sh:object [
+                                  sh:path (
+                                              [sh:inversePath dhplusPlace:hasDefinedGeometry]
+                                              [sh:inversePath dhplusPlace:isDefinedBy]
+                                              [sh:inversePath dhplusPlace:P87_is_identified_by]
+                                              dhplusPlace:source
+                                              dhplusPlace:hasPart
+                                              geo:hasGeometry
+                                              geo:asWKT
+                                          )
+                              ]
+                ]
+.
+
+_:ReplacedGeometryRuleShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf dhplusPlace:hasReplacedGeometry ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object ()
+            ] , [
+                    a sh:TripleRule;
+                    sh:subject sh:this ;
+                    sh:predicate dhplusPlace:asWKT ;
+                    sh:object ()
+                ]
+.
+
+
+#gnd
+<https://dhplus.sbg.ac.at/place/Gnd>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/place/hasPart> ;
+                    sh:node <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit>
+                ] .
+
+<http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path wdrs:describedby ;
+                    sh:property [
+                                    sh:path dc:license ;
+                                    sh:nodeKind sh:IRI ;
+                                    sh:pattern "http://creativecommons.org/publicdomain/"
+                                ], [
+                                       sh:path dc:modified ;
+                                       sh:datatype xsd:dateTime
+                                   ]
+                ], [
+                       sh:path <http://d-nb.info/standards/elementset/gnd#gndIdentifier> ;
+                       sh:datatype xsd:string
+                   ], [
+                          sh:path owl:sameAs ;
+                          sh:nodeKind sh:IRI
+                      ], [
+                             sh:path <http://www.opengis.net/ont/geosparql#hasGeometry> ;
+                             sh:property [
+                                             sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
+                                             sh:datatype <http://www.opengis.net/ont/geosparql#wktLiteral>
+                                         ], [
+                                                sh:path rdf:type ;
+                                                sh:or (
+                                                          _:genid20
+                                                          _:genid22
+                                                          _:genid24
+                                                      )
+                                            ]
+                         ], [
+                                sh:path <http://d-nb.info/standards/elementset/gnd#geographicAreaCode> ;
+                                sh:nodeKind sh:IRI ;
+                                sh:pattern "http://d-nb.info/standards/vocab/gnd/geographic-area-code#"
+                            ] , [
+                                    sh:path <http://d-nb.info/standards/elementset/gnd#variantNameForThePlaceOrGeographicName> ;
+                                    sh:datatype xsd:string
+                                ], [
+                                       sh:path <http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName> ;
+                                       sh:datatype xsd:string
+                                   ]
+.
+_:genid20 sh:hasValue <http://www.opengis.net/ont/sf#Point> .
+_:genid22 sh:hasValue <http://www.opengis.net/ont/sf#Curve> .
+_:genid24 sh:hasValue <http://www.opengis.net/ont/sf#Surface> .
+
+_:GndRuleShape
+    a sh:NodeShape ;
+    sh:targetClass <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                sh:subject dhplusPlace:b0-gnd ;
+                sh:predicate rdf:type ;
+                sh:object [ sh:path rdf:type ]
+            ], [
+                   a sh:TripleRule ;
+                   sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                   sh:subject dhplusPlace:b0-gnd ;
+                   sh:predicate wdrs:describedby ;
+                   sh:object [ sh:path wdrs:describedby ]
+               ], [
+                      a sh:TripleRule ;
+                      sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                      sh:subject dhplusPlace:b0-gnd ;
+                      sh:predicate gndo:gndIdentifier ;
+                      sh:object [ sh:path gndo:gndIdentifier ]
+                  ], [
+                         a sh:TripleRule ;
+                         sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                         sh:subject dhplusPlace:b0-gnd ;
+                         sh:predicate geo:hasGeometry ;
+                         sh:object [ sh:path geo:hasGeometry ]
+                     ] , [
+                             a sh:TripleRule ;
+                             sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                             sh:subject dhplusPlace:b0-gnd ;
+                             sh:predicate owl:sameAs ;
+                             sh:object [ sh:path owl:sameAs ]
+                         ] , [
+                                 a sh:TripleRule ;
+                             #                          sh:condition [
+                             #                            sh:property [
+                             #                                sh:path gndo:geographicAreaCode ;
+                             #                                sh:pattern "http://d-nb.info/standards/vocab/gnd/geographic-area-code#"
+                             #                             ]
+                             #                         ] ;
+                                 sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                                 sh:subject dhplusPlace:b0-gnd ;
+                                 sh:predicate gndo:geographicAreaCode ;
+                                 sh:object [ sh:path gndo:geographicAreaCode ]
+                             ] , [
+                                     a sh:TripleRule ;
+                                     sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                                     sh:subject dhplusPlace:b0-gnd ;
+                                     sh:predicate gndo:variantNameForThePlaceOrGeographicName ;
+                                     sh:object [ sh:path gndo:variantNameForThePlaceOrGeographicName ]
+                                 ] , [
+                                         a sh:TripleRule ;
+                                         sh:condition <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+                                         sh:subject dhplusPlace:b0-gnd ;
+                                         sh:predicate gndo:preferredNameForThePlaceOrGeographicName ;
+                                         sh:object [ sh:path gndo:preferredNameForThePlaceOrGeographicName ]
+                                     ] .
+_:GndRuleShape-1
+    a sh:NodeShape ;
+    sh:targetObjectsOf wdrs:describedby ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:subject sh:this ;
+                sh:predicate dc:license ;
+                sh:object [ sh:path dc:license ]
+            ] , [
+                    a sh:TripleRule ;
+                    sh:subject sh:this ;
+                    sh:predicate dc:modified ;
+                    sh:object [ sh:path dc:modified ]
+                ] .
+_:GndRuleShape-2
+    a sh:NodeShape ;
+    sh:targetObjectsOf geo:hasGeometry ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:subject sh:this ;
+                sh:predicate geo:asWKT ;
+                sh:object [ sh:path geo:asWKT ]
+            ] , [
+                    a sh:TripleRule ;
+                    sh:subject sh:this ;
+                    sh:predicate rdf:type ;
+                    sh:object [ sh:path rdf:type ]
+                ] .
+
+
+#wikidata
+<https://dhplus.sbg.ac.at/place/WikiData>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/place/hasPart> ;
+                    sh:node schema:Dataset
+                ] , [
+                        sh:path <https://dhplus.sbg.ac.at/place/hasPart> ;
+                        sh:node wikibase:Item
+                    ] .
+
+<http://schema.org/Dataset>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+.
+
+<http://wikiba.se/ontology#Item>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+.
+
+_:WikiDataDatasetShape
+    a sh:NodeShape;
+    sh:targetClass schema:Dataset ;
+    sh:property [
+                    sh:path schema:about ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] , [
+                        sh:path cc:license ;
+                        sh:nodeKind sh:IRI ;
+                        sh:pattern "http://creativecommons.org/publicdomain/"
+                    ] , [
+                            sh:path schema:version ;
+                            sh:datatype xsd:integer
+                        ] , [
+                                sh:path schema:dateModified ;
+                                sh:datatype xsd:dateTime
+                            ] .
+
+_:WikiDataItemShape
+    a sh:NodeShape;
+    sh:targetObjectsOf schema:about ;
+    sh:not [ sh:property [
+                             sh:path rdfs:label ;
+                             sh:not [
+                                        sh:languageIn ("de")
+                                    ]
+                         ]
+           ] ;
+    sh:not [ sh:property [
+                             sh:path rdfs:label ;
+                             sh:not [
+                                        sh:languageIn ("en")
+                                    ]
+                         ]
+           ]
+.
+
+_:WikiDataDatasetRuleShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Dataset ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:condition <http://schema.org/Dataset> ;
+                sh:subject dhplusPlace:b0-wikiData ;
+                sh:predicate rdf:type ;
+                sh:object [ sh:path rdf:type ]
+            ] , [
+                    a sh:TripleRule ;
+                    sh:condition <http://schema.org/Dataset> ;
+                    sh:subject dhplusPlace:b0-wikiData ;
+                    sh:predicate schema:about ;
+                    sh:object [ sh:path schema:about ]
+                ] , [
+                        a sh:TripleRule ;
+                        sh:condition <http://schema.org/Dataset> ;
+                        sh:subject dhplusPlace:b0-wikiData ;
+                        sh:predicate cc:license ;
+                        sh:object [ sh:path cc:license ]
+                    ] , [
+                            a sh:TripleRule ;
+                            sh:condition <http://schema.org/Dataset> ;
+                            sh:subject dhplusPlace:b0-wikiData ;
+                            sh:predicate schema:version ;
+                            sh:object [ sh:path schema:version ]
+                        ] , [
+                                a sh:TripleRule ;
+                                sh:condition <http://schema.org/Dataset> ;
+                                sh:subject dhplusPlace:b0-wikiData ;
+                                sh:predicate schema:dateModified ;
+                                sh:object [ sh:path schema:dateModified ]
+                            ]
+
+.
+
+_:WikiDataItemRuleShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf schema:about ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:condition _:WikiDataItemShape ;
+                sh:subject sh:this ;
+                sh:predicate rdf:type ;
+                sh:object [ sh:path rdf:type ]
+            ] , [
+                    a sh:TripleRule ;
+                    sh:condition _:WikiDataItemShape ;
+                    sh:subject sh:this ;
+                    sh:predicate rdfs:label ;
+                    sh:object [
+                                  spr:placeName (
+                                                    [
+                                                        sh:path rdfs:label
+                                                    ]
+                                                )
+                              ] ;
+                ] , [
+                        a sh:TripleRule ;
+                        sh:condition _:WikiDataItemShape ;
+                        sh:subject sh:this ;
+                        sh:predicate wdt:P625 ;
+                        sh:object [ sh:path wdt:P625 ]
+                    ] , [
+                            a sh:TripleRule ;
+                            sh:condition _:WikiDataItemShape ;
+                            sh:subject sh:this ;
+                            sh:predicate wdt:P2044 ;
+                            sh:object [ sh:path wdt:P2044 ]
+                        ]
+.
+spr:placeName
+    rdf:type sh:SPARQLFunction ;
+    sh:parameter [
+                     sh:path spr:op1 ;
+                     sh:datatype rdf:langString ;
+                 ] ;
+    sh:returnType rdf:langString ;
+    sh:select """
+        SELECT ($op1 AS ?result)
+		{ FILTER (
+		           (lang($op1) = "de")
+		           ||
+		           (lang($op1) = "en")
+		         )
+		}
+    """ .
+
+
+#projspec
+<https://dhplus.sbg.ac.at/place/ProjectSpecific>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape>
+.

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE RDF [    
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace"> 
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#"> 
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+    <!ENTITY schema "http://schema.org/">
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+    <!ENTITY cc "http://creativecommons.org/ns#">
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/">        
+    <!ENTITY dct "http://purl.org/dc/terms/"> 
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+    <!ENTITY wdrs "http://www.w3.org/2007/05/powder-s#">
+    <!ENTITY premis "http://www.loc.gov/premis/rdf/v1#">
+    <!ENTITY crm "http://www.cidoc-crm.org/cidoc-crm/">
+    <!ENTITY gndo "http://d-nb.info/standards/elementset/gnd#">
+    <!ENTITY wikibase "http://wikiba.se/ontology#">
+    <!ENTITY wd "http://www.wikidata.org/entity/">
+    <!ENTITY wdt "http://www.wikidata.org/prop/direct/">
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#">
+    <!ENTITY sf "http://www.opengis.net/ont/sf#">
+    <!ENTITY dhplusPlace "https://dhplus.sbg.ac.at/place/">
+    
+]>
+
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xml="&xml;" xmlns:xsd="&xsd;" xmlns:schema="&schema;" xmlns:skos="&skos;" xmlns:cc="&cc;" xmlns:dc="&dc;" xmlns:dct="&dct;" xmlns:foaf="&foaf;" xmlns:wdrs="&wdrs;" xmlns:premis="&premis;" xmlns:crm="&crm;" xmlns:gndo="&gndo;" xmlns:wikibase="&wikibase;" xmlns:wd="&wd;" xmlns:wdt="&wdt;" xmlns:sf="&sf;" xmlns:geo="&geo;" xmlns:dhplusPlace="&dhplusPlace;">
+    
+    <owl:Ontology rdf:about="https://dhplus.sbg.ac.at/owl/place/">    <owl:imports rdf:resource="https://dhplus.sbg.ac.at/shapes/place/"/>
+    <dc:title>dhPLUS Place Ontology</dc:title>
+    <dc:creator>Richard Hörmann</dc:creator>
+    <owl:comment xml:lang="en">This is an OWL ontology of the dhPLUS repository for Digital Humanities Projects of the University of Salzburg. It serves as a set of rules for building objects modelling topographic metadata.</owl:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-12-27 - First draft</owl:versionInfo>
+</owl:Ontology>
+
+    <!-- 
+        // DataTypes    
+    -->
+    <rdfs:Datatype rdf:ID="wktLiteral">
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+        >2011-06-16</dc:date>
+        <rdfs:comment xml:lang="en">
+            A Well-known Text serialization of a geometry object.
+        </rdfs:comment>
+        <dc:description xml:lang="en">
+            A Well-known Text serialization of a geometry object.
+        </dc:description>
+        <skos:definition xml:lang="en">
+            A Well-known Text serialization of a geometry object.
+        </skos:definition>
+        <rdfs:isDefinedBy rdf:resource=""/>
+        <skos:prefLabel xml:lang="en">Well-known Text Literal</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://www.opengis.net/spec/geosparql/1.0"/>
+        <dc:creator>OGC GeoSPARQL 1.0 Standard Working Group</dc:creator>    <rdfs:label xml:lang="en">Well-known Text Literal</rdfs:label>
+        <dc:contributor>Matthew Perry</dc:contributor>
+    </rdfs:Datatype>
+    
+    <!-- 
+        // Mapping    
+    -->
+        
+    <owl:Class rdf:about="&crm;E53_Place">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&crm;E47_Spatial_Coordinates">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:comment></rdfs:comment>        
+    </owl:Class>
+    
+    <owl:Class rdf:about="&crm;E48_Place_Name">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:comment></rdfs:comment>        
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sf;Geometry">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:comment></rdfs:comment>        
+    </owl:Class>
+    
+    <owl:Class rdf:about="&gndo;PlaceOrGeographicName">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Gnd"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&schema;Dataset">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;WikiData"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&wikibase;Item">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Mapping"/>
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;WikiData"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+            
+        
+    <!-- 
+        // Classes
+    -->
+       
+    <owl:Class rdf:about="&dhplusPlace;Main">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Sub">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Helper">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Mapping">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Vocabulary">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;E53_Place">        
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Main"/>
+        <rdfs:subClassOf rdf:resource="&crm;E53_Place"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;E48_Place_Name">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Sub"/>
+        <rdfs:subClassOf rdf:resource="&crm;E48_Place_Name"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;PlaceOrGeographicName">        <rdfs:subClassOf rdf:resource="&dhplusPlace;Sub"/>
+        <rdfs:subClassOf rdf:resource="&gndo;PlaceOrGeographicName"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;DefinedPlaceOrGeographicName">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;PlaceOrGeographicName"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;ReplacedPlaceOrGeographicName">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;PlaceOrGeographicName"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;E47_Spatial_Coordinates">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Sub"/>
+        <rdfs:subClassOf rdf:resource="&crm;E47_Spatial_Coordinates"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Geometry">        
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Sub"/>
+        <rdfs:subClassOf rdf:resource="&sf;Geometry"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Point">        
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Geometry"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Curve">        
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Geometry"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Surface">        
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Geometry"/>        
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Gnd">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Helper"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://d-nb.info/standards/vocab/gnd/geographic-area-code#GeographicAreaCodeValue">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Vocabulary"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;WikiData">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Helper"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Dataset">
+        <rdfs:subClassOf rdf:resource="&schema;Dataset"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;Item">
+        <rdfs:subClassOf rdf:resource="&wikibase;Item"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dhplusPlace;ProjectSpecific">
+        <rdfs:subClassOf rdf:resource="&dhplusPlace;Helper"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>    
+    
+    <!--
+        // Object Properties    
+    -->
+    
+    <owl:ObjectProperty rdf:about="&dhplusPlace;P87_is_identified_by">
+        <rdfs:subPropertyOf rdf:resource="&crm;P87_is_identified_by"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&dhplusPlace;hasGeometry">       
+        <rdfs:subPropertyOf rdf:resource="&geo;hasGeometry"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&owl;sameAs">
+        <rdfs:comment></rdfs:comment>        
+    </owl:ObjectProperty>
+        
+    <owl:ObjectProperty rdf:about="&gndo;geographicAreaCode">
+        <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&wdrs;describedBy">
+        <rdfs:comment></rdfs:comment>        
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&schema;about">        
+        <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <!--
+        // Annotation Properties    
+    -->    
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;hasPart">
+        <rdfs:subPropertyOf rdf:resource="&dct;hasPart"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;isDefinedBy_1">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;E48_Place_Name"/>
+        <rdfs:range rdf:resource="&dhplusPlace;DefinedPlaceOrGeographicName"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;isDefinedBy_2">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;E47_Spatial_Coordinates"/>
+        <rdfs:range rdf:resource="&dhplusPlace;Geometry"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;isReplacedBy_1">
+        <rdfs:subPropertyOf rdf:resource="&dct;isReplacedBy"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;E48_Place_Name"/>
+        <rdfs:range rdf:resource="&dhplusPlace;ReplacedPlaceOrGeographicName"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+        
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;preferredNameForThePlaceOrGeographicName">
+        <rdfs:subPropertyOf rdf:resource="&gndo;preferredNameForThePlaceOrGeographicName"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;DefinedPlaceOrGeographicName"/>           
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;preferredNameForThePlaceOrGeographicName">
+        <rdfs:subPropertyOf rdf:resource="&gndo;preferredNameForThePlaceOrGeographicName"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;ReplacedPlaceOrGeographicName"/>           
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&gndo;preferredNameForThePlaceOrGeographicName">
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;variantNameForThePlaceOrGeographicName">
+        <rdfs:subPropertyOf rdf:resource="&gndo;variantNameForThePlaceOrGeographicName"/>
+        <rdfs:domain rdf:resource="&dhplusPlace;ReplacedPlaceOrGeographicName"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&gndo;variantNameForThePlaceOrGeographicName">
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+      
+    <owl:AnnotationProperty rdf:about="&dct;license">
+        <rdfs:comment></rdfs:comment>        
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dct;modified">
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&cc;license">        
+        <rdfs:comment></rdfs:comment>        
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+    
+    <owl:AnnotationProperty rdf:about="&dhplusPlace;label">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:AnnotationProperty>
+        
+    <!-- 
+        // Datatype Properties 
+    -->
+    
+    <owl:DatatypeProperty rdf:about="&gndo;gndIdentifier">        <rdfs:comment></rdfs:comment>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&dhplusPlace;asWKT">
+        <rdfs:subPropertyOf rdf:resource="&geo;asWKT"/>        
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="&dhplusPlace;Point"/>
+                    <owl:Class rdf:about="&dhplusPlace;Curve"/>
+                    <owl:Class rdf:about="&dhplusPlace;Surface"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="#wktLiteral"/>        
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&schema;dateModified">
+        <rdfs:comment></rdfs:comment>
+    </owl:DatatypeProperty>    
+    
+    <owl:DatatypeProperty rdf:about="&wdt;P625">        
+        <rdfs:comment></rdfs:comment>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&wdt;P2044">
+        <rdfs:comment></rdfs:comment>        
+    </owl:DatatypeProperty>
+    
+</rdf:RDF>

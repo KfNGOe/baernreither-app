@@ -1,0 +1,40 @@
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dnbt: <http://d-nb.info/standards/elementset/dnb#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+#dhplus
+
+#gnd
+<http://d-nb.info/gnd/4076982-3>
+    wdrs:describedby <http://d-nb.info/gnd/040769828/about> ;
+    a gndo:TerritorialCorporateBodyOrAdministrativeUnit ;
+    gndo:gndIdentifier "4076982-3"^^xsd:string ;
+    foaf:page <https://de.wikipedia.org/wiki/Salzburg_%28Westerwald%29> ;
+    owl:sameAs <http://viaf.org/viaf/236812937>, <http://www.wikidata.org/entity/Q34713>, <http://d-nb.info/gnd/2021245-8>, <http://sws.geonames.org/2766824> ;
+    gndo:oldAuthorityNumber "(DE-588)2021245-8"^^xsd:string, "(DE-588b)2021245-8"^^xsd:string, "(DE-588c)4076982-3"^^xsd:string ;
+    dnbt:deprecatedUri "http://d-nb.info/gnd/2021245-8"^^xsd:string ;
+    gndo:relatedDdcWithDegreeOfDeterminacy4 <http://dewey.info/class/2--43632/> ;
+    geo:hasGeometry [
+                        geo:asWKT "Point ( +013.043888 +047.799166 )"^^geo:wktLiteral ;
+                        a <http://www.opengis.net/ont/sf#Point>
+                    ] ;
+    gndo:geographicAreaCode <http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-AT-5> ;
+    gndo:homepage <http://www.stadt-salzburg.at> ;
+    gndo:biographicalOrHistoricalInformation "Hauptstadt des gleichnamigen Bundeslandes, 1.-5. Jh. röm. Municipium Iuvavum, um 700 neu gegründet, 774 urkundl. erwähnt, 996 Markt- u. Münzrecht, 1368 Stadtrecht"@de ;
+    gndo:variantNameForThePlaceOrGeographicName "Stadtgemeinde Salzburg"^^xsd:string, "Stadt Salzburg"^^xsd:string, "Landeshauptstadt Salzburg"^^xsd:string, "Salzbourg"^^xsd:string, "Zalʹcburg"^^xsd:string, "Iuvavum"^^xsd:string, "Salisburgo"^^xsd:string, "Saltzburg"^^xsd:string, "Salisburgum"^^xsd:string ;
+    gndo:preferredNameForThePlaceOrGeographicName "Salzburg"^^xsd:string .
+
+<http://d-nb.info/gnd/040769828/about>
+    dc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    dc:modified "2019-04-29T08:40:00.000"^^xsd:dateTime .
+
+
+#wikidata
+
+#projspec
+

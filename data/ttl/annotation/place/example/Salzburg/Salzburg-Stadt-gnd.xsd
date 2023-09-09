@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:v="http://www.w3.org/2006/vcard/ns#" xmlns:geo="http://www.opengis.net/ont/geosparql#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:sf="http://www.opengis.net/ont/sf#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:lib="http://purl.org/library/" xmlns:umbel="http://umbel.org/umbel#" xmlns:gbv="http://purl.org/ontology/gbv/" xmlns:editeur="https://ns.editeur.org/thema/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:schema="http://schema.org/" xmlns:dnbt="http://d-nb.info/standards/elementset/dnb#" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:ebu="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:mo="http://purl.org/ontology/mo/" xmlns:rdau="http://rdaregistry.info/Elements/u/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:vivo="http://vivoweb.org/ontology/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:agrelon="http://d-nb.info/standards/elementset/agrelon#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:gndo="http://d-nb.info/standards/elementset/gnd#" xmlns:isbd="http://iflastandards.info/ns/isbd/elements/" xmlns:marcRole="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dbp="http://dbpedia.org/property/" xmlns:wdrs="http://www.w3.org/2007/05/powder-s#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dnb_intern="http://dnb.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="schema1.xsd" namespace="http://www.w3.org/2007/05/powder-s#" />
+  <xs:import schemaLocation="schema2.xsd" namespace="http://purl.org/dc/terms/" />
+  <xs:import schemaLocation="schema3.xsd" namespace="http://d-nb.info/standards/elementset/gnd#" />
+  <xs:import schemaLocation="schema4.xsd" namespace="http://xmlns.com/foaf/0.1/" />
+  <xs:import schemaLocation="schema5.xsd" namespace="http://www.w3.org/2002/07/owl#" />
+  <xs:import schemaLocation="schema6.xsd" namespace="http://d-nb.info/standards/elementset/dnb#" />
+  <xs:import schemaLocation="schema7.xsd" namespace="http://www.opengis.net/ont/geosparql#" />
+  <xs:element name="RDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Description">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element ref="wdrs:describedby" />
+                <xs:element name="type">
+                  <xs:complexType>
+                    <xs:attribute ref="rdf:resource" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element ref="gndo:gndIdentifier" />
+                <xs:element ref="foaf:page" />
+                <xs:element maxOccurs="unbounded" ref="owl:sameAs" />
+                <xs:element ref="gndo:oldAuthorityNumber" />
+                <xs:element ref="dnbt:deprecatedUri" />
+                <xs:element ref="gndo:relatedDdcWithDegreeOfDeterminacy4" />
+                <xs:element ref="geo:hasGeometry" />
+                <xs:element ref="gndo:geographicAreaCode" />
+                <xs:element ref="gndo:homepage" />
+                <xs:element ref="gndo:biographicalOrHistoricalInformation" />
+                <xs:element ref="gndo:variantNameForThePlaceOrGeographicName" />
+                <xs:element ref="gndo:preferredNameForThePlaceOrGeographicName" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute ref="rdf:about" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="about" type="xs:string" />
+  <xs:element name="Description">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="geo:asWKT" />
+        <xs:element minOccurs="0" name="type">
+          <xs:complexType>
+            <xs:attribute ref="rdf:resource" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" ref="dcterms:license" />
+        <xs:element minOccurs="0" ref="dcterms:modified" />
+      </xs:sequence>
+      <xs:attribute ref="rdf:about" use="optional" />
+      <xs:attribute ref="rdf:nodeID" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="resource" type="xs:string" />
+  <xs:attribute name="datatype" type="xs:string" />
+  <xs:attribute name="nodeID" type="xs:string" />
+</xs:schema>

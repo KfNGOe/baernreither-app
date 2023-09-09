@@ -1,0 +1,38 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix spr: <http://www.w3.org/TR/rdf-sparql-query/> .
+@prefix dhpluss: <https://dhplus.sbg.ac.at/shacl> .
+@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
+
+
+<https://dhplus.sbg.ac.at/ontology/shacl/place>
+  a owl:Ontology ;
+  dc:title "dhPLUS Place SHACL" ;
+  dct:creator "Richard Hörmann" ;
+  owl:comment "This is a SHACL shape graph for validating annd generating the data graph of the dhPLUS OWL ontology ."@en .
+  # owl:imports <http://njh.me/> .
+
+#dhplus
+<https://dhplus.sbg.ac.at/ontology#E53_Place>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#creator>;
+                    sh:datatype xsd:string
+                ] ,
+                [
+                    sh:path <https://dhplus.sbg.ac.at/ontology#dateCreated>;
+                    sh:datatype xsd:dateTime
+                ] ;
+.

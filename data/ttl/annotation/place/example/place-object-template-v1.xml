@@ -1,0 +1,90 @@
+<rdf:RDF xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:decomp="http://www.w3.org/ns/lemon/decomp#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:gnd="http://d-nb.info/gnd/" xmlns:gndo="http://d-nb.info/standards/elementset/gnd#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#" xmlns:marc21="http://www.loc.gov/MARC21/slim" xmlns:mhdbdb="http://www.mhdbdb.sbg.ac.at/" xmlns:oa="http://www.w3.org/ns/oa#" xmlns:ontolex="http://www.w3.org/ns/lemon/ontolex#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdac="http://rdaregistry.info/Elements/c/" xmlns:rdau="http://rdaregistry.info/Elements/u/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:srw="http://www.loc.gov/zing/srw/" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:time="http://www.w3.org/2006/time#" xmlns:wdt="http://www.wikidata.org/prop/direct/" xmlns:wikidata="http://www.wikidata.org/entity/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gn="http://www.geonames.org/ontology" xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:cc="http://creativecommons.org/ns#" xmlns:geo="http://www.opengis.net/ont/geosparql#" xmlns:sf="http://www.opengis.net/ont/sf#">
+  
+  
+  <!-- Place START -->
+  <crm:E53_Place rdf:about="http://dhPLUS.sbg.ac.at/places/1">
+    <owl:sameAs rdf:resource="http://www.wikidata.org/entity/Qnnnn"/>
+    <dc:source rdf:resource="http://www.wikidata.org/entity/Qnnnn"/>
+    <crm:P87_is_identified_by>
+      <crm:E44_Place_Appellation>
+        
+      </crm:E44_Place_Appellation>
+    </crm:P87_is_identified_by>
+    <crm:P87_is_identified_by>
+      <crm:E47_Spatial_Coordinates>        
+        
+      </crm:E47_Spatial_Coordinates>
+    </crm:P87_is_identified_by>
+  </crm:E53_Place>
+  <!-- Place END -->
+
+  <!-- Key DataSets START -->
+  <!-- GND Key DataSet Local Copy START -->
+  <rdf:Description rdf:about="http://d-nb.info/gnd/nnnn#local">
+    <dcterms:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchemadateTime"><!-- yyyy-mm-ddThh:mm:ssZ --></dcterms:modified>    
+    <gndo:gndIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string"><!-- GND ID --></gndo:gndIdentifier>
+    
+    <!-- Mandatory -->
+    <gndo:preferredNameForThePlaceOrGeographicName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"><!-- Preferred Name --></gndo:preferredNameForThePlaceOrGeographicName>
+    
+    <!-- Optional -->
+    <gndo:variantNameForThePlaceOrGeographicName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"><!-- Variant or Alternative Name --></gndo:variantNameForThePlaceOrGeographicName>
+    
+    <!-- Geo Data -->
+    <gndo:geographicAreaCode rdf:resource="http://d-nb.info/standards/vocab/gnd/geographic-area-code#nnnn"/>    
+    <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"><!-- Geo Data (Lat, Long) --></geo:asWKT>
+    <!-- Geo Type -->
+    <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Point"/>
+  
+  </rdf:Description>
+  
+  <!-- GND Key DataSet Local Copy END -->
+  
+  <!-- WIKIDATA Key DataSet Local Copy START -->
+  <rdf:Description rdf:about="http://www.wikidata.org/entity/Qnnnn#local">
+    <schema:about rdf:resource="http://www.wikidata.org/entity/Qnnnn"/>
+    <cc:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+    <schema:dateModified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"><!-- yyyy-mm-ddThh:mm:ssZ --></schema:dateModified>
+    
+    <!-- Mandatory -->
+    <!-- Name Label -->
+    <rdfs:label xml:lang="de"><!-- Name --></rdfs:label>
+    <rdfs:label xml:lang="en"><!-- Name --></rdfs:label>
+    
+    <!-- Mandatory -->
+    <!-- Geo Data -->
+    <wdt:P625 rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"><!-- Geo Data (Lat, Long) --></wdt:P625>
+    <wdt:P625 rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"><!-- Geo Data (Lat, Long) --></wdt:P625>    
+    <wdt:P2044 rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><!-- Geo Data (Alt) --></wdt:P2044>
+    <wdt:P2044 rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><!-- Geo Data (Alt) --></wdt:P2044>
+    
+  </rdf:Description>
+  <!-- WIKIDATA Key DataSet Local Copy END -->
+     
+  <!-- GEONAMES Key DataSet Local Copy START -->  
+  <rdf:Description rdf:about="http://sws.geonames.org/nnnn#local">
+    <rdfs:isDefinedBy rdf:resource="http://sws.geonames.org/nnnn/about.rdf"/>
+    <cc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-26</dcterms:modified>
+    
+    <gn:name><!-- Place Name --></gn:name>
+    
+    <gn:countryCode><!-- Country Code --></gn:countryCode>    
+        
+    <wgs84_pos:lat><!-- Latitude Value --></wgs84_pos:lat>
+    <wgs84_pos:long><!-- Longitude Value --></wgs84_pos:long>
+    <wgs84_pos:alt><!-- Altitude Value --></wgs84_pos:alt>
+    
+    <!-- Wikipedia Article -->
+    <gn:wikipediaArticle rdf:resource="https://en.wikipedia.org/wiki/nnnn"/>    
+  </rdf:Description>    
+  <!-- GEONAMES Key DataSet Local Copy END -->
+  
+  
+  <!-- PROJECT SPECIFIC DataSet START -->
+    
+  <!-- PROJECT SPECIFIC DataSet END -->
+  <!-- Key DataSets END -->
+
+</rdf:RDF>
