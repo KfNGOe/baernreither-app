@@ -26,6 +26,12 @@ person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl<br>
 //add gender<br>
 personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl<br>
 
+*.xlsx -> build_xlsx2json.sh -> place_xlsx.json<br>
+place_xlsx.json -> build_place_json2ttl.sh -> placei.ttl<br>
+
+//add coordinates<br>
+personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl<br>
+
 <mark>*.xml</mark> -> build_tei2ttl.sh -> *.ttl<br>
 *.ttl -> gdb_queryRepo.sh -> annoPerson_1.rq -> annoPersoni_1.ttl<br>
 annoPersoni_1.ttl -> gdb_queryRepo.sh -> annoPerson_2.rq -> annoPersoni_2.ttl<br>
