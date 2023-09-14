@@ -1,0 +1,50 @@
+@prefix kfngoei: <http://dhplus.sbg.ac.at/kfngoe/instance/> .
+@prefix kfngoeo: <http://dhplus.sbg.ac.at/kfngoe/ontology#> .
+
+
+#kfngoei
+kfngoei:nnnnnn
+    a   kfngoeo:Person ; #subclass of gndo:DifferentiatedPerson, schema:Person, dct:Agent    
+
+    #administrative    
+    kfngoeo:modified "0001-01-01T00:00:00"^^xsd:dateTime ; #subprop of dct:modified
+    kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/>; #subprop of dct:license
+    
+    #relation
+    kfngoeo:source <nnnn> ; #subprop of dct:source
+    
+    #name
+    kfngoeo:preferredNameEntityForThePerson [ 
+        a kfngoeo:NameOfThePerson ; #subprop of gndo:NameOfThePerson
+        rdfs:label  "NN"@en , "NN"@de ; #from wikidata
+        kfngoeo:preferredNameForThePerson "NN"^^xsd:string ; #subprop of gndo:preferredNameForThePerson
+        kfngoeo:forename "NN"^^xsd:string ; #subprop of gndo:forename
+        kfngoeo:surname "NN"^^xsd:string ; #subprop of gndo:surname
+        kfngoeo:nameAddition "NN"^^xsd:string ; #subprop of gndo:nameAddition
+    ] ; #subprop of gndo:preferredNameEntityForThePerson
+
+    #gender
+    kfngoeo:gender <https://d-nb.info/standards/vocab/gnd/gender#male> ; #subprop of gndo:gender
+    
+    #birth
+    kfngoeo:dateOfBirth "yyyy-mm-dd"^^xsd:date ; #subprop of gndo:dateOfBirth
+    
+    #death
+    kfngoeo:dateOfDeath "yyyy-mm-dd"^^xsd:date ; #subprop of gndo:dateOfDeath
+    
+    #description
+    kfngoeo:biographicalOrHistoricalInformation "xxxx"^^xsd:string ; #subprop of gndo:biographicalOrHistoricalInformation
+    
+    #identifier
+    kfngoeo:identifier [
+        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
+        kfngoeo:propertyID "GND"^^xsd:string ; #subprop of schema:propertyID
+        kfngoeo:value "xxxxxxxxx"^^xsd:string ; #subprop of schema:value
+    ] #subprop of schema:identifier
+    #identifier
+    kfngoeo:identifier [
+        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
+        kfngoeo:propertyID "CamelCase"^^xsd:string ; #subprop of schema:propertyID
+        kfngoeo:value "xxxxxxxxx"^^xsd:string ; #subprop of schema:value
+    ] #subprop of schema:identifier
+.

@@ -1,0 +1,39 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT (tei:index AS ?tei) ?xmlid ?pos_start ?pos_end ?title_short ?pos_start_1 ?term_main
+WHERE {
+	?s_tei a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:TEI ;
+            kfngoeo:elementPos ?pos_tei ;
+ 	.
+    ?s_start a kfngoeo:StartTag ;
+          kfngoeo:elementName tei:index ;
+          kfngoeo:hasAttr [
+        	kfngoeo:attrName "xml:id" ;
+			kfngoeo:attrValue ?xmlid ;
+		  ] ;
+          kfngoeo:elementPos ?pos_start ;
+	.
+    BIND(substr(?pos_tei,1,strlen(?pos_tei)-1) AS ?title_short)
+    BIND(xsd:decimal(substr(?pos_start,strlen(?title_short)+1)) AS ?pos_nr)
+    BIND(?pos_nr+1 AS ?pos_nr_1)
+    BIND(concat(?title_short, str(?pos_nr_1)) AS ?pos_start_1)
+   	?s_term a kfngoeo:StartTag ;
+		kfngoeo:elementName tei:term ;
+		kfngoeo:hasAttr [
+            kfngoeo:attrName "key" ;
+            kfngoeo:attrValue ?term_main ;
+		] ;			
+		kfngoeo:elementPos ?pos_start_1 ;
+ .
+    ?s_end a kfngoeo:EndTag ;
+        kfngoeo:elementName tei:index ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?xmlid ;
+        ] ;
+        kfngoeo:elementPos ?pos_end ;
+ 	.    
+}
