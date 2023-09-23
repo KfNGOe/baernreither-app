@@ -1,0 +1,64 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+    kfngoei:n3
+        a kfngoeo:Text ;
+        kfngoeo:hasContent ?term_main ;
+        kfngoeo:elementPos rdf:nnnn ;
+    .
+    kfngoei:n6
+        a kfngoeo:Text ;
+        kfngoeo:hasContent ?term_sub ;
+        kfngoeo:elementPos rdf:nnnn ;
+    .
+}
+WHERE {
+    #get element position of tei:TEI
+	?s_tei a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:TEI ;
+            kfngoeo:elementPos ?pos_tei ;
+ 	.        
+    #get short title from element position of tei:TEI
+    BIND(substr(?pos_tei,1,strlen(?pos_tei)-1) AS ?title_short)
+    ?s_start a kfngoeo:StartTag ;
+          kfngoeo:elementName tei:index ;
+          kfngoeo:hasAttr [
+        	kfngoeo:attrName "xml:id" ;
+			kfngoeo:attrValue ?xmlid ;
+		  ] ;
+          kfngoeo:elementPos ?pos_start ;
+	.
+    #get numeric value of element position of tei:index
+    BIND(xsd:decimal(substr(?pos_start,strlen(?title_short)+1)) AS ?pos_start_nr)
+    #get element position of tei:term
+    BIND(concat(?title_short, str(?pos_start_nr+1)) AS ?pos_start_1)
+    #get main term of index
+   	OPTIONAL {
+        ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;
+            kfngoeo:hasAttr [
+               kfngoeo:attrName "key" ;
+               kfngoeo:attrValue ?term_main ;
+            ] ;			
+            kfngoeo:elementPos ?pos_start_1 ;
+    	.
+    }
+    OPTIONAL{
+        ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;            		
+            kfngoeo:elementPos ?pos_start_1 ;  	
+    	.
+        #get element position of tei:term content
+    	BIND(concat(?title_short, str(?pos_start_nr+2)) AS ?pos_start_2)
+        ?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+			kfngoeo:elementPos ?pos_start_2 ;
+ 		.
+        #get sub term of index
+        BIND(IF(!BOUND(?term_main), ?o_text, ?nothing) AS ?term_sub)
+    }        
+} ORDER BY ?term_main ?term_sub

@@ -34,6 +34,29 @@
         "normalizeLanguageTags" : false,
         "stopOnError" : true
       }
+    },
+    "kfngoe_test;;indexi_1.ttl" : {
+      "name" : "indexi_1.ttl",
+      "status" : "DONE",
+      "message" : "Imported successfully in less than a second.",
+      "context" : "",
+      "replaceGraphs" : [ ],
+      "baseURI" : "file:/uploaded/generated/indexi_1.ttl",
+      "forceSerial" : false,
+      "type" : "file",
+      "format" : null,
+      "data" : "2b810528-f9ad-42d3-a38c-067cbc755b61",
+      "timestamp" : 1695411103789,
+      "parserSettings" : {
+        "preserveBNodeIds" : false,
+        "failOnUnknownDataTypes" : false,
+        "verifyDataTypeValues" : false,
+        "normalizeDataTypeValues" : false,
+        "failOnUnknownLanguageTags" : false,
+        "verifyLanguageTags" : true,
+        "normalizeLanguageTags" : false,
+        "stopOnError" : true
+      }
     }
   }
 }
