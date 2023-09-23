@@ -9,12 +9,7 @@ CONSTRUCT {
         a kfngoeo:Text ;
         kfngoeo:hasContent ?term_main ;
         kfngoeo:elementPos rdf:nnnn ;
-    .
-    kfngoei:n6
-        a kfngoeo:Text ;
-        kfngoeo:hasContent ?term_sub ;
-        kfngoeo:elementPos rdf:nnnn ;
-    .
+    .    
 }
 WHERE {
     #get element position of tei:TEI
@@ -47,20 +42,5 @@ WHERE {
             ] ;			
             kfngoeo:elementPos ?pos_start_1 ;
     	.
-    }
-    #get sub term of index
-    OPTIONAL{
-        #get element position of tei:term
-        ?s_term a kfngoeo:StartTag ;
-            kfngoeo:elementName tei:term ;            		
-            kfngoeo:elementPos ?pos_start_1 ;  	
-    	.
-        #get element position of tei:term content
-    	BIND(concat(?title_short, str(?pos_start_nr+2)) AS ?pos_start_2)        
-        ?s_text a kfngoeo:Text ;
-			kfngoeo:hasContent ?o_text ;
-			kfngoeo:elementPos ?pos_start_2 ;
- 		.        
-        BIND(IF(!BOUND(?term_main), ?o_text, ?nothing) AS ?term_sub)
-    }        
-} ORDER BY ?term_main ?term_sub
+    }       
+} ORDER BY ?term_main
