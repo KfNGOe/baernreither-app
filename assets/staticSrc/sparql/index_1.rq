@@ -5,11 +5,25 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 CONSTRUCT {
-    kfngoei:n3
-        a kfngoeo:Text ;
-        kfngoeo:hasContent ?term_main ;
-        kfngoeo:elementPos rdf:nnnn ;
+    ?s_tei 	kfngoeo:elementName tei:TEI ;
+            kfngoeo:elementPos ?pos_tei ;
+ 	.  
+    ?s_start a kfngoeo:StartTag ;
+          kfngoeo:elementName tei:index ;          
+          kfngoeo:elementPos ?pos_start ;
+	.
+    ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;
+            kfngoeo:hasAttr [
+               kfngoeo:attrName "key" ;
+               kfngoeo:attrValue ?term_main ;
+            ] ;			
+            kfngoeo:elementPos ?pos_start_1 ;
     .    
+    ?s_text a kfngoeo:Text ;
+            kfngoeo:hasContent ?term_sub ;
+            kfngoeo:elementPos ?pos_start_2 ;
+    .
 }
 WHERE {
     #get element position of tei:TEI
@@ -42,5 +56,20 @@ WHERE {
             ] ;			
             kfngoeo:elementPos ?pos_start_1 ;
     	.
-    }       
-} ORDER BY ?term_main
+    }
+    #get sub term of index
+    OPTIONAL{
+        #get element position of tei:term
+        ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;            		
+            kfngoeo:elementPos ?pos_start_1 ;  	
+    	.
+        #get element position of tei:term content
+    	BIND(concat(?title_short, str(?pos_start_nr+2)) AS ?pos_start_2)        
+        ?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+			kfngoeo:elementPos ?pos_start_2 ;
+ 		.        
+        BIND(IF(!BOUND(?term_main), ?o_text, ?nothing) AS ?term_sub)
+    }      
+}

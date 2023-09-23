@@ -1,9 +1,1554 @@
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
 @prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-kfngoei:n3 a kfngoeo:Text;
-  kfngoeo:elementPos rdf:nnnn;
-  kfngoeo:hasContent "Arbeiter", "Aristokratie", "Buergertum", "KaiserFranzJoseph",
-    "KaiserlichesNotverordnungsrecht", "Liberalismus", "Oesterreich-Ungarn", "Parteien",
-    "Presse", "Reichsrat", "Verwaltung", "Wahlrechtsreform" .
+ kfngoei:0d6f34f0-2d74-40cf-8b45-c400bf0d12ea kfngoeo:elementName tei:TEI;
+  kfngoeo:elementPos "Bae_TB_8_1" .
+
+kfngoei:b9c9d4e1-fd3f-41d0-bf52-7c82963407cd a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_214" .
+
+kfngoei:782a12c5-9f30-49ac-a38b-e2cc8a3e51e7 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169407;
+  kfngoeo:elementPos "Bae_TB_8_215" .
+
+_:node169407 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:61a555ae-230c-44be-a7b0-a32897c7cddb a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_216" .
+
+kfngoei:2711db03-c48a-49ad-b4e5-927914a5e907 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_218" .
+
+kfngoei:fb8e47cd-6876-42a5-87c5-68190a119ca8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169408;
+  kfngoeo:elementPos "Bae_TB_8_219" .
+
+_:node169408 kfngoeo:attrName "key" .
+
+kfngoei:fa7243b0-b5e7-4f74-b06b-89c39f7b4555 a kfngoeo:Text;
+  kfngoeo:hasContent "Wahlrechtsagitation";
+  kfngoeo:elementPos "Bae_TB_8_220" .
+
+kfngoei:33e3cb85-3f7a-4caf-ab55-4e8392acc645 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_239" .
+
+kfngoei:56329a5a-78b8-4146-96eb-c76af5b84f50 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169409;
+  kfngoeo:elementPos "Bae_TB_8_240" .
+
+_:node169409 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Presse" .
+
+kfngoei:059daa2a-6fa4-4c03-8765-f6d8c6552ab1 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_241" .
+
+kfngoei:da64fd14-9899-408a-8e24-828a62354759 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_249" .
+
+kfngoei:a7e9c98d-d7c2-46ce-9877-65d3949d0712 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169410;
+  kfngoeo:elementPos "Bae_TB_8_250" .
+
+_:node169410 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:08a73a79-4896-4bd6-9093-e7626f19c24a a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_251" .
+
+kfngoei:fb9ea030-6949-4f2a-a4b4-5afde5fbae52 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_253" .
+
+kfngoei:05723d90-0b50-4c3c-817f-6e4d206e6cf8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169411;
+  kfngoeo:elementPos "Bae_TB_8_254" .
+
+_:node169411 kfngoeo:attrName "key" .
+
+kfngoei:e82092a0-3982-45f7-93e8-5b1c089f6f35 a kfngoeo:Text;
+  kfngoeo:hasContent "Wahlkreiseinteilung";
+  kfngoeo:elementPos "Bae_TB_8_255" .
+
+kfngoei:2ecd4929-3ebd-437d-be02-3f04d461d767 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_472" .
+
+kfngoei:0ca25f4f-7a18-413b-8329-a38995f4b101 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169412;
+  kfngoeo:elementPos "Bae_TB_8_473" .
+
+_:node169412 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Presse" .
+
+kfngoei:745d9b4c-081d-43de-9ed2-5e8d2a9db76b a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_474" .
+
+kfngoei:3855d5c2-17da-41e3-8b8b-c6626e80811c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_522" .
+
+kfngoei:e526b7da-066a-4ea2-999d-8eff9ca0f5cf a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169413;
+  kfngoeo:elementPos "Bae_TB_8_523" .
+
+_:node169413 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:c13df915-fa98-4ea6-81b5-4ae503fce367 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_524" .
+
+kfngoei:2a41f3b3-3043-4264-8461-1780cca9c49b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_526" .
+
+kfngoei:c07e20bb-2c00-4e9e-b74e-3be5651a6773 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169414;
+  kfngoeo:elementPos "Bae_TB_8_527" .
+
+_:node169414 kfngoeo:attrName "key" .
+
+kfngoei:07b4cabe-1703-4ab6-9c85-df3fc773783d a kfngoeo:Text;
+  kfngoeo:hasContent "Viererausschuss der deutschen Parteien";
+  kfngoeo:elementPos "Bae_TB_8_528" .
+
+kfngoei:94c91e3e-d108-4cda-93a2-d0bcb9897338 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_617" .
+
+kfngoei:0557c8a5-f008-4337-b00a-01dababa27bf a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169415;
+  kfngoeo:elementPos "Bae_TB_8_618" .
+
+_:node169415 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:a6de17b4-0a57-46c1-ae04-86350415bcc6 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_619" .
+
+kfngoei:8258338a-f3e4-4dfa-8279-778058e23366 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_621" .
+
+kfngoei:537e706a-68f8-4c02-a2e3-8d938c3165c3 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169416;
+  kfngoeo:elementPos "Bae_TB_8_622" .
+
+_:node169416 kfngoeo:attrName "key" .
+
+kfngoei:595ba352-5eed-4560-91a0-7e5f49d27311 a kfngoeo:Text;
+  kfngoeo:hasContent "Viererausschuss der deutschen Parteien";
+  kfngoeo:elementPos "Bae_TB_8_623" .
+
+kfngoei:91b9e9ef-eb2a-43ed-b175-aabeb86bfe4d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_653" .
+
+kfngoei:12b520b4-fbdf-4d2b-892e-0af9263f156b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169417;
+  kfngoeo:elementPos "Bae_TB_8_654" .
+
+_:node169417 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:eeec68e0-2ab3-4066-9a6c-1f723d76ebc4 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_655" .
+
+kfngoei:df131bc2-9940-41af-8510-899f3200936a a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_657" .
+
+kfngoei:171b7e31-6654-4218-af0e-6d39e4e2be0f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169418;
+  kfngoeo:elementPos "Bae_TB_8_658" .
+
+_:node169418 kfngoeo:attrName "key" .
+
+kfngoei:d0124bfd-06b9-451c-8a2f-f9f59053d700 a kfngoeo:Text;
+  kfngoeo:hasContent "Nationale Mandatszahlen";
+  kfngoeo:elementPos "Bae_TB_8_659" .
+
+kfngoei:1b0f1458-0ea0-4197-b656-9cd4dc9e55d2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_668" .
+
+kfngoei:b7d5f6e4-219f-4415-b5d2-66bf029588a5 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169419;
+  kfngoeo:elementPos "Bae_TB_8_669" .
+
+_:node169419 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:4fb1d362-39ef-440b-88e6-922d3f7c7df5 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_670" .
+
+kfngoei:52140ebf-ed73-4ba4-bd0b-5862dd1e1ae8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_759" .
+
+kfngoei:4096e174-16c3-4532-b2e3-ebce4c7a1984 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169420;
+  kfngoeo:elementPos "Bae_TB_8_760" .
+
+_:node169420 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:183139d2-e9e7-458e-af8f-7ce32d1c67cb a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_761" .
+
+kfngoei:d851c4c5-2ccc-4313-813c-68d9a1e313c1 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_847" .
+
+kfngoei:1ab76cdd-23de-4389-b684-0f25e73c6bca a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169421;
+  kfngoeo:elementPos "Bae_TB_8_848" .
+
+_:node169421 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:0915ef45-bdb3-49b8-a6a5-f9bea8eb9360 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_849" .
+
+kfngoei:33bc3fd1-f9ec-4420-8740-aedd54a4ff84 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1035" .
+
+kfngoei:e7327c27-78d1-4623-aa17-97eb087a2901 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169422;
+  kfngoeo:elementPos "Bae_TB_8_1036" .
+
+_:node169422 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Presse" .
+
+kfngoei:a78ca3b4-9d76-442f-80b1-0b64c5998ac5 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1037" .
+
+kfngoei:b3733599-cf5f-4bf5-9098-bcbf864d89d2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1041" .
+
+kfngoei:3735d6d8-c30f-40fe-b25e-0e32cd953c8b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169423;
+  kfngoeo:elementPos "Bae_TB_8_1042" .
+
+_:node169423 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Presse" .
+
+kfngoei:ba5556fe-9c25-4508-81f7-810a29e48174 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1043" .
+
+kfngoei:dd180496-b6b2-4223-8f37-e1ba53528688 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1045" .
+
+kfngoei:66c6c369-b829-4bff-9626-ecd27fb17b47 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169424;
+  kfngoeo:elementPos "Bae_TB_8_1046" .
+
+_:node169424 kfngoeo:attrName "key" .
+
+kfngoei:686b453b-3d00-44ea-87ac-1de05f1e7c21 a kfngoeo:Text;
+  kfngoeo:hasContent "Pressebuero des Ministerratspräsidiums";
+  kfngoeo:elementPos "Bae_TB_8_1047" .
+
+kfngoei:e98b0581-acb4-473c-9b6c-84ae2bc82bd3 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1285" .
+
+kfngoei:b3a192ee-791f-4c8c-bd66-91dd01c97f4f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169425;
+  kfngoeo:elementPos "Bae_TB_8_1286" .
+
+_:node169425 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:4af2710f-50b7-47e1-873a-3656533f0218 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1287" .
+
+kfngoei:c47f8d13-b557-466a-89c7-88cdc6f59517 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1289" .
+
+kfngoei:d5690e50-01aa-4a4e-8327-d30319f60799 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169426;
+  kfngoeo:elementPos "Bae_TB_8_1290" .
+
+_:node169426 kfngoeo:attrName "key" .
+
+kfngoei:080ec45f-36e6-4de2-a777-7e62e50a38d3 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_1291" .
+
+kfngoei:6550a952-6023-4814-8722-6e46e8fbec1b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1330" .
+
+kfngoei:113f1538-b94c-42b4-9904-f7ccca98696d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169427;
+  kfngoeo:elementPos "Bae_TB_8_1331" .
+
+_:node169427 kfngoeo:attrName "key";
+  kfngoeo:attrValue "KaiserFranzJoseph" .
+
+kfngoei:22f7a892-6b2a-4b79-b5b0-401300373766 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1332" .
+
+kfngoei:64a60931-6ffa-4074-91bb-ed32b5a271a2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1334" .
+
+kfngoei:05bec4fe-ea05-446a-9bab-08689141d190 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169428;
+  kfngoeo:elementPos "Bae_TB_8_1335" .
+
+_:node169428 kfngoeo:attrName "key" .
+
+kfngoei:4b270409-9225-4ae9-88ad-7b79a136d99d a kfngoeo:Text;
+  kfngoeo:hasContent "Audienzen";
+  kfngoeo:elementPos "Bae_TB_8_1336" .
+
+kfngoei:be31a2f2-31b9-4038-a549-0380409d4000 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1456" .
+
+kfngoei:ee813863-6976-4460-8b85-e2a4c58b96d1 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169429;
+  kfngoeo:elementPos "Bae_TB_8_1457" .
+
+_:node169429 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:a8c56dbe-f1fb-4740-8022-c902fb95598c a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1458" .
+
+kfngoei:dfa50f7b-254e-40b2-a2b0-cd2e09b789f2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1460" .
+
+kfngoei:bc345280-cda1-45ca-a37c-be4247cb9b2c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169430;
+  kfngoeo:elementPos "Bae_TB_8_1461" .
+
+_:node169430 kfngoeo:attrName "key" .
+
+kfngoei:11ee64ff-e351-40b2-80a5-804dc77c4113 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_1462" .
+
+kfngoei:115d6dfb-7ef8-462d-94c0-2a3c0b37d34b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1476" .
+
+kfngoei:6cf7af8f-808a-4043-a746-2d30dd41cd9f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169431;
+  kfngoeo:elementPos "Bae_TB_8_1477" .
+
+_:node169431 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Reichsrat" .
+
+kfngoei:a2e04a19-7c7e-41bd-9164-e3c6721facf6 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1478" .
+
+kfngoei:6c0c18d2-e111-44c4-9a15-83205661a013 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1480" .
+
+kfngoei:d7d3da5e-7110-4b75-a206-206d103154f3 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169432;
+  kfngoeo:elementPos "Bae_TB_8_1481" .
+
+_:node169432 kfngoeo:attrName "key" .
+
+kfngoei:0b2744d8-0c5c-46d8-96a7-3199c517c9c6 a kfngoeo:Text;
+  kfngoeo:hasContent "Rekrutenkontingent";
+  kfngoeo:elementPos "Bae_TB_8_1482" .
+
+kfngoei:23b47476-3ce5-45d9-860a-40a7f85ad81f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1487" .
+
+kfngoei:b0c4b460-cd9c-4816-a136-281251fa9050 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169433;
+  kfngoeo:elementPos "Bae_TB_8_1488" .
+
+_:node169433 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:38d6f5ff-725f-4445-86dc-f703ac70e1cf a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1489" .
+
+kfngoei:acb21414-b71f-4afc-95ae-02a26684ad02 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1491" .
+
+kfngoei:dca42168-91ba-4a17-9ab4-a0ee01cdfcb7 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169434;
+  kfngoeo:elementPos "Bae_TB_8_1492" .
+
+_:node169434 kfngoeo:attrName "key" .
+
+kfngoei:ee7a894c-fb1a-403f-b91c-b9a8beb07281 a kfngoeo:Text;
+  kfngoeo:hasContent "Zolltarif";
+  kfngoeo:elementPos "Bae_TB_8_1493" .
+
+kfngoei:cf5704a1-8261-44f1-9f4c-feec7e341d67 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1498" .
+
+kfngoei:7fb6b202-5bba-4d39-a164-74e427dbc879 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169435;
+  kfngoeo:elementPos "Bae_TB_8_1499" .
+
+_:node169435 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:81aa183b-4904-4ce3-afab-fb20cf271888 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1500" .
+
+kfngoei:c93f32c0-6965-41cb-82d9-6b9ead811b58 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1502" .
+
+kfngoei:041efc8b-3796-44a8-afbf-674be3b5c83f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169436;
+  kfngoeo:elementPos "Bae_TB_8_1503" .
+
+_:node169436 kfngoeo:attrName "key" .
+
+kfngoei:add4af9f-9536-4e3d-9428-7b8541ad481a a kfngoeo:Text;
+  kfngoeo:hasContent "Handelsvertrag mit Deutschland";
+  kfngoeo:elementPos "Bae_TB_8_1504" .
+
+kfngoei:c2d8b130-09c0-40e9-8aa8-d97e339e539f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1528" .
+
+kfngoei:e91ab5f5-9f17-47cc-ba9c-c1d9f931ae93 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169437;
+  kfngoeo:elementPos "Bae_TB_8_1529" .
+
+_:node169437 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:4941cf37-db31-4683-bd19-60e508a9987d a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1530" .
+
+kfngoei:26fd39b0-de54-4680-a91d-fafb6472fb44 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1532" .
+
+kfngoei:36c500d9-4f7e-428d-9ed1-d35b5c83311f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169438;
+  kfngoeo:elementPos "Bae_TB_8_1533" .
+
+_:node169438 kfngoeo:attrName "key" .
+
+kfngoei:ae1f7e5d-7fb7-425f-954e-323d72f544b2 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_1534" .
+
+kfngoei:a570e347-7111-4023-ae73-135136523208 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1569" .
+
+kfngoei:d7e715e3-ce6a-4e42-8bde-c3086fad183c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169439;
+  kfngoeo:elementPos "Bae_TB_8_1570" .
+
+_:node169439 kfngoeo:attrName "key";
+  kfngoeo:attrValue "KaiserFranzJoseph" .
+
+kfngoei:66295306-90c7-4bf4-9f13-68e3de29968e a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1571" .
+
+kfngoei:324a5ab3-2ca5-4fc7-a3b5-d76fab830252 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1573" .
+
+kfngoei:df42e18f-14c8-4751-9123-9929034747e4 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169440;
+  kfngoeo:elementPos "Bae_TB_8_1574" .
+
+_:node169440 kfngoeo:attrName "key" .
+
+kfngoei:61a3386c-c644-436f-af42-679d238d848d a kfngoeo:Text;
+  kfngoeo:hasContent "Audienzen";
+  kfngoeo:elementPos "Bae_TB_8_1575" .
+
+kfngoei:f1c343f0-ef53-44aa-b8b8-a3a596e89e53 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1604" .
+
+kfngoei:dfeb4eab-2c89-4984-8df1-6a90c7e81166 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169441;
+  kfngoeo:elementPos "Bae_TB_8_1605" .
+
+_:node169441 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:3defce5d-f65d-4262-afcd-d9802f8829ea a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1606" .
+
+kfngoei:7f838c57-985a-4307-b14d-c8c19a376274 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1608" .
+
+kfngoei:f46574d0-973b-408b-a4ad-04a404f37ff8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169442;
+  kfngoeo:elementPos "Bae_TB_8_1609" .
+
+_:node169442 kfngoeo:attrName "key" .
+
+kfngoei:0ce272e9-dc6d-4fef-8b72-48458247d332 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_1610" .
+
+kfngoei:0584caa6-9746-42ec-9038-b02faa47a91d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1737" .
+
+kfngoei:594620b7-a064-4f2c-a93a-7dd382a865f8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169443;
+  kfngoeo:elementPos "Bae_TB_8_1738" .
+
+_:node169443 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:b97afaad-3e3c-4e94-88bc-bd43aa1121a3 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1739" .
+
+kfngoei:73a37158-2a3f-425e-bb56-d20b42f541de a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1932" .
+
+kfngoei:c4ace247-2d4f-4835-ad32-9f4e619b4e96 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169444;
+  kfngoeo:elementPos "Bae_TB_8_1933" .
+
+_:node169444 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:80e53d09-3ace-4bfa-9f48-56be826a0841 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1934" .
+
+kfngoei:0fc24544-1ce7-4c43-b527-8be6871259f3 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1936" .
+
+kfngoei:72925fc9-6549-4448-beff-dbc40226d364 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169445;
+  kfngoeo:elementPos "Bae_TB_8_1937" .
+
+_:node169445 kfngoeo:attrName "key" .
+
+kfngoei:e5b42401-48a4-4c8a-82ec-1908e2c3756f a kfngoeo:Text;
+  kfngoeo:hasContent "Pluralwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_1938" .
+
+kfngoei:a52fe238-4a97-4f07-b063-e35b60c71abf a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1951" .
+
+kfngoei:db37cfac-9dc7-4894-99fb-c0449ff88ae6 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169446;
+  kfngoeo:elementPos "Bae_TB_8_1952" .
+
+_:node169446 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:9e0f9b6b-a5c3-496c-912d-a15629d02ee2 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_1953" .
+
+kfngoei:731f9a7d-b699-471d-98eb-e19a619c177e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_1955" .
+
+kfngoei:05707507-a031-483a-8e0b-b13a5c9dca53 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169447;
+  kfngoeo:elementPos "Bae_TB_8_1956" .
+
+_:node169447 kfngoeo:attrName "key" .
+
+kfngoei:1fa92d33-3f13-44ff-9a57-098d22cdfe28 a kfngoeo:Text;
+  kfngoeo:hasContent "Proportionalwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_1957" .
+
+kfngoei:d8fb1459-c6f8-429a-b7a3-9459888f2308 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2015" .
+
+kfngoei:1a02f3aa-f07b-4f65-a6a2-01a9dc56be6d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169448;
+  kfngoeo:elementPos "Bae_TB_8_2016" .
+
+_:node169448 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:e76b7b02-a033-4182-89ae-641656e6e0a8 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2017" .
+
+kfngoei:f4f3b07d-06d6-4add-a4e3-3873259bcb02 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2019" .
+
+kfngoei:75e99c74-aeb1-412c-85af-dea3099c5bdd a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169449;
+  kfngoeo:elementPos "Bae_TB_8_2020" .
+
+_:node169449 kfngoeo:attrName "key" .
+
+kfngoei:ed9d8de1-99c7-4451-a285-40ffeb025991 a kfngoeo:Text;
+  kfngoeo:hasContent "Pluralwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_2021" .
+
+kfngoei:9cc075df-6f94-497c-a198-b9da6e0007b9 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2115" .
+
+kfngoei:dea1744e-66bf-48e7-873a-dffec06f5e59 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169450;
+  kfngoeo:elementPos "Bae_TB_8_2116" .
+
+_:node169450 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:ad21a270-6f77-49d8-816a-05abdcf41cd6 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2117" .
+
+kfngoei:81916382-a2f7-462d-abb2-26f3bb97e61e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2119" .
+
+kfngoei:420184d7-21d3-450a-83f1-82ae2eb62a2c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169451;
+  kfngoeo:elementPos "Bae_TB_8_2120" .
+
+_:node169451 kfngoeo:attrName "key" .
+
+kfngoei:12184b1d-5b26-4798-95b2-82168932ddf8 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_2121" .
+
+kfngoei:062ac387-8ffe-45b7-a177-8456df33c253 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2179" .
+
+kfngoei:9c0e4783-fabf-4217-9b7c-4fb4a3a43f61 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169452;
+  kfngoeo:elementPos "Bae_TB_8_2180" .
+
+_:node169452 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:65800046-ab41-41f0-b6cf-ff8ab7a291f0 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2181" .
+
+kfngoei:4ad970df-e3e3-4e87-baac-f765d9dd9f71 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2183" .
+
+kfngoei:83b5a403-550b-4390-bfbc-70786ba5d1ce a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169453;
+  kfngoeo:elementPos "Bae_TB_8_2184" .
+
+_:node169453 kfngoeo:attrName "key" .
+
+kfngoei:03dbe760-de21-4e83-a7ba-6016f0f31c0e a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_2185" .
+
+kfngoei:22388fa1-30a0-4902-a980-cc514a860e12 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2327" .
+
+kfngoei:4d407d56-b308-4e62-aaa0-800fc3e4ab4e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169454;
+  kfngoeo:elementPos "Bae_TB_8_2328" .
+
+_:node169454 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Presse" .
+
+kfngoei:155776c6-3aa0-4239-871e-f17e787ea835 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2329" .
+
+kfngoei:32906fdb-e0ad-4345-a30f-22fc0d3b8bec a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2457" .
+
+kfngoei:ec987d54-e5cd-4013-a663-4c7e3ffa9259 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169455;
+  kfngoeo:elementPos "Bae_TB_8_2458" .
+
+_:node169455 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:44deff28-2b59-4f5b-82d1-9c4b8170ecbe a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2459" .
+
+kfngoei:8c385f0e-4324-493d-835e-049269cec9ed a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2461" .
+
+kfngoei:23b0f028-16fd-4f3a-8762-cc3fb233328e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169456;
+  kfngoeo:elementPos "Bae_TB_8_2462" .
+
+_:node169456 kfngoeo:attrName "key" .
+
+kfngoei:7f2ebd40-49b5-497c-abfe-9f1586507c69 a kfngoeo:Text;
+  kfngoeo:hasContent "Kommandosprache";
+  kfngoeo:elementPos "Bae_TB_8_2463" .
+
+kfngoei:8ccdfa3b-c646-4f6c-b090-a7d8b51665cd a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2482" .
+
+kfngoei:9c5418d0-4c1d-4165-aae3-2a2ec1d1a3ca a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169457;
+  kfngoeo:elementPos "Bae_TB_8_2483" .
+
+_:node169457 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:8c3fc21e-5426-40e6-968f-ded8e4ab5b76 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2484" .
+
+kfngoei:2daebb86-f31d-4205-825e-069204966ba7 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2486" .
+
+kfngoei:ebaffc74-880e-413a-9023-acbb49004579 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169458;
+  kfngoeo:elementPos "Bae_TB_8_2487" .
+
+_:node169458 kfngoeo:attrName "key" .
+
+kfngoei:d60a992c-3aa4-45a3-b4f7-5931b7ed2bc5 a kfngoeo:Text;
+  kfngoeo:hasContent "Wirtschaftliche Trennung";
+  kfngoeo:elementPos "Bae_TB_8_2488" .
+
+kfngoei:ac78b5b8-edb4-4909-8c2b-55df8c43aeed a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2664" .
+
+kfngoei:3431a2b9-be0c-4410-8183-97dfad839bc2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169459;
+  kfngoeo:elementPos "Bae_TB_8_2665" .
+
+_:node169459 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:e42b1d8f-2210-4b26-be77-1e976dfe4d23 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2666" .
+
+kfngoei:2df85590-be63-4d79-b1aa-82b7ba4d212f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2668" .
+
+kfngoei:e8627a63-90b0-4f26-bd98-4ec52945c568 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169460;
+  kfngoeo:elementPos "Bae_TB_8_2669" .
+
+_:node169460 kfngoeo:attrName "key" .
+
+kfngoei:e3ab8093-184c-4dcd-b42f-cded5c0207b1 a kfngoeo:Text;
+  kfngoeo:hasContent "Wirtschaftliche Trennung";
+  kfngoeo:elementPos "Bae_TB_8_2670" .
+
+kfngoei:dc0d13df-a46f-43f2-b266-2102b9f181ae a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2713" .
+
+kfngoei:5924a75c-0c90-4e0a-9d15-5e7e79fd07de a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169461;
+  kfngoeo:elementPos "Bae_TB_8_2714" .
+
+_:node169461 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:417f2b85-a11c-4266-9199-0825d41ff365 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_2715" .
+
+kfngoei:d9892a8d-7539-4c02-9b9c-52671cdf8768 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_2717" .
+
+kfngoei:6b49f7c5-f628-4072-b38e-e716283b5fbc a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169462;
+  kfngoeo:elementPos "Bae_TB_8_2718" .
+
+_:node169462 kfngoeo:attrName "key" .
+
+kfngoei:e1d53d53-62c8-4854-8c08-7d856a78cd99 a kfngoeo:Text;
+  kfngoeo:hasContent "Kommandosprache";
+  kfngoeo:elementPos "Bae_TB_8_2719" .
+
+kfngoei:18643459-a092-4884-8653-d163e4dd8778 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3017" .
+
+kfngoei:ce31e144-f250-47a5-95eb-e26d1c167586 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169463;
+  kfngoeo:elementPos "Bae_TB_8_3018" .
+
+_:node169463 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:e2d5c90c-bfd8-430b-82d2-5bcf8963c40b a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3019" .
+
+kfngoei:80619428-c396-4d9b-a903-65049fe7ca56 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3030" .
+
+kfngoei:0d1de1e5-4197-4146-966f-d073f82ea441 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169464;
+  kfngoeo:elementPos "Bae_TB_8_3031" .
+
+_:node169464 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:ddc42256-8f4f-4b1a-b5a2-dcf33edb706d a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3032" .
+
+kfngoei:b2338c98-3576-4501-9db9-60ed2b2d72a7 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3034" .
+
+kfngoei:b2217f12-084e-4067-9018-fc94cd45d4fa a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169465;
+  kfngoeo:elementPos "Bae_TB_8_3035" .
+
+_:node169465 kfngoeo:attrName "key" .
+
+kfngoei:bdbeb049-57c1-44ea-933d-b0168c7cd708 a kfngoeo:Text;
+  kfngoeo:hasContent "Großgrundbesitz (beide Parteien)";
+  kfngoeo:elementPos "Bae_TB_8_3036" .
+
+kfngoei:13fd8678-be61-49a1-bdaa-315709d33bec a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3236" .
+
+kfngoei:c76ce3a5-1421-4703-9add-3674d3d38fb6 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169466;
+  kfngoeo:elementPos "Bae_TB_8_3237" .
+
+_:node169466 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:0952d073-62cd-468c-a378-80a2b0379dc6 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3238" .
+
+kfngoei:6e8dcc1b-8a95-45ab-931f-09637e7071a1 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3362" .
+
+kfngoei:e341f7b4-c51c-48ed-9d0c-244efdc0e012 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169467;
+  kfngoeo:elementPos "Bae_TB_8_3363" .
+
+_:node169467 kfngoeo:attrName "key";
+  kfngoeo:attrValue "KaiserlichesNotverordnungsrecht" .
+
+kfngoei:d99179f5-ff1a-4780-92fa-c11a356409d9 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3364" .
+
+kfngoei:fda86517-e60f-4df9-89f4-32ae6679e0cb a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3366" .
+
+kfngoei:3a7a5533-23b5-4715-9e39-16d7eb2cb64d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169468;
+  kfngoeo:elementPos "Bae_TB_8_3367" .
+
+_:node169468 kfngoeo:attrName "key" .
+
+kfngoei:c675b298-9bec-444a-9bd5-08ff39d84375 a kfngoeo:Text;
+  kfngoeo:hasContent "Paragraph 14 des Gesetzes vom 21. Dezember 1867";
+  kfngoeo:elementPos "Bae_TB_8_3368" .
+
+kfngoei:85b79b64-c152-4a2b-b35e-b88863119a4b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3407" .
+
+kfngoei:936d8c2e-9693-4aa8-8b3b-2719f48509df a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169469;
+  kfngoeo:elementPos "Bae_TB_8_3408" .
+
+_:node169469 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:51c35922-267b-4842-ab1d-8bc9db393034 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3409" .
+
+kfngoei:78db1562-0fc7-4392-8d99-8a7b7fd10791 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3411" .
+
+kfngoei:e2d70629-e9f1-4d20-8499-aee4ebe944b7 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169470;
+  kfngoeo:elementPos "Bae_TB_8_3412" .
+
+_:node169470 kfngoeo:attrName "key" .
+
+kfngoei:6cd6dd20-d556-432d-9bfa-8c096ba251f3 a kfngoeo:Text;
+  kfngoeo:hasContent "Pluralwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_3413" .
+
+kfngoei:b219f3df-8650-4e00-9ca3-67324186bcbe a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3496" .
+
+kfngoei:b4c7cd6b-1f78-4b3d-abeb-5410a265fbca a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169471;
+  kfngoeo:elementPos "Bae_TB_8_3497" .
+
+_:node169471 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Arbeiter" .
+
+kfngoei:531c390f-6116-4450-ba51-fd9ff957929f a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3498" .
+
+kfngoei:18abe8bb-a371-498a-bc83-cc0f0cbf19ec a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3506" .
+
+kfngoei:77327a08-2c84-459a-933a-eea23d697d1c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169472;
+  kfngoeo:elementPos "Bae_TB_8_3507" .
+
+_:node169472 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:b2e4b222-fdb1-4db6-8bed-be2a87d2b55f a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3508" .
+
+kfngoei:76308c1d-b6a8-41d6-ad87-7dfbb2015114 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3510" .
+
+kfngoei:c556b34d-d545-4420-90e4-af18e5e16b57 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169473;
+  kfngoeo:elementPos "Bae_TB_8_3511" .
+
+_:node169473 kfngoeo:attrName "key" .
+
+kfngoei:16b645c2-21d0-4407-9367-d4e165943e41 a kfngoeo:Text;
+  kfngoeo:hasContent "Wahlrechtsagitation";
+  kfngoeo:elementPos "Bae_TB_8_3512" .
+
+kfngoei:691574c0-4e1d-4961-b393-49bf64cbd37b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3581" .
+
+kfngoei:0df42966-7c65-44fb-a6ab-00381ed2a5ce a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169474;
+  kfngoeo:elementPos "Bae_TB_8_3582" .
+
+_:node169474 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:419c5caf-a081-407f-bc61-32c4dc96e19d a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3583" .
+
+kfngoei:42742683-53c9-4e52-ac23-91055cae41a4 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3923" .
+
+kfngoei:a504324f-b321-4d63-b925-34e6cf5b56e9 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169475;
+  kfngoeo:elementPos "Bae_TB_8_3924" .
+
+_:node169475 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Oesterreich-Ungarn" .
+
+kfngoei:aaeee936-50b1-46a4-85e3-ae68db2946f4 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_3925" .
+
+kfngoei:24692271-f5a9-4176-9c91-e780a97bc045 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_3927" .
+
+kfngoei:8224f643-414f-4945-90dd-bec230929a8b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169476;
+  kfngoeo:elementPos "Bae_TB_8_3928" .
+
+_:node169476 kfngoeo:attrName "key" .
+
+kfngoei:2cfda082-11d3-4cb3-a22d-4c27f62cc05f a kfngoeo:Text;
+  kfngoeo:hasContent "Delegationen";
+  kfngoeo:elementPos "Bae_TB_8_3929" .
+
+kfngoei:22c60524-ffcf-4592-b9d4-cc73c23504d8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4001" .
+
+kfngoei:554328b3-c691-4998-9f40-f0f4c7d9c225 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169477;
+  kfngoeo:elementPos "Bae_TB_8_4002" .
+
+_:node169477 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:3b30ec18-dc66-4b73-a5d9-27da4c94a351 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4003" .
+
+kfngoei:aba8e16b-eea7-4c9d-a429-5fe435b5bbb6 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4021" .
+
+kfngoei:b37df8da-9009-407f-aeb1-d7e50014e5cc a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169478;
+  kfngoeo:elementPos "Bae_TB_8_4022" .
+
+_:node169478 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:b49eab34-be77-4df6-8c66-ccc123f5b8af a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4023" .
+
+kfngoei:f31b10c9-0534-4e46-b3b7-b36f06273a3c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4025" .
+
+kfngoei:cbe728a1-eaeb-441a-8886-ad1f64718860 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169479;
+  kfngoeo:elementPos "Bae_TB_8_4026" .
+
+_:node169479 kfngoeo:attrName "key" .
+
+kfngoei:77ac2264-49a7-4db5-88d9-d9da42be6877 a kfngoeo:Text;
+  kfngoeo:hasContent "Nationale Mandatszahlen";
+  kfngoeo:elementPos "Bae_TB_8_4027" .
+
+kfngoei:28380d3e-a726-4351-a0de-1fa56015b65b a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4108" .
+
+kfngoei:bb13c051-c56a-41b3-8336-fa0a992e5207 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169480;
+  kfngoeo:elementPos "Bae_TB_8_4109" .
+
+_:node169480 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:667b0240-0824-467c-b152-ed841279a47c a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4110" .
+
+kfngoei:b1ec0912-709b-48f2-92c6-a50b1b465dd9 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4158" .
+
+kfngoei:ebf45c34-4d56-4a53-a355-f9891cd82505 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169481;
+  kfngoeo:elementPos "Bae_TB_8_4159" .
+
+_:node169481 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:028ff0a2-b299-42f4-92c2-3f4d0d663d75 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4160" .
+
+kfngoei:d0ba252e-deec-4d74-8981-97098f147669 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4162" .
+
+kfngoei:e698872f-fabc-4447-b817-55e52c8b32a9 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169482;
+  kfngoeo:elementPos "Bae_TB_8_4163" .
+
+_:node169482 kfngoeo:attrName "key" .
+
+kfngoei:14f6be01-584d-461e-8ef3-a291cf5cf70f a kfngoeo:Text;
+  kfngoeo:hasContent "Wahlkampf";
+  kfngoeo:elementPos "Bae_TB_8_4164" .
+
+kfngoei:77326f34-779a-43c8-94f9-11acce5cdcc3 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4169" .
+
+kfngoei:6da79672-edf3-4888-ab9b-d89a6009c306 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169483;
+  kfngoeo:elementPos "Bae_TB_8_4170" .
+
+_:node169483 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Reichsrat" .
+
+kfngoei:51a3d298-1d4b-4fd1-9234-3f2c489b3808 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4171" .
+
+kfngoei:a8119ef7-3692-4991-b6d4-d4d33c966cdb a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4173" .
+
+kfngoei:6736eda2-159b-48cb-956a-a8b2dde9e4d4 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169484;
+  kfngoeo:elementPos "Bae_TB_8_4174" .
+
+_:node169484 kfngoeo:attrName "key" .
+
+kfngoei:adf38d52-bc19-42ca-b497-0a2147e9f37a a kfngoeo:Text;
+  kfngoeo:hasContent "Herrenhaus";
+  kfngoeo:elementPos "Bae_TB_8_4175" .
+
+kfngoei:dc5bbb10-f7c8-4813-833a-aacda0931843 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4216" .
+
+kfngoei:32acb32d-5d61-49c6-b5ab-2ff96a1978db a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169485;
+  kfngoeo:elementPos "Bae_TB_8_4217" .
+
+_:node169485 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:4326c526-9a98-4619-91d7-532a40f587a0 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4218" .
+
+kfngoei:9c28e443-e19f-4236-9d12-e0c412da97f5 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4220" .
+
+kfngoei:f441af3a-bdef-4f3e-adf4-80f759d57327 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169486;
+  kfngoeo:elementPos "Bae_TB_8_4221" .
+
+_:node169486 kfngoeo:attrName "key" .
+
+kfngoei:5399ecff-aa2f-4d6c-82ef-2eea99ec5613 a kfngoeo:Text;
+  kfngoeo:hasContent "Pluralwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_4222" .
+
+kfngoei:b9ad4068-ebf1-4578-bb53-1177244707f6 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4366" .
+
+kfngoei:94697b9e-e5aa-48f1-8896-32102342f71d a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169487;
+  kfngoeo:elementPos "Bae_TB_8_4367" .
+
+_:node169487 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Parteien" .
+
+kfngoei:70802bf5-e161-4a83-953b-b72c512c6c3e a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4368" .
+
+kfngoei:3acc1ee3-10e5-4ee3-a58f-2bf9748d557c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4370" .
+
+kfngoei:669ccc92-0770-4c75-84a6-a9b588e663e6 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169488;
+  kfngoeo:elementPos "Bae_TB_8_4371" .
+
+_:node169488 kfngoeo:attrName "key" .
+
+kfngoei:64e8681e-a4c0-41ea-991d-7d65c4afcb8e a kfngoeo:Text;
+  kfngoeo:hasContent "Obmännerkonferenz";
+  kfngoeo:elementPos "Bae_TB_8_4372" .
+
+kfngoei:317a21d6-9a1d-41ea-8c17-419c087371a8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4439" .
+
+kfngoei:99e07762-1cd7-48dd-b6ca-6fba2a3c5dc1 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169489;
+  kfngoeo:elementPos "Bae_TB_8_4440" .
+
+_:node169489 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:4585e8a0-e2ca-4043-9348-cea40c8fe505 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4441" .
+
+kfngoei:2eaf372f-0976-4f71-a182-d629673de612 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4453" .
+
+kfngoei:663e9cda-604e-4a25-902b-951b92a8cf2c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169490;
+  kfngoeo:elementPos "Bae_TB_8_4454" .
+
+_:node169490 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:a9171309-6057-4657-b652-b043cb888579 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4455" .
+
+kfngoei:b45fb8c4-0041-4cdc-a5f4-83208d190aae a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4457" .
+
+kfngoei:b66da9e1-9f49-4728-b5c4-0a713866eaa8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169491;
+  kfngoeo:elementPos "Bae_TB_8_4458" .
+
+_:node169491 kfngoeo:attrName "key" .
+
+kfngoei:86d48135-bced-4b09-82e6-0033b45499c6 a kfngoeo:Text;
+  kfngoeo:hasContent "Pluralwahlrecht";
+  kfngoeo:elementPos "Bae_TB_8_4459" .
+
+kfngoei:fd8d01c9-43c5-41fb-8d59-79e15fa09f15 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4674" .
+
+kfngoei:1607637e-e56e-4ed9-ab92-e0f429e41402 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169492;
+  kfngoeo:elementPos "Bae_TB_8_4675" .
+
+_:node169492 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:d50fb312-b8aa-4601-8f30-af49ec7e592a a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4676" .
+
+kfngoei:4e11546d-77c1-4c84-8de3-f2f950a2b125 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4730" .
+
+kfngoei:9497a616-0605-4bd0-bbd3-635913fbeb4e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169493;
+  kfngoeo:elementPos "Bae_TB_8_4731" .
+
+_:node169493 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Aristokratie" .
+
+kfngoei:f4cda3bd-4474-4cd5-a042-c0cd88f15757 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4732" .
+
+kfngoei:0af638f2-7b68-46b4-a7d7-059e346bb5d5 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4736" .
+
+kfngoei:1fbb0ab4-0691-4e56-9491-37ddf83ba173 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169494;
+  kfngoeo:elementPos "Bae_TB_8_4737" .
+
+_:node169494 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Buergertum" .
+
+kfngoei:07e680f5-885d-4d4a-85f9-74f40d2524fd a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4738" .
+
+kfngoei:8228c832-69a8-4516-b977-6afc1576fae4 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4788" .
+
+kfngoei:60834dd9-d65a-4a06-975e-82f733030da8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169495;
+  kfngoeo:elementPos "Bae_TB_8_4789" .
+
+_:node169495 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Verwaltung" .
+
+kfngoei:5e3f20ae-4a0c-4aa9-8b72-cc24dc1ede10 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4790" .
+
+kfngoei:fec31f53-e015-41d0-b8f6-1fec271909ee a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4792" .
+
+kfngoei:832a5b5d-a00b-4078-8a68-53073b155689 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169496;
+  kfngoeo:elementPos "Bae_TB_8_4793" .
+
+_:node169496 kfngoeo:attrName "key" .
+
+kfngoei:962e5c7a-58ba-49c3-8073-7238c8a71501 a kfngoeo:Text;
+  kfngoeo:hasContent "Bürokratie";
+  kfngoeo:elementPos "Bae_TB_8_4794" .
+
+kfngoei:f305acaa-3c9c-40de-aaf4-4707c98ebb05 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4813" .
+
+kfngoei:c88e74d8-1d1d-42a8-939a-51788e669c8c a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169497 .
+
+_:node169497 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Liberalismus" .
+
+kfngoei:c88e74d8-1d1d-42a8-939a-51788e669c8c kfngoeo:elementPos "Bae_TB_8_4814" .
+
+kfngoei:3affb5d2-b61d-4dd7-b21b-08f22b24f6ac a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4815" .
+
+kfngoei:50d352b7-11b0-41a7-8d02-66398506139e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4852" .
+
+kfngoei:37bfaf03-0fe1-4768-9452-ae0d47c2a5a0 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169498;
+  kfngoeo:elementPos "Bae_TB_8_4853" .
+
+_:node169498 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Arbeiter" .
+
+kfngoei:a78236c8-aa85-4490-86bf-2f87ac1bc9de a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4854" .
+
+kfngoei:821aee32-9f52-433b-a8b2-9a1ff6f74cd2 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4901" .
+
+kfngoei:f0b93e20-8f45-4710-91b5-632ba8ce9286 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169499;
+  kfngoeo:elementPos "Bae_TB_8_4902" .
+
+_:node169499 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:e53fa0ac-e71e-438a-a8bd-3e7ef05162a8 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4903" .
+
+kfngoei:577cf54b-57fe-497c-8d59-c72f6d128d80 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4905" .
+
+kfngoei:7822e23b-3805-4b42-8020-86e017d31d47 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169500;
+  kfngoeo:elementPos "Bae_TB_8_4906" .
+
+_:node169500 kfngoeo:attrName "key" .
+
+kfngoei:3125165a-0105-476f-b4ff-de7349041ad1 a kfngoeo:Text;
+  kfngoeo:hasContent "Taaffsche Wahlrechtsreform";
+  kfngoeo:elementPos "Bae_TB_8_4907" .
+
+kfngoei:e7ed6562-c1ec-4f82-83cb-3d951f0d1255 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4912" .
+
+kfngoei:b73f2ca8-053e-4777-8117-24da1f3c5f95 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169501;
+  kfngoeo:elementPos "Bae_TB_8_4913" .
+
+_:node169501 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:b7d8bca9-3594-40c7-9f31-b48ba3440770 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4914" .
+
+kfngoei:78709c3f-577b-4948-a272-a4ba4ef2b03f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4916" .
+
+kfngoei:26763bf5-bece-4f0a-9261-d2ca6bd68c57 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169502;
+  kfngoeo:elementPos "Bae_TB_8_4917" .
+
+_:node169502 kfngoeo:attrName "key" .
+
+kfngoei:97638155-699e-457a-a948-52dc83e79181 a kfngoeo:Text;
+  kfngoeo:hasContent "Kurie Großgrundbesitz";
+  kfngoeo:elementPos "Bae_TB_8_4918" .
+
+kfngoei:a146b574-9b71-46c6-9d80-6ea645407770 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_4929" .
+
+kfngoei:01dbc282-9cc0-4f77-914b-b459d0c6ec39 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169503;
+  kfngoeo:elementPos "Bae_TB_8_4930" .
+
+_:node169503 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Aristokratie" .
+
+kfngoei:56b821c5-e870-44b1-bacb-17c2be29e186 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_4931" .
+
+kfngoei:429d296b-34bc-4eb9-94c1-5e92a8280474 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5005" .
+
+kfngoei:40410ea9-f72a-4ef6-b88d-7d1188f29e1f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169504;
+  kfngoeo:elementPos "Bae_TB_8_5006" .
+
+_:node169504 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Arbeiter" .
+
+kfngoei:9ad538b3-f253-4712-ab01-b341ed80b2b6 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_5007" .
+
+kfngoei:b5715f89-1ddc-45b8-bd51-d4c5f7d4a9ce a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5021" .
+
+kfngoei:6abf4109-c68e-4ec4-aa6d-920abb5835a5 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169505;
+  kfngoeo:elementPos "Bae_TB_8_5022" .
+
+_:node169505 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Wahlrechtsreform" .
+
+kfngoei:9ef11eaa-1dc6-4f69-bd5e-14df64a0149c a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_5023" .
+
+kfngoei:01beeb24-4af3-4846-80bf-ea5d033484b8 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5025" .
+
+kfngoei:0a15109a-98ba-420e-8c98-3cb1a9283a10 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169506;
+  kfngoeo:elementPos "Bae_TB_8_5026" .
+
+_:node169506 kfngoeo:attrName "key" .
+
+kfngoei:957c9705-c562-4b22-bb34-3f64c2228bd6 a kfngoeo:Text;
+  kfngoeo:hasContent "Kurie Großgrundbesitz";
+  kfngoeo:elementPos "Bae_TB_8_5027" .
+
+kfngoei:8d2a9b7a-7919-4005-98d1-4cecc40fa5aa a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5121" .
+
+kfngoei:1e171369-3846-4be3-8684-98f535f13b7f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169507;
+  kfngoeo:elementPos "Bae_TB_8_5122" .
+
+_:node169507 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Arbeiter" .
+
+kfngoei:0a973f71-70d2-4da4-aa21-f51631c502b8 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_5123" .
+
+kfngoei:594ea25b-8344-4b9a-9ca4-3c393e0a0328 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5224" .
+
+kfngoei:922001fa-6fa1-4cca-b1d5-7048e1acac2e a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169508;
+  kfngoeo:elementPos "Bae_TB_8_5225" .
+
+_:node169508 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Buergertum" .
+
+kfngoei:ca352513-4f8d-4921-876a-479945f88289 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_5226" .
+
+kfngoei:14b3f5a0-39d3-487d-9000-c719fc8b2632 a kfngoeo:StartTag;
+  kfngoeo:elementName tei:index;
+  kfngoeo:elementPos "Bae_TB_8_5279" .
+
+kfngoei:7234805f-0e67-4397-b83d-18ace1b9d37f a kfngoeo:StartTag;
+  kfngoeo:elementName tei:term;
+  kfngoeo:hasAttr _:node169509;
+  kfngoeo:elementPos "Bae_TB_8_5280" .
+
+_:node169509 kfngoeo:attrName "key";
+  kfngoeo:attrValue "Buergertum" .
+
+kfngoei:0f56cf67-00e5-4b68-a8ee-6f96a7cc7885 a kfngoeo:Text;
+  kfngoeo:elementPos "Bae_TB_8_5281" .

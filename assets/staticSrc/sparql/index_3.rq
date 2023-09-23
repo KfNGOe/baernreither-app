@@ -1,0 +1,22 @@
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+    #kfngoei:n3
+    ?s_main
+        a kfngoeo:Text ;
+        kfngoeo:hasContent ?term_main ;
+        kfngoeo:elementPos rdf:nnnn ;
+    .    
+}
+WHERE {     
+    SELECT ?s_main ?term_main
+    WHERE {
+        kfngoei:n3 a kfngoeo:Text ;
+                kfngoeo:hasContent ?term_main ;
+                .
+        BIND ( IF ( BOUND(?term_main), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_main )
+    }        
+} ORDER BY ?term_main
+#limit 3 
