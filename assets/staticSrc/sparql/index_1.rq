@@ -24,6 +24,7 @@ WHERE {
  	.        
     #get short title from element position of tei:TEI
     BIND(substr(?pos_tei,1,strlen(?pos_tei)-1) AS ?title_short)
+    #get tei:index
     ?s_start a kfngoeo:StartTag ;
           kfngoeo:elementName tei:index ;
           kfngoeo:hasAttr [
@@ -47,18 +48,19 @@ WHERE {
             kfngoeo:elementPos ?pos_start_1 ;
     	.
     }
+    #get sub term of index
     OPTIONAL{
+        #get element position of tei:term
         ?s_term a kfngoeo:StartTag ;
             kfngoeo:elementName tei:term ;            		
             kfngoeo:elementPos ?pos_start_1 ;  	
     	.
         #get element position of tei:term content
-    	BIND(concat(?title_short, str(?pos_start_nr+2)) AS ?pos_start_2)
+    	BIND(concat(?title_short, str(?pos_start_nr+2)) AS ?pos_start_2)        
         ?s_text a kfngoeo:Text ;
 			kfngoeo:hasContent ?o_text ;
 			kfngoeo:elementPos ?pos_start_2 ;
- 		.
-        #get sub term of index
+ 		.        
         BIND(IF(!BOUND(?term_main), ?o_text, ?nothing) AS ?term_sub)
     }        
 } ORDER BY ?term_main ?term_sub
