@@ -2,8 +2,17 @@
 @prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-kfngoei:n3 a kfngoeo:Text;
-  kfngoeo:elementPos rdf:nnnn;
+kfngoei:n3 a kfngoeo:Text_main;
   kfngoeo:hasContent "Arbeiter", "Aristokratie", "Buergertum", "KaiserFranzJoseph",
     "KaiserlichesNotverordnungsrecht", "Liberalismus", "Oesterreich-Ungarn", "Parteien",
-    "Presse", "Reichsrat", "Verwaltung", "Wahlrechtsreform" .
+    "Presse", "Reichsrat", "Verwaltung", "Wahlrechtsreform";
+  kfngoeo:elementPos rdf:nnnn .
+
+kfngoei:n6 a kfngoeo:Text_sub;
+  kfngoeo:elementPos rdf:nnnn;
+  kfngoeo:hasContent "Audienzen", "Paragraph 14 des Gesetzes vom 21. Dezember 1867",
+    "Delegationen", "Handelsvertrag mit Deutschland", "Kommandosprache", "Wirtschaftliche Trennung",
+    "Zolltarif", "Großgrundbesitz (beide Parteien)", "Obmännerkonferenz", "Viererausschuss der deutschen Parteien",
+    "Pressebuero des Ministerratspräsidiums", "Herrenhaus", "Rekrutenkontingent", "Bürokratie",
+    "Kurie Großgrundbesitz", "Nationale Mandatszahlen", "Pluralwahlrecht", "Proportionalwahlrecht",
+    "Taaffsche Wahlrechtsreform", "Wahlkampf", "Wahlkreiseinteilung", "Wahlrechtsagitation" .

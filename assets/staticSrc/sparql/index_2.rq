@@ -6,36 +6,42 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 CONSTRUCT {
     kfngoei:n3
-        a kfngoeo:Text ;
-        kfngoeo:hasContent ?term_main ;
+        a kfngoeo:Text_main ;
+        kfngoeo:hasContent ?o_main ;
+        kfngoeo:elementPos rdf:nnnn ;
+    .
+    kfngoei:n6
+        a kfngoeo:Text_sub ;
+        kfngoeo:hasContent ?o_sub ;
         kfngoeo:elementPos rdf:nnnn ;
     .    
 }
 WHERE {
     #get element position of tei:TEI
 	?s_tei kfngoeo:elementName tei:TEI ;
-           kfngoeo:elementPos ?pos_tei ;
+           kfngoeo:elementPos ?o_pos_tei ;
  	.        
     #get short title from element position of tei:TEI
-    BIND(substr(?pos_tei,1,strlen(?pos_tei)-1) AS ?title_short)
-    #get tei:index
-    ?s_start a kfngoeo:StartTag ;
-          kfngoeo:elementName tei:index ;          
-          kfngoeo:elementPos ?pos_start ;
-	.
-    #get numeric value of element position of tei:index
-    BIND(xsd:decimal(substr(?pos_start,strlen(?title_short)+1)) AS ?pos_start_nr)
-    #get element position of tei:term
-    BIND(concat(?title_short, str(?pos_start_nr+1)) AS ?pos_start_1)
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)    
     #get main term of index
-   	OPTIONAL {
+   	#OPTIONAL {
         ?s_term a kfngoeo:StartTag ;
             kfngoeo:elementName tei:term ;
             kfngoeo:hasAttr [
                kfngoeo:attrName "key" ;
-               kfngoeo:attrValue ?term_main ;
+               kfngoeo:attrValue ?o_main ;
             ] ;			
-            kfngoeo:elementPos ?pos_start_1 ;
+            kfngoeo:elementPos ?o_pos_main ;
     	.
-    }       
-} ORDER BY ?term_main
+    #}
+    BIND(xsd:decimal(substr(?o_pos_main,strlen(?title_short)+1)) AS ?o_pos_main_nr)
+    BIND(concat(?title_short, str(?o_pos_main_nr+5)) AS ?o_pos_sub)
+    #get sub term of index
+    OPTIONAL {
+    	?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+			kfngoeo:elementPos ?o_pos_sub ;
+ 		.
+    	BIND(IF(BOUND(?o_text), ?o_text, ?nothing) AS ?o_sub)        
+    }          
+} ORDER BY ?o_main ?o_sub
