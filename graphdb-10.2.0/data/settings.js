@@ -103,6 +103,29 @@
         "normalizeLanguageTags" : false,
         "stopOnError" : true
       }
+    },
+    "kfngoe_test;;indexi_4.ttl" : {
+      "name" : "indexi_4.ttl",
+      "status" : "NONE",
+      "message" : "",
+      "context" : "",
+      "replaceGraphs" : [ ],
+      "baseURI" : null,
+      "forceSerial" : false,
+      "type" : "file",
+      "format" : null,
+      "data" : "14bd4143-92f0-4c50-9552-b6e93dc4b81b",
+      "timestamp" : 1695847778054,
+      "parserSettings" : {
+        "preserveBNodeIds" : false,
+        "failOnUnknownDataTypes" : false,
+        "verifyDataTypeValues" : false,
+        "normalizeDataTypeValues" : false,
+        "failOnUnknownLanguageTags" : false,
+        "verifyLanguageTags" : true,
+        "normalizeLanguageTags" : false,
+        "stopOnError" : true
+      }
     }
   }
 }

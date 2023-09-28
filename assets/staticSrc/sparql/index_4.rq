@@ -4,14 +4,22 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-SELECT ?s_main ?s_sub ?o_main ?o_sub
+#SELECT ?s_main ?s_sub ?o_main ?o_sub
+CONSTRUCT {
+  ?s_main a kfngoeo:Text;
+    kfngoeo:hasContent ?o_main ;  		
+  .
+  ?s_sub a kfngoeo:Text;
+    kfngoeo:hasContent ?o_sub ;  		
+  .
+}
 WHERE {
     ?s_tei kfngoeo:elementName tei:TEI ;
            kfngoeo:elementPos ?o_pos_tei ;
  	.
     BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)
-    ?s_main a kfngoeo:Text_main;  
-		kfngoeo:hasContent ?o_main ;  		
+    ?s_main a kfngoeo:Text_main ;
+      kfngoeo:hasContent ?o_main ;  		
     .
     ?s_term a kfngoeo:StartTag ;
             kfngoeo:elementName tei:term ;
