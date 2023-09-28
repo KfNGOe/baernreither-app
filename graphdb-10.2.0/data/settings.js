@@ -126,6 +126,29 @@
         "normalizeLanguageTags" : false,
         "stopOnError" : true
       }
+    },
+    "kfngoe_test;;count.ttl" : {
+      "name" : "count.ttl",
+      "status" : "NONE",
+      "message" : "",
+      "context" : "",
+      "replaceGraphs" : [ ],
+      "baseURI" : null,
+      "forceSerial" : false,
+      "type" : "file",
+      "format" : null,
+      "data" : "ddd6917d-d458-4105-80a7-9e80d797c865",
+      "timestamp" : 1695887133790,
+      "parserSettings" : {
+        "preserveBNodeIds" : false,
+        "failOnUnknownDataTypes" : false,
+        "verifyDataTypeValues" : false,
+        "normalizeDataTypeValues" : false,
+        "failOnUnknownLanguageTags" : false,
+        "verifyLanguageTags" : true,
+        "normalizeLanguageTags" : false,
+        "stopOnError" : true
+      }
     }
   }
 }
