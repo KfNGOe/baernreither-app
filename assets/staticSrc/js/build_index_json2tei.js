@@ -2,6 +2,7 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 const normalize = require('normalize-space') ;
+const { groupBy } = require('core-js/actual/array/group-by') ;
 
 var convert = require('xml-js');
 var i_N = 0 ;
@@ -28,24 +29,10 @@ console.log(filepath_in_tei) ;
 console.log(filepath_in_json) ;
 console.log(filepath_out_tei) ;
 
-function getObject(obj) {
+function buildIndex(obj) {
    let length = Object.keys(obj).length ;
-   ////console.log('object length =', length) ;
-   //console.log('first object key  =', Object.keys(obj)[0]) ;
-
-   //start tag + 1
-   //no declaration or instruction
-   if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {
-      if('attributes' in obj) {      
-      } else {
-         obj['attributes'] = {} ;      
-      }
-      i_startTag++ ;
-      obj['attributes']['startTagNr'] = i_startTag ;
-      obj['attributes']['level'] = i_level ;
-   }
-
-
+   console.log('object length =', length) ;
+   
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
@@ -128,16 +115,24 @@ fs.writeFileSync('./data/json_xmlJs/test.json', jsonJsString ) ;
 console.log('json data written: ', jsonJsString.length, ' bytes')
 */
 
+buildIndex(xmlJs) ;
 
-
-getObject(xmlJs) ;
-if (i_startTag > i_endTag) {
-   N = i_startTag ;
-} else {
-   N = i_endTag ;
-}
-console.log('N = ', N) ;
-i_startTag, i_endTag = 0 ;
+var test = jsonJs_in ;
+var test1 = test.results.bindings ;
+const groupedByMain = test1.groupBy( item => {
+   return item.o_main.value ;
+}) ;
+console.log('groupedByMain: ', Object.keys(groupedByMain)) ;
+Object.keys(groupedByMain).forEach((key) => {   
+   if (groupedByMain[key].some(e => e.o_sub)) {      
+      var test2 = groupedByMain[key].filter(e => e.o_sub) ;
+      const groupedBySub = test2.groupBy( item => {
+         return item.o_sub.value ;
+      }) ;
+      console.log('groupedBySub: ', Object.keys(groupedBySub)) ;      
+   } else {      
+   }
+}) ;
 
 //write json file
 filepath = path_out_json + filename + ext_json ;
