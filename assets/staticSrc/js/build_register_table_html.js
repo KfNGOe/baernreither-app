@@ -27,7 +27,7 @@ function getObject(obj) {
          case 'results':
             //console.log('results =  ', obj[key]) ;
             if (typeof obj[key] === 'object') {
-               //console.log('Hello, ', key, ' is an object');
+               $('tbody').append('<tr></tr>') ;
                getObject(obj[key]);
             } else {
                //console.log('parsing json failed, ', key, ' is not an object');
@@ -35,9 +35,12 @@ function getObject(obj) {
             break;
          case 'bindings':
             //console.log('bindings = ',obj[key]) ;
-            if (Array.isArray(obj[key])) {
-               //console.log('Hello, ', key, ' is an array');
-               getArray(obj[key]);
+            if (Array.isArray(obj[key])) {               
+               obj[key].forEach((item, index, array) => {
+                if (typeof item === 'object') {                   
+                   getObject(item) ;
+                }
+             }) ;
             } else {
                //console.log('parsing json failed, ', key, ' is not an array');
             }
@@ -71,20 +74,7 @@ function getObject(obj) {
       }
    });
    //console.log('result', length) ;
-};
-
-function getArray(arr) {   
-   let length = arr.length ;
-   //console.log('array length =', length) ;
-   arr.forEach((item, index, array) => {
-      if (typeof item === 'object') {
-         $('tbody').append('<tr></tr>') ;         
-         //console.log('index = ', index) ;
-         getObject(item) ;
-      }
-   });
-   //console.log('result: ',arr) ;   
-} ;  
+} ;
 
 html = fs.readFileSync("data/html/register_table_temp.html", 'utf8') ;
 console.log('html data read: ', html.length, ' bytes') ;   
