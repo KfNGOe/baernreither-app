@@ -30,8 +30,8 @@ console.log(filepath_in_json) ;
 console.log(filepath_out_tei) ;
 
 function buildIndex(obj) {
-   let length = Object.keys(obj).length ;
-   console.log('object length =', length) ;
+   //let length = Object.keys(obj).length ;
+   //console.log('object length =', length) ;
    
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
@@ -49,7 +49,7 @@ function buildIndex(obj) {
                obj[key].forEach((item, index, array) => {
                   if (typeof item === 'object') {
                      //console.log('item = ', item, ', index = ', index) ;          
-                     getObject(item) ;
+                     buildIndex(item) ;
                   }
                }) ;
                //level - 1               
@@ -64,6 +64,41 @@ function buildIndex(obj) {
             //console.log('result: ',obj[key]) ;
             break ;
          case 'name':
+            if(obj[key] === 'list') {
+               let indexDataTemp = obj.elements ;
+               obj.elements = [] ;               
+               let indexDataTempSub = indexDataTemp[0].elements[1] ;
+               indexDataTemp[0].elements.pop(indexDataTempSub) ;               
+               //console.log('indexDataTemp = ', indexDataTemp) ;
+               //console.log('indexDataTempSub = ', indexDataTempSub) ;
+               var temp = '' ;
+               Object.keys(groupedByMain).forEach((key) => {
+                  //console.log('key = ', key) ;
+                  let termMain = key
+                  indexDataTemp[0].elements[0].elements[0].text = termMain ;
+                  temp = indexDataTemp[0] ;
+                  console.log('temp = ', JSON.stringify(temp)) ;
+                  if (groupedByMain[key].some(item => item.o_sub)) {
+                     const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
+                        return item.o_sub.value ;
+                     }) ;                     
+                     //console.log('groupedBySub: ', Object.keys(groupedBySub)) ;
+                     Object.keys(groupedBySub).forEach((key) => {
+                        //console.log('key = ', key) ;
+                        let termSub = key ;
+                        indexDataTempSub.elements[0].text = termSub ;
+                        //console.log('indexDataTempSub = ', indexDataTempSub) ;
+                        //console.log('temp elements = ', temp.elements) ;
+                        temp.elements.push(indexDataTempSub) ;
+                        //console.log('temp = ', temp) ;
+                        //console.log('indexDataTemp = ', JSON.stringify(indexDataTemp)) ;
+                     }) ;                     
+                  } else {      
+                  }
+                  obj.elements.push(temp) ;
+               }) ;
+               console.log('obj = ', JSON.stringify(obj.elements)) ;
+            }
             //console.log('result: ',obj[key]) ;
             break ;
          case 'text':
@@ -77,24 +112,8 @@ function buildIndex(obj) {
             //console.log('no case') ;
             break ;
       } 
-   }) ;
-   
-   //end tag + 1 if level = level of start tag and if elements exist
-   //no declaration or instruction
-   if(Object.keys(obj)[0] !== 'declaration' && obj['type'] !== 'instruction') {
-      if(obj['attributes']['level'] === i_level) {
-         if('elements' in obj) {
-            i_endTag = i_startTag ;            
-            i_endTag++ ;
-            i_startTag = i_endTag ;
-            obj['attributes']['endTagNr'] = i_endTag ;      
-         } else {
-            if('endTagNr' in obj['attributes']) {
-               delete obj['attributes']['endTagNr'] ;
-            }
-         }
-      }
-   }      
+   }) ;   
+         
 } ; 
 
 //read index template tei file
@@ -115,24 +134,12 @@ fs.writeFileSync('./data/json_xmlJs/test.json', jsonJsString ) ;
 console.log('json data written: ', jsonJsString.length, ' bytes')
 */
 
-buildIndex(xmlJs) ;
-
-var test = jsonJs_in ;
-var test1 = test.results.bindings ;
-const groupedByMain = test1.groupBy( item => {
+const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
    return item.o_main.value ;
 }) ;
-console.log('groupedByMain: ', Object.keys(groupedByMain)) ;
-Object.keys(groupedByMain).forEach((key) => {   
-   if (groupedByMain[key].some(e => e.o_sub)) {      
-      var test2 = groupedByMain[key].filter(e => e.o_sub) ;
-      const groupedBySub = test2.groupBy( item => {
-         return item.o_sub.value ;
-      }) ;
-      console.log('groupedBySub: ', Object.keys(groupedBySub)) ;      
-   } else {      
-   }
-}) ;
+const mainNr = Object.keys(groupedByMain).length ;
+
+buildIndex(teiJs_in) ;
 
 //write json file
 filepath = path_out_json + filename + ext_json ;
