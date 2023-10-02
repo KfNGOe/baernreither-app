@@ -65,23 +65,18 @@ function buildIndex(obj) {
             break ;
          case 'name':
             if(obj[key] === 'list') {
-               let indexDataTemp = obj.elements ;
+               const indexDataTemp = obj.elements ;               
                obj.elements = [] ;               
-               let indexDataTempSub = indexDataTemp[0].elements[1] ;
-               indexDataTemp[0].elements.pop(indexDataTempSub) ;               
-               //console.log('indexDataTemp = ', indexDataTemp) ;
-               //console.log('indexDataTempSub = ', indexDataTempSub) ;
-               var temp = '' ;
-               Object.keys(groupedByMain).forEach((key) => {
-                  //console.log('key = ', key) ;
-                  let termMain = key
-                  indexDataTemp[0].elements[0].elements[0].text = termMain ;
-                  temp = indexDataTemp[0] ;
-                  console.log('temp = ', JSON.stringify(temp)) ;
+               const indexDataTempSub = indexDataTemp[0].elements ;
+               console.log('indexDataTempSub = ', indexDataTempSub) ;               
+               Object.keys(groupedByMain).forEach((key) => {                  
+                  let termMain = key ;
+                  indexDataTemp[0].elements[0].elements[0].text = termMain ;                  
                   if (groupedByMain[key].some(item => item.o_sub)) {
                      const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
                         return item.o_sub.value ;
-                     }) ;                     
+                     }) ;
+                     console.log('groupedBySub: ', JSON.stringify(groupedBySub)) ;                     
                      //console.log('groupedBySub: ', Object.keys(groupedBySub)) ;
                      Object.keys(groupedBySub).forEach((key) => {
                         //console.log('key = ', key) ;
@@ -90,14 +85,15 @@ function buildIndex(obj) {
                         //console.log('indexDataTempSub = ', indexDataTempSub) ;
                         //console.log('temp elements = ', temp.elements) ;
                         temp.elements.push(indexDataTempSub) ;
-                        //console.log('temp = ', temp) ;
+                        console.log('temp = ', JSON.stringify(temp)) ;
                         //console.log('indexDataTemp = ', JSON.stringify(indexDataTemp)) ;
                      }) ;                     
                   } else {      
-                  }
+                  }                  
                   obj.elements.push(temp) ;
+                  var temp = {} ;
                }) ;
-               console.log('obj = ', JSON.stringify(obj.elements)) ;
+               console.log('obj = ', obj.elements) ;
             }
             //console.log('result: ',obj[key]) ;
             break ;
