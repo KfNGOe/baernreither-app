@@ -23,7 +23,7 @@ const jquery = require("jquery")(dom.window);
 
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_tei = process.env.filepath_out_tei ;
+const filepath_out_tei=process.env.filepath_out_tei ;
 
 console.log(filepath_in_tei) ;
 console.log(filepath_in_json) ;
@@ -76,8 +76,7 @@ function buildIndex(obj) {
                   if (groupedByMain[key].some(item => item.o_sub)) {
                      const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
                         return item.o_sub.value ;
-                     }) ;
-                     //console.log('groupedBySub = ', groupedBySub) ;                     
+                     }) ;                     
                      Object.keys(groupedBySub).forEach((key) => {                        
                         let termSub = key ;                        
                         indexDataTempSub[0].elements[0].text = termSub ;                        
@@ -88,12 +87,10 @@ function buildIndex(obj) {
                   temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;                  
                   let delCount = indexDataTemp[0].elements.length-1 ;
                   indexDataTemp[0].elements.splice(1,delCount) ;                  
-               }) ;
-               //console.log('temp = ', JSON.stringify(temp)) ;
+               }) ;               
                obj.elements = temp.slice() ;
-               console.log('obj = ', JSON.stringify(obj.elements)) ;
-            }
-            //console.log('result: ',obj[key]) ;
+               //console.log('obj = ', JSON.stringify(obj.elements)) ;
+            }            
             break ;
          case 'text':
             obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
@@ -123,13 +120,9 @@ console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
-/*var jsonJsString = JSON.stringify(jsonJs_in);
-fs.writeFileSync('./data/json_xmlJs/test.json', jsonJsString ) ;
-console.log('json data written: ', jsonJsString.length, ' bytes')
-*/
 
-const indexDataTemp = [] ;
-const indexDataTempSub = [] ;
+var indexDataTemp = [] ;
+var indexDataTempSub = [] ;
 const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
    return item.o_main.value ;
 }) ;
@@ -137,11 +130,12 @@ const mainNr = Object.keys(groupedByMain).length ;
 
 buildIndex(teiJs_in) ;
 
-//write json file
-filepath = path_out_json + filename + ext_json ;
-console.log(filepath);
-var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync(filepath, xmlJsString ) ;
-console.log('json data written: ', xmlJsString.length, ' bytes')
+var teiJs_out = teiJs_in ;
 
+console.log('teiJs_out = ', teiJs_out) ;
 
+//convert js object to tei
+var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
+//write tei file
+fs.writeFileSync(filepath_out_tei, tei_out ) ;
+console.log('tei data written: ', tei_out.length, ' bytes')

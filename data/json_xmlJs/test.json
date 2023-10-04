@@ -1,516 +1,662 @@
-[
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Arbeiter"
-                    }
-                ]
-            }
-        ]
+{
+    "declaration": {
+        "attributes": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+        }
     },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Aristokratie"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Buergertum"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "KaiserFranzJoseph"
-                    }
-                ]
+    "elements": [
+        {
+            "type": "element",
+            "name": "TEI",
+            "attributes": {
+                "xmlns": "http://www.tei-c.org/ns/1.0"
             },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
+            "elements": [
+                {
+                    "type": "element",
+                    "name": "teiHeader",
+                    "elements": [
+                        {
+                            "type": "element",
+                            "name": "fileDesc",
+                            "elements": [
+                                {
+                                    "type": "element",
+                                    "name": "titleStmt",
+                                    "elements": [
+                                        {
+                                            "type": "element",
+                                            "name": "title",
+                                            "attributes": {
+                                                "type": "label"
+                                            },
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "Sachregister"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "element",
+                                            "name": "respStmt",
+                                            "elements": [
+                                                {
+                                                    "type": "element",
+                                                    "name": "resp",
+                                                    "elements": [
+                                                        {
+                                                            "type": "text",
+                                                            "text": "providing the content"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "name",
+                                                    "elements": [
+                                                        {
+                                                            "type": "text",
+                                                            "text": "Christof Aichner"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "name",
+                                                    "elements": [
+                                                        {
+                                                            "type": "text",
+                                                            "text": "Doris Corradini"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "element",
+                                    "name": "publicationStmt",
+                                    "elements": [
+                                        {
+                                            "type": "element",
+                                            "name": "p",
+                                            "elements": [
+                                                {
+                                                    "type": "element",
+                                                    "name": "idno",
+                                                    "attributes": {
+                                                        "type": "handle"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "element",
+                                    "name": "sourceDesc",
+                                    "elements": [
+                                        {
+                                            "type": "element",
+                                            "name": "p",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "Sachregister der Baernreither Werke"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Audienzen"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "KaiserlichesNotverordnungsrecht"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Paragraph 14 des Gesetzes vom 21. Dezember 1867"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Liberalismus"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Oesterreich-Ungarn"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Delegationen"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Handelsvertrag mit Deutschland"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Kommandosprache"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Wirtschaftliche Trennung"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Zolltarif"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Parteien"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Großgrundbesitz (beide Parteien)"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Obmännerkonferenz"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Viererausschuss der deutschen Parteien"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Presse"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Pressebuero des Ministerratspräsidiums"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Reichsrat"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Herrenhaus"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Rekrutenkontingent"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Verwaltung"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Bürokratie"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "type": "element",
-        "name": "item",
-        "elements": [
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "main"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Wahlrechtsreform"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Kurie Großgrundbesitz"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Nationale Mandatszahlen"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Pluralwahlrecht"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Proportionalwahlrecht"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Taaffsche Wahlrechtsreform"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Wahlkampf"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Wahlkreiseinteilung"
-                    }
-                ]
-            },
-            {
-                "type": "element",
-                "name": "term",
-                "attributes": {
-                    "type": "sub"
-                },
-                "elements": [
-                    {
-                        "type": "text",
-                        "text": "Wahlrechtsagitation"
-                    }
-                ]
-            }
-        ]
-    }
-]
+                {
+                    "type": "element",
+                    "name": "text",
+                    "elements": [
+                        {
+                            "type": "element",
+                            "name": "body",
+                            "elements": [
+                                {
+                                    "type": "element",
+                                    "name": "div",
+                                    "attributes": {
+                                        "type": "index_keywords"
+                                    },
+                                    "elements": [
+                                        {
+                                            "type": "element",
+                                            "name": "list",
+                                            "elements": [
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Arbeiter"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Aristokratie"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Buergertum"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "KaiserFranzJoseph"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Audienzen"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "KaiserlichesNotverordnungsrecht"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Paragraph 14 des Gesetzes vom 21. Dezember 1867"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Liberalismus"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Oesterreich-Ungarn"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Delegationen"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Handelsvertrag mit Deutschland"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Kommandosprache"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Wirtschaftliche Trennung"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Zolltarif"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Parteien"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Großgrundbesitz (beide Parteien)"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Obmännerkonferenz"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Viererausschuss der deutschen Parteien"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Presse"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Pressebuero des Ministerratspräsidiums"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Reichsrat"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Herrenhaus"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Rekrutenkontingent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Verwaltung"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Bürokratie"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "element",
+                                                    "name": "item",
+                                                    "elements": [
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "main"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Wahlrechtsreform"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Kurie Großgrundbesitz"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Nationale Mandatszahlen"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Pluralwahlrecht"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Proportionalwahlrecht"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Taaffsche Wahlrechtsreform"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Wahlkampf"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Wahlkreiseinteilung"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "name": "term",
+                                                            "attributes": {
+                                                                "type": "sub"
+                                                            },
+                                                            "elements": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Wahlrechtsagitation"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
