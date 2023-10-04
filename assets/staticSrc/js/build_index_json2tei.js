@@ -25,13 +25,7 @@ const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_tei=process.env.filepath_out_tei ;
 
-console.log(filepath_in_tei) ;
-console.log(filepath_in_json) ;
-console.log(filepath_out_tei) ;
-
-function buildIndex(obj) {
-   //let length = Object.keys(obj).length ;
-   //console.log('object length =', length) ;
+function buildIndex(obj) {     
    
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
@@ -65,31 +59,45 @@ function buildIndex(obj) {
             break ;
          case 'name':
             if(obj[key] === 'list') {
+               let indexDataTemp = [] ;
+               let indexDataTempSub = [] ;
+               let temp = [] ;
+               //init templates               
                indexDataTemp.push(obj.elements[0]) ;
                obj.elements = [] ;               
                indexDataTempSub.push(indexDataTemp[0].elements[1]) ;               
-               indexDataTemp[0].elements.pop(indexDataTempSub[0]) ;               
-               var temp = [] ;               
+               indexDataTemp[0].elements.pop(indexDataTempSub[0]) ;
+               //group by main                
+               const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
+                  return item.o_main.value ;
+               }) ;               
+               //iterate over main
                Object.keys(groupedByMain).forEach((key) => {                  
                   let termMain = key ;
-                  indexDataTemp[0].elements[0].elements[0].text = termMain ;                  
+                  indexDataTemp[0].elements[0].elements[0].text = termMain ;
+                  //check if sub exists
                   if (groupedByMain[key].some(item => item.o_sub)) {
+                     //filter and group by sub
                      const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
                         return item.o_sub.value ;
                      }) ;                     
+                     //iterate over sub       
                      Object.keys(groupedBySub).forEach((key) => {                        
                         let termSub = key ;                        
-                        indexDataTempSub[0].elements[0].text = termSub ;                        
+                        indexDataTempSub[0].elements[0].text = termSub ;
+                        //push sub to main (JSON.parse(JSON.stringify()) is used to copy by value)
                         indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempSub[0]))) ;                        
                      }) ;                     
                   } else {      
-                  }                  
-                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;                  
+                  }
+                  //push item to temp (JSON.parse(JSON.stringify()) is used to copy by value)
+                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;
+                  //delete all elements except first
                   let delCount = indexDataTemp[0].elements.length-1 ;
                   indexDataTemp[0].elements.splice(1,delCount) ;                  
-               }) ;               
-               obj.elements = temp.slice() ;
-               //console.log('obj = ', JSON.stringify(obj.elements)) ;
+               }) ;
+               //copy temp to obj
+               obj.elements = temp.slice() ;               
             }            
             break ;
          case 'text':
@@ -103,36 +111,26 @@ function buildIndex(obj) {
             //console.log('no case') ;
             break ;
       } 
-   }) ;   
-         
+   }) ;
 } ; 
 
 //read index template tei file
-var tei_in = fs.readFileSync(filepath_in_tei, 'utf8');
+let tei_in = fs.readFileSync(filepath_in_tei, 'utf8');
 console.log('tei data read: ', tei_in.length, ' bytes') ;
 
 //convert tei to js object
 var teiJs_in = convert.xml2js(tei_in, {compact: false, spaces: 2}) ;
 
 //read index json file
-var json_in = fs.readFileSync(filepath_in_json, 'utf8');
+let json_in = fs.readFileSync(filepath_in_json, 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
-var indexDataTemp = [] ;
-var indexDataTempSub = [] ;
-const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
-   return item.o_main.value ;
-}) ;
-const mainNr = Object.keys(groupedByMain).length ;
-
 buildIndex(teiJs_in) ;
 
-var teiJs_out = teiJs_in ;
-
-console.log('teiJs_out = ', teiJs_out) ;
+let teiJs_out = teiJs_in ;
 
 //convert js object to tei
 var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
