@@ -65,10 +65,11 @@ function buildIndex(obj) {
             break ;
          case 'name':
             if(obj[key] === 'list') {
-               const indexDataTemp = obj.elements ;               
+               indexDataTemp.push(obj.elements[0]) ;
                obj.elements = [] ;               
-               const indexDataTempSub = indexDataTemp[0].elements ;
-               console.log('indexDataTempSub = ', indexDataTempSub) ;               
+               indexDataTempSub.push(indexDataTemp[0].elements[1]) ;               
+               indexDataTemp[0].elements.pop(indexDataTempSub[0]) ;               
+               var temp = [] ;               
                Object.keys(groupedByMain).forEach((key) => {                  
                   let termMain = key ;
                   indexDataTemp[0].elements[0].elements[0].text = termMain ;                  
@@ -76,24 +77,21 @@ function buildIndex(obj) {
                      const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
                         return item.o_sub.value ;
                      }) ;
-                     console.log('groupedBySub: ', JSON.stringify(groupedBySub)) ;                     
-                     //console.log('groupedBySub: ', Object.keys(groupedBySub)) ;
-                     Object.keys(groupedBySub).forEach((key) => {
-                        //console.log('key = ', key) ;
-                        let termSub = key ;
-                        indexDataTempSub.elements[0].text = termSub ;
-                        //console.log('indexDataTempSub = ', indexDataTempSub) ;
-                        //console.log('temp elements = ', temp.elements) ;
-                        temp.elements.push(indexDataTempSub) ;
-                        console.log('temp = ', JSON.stringify(temp)) ;
-                        //console.log('indexDataTemp = ', JSON.stringify(indexDataTemp)) ;
+                     //console.log('groupedBySub = ', groupedBySub) ;                     
+                     Object.keys(groupedBySub).forEach((key) => {                        
+                        let termSub = key ;                        
+                        indexDataTempSub[0].elements[0].text = termSub ;                        
+                        indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempSub[0]))) ;                        
                      }) ;                     
                   } else {      
                   }                  
-                  obj.elements.push(temp) ;
-                  var temp = {} ;
+                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;                  
+                  let delCount = indexDataTemp[0].elements.length-1 ;
+                  indexDataTemp[0].elements.splice(1,delCount) ;                  
                }) ;
-               console.log('obj = ', obj.elements) ;
+               //console.log('temp = ', JSON.stringify(temp)) ;
+               obj.elements = temp.slice() ;
+               console.log('obj = ', JSON.stringify(obj.elements)) ;
             }
             //console.log('result: ',obj[key]) ;
             break ;
@@ -130,6 +128,8 @@ fs.writeFileSync('./data/json_xmlJs/test.json', jsonJsString ) ;
 console.log('json data written: ', jsonJsString.length, ' bytes')
 */
 
+const indexDataTemp = [] ;
+const indexDataTempSub = [] ;
 const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
    return item.o_main.value ;
 }) ;
