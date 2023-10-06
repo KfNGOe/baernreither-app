@@ -27,42 +27,23 @@ kfngoei:nnnnnn
     #administrative
     #description of annotation level
     rdfs:label "Annotation level of text comparison"@en ;
-    
-    #relation to source = the annotation resource
-    #text annotation compared
-    kfngoeo:source [ #subprop of schema:identifier
-        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
-        kfngoeo:propertyID "TargetText"^^xsd:string ; #subprop of schema:propertyID
-        kfngoeo:value "nnnn"^^xsd:string ; #subprop of schema:value
-    ] ; #subprop of dct:source
-
-    kfngoeo:source [ #subprop of schema:identifier
-        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
-        kfngoeo:propertyID "BodyText"^^xsd:string ; #subprop of schema:propertyID
-        kfngoeo:value "nnnn"^^xsd:string ; #subprop of schema:value
-    ] ; #subprop of dct:source
-
-    #key identifier for type of comparison
-    rdfs:isDefinedBy ""^^xsd:string ; #equal, notEqual, missing
 
     #relation to target = the resource that is annotated
     #text content to be compared
     kfngoeo:hasTarget [
-        oa:hasSource "nnnnn"^^xsd:string ; #ID of target text
-        oa:hasSelector [
-            a oa:TextPositionSelector ;
-            oa:start nnnn^^xsd:decimal ; #pos nr of tei:anchor/
-            oa:end nnnn^^xsd:decimal #pos nr of tei:/app
+        kfngoeo:hasSource "nnnnn"^^xsd:string ; #ID of target text
+        kfngoeo:hasSelector [
+            a kfngoeo:TextPositionSelector ;
+            kfngoeo:start nnnn^^xsd:decimal ; #pos nr of tei:anchor/
+            kfngoeo:end nnnn^^xsd:decimal #pos nr of tei:/app
         ] 
     ] ;
 
-    #relation to body = the annotation itself
-    #text content compared 
-    kfngoeo:hasBody [
-        a kfngoeo:TextualBody;
-        rdf:value "nnnnn"@de ;
-    ] ;
-    kfngoeo:hasBody [
-        oa:hasSource "nnnnn"^^xsd:string ; #ID of body text
-    ]     
+    #relation to body = the annotation itself    
+    kfngoeo:hasBody [        
+        a kfngoeo:TextualBody;  #subclass of oa:TextualBody, oa:ResourceSelection
+        kfngoeo:hasSource <nnnnn> ; #resource ID of related annotation with information about the source of the annotation in kfngoeo:hasTarget
+        rdf:value "nnnnn"@de ;        
+        rdfs:isDefinedBy ""^^xsd:string ; #equal, notEqual, missing        
+    ] ;         
 .
