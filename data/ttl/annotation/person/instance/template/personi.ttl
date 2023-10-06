@@ -56,11 +56,11 @@ kfngoei:nnnnnn
     kfngoeo:biographicalOrHistoricalInformation "xxxx"^^xsd:string ; #subprop of gndo:biographicalOrHistoricalInformation
     
     #identifier
-    kfngoeo:identifier [
+    kfngoeo:identifier [ #subprop of schema:identifier
         a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
         kfngoeo:propertyID "GND"^^xsd:string ; #subprop of schema:propertyID
         kfngoeo:value "xxxxxxxxx"^^xsd:string ; #subprop of schema:value
-    ] #subprop of schema:identifier
+    ] 
     #identifier
     kfngoeo:identifier [
         a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
