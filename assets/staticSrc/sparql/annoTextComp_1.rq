@@ -19,7 +19,7 @@ CONSTRUCT {
         ] ;    
         kfngoeo:hasBody [        
             a kfngoeo:TextualBody;
-            kfngoeo:hasSource ?from ;
+            kfngoeo:hasSource ?from ; #xmlId of tei:anchor
             rdf:value ?rdg_txt ;        
             rdfs:isDefinedBy ?comp_status ;
         ] ;         

@@ -1,0 +1,50 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?s_anno ?o_source_target ?o_source_body ?o_source_body_pos ?title_short ?o_source_comp ?o_source_body_pos_nr ?s_anno_comp
+WHERE {    
+    ?s_tei a kfngoeo:StartTag ;
+           kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+	.
+    ?s_anno a kfngoeo:AnnoTextComparison ;
+		kfngoeo:hasTarget [
+        	kfngoeo:hasSource ?o_source_target ;
+    ] ;
+    	kfngoeo:hasBody [
+    		a kfngoeo:TextualBody ;
+    		kfngoeo:hasSource ?o_source_body ;
+    		rdfs:isDefinedBy ?o_status ;
+	]
+    .
+    ?s_source_body a kfngoeo:StartTag ;
+        kfngoeo:elementName tei:anchor ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_source_body ;
+	] ;
+        kfngoeo:elementPos ?o_source_body_pos ;
+ 	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    FILTER(CONTAINS(?o_source_body_pos, ?title_short))
+    BIND(xsd:integer(substr(?o_source_body_pos,strlen(?title_short)+2)) AS ?o_source_body_pos_nr)
+    ?s_anno_comp a kfngoeo:AnnoTextComparison ;  		
+                kfngoeo:hasTarget [
+        		kfngoeo:hasSource ?o_source_comp ;
+          		kfngoeo:hasSelector [
+        			a kfngoeo:TextPositionSelector ;
+        			kfngoeo:start ?o_source_body_pos_nr ;
+    	]
+    ]	 
+	.
+    #FILTER(CONTAINS(?o_source_comp, ?title_short))
+    FILTER(str(?o_source_comp) = str(?title_short))    
+    #FILTER(?o_source_comp = ?title_short)    
+} 
+#GROUP BY ?s_app ?o_pos_app_nr ?o_pos_app_end_nr ?title_short
+#LIMIT 3
+    
