@@ -9,7 +9,7 @@ PATH_JSON_XMLJS='./data/json_xmlJs/'
 
 FILENAME=$name
 #FILENAME='Tagebuch_Baernreither_8'
-#FILENAME='Bae_TB_8'
+FILENAME='Bae_TB_8'
 #FILENAME='Bae_TB_7'
 #FILENAME='Bae_MF_6-2'
 #FILENAME='Bae_MF_6-1'
@@ -19,10 +19,10 @@ EXTENSION_TTL='.ttl'
 EXTENSION_JSON='.json'
 
 echo "normalize whitespace"
-#path=$PATH_TEI file=$FILENAME ext=$EXTENSION_XML node assets/staticSrc/js/normalize_ws.js
+path=$PATH_TEI file=$FILENAME ext=$EXTENSION_XML node assets/staticSrc/js/normalize_ws.js
 
 echo "build xml ID"
-#path_in_tei=$PATH_TEI path_out_json=$PATH_JSON_XMLID path_out_tei=$PATH_TEI_XMLID file=$FILENAME ext_xml=$EXTENSION_XML ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_xmlId.js
+path_in_tei=$PATH_TEI path_out_json=$PATH_JSON_XMLID path_out_tei=$PATH_TEI_XMLID file=$FILENAME ext_xml=$EXTENSION_XML ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_xmlId.js
 
 echo "build xml JS"
 path_in_tei=$PATH_TEI_XMLID path_out_json=$PATH_JSON_XMLJS file=$FILENAME ext_xml=$EXTENSION_XML ext_json=$EXTENSION_JSON node assets/staticSrc/js/build_xmlJs.js

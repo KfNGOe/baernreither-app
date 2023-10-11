@@ -12,6 +12,29 @@
     }
   },
   "import.local" : {
+    "kfngoe_test;;Bae_MF_6-2.ttl" : {
+      "name" : "Bae_MF_6-2.ttl",
+      "status" : "NONE",
+      "message" : "",
+      "context" : "",
+      "replaceGraphs" : [ ],
+      "baseURI" : null,
+      "forceSerial" : false,
+      "type" : "file",
+      "format" : null,
+      "data" : "03867df3-c8ed-425f-8573-36976454311a",
+      "timestamp" : 1697016225531,
+      "parserSettings" : {
+        "preserveBNodeIds" : false,
+        "failOnUnknownDataTypes" : false,
+        "verifyDataTypeValues" : false,
+        "normalizeDataTypeValues" : false,
+        "failOnUnknownLanguageTags" : false,
+        "verifyLanguageTags" : true,
+        "normalizeLanguageTags" : false,
+        "stopOnError" : true
+      }
+    },
     "kfngoe_test;;Bae_TB_8.ttl" : {
       "name" : "Bae_TB_8.ttl",
       "status" : "DONE",
@@ -22,8 +45,8 @@
       "forceSerial" : false,
       "type" : "file",
       "format" : null,
-      "data" : "110e89c6-e922-4167-b256-08706bad1e5c",
-      "timestamp" : 1696594761900,
+      "data" : "49821255-3eb6-4bf6-b2f3-b21433b01525",
+      "timestamp" : 1697028652922,
       "parserSettings" : {
         "preserveBNodeIds" : false,
         "failOnUnknownDataTypes" : false,
