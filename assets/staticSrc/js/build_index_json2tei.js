@@ -5,6 +5,7 @@ const normalize = require('normalize-space') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 
 var convert = require('xml-js');
+const { exit } = require("process");
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -61,12 +62,15 @@ function buildIndex(obj) {
             if(obj[key] === 'list') {
                let indexDataTemp = [] ;
                let indexDataTempSub = [] ;
+               let indexDataTempPos = [] ;
                let temp = [] ;
                //init templates               
-               indexDataTemp.push(obj.elements[0]) ;
+               indexDataTemp.push(obj.elements[0]) ;               
                obj.elements = [] ;               
                indexDataTempSub.push(indexDataTemp[0].elements[1]) ;               
+               indexDataTempPos.push(indexDataTemp[0].elements[2]) ;               
                indexDataTemp[0].elements.pop(indexDataTempSub[0]) ;
+               indexDataTemp[0].elements.pop(indexDataTempPos[0]) ;               
                //group by main                
                const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
                   return item.o_main.value ;
@@ -79,7 +83,7 @@ function buildIndex(obj) {
                   if (groupedByMain[key].some(item => item.o_sub)) {
                      //filter and group by sub
                      const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
-                        return item.o_sub.value ;
+                        return item.o_sub.value ;                        
                      }) ;                     
                      //iterate over sub       
                      Object.keys(groupedBySub).forEach((key) => {                        
@@ -87,11 +91,29 @@ function buildIndex(obj) {
                         indexDataTempSub[0].elements[0].text = termSub ;
                         //push sub to main (JSON.parse(JSON.stringify()) is used to copy by value)
                         indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempSub[0]))) ;                        
+                        if (groupedBySub[key].some(item => item.o_pos_main)) {
+                           groupedBySub[key].forEach((item) => {
+                              let termPos = item.o_pos_main.value ;
+                              indexDataTempPos[0].elements[0].text = termPos ;                           
+                              indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempPos[0]))) ;                              
+                           }) ;
+                        } else {
+                           console.log('error: no pos_main') ;
+                        }                        
                      }) ;                     
-                  } else {      
+                  } else {
+                     if (groupedByMain[key].some(item => item.o_pos_main)) {
+                        groupedByMain[key].forEach((item) => {
+                           let termPos = item.o_pos_main.value ;
+                           indexDataTempPos[0].elements[0].text = termPos ;                           
+                           indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempPos[0]))) ;                           
+                        }) ;
+                     } else {
+                        console.log('error: no pos_main') ;                        
+                     }
                   }
                   //push item to temp (JSON.parse(JSON.stringify()) is used to copy by value)
-                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;
+                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;                  
                   //delete all elements except first
                   let delCount = indexDataTemp[0].elements.length-1 ;
                   indexDataTemp[0].elements.splice(1,delCount) ;                  

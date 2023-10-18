@@ -1,22 +1,200 @@
 {
-  "head" : {
-    "vars" : [
-      "s",
-      "o"
-    ]
-  },
-  "results" : {
-    "bindings" : [
-      {
-        "s" : {
-          "type" : "uri",
-          "value" : "https://d-nb.info/gnd/119033364"
+  "elements": [
+    {
+      "type": "element",
+      "name": "TEI",
+      "attributes": {
+        "xmlns": "http://www.tei-c.org/ns/1.0"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "teiHeader",
+          "elements": [
+            {
+              "type": "element",
+              "name": "fileDesc",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "titleStmt",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "title",
+                      "attributes": {
+                        "type": "label"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Sachregister"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "title",
+                      "attributes": {
+                        "type": "short"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Bae_REG_Index"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "respStmt",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "resp",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "providing the content"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "name",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Christof Aichner"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "name",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "Doris Corradini"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "publicationStmt",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "idno",
+                          "attributes": {
+                            "type": "handle"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "sourceDesc",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "p",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Sachregister der Baernreither Werke"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
-        "o" : {
-          "type" : "literal",
-          "value" : "Douglas"
+        {
+          "type": "element",
+          "name": "text",
+          "elements": [
+            {
+              "type": "element",
+              "name": "body",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "div",
+                  "attributes": {
+                    "type": "index_keywords"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "list",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "item",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "term",
+                              "attributes": {
+                                "type": "main"
+                              },
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "nnnn"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "term",
+                              "attributes": {
+                                "type": "sub"
+                              },
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "nnnn"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "term",
+                              "attributes": {
+                                "type": "pos"
+                              },
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "nnnn"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }
