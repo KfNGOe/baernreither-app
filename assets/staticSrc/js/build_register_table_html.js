@@ -18,7 +18,7 @@ const filepath_out = path_out + file_out + ext_out ;
 
 var html = '';
 
-function getObject(obj) {
+function build_html(obj) {
    let length = Object.keys(obj).length;
    //console.log('object length =', length);
    Object.keys(obj).forEach((key) => {
@@ -28,7 +28,7 @@ function getObject(obj) {
             //console.log('results =  ', obj[key]) ;
             if (typeof obj[key] === 'object') {
                $('tbody').append('<tr></tr>') ;
-               getObject(obj[key]);
+               build_html(obj[key]);
             } else {
                //console.log('parsing json failed, ', key, ' is not an object');
             }
@@ -38,7 +38,7 @@ function getObject(obj) {
             if (Array.isArray(obj[key])) {               
                obj[key].forEach((item, index, array) => {
                 if (typeof item === 'object') {                   
-                   getObject(item) ;
+                   build_html(item) ;
                 }
              }) ;
             } else {
@@ -75,18 +75,19 @@ function getObject(obj) {
    });
    //console.log('result', length) ;
 } ;
-
+//read html template
 html = fs.readFileSync("data/html/register_table_temp.html", 'utf8') ;
 console.log('html data read: ', html.length, ' bytes') ;   
 $('html').find('body').append(html) ;
 html = $('html').html() ;
 
+//read json data
 var json = fs.readFileSync(filepath_in, 'utf8');
 console.log('json data read: ', json.length, ' bytes')
 var jsonJs = JSON.parse(json) ;
-//console.log('jsonJs = ', jsonJs) ;
 
-getObject(jsonJs);
+
+build_html(jsonJs);
 
 html = $('html').find('body').html() ;
 
