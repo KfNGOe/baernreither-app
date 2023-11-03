@@ -1,0 +1,53 @@
+#build Annotation level of Index
+#build targets of annotations
+
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+#import: TB or MF, annoIndexi_2
+
+CONSTRUCT {
+    ?s_anno a kfngoeo:AnnoIndex ;
+        rdfs:label "Annotation level of Index"@en ;
+    	rdfs:isDefinedBy ?o_key ;
+        kfngoeo:hasTarget ?target_index ;
+        kfngoeo:hasBody ?o_body ;
+	.
+}
+WHERE {	
+    ?s_anno a kfngoeo:AnnoIndex ;
+            rdfs:isDefinedBy ?o_key ;
+            kfngoeo:hasBody ?o_body ;
+    .
+    {
+        SELECT DISTINCT ?o_key_text (?s_index AS ?target_index)
+        WHERE {
+            OPTIONAL {
+                ?s_tei a kfngoeo:StartTag ;
+                         kfngoeo:elementName tei:TEI ;
+                         kfngoeo:elementPos ?o_pos_tei ;
+                .
+                BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+                ?s_text a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:term ;
+                    kfngoeo:elementPos ?o_pos_text ;
+                    kfngoeo:hasAttr ?_bn ;
+                    .
+                ?_bn kfngoeo:attrName "key" ;
+                    kfngoeo:attrValue ?o_key_text ;
+                .
+                BIND(xsd:decimal(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
+                BIND(concat(?title_short, '_', str(?o_pos_text_nr-1)) AS ?o_pos_index)
+                ?s_index a kfngoeo:StartTag ;
+                         kfngoeo:elementName tei:index ;
+                         kfngoeo:elementPos ?o_pos_index ;
+				.                
+            }
+        }
+	}
+    FILTER (?o_key = ?o_key_text)    
+} ORDER BY ?o_key
