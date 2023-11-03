@@ -4,6 +4,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
+#import: indexi_1.ttl, indexi_3.ttl 
+
 SELECT (?o_main AS ?term_main) (?o_sub AS ?term_sub) (?o_pos_main AS ?term_main_pos)
 WHERE {
     ?s_tei kfngoeo:elementName tei:TEI ;

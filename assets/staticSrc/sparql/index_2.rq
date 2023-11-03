@@ -4,6 +4,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
+#import: indexi_1.ttl 
+
 CONSTRUCT {
     kfngoei:n3
         a kfngoeo:Text_main ;

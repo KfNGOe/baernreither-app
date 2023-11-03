@@ -4,6 +4,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
+#import: TB or MF 
+
 CONSTRUCT {
     ?s_tei 	kfngoeo:elementName tei:TEI ;
             kfngoeo:elementPos ?o_pos_tei ;

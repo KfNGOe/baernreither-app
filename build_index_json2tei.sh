@@ -16,9 +16,9 @@ FILEPATH_INDEX_TEMP_TEI=$PATH_INDEX_TEI$FILE_INDEX_TEMP_TEI$EXTENSION_XML
 FILEPATH_INDEX_JSON=$PATH_INDEX_JSON$FILE_INDEX_JSON$EXTENSION_JSON
 FILEPATH_INDEX_TEI=$PATH_INDEX_TEI$FILE_INDEX_TEI$EXTENSION_XML
 
-echo $FILEPATH_INDEX_TEMP_TEI
-echo $FILEPATH_INDEX_JSON
-echo $FILEPATH_INDEX_TEI
+echo $FILEPATH_INDEX_TEMP_TEI   #./data/tei/register/register_index_template.xml
+echo $FILEPATH_INDEX_JSON   #./data/json/register/register_index.json
+echo $FILEPATH_INDEX_TEI    #./data/tei/register/register_index.xml
 
 echo "build json to tei"
 filepath_in_tei=$FILEPATH_INDEX_TEMP_TEI filepath_in_json=$FILEPATH_INDEX_JSON filepath_out_tei=$FILEPATH_INDEX_TEI node assets/staticSrc/js/build_index_json2tei.js

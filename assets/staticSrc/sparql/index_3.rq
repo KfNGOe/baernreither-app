@@ -2,6 +2,8 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
+#import: indexi_2.ttl
+
 CONSTRUCT {
     ?s_main
         a kfngoeo:Text_main ;
