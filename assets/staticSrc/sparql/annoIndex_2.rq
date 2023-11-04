@@ -18,7 +18,7 @@ CONSTRUCT {
 }
 WHERE {    
     ?s rdf:type kfngoeo:AnnoIndex ;
-       rdfs:isDefinedBy ?o_key ;
+       rdfs:isDefinedBy ?o_key ;       
 	.   
     BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
 } ORDER BY ?o_key

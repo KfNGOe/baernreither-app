@@ -15,13 +15,12 @@ CONSTRUCT {
         rdfs:label "Annotation level of Index"@en ;
     	rdfs:isDefinedBy ?o_key ;
         kfngoeo:hasTarget ?target_index ;
-        kfngoeo:hasBody ?o_body ;
+        kfngoeo:hasBody kfngoei:nnnnnn ;
 	.
 }
 WHERE {	
     ?s_anno a kfngoeo:AnnoIndex ;
-            rdfs:isDefinedBy ?o_key ;
-            kfngoeo:hasBody ?o_body ;
+            rdfs:isDefinedBy ?o_key ;            
     .
     {
         SELECT DISTINCT ?o_key_text (?s_index AS ?target_index)
