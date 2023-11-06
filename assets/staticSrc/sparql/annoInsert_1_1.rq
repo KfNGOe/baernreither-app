@@ -1,0 +1,60 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import: TB or MF
+
+CONSTRUCT {
+    ?s_anno
+        a kfngoeo:AnnoInsert ;
+        rdfs:label "Annotation level of insert"@en ;
+        kfngoeo:hasTarget [
+            kfngoeo:hasSource ?title_target ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr ;
+                kfngoeo:end ?end_nr ;
+            ] 
+        ] ;               
+    .
+}
+WHERE {
+    ?s_tei a kfngoeo:StartTag ;
+           kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+    .
+    BIND(SUBSTR(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    BIND(?title_short AS ?title_target)
+    ?s_insert
+        a kfngoeo:StartTag ;
+        kfngoeo:elementName tei:addSpan ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "spanTo" ;
+            kfngoeo:attrValue ?o_span_ins ;
+        ] ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "type" ;
+            kfngoeo:attrValue "insert" ;
+        ] ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_xmlid_ins ;
+        ] ;
+        kfngoeo:elementPos ?o_pos_ins ;
+    .
+    BIND (IF(BOUND(?s_insert), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    BIND(STRAFTER(?o_span_ins,'#') AS ?o_span)
+    BIND(xsd:integer(SUBSTR(?o_pos_ins,strlen(?title_short)+2)) AS ?start_nr)    
+    ?s_anchor a kfngoeo:StartTag ;
+              kfngoeo:elementName tei:anchor ;
+              kfngoeo:hasAttr [
+				kfngoeo:attrName "xml:id" ;
+				kfngoeo:attrValue ?o_span ;
+			] ;
+   			kfngoeo:elementPos ?o_pos_anch ;
+	.
+    BIND(xsd:integer(SUBSTR(?o_pos_anch,strlen(?title_short)+2)) AS ?end_nr)
+}
