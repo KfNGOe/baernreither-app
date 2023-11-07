@@ -1,110 +1,205 @@
 @prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tei: <http://www.tei-c.org/ns/1.0/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
 @prefix sesame: <http://www.openrdf.org/schema/sesame#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-<https://github.com/KfNGOe/kfngoei/06c13bf1-6db4-4410-9e81-247482b142a5> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Arbeiter";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/4f15d7d1-c687-48ea-a639-53e0f0f6e82f>,
-    <https://github.com/KfNGOe/kfngoei/32068a36-65d6-494f-8bf7-c2184264ae85>, <https://github.com/KfNGOe/kfngoei/603aa2a3-24b6-4190-a18d-630d89452d64>,
-    <https://github.com/KfNGOe/kfngoei/c7567035-0c14-42b6-bfd2-3ccf4fccaa66>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/157985bc-b33a-4d2f-b133-6129934433a8> .
+kfngoei:e3e66c30-844f-4b54-a00e-8bb6730aaf1c a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01", "1906-03";
+  kfngoeo:hasTarget kfngoei:024dfe42-a065-4266-86ba-b3cfb3786a12 .
 
-<https://github.com/KfNGOe/kfngoei/abb96fc2-19f7-4396-aa2f-55c94ea7af9e> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Aristokratie";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/85b2efe9-8dcc-4cee-98e7-003606d9b6df>,
-    <https://github.com/KfNGOe/kfngoei/cad6f87a-954b-4753-ab95-8a8a82d06c52>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/21e82a2f-ee05-492c-ba8d-4833fe350520> .
+kfngoei:f267c7a8-e34b-479f-9bf5-4bbe1e52711c a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-12";
+  kfngoeo:hasTarget kfngoei:b475f81d-f6f8-443f-b7da-bf2c2d284aae .
 
-<https://github.com/KfNGOe/kfngoei/e9a6b1bc-d739-4f8b-9ffe-e907f2fe25b5> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Buergertum";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/a5edc23c-673d-43fc-a228-070e454d35f4>,
-    <https://github.com/KfNGOe/kfngoei/464fee39-3318-41b1-9c4d-b14681b9fc16>, <https://github.com/KfNGOe/kfngoei/1898836b-6d72-4aad-8e53-860dff0fffb2>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/56874fcf-098d-4964-b52b-a85c6e8b7f8e> .
+kfngoei:0e94ab4e-17d7-49b8-adff-2c4c346768c8 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-13";
+  kfngoeo:hasTarget kfngoei:de34f2a9-26b8-46b4-b3af-066a2a4c75c9 .
 
-<https://github.com/KfNGOe/kfngoei/05451f11-30f9-41e1-8e2f-5b4bcd9db4d1> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "KaiserFranzJoseph";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/636fd62a-8aad-476d-a8bc-a17b4c3d341f>,
-    <https://github.com/KfNGOe/kfngoei/814885cd-9a2c-48fc-9457-c1676f6fd96d>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/da4e782f-35d1-4b1d-9a8c-2ddcad30a84a> .
+kfngoei:a16830bb-0bc4-4e0c-9180-df4b3c3e9ce4 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-14";
+  kfngoeo:hasTarget kfngoei:0a9afcd2-8548-4888-9187-197956f1289c .
 
-<https://github.com/KfNGOe/kfngoei/372f15c8-66a2-4d02-930e-8ca1ed9b8f09> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "KaiserlichesNotverordnungsrecht";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/923e5e3e-b7ab-4407-a7bf-3ac648e7d418>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/9b72c8cf-cf68-40d0-9dcc-35b2b4405b20> .
+kfngoei:de0d545b-0686-4e46-9da0-5043a2a18866 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-15";
+  kfngoeo:hasTarget kfngoei:fedf6235-b425-4e2c-a04f-6b75725bfa2a .
 
-<https://github.com/KfNGOe/kfngoei/0a66717f-4176-4184-b07d-08b687cd6387> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Liberalismus";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/9bc0d802-879d-4aca-ac70-fef075769c88>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/2d7946a7-19ba-4409-9ed3-62e199a0af6f> .
+kfngoei:6f09e3b1-608c-45a6-a617-c9c0374660f2 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-16";
+  kfngoeo:hasTarget kfngoei:8302c72e-9ce7-4e0f-90d2-1bd7e8bc7e21 .
 
-<https://github.com/KfNGOe/kfngoei/7299971b-9db4-4a2c-8ee6-c8246fb4a2c7> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Oesterreich-Ungarn";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/181d9bde-d77d-44ab-83c0-c1f797495405>,
-    <https://github.com/KfNGOe/kfngoei/41d59763-7212-43fd-a511-612d450e90c4>, <https://github.com/KfNGOe/kfngoei/0a6ddea8-4184-4a27-b206-d252cb975bdc>,
-    <https://github.com/KfNGOe/kfngoei/4595a103-4f4c-42e9-9ee0-def3dbdb1a41>, <https://github.com/KfNGOe/kfngoei/56ccc448-c5dc-42d1-94df-250a5ba8fdd3>,
-    <https://github.com/KfNGOe/kfngoei/ca4d1aa3-a139-4eb2-b427-3ea0bbc88763>, <https://github.com/KfNGOe/kfngoei/6a49593d-4052-424e-886f-ee630bc48c16>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/da632756-adc5-4c18-8917-b6e0b102a2f2> .
+kfngoei:f5b14337-34e1-43a1-ad0c-a03a782ac087 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-17";
+  kfngoeo:hasTarget kfngoei:2070ff86-c5e8-46f2-9058-88ca92eeeefd .
 
-<https://github.com/KfNGOe/kfngoei/f02f18cf-acb5-46e2-bf91-0be0e70f8093> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Parteien";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/13fd24a9-fbfe-465a-ba8b-8941847d9c2b>,
-    <https://github.com/KfNGOe/kfngoei/5e849f11-3d74-4dea-ac71-afa46bcf8328>, <https://github.com/KfNGOe/kfngoei/a84241dd-5354-4a09-aa8b-610745459a40>,
-    <https://github.com/KfNGOe/kfngoei/1bc6de82-3072-418f-9da6-dcef841d48bb>, <https://github.com/KfNGOe/kfngoei/6f4a43ab-7746-4361-bb28-2503e8381893>,
-    <https://github.com/KfNGOe/kfngoei/663a3b03-5e2e-4ee1-aff1-f2046f877d22>, <https://github.com/KfNGOe/kfngoei/79deb840-397a-4387-94ed-f920e61dbc2f>,
-    <https://github.com/KfNGOe/kfngoei/56bab2ad-c6a0-42c2-b972-09a9f0835bb6>, <https://github.com/KfNGOe/kfngoei/88d425bb-dc75-4c94-bac5-0feed617119a>,
-    <https://github.com/KfNGOe/kfngoei/54c17385-20b5-4451-9e94-835a405f9dd1>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/8e02a780-4984-4d0f-b64d-6f0e9732ec4b> .
+kfngoei:7fcc426a-d509-4e49-8a45-7520631c920f a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-18";
+  kfngoeo:hasTarget kfngoei:057d1f6c-a77a-4959-8566-8f6c3e684d1a .
 
-<https://github.com/KfNGOe/kfngoei/eff69ee1-2966-4637-8642-66c1dd3b5a17> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Presse";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/28dcbabd-0af4-49e3-bcda-23a9fa102144>,
-    <https://github.com/KfNGOe/kfngoei/35ed94da-9d2e-40f5-b3b0-e15565c44814>, <https://github.com/KfNGOe/kfngoei/8ac8bdd5-cd5c-4d43-9de5-8a1289dd6545>,
-    <https://github.com/KfNGOe/kfngoei/4545a072-f326-48e7-8a35-b48b7c60289c>, <https://github.com/KfNGOe/kfngoei/2c952625-712b-4844-bfd9-866a66b32e35>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/71dd1133-4d81-4c4f-8207-6dac32d2fd05> .
+kfngoei:02d2ddc1-7ba5-40f1-a107-c31c712d3728 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-19";
+  kfngoeo:hasTarget kfngoei:c38d9de7-2072-4b74-bd80-1a1e5b5cfa9c .
 
-<https://github.com/KfNGOe/kfngoei/c6d30c62-8d84-4ef4-b68d-6a98544de67e> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Reichsrat";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/6dc0c204-0899-4ec2-a829-11858a1c7d0b>,
-    <https://github.com/KfNGOe/kfngoei/76efcf93-3c3b-4e8c-a1ee-b01e928773d5>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/83ebadd8-a0d6-4f88-92da-2267d6524ac0> .
+kfngoei:7ab764a7-1594-46c1-af6f-b68d550bb7fa a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-20";
+  kfngoeo:hasTarget kfngoei:e897b0e3-cfa8-40b8-b323-3539b662c245 .
 
-<https://github.com/KfNGOe/kfngoei/fd937af0-cb85-4ba2-a3ee-d5b2128cbec2> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Verwaltung";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/ca9d939d-97cc-4a06-ae1d-4f7ac38802df>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/329fd62b-a585-4d1a-9a38-8c17e5c333e3> .
+kfngoei:996389cf-bb7b-4288-a22a-84d17b5fcd54 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-21";
+  kfngoeo:hasTarget kfngoei:e1c6e1f3-ed7c-445a-a90b-329fcae79389 .
 
-<https://github.com/KfNGOe/kfngoei/8910387d-5cb4-4dea-b09e-28d3ed65241f> a kfngoeo:AnnoIndex;
-  rdfs:label "Annotation level of Index"@en;
-  rdfs:isDefinedBy "Wahlrechtsreform";
-  kfngoeo:hasTarget <https://github.com/KfNGOe/kfngoei/c60a535e-22a2-4c43-bded-33a3091fb6e0>,
-    <https://github.com/KfNGOe/kfngoei/0003a7ae-ce41-4b81-b008-b49c0b87a603>, <https://github.com/KfNGOe/kfngoei/dace6799-acc2-4399-8a37-c43f5535641e>,
-    <https://github.com/KfNGOe/kfngoei/38c18ff1-07da-4285-9670-7a9056c3aaf2>, <https://github.com/KfNGOe/kfngoei/d12a2a6f-21af-4873-aa47-dfd62ebef5c1>,
-    <https://github.com/KfNGOe/kfngoei/3a34445f-45b8-48e2-a6a0-6d54ef77fc02>, <https://github.com/KfNGOe/kfngoei/65b6d715-f05d-4162-ac77-e5c278c579f7>,
-    <https://github.com/KfNGOe/kfngoei/cf0ad1ad-8a60-4b64-880e-0be99c75f2b2>, <https://github.com/KfNGOe/kfngoei/4b81cf06-c843-47c1-8dd2-3c5bbe10d80a>,
-    <https://github.com/KfNGOe/kfngoei/c2fcbaf7-1b3a-48d5-8d04-805016e23d3a>, <https://github.com/KfNGOe/kfngoei/4eea4411-8e45-4e97-b8af-cf53ad023c8f>,
-    <https://github.com/KfNGOe/kfngoei/3299ad0e-0ca3-485d-8c4d-8ea0f93540bf>, <https://github.com/KfNGOe/kfngoei/ac2288d6-e6fb-4368-af1c-1eb750927371>,
-    <https://github.com/KfNGOe/kfngoei/a3fb6890-3558-4ddd-bfa0-2073fe4625c0>, <https://github.com/KfNGOe/kfngoei/cfd01640-1a46-4193-b756-7a9678754350>,
-    <https://github.com/KfNGOe/kfngoei/7c004306-cea2-4991-b383-e43205279a19>, <https://github.com/KfNGOe/kfngoei/50de1c5a-59d7-4bfe-868c-b79a055d5cf0>,
-    <https://github.com/KfNGOe/kfngoei/d7a00c3f-7ae9-46f9-a73d-c78b9f6bcbea>, <https://github.com/KfNGOe/kfngoei/f03aa253-bda1-42e5-afa2-17e840f4e79a>,
-    <https://github.com/KfNGOe/kfngoei/6f3e0585-f101-4fc2-9b25-0075f83af1ff>, <https://github.com/KfNGOe/kfngoei/19826349-d0e1-4063-8378-50c2c4893d6d>,
-    <https://github.com/KfNGOe/kfngoei/0601d89b-4d9b-4abc-9807-6c868b68d6b0>, <https://github.com/KfNGOe/kfngoei/d3991735-3459-4fa5-ad7f-4c1b5d1d963c>,
-    <https://github.com/KfNGOe/kfngoei/a34cfabc-44f2-4b65-831f-b7d55b758584>, <https://github.com/KfNGOe/kfngoei/115f05df-011f-414d-80fb-0bfbe5dcf629>,
-    <https://github.com/KfNGOe/kfngoei/1e649949-87ba-4086-a8c9-f055ca07614e>;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/d35030f1-7b35-4fa6-a0ba-f7c4a933d9e4> .
+kfngoei:cda85152-19c6-44c8-af5a-0cc6b8b46957 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-22";
+  kfngoeo:hasTarget kfngoei:b5af7109-1cae-47ff-a8a4-3f80fcb0f563 .
+
+kfngoei:53fe7fe9-379a-4285-9882-31fd49159f17 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-23";
+  kfngoeo:hasTarget kfngoei:5de060fc-18f9-4e88-9149-86964c5af79d .
+
+kfngoei:f58ab1fc-4f1c-495d-9b47-eab587fb788a a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-24";
+  kfngoeo:hasTarget kfngoei:997b156c-c988-48a3-988c-6ed2f5170575 .
+
+kfngoei:3ecb4f5b-2af6-4cab-b2f6-23ec8d9adcf3 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-24";
+  kfngoeo:hasTarget kfngoei:ff2fc2b8-806e-4002-95a6-59874ad3e307 .
+
+kfngoei:67661222-263c-4303-9c04-6c97a617d5f8 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-25";
+  kfngoeo:hasTarget kfngoei:d5e5c7f4-1627-4360-8135-1f93a9cb7c7f .
+
+kfngoei:3a446266-3b07-48c0-a424-28b7c39f3876 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-25";
+  kfngoeo:hasTarget kfngoei:589577dc-39a9-4a56-aa49-1a4c24da9f3d .
+
+kfngoei:b2cf7b2d-4266-467f-a37a-bc850be2e597 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-01-25";
+  kfngoeo:hasTarget kfngoei:a4d8b1eb-e3a0-4e8f-ba9d-a73b77c9048e .
+
+kfngoei:4666755a-bf0f-4b60-ad29-0af8a23ec289 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-04-02";
+  kfngoeo:hasTarget kfngoei:0e108a42-08f6-440e-8b8c-a60c223cba5c .
+
+kfngoei:2ff52f3a-5421-4de7-a3bc-7a86d10ec86e a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-04-11";
+  kfngoeo:hasTarget kfngoei:0a215f49-faa3-4c54-9ed3-2cde938504e8 .
+
+kfngoei:ff66480b-93ad-4180-a1ea-39be53e62b1c a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-04-11";
+  kfngoeo:hasTarget kfngoei:3587af1d-0ae0-4b67-ac27-6922a874d124 .
+
+kfngoei:47a3ece8-f39f-48ee-9b31-c40697d6dcc5 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-04-13";
+  kfngoeo:hasTarget kfngoei:82824c5f-9407-40a6-988a-78b4b7977681 .
+
+kfngoei:bcac50df-27b7-436b-9d40-d38064e9b49f a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-04-21";
+  kfngoeo:hasTarget kfngoei:05721e6f-dbd7-4b03-b1d7-2cef57190310 .
+
+kfngoei:6cc7c045-33ec-45ca-83e2-76246dab91a4 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-05-04";
+  kfngoeo:hasTarget kfngoei:3c3c2cc9-35b7-4a3f-a284-957c240a91ae .
+
+kfngoei:ab3922f6-37e0-434b-99ca-b67980b24be8 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-05-04";
+  kfngoeo:hasTarget kfngoei:a591174d-283a-4cb3-b9e1-a4d183e3b2f9 .
+
+kfngoei:cd15d9f5-8629-4d75-a2b9-541101b46079 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-05-07";
+  kfngoeo:hasTarget kfngoei:d35b498f-63b9-4860-a2b8-e5a1815c684a .
+
+kfngoei:d823c032-0a5c-4fc0-a52f-a230153b492b a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06";
+  kfngoeo:hasTarget kfngoei:fbcc3f69-d995-4353-b5a3-aeeacd0adf0b .
+
+kfngoei:6fda7735-2aa8-4487-a203-a2c122c9689f a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-05";
+  kfngoeo:hasTarget kfngoei:7a41d346-10bb-41ad-8c5e-3feb073d8724 .
+
+kfngoei:1019a00c-f325-4715-a17a-aa7231ae169e a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-05";
+  kfngoeo:hasTarget kfngoei:040976b2-5537-45ba-944b-3410dd39ef23 .
+
+kfngoei:06272b3f-4058-49bd-b100-5b8967ffd7b7 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-06";
+  kfngoeo:hasTarget kfngoei:4f98459c-2ab4-40f5-b162-6a6f9f9ad592 .
+
+kfngoei:12364302-1993-41f8-82b3-c0d4ea196f57 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-17";
+  kfngoeo:hasTarget kfngoei:ea889ac5-4c6a-414e-b0a3-3d01eb3dce1e .
+
+kfngoei:67da7605-1a0b-4709-ab0a-51bb30855648 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-19";
+  kfngoeo:hasTarget kfngoei:b6350eae-edb7-4a51-a323-fff415341484 .
+
+kfngoei:c26c39f8-df94-4208-833b-ee3c8cd17382 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-27";
+  kfngoeo:hasTarget kfngoei:557019f0-f3ac-4e42-9f0f-5c2337bd0270 .
+
+kfngoei:420a0793-ac57-4f04-8182-d93c50001ee1 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-06-29";
+  kfngoeo:hasTarget kfngoei:8eb0befb-d820-4e26-97f8-b3edf4bfa8ae .
+
+kfngoei:ca4f7315-54ce-4edf-9e34-df22d4b975d2 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-08-13";
+  kfngoeo:hasTarget kfngoei:20d5d799-1c22-4149-ad16-dac00b59d60d .
+
+kfngoei:f96a87dd-c95d-4447-8b3d-4e61be2c9274 a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-08-13";
+  kfngoeo:hasTarget kfngoei:e2163c94-c94a-4f51-865a-f2f507f134eb .
+
+kfngoei:2b965f38-0814-4f3d-a391-7468c21ca0ed a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1906-09";
+  kfngoeo:hasTarget kfngoei:ebd3eb52-2d07-4c92-adc3-8647b3be5bcc .
+
+kfngoei:6c43fda3-3483-42d1-ae56-69d15e1ff84a a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1907-01";
+  kfngoeo:hasTarget kfngoei:61e8bab1-2acb-48f3-8d7d-eac9e2f59e6c .
+
+kfngoei:f69b1863-c71d-4aa7-955d-fe67253f206e a kfngoeo:AnnoDate;
+  rdfs:label "Annotation level of Date"@en;
+  rdfs:isDefinedBy "1909-07-30";
+  kfngoeo:hasTarget kfngoei:8be1f07d-4906-4429-b700-234920364795 .
