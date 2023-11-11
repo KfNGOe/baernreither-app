@@ -1,0 +1,51 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import TB or MF
+
+CONSTRUCT {
+    ?s_anno a kfngoeo:AnnoNote ;
+        	rdfs:label "Annotation level of Note"@en ;                
+    		rdfs:isDefinedBy ?key_note ;        
+        	kfngoeo:hasTarget ?target_note ;
+         	#no kfngoeo:hasBody
+    .
+}
+WHERE {
+    BIND(?s_note AS ?target_note)
+    {
+    	SELECT DISTINCT ?s_note ?key_note
+        WHERE {
+            ?s_tei a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:TEI ;
+                    kfngoeo:elementPos ?o_pos_tei ;
+            .
+            BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+            ?s_note a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:note ;
+                    kfngoeo:hasAttr [
+                        kfngoeo:attrName ?o_name ;          		
+                        kfngoeo:attrValue ?o_val_test ;
+                    ] ;
+                    kfngoeo:elementPos ?o_pos_note ;
+            .
+            BIND(?s_note AS ?target_note)
+            
+            BIND (IF( ?o_name = "type" || ?o_name = "corresp", ?o_val_test, ?nothing) AS ?o_val)
+            FILTER(BOUND(?o_val))
+            BIND(?o_val AS ?key_note)    
+        } GROUP BY ?s_note ?key_note
+    }
+    {
+        SELECT DISTINCT ?s_date ?s_anno
+        WHERE {
+       		?s_date a kfngoeo:StartTag ;
+            .
+            BIND (IF(BOUND(?s_date), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )     
+        }
+    }
+} ORDER BY ?key_date
