@@ -41,7 +41,7 @@ WHERE {
           kfngoeo:elementPos ?o_pos_index ;
 	.
     #get numeric value of element position of tei:index
-    BIND(xsd:decimal(substr(?o_pos_index,strlen(?title_short)+1)) AS ?o_pos_index_nr)
+    BIND(xsd:integer(substr(?o_pos_index,strlen(?title_short)+1)) AS ?o_pos_index_nr)
     #get element position of tei:term
     BIND(concat(?title_short, str(?o_pos_index_nr+1)) AS ?o_pos_term)
     #get main term of index

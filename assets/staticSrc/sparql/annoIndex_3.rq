@@ -39,7 +39,7 @@ WHERE {
                 ?_bn kfngoeo:attrName "key" ;
                     kfngoeo:attrValue ?o_key_text ;
                 .
-                BIND(xsd:decimal(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
+                BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
                 BIND(concat(?title_short, '_', str(?o_pos_text_nr-1)) AS ?o_pos_index)
                 ?s_index a kfngoeo:StartTag ;
                          kfngoeo:elementName tei:index ;
