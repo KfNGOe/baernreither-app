@@ -32,8 +32,7 @@ WHERE {
                         kfngoeo:attrValue ?o_val_test ;
                     ] ;
                     kfngoeo:elementPos ?o_pos_note ;
-            .
-            BIND(?s_note AS ?target_note)            
+            .            
             BIND (IF( ?o_name = "type" || ?o_name = "place" || ?o_name = "n", ?o_val_test, ?nothing) AS ?o_val)
             FILTER(BOUND(?o_val))
             BIND(xsd:integer(substr(?o_pos_note,strlen(?title_short)+2)) AS ?o_pos_note_nr)
