@@ -29,11 +29,11 @@ WHERE {
                     kfngoeo:elementName tei:date ;
                     kfngoeo:hasAttr [
                         kfngoeo:attrName ?o_name ;          		
-                        kfngoeo:attrValue ?o_val_test ;
+                        kfngoeo:attrValue ?o_val_date ;
                     ] ;
                     kfngoeo:elementPos ?o_pos_date ;
             .
-            BIND (IF( ?o_name = "from" || ?o_name = "to" || ?o_name = "when", ?o_val_test, ?nothing) AS ?o_val)
+            BIND (IF( ?o_name = "from" || ?o_name = "to" || ?o_name = "when", ?o_val_date, ?nothing) AS ?o_val)
             FILTER(BOUND(?o_val))
 
             BIND(?o_val AS ?key_date)    
