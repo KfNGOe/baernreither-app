@@ -44,7 +44,7 @@ WHERE {
         WHERE {
        		?s_date a kfngoeo:StartTag ;
             .
-            BIND (IF(BOUND(?s_date), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )     
+            BIND(IF(BOUND(?s_date), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )     
         }
     }
 } ORDER BY ?key_date
