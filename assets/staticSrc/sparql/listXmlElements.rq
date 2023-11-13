@@ -1,0 +1,10 @@
+#List all distinct elements in a ttl file
+
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+
+SELECT DISTINCT ?o_name 
+WHERE { 
+	?s_name kfngoeo:elementName ?o_name ; 
+    .
+} ORDER BY ?o_name
