@@ -157,7 +157,7 @@ console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 var xlsx2jsonJs_in = JSON.parse(json_in) ;
 
-buildOrg(teiJs_in) ;
+//buildOrg(teiJs_in) ;
 
 let teiJs_out = teiJs_in ;
 
