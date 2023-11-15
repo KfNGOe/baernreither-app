@@ -1,12 +1,10 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
-const fs = require('fs');
-const normalize = require('normalize-space') ;
-const TokenizeThis = require('tokenize-this');
+const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
+const { exit } = require("process") ;
 
-var convert = require('xml-js');
-const { exit } = require("process");
+var convert = require('xml-js') ;
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -32,8 +30,7 @@ function camelCase2Normal(key) {
    //search key in xlsx2jsonJs_in
    for (let i = 0; i < xlsx2jsonJs_in.Tabelle1.length; i++) {
       if (xlsx2jsonJs_in.Tabelle1[i].C === key) {
-         return xlsx2jsonJs_in.Tabelle1[i].A.substr(xlsx2jsonJs_in.Tabelle1[i].A.lastIndexOf('/')+1) ;
-         //break
+         return xlsx2jsonJs_in.Tabelle1[i].A.substr(xlsx2jsonJs_in.Tabelle1[i].A.lastIndexOf('/')+1) ;         
       }
    }  
 } ;
@@ -152,15 +149,6 @@ function buildOrg(obj) {
       } 
    }) ;
 } ; 
-/*
-var tokenizer = new TokenizeThis();
-var str = filepath_in_json_xlsx ;
-var tokens = [];
-tokenizer.tokenize(str, function(token) {
-    tokens.push(token);
-});
-console.log(tokens) ;
-*/
 
 //read org template tei file
 let tei_in = fs.readFileSync(filepath_in_tei, 'utf8'); //./data/tei/register/register_org_template.xml

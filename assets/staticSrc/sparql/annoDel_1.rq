@@ -1,0 +1,49 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import TB or MF
+
+CONSTRUCT {
+    ?s_anno a kfngoeo:AnnoDel ;
+        	rdfs:label "Annotation level of Delete"@en ;                
+    		rdfs:isDefinedBy ?key_del ;        
+        	kfngoeo:hasTarget ?target_del ;
+         	#no kfngoeo:hasBody
+    .
+}
+WHERE {
+    BIND(?s_del AS ?target_del)
+    BIND(?o_text AS ?key_del)
+    {
+    	SELECT DISTINCT ?s_del ?o_text
+        WHERE {
+            ?s_tei a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:TEI ;
+                    kfngoeo:elementPos ?o_pos_tei ;
+            .
+            BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+            ?s_del a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:del ;                    
+                    kfngoeo:elementPos ?o_pos_del ;
+            .
+            BIND(xsd:integer(substr(?o_pos_del,strlen(?title_short)+2)) AS ?o_pos_del_nr)
+            BIND(concat(?title_short, '_', str(?o_pos_del_nr+1)) AS ?o_pos_text)
+            ?s_text a kfngoeo:Text ;
+                	kfngoeo:hasContent ?o_text ;
+                	kfngoeo:elementPos ?o_pos_text ;
+ 			.
+        }
+    }
+    {
+        SELECT DISTINCT ?s_del ?s_anno
+        WHERE {
+       		?s_del a kfngoeo:StartTag ;
+            .
+            BIND(IF(BOUND(?s_del), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)     
+        }
+    }
+}
