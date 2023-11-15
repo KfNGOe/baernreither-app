@@ -2,6 +2,7 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs');
 const normalize = require('normalize-space') ;
+const TokenizeThis = require('tokenize-this');
 const { groupBy } = require('core-js/actual/array/group-by') ;
 
 var convert = require('xml-js');
@@ -24,7 +25,18 @@ const jquery = require("jquery")(dom.window);
 
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json=process.env.filepath_in_json ;
+const filepath_in_json_xlsx=process.env.filepath_in_json_xlsx ;
 const filepath_out_tei=process.env.filepath_out_tei ;
+
+function camelCase2Normal(key) {
+   //search key in xlsx2jsonJs_in
+   for (let i = 0; i < xlsx2jsonJs_in.Tabelle1.length; i++) {
+      if (xlsx2jsonJs_in.Tabelle1[i].C === key) {
+         return xlsx2jsonJs_in.Tabelle1[i].A.substr(xlsx2jsonJs_in.Tabelle1[i].A.lastIndexOf('/')+1) ;
+         //break
+      }
+   }  
+} ;
 
 function buildOrg(obj) {     
    
@@ -60,63 +72,68 @@ function buildOrg(obj) {
             break ;
          case 'name':
             if(obj[key] === 'list') {
-               let indexDataTemp = [] ;
-               let indexDataTempSub = [] ;
-               let indexDataTempPos = [] ;
+               let itemDataTemp = [] ;
+               let itemDataTempSub = [] ;
+               let itemDataTempPos = [] ;
                let temp = [] ;
                //init templates               
-               indexDataTemp.push(obj.elements[0]) ;               
+               itemDataTemp.push(obj.elements[0]) ;               
                obj.elements = [] ;               
-               indexDataTempSub.push(indexDataTemp[0].elements[1]) ;               
-               indexDataTempPos.push(indexDataTemp[0].elements[2]) ;               
-               indexDataTemp[0].elements.pop(indexDataTempSub[0]) ;
-               indexDataTemp[0].elements.pop(indexDataTempPos[0]) ;               
-               //group by main                
+               itemDataTempSub.push(itemDataTemp[0].elements[1]) ;               
+               itemDataTempPos.push(itemDataTemp[0].elements[2]) ;               
+               itemDataTemp[0].elements.pop(itemDataTempSub[0]) ;
+               itemDataTemp[0].elements.pop(itemDataTempPos[0]) ;               
+               //group by key                
                const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
-                  return item.o_main.value ;
+                  return item.o_key_org.value ;
                }) ;               
                //iterate over main
                Object.keys(groupedByMain).forEach((key) => {                  
-                  let termMain = key ;
-                  indexDataTemp[0].elements[0].elements[0].text = termMain ;
+                  let termMain = camelCase2Normal(key) ;                   
+                  itemDataTemp[0].elements[0].elements[0].text = termMain ;
                   //check if sub exists
-                  if (groupedByMain[key].some(item => item.o_sub)) {
+                  if (groupedByMain[key].some(item => item.o_pid_org)) {
                      //filter and group by sub
-                     const groupedBySub = groupedByMain[key].filter(item => item.o_sub).groupBy( item => {
-                        return item.o_sub.value ;                        
+                     const groupedBySub = groupedByMain[key].filter(item => item.o_pid_org).groupBy( item => {
+                        return item.o_pid_org.value ;                        
                      }) ;                     
                      //iterate over sub       
                      Object.keys(groupedBySub).forEach((key) => {                        
                         let termSub = key ;                        
-                        indexDataTempSub[0].elements[0].text = termSub ;
+                        itemDataTempSub[0].elements[0].text = termSub ;
                         //push sub to main (JSON.parse(JSON.stringify()) is used to copy by value)
-                        indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempSub[0]))) ;                        
-                        if (groupedBySub[key].some(item => item.o_pos_main)) {
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
+                        //check if pos exists
+                        if (groupedBySub[key].some(item => item.o_pos_org)) {
+                           //iterate over pos
                            groupedBySub[key].forEach((item) => {
-                              let termPos = item.o_pos_main.value ;
-                              indexDataTempPos[0].elements[0].text = termPos ;                           
-                              indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempPos[0]))) ;                              
+                              let termPos = item.o_pos_org.value ;
+                              itemDataTempPos[0].elements[0].text = termPos ;                           
+                              itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                              
                            }) ;
                         } else {
-                           console.log('error: no pos_main') ;
+                           console.log('error: no pos') ;
                         }                        
-                     }) ;                     
+                     }) ;
+                  //no sub                     
                   } else {
-                     if (groupedByMain[key].some(item => item.o_pos_main)) {
+                     //check if pos exists
+                     if (groupedByMain[key].some(item => item.o_pos_org)) {                        
+                        //iterate over pos
                         groupedByMain[key].forEach((item) => {
-                           let termPos = item.o_pos_main.value ;
-                           indexDataTempPos[0].elements[0].text = termPos ;                           
-                           indexDataTemp[0].elements.push(JSON.parse(JSON.stringify(indexDataTempPos[0]))) ;                           
+                           let termPos = item.o_pos_org.value ;
+                           itemDataTempPos[0].elements[0].text = termPos ;                           
+                           itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                           
                         }) ;
                      } else {
-                        console.log('error: no pos_main') ;                        
+                        console.log('error: no pos') ;                        
                      }
                   }
                   //push item to temp (JSON.parse(JSON.stringify()) is used to copy by value)
-                  temp.push(JSON.parse(JSON.stringify(indexDataTemp[0]))) ;                  
+                  temp.push(JSON.parse(JSON.stringify(itemDataTemp[0]))) ;                  
                   //delete all elements except first
-                  let delCount = indexDataTemp[0].elements.length-1 ;
-                  indexDataTemp[0].elements.splice(1,delCount) ;                  
+                  let delCount = itemDataTemp[0].elements.length-1 ;
+                  itemDataTemp[0].elements.splice(1,delCount) ;                  
                }) ;
                //copy temp to obj
                obj.elements = temp.slice() ;               
@@ -135,6 +152,15 @@ function buildOrg(obj) {
       } 
    }) ;
 } ; 
+/*
+var tokenizer = new TokenizeThis();
+var str = filepath_in_json_xlsx ;
+var tokens = [];
+tokenizer.tokenize(str, function(token) {
+    tokens.push(token);
+});
+console.log(tokens) ;
+*/
 
 //read org template tei file
 let tei_in = fs.readFileSync(filepath_in_tei, 'utf8'); //./data/tei/register/register_org_template.xml
@@ -151,13 +177,13 @@ console.log('json data read: ', json_in.length, ' bytes') ;
 var jsonJs_in = JSON.parse(json_in) ;
 
 //read org xlsx to json file
-json_in = fs.readFileSync(filepath_in_json, 'utf8'); //./data/json_xlsx/org_xlsx.json
+json_in = fs.readFileSync(filepath_in_json_xlsx, 'utf8'); //./data/json_xlsx/org_xlsx.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var xlsx2jsonJs_in = JSON.parse(json_in) ;
 
-//buildOrg(teiJs_in) ;
+buildOrg(teiJs_in) ;
 
 let teiJs_out = teiJs_in ;
 
