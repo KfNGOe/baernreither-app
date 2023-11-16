@@ -37,7 +37,7 @@ WHERE {
                 kfngoeo:attrValue ?o_comp_status ;
             ] ;
 	.
-    BIND ( IF ( BOUND(?s_app), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
+    BIND(IF(BOUND(?s_app), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
     BIND(strafter(?o_app_from,'#') AS ?from)
     BIND(concat(?title_target, '_', str(?o_pos_app_nr+2)) AS ?o_pos_rdg_txt)
     ?s_rdg_txt a kfngoeo:Text ;
@@ -48,38 +48,38 @@ WHERE {
     BIND(?o_comp_status AS ?comp_status)
     {
         SELECT ?s_app ?o_pos_app_nr (MIN(?o_pos_nr_subtr) AS ?o_min) (?o_pos_app_nr - ?o_min AS ?start_nr) (?o_pos_app_end_nr AS ?end_nr) (substr(?title_short,1,strlen(?title_short)-1) AS ?title_target)
-    WHERE {
-        #get element position of tei:TEI
-        ?s_tei a kfngoeo:StartTag ;
-                kfngoeo:elementName tei:TEI ;
-                kfngoeo:elementPos ?o_pos_tei ;
-        .        
-        #get short title from element position of tei:TEI
-        BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)
-        ?s_app a kfngoeo:StartTag ;
-            kfngoeo:elementName tei:app ;
-            kfngoeo:hasAttr [		
-                kfngoeo:attrValue ?xmlid ;
-            ] ;
-            kfngoeo:elementPos ?o_pos_app ;
-        .
-        ?s_app_end a kfngoeo:EndTag ;
-            kfngoeo:elementName tei:app ;
-            kfngoeo:hasAttr [		
-                kfngoeo:attrValue ?xmlid ;
-            ] ;
-            kfngoeo:elementPos ?o_pos_app_end ;
-        .
-        BIND(xsd:integer(substr(?o_pos_app,strlen(?title_short)+1)) AS ?o_pos_app_nr)
-        BIND(xsd:integer(substr(?o_pos_app_end,strlen(?title_short)+1)) AS ?o_pos_app_end_nr)
-        ?s_anchor a kfngoeo:StartTag ;
-            kfngoeo:elementName tei:anchor ;
-            kfngoeo:elementPos ?o_pos_anchor ;
-        .
-        BIND(xsd:integer(substr(?o_pos_anchor,strlen(?title_short)+1)) AS ?o_pos_anchor_nr)
-        BIND( (?o_pos_app_nr-?o_pos_anchor_nr) AS ?o_pos_nr_subtr)
-        FILTER (?o_pos_nr_subtr > 0)        
-    } 
-    GROUP BY ?s_app ?o_pos_app_nr ?o_pos_app_end_nr ?title_short    
+        WHERE {
+            #get element position of tei:TEI
+            ?s_tei a kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:TEI ;
+                    kfngoeo:elementPos ?o_pos_tei ;
+            .        
+            #get short title from element position of tei:TEI
+            BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)
+            ?s_app a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:app ;
+                kfngoeo:hasAttr [		
+                    kfngoeo:attrValue ?xmlid ;
+                ] ;
+                kfngoeo:elementPos ?o_pos_app ;
+            .
+            ?s_app_end a kfngoeo:EndTag ;
+                kfngoeo:elementName tei:app ;
+                kfngoeo:hasAttr [		
+                    kfngoeo:attrValue ?xmlid ;
+                ] ;
+                kfngoeo:elementPos ?o_pos_app_end ;
+            .
+            BIND(xsd:integer(substr(?o_pos_app,strlen(?title_short)+1)) AS ?o_pos_app_nr)
+            BIND(xsd:integer(substr(?o_pos_app_end,strlen(?title_short)+1)) AS ?o_pos_app_end_nr)
+            ?s_anchor a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:anchor ;
+                kfngoeo:elementPos ?o_pos_anchor ;
+            .
+            BIND(xsd:integer(substr(?o_pos_anchor,strlen(?title_short)+1)) AS ?o_pos_anchor_nr)
+            BIND( (?o_pos_app_nr-?o_pos_anchor_nr) AS ?o_pos_nr_subtr)
+            FILTER (?o_pos_nr_subtr > 0)        
+        } 
+        GROUP BY ?s_app ?o_pos_app_nr ?o_pos_app_end_nr ?title_short    
     }
 }
