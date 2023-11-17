@@ -1,6 +1,6 @@
 // Purpose: build GND data from GND API
 const axios = require('axios') ;
-const fs = require('fs');
+const fs = require('fs') ;
 
 var gndSets = "" ;
 var gndSet = "" ;
