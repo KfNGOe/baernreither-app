@@ -18,7 +18,7 @@ WHERE {
 	.
     BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)    
     ?s_place a kfngoeo:StartTag ;
-            kfngoeo:elementName tei:orgName ;
+            kfngoeo:elementName tei:placeName ;
             kfngoeo:hasAttr [
                kfngoeo:attrName "key" ;
                kfngoeo:attrValue ?o_key_place ;
