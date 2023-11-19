@@ -63,10 +63,13 @@ async function getGNDData(gndUrl) {
                 })
                 js = convert.xml2js(xml, {compact: false, spaces: 2}) ;
                 let arr_js = js.elements[0].elements[0].elements ;
+                let lemma = arr_js.find(item => item.name === 'gn:name').elements[0].text ;
                 let wgs_lat = arr_js.find(item => item.name === 'wgs84_pos:lat').elements[0].text ;
                 let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;
+                console.log('lemma: ', lemma) ;
                 console.log('wgs_lat: ', wgs_lat) ;
                 console.log('wgs_long: ', wgs_long) ;
+                item.Lemma_gn = lemma ;
                 item.Lat = wgs_lat ;
                 item.Long = wgs_long ;
                 gnSet = item ;
