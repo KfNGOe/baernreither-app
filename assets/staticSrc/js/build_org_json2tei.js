@@ -70,70 +70,62 @@ function buildOrg(obj) {
          case 'name':
             if(obj[key] === 'list') {
                let itemDataTemp = [] ;
+               let itemDataTempMain = [] ;
                let itemDataTempSub = [] ;
                let itemDataTempPos = [] ;
                let temp = [] ;
                //init templates               
-               itemDataTemp.push(obj.elements[0]) ;   //o_key_org
-               obj.elements = [] ;               
+               itemDataTemp.push(obj.elements[0]) ;
+               obj.elements = [] ;
+               itemDataTempMain.push(itemDataTemp[0].elements[0]) ;  //lemma = o_key_org
                itemDataTempSub.push(itemDataTemp[0].elements[1]) ; //o_pid_org
-               itemDataTempPos.push(itemDataTemp[0].elements[2]) ; //o_pos_org   
-               itemDataTemp[0].elements.pop(itemDataTempSub[0]) ;
-               itemDataTemp[0].elements.pop(itemDataTempPos[0]) ;               
-               //group by key                
-               const groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
-                  return item.o_key_org.value ;
-               }) ;               
+               itemDataTempPos.push(itemDataTemp[0].elements[2]) ; //o_pos_org
+               //delete templates
+               itemDataTemp[0].elements.shift(itemDataTempMain) ;   //delete lemma template   
+               itemDataTemp[0].elements.shift(itemDataTempSub) ;  //delete pid template
+               itemDataTemp[0].elements.pop(itemDataTempPos) ;  //delete pos template
+               //check if keys exists
+               if (jsonJs_in.results.bindings.some(item => item.o_key_org)) {
+                  //group by key                
+                  groupedByMain = jsonJs_in.results.bindings.groupBy( item => {  //register_org.json
+                     return item.o_key_org.value ;
+                  }) ;               
+               } else {
+                     console.log('error: no keys') ;
+               }              
                //iterate over main
                Object.keys(groupedByMain).forEach((key) => {                  
-                  let termMain = camelCase2Normal(key) ;                   
-                  itemDataTemp[0].elements[0].elements[0].text = termMain ;
-                  //check if sub exists
+                  let termLemma = camelCase2Normal(key) ;                   
+                  console.log('termLemma = ', termLemma) ;
+                  itemDataTempMain[0].elements[0].text = termLemma ;
+                  itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempMain[0]))) ;
+                  //check if pid exists                    
                   if (groupedByMain[key].some(item => item.o_pid_org)) {
-                     //filter and group by sub
-                     const groupedBySub = groupedByMain[key].filter(item => item.o_pid_org).groupBy( item => {
-                        return item.o_pid_org.value ;                        
-                     }) ;                     
-                     //iterate over sub       
-                     Object.keys(groupedBySub).forEach((key) => {                        
-                        let termSub = key ;                        
-                        itemDataTempSub[0].elements[0].text = termSub ;
-                        //push sub to main (JSON.parse(JSON.stringify()) is used to copy by value)
-                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
-                        //check if pos exists
-                        if (groupedBySub[key].some(item => item.o_pos_org)) {
-                           //iterate over pos
-                           groupedBySub[key].forEach((item) => {
-                              let termPos = item.o_pos_org.value ;
-                              itemDataTempPos[0].elements[0].text = termPos ;                           
-                              itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                              
-                           }) ;
-                        } else {
-                           console.log('error: no pos') ;
-                        }                        
-                     }) ;
-                  //no sub                     
+                     let termPid = groupedByMain[key][0].o_pid_org.value ;
+                     itemDataTempSub[0].elements[0].text = termPid ;
+                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
                   } else {
-                     //check if pos exists
-                     if (groupedByMain[key].some(item => item.o_pos_org)) {                        
-                        //iterate over pos
-                        groupedByMain[key].forEach((item) => {
-                           let termPos = item.o_pos_org.value ;
-                           itemDataTempPos[0].elements[0].text = termPos ;                           
-                           itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                           
-                        }) ;
-                     } else {
-                        console.log('error: no pos') ;                        
-                     }
+                      console.log('no pid') ;
                   }
+                  //check if pos exists
+                  if (groupedByMain[key].some(item => item.o_pos_org)) {                        
+                     //iterate over pos
+                     groupedByMain[key].forEach((item) => {
+                        let termPos = item.o_pos_org.value ;
+                        itemDataTempPos[0].elements[0].text = termPos ;                           
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                           
+                     }) ;
+                  } else {
+                     console.log('error: no pos') ;                        
+                  }                  
                   //push item to temp (JSON.parse(JSON.stringify()) is used to copy by value)
                   temp.push(JSON.parse(JSON.stringify(itemDataTemp[0]))) ;                  
                   //delete all elements except first
-                  let delCount = itemDataTemp[0].elements.length-1 ;
-                  itemDataTemp[0].elements.splice(1,delCount) ;                  
+                  let delCount = itemDataTemp[0].elements.length ;
+                  itemDataTemp[0].elements.splice(0,delCount) ;                  
                }) ;
                //copy temp to obj
-               obj.elements = temp.slice() ;               
+               obj.elements = temp.slice() ;
             }            
             break ;
          case 'text':
