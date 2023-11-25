@@ -74,10 +74,10 @@ function buildOrg(obj) {
                let itemDataTempPos = [] ;
                let temp = [] ;
                //init templates               
-               itemDataTemp.push(obj.elements[0]) ;               
+               itemDataTemp.push(obj.elements[0]) ;   //o_key_org
                obj.elements = [] ;               
-               itemDataTempSub.push(itemDataTemp[0].elements[1]) ;               
-               itemDataTempPos.push(itemDataTemp[0].elements[2]) ;               
+               itemDataTempSub.push(itemDataTemp[0].elements[1]) ; //o_pid_org
+               itemDataTempPos.push(itemDataTemp[0].elements[2]) ; //o_pos_org   
                itemDataTemp[0].elements.pop(itemDataTempSub[0]) ;
                itemDataTemp[0].elements.pop(itemDataTempPos[0]) ;               
                //group by key                
