@@ -4,7 +4,7 @@ echo "build json to tei"
 PATH_ORG_TEI='./data/tei/register/'
 PATH_ORG_JSON='./data/json/register/'
 PATH_ORG_JSON_XLSX='./data/json_xlsx/'
-data/json_xlsx/org_xlsx.json
+
 #FILE=$name
 FILE_ORG_TEMP_TEI='register_org_template'
 FILE_ORG_JSON='register_org'
