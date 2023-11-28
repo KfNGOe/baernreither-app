@@ -2,8 +2,8 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title type="label">Ortsregister</title>
-                <title type="short">Bae_REG_Place</title>
+                <title type="label">Personenregister</title>
+                <title type="short">Bae_REG_Person</title>
                 <respStmt>
                     <resp>providing the content</resp>                    
                     <name>Christof Aichner</name>
@@ -16,20 +16,23 @@
                 </p>
             </publicationStmt>
             <sourceDesc>
-                <p>Ortsregister der Baernreither Werke</p>
+                <p>Personenregister der Baernreither Werke</p>
             </sourceDesc>
         </fileDesc>
     </teiHeader>
     <text>
         <body>
-            <div type="place_keywords">
+            <div type="person_keywords">
                 <list>
                     <item>
-                        <term type="lemma">nnnn</term>                        
+                        <term type="surname">nnnn</term>
+                        <term type="forname">nnnn</term>
+                        <term type="surname">nnnn</term>
+                        <term type="birth">nnnn</term>
+                        <term type="death">nnnn</term>                        
                         <term type="desc">nnnn</term>
                         <term type="pid">nnnn</term>
-                        <term type="lat">nnnn</term>
-                        <term type="long">nnnn</term>
+                        <term type="key">nnnn</term>                        
                         <term type="pos">nnnn</term>
                     </item>                    
                 </list>

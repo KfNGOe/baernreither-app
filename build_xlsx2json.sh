@@ -4,10 +4,10 @@ PATH_XLSX='./data/xlsx/'
 PATH_JSON_XLSX='./data/json_xlsx/'
 
 #FILENAME=$name
-#FILENAME_IN='Baernreither_Personenregister_2023'
-FILENAME_IN='Baernreither_Ortsregister_2023'
-#FILENAME_OUT='person_xlsx'
-FILENAME_OUT='place_xlsx'
+FILENAME_IN='Baernreither_Personenregister_2023'
+#FILENAME_IN='Baernreither_Ortsregister_2023'
+FILENAME_OUT='person_xlsx'
+#FILENAME_OUT='place_xlsx'
 
 EXTENSION_XLSX='.xlsx'
 EXTENSION_JSON='.json'
