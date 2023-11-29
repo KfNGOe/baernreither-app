@@ -26,6 +26,8 @@ const filepath_in_json=process.env.filepath_in_json ;
 const filepath_in_json_xlsx=process.env.filepath_in_json_xlsx ;
 const filepath_out_tei=process.env.filepath_out_tei ;
 
+//function buildList(obj) {}
+
 function buildPerson(obj) {     
    
    Object.keys(obj).forEach((key) => {
@@ -114,38 +116,62 @@ function buildPerson(obj) {
                     console.log('termKey = ', termKey) ;
                     itemDataTempMain[0].elements[0].text = termKey ;
                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempMain[0]))) ;
-                    //check if desc exists
-                    if (groupedByMain_tmp[key].some(item => item.D)) {
-                        let termDesc = groupedByMain_tmp[key][0].D ;
-                        itemDataTempSub[0].elements[0].text = termDesc ;
+                    //check if surname exists
+                    if (groupedByMain_tmp[key].some(item => item.A)) {
+                        let termSur = groupedByMain_tmp[key][0].A ;
+                        itemDataTempSub[0].elements[0].text = termSur ;
                         itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
                     } else {
-                        console.log('no desc') ;
+                        console.log('no surname') ;
                     }
-                    //check if pid exists                    
-                    if (groupedByMain[key].some(item => item.o_pid_person)) {
-                        let termPid = groupedByMain[key][0].o_pid_person.value ;
-                        itemDataTempSub[1].elements[0].text = termPid ;
+                    //check if forname exists                    
+                    if (groupedByMain_tmp[key].some(item => item.C)) {
+                        let termFor = groupedByMain_tmp[key][0].C ;
+                        itemDataTempSub[1].elements[0].text = termFor ;
                         itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[1]))) ;
                     } else {
-                        console.log('no pid') ;
+                        console.log('no forname') ;
                     }
-                    //check if lat exists
-                    if (groupedByMain_tmp[key].some(item => item.Lat)) {
-                        let termLat = groupedByMain_tmp[key][0].Lat ;
-                        itemDataTempSub[2].elements[0].text = termLat ;
+                    //check if addname exists
+                    if (groupedByMain_tmp[key].some(item => item.B)) {
+                        let termAdd = groupedByMain_tmp[key][0].B ;
+                        itemDataTempSub[2].elements[0].text = termAdd ;
                         itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[2]))) ;
                     } else {
-                        console.log('no lat') ;
+                        console.log('no addname') ;
                     }
-                    //check if long exists
-                    if (groupedByMain_tmp[key].some(item => item.Long)) {
-                        let termLong = groupedByMain_tmp[key][0].Long ;
-                        itemDataTempSub[3].elements[0].text = termLong ;
+                    //check if birth exists
+                    if (groupedByMain_tmp[key].some(item => item.D)) {
+                        let termBirth = groupedByMain_tmp[key][0].D ;
+                        itemDataTempSub[3].elements[0].text = termBirth ;
                         itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[3]))) ;
                     } else {
-                        console.log('no long') ;
-                    }                    
+                        console.log('no birth') ;
+                    }
+                    //check if death exists
+                    if (groupedByMain_tmp[key].some(item => item.E)) {
+                     let termDeath = groupedByMain_tmp[key][0].E ;
+                     itemDataTempSub[4].elements[0].text = termDeath ;
+                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[4]))) ;
+                     } else {
+                           console.log('no death') ;
+                     }
+                     //check if desc exists
+                     if (groupedByMain_tmp[key].some(item => item.F)) {
+                     let termDesc = groupedByMain_tmp[key][0].F ;
+                     itemDataTempSub[5].elements[0].text = termDesc ;
+                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[5]))) ;
+                     } else {
+                           console.log('no description') ;
+                     }
+                     //check if pid exists
+                     if (groupedByMain[key].some(item => item.o_pid_person)) {
+                        let termPid = groupedByMain[key][0].o_pid_person.value ;
+                        itemDataTempSub[6].elements[0].text = termPid ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[6]))) ;
+                        } else {
+                              console.log('no pid') ;
+                        }                    
                     //check if pos exists
                     if (groupedByMain[key].some(item => item.o_pos_person)) {
                         //iterate over pos
@@ -168,6 +194,11 @@ function buildPerson(obj) {
             }            
             break ;
          case 'text':
+            //test if key is number
+            if(!isNaN(obj[key])) {               
+               //to string
+               obj[key] = obj[key].toString() ;               
+            }            
             obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
             //console.log('result: ',obj[key]) ;
             break ;
