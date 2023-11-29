@@ -1,0 +1,385 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:09e4bdc2-614f-4668-8a3d-89e3fd88736f a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:99cd4d9c-6477-420a-9aa7-4d59b38d0cd5;
+  kfngoeo:hasBody kfngoei:1f999725-7200-4609-a2bf-7c64c058d9c7 .
+
+kfngoei:b604efd2-0f2f-41b1-95f8-ba4eb3bd6fb0 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:0d74e153-5d91-495c-b7b5-169eefb9e861, kfngoei:a98ead7d-1792-401e-88b6-a0f77859a8bb,
+    kfngoei:8c9889be-200f-416b-81ed-2e2bc70ad1ef, kfngoei:9c9fa5bf-ef01-45b7-9647-cc796a73352c,
+    kfngoei:15c13a84-d46f-431b-87e7-217b8d12da3d, kfngoei:97792487-5748-4048-b27a-14f3839f43f9;
+  kfngoeo:hasBody kfngoei:bcd26485-33ab-481b-a3ec-8fd0df7995c6 .
+
+kfngoei:428153b4-09a3-4908-a57a-6acf3b5680b7 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d9c47da7-6ae9-48a8-9064-68f450562a34, kfngoei:8cc51a60-2a02-4ab4-ab50-de1f8e8794d2,
+    kfngoei:40679ecb-53ff-4f6a-b511-7093b358dda8, kfngoei:90983ac1-beda-4778-a797-83b1a311c99d,
+    kfngoei:e9ff8f69-8af8-43a7-860b-d0bedb1bcbee, kfngoei:05ff5d8f-7788-4a09-bb2c-69caf107a5f2,
+    kfngoei:40f84422-25c2-42d6-ad15-134c1a407357, kfngoei:c38ae4b0-2fbe-4ddb-a724-f0bacaa9ea76,
+    kfngoei:af52f2cc-c8c8-46d9-bb60-bdc78089b7b6;
+  kfngoeo:hasBody kfngoei:f75f47ab-3d9b-4b04-993f-961c817368db .
+
+kfngoei:86c3ed44-1c64-4f20-93f4-03bf1112835c a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d813a178-f036-4c4c-9100-af61aa7ac467;
+  kfngoeo:hasBody kfngoei:ea4d4cb1-25e7-48a8-8830-800cbf917187 .
+
+kfngoei:7b8687a1-77ef-461c-8f5d-6744a271a967 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:79fd2e2a-36a4-49ef-80a3-562e34130909, kfngoei:4ecbe2f4-543b-4158-bcd1-575f21085052,
+    kfngoei:04d28c22-50e0-4b11-b368-46a01e8dc1be, kfngoei:7221a0cc-e481-49cf-b922-1c0a69196fb7,
+    kfngoei:2e4a4675-9656-460a-a635-bef8daa801a0, kfngoei:b5af0177-52b3-4ecd-a833-51ae7d23f09e;
+  kfngoeo:hasBody kfngoei:76bee494-ebb8-4eeb-936c-d24ffc751a1f .
+
+kfngoei:92370b8d-56a2-4f74-b9d4-34002a6599ae a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:1464e697-d831-4a70-b021-75fa55f1c5fa;
+  kfngoeo:hasBody kfngoei:20c854f0-a258-4442-98f5-44b820217cce .
+
+kfngoei:72db3edf-296d-4d3b-949b-fa251e07cdcd a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:e1840677-9f48-494b-af67-9fe1f08f7358, kfngoei:139b1f62-7ecb-41fd-9e66-4f259f110032,
+    kfngoei:74d7cd09-cad6-4c4d-afe2-31f789152a9f;
+  kfngoeo:hasBody kfngoei:b7f32137-257c-400f-a6c5-16469c8aa9cf .
+
+kfngoei:e3ca8766-17a5-4bad-80de-1539f72f8e8c a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d7dafc1e-0f9f-4ee6-95c7-b533f45a54ae, kfngoei:c9d3b12b-f9d0-4342-9870-4dd6b795b0ab,
+    kfngoei:d2a5a014-fb06-4518-bed1-ecbaa9095b0f, kfngoei:640a3b9a-c485-4d18-8762-f767851bcbee;
+  kfngoeo:hasBody kfngoei:9d74af8f-5252-4a4a-b243-c1f0a9192f92 .
+
+kfngoei:ff38c609-6693-46da-b845-48b38c9f8645 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:876eb2a6-a74d-4038-a3c5-aca3a222f4a1, kfngoei:4dbc3c9e-361b-4175-b53b-99ef40c8a41c,
+    kfngoei:092d9423-a1bb-4730-806d-0483e9cca44e, kfngoei:4c2dc34b-3219-4a51-a388-f0a84a53bca7,
+    kfngoei:9effcbae-2e73-4422-a5c6-9f7ecdc7e047, kfngoei:c8641458-0f26-4dbf-9649-b52f00ca7684,
+    kfngoei:2b37ec90-8fa5-452f-99d7-b9afa43ad657;
+  kfngoeo:hasBody kfngoei:86f2f9a3-bdb8-4104-b87c-5d64cdff61fc .
+
+kfngoei:69313984-8092-466c-8664-66317f350938 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:a993df2d-30f1-476c-b1a7-a6c1c6ebc317, kfngoei:60c873ff-4bc9-4bca-9d01-3e91a43c4e3b;
+  kfngoeo:hasBody kfngoei:3208fafd-8cd0-4557-99b6-ae978cd4feb8 .
+
+kfngoei:d5ad6d12-3c02-4a16-8060-321ab9c86524 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:c06d4d53-a139-4b57-8631-c885c205bec7, kfngoei:57309031-ca18-49ad-89d6-aa5f138a8be8,
+    kfngoei:6fda3604-cff8-4d48-b74c-4d3194b28ddf, kfngoei:4e8400d1-1627-43bb-b521-9c37957a1902,
+    kfngoei:c74205f7-bc1a-476b-aa91-e8b4e9133b89, kfngoei:c80bed47-9a63-4516-89c5-2201055c9e2b,
+    kfngoei:d3d9c023-697e-464e-99a4-174e823f693d, kfngoei:a79c8e57-e56e-4d8c-8744-cc8fc130a981,
+    kfngoei:be822559-2140-4cab-9d54-d03d7ac25181, kfngoei:2af4f84a-6f38-4ffd-8225-ec88e6f8a60f,
+    kfngoei:0484bd25-3faa-4247-9251-1d7e376d5b18, kfngoei:4ea5c231-6014-4cbb-a450-17686b6e7f44,
+    kfngoei:1284a29a-f1d4-41f3-b96f-96017d1489ee, kfngoei:c653f7f8-fb8b-455b-bbeb-19fcc079cbc7,
+    kfngoei:d9a52a60-8d7b-4531-aa13-152c664829ae, kfngoei:d43b01a7-0269-4214-8d26-7dc8989c55b0,
+    kfngoei:2c111d10-0a6b-4c8f-ab43-3a373f666cab, kfngoei:c1f58a11-78dd-42d0-93cc-ec7eb7cfbaad,
+    kfngoei:774277ad-75b9-494f-bfba-af13b99ae65e, kfngoei:3fe79064-1222-48cd-a70c-cc3ad4cfe9dc;
+  kfngoeo:hasBody kfngoei:d43a3679-b283-46aa-b2a1-ac36b8522d3c .
+
+kfngoei:414daac9-28bc-4f34-abf5-3cefcd8a5f71 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:e53e2db5-4545-4ce8-a422-74967be17b63, kfngoei:69b8db9c-fffd-4288-8804-b4556676c00f,
+    kfngoei:7db23ef0-d9d5-45c2-9dd5-997a439a6d07;
+  kfngoeo:hasBody kfngoei:4d419749-a0fe-4e70-a6f5-da8154787e35 .
+
+kfngoei:dc5da7d7-9e4e-479d-aa98-2892e086af25 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:70c7062c-70b9-4caf-a758-f696bca60113;
+  kfngoeo:hasBody kfngoei:f0943afa-3290-4264-8cea-c790d22b7205 .
+
+kfngoei:2c7a2079-5c7a-4fe0-878e-99ce49cb2eac a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:3ee64501-b7ac-4ff8-a6d3-e54e0d843041, kfngoei:7cc7cdac-0962-455b-8b52-f09fd6c34e14,
+    kfngoei:817bc992-0208-4d06-8d39-f6b1d3857a53, kfngoei:983cfe0e-a891-44bd-86b2-8cbcffffd358,
+    kfngoei:48bdf8aa-9fa7-4227-819e-282631b34e71;
+  kfngoeo:hasBody kfngoei:c7631a03-6563-40bc-b76d-f0795fcb2135 .
+
+kfngoei:259c3a9c-d624-40da-8ee1-094653a9a1f5 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:a2c96667-9e90-4bd5-b9eb-40dd9e7040e2, kfngoei:674b8612-22e9-4585-b6f6-1e8dbf62f7d1,
+    kfngoei:f11026c4-98c0-458d-89d7-3ec7065d097a, kfngoei:311dd1e5-c017-4cd0-91d8-71acdd4d1dba,
+    kfngoei:78206b4c-1a1d-4113-9cc5-4a952418c034, kfngoei:1495bd3a-3ac1-42b6-a3e7-2e82cf7b1472,
+    kfngoei:ea33d3f9-779d-4afc-baa8-44fb50cb7490, kfngoei:2b500a03-24f5-4997-a027-c1220fd2ece2,
+    kfngoei:f5809455-8629-4b0d-87e3-baf7c0126cbd, kfngoei:ff942ff5-7b20-4c00-8245-95a41f0d0006,
+    kfngoei:361a307c-fd01-409e-b6c1-8a26cd734bcc, kfngoei:44b9968a-6e1b-43cc-b7ef-db0dd3d471c0,
+    kfngoei:9f4cafd5-8648-4909-b83b-659ba9349948, kfngoei:797b0c69-7316-408c-a71c-7a01b94f7610,
+    kfngoei:5076bb2e-ffb0-4cb7-a0e0-09a71f4fdec6, kfngoei:06696d91-bc77-42e3-aaad-5e75a70213cf,
+    kfngoei:460cb491-197f-45cf-a669-32126e158a01;
+  kfngoeo:hasBody kfngoei:c36747f5-b6c0-4f39-9e1d-ead86334da71 .
+
+kfngoei:a8950710-3661-4397-a8b5-a4adbcce50cd a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:4fc8a249-bcca-4b3f-8ab5-ea99befac20a;
+  kfngoeo:hasBody kfngoei:cc12c87b-56ee-47b4-b0d0-d630e4cac33f .
+
+kfngoei:d0287a6a-7b02-4d0e-ba1a-e6df7d8390a0 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:4adbeb0e-cf22-4c83-bfb9-033652c87a8e, kfngoei:105e2a14-1800-49c1-84eb-e2947f4b2f27;
+  kfngoeo:hasBody kfngoei:ba9efcfc-f675-4d2d-aadb-5289ac65b871 .
+
+kfngoei:30a413ec-6fc5-42ad-8122-f09a0d0d3504 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:1d59c3d3-6a5e-4179-807c-905cb53e9e3a, kfngoei:6b03dc47-2b2e-48f4-806f-a81ed5f7de80,
+    kfngoei:9ac02610-90b2-4b17-af8e-8d3bc69322b8, kfngoei:9d01c82d-0f45-4001-82cb-70c3429cbe05;
+  kfngoeo:hasBody kfngoei:62c3741e-6438-430a-8330-e3810c1aaa56 .
+
+kfngoei:e675ed33-1c7a-40a9-8bc0-64de845ecea3 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:72e52daf-4428-4605-91ed-4e996e091c6c, kfngoei:e5923468-3b49-42cf-a8cc-40188ab7b44f;
+  kfngoeo:hasBody kfngoei:acc9cf1e-5c25-4e7b-a683-a42da1966cb4 .
+
+kfngoei:d2b23e23-2a4a-482e-bb5f-7f1257f3290e a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:0800ed14-55b3-4f11-87ca-442a071cdcc0, kfngoei:88fd197f-20b7-45a5-953f-dfae10d9ef3f,
+    kfngoei:254628b2-1789-47e4-86d7-bb010b174bd4, kfngoei:00f248a3-3ce5-469b-a0fa-66080eb8575e,
+    kfngoei:eb8e73fb-0bfe-4f94-bc9e-2c4a1baac2a9, kfngoei:8c574669-1008-49a4-a1c5-a27377cee46d,
+    kfngoei:4c1512a1-a1d2-4944-9e07-41fe1b6ae6c1, kfngoei:73c6aca7-a004-4a17-a11a-44a2c8cb80e7;
+  kfngoeo:hasBody kfngoei:40710218-8581-4bf3-8dcf-560174ab1ca5 .
+
+kfngoei:724e5dd6-aa39-431c-8ac4-1c92686ed18c a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:2c1f1576-de7e-40bb-87c9-bdbe61f3cd74;
+  kfngoeo:hasBody kfngoei:75847f54-e58b-4284-baa9-0cdb83b9d298 .
+
+kfngoei:79919f9d-4a3b-4ea3-9259-eb2bae559bbf a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:517bff5f-b541-4a9d-a1a5-0778b2a5a54c, kfngoei:d1b4b981-b78b-413e-b22d-a2b0de393ea5,
+    kfngoei:f0b66e6d-f7d2-41ba-b273-9125f25eec8b, kfngoei:d775329d-a6d8-4538-ae86-cb0d0497ae1b,
+    kfngoei:8c0a9181-a08f-4f8a-9f78-425d252a6c23, kfngoei:2dd298dd-fac4-43ca-ae5c-5a7ba3f111f3,
+    kfngoei:b5def9ba-165f-4dc8-ae9c-7438f8dfa0cb, kfngoei:b635f350-f561-4535-9c9f-f7b7ef6eff50,
+    kfngoei:172db7b4-5518-41f5-95df-68d2559e2089, kfngoei:39df46b8-0f80-41f5-853c-4efdfe544b5c,
+    kfngoei:94b9c9ff-7459-4eaf-ae3d-202c97748274, kfngoei:5b678f83-863e-44b1-9528-b017917af986,
+    kfngoei:fbb33008-1443-4d9d-817a-386a6c57640f, kfngoei:c16a884e-fae3-4350-b88f-8b127bcf5e1b,
+    kfngoei:f1503221-4279-41cd-bc92-7c50680eb4e3, kfngoei:c7cbc95c-89d9-4eee-8c28-d5fe3cc8f1a7,
+    kfngoei:e3ba803c-c6eb-4548-9f83-d0720a1fbc6d, kfngoei:f0bdfb6a-bbae-4b90-b9fe-b59847a19467,
+    kfngoei:33bca158-69cc-4f4d-ba1e-f65aa95c279e, kfngoei:6381f59c-6a9f-4143-9cf9-a845fffa3ade,
+    kfngoei:97782314-5598-406b-a2f9-d3a578264ab5, kfngoei:8727e634-6f9c-4c26-b3a7-46f3e32792b5,
+    kfngoei:ab58fdda-02f0-460f-95ea-050f917bfe8b, kfngoei:94881251-5655-409f-ae4f-d1677f42544c,
+    kfngoei:20d52091-1e81-463a-8e67-81fbd1ff9f4c, kfngoei:4a105f81-6f8b-4a5e-b3a2-66d823ea6502,
+    kfngoei:6540d5c4-ec5c-4be1-9b20-a724c9cc7242, kfngoei:63015b61-b4bc-4b3b-8b45-cdc556c06a7a;
+  kfngoeo:hasBody kfngoei:18b0b7c2-9955-4885-9e80-764ee0b189ca .
+
+kfngoei:ba632287-aae1-40a0-993f-e2b03706c2c3 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:cdcbaa26-6631-42fc-9d3a-74b3cd735258;
+  kfngoeo:hasBody kfngoei:b00db3de-e5a8-42b2-8a30-e6478fa324e7 .
+
+kfngoei:719236de-7060-4584-a2a6-073b09e974e9 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d286141d-4c45-4465-af80-fdca8f8f2f63;
+  kfngoeo:hasBody kfngoei:054f5480-8218-4765-8f72-0c05d2fc812a .
+
+kfngoei:4f27ee2b-2556-40c8-a384-5c5c3e8e322f a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:a8c28570-04f5-4c44-ad1a-19d9f2f2227c;
+  kfngoeo:hasBody kfngoei:ce1acca4-c950-4bb8-8c2e-fcb2212f9cae .
+
+kfngoei:de080bb4-b511-432e-93d4-9ab0b97e76eb a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:9dca2719-fe0d-4c76-920d-f9074cca2eeb, kfngoei:6a63dbd9-ff64-4209-81af-4b4c829f1262,
+    kfngoei:115b3f77-d0b2-4fbd-9184-c2c12a188cb4, kfngoei:747a15b4-15dc-46a4-a08d-316bd9988ded;
+  kfngoeo:hasBody kfngoei:c6c66bc2-2f53-4772-a231-dde81addedf0 .
+
+kfngoei:fe4c7db6-4a26-48b1-a075-bc6e0dedb5e1 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:a6cc57b3-8113-42ab-92dc-b30eced294d8;
+  kfngoeo:hasBody kfngoei:498d6e0f-eac8-4a17-be10-27d935e68fa0 .
+
+kfngoei:a13ddb38-fd3e-43d3-b99c-6bcff2081b84 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:a7acc8b0-3a3d-47f7-8623-0a0b3d56a573;
+  kfngoeo:hasBody kfngoei:c8380b92-440c-4aca-9089-c0cbec770384 .
+
+kfngoei:93da3a98-9f4a-411a-b9bc-d2041c40279e a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:726b18da-15b5-46c6-bcff-a3dd50196515;
+  kfngoeo:hasBody kfngoei:7c7a9544-7f5c-41ec-ada1-4c577d0e6355 .
+
+kfngoei:1c9850bb-67a5-41f9-90ab-539fd02916e4 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:9891174d-b3d8-401a-ad52-317a1a4b1727, kfngoei:4f7e9f6d-5563-4761-929a-993ea069b7b6;
+  kfngoeo:hasBody kfngoei:6ca5770b-5d4a-4aeb-b14a-3d77e6474f51 .
+
+kfngoei:b837301a-92e3-46d6-897d-75e803941f7b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:83552f0a-9863-4b56-a972-e9097b8796bf;
+  kfngoeo:hasBody kfngoei:882d79f8-e7bd-4e42-bc5e-6ef4479223f5 .
+
+kfngoei:253a3925-19e1-4387-830d-55a47b2ba027 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:8e0134ca-c7be-475d-831a-427fc3fc3645;
+  kfngoeo:hasBody kfngoei:b3163f2b-989b-464e-87d7-5bf1c9ae4610 .
+
+kfngoei:8ac122ba-c58a-4791-bdc4-bedd62d2b3d9 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:c9c99e58-2f74-423f-91df-d1deb5842641, kfngoei:c2ae2327-6a8f-4447-ac82-3c7465eea944,
+    kfngoei:781c77e8-2c91-4863-86de-949620df62cf;
+  kfngoeo:hasBody kfngoei:0c2dbea4-c6ea-421f-9099-bf5e294373e1 .
+
+kfngoei:08d0e764-209a-4e3f-ba98-4f7a59c682df a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:e50e9e13-68ae-4feb-bade-323fe6b87ae0, kfngoei:2c0d8aca-5e0b-41b5-abd7-581707457750,
+    kfngoei:c08af356-8235-4fda-9dd4-064cc5a97fc2, kfngoei:087de51b-6a4e-4638-ac85-81955de9f04a,
+    kfngoei:b8fb2f6b-9c94-4b65-bafb-eaea36ee94ed, kfngoei:8cb6fc4c-b8bc-4b5a-8671-594baa5e49de,
+    kfngoei:00a279e5-4bbe-420e-b92c-d8ce66ad34c9, kfngoei:836c0575-27ec-4658-a68b-2b30eeb0b30d,
+    kfngoei:4dd6aff1-e153-4ce6-8e2e-dc4305a3d315, kfngoei:0dbb4092-cce2-4e35-b818-2d4b011ecad1,
+    kfngoei:5e7ea8d6-3ca8-4f39-8df7-3981207877d7;
+  kfngoeo:hasBody kfngoei:22f3776d-9ecf-4f13-92a9-f27f49ca489a .
+
+kfngoei:354269fc-6d4b-4af0-8e26-76ddfdb21326 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:3824bb68-dbe7-4ef4-8a6a-0d111b7a25d1, kfngoei:56d2c09a-1537-4810-9366-0b40b9fec55c,
+    kfngoei:6e683790-2335-4596-b69b-52353ed75447;
+  kfngoeo:hasBody kfngoei:bf4cd746-b20c-4531-a1ee-963350d9861e .
+
+kfngoei:b24c025d-96dd-4ec5-8389-db3cba721e43 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:0d712a94-e8b4-432b-b294-43fd45dd2127, kfngoei:d16b2c05-bdfd-43fc-ad03-d73ddbf5bb6b,
+    kfngoei:3419ce42-8b72-4987-a1eb-4bf02e4e6c2f, kfngoei:c65d9bbc-9cfd-404b-a12a-609c37cb4e1c,
+    kfngoei:6e930bed-a4c8-446f-9c66-6e4c824e09bc, kfngoei:c61d2ed9-516d-4f48-b4a8-b10bc8f1a1c0,
+    kfngoei:b50e5e00-6d65-4ce9-ba3a-bcd638542fe1, kfngoei:b5c6b995-771f-46ad-a49d-7e5d38d663f1,
+    kfngoei:c22aa30f-669d-40e8-9baa-80aed1ac9296, kfngoei:79bed180-ce4f-4f11-8522-2a3b21d19e51,
+    kfngoei:cb924f06-aa91-47de-90fc-cd46b323447e, kfngoei:411513d4-924a-41ce-aa7b-254afa392c64,
+    kfngoei:e4e92fc4-59b4-4d08-8a44-5234cf54d2a4, kfngoei:d9c69bbc-2039-4885-9287-69b77e42fa42,
+    kfngoei:d940c84e-400b-4681-808d-1edabd2cd386, kfngoei:2ccf9bd3-58b7-4be1-8ef1-79fb2734e23f;
+  kfngoeo:hasBody kfngoei:d0125885-34b3-4095-b977-6265e73d2fea .
+
+kfngoei:2a226ccb-94ff-4a49-9722-176f6cc27c17 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d4c8e99b-b001-4736-afb8-d10abab5c172, kfngoei:4a522872-0625-47d4-9992-ad284af49ad1;
+  kfngoeo:hasBody kfngoei:53f22c48-3314-47e0-938a-d2670cabf3c5 .
+
+kfngoei:1f770daa-9ecc-4d1a-b18e-37f843e4c771 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d4d3f801-4d21-427b-b59e-f3d84c6ca7a2, kfngoei:e0dfc3cc-f40a-41ec-a743-4673be434002;
+  kfngoeo:hasBody kfngoei:499ac574-486e-4549-8711-cc81dd4b00cf .
+
+kfngoei:3a38a48d-fc1c-44e7-acf0-994ad27289b3 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:b7cb81e6-f5c9-4720-b90a-8f33ce2bf671, kfngoei:b5ac4eb3-b089-4aa5-93dd-f06f69a2a046,
+    kfngoei:ab4ae791-dc92-48e4-8ad0-8aad17de6f91;
+  kfngoeo:hasBody kfngoei:127c2442-f808-4bf2-8d84-553428dd3227 .
+
+kfngoei:a5b00b0f-26e2-4869-8f82-9e1695392e6f a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:15698932-bf6d-49c4-bf2a-ca794538b765, kfngoei:ad404cbf-b48e-4c94-b064-c286d0ee475e,
+    kfngoei:5538df46-72a1-4da3-9ba8-0db7dbc992bf, kfngoei:b9e24dca-1f73-4e8d-9680-f80c65748d7e,
+    kfngoei:9c8f3685-2191-4d28-90bc-6aac1a40fbc1, kfngoei:0c3bbe47-9670-465b-ade6-8c988f5d49bc;
+  kfngoeo:hasBody kfngoei:80c57bd7-04f2-4537-a3ea-5156d9246d43 .
+
+kfngoei:d021e233-7434-49ee-9c2a-2cf0e0c8d1d5 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:657d867b-7f3b-4593-b318-fbd40cbbfa6d, kfngoei:577e5add-f704-4cfe-906f-18adcaa8832f,
+    kfngoei:191c332c-0176-48dd-ad77-be0ef1017e62, kfngoei:79c1be87-bc2e-42d3-822f-35847a32750b;
+  kfngoeo:hasBody kfngoei:d4593af3-454b-4716-a3bb-748d08f47eb8 .
+
+kfngoei:ec50e8bc-b2bb-46f8-bdec-1db6fb50697a a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:e6b7dcda-0054-47c1-8298-77e0ed17330d, kfngoei:36f1a55a-82fc-4207-9308-2106f5e84bff,
+    kfngoei:fc6663ac-fb94-4ca4-bc61-f2fa8ed3242b, kfngoei:4aa29cfe-d623-42ab-9ad7-eb8a940dfb2c,
+    kfngoei:81d136bf-420c-4cd6-aa2f-35f0b5cda090;
+  kfngoeo:hasBody kfngoei:cc307871-f6bc-4ee7-a384-5fa445cb8e7b .
+
+kfngoei:8be1006c-913a-444b-974a-b5854b48b83b a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:27472873-400d-4be5-93ef-2006a00f5a7d, kfngoei:f57357e1-4245-4811-a789-f31073b0f701,
+    kfngoei:5a1dee1a-f2f0-4083-b2b8-09f53a0c6377, kfngoei:10cad21e-2fcb-46f5-83c5-1477c6dec04b;
+  kfngoeo:hasBody kfngoei:2afebd8f-322d-424b-83a6-5f5d605c76ef .
+
+kfngoei:9bf29d2c-3c5c-4a3d-876c-256a1ebfd92d a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:86988e7d-aeec-4a82-b0f6-10fda7506c3e;
+  kfngoeo:hasBody kfngoei:0180a482-4909-4bc9-b2ee-859d84545a0d .
+
+kfngoei:1f69efd4-3e6a-4266-b62b-8486becf1ffc a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:cebf2ddf-017c-4430-9e04-595e40ce891d, kfngoei:f7078a74-b01a-4e0c-8ad1-42ec855cf9cb;
+  kfngoeo:hasBody kfngoei:670339d6-c63b-4e5b-ae07-8a9a4b5a95a9 .
+
+kfngoei:6070200e-2991-42b5-9917-dc09c4a057bd a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:115cc359-78e4-4d37-be0d-0edd50f812fd;
+  kfngoeo:hasBody kfngoei:e7ad567a-d8b1-4591-b3b9-cbee1982f834 .
+
+kfngoei:5b72cdb2-43bf-4bc6-9ef9-3001516b2bbd a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:b0270bb0-99dd-4471-ada1-6c0dc4dff21a;
+  kfngoeo:hasBody kfngoei:9536da81-bf33-4fca-b977-a2b863120b89 .
+
+kfngoei:6eb05439-7bc0-4b36-aac4-575083d3f6ac a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:2a992c19-479d-4155-95a2-edeb946fb586;
+  kfngoeo:hasBody kfngoei:61ea79e3-eeaa-44b8-880d-6e6c970351fd .
+
+kfngoei:7ae2b4fd-72f7-4a47-86d5-74455a4eec86 a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:b452f934-3af4-4dd6-8a0f-0d02df1cd3d5, kfngoei:dc88a25e-3579-42d7-96b6-2edd57b12694,
+    kfngoei:c53ac0b7-e07c-47cb-8863-0b6535e61199, kfngoei:8f60aa95-d7e5-476c-98d9-29c035ef376d,
+    kfngoei:a27a0a8a-6215-40bd-87c1-6c95dd08d267, kfngoei:90eec4e1-7a5d-4d95-8b87-0f2ef306d1fa,
+    kfngoei:751ba332-30bb-4264-a8a8-da0f9c938cd4, kfngoei:a17a0b0e-09e8-43ea-80d3-04dcab1432b9;
+  kfngoeo:hasBody kfngoei:aec197a3-9de5-403b-bbd8-ef959be460c1 .
+
+kfngoei:9c8175b5-f871-4a24-8393-46bf6680815e a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Person"@en;
+  rdfs:isDefinedBy "Bae_TB_8";
+  kfngoeo:hasTarget kfngoei:d43f818c-fe71-4c88-80a6-0d1d9dfdbeac, kfngoei:4988a9ce-0b95-44ac-8191-dbf7af64b813;
+  kfngoeo:hasBody kfngoei:7277b97a-e3c1-4e09-bf0c-0e9c73d5686b .
