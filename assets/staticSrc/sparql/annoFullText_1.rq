@@ -1,0 +1,55 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import: TB or MF, annoAppi
+
+SELECT ?pos_txt_nr ?o_txt
+WHERE {
+    ?s_tei a kfngoeo:StartTag ;
+        kfngoeo:elementName tei:TEI ;
+        kfngoeo:elementPos ?o_pos_tei ;
+	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    ?s_text a kfngoeo:StartTag ;
+       kfngoeo:elementName tei:text ;
+       kfngoeo:elementPos ?o_pos_text ;
+	.
+    BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
+    ?s_txt a kfngoeo:Text ;
+		kfngoeo:hasContent ?o_txt ;
+		kfngoeo:elementPos ?o_pos_txt ;
+ 	.
+    BIND(xsd:integer(SUBSTR(?o_pos_txt,strlen(?title_short)+2)) AS ?o_pos_txt_nr)    
+    FILTER(?o_pos_txt_nr > ?o_pos_text_nr)
+    BIND(?o_pos_txt_nr AS ?pos_txt_nr)
+    #Convert nr to string and concat with special chars '_', '#' to get unique hits in contains()
+    FILTER(!CONTAINS(?result, CONCAT('_', STR(?pos_txt_nr), '#')))     
+    {
+        SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr), '#')) AS ?result)
+        WHERE {
+            ?s_anno
+                a kfngoeo:AnnoApp ;
+                rdfs:label "Annotation level of App"@en ;
+                kfngoeo:hasTarget [
+                    kfngoeo:hasSource ?title_app ;
+                    kfngoeo:hasSelector [
+                        a kfngoeo:TextPositionSelector ;
+                        kfngoeo:start ?start_nr ;
+                        kfngoeo:end ?end_nr ;
+                    ] 
+                ] ;                
+            .
+            BIND(?title_app AS ?title_short)            
+            ?s_txt a kfngoeo:Text ;
+                kfngoeo:hasContent ?o_txt ;
+                kfngoeo:elementPos ?o_pos_txt ;
+            .
+            BIND(xsd:integer(substr(?o_pos_txt,strlen(?title_short)+2)) AS ?o_pos_txt_nr)
+            FILTER((?o_pos_txt_nr > ?start_nr) && (?o_pos_txt_nr < ?end_nr))
+        }
+   }    
+} 
