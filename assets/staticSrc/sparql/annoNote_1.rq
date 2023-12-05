@@ -14,6 +14,19 @@ CONSTRUCT {
         	kfngoeo:hasTarget ?target_note ;
          	#no kfngoeo:hasBody
     .
+    ?s_anno
+        a kfngoeo:AnnoNote ;
+        rdfs:label "Annotation level of Note"@en ;
+        kfngoeo:hasTarget [
+            kfngoeo:hasSource ?title_note ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr ;
+                kfngoeo:end ?end_nr ;
+            ] 
+        ] ;
+        #no annotation body               
+    .
 }
 WHERE {
     BIND(?s_note AS ?target_note)
