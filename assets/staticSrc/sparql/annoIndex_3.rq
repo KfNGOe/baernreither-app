@@ -14,39 +14,63 @@ CONSTRUCT {
     ?s_anno a kfngoeo:AnnoIndex ;
         rdfs:label "Annotation level of Index"@en ;
     	rdfs:isDefinedBy ?o_key ;
-        kfngoeo:hasTarget ?target_index ;
+        kfngoeo:hasTarget ?_bn1 ;
         kfngoeo:hasBody kfngoei:nnnnnn ;
 	.
+    ?_bn1 
+    	kfngoeo:hasSource ?title_index ;
+		kfngoeo:hasSelector ?_bn ;
+    .
+    ?_bn 
+    	a kfngoeo:TextPositionSelector ;
+        kfngoeo:start ?start_nr ;
+        kfngoeo:end ?end_nr ; 
+    .
 }
 WHERE {	
     ?s_anno a kfngoeo:AnnoIndex ;
-            rdfs:isDefinedBy ?o_key ;            
-    .
+            rdfs:isDefinedBy ?o_key ;
+            kfngoeo:hasTarget ?_bn1 ;
+    .    
+    FILTER (?o_key = ?o_key_text)    
     {
-        SELECT DISTINCT ?o_key_text (?s_index AS ?target_index)
+        SELECT DISTINCT ?o_key_text (?title_short AS ?title_index) ?_bn ?start_nr ?end_nr 
         WHERE {
-            OPTIONAL {
+            
                 ?s_tei a kfngoeo:StartTag ;
                          kfngoeo:elementName tei:TEI ;
                          kfngoeo:elementPos ?o_pos_tei ;
                 .
                 BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
                 ?s_text a kfngoeo:StartTag ;
-                    kfngoeo:elementName tei:term ;
+                    kfngoeo:elementName tei:term ;                    
+                    kfngoeo:hasAttr [
+                        kfngoeo:attrName "key" ;
+                        kfngoeo:attrValue ?o_key_text ;                    
+                    ] ;
                     kfngoeo:elementPos ?o_pos_text ;
-                    kfngoeo:hasAttr ?_bn ;
-                    .
-                ?_bn kfngoeo:attrName "key" ;
-                    kfngoeo:attrValue ?o_key_text ;
-                .
+                .                
                 BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
-                BIND(concat(?title_short, '_', str(?o_pos_text_nr-1)) AS ?o_pos_index)
+                BIND(concat(?title_short, '_', str(?o_pos_text_nr-1)) AS ?o_pos_index_start)
                 ?s_index a kfngoeo:StartTag ;
                          kfngoeo:elementName tei:index ;
-                         kfngoeo:elementPos ?o_pos_index ;
-				.                
-            }
+                         kfngoeo:hasAttr [            
+                            kfngoeo:attrName "xml:id" ;
+                            kfngoeo:attrValue ?o_id_index ;
+                        ] ;
+                         kfngoeo:elementPos ?o_pos_index_start ;
+				.
+                BIND(xsd:integer(substr(?o_pos_index_start,strlen(?title_short)+2)) AS ?start_nr)
+                BIND(IF(BOUND(?s_index), BNODE(), ?nothing) AS ?_bn)
+                ?s_index_end a kfngoeo:EndTag ;
+                         kfngoeo:elementName tei:index ;
+                         kfngoeo:hasAttr [            
+                            kfngoeo:attrName "xml:id" ;
+                            kfngoeo:attrValue ?o_id_index ;
+                        ] ;
+                         kfngoeo:elementPos ?o_pos_index_end ;
+				.
+                BIND(xsd:integer(substr(?o_pos_index_end,strlen(?title_short)+2)) AS ?end_nr)            
         }
-	}
-    FILTER (?o_key = ?o_key_text)    
+	}    
 } ORDER BY ?o_key

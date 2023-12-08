@@ -12,7 +12,7 @@ CONSTRUCT {
 	?s_anno a kfngoeo:AnnoIndex ;
         rdfs:label "Annotation level of Index"@en ;        
     	rdfs:isDefinedBy ?o_key ;       
-        kfngoeo:hasTarget kfngoei:nnnnnn ;
+        kfngoeo:hasTarget ?_bn ;
         kfngoeo:hasBody kfngoei:nnnnnn ;
 	.
 }
@@ -21,4 +21,5 @@ WHERE {
        rdfs:isDefinedBy ?o_key ;       
 	.   
     BIND ( IF ( BOUND(?o_key), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno )
+    BIND(IF(BOUND(?s_anno), BNODE(), ?nothing) AS ?_bn)
 } ORDER BY ?o_key
