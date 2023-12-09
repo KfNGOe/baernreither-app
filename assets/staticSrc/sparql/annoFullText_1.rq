@@ -5,7 +5,7 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-#import: TB or MF, annoAppi, annoNotei
+#import: TB or MF, annoAppi, annoNotei, annoIndexi
 
 SELECT ?pos_txt_nr ?o_txt
 WHERE {
@@ -26,7 +26,9 @@ WHERE {
     BIND(xsd:integer(SUBSTR(?o_pos_txt,strlen(?title_short)+2)) AS ?o_pos_txt_nr)    
     FILTER(?o_pos_txt_nr > ?o_pos_text_nr)
     BIND(?o_pos_txt_nr AS ?pos_txt_nr)
+    BIND(CONCAT(?result_app, ?result_note, ?result_index) AS ?result)
     #Convert nr to string and concat with special chars '_', '#' to get unique hits in contains()    
+    FILTER(!CONTAINS(?result, CONCAT('_', STR(?pos_txt_nr), '#')))         
     {
         SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr_app), '#')) AS ?result_app)
         WHERE {
@@ -72,6 +74,26 @@ WHERE {
             FILTER((?o_pos_txt_nr_note > ?start_nr_note) && (?o_pos_txt_nr_note < ?end_nr_note))
         }
     }
-    BIND(CONCAT(?result_app, ?result_note) AS ?result)
-    FILTER(!CONTAINS(?result, CONCAT('_', STR(?pos_txt_nr), '#')))     
+    {
+        SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr_index), '#')) AS ?result_index)
+        WHERE {
+            ?s_anno_index
+                a kfngoeo:AnnoIndex ;                
+                kfngoeo:hasTarget [
+                    kfngoeo:hasSource ?title_index ;
+                    kfngoeo:hasSelector [
+                        a kfngoeo:TextPositionSelector ;
+                        kfngoeo:start ?start_nr_index ;
+                        kfngoeo:end ?end_nr_index ;
+                    ] 
+            	] ;
+			.
+            BIND(CONCAT(?title_index, '_', STR(?end_nr_index-3)) AS ?o_pos_txt_index)
+            ?s_txt_index a kfngoeo:Text ;
+                         kfngoeo:hasContent ?o_txt_index ;
+                         kfngoeo:elementPos ?o_pos_txt_index ;
+			.
+            BIND(xsd:integer(SUBSTR(?o_pos_txt_index,STRLEN(?title_index)+2)) AS ?o_pos_txt_nr_index)            
+		}
+    }    
 }
