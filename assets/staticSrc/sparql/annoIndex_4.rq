@@ -12,16 +12,30 @@ CONSTRUCT {
     ?s_anno a kfngoeo:AnnoIndex ;
         rdfs:label "Annotation level of Index"@en ;
     	rdfs:isDefinedBy ?o_key ;
-        kfngoeo:hasTarget ?target_text ;
+        kfngoeo:hasTarget ?_bn ;
         kfngoeo:hasBody ?body_index ;
 	.
+    ?_bn kfngoeo:hasSource ?title_index ;
+        kfngoeo:hasSelector [
+            a kfngoeo:TextPositionSelector ;
+            kfngoeo:start ?o_start ;
+            kfngoeo:end ?o_end ;
+        ] ;
+    .
 }
 WHERE {
     ?s_anno a kfngoeo:AnnoIndex ;
         rdfs:isDefinedBy ?o_key ;
-        kfngoeo:hasTarget ?target_text ;
-        kfngoeo:hasBody ?body ;
+        kfngoeo:hasTarget ?_bn ;        
     .
+    ?_bn kfngoeo:hasSource ?title_index ;
+        kfngoeo:hasSelector [
+            a kfngoeo:TextPositionSelector ;
+            kfngoeo:start ?o_start ;
+            kfngoeo:end ?o_end ;
+        ] ;
+    .
+    FILTER (?o_key = ?o_text)
 	{
         SELECT DISTINCT ?o_text (?s_item AS ?body_index)
         WHERE {
@@ -43,6 +57,5 @@ WHERE {
                 .
             }
         }
-	}    
-    FILTER (?o_key = ?o_text)
+	}
 }
