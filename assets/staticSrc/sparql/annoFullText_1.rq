@@ -5,7 +5,7 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-#import: TB or MF, annoAppi, annoNotei, annoIndexi
+#import: TB or MF, annoAppi, annoNotei, annoIndexi, annoDeli
 
 SELECT ?pos_txt_nr ?o_txt
 WHERE {
@@ -26,7 +26,7 @@ WHERE {
     BIND(xsd:integer(SUBSTR(?o_pos_txt,strlen(?title_short)+2)) AS ?o_pos_txt_nr)    
     FILTER(?o_pos_txt_nr > ?o_pos_text_nr)
     BIND(?o_pos_txt_nr AS ?pos_txt_nr)
-    BIND(CONCAT(?result_app, ?result_note, ?result_index) AS ?result)
+    BIND(CONCAT(?result_app, ?result_note, ?result_index, ?result_del) AS ?result)
     #Convert nr to string and concat with special chars '_', '#' to get unique hits in contains()    
     FILTER(!CONTAINS(?result, CONCAT('_', STR(?pos_txt_nr), '#')))         
     {
@@ -95,5 +95,27 @@ WHERE {
 			.
             BIND(xsd:integer(SUBSTR(?o_pos_txt_index,STRLEN(?title_index)+2)) AS ?o_pos_txt_nr_index)            
 		}
+    }
+    {
+        SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr_del), '#')) AS ?result_del)
+        WHERE {
+            ?s_anno_del
+                a kfngoeo:AnnoDel ;                
+                kfngoeo:hasTarget [
+                    kfngoeo:hasSource ?title_del ;
+                    kfngoeo:hasSelector [
+                        a kfngoeo:TextPositionSelector ;
+                        kfngoeo:start ?start_nr_del ;
+                        kfngoeo:end ?end_nr_del ;
+                    ] 
+                ] ;                
+            .            
+            ?s_txt_del a kfngoeo:Text ;
+                kfngoeo:hasContent ?o_txt_del ;
+                kfngoeo:elementPos ?o_pos_txt_del ;
+            .
+            BIND(xsd:integer(substr(?o_pos_txt_del,strlen(?title_del)+2)) AS ?o_pos_txt_nr_del)
+            FILTER((?o_pos_txt_nr_del > ?start_nr_del) && (?o_pos_txt_nr_del < ?end_nr_del))
+        }
     }    
 }
