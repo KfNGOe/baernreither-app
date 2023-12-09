@@ -28,7 +28,7 @@ WHERE {
         kfngoeo:elementPos ?o_pos_tei ;
 	.
     BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
-    ?s_app a kfngoeo:StartTag ;
+    ?s_app_start a kfngoeo:StartTag ;
         kfngoeo:elementName tei:app ;
         kfngoeo:hasAttr [            
             kfngoeo:attrName "xml:id" ;
@@ -47,5 +47,5 @@ WHERE {
 	.
     BIND(xsd:integer(SUBSTR(?o_pos_app_end,strlen(?title_short)+2)) AS ?end_nr)
     BIND(?title_short AS ?title_app)
-    BIND(IF(BOUND(?s_app), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    BIND(IF(BOUND(?s_app_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
 }
