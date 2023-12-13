@@ -38,7 +38,7 @@ WHERE {
         kfngoeo:elementPos ?o_pos_ch_start ;
 	.
     BIND(xsd:integer(SUBSTR(?o_pos_ch_start,STRLEN(?title_short)+2)) AS ?start_nr_ch)
-    BIND(CONCAT(?title_short, '_', STR(?start_nr_ch + 1)) AS ?o_pos_abbr)    
+    BIND(CONCAT(?title_short, '_', STR(?start_nr_ch+1)) AS ?o_pos_abbr)    
     ?s_abbr a kfngoeo:StartTag ;
         kfngoeo:elementName tei:abbr ;        
         kfngoeo:elementPos ?o_pos_abbr ;

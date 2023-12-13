@@ -5,7 +5,7 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-#import: TB or MF, annoAppi, annoNotei, annoIndexi, annoDeli
+#import: TB or MF, annoAppi, annoNotei, annoIndexi, annoDeli, annoAbbri
 
 SELECT ?pos_txt_nr ?o_txt
 WHERE {
@@ -26,7 +26,7 @@ WHERE {
     BIND(xsd:integer(SUBSTR(?o_pos_txt,strlen(?title_short)+2)) AS ?o_pos_txt_nr)    
     FILTER(?o_pos_txt_nr > ?o_pos_text_nr)
     BIND(?o_pos_txt_nr AS ?pos_txt_nr)
-    BIND(CONCAT(?result_app, ?result_note, ?result_index, ?result_del) AS ?result)
+    BIND(CONCAT(?result_app, ?result_note, ?result_index, ?result_del, ?result_abbr) AS ?result)
     #Convert nr to string and concat with special chars '_', '#' to get unique hits in contains()    
     FILTER(!CONTAINS(?result, CONCAT('_', STR(?pos_txt_nr), '#')))         
     {
@@ -73,7 +73,7 @@ WHERE {
             BIND(xsd:integer(substr(?o_pos_txt_note,strlen(?title_note)+2)) AS ?o_pos_txt_nr_note)
             FILTER((?o_pos_txt_nr_note > ?start_nr_note) && (?o_pos_txt_nr_note < ?end_nr_note))
         }
-    }
+    } .
     {
         SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr_index), '#')) AS ?result_index)
         WHERE {
@@ -95,7 +95,7 @@ WHERE {
 			.
             BIND(xsd:integer(SUBSTR(?o_pos_txt_index,STRLEN(?title_index)+2)) AS ?o_pos_txt_nr_index)            
 		}
-    }
+    } .
     {
         SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_nr_del), '#')) AS ?result_del)
         WHERE {
@@ -117,5 +117,46 @@ WHERE {
             BIND(xsd:integer(substr(?o_pos_txt_del,strlen(?title_del)+2)) AS ?o_pos_txt_nr_del)
             FILTER((?o_pos_txt_nr_del > ?start_nr_del) && (?o_pos_txt_nr_del < ?end_nr_del))
         }
-    }    
+    } .
+    {
+        SELECT (GROUP_CONCAT(CONCAT('_', STR(?o_pos_txt_abbr_nr), '#')) AS ?result_abbr)
+        WHERE {
+            ?s_anno_abbr
+                a kfngoeo:AnnoAbbr ;                
+                kfngoeo:hasTarget [
+                    kfngoeo:hasSource ?title_abbr ;
+                    kfngoeo:hasSelector [
+                        a kfngoeo:TextPositionSelector ;
+                        kfngoeo:start ?start_nr_ch ;
+                        kfngoeo:end ?end_nr_ch ;
+                    ] 
+                ] ;
+            .
+            BIND(CONCAT(?title_abbr, '_', STR(?start_nr_ch+1)) AS ?o_pos_abbr_start)
+            ?s_abbr_start a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:abbr ;
+                kfngoeo:hasAttr [            
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?o_id_abbr ;
+                ] ;        
+                kfngoeo:elementPos ?o_pos_abbr_start ;
+            .
+            BIND(xsd:integer(SUBSTR(?o_pos_abbr_start, STRLEN(?title_abbr)+2)) AS ?start_abbr_nr)
+            ?s_abbr_end a kfngoeo:EndTag ;
+                kfngoeo:elementName tei:abbr ;
+                kfngoeo:hasAttr [            
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?o_id_abbr ;
+                ] ;
+                kfngoeo:elementPos ?o_pos_abbr_end ;
+            .
+            BIND(xsd:integer(SUBSTR(?o_pos_abbr_end, STRLEN(?title_abbr)+2)) AS ?end_abbr_nr)
+            ?s_txt_abbr a kfngoeo:Text ;
+                kfngoeo:hasContent ?o_txt_abbr ;
+                kfngoeo:elementPos ?o_pos_txt_abbr ;
+            .
+            BIND(xsd:integer(substr(?o_pos_txt_abbr,strlen(?title_abbr)+2)) AS ?o_pos_txt_abbr_nr)
+            FILTER((?o_pos_txt_abbr_nr > ?start_abbr_nr) && (?o_pos_txt_abbr_nr < ?end_abbr_nr))
+        }
+    } .
 }
