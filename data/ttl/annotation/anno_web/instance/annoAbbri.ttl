@@ -1,0 +1,21 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:1f9a36b1-46c4-4666-81a1-eaf4431b7693 a kfngoeo:AnnoAbbr;
+  rdfs:label "Annotation level of Abbreviation"@en;
+  kfngoeo:hasTarget _:node354945 .
+
+_:node354945 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node354946 .
+
+_:node354946 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5344;
+  kfngoeo:end 5351 .
