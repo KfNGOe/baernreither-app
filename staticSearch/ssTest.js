@@ -48,7 +48,9 @@ function buildSearchTest(obj) {
             break ;
          case 'tokens':
             console.log('tokens = ', obj[key]) ;
-            const groupedByToken = obj[key].groupBy( item => {
+            const groupedByToken = obj[key].groupBy( item, index => {
+                item['index'] = index ;
+                console.log('item = ', item) ;
                 return item.token ;
              }) ;
              console.log('groupedByToken = ', groupedByToken) ;               
