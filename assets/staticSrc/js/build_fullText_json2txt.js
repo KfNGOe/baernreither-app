@@ -25,8 +25,7 @@ const jquery = require("jquery")(dom.window);
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_txt=process.env.filepath_out_txt ;
 
-function buildFullText(obj) {     
-   
+function buildFullText(obj) {   
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {

@@ -3,9 +3,11 @@ const jsdom = require("jsdom") ;
 const fs = require('fs');
 const normalize = require('normalize-space') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-
-var convert = require('xml-js');
+//const { groupBy } = require('core-js/actual/object/group-by') ;
 const { exit } = require("process");
+var convert = require('xml-js');
+
+var groupedByToken = {} ;
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -25,6 +27,11 @@ const jquery = require("jquery")(dom.window);
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_tei=process.env.filepath_out_tei ;
+
+function myCallback({ token, index }) {
+   console.log('token = ', token, ', index = ', index) ;
+   return token ;
+ }
 
 function buildSearchTest(obj) {   
    Object.keys(obj).forEach((key) => {
@@ -48,15 +55,25 @@ function buildSearchTest(obj) {
             break ;
          case 'tokens':
             console.log('tokens = ', obj[key]) ;
-            const groupedByToken = obj[key].groupBy( item, index => {
-                item['index'] = index ;
-                console.log('item = ', item) ;
-                return item.token ;
-             }) ;
-             console.log('groupedByToken = ', groupedByToken) ;               
+            let index_token = 0 ;            
+            //const groupedByToken = Object.groupBy(obj[key], myCallback);
+            groupedByToken = obj[key].groupBy( item => {
+               item['index'] = index_token ;
+               console.log('item = ', item) ;
+               index_token++ ;
+               return item.token ;
+            }) ;            
+            console.log('groupedByToken = ', groupedByToken) ;               
             break ;
-         case 'poss':
-            console.log('poss = ', obj[key]) ;
+         case 'poss':            
+            const pos = obj[key] ;
+            console.log('pos = ', pos) ;
+            Object.keys(groupedByToken).forEach((key) => {
+               console.log('key = ', key) ;
+               console.log('groupedByToken[key] = ', groupedByToken[key]) ;
+               let groupedByText = groupedByToken[key].concat(pos) ;
+               console.log('groupedByText = ', groupedByText) ;
+            }) ;            
             break ;
          case 'name':
             if(obj[key] === 'list') {
@@ -145,7 +162,7 @@ var jsonJs_in = JSON.parse(json_in) ;
 
 buildSearchTest(jsonJs_in) ;
 
-let teiJs_out = teiJs_in ;
+//let teiJs_out = teiJs_in ;
 
 //convert js object to tei
 var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
