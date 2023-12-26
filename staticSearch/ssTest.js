@@ -8,6 +8,7 @@ const { exit } = require("process");
 var convert = require('xml-js');
 
 var groupedByToken = {} ;
+var tokenAll = [] ;
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -71,9 +72,14 @@ function buildSearchTest(obj) {
             Object.keys(groupedByToken).forEach((key) => {
                console.log('key = ', key) ;
                console.log('groupedByToken[key] = ', groupedByToken[key]) ;
-               let groupedByText = groupedByToken[key].concat(pos) ;
-               console.log('groupedByText = ', groupedByText) ;
+               groupedByToken[key].forEach((item) => {
+                  console.log('item = ', item) ;                  
+                  item['pos'] = pos ;
+                  tokenAll.push(item) ;
+               }) ;               
             }) ;            
+            console.log('tokenAll = ', tokenAll) ;
+            console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
             break ;
          case 'name':
             if(obj[key] === 'list') {
