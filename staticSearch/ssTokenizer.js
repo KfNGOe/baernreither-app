@@ -16,10 +16,15 @@ var tokenAll_tmp = {
    "tokenAll": []
 } ;
 var tokensPoss_tmp = {} ;
+var tokensPoss12_tmp = {} ;
 var tokens_tmp = [] ;
+var tokens12_tmp = [] ;
 var token_tmp = {} ;
+var token12_tmp = {} ;
 var poss_tmp = [] ;
 var pos_tmp = {} ;
+var poss12_tmp = [] ;
+var pos12_tmp = {} ;
 var tokens = [] ;
 var i_char = 0 ;
 var i_text = 0 ;
@@ -81,43 +86,29 @@ function buildSearchTest(obj) {
             let text = obj[key].value ;
             console.log('text = ', text) ;
             let textLength = text.length ;
-            let N_char = textLength - 2 ;
-            tokens_tmp = [] ;            
-            i_text++ ;
-            if (i_text > 1) {               
-                pos_prev = jsonJs_in.results.bindings[i_text - 2].pos_txt_nr.value ;
-                text_prev = jsonJs_in.results.bindings[i_text - 2].o_txt.value ;
-                console.log('pos_prev = ', pos_prev) ;
+            let N_char = textLength - 2 ;            
+            if (i_text > 1) {
+                tokens12_tmp = [] ;                
+                text_prev = jsonJs_in.results.bindings[i_text - 2].o_txt.value ;                
                 console.log('text_prev = ', text_prev) ;
                 let text12 = text_prev + text ;
                 console.log('text12 = ', text12) ;
                 for (i_char = text_prev.length - 2; i_char < text_prev.length; i_char++) {
                     tokens = splitIn(text12);
-                    token_tmp = {
+                    token12_tmp = {
                          "token": tokens[0].value
                      } ;
-                     console.log('token_tmp = ', token_tmp) ;
-                    tokens_tmp.push(token_tmp) ;                
+                     console.log('token12_tmp = ', token12_tmp) ;
+                    tokens12_tmp.push(token12_tmp) ;                
                 }
-                console.log('tokens = ', tokens_tmp) ;
-                poss_tmp = [] ;
-                pos_tmp = {
-                    "pos": pos_prev
-                } ;
-                poss_tmp.push(pos_tmp) ;
-                pos_tmp = {
-                    "pos": obj.pos_txt_nr.value
-                } ;
-                poss_tmp.push(pos_tmp) ;
-                console.log('poss = ', poss_tmp) ;
-                tokensPoss_tmp = {
-                    "tokens": tokens_tmp,
-                    "poss": poss_tmp
-                } ;
-                console.log('tokensPoss_tmp = ', tokensPoss_tmp) ;
+                console.log('tokens12 = ', tokens12_tmp) ;                
+                tokensPoss12_tmp["tokens"] = tokens12_tmp ;                 
+                console.log('tokensPoss12_tmp = ', tokensPoss12_tmp) ;
+                tokenAll_tmp.tokenAll.push(tokensPoss12_tmp) ;
             } else {
                 console.log('i_text = ', i_text) ;
-            }            
+            }
+            tokens_tmp = [] ;            
             for (i_char = 0; i_char < N_char; i_char++) {
                 tokens = splitIn(text);
                 token_tmp = {
@@ -125,10 +116,7 @@ function buildSearchTest(obj) {
                  } ;
                 tokens_tmp.push(token_tmp) ;                
             }
-            tokensPoss_tmp = {
-                "tokens": tokens_tmp,
-                "poss": poss_tmp
-                } ;
+            tokensPoss_tmp["tokens"] = tokens_tmp ;             
             tokenAll_tmp.tokenAll.push(tokensPoss_tmp) ;            
             console.log('tokens = ', tokens_tmp) ;
             console.log('tokenAll = ', JSON.stringify(tokenAll_tmp)) ;
@@ -136,12 +124,33 @@ function buildSearchTest(obj) {
          case 'pos_txt_nr':            
             const pos = obj[key] ;
             console.log('pos = ', pos.value) ;
+            tokensPoss_tmp = {} ;
+            tokensPoss12_tmp = {} ;            
+            i_text++ ;
+            if (i_text > 1) {
+                poss12_tmp = [] ;
+                pos_prev = jsonJs_in.results.bindings[i_text - 2].pos_txt_nr ;
+                pos12_tmp = {
+                    "pos": pos_prev.value
+                } ;
+                poss12_tmp.push(pos12_tmp) ;
+                pos12_tmp = {
+                    "pos": pos.value
+                 } ;            
+                 poss12_tmp.push(pos12_tmp) ;            
+            }
+            poss_tmp = [] ;
             pos_tmp = {
                "pos": pos.value
-            } ;
-            poss_tmp = [] ;
-            poss_tmp.push(pos_tmp) ;                        
+            } ;            
+            poss_tmp.push(pos_tmp) ;            
             console.log('poss = ', poss_tmp) ;
+            tokensPoss12_tmp = {
+                "poss": poss12_tmp
+            } ;
+            tokensPoss_tmp = {                
+                "poss": poss_tmp
+                } ;
             break ;
          case 'name':
             //console.log('name = ', obj[key]) ;            
