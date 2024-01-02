@@ -181,11 +181,11 @@ console.log('countTextN = ', countTextN) ;
 
 buildSearchTest(jsonJs_in) ;
 
-let jsonJs_out = tokenAll ;
+let jsonJs_out = tokenAll_tmp ;
 
 //convert js object to tei
 //var json_out = convert.js2json(jsonJs_out, {compact: false, spaces: 2}) ;
-//var json_out = JSON.stringify(jsonJs_out, null, 2) ;
+var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
-//fs.writeFileSync('./staticSearch/tokens/tokenAll.json', json_out ) ;  
+fs.writeFileSync('./staticSearch/ssTokens_tmp.json', json_out ) ;
 console.log('json data written: ', json_out.length, ' bytes')
