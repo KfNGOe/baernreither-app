@@ -38,77 +38,58 @@ function myCallback({ token, index }) {
 
 function buildSearchTest(obj) {   
    Object.keys(obj).forEach((key) => {
-      //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
          case 'tokenAll':
-            //console.log('tokenAll = ', obj[key]) ;
             if(Array.isArray(obj[key])) {               
                 //level + 1
                 obj[key].forEach((item, index, array) => {
                    if (typeof item === 'object') {
-                      //console.log('item = ', item, ', index = ', index) ;          
                       buildSearchTest(item) ;
                    }
                 }) ;
                 //level - 1               
              } else {
-                //console.log(obj.constructor.name, 'property is not an array: ', key) ;
              }
-            console.log('tokenAll ready') ;
             break ;
          case 'tokens':
-            console.log('tokens = ', obj[key]) ;
             let index_token = 0 ;            
-            //const groupedByToken = Object.groupBy(obj[key], myCallback);
             groupedByToken = obj[key].groupBy( item => {
                item['index'] = index_token ;
-               console.log('item = ', item) ;
                index_token++ ;
                return item.token ;
             }) ;            
-            console.log('groupedByToken = ', groupedByToken) ;               
             break ;
          case 'poss':            
             const pos = obj[key] ;
-            console.log('pos = ', pos) ;
             Object.keys(groupedByToken).forEach((key) => {
-               //console.log('key = ', key) ;
-               //console.log('groupedByToken[key] = ', groupedByToken[key]) ;
                groupedByToken[key].forEach((item) => {                  
                   if (pos.length > 1) {
                      item['pos'] = pos[0].pos ;
                      item['pos_next'] = pos[1].pos ;
-                     console.log('item = ', item) ;                  
                      tokenAll.tokenAll.push(item) ; 
                   } else {
                      item['pos'] = pos[0].pos ;
-                     console.log('item = ', item) ;                     
                      tokenAll.tokenAll.push(item) ; 
                   }
                }) ;                
             }) ;            
-            //console.log('tokenAll = ', tokenAll) ;
-            console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
+            //console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
             break ;
          case 'name':
-            //console.log('name = ', obj[key]) ;            
             break ;
          case 'text':
             obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
-            //console.log('result: ',obj[key]) ;
             break ;
          case 'comment':
-            //console.log('comment = ', obj[key]) ;            
             break ;
          default:
-            //console.log('no case') ;
             break ;
       } 
    }) ;
 } ; 
 
 //read test json file
-let json_in = fs.readFileSync('./staticSearch/ssTokens_template.json', 'utf8'); 
+let json_in = fs.readFileSync('./staticSearch/ssTokens_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object

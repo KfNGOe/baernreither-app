@@ -84,26 +84,23 @@ function buildSearchTest(obj) {
             break ;
          case 'o_txt':
             let text = obj[key].value ;
-            console.log('text = ', text) ;
             let textLength = text.length ;
             let N_char = textLength - 2 ;            
             if (i_text > 1) {
                 tokens12_tmp = [] ;                
                 text_prev = jsonJs_in.results.bindings[i_text - 2].o_txt.value ;                
-                console.log('text_prev = ', text_prev) ;
-                let text12 = text_prev + text ;
-                console.log('text12 = ', text12) ;
+                let text12 = text_prev + text ;                
                 for (i_char = text_prev.length - 2; i_char < text_prev.length; i_char++) {
                     tokens = splitIn(text12);
                     token12_tmp = {
                          "token": tokens[0].value
-                     } ;
-                     console.log('token12_tmp = ', token12_tmp) ;
+                     } ;                    
                     tokens12_tmp.push(token12_tmp) ;                
-                }
-                console.log('tokens12 = ', tokens12_tmp) ;                
-                tokensPoss12_tmp["tokens"] = tokens12_tmp ;                 
-                console.log('tokensPoss12_tmp = ', tokensPoss12_tmp) ;
+                }                
+                tokensPoss12_tmp = {
+                    "tokens": tokens12_tmp ,
+                    "poss": poss12_tmp
+                } ;             
                 tokenAll_tmp.tokenAll.push(tokensPoss12_tmp) ;
             } else {
                 console.log('i_text = ', i_text) ;
@@ -116,14 +113,15 @@ function buildSearchTest(obj) {
                  } ;
                 tokens_tmp.push(token_tmp) ;                
             }
-            tokensPoss_tmp["tokens"] = tokens_tmp ;             
-            tokenAll_tmp.tokenAll.push(tokensPoss_tmp) ;            
-            console.log('tokens = ', tokens_tmp) ;
-            console.log('tokenAll = ', JSON.stringify(tokenAll_tmp)) ;
+            tokensPoss_tmp = {
+                "tokens": tokens_tmp ,
+                "poss": poss_tmp
+            }             
+            tokenAll_tmp.tokenAll.push(tokensPoss_tmp) ;
+            //console.log('tokenAll_tmp = ', JSON.stringify(tokenAll_tmp)) ;
             break ;
          case 'pos_txt_nr':            
             const pos = obj[key] ;
-            console.log('pos = ', pos.value) ;
             tokensPoss_tmp = {} ;
             tokensPoss12_tmp = {} ;            
             i_text++ ;
@@ -144,13 +142,6 @@ function buildSearchTest(obj) {
                "pos": pos.value
             } ;            
             poss_tmp.push(pos_tmp) ;            
-            console.log('poss = ', poss_tmp) ;
-            tokensPoss12_tmp = {
-                "poss": poss12_tmp
-            } ;
-            tokensPoss_tmp = {                
-                "poss": poss_tmp
-                } ;
             break ;
          case 'name':
             //console.log('name = ', obj[key]) ;            
