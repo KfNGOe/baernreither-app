@@ -36,44 +36,21 @@ function myCallback({ token, index }) {
    return token ;
  }
 
-function buildSearchTokenAll(obj) {   
+function buildSearchStems(obj) {   
    Object.keys(obj).forEach((key) => {
       switch(key) {
          case 'tokenAll':
-            if(Array.isArray(obj[key])) {               
-                //level + 1
-                obj[key].forEach((item, index, array) => {
-                   if (typeof item === 'object') {
-                     buildSearchTokenAll(item) ;
-                   }
+            if(Array.isArray(obj[key])) {
+                let index_token = 0 ;            
+                groupedByToken = obj[key].groupBy( item => {
+                    //item['index'] = index_token ;
+                    index_token++ ;
+                    return item.token ;
                 }) ;
+                //console.log('groupedByToken = ', groupedByToken) ;
                 //level - 1               
              } else {
              }
-            break ;
-         case 'tokens':
-            let index_token = 0 ;            
-            groupedByToken = obj[key].groupBy( item => {
-               item['index'] = index_token ;
-               index_token++ ;
-               return item.token ;
-            }) ;            
-            break ;
-         case 'poss':            
-            const pos = obj[key] ;
-            Object.keys(groupedByToken).forEach((key) => {
-               groupedByToken[key].forEach((item) => {                  
-                  if (pos.length > 1) {
-                     item['pos'] = pos[0].pos ;
-                     item['pos_next'] = pos[1].pos ;
-                     tokenAll.tokenAll.push(item) ; 
-                  } else {
-                     item['pos'] = pos[0].pos ;
-                     tokenAll.tokenAll.push(item) ; 
-                  }
-               }) ;                
-            }) ;            
-            //console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
             break ;
          case 'name':
             break ;
@@ -89,19 +66,19 @@ function buildSearchTokenAll(obj) {
 } ; 
 
 //read test json file
-let json_in = fs.readFileSync('./staticSearch/ssTokens_tmp.json', 'utf8');
+let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_test.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
-buildSearchTokenAll(jsonJs_in) ;
+buildSearchStems(jsonJs_in) ;
 
-let jsonJs_out = tokenAll ;
+let jsonJs_out = groupedByToken ;
 
 //convert js object to tei
 //var json_out = convert.js2json(jsonJs_out, {compact: false, spaces: 2}) ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
-fs.writeFileSync('./staticSearch/tokens/tokenAll.json', json_out ) ;  
+fs.writeFileSync('./staticSearch/ssStems_tmp.json', json_out ) ;
 console.log('json data written: ', json_out.length, ' bytes')
