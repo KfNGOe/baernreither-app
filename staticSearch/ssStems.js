@@ -8,7 +8,6 @@ const { sort } = require('core-js/actual/array/sort') ;
 const { exit } = require("process");
 
 const separator = '|' ;
-const escChar = '\\' ;
 const title_short = 'Bae_TB_8' ;
 var groupedByToken = {} ;
 var tokenAll = {
@@ -43,7 +42,7 @@ const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_tei=process.env.filepath_out_tei ;
 
-function buildSearchStems(obj) {   
+function buildStems(obj) {   
    Object.keys(obj).forEach((key) => {
       switch(key) {
          case 'tokenAll':
@@ -115,7 +114,7 @@ var jsonJs_in = JSON.parse(json_in) ;
 
 countArrNr = jsonJs_in.tokenAll.length ;    
 
-buildSearchStems(jsonJs_in) ;
+buildStems(jsonJs_in) ;
 
 //let jsonJs_out = groupedByToken ;
 

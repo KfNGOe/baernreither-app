@@ -55,14 +55,14 @@ function countText(obj) {
 } ;
 
 
-function buildSearchTokens(obj) {   
+function buildTokens(obj) {   
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
         case 'results':
             if (typeof obj[key] === 'object') {
                 //console.log('item = ', item, ', index = ', index) ;          
-                buildSearchTokens(obj[key]) ;
+                buildTokens(obj[key]) ;
             }
             break ;
          case 'bindings':
@@ -72,7 +72,7 @@ function buildSearchTokens(obj) {
                 obj[key].forEach((item, index, array) => {
                    if (typeof item === 'object') {
                       //console.log('item = ', item, ', index = ', index) ;          
-                      buildSearchTokens(item) ;
+                      buildTokens(item) ;
                    }
                 }) ;
                 //level - 1               
@@ -167,10 +167,10 @@ console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
-countTextN = countText(jsonJs_in) ;
+countTextN = jsonJs_in.results.bindings.length ;    
 console.log('countTextN = ', countTextN) ;
 
-buildSearchTokens(jsonJs_in) ;
+buildTokens(jsonJs_in) ;
 
 let jsonJs_out = tokenAll_tmp ;
 
