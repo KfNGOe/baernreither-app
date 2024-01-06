@@ -60,13 +60,6 @@ function buildSearchTokenAll(obj) {
                index_token++ ;
                tokenPos.push(item) ;
             }) ;
-            /*      
-            groupedByToken = obj[key].groupBy( item => {
-               item['index'] = index_token ;
-               index_token++ ;
-               return item.token ;
-            }) ;
-            */            
             break ;
          case 'poss':            
             let pos = obj[key] ;
@@ -80,21 +73,7 @@ function buildSearchTokenAll(obj) {
                   tokenAll.tokenAll.push(item) ; 
                }
             }) ;
-            /*
-            Object.keys(groupedByToken).forEach((key) => {
-               groupedByToken[key].forEach((item) => {                  
-                  if (pos.length > 1) {
-                     item['pos'] = pos[0].pos ;
-                     item['pos_next'] = pos[1].pos ;
-                     tokenAll.tokenAll.push(item) ; 
-                  } else {
-                     item['pos'] = pos[0].pos ;
-                     tokenAll.tokenAll.push(item) ; 
-                  }
-               }) ;                
-            }) ; 
-            */           
-            //console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
+            tokenPos = [] ;            
             break ;
          case 'name':
             break ;
