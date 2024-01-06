@@ -11,6 +11,7 @@ var groupedByToken = {} ;
 var tokenAll = {
    "tokenAll": []
 } ;
+var tokenPos = [] ;
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -52,15 +53,34 @@ function buildSearchTokenAll(obj) {
              }
             break ;
          case 'tokens':
-            let index_token = 0 ;            
+            let index_token = 0 ;
+            let tokens = obj[key] ;
+            tokens.forEach((item, index, array) => {
+               item['index'] = index_token ;
+               index_token++ ;
+               tokenPos.push(item) ;
+            }) ;
+            /*      
             groupedByToken = obj[key].groupBy( item => {
                item['index'] = index_token ;
                index_token++ ;
                return item.token ;
-            }) ;            
+            }) ;
+            */            
             break ;
          case 'poss':            
-            const pos = obj[key] ;
+            let pos = obj[key] ;
+            tokenPos.forEach((item, index, array) => {
+               if (pos.length > 1) {
+                  item['pos'] = pos[0].pos ;
+                  item['pos_next'] = pos[1].pos ;
+                  tokenAll.tokenAll.push(item) ; 
+               } else {
+                  item['pos'] = pos[0].pos ;
+                  tokenAll.tokenAll.push(item) ; 
+               }
+            }) ;
+            /*
             Object.keys(groupedByToken).forEach((key) => {
                groupedByToken[key].forEach((item) => {                  
                   if (pos.length > 1) {
@@ -72,7 +92,8 @@ function buildSearchTokenAll(obj) {
                      tokenAll.tokenAll.push(item) ; 
                   }
                }) ;                
-            }) ;            
+            }) ; 
+            */           
             //console.log('tokenAll = ', JSON.stringify(tokenAll)) ;
             break ;
          case 'name':
