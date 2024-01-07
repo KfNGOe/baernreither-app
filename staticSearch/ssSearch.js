@@ -12,13 +12,20 @@ const tokenOffset = 3 ;
 const title_short = 'Bae_TB_8' ;
 
 var searchStr = 'die aus Gründen' ;
-var tokens_tmp = [] ;
-var token_tmp = {} ;
+var searchToken = {} ;
+var searchTokens = [] ;
+var token = {} ;
 var tokens = [] ;
 var i_char = 0 ;
 var json_in = {} ;
 var jsonJs_in = {} ;
-var startTokens = [] ;
+var startInsts = [] ;
+var hits = [] ;
+var hits_start = [] ;
+var hits_filtered = [] ;
+var hits_curr = [] ;
+var insts_curr = [] ;
+var startTokens_tmp = [] ;
 
 var Tokenizer = require('tokenize-text');
 var tokenize = new Tokenizer();
@@ -43,6 +50,25 @@ var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) 
     ]
 }); 
 
+function hitsFilter(hits) {
+    let hits_filtered = [] ;
+    let hits_tmp = [] ;
+    hits.forEach((hit, index, array) => {
+        hits_tmp.push(hit.token_next_uri) ;
+    }) ;
+    hits_filtered = hits_tmp.filter((item, index, array) => {
+        return hits_tmp.indexOf(item) === index ;
+    }) ;
+    return hits_filtered ;
+}
+
+function getInstances(hit) {
+    let searchTokenFileName = './staticSearch/stems/' + hit ;
+    json_in = fs.readFileSync(searchTokenFileName, 'utf8');
+    jsonJs_in = JSON.parse(json_in) ;    
+    return jsonJs_in.instances ;
+}
+
 //read file with tokens as string
 let text_in = fs.readFileSync('./staticSearch/ssTokenString.txt', 'utf8');
 console.log('text data read: ', text_in.length, ' bytes') ;
@@ -51,33 +77,44 @@ console.log('text data read: ', text_in.length, ' bytes') ;
 let searchStrLength = searchStr.length ;
 console.log('searchStrLength = ', searchStrLength) ;
 let N_triple = searchStrLength - 2 ;
-tokens_tmp = [] ;            
+searchTokens = [] ;            
 for (i_char = 0; i_char < N_triple; i_char++) {
     tokens = splitIn(searchStr);
-    token_tmp = {
+    token = {
             "token": tokens[0].value
         } ;
-    tokens_tmp.push(token_tmp) ;                
+    searchTokens.push(token) ;                
 }
-console.log(tokens_tmp) ;
+console.log('searchTokens =', searchTokens) ;
 
 //find first token of search string in tokens
-let searchToken = separator + tokens_tmp[0].token + separator ;
+searchToken = separator + searchTokens[0].token + separator ;
 if (text_in.includes(searchToken)) {
     console.log('search string found') ;
-    searchToken = tokens_tmp[0].token ;
-    let searchTokenFileName = './staticSearch/stems/' + searchToken + '.json' ;
-    json_in = fs.readFileSync(searchTokenFileName, 'utf8');
-    jsonJs_in = JSON.parse(json_in) ;    
-    startTokens = jsonJs_in.instances ;
-    console.log('startTokens = ', startTokens) ;
+    let hit = searchTokens[0].token + '.json' ;
+    hits_start = getInstances(hit) ;     
     //find other tokens of search string in tokens
+    hits = hits_start ;
     for (i_tok = 1; i_tok < N_triple; i_tok++) {
-        startTokens.forEach((item, index, array) => {
-            item.token_next_uri === tokens_tmp[i_tok].token + '.json' ;
-            console.log('item = ', item) ;
+        hits.forEach((hit, index, array) => {
+            if (hit.token_next_uri === searchTokens[i_tok].token + '.json') {
+                hits_curr.push(hit) ;                
+            }            
         }) ;
-    }    
+        hits = hits_curr ;
+        hits_curr = [] ;        
+        console.log('hits = ', hits) ;        
+        //remove duplicates from hits
+        hits_filtered = hitsFilter(hits) ;
+        console.log('hits_filtered = ', hits_filtered) ;
+        //get instances of next token
+        hits_filtered.forEach((hit, index, array) => {
+            hits_curr = hits_curr.concat(getInstances(hit)) ;            
+        }) ;
+        hits = hits_curr ;
+        hits_curr = [] ;
+    }
+    console.log('hits = ', JSON.stringify(hits)) ;    
 } else {
     console.log('search string not found') ; 
 }

@@ -13,6 +13,7 @@ var groupedByToken = {} ;
 var tokenAll = {
    "tokenAll": []
 } ;
+var index_tokenAll = 0 ;
 var ssTokenStr = '' ;
 var ssStem_tmp = {
     "token": "",
@@ -65,14 +66,21 @@ function buildStems(obj) {
                         instance_tmp.docId = title_short ;
                         instance_tmp.index = item.index ;
                         instance_tmp.pos = item.pos ;
-                        let index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
+                        if (item.pos_next !== undefined) {
+                            instance_tmp.pos_next = item.pos_next;
+                            index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos && item.pos_next === instance_tmp.pos_next) ;
+                        } else {
+                            index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
+                        }                        
                         //console.log('index_tokenAll = ', index_tokenAll) ;
                         if (index_tokenAll > -1) {
                             if (index_tokenAll + 1 < countArrNr) {
                                 instance_tmp.token_next_uri = jsonJs_in.tokenAll[index_tokenAll + 1].token + '.json' ;
                                 //console.log('instance_tmp = ', instance_tmp.token_next_uri) ;
-                            } else {
-                                //console.log('instance_tmp = ', instance_tmp.token_next_uri) ;
+                            }
+                            if (index_tokenAll > 0) {
+                                instance_tmp.token_prev_uri = jsonJs_in.tokenAll[index_tokenAll - 1].token + '.json' ;
+                                //console.log('instance_tmp = ', instance_tmp.token_prev_uri) ;                                
                             }                       
                         } else {
                             console.log('index of token not found') ;                            
