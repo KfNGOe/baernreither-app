@@ -22,12 +22,13 @@ var jsonJs_in = {} ;
 var startInsts = [] ;
 var hits = [] ;
 var hits_start = [] ;
-var hits_filtered = [] ;
+var hitsFileName_filtered = [] ;
 var hits_curr = [] ;
 var insts_curr = [] ;
 var startTokens_tmp = [] ;
 
 var Tokenizer = require('tokenize-text');
+const { get } = require("jquery");
 var tokenize = new Tokenizer();
 
 // Creating a window with a document
@@ -51,20 +52,20 @@ var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) 
 }); 
 
 function hitsFilter(hits) {
-    let hits_filtered = [] ;
-    let hits_tmp = [] ;
+    let hitsFileName_filtered = [] ;
+    let hitsFileName = [] ;
     hits.forEach((hit, index, array) => {
-        hits_tmp.push(hit.token_next_uri) ;
+        hitsFileName.push(hit.token_next_uri) ;
     }) ;
-    hits_filtered = hits_tmp.filter((item, index, array) => {
-        return hits_tmp.indexOf(item) === index ;
+    hitsFileName_filtered = hitsFileName.filter((item, index, array) => {
+        return hitsFileName.indexOf(item) === index ;
     }) ;
-    return hits_filtered ;
+    return hitsFileName_filtered ;
 }
 
-function getInstances(hit) {
-    let searchTokenFileName = './staticSearch/stems/' + hit ;
-    json_in = fs.readFileSync(searchTokenFileName, 'utf8');
+function getInstances(hitFileName) {
+    let searchTokenFilePath = './staticSearch/stems/' + hitFileName ;
+    json_in = fs.readFileSync(searchTokenFilePath, 'utf8');
     jsonJs_in = JSON.parse(json_in) ;    
     return jsonJs_in.instances ;
 }
@@ -91,25 +92,35 @@ console.log('searchTokens =', searchTokens) ;
 searchToken = separator + searchTokens[0].token + separator ;
 if (text_in.includes(searchToken)) {
     console.log('search string found') ;
-    let hit = searchTokens[0].token + '.json' ;
-    hits_start = getInstances(hit) ;     
+    let searchTokenFileName = searchTokens[0].token + '.json' ;
+    hits_start = getInstances(searchTokenFileName) ;
     //find other tokens of search string in tokens
     hits = hits_start ;
     for (i_tok = 1; i_tok < N_triple; i_tok++) {
         hits.forEach((hit, index, array) => {
+            let hit_next = getInstances(hit.token_next_uri) ;
+            let hit_prev = getInstances(hit.token_prev_uri) ;
+            console.log('hit_next = ', hit_next) ;
+            console.log('hit_prev = ', hit_prev) ;
             if (hit.token_next_uri === searchTokens[i_tok].token + '.json') {
-                hits_curr.push(hit) ;                
-            }            
+                if (i_tok-2 >= 0) {
+                    if (hit.token_prev_uri === searchTokens[i_tok-2].token + '.json') {
+                        hits_curr.push(hit) ;
+                    }                    
+                } else {
+                    hits_curr.push(hit) ;
+                }                
+            }
         }) ;
         hits = hits_curr ;
         hits_curr = [] ;        
         console.log('hits = ', hits) ;        
         //remove duplicates from hits
-        hits_filtered = hitsFilter(hits) ;
-        console.log('hits_filtered = ', hits_filtered) ;
+        hitsFileName_filtered = hitsFilter(hits) ;
+        console.log('hits_filtered = ', hitsFileName_filtered) ;
         //get instances of next token
-        hits_filtered.forEach((hit, index, array) => {
-            hits_curr = hits_curr.concat(getInstances(hit)) ;            
+        hitsFileName_filtered.forEach((hitFileName, index, array) => {
+            hits_curr = hits_curr.concat(getInstances(hitFileName)) ;            
         }) ;
         hits = hits_curr ;
         hits_curr = [] ;

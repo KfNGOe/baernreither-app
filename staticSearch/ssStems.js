@@ -65,6 +65,7 @@ function buildStems(obj) {
                         //console.log('item = ', item) ;
                         instance_tmp.docId = title_short ;
                         instance_tmp.index = item.index ;
+                        instance_tmp.charN = item.charN ;
                         instance_tmp.pos = item.pos ;
                         if (item.pos_next !== undefined) {
                             instance_tmp.pos_next = item.pos_next;

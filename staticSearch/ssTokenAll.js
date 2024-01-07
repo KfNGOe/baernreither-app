@@ -54,9 +54,10 @@ function buildSearchTokenAll(obj) {
             break ;
          case 'tokens':
             let index_token = 0 ;
-            let tokens = obj[key] ;
+            let tokens = obj[key] ;            
             tokens.forEach((item, index, array) => {
                item['index'] = index_token ;
+               item['charN'] = tokens.length + 2 ;
                index_token++ ;
                tokenPos.push(item) ;
             }) ;
