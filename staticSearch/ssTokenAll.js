@@ -12,6 +12,7 @@ var tokenAll = {
    "tokenAll": []
 } ;
 var tokenPos = [] ;
+var tokensLength = 0 ;
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -54,10 +55,10 @@ function buildSearchTokenAll(obj) {
             break ;
          case 'tokens':
             let index_token = 0 ;
-            let tokens = obj[key] ;            
+            let tokens = obj[key] ;
+            tokensLength = tokens.length ;
             tokens.forEach((item, index, array) => {
-               item['index'] = index_token ;
-               item['charN'] = tokens.length + 2 ;
+               item['index'] = index_token ;               
                index_token++ ;
                tokenPos.push(item) ;
             }) ;
@@ -65,12 +66,14 @@ function buildSearchTokenAll(obj) {
          case 'poss':            
             let pos = obj[key] ;
             tokenPos.forEach((item, index, array) => {
-               if (pos.length > 1) {
-                  item['pos'] = pos[0].pos ;
-                  item['pos_next'] = pos[1].pos ;
+               if (pos.length > 1) {                  
+                  item['pos_pr'] = pos[0].pos ;
+                  item['pos_nxt'] = pos[1].pos ;
+                  item['chN'] = tokensLength + 2 ;
                   tokenAll.tokenAll.push(item) ; 
-               } else {
+               } else {                  
                   item['pos'] = pos[0].pos ;
+                  item['chN'] = tokensLength + 2 ;
                   tokenAll.tokenAll.push(item) ; 
                }
             }) ;

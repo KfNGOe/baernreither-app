@@ -98,12 +98,77 @@ if (text_in.includes(searchToken)) {
     hits = hits_start ;
     for (i_tok = 1; i_tok < N_triple; i_tok++) {
         hits.forEach((hit, index, array) => {
-            let hit_next = getInstances(hit.token_next_uri) ;
-            let hit_prev = getInstances(hit.token_prev_uri) ;
-            console.log('hit_next = ', hit_next) ;
-            console.log('hit_prev = ', hit_prev) ;
+            if (hit.token_next_uri === searchTokens[i_tok].token + '.json') {
+                let hits_next = getInstances(hit.token_next_uri) ;
+                console.log('hits next = ', hits_next) ;
+                let hit_next = hits_next.find((hit_next, index, array) => {
+                    //find next hit which has same doc_Id as current hit
+                    hit_next.doc_Id === hit.doc_Id ;
+                    //check if index of next hit is index + 1 of curent hit
+                    if (hit_next.index === hit.index + 1) {
+                        //check if prev pos of next hit exists
+                        if (hit_next.pos_pr !== undefined) {
+                            //find next hit which prev pos is same as next pos of current hit
+                            hit_next.pos_pr === hit.pos_nxt ;
+                        } else {
+                            //find next hit which pos is same as pos of current hit
+                            hit_next.pos === hit.pos ;
+                        }
+                    } else {
+                        //check if index of current hit is last token of current hit position
+                        if (hit.index + 3 === hit.chN) {
+                            //find next hit which index is 0 and prev pos is same as pos of current hit
+                            hit_next.index === 0 ;
+                            hit_next.pos_pr === hit.pos ;                    
+                        } else {
+                            //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
+                            hit_next.index === hit.index - 1 ;
+                            hit_next.pos === hit.pos_nxt ;
+                        }    
+                    }
+                }) ;
+                if (hit_next !== null) {                    
+                    //check first previous hit
+                    if (i_tok-2 >= 0) {
+                        if (hit.token_prev_uri === searchTokens[i_tok-2].token + '.json') {
+                            let hits_prev = getInstances(hit.token_prev_uri) ;
+                            console.log('hits prev = ', hits_prev) ;
+                            let hit_prev = hits_prev.find((hit_prev, index, array) => {
+                                //find prev hit which has same doc_Id as current hit
+                                hit_prev.doc_Id === hit.doc_Id ;
+                                //check if index of prev hit is index - 1 of curent hit
+                                if (hit_prev.index === hit.index - 1) {
+                                    //check if prev pos of prev hit exists
+                                    if (hit_prev.pos_pr !== undefined) {
+                                        //find prev hit which prev pos is same as next pos of current hit
+                                        hit_prev.pos_pr === hit.pos ;                                        
+                                    } else {
+                                        //find prev hit which pos is same as pos of current hit
+                                        hit_prev.pos === hit.pos_pr ;
+                                    }
+                                } else {
+                                    //check if index of current hit is first token of current hit position
+                                    if (hit.index === 0) {
+                                        //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
+                                        hit_prev.index === hit.chN - 3 ;
+                                        hit_prev.pos === hit.pos_pr ;                    
+                                    } else {
+                                        //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
+                                        hit_prev.index === hit.index + 1 ;
+                                        hit_prev.pos === hit.pos_pr ;
+                                    }    
+                                }
+                            }) ;
+                        }
+                    }    
+                }
+            }
+
+            
             if (hit.token_next_uri === searchTokens[i_tok].token + '.json') {
                 if (i_tok-2 >= 0) {
+                    let hits_prev = getInstances(hit.token_prev_uri) ;            
+                    console.log('hits prev = ', hits_prev) ;
                     if (hit.token_prev_uri === searchTokens[i_tok-2].token + '.json') {
                         hits_curr.push(hit) ;
                     }                    

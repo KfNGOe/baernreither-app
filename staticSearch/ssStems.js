@@ -64,15 +64,16 @@ function buildStems(obj) {
                     groupedByToken[key].forEach((item, index, array) => {
                         //console.log('item = ', item) ;
                         instance_tmp.docId = title_short ;
-                        instance_tmp.index = item.index ;
-                        instance_tmp.charN = item.charN ;
-                        instance_tmp.pos = item.pos ;
-                        if (item.pos_next !== undefined) {
-                            instance_tmp.pos_next = item.pos_next;
-                            index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos && item.pos_next === instance_tmp.pos_next) ;
+                        instance_tmp.index = item.index ;                        
+                        if (item.pos_nxt !== undefined) {
+                            instance_tmp.pos_pr = item.pos_pr ;
+                            instance_tmp.pos_nxt = item.pos_nxt ;
+                            index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos_pr === instance_tmp.pos_pr && item.pos_nxt === instance_tmp.pos_nxt) ;
                         } else {
+                            instance_tmp.pos = item.pos ;
                             index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
-                        }                        
+                        }
+                        instance_tmp.chN = item.chN ;                        
                         //console.log('index_tokenAll = ', index_tokenAll) ;
                         if (index_tokenAll > -1) {
                             if (index_tokenAll + 1 < countArrNr) {
