@@ -22,6 +22,7 @@ var json_in = {} ;
 var jsonJs_in = {} ;
 var hits = [] ;
 var hits_start = [] ;
+var hit_start_test = {} ;
 var hits_end = [] ;
 var hits_curr = [] ;
 
@@ -93,12 +94,12 @@ function getHitStart(hit, i_tok) {
                     return flag ;
                 }) ;
                 if (hit_start !== undefined) {
-                    return hit_start ;
+                    hit_start_test = hit_start ;
                 }
             } else {
                 i_tok = i_tok - (hit_prev.index + 1) ;
+                getHitStart(hit_prev, i_tok) ;
             }            
-            getHitStart(hit_prev, i_tok) ;
         }
     }
 }
@@ -323,7 +324,9 @@ if (text_in.includes(searchToken)) {
                     } else {
                         let i_tok = 0 ;                        
                         i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
-                        flag = (hit_start === getHitStart(hit_end, i_tok)) ? true : false ;                        
+                        getHitStart(hit_end, i_tok) ;
+                        console.log('hit_start_test = ', hit_start_test) ;
+                        flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;                        
                     }
                 }
             }
