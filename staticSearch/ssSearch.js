@@ -69,39 +69,53 @@ function getInstances(hitFileName) {
     return jsonJs_in.instances ;
 }
 
-function getHitStart(hit, i_tok) {    
-    let hits_prev_12 = getInstances(searchTokens[i_tok].token + '.json') ;
-    let hit_prev_12 = hits_prev_12.find((hit_prev_12, index, array) => {
-        let flag = false ;
-        flag = (hit_prev_12.docId === hit.docId && hit_prev_12.pos_nxt === hit.pos) ? true : false ;
-        return flag ;        
-    }) ;
-    if (hit_prev_12 !== undefined) {
-        //get privous index from last token of previous pos
-        i_tok = i_tok - 2 ;
+function getHitStart(hit, i_tok) {
+    if (i_tok <= 0) {
         let hits_prev = getInstances(searchTokens[i_tok].token + '.json') ;
         let hit_prev = hits_prev.find((hit_prev, index, array) => {
             let flag = false ;
-            flag = (hit_prev.docId === hit_prev_12.docId && hit_prev.pos === hit_prev_12.pos_pr && hit_prev.index === (hit_prev.chN - 3)) ? true : false ;
+            flag = (hit_prev.docId === hit_end.docId && hit_prev.pos === hit_end.pos && hit_prev.index === (hit_end.index - tokens_N + 1)) ? true : false ;
             return flag ;
         }) ;
         if (hit_prev !== undefined) {
-            if (i_tok - (hit_prev.index + 1) < 0) {                
-                let hits_start = getInstances(searchTokens[0].token + '.json') ;
-                let hit_start = hits_start.find((hit_start, index, array) => {
-                    let flag = false ;
-                    flag = (hit_start.docId === hit_prev.docId && hit_start.pos === hit_prev.pos && hit_start.index === (hit_prev.index - i_tok)) ? true : false ;
-                    return flag ;
-                }) ;
-                if (hit_start !== undefined) {
-                    hit_start_test = hit_start ;
-                }
-            } else {
-                i_tok = i_tok - (hit_prev.index + 1) ;
-                getHitStart(hit_prev, i_tok) ;
-            }            
+            hit_start_test = hit_prev ;
+            console.log('hit_start_test = ', hit_start_test) ;            
         }
-    }
+    } else {
+        let hits_prev_12 = getInstances(searchTokens[i_tok].token + '.json') ;
+        let hit_prev_12 = hits_prev_12.find((hit_prev_12, index, array) => {
+            let flag = false ;
+            flag = (hit_prev_12.docId === hit.docId && hit_prev_12.pos_nxt === hit.pos) ? true : false ;
+            return flag ;        
+        }) ;
+        if (hit_prev_12 !== undefined) {
+            //get privous index from last token of previous pos
+            i_tok = i_tok - 2 ;
+            let hits_prev = getInstances(searchTokens[i_tok].token + '.json') ;
+            let hit_prev = hits_prev.find((hit_prev, index, array) => {
+                let flag = false ;
+                flag = (hit_prev.docId === hit_prev_12.docId && hit_prev.pos === hit_prev_12.pos_pr && hit_prev.index === (hit_prev.chN - 3)) ? true : false ;
+                return flag ;
+            }) ;
+            if (hit_prev !== undefined) {
+                if (i_tok - (hit_prev.index + 1) < 0) {                
+                    let hits_start = getInstances(searchTokens[0].token + '.json') ;
+                    let hit_start = hits_start.find((hit_start, index, array) => {
+                        let flag = false ;
+                        flag = (hit_start.docId === hit_prev.docId && hit_start.pos === hit_prev.pos && hit_start.index === (hit_prev.index - i_tok)) ? true : false ;
+                        return flag ;
+                    }) ;
+                    if (hit_start !== undefined) {
+                        hit_start_test = hit_start ;
+                    }
+                } else {
+                    i_tok = i_tok - (hit_prev.index + 1) ;
+                    getHitStart(hit_prev, i_tok) ;
+                }            
+            }
+        }
+    }    
+    
 }
 
 //read file with tokens as string
@@ -315,28 +329,20 @@ if (text_in.includes(searchToken)) {
     //TEST END
     
     hits_end.forEach((hit_end, index, array) => {
+        //get start hit for each end hit
+        let i_tok = 0 ;        
+        i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
+        getHitStart(hit_end, i_tok) ;
+        console.log('hit_start_test = ', hit_start_test) ;                
         let hit_start = hits_start.find((hit_start, index, array) => {
             let flag = false ;
-            if (hit_end.docId === hit_start.docId) {
-                if(hit_end.pos >= hit_start.pos) {
-                    if(hit_end.pos === hit_start.pos) {
-                        flag = (hit_start.index === hit_end.index - tokens_N + 1) ? true : false ;
-                    } else {
-                        let i_tok = 0 ;                        
-                        i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
-                        getHitStart(hit_end, i_tok) ;
-                        console.log('hit_start_test = ', hit_start_test) ;
-                        flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;                        
-                    }
-                }
-            }
+            flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;            
             return flag ;
         }) ;
         if (hit_start !== undefined) {
             hits.push(hit_start) ;
         }
     }) ;    
-    
 } else {
     console.log('search string not found: first token missing') ; 
 }
