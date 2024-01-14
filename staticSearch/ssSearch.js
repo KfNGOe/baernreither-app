@@ -241,12 +241,16 @@ if (text_in.includes(searchToken)) {
                         let hits_next = getInstances(hit.token_next_uri) ;
                         console.log('hits next = ', hits_next) ;
                         let hit_next = checkHitsNext(hit, hits_next) ;
-                        if (hit_next !== undefined) {                    
-                            hits_curr.push(hit_next) ;   
+                        if (hit_next !== undefined) {                                                
+                            hits_curr.push(hit_next) ;                            
                         }                    
                     }                
                 }) ;
-                hits = hits_curr ;
+                let hit_obj = {} ;
+                let hits_arr = hits_curr ;
+                hit_obj.token = hits_next.token ;
+                hit_obj.instances = hits_arr ;   
+                hits = hit_obj ;
                 hits_curr = [] ;
             } else {
 //last token of search string                
