@@ -71,10 +71,10 @@ function getInstances(hitFileName) {
 
 function getHitStart(hit, i_tok) {
     if (i_tok <= 0) {
-        let hits_prev = getInstances(searchTokens[i_tok].token + '.json') ;
+        let hits_prev = getInstances(searchTokens[0].token + '.json') ;
         let hit_prev = hits_prev.find((hit_prev, index, array) => {
             let flag = false ;
-            flag = (hit_prev.docId === hit_end.docId && hit_prev.pos === hit_end.pos && hit_prev.index === (hit_end.index - tokens_N + 1)) ? true : false ;
+            flag = (hit_prev.docId === hit.docId && hit_prev.pos === hit.pos && hit_prev.index === (hit.index - tokens_N + 1)) ? true : false ;
             return flag ;
         }) ;
         if (hit_prev !== undefined) {
@@ -118,6 +118,68 @@ function getHitStart(hit, i_tok) {
     
 }
 
+function checkHitsNext(hit, hits_next) {
+    let hit_next = hits_next.find((hit_next, index, array) => {
+        let flag = false ;
+        //find next hit which has same docId as current hit
+        if (hit_next.docId === hit.docId) {
+            //check if index of next hit is index + 1 of curent hit
+            if (hit_next.index === hit.index + 1) {
+                //check if prev pos of next hit exists
+                if (hit_next.pos_pr !== undefined) {
+                    //find next hit which prev pos is same as next pos of current hit
+                    flag = (hit_next.pos_nxt === hit.pos_nxt) ? true : false ;
+                } else {
+                    //find next hit which pos is same as pos of current hit
+                    flag = (hit_next.pos === hit.pos) ? true : false ;                                        
+                }
+            } else {
+                //check if index of current hit is last token of current hit position and prev pos of next hit exists
+                if (hit.index + 3 === hit.chN && hit_next.pos_pr !== undefined) {                                    
+                    //find next hit which index is 0 and prev pos is same as pos of current hit
+                    flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
+                } else {
+                    //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
+                    flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
+                }    
+            }
+        }
+        return flag ;
+    }) ;
+    return hit_next ;
+}
+
+function checkHitsPrevious(hit, hits_prev) {
+    let hit_prev = hits_prev.find((hit_prev, index, array) => {
+        let flag = false ;
+        //find prev hit which has same docId as current hit
+        if (hit_prev.docId === hit.docId) {
+            //check if index of prev hit is index - 1 of curent hit
+            if (hit_prev.index === hit.index - 1) {
+                //check if prev pos of prev hit exists
+                if (hit_prev.pos_nxt !== undefined) {
+                    //find prev hit which prev pos is same as next pos of current hit
+                    flag = (hit_prev.pos_pr === hit.pos_pr) ? true : false ;                                            
+                } else {
+                    //find prev hit which pos is same as pos of current hit
+                    flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
+                }
+            } else {
+                //check if index of current hit is first token of current hit position and next pos of prev hit exists
+                if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
+                    //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
+                    flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
+                } else {
+                    //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
+                    flag = (hit_prev.index === hit_prev.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;
+                }    
+            }
+        }
+        return flag ;                                
+    }) ;
+    return hit_prev ;
+}
+
 //read file with tokens as string
 let text_in = fs.readFileSync('./staticSearch/ssTokenString.txt', 'utf8');
 console.log('text data read: ', text_in.length, ' bytes') ;
@@ -149,65 +211,13 @@ if (text_in.includes(searchToken)) {
                 if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
                     let hits_next = getInstances(hit.token_next_uri) ;
                     console.log('hits next = ', hits_next) ;
-                    let hit_next = hits_next.find((hit_next, index, array) => {
-                        let flag = false ;
-                        //find next hit which has same docId as current hit
-                        if (hit_next.docId === hit.docId) {
-                            //check if index of next hit is index + 1 of curent hit
-                            if (hit_next.index === hit.index + 1) {
-                                //check if prev pos of next hit exists
-                                if (hit_next.pos_pr !== undefined) {
-                                    //find next hit which prev pos is same as next pos of current hit
-                                    flag = (hit_next.pos_pr === hit.pos_nxt) ? true : false ;
-                                } else {
-                                    //find next hit which pos is same as pos of current hit
-                                    flag = (hit_next.pos === hit.pos) ? true : false ;                                        
-                                }
-                            } else {
-                                //check if index of current hit is last token of current hit position
-                                if (hit.index + 3 === hit.chN) {
-                                    //find next hit which index is 0 and prev pos is same as pos of current hit
-                                    flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
-                                } else {
-                                    //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
-                                    flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
-                                }    
-                            }
-                        }
-                        return flag ;
-                    }) ;
+                    let hit_next = checkHitsNext(hit, hits_next) ;                    
                     if (hit_next !== undefined) {                    
 //compare current hit with previous hits                        
                         if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
                             let hits_prev = getInstances(hit.token_prev_uri) ;
                             console.log('hits prev = ', hits_prev) ;
-                            let hit_prev = hits_prev.find((hit_prev, index, array) => {
-                                let flag = false ;
-                                //find prev hit which has same docId as current hit
-                                if (hit_prev.docId === hit.docId) {
-                                    //check if index of prev hit is index - 1 of curent hit
-                                    if (hit_prev.index === hit.index - 1) {
-                                        //check if prev pos of prev hit exists
-                                        if (hit_prev.pos_pr !== undefined) {
-                                            //find prev hit which prev pos is same as next pos of current hit
-                                            flag = (hit_prev.pos_pr === hit.pos) ? true : false ;                                            
-                                        } else {
-                                            //find prev hit which pos is same as pos of current hit
-                                            flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
-                                        }
-                                    } else {
-                                        //check if index of current hit is first token of current hit position
-                                        if (hit.index === 0) {
-                                            //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
-                                            flag = (hit_prev.index === hit.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-                                        } else {
-                                            //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
-                                            flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-                                        }    
-                                    }
-                                }
-                                return flag ;                                
-                            }) ;
+                            let hit_prev = checkHitsPrevious(hit, hits_prev) ;
                             if (hit_prev !== undefined) {                    
                                 hits_curr.push(hit_next) ;   
                             }
@@ -230,33 +240,7 @@ if (text_in.includes(searchToken)) {
                     if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
                         let hits_next = getInstances(hit.token_next_uri) ;
                         console.log('hits next = ', hits_next) ;
-                        let hit_next = hits_next.find((hit_next, index, array) => {
-                            let flag = false ;
-                            //find next hit which has same docId as current hit
-                            if (hit_next.docId === hit.docId) {
-                                //check if index of next hit is index + 1 of curent hit
-                                if (hit_next.index === hit.index + 1) {
-                                    //check if prev pos of next hit exists
-                                    if (hit_next.pos_pr !== undefined) {
-                                        //find next hit which prev pos is same as next pos of current hit
-                                        flag = (hit_next.pos_pr === hit.pos_nxt) ? true : false ;
-                                    } else {
-                                        //find next hit which pos is same as pos of current hit
-                                        flag = (hit_next.pos === hit.pos) ? true : false ;                                        
-                                    }
-                                } else {
-                                    //check if index of current hit is last token of current hit position
-                                    if (hit.index + 3 === hit.chN) {
-                                        //find next hit which index is 0 and prev pos is same as pos of current hit
-                                        flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
-                                    } else {
-                                        //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
-                                        flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
-                                    }    
-                                }
-                            }
-                            return flag ;
-                        }) ;
+                        let hit_next = checkHitsNext(hit, hits_next) ;
                         if (hit_next !== undefined) {                    
                             hits_curr.push(hit_next) ;   
                         }                    
@@ -272,33 +256,7 @@ if (text_in.includes(searchToken)) {
                         if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
                             let hits_prev = getInstances(hit.token_prev_uri) ;
                             console.log('hits prev = ', hits_prev) ;
-                            let hit_prev = hits_prev.find((hit_prev, index, array) => {
-                                let flag = false ;
-                                //find prev hit which has same docId as current hit
-                                if (hit_prev.docId === hit.docId) {
-                                    //check if index of prev hit is index - 1 of curent hit
-                                    if (hit_prev.index === hit.index - 1) {
-                                        //check if prev pos of prev hit exists
-                                        if (hit_prev.pos_pr !== undefined) {
-                                            //find prev hit which prev pos is same as next pos of current hit
-                                            flag = (hit_prev.pos_pr === hit.pos) ? true : false ;                                            
-                                        } else {
-                                            //find prev hit which pos is same as pos of current hit
-                                            flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
-                                        }
-                                    } else {
-                                        //check if index of current hit is first token of current hit position
-                                        if (hit.index === 0) {
-                                            //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
-                                            flag = (hit_prev.index === hit.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-                                        } else {
-                                            //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
-                                            flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-                                        }    
-                                    }
-                                }
-                                return flag ;
-                            }) ;
+                            let hit_prev = checkHitsPrevious(hit, hits_prev) ;                            
                             if (hit_prev !== undefined) {                    
                                 hits_curr.push(hit) ;   
                             }
@@ -316,33 +274,42 @@ if (text_in.includes(searchToken)) {
     console.log('hits start = ', JSON.stringify(hits_start)) ;
     console.log('hits end = ', JSON.stringify(hits_end)) ;
     //find for each end hit the start hit
-    
-    //TEST
-    hits_end = [{
-        "docId": "Bae_TB_8",
-        "index": 1,
-        "pos": "133",
-        "chN": 34,
-        "token_next_uri": "ei .json",
-        "token_prev_uri": "dre.json"
-      }]
-    //TEST END
-    
-    hits_end.forEach((hit_end, index, array) => {
-        //get start hit for each end hit
-        let i_tok = 0 ;        
-        i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
-        getHitStart(hit_end, i_tok) ;
-        console.log('hit_start_test = ', hit_start_test) ;                
-        let hit_start = hits_start.find((hit_start, index, array) => {
-            let flag = false ;
-            flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;            
-            return flag ;
+    if(!(hits_start.length === 1 && hits_end.length === 1)) {
+        hits_end.forEach((hit_end, index, array) => {
+            //get start hit for each end hit        
+            let i_tok = 0 ;        
+            i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
+            getHitStart(hit_end, i_tok) ;
+            console.log('hit_start_test = ', hit_start_test) ;                
+            let hit_start = hits_start.find((hit_start, index, array) => {
+                let flag = false ;
+                flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;            
+                return flag ;
+            }) ;
+            if (hit_start !== undefined) {
+                hits_curr.push(hit_start) ;
+            }                 
         }) ;
-        if (hit_start !== undefined) {
-            hits.push(hit_start) ;
+        hits_start = hits_curr ;
+    } else {        
+        console.log('hits_start.length = hits_end.length = 1') ;
+    }
+    //make a JsonJs object    
+    let hitsObj = {} ;
+    let hitsArr = [] ;
+    let hitsObj_tmp = {} ;
+    if(hits_start.length === hits_end.length) {
+        for (i_hit = 0; i_hit < hits_start.length; i_hit++) {
+            hitsObj_tmp.start = hits_start[i_hit] ;
+            hitsObj_tmp.end = hits_end[i_hit] ;
+            hitsArr.push(hitsObj_tmp) ;
+            hitsObj_tmp = {} ;
         }
-    }) ;    
+        hitsObj.hits = hitsArr ;
+        console.log('hitsObj = ', JSON.stringify(hitsObj)) ;
+    } else {
+        console.log('hits_start.length !== hits_end.length') ;
+    }
 } else {
     console.log('search string not found: first token missing') ; 
 }
