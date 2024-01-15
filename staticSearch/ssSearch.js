@@ -20,11 +20,14 @@ var tokens = [] ;
 var i_char = 0 ;
 var json_in = {} ;
 var jsonJs_in = {} ;
-var hits = [] ;
-var hits_start = [] ;
+var hits = {} ;
+var hits_start = {} ;
 var hit_start_test = {} ;
-var hits_end = [] ;
-var hits_curr = [] ;
+var hits_end = {} ;
+var hits_curr = {
+    "token": "",
+    "instances": []
+} ;
 
 var Tokenizer = require('tokenize-text');
 const { get } = require("jquery");
@@ -61,12 +64,19 @@ function hitsFilter(hits) {
     }) ;
     return hitsFileName_filtered ;
 }
-
+/*
 function getInstances(hitFileName) {
     let searchTokenFilePath = './staticSearch/stems/' + hitFileName ;
     json_in = fs.readFileSync(searchTokenFilePath, 'utf8');
     jsonJs_in = JSON.parse(json_in) ;    
     return jsonJs_in.instances ;
+}
+*/
+function getHits(hitFileName) {
+    let searchTokenFilePath = './staticSearch/stems/' + hitFileName ;
+    json_in = fs.readFileSync(searchTokenFilePath, 'utf8');
+    jsonJs_in = JSON.parse(json_in) ;    
+    return jsonJs_in ;
 }
 
 function getHitStart(hit, i_tok) {
@@ -119,7 +129,7 @@ function getHitStart(hit, i_tok) {
 }
 
 function checkHitsNext(hit, hits_next) {
-    let hit_next = hits_next.find((hit_next, index, array) => {
+    let hit_next = hits_next.instances.find((hit_next, index, array) => {
         let flag = false ;
         //find next hit which has same docId as current hit
         if (hit_next.docId === hit.docId) {
@@ -150,7 +160,7 @@ function checkHitsNext(hit, hits_next) {
 }
 
 function checkHitsPrevious(hit, hits_prev) {
-    let hit_prev = hits_prev.find((hit_prev, index, array) => {
+    let hit_prev = hits_prev.instances.find((hit_prev, index, array) => {
         let flag = false ;
         //find prev hit which has same docId as current hit
         if (hit_prev.docId === hit.docId) {
@@ -206,95 +216,106 @@ if (text_in.includes(searchToken)) {
         console.log('i_tok = ', i_tok) ;
 //tokens of search string
         if(0 < i_tok && i_tok < tokens_N-1) {            
-            hits.forEach((hit, index, array) => {
+            hits.instances.forEach((hit, index, array) => {
             //compare current hit with next hits
                 if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
-                    let hits_next = getInstances(hit.token_next_uri) ;
+                    let hits_next = getHits(hit.token_next_uri) ;
                     console.log('hits next = ', hits_next) ;
                     let hit_next = checkHitsNext(hit, hits_next) ;                    
                     if (hit_next !== undefined) {                    
 //compare current hit with previous hits                        
                         if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
-                            let hits_prev = getInstances(hit.token_prev_uri) ;
+                            let hits_prev = getHits(hit.token_prev_uri) ;
                             console.log('hits prev = ', hits_prev) ;
                             let hit_prev = checkHitsPrevious(hit, hits_prev) ;
-                            if (hit_prev !== undefined) {                    
-                                hits_curr.push(hit_next) ;   
+                            if (hit_prev !== undefined) {
+                                console.log(hit_next) ;                    
+                                hits_curr.token = hits_next.token ;
+                                hits_curr.instances.push(hit_next) ;
                             }
                         }                            
                     }
                 }                
             }) ;
-            hits = hits_curr ;
-            hits_curr = [] ;
+            hits.token = hits_curr.token ;
+            hits.instances = hits_curr.instances ;
+            hits_curr.token = '' ;
+            hits_curr.instances = [] ;
         } else {
 //first token of search string
             if(i_tok === 0) {
                 let searchTokenFileName = searchTokens[0].token + '.json' ;
                 //get start hits
-                hits_start = getInstances(searchTokenFileName) ;
+                hits_start = getHits(searchTokenFileName) ;
                 console.log('hits start = ', hits_start) ;
-                hits = hits_start ;
-                hits.forEach((hit, index, array) => {
+                hits.token = hits_start.token ;
+                hits.instances = hits_start.instances ;
+                hits.instances.forEach((hit, index, array) => {
                 //compare current hit with next hits
                     if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
-                        let hits_next = getInstances(hit.token_next_uri) ;
+                        let hits_next = getHits(hit.token_next_uri) ;
                         console.log('hits next = ', hits_next) ;
                         let hit_next = checkHitsNext(hit, hits_next) ;
                         if (hit_next !== undefined) {                                                
-                            hits_curr.push(hit_next) ;                            
+                            hits_curr.token = hits_next.token ;
+                            hits_curr.instances.push(hit_next) ;                            
                         }                    
                     }                
-                }) ;
-                let hit_obj = {} ;
-                let hits_arr = hits_curr ;
-                hit_obj.token = hits_next.token ;
-                hit_obj.instances = hits_arr ;   
-                hits = hit_obj ;
-                hits_curr = [] ;
+                }) ;                
+                hits.token = hits_curr.token ;
+                hits.instances = hits_curr.instances ;
+                hits_curr.token = '' ;
+                hits_curr.instances = [] ;
             } else {
 //last token of search string                
                 if(i_tok === tokens_N - 1) {
-                    hits.forEach((hit, index, array) => {
+                    hits.instances.forEach((hit, index, array) => {
                         //compare current hit with previous hits                        
                         if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
-                            let hits_prev = getInstances(hit.token_prev_uri) ;
+                            let hits_prev = getHits(hit.token_prev_uri) ;
                             console.log('hits prev = ', hits_prev) ;
                             let hit_prev = checkHitsPrevious(hit, hits_prev) ;                            
-                            if (hit_prev !== undefined) {                    
-                                hits_curr.push(hit) ;   
+                            if (hit_prev !== undefined) {
+                                hits_curr.token = hits.token ;
+                                hits_curr.instances.push(hit) ;                                
                             }
                         }                            
                     }) ;
-                    hits = hits_curr ;
-                    hits_curr = [] ;
+                    hits.token = hits_curr.token ;
+                    hits.instances = hits_curr.instances ;
+                    hits_curr.token = '' ;
+                    hits_curr.instances = [] ;
                 }
             }
         }    
     }
     //get end hits
-    hits_end = hits ;    
-    hits = [] ;
+    hits_end.token = hits.token ;
+    hits_end.instances = hits.instances ;
+    hits.token = '' ;
+    hits.instances = [] ;                    
     console.log('hits start = ', JSON.stringify(hits_start)) ;
     console.log('hits end = ', JSON.stringify(hits_end)) ;
     //find for each end hit the start hit
-    if(!(hits_start.length === 1 && hits_end.length === 1)) {
-        hits_end.forEach((hit_end, index, array) => {
+    if(!(hits_start.instances.length === 1 && hits_end.instances.length === 1)) {
+        hits_end.instances.forEach((hit_end, index, array) => {
             //get start hit for each end hit        
             let i_tok = 0 ;        
             i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
             getHitStart(hit_end, i_tok) ;
             console.log('hit_start_test = ', hit_start_test) ;                
-            let hit_start = hits_start.find((hit_start, index, array) => {
+            let hit_start = hits_start.instances.find((hit_start, index, array) => {
                 let flag = false ;
                 flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;            
                 return flag ;
             }) ;
             if (hit_start !== undefined) {
-                hits_curr.push(hit_start) ;
+                hits_curr.token = hits_start.token ;
+                hits_curr.instances.push(hit_start) ;                
             }                 
         }) ;
-        hits_start = hits_curr ;
+        hits_start.token = hits_curr.token ;
+        hits_start.instances = hits_curr.instances ;        
     } else {        
         console.log('hits_start.length = hits_end.length = 1') ;
     }
@@ -302,10 +323,10 @@ if (text_in.includes(searchToken)) {
     let hitsObj = {} ;
     let hitsArr = [] ;
     let hitsObj_tmp = {} ;
-    if(hits_start.length === hits_end.length) {
-        for (i_hit = 0; i_hit < hits_start.length; i_hit++) {
-            hitsObj_tmp.start = hits_start[i_hit] ;
-            hitsObj_tmp.end = hits_end[i_hit] ;
+    if(hits_start.instances.length === hits_end.instances.length) {
+        for (i_hit = 0; i_hit < hits_start.instances.length; i_hit++) {
+            hitsObj_tmp.start = hits_start.instances[i_hit] ;
+            hitsObj_tmp.end = hits_end.instances[i_hit] ;
             hitsArr.push(hitsObj_tmp) ;
             hitsObj_tmp = {} ;
         }
