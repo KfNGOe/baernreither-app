@@ -83,8 +83,8 @@ function getHits(hitFileName) {
 
 function getHitStart(hit, i_tok) {
     if (i_tok <= 0) {
-        let hits_prev = getInstances(searchTokens[0].token + '.json') ;
-        let hit_prev = hits_prev.find((hit_prev, index, array) => {
+        let hits_prev = getHits(searchTokens[0].token + '.json') ;
+        let hit_prev = hits_prev.instances.find((hit_prev, index, array) => {
             let flag = false ;
             flag = (hit_prev.docId === hit.docId && hit_prev.pos === hit.pos && hit_prev.index === (hit.index - tokens_N + 1)) ? true : false ;
             return flag ;
@@ -94,8 +94,8 @@ function getHitStart(hit, i_tok) {
             console.log('hit_start_test = ', hit_start_test) ;            
         }
     } else {
-        let hits_prev_12 = getInstances(searchTokens[i_tok].token + '.json') ;
-        let hit_prev_12 = hits_prev_12.find((hit_prev_12, index, array) => {
+        let hits_prev_12 = getHits(searchTokens[i_tok].token + '.json') ;
+        let hit_prev_12 = hits_prev_12.instances.find((hit_prev_12, index, array) => {
             let flag = false ;
             flag = (hit_prev_12.docId === hit.docId && hit_prev_12.pos_nxt === hit.pos) ? true : false ;
             return flag ;        
@@ -103,16 +103,16 @@ function getHitStart(hit, i_tok) {
         if (hit_prev_12 !== undefined) {
             //get privous index from last token of previous pos
             i_tok = i_tok - 2 ;
-            let hits_prev = getInstances(searchTokens[i_tok].token + '.json') ;
-            let hit_prev = hits_prev.find((hit_prev, index, array) => {
+            let hits_prev = getHits(searchTokens[i_tok].token + '.json') ;
+            let hit_prev = hits_prev.instances.find((hit_prev, index, array) => {
                 let flag = false ;
                 flag = (hit_prev.docId === hit_prev_12.docId && hit_prev.pos === hit_prev_12.pos_pr && hit_prev.index === (hit_prev.chN - 3)) ? true : false ;
                 return flag ;
             }) ;
             if (hit_prev !== undefined) {
                 if (i_tok - (hit_prev.index + 1) < 0) {                
-                    let hits_start = getInstances(searchTokens[0].token + '.json') ;
-                    let hit_start = hits_start.find((hit_start, index, array) => {
+                    let hits_start = getHits(searchTokens[0].token + '.json') ;
+                    let hit_start = hits_start.instances.find((hit_start, index, array) => {
                         let flag = false ;
                         flag = (hit_start.docId === hit_prev.docId && hit_start.pos === hit_prev.pos && hit_start.index === (hit_prev.index - i_tok)) ? true : false ;
                         return flag ;
