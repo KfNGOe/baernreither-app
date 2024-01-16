@@ -11,6 +11,10 @@ const separator = '|' ;
 const tokenOffset = 3 ;
 const title_short = 'Bae_TB_8' ;
 
+var Tokenizer = require('tokenize-text');
+const { get } = require("jquery");
+var tokenize = new Tokenizer();
+
 //var searchStr = 'die aus Gründen' ;
 var searchStr = 'WahlreformDie drei' ;
 var searchToken = {} ;
@@ -29,9 +33,7 @@ var hits_curr = {
     "instances": []
 } ;
 
-var Tokenizer = require('tokenize-text');
-const { get } = require("jquery");
-var tokenize = new Tokenizer();
+
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -319,21 +321,15 @@ if (text_in.includes(searchToken)) {
     } else {        
         console.log('hits_start.length = hits_end.length = 1') ;
     }
-    //make a JsonJs object    
-    let hitsObj = {} ;
-    let hitsArr = [] ;
-    let hitsObj_tmp = {} ;
+    //make a JsonJs object
     if(hits_start.instances.length === hits_end.instances.length) {
-        for (i_hit = 0; i_hit < hits_start.instances.length; i_hit++) {
-            hitsObj_tmp.start = hits_start.instances[i_hit] ;
-            hitsObj_tmp.end = hits_end.instances[i_hit] ;
-            hitsArr.push(hitsObj_tmp) ;
-            hitsObj_tmp = {} ;
-        }
-        hitsObj.hits = hitsArr ;
-        console.log('hitsObj = ', JSON.stringify(hitsObj)) ;
+        hits = {} ;
+        hits.hitsAll = {} ;
+        hits.hitsAll.start = hits_start ;
+        hits.hitsAll.end = hits_end ;
+        console.log('hits = ', JSON.stringify(hits)) ;
     } else {
-        console.log('hits_start.length !== hits_end.length') ;
+        console.log('ERROR: hits_start.length !== hits_end.length') ;
     }
 } else {
     console.log('search string not found: first token missing') ; 
