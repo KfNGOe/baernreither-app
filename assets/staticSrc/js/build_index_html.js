@@ -4,9 +4,9 @@ const jsdom = require("jsdom") ;
 const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
-const header = require('./build_head.js') ;
-const navbar = require('./build_navbar.js') ;
-const footer = require('./build_footer.js') ;
+//const header = require('./build_head.js') ;
+//const navbar = require('./build_navbar.js') ;
+//const footer = require('./build_footer.js') ;
 
 const path_in_tei=process.env.path_in_tei 
 const path_out_json=process.env.path_out_json
@@ -39,12 +39,13 @@ const dom = new jsdom.JSDOM (
 const $ = require("jquery")(dom.window);
 
 //build head
-var head = header ;
+var head_str = fs.readFileSync("assets/txt/partials/head.txt", 'utf8');
+var head = $.parseHTML(head_str) ;
 $('html').find('head').append(head) ;
 
 //insert title
 //read about file
-var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
+/*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
 
 xmlDoc = $.parseXML( xml ) ,
@@ -52,19 +53,23 @@ $xml = $( xmlDoc ),
 titleSub = $xml.find( "[type='sub']" ).text();
 
 $('html').find('head').append('<title>' + titleSub + '</title>') ;
-
+*/
 //build nav bar
-var nav = navbar ;
-$('html').find('header').append(nav) ;
+//var nav = navbar ;
+var header_nav_str = fs.readFileSync("assets/txt/partials/header-nav.txt", 'utf8');
+var header_nav = $.parseHTML(header_nav_str) ;
+$('html').find('header').replaceWith(header_nav) ;
 
 //build footer
-$('html').find('footer').append(footer) ;
+var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
+var footer = $.parseHTML(footer_str) ;
+$('html').find('footer').replaceWith(footer) ;
 
 index_html = dom.serialize() ;
-//console.log('index.html =' + LF, index_html) ;
+console.log('index.html =' + LF, index_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/index.html', index_html ) ;
-console.log('xml data written: ', index_html.length, ' bytes')
+console.log('html data written: ', index_html.length, ' bytes')
