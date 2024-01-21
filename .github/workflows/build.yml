@@ -38,13 +38,13 @@ jobs:
         run: . ghactions-tei2ttl.sh
         env:
           changes: ${{ steps.files.outputs.all }}
-      - name: Commit files
-        run: |
-          git config --global user.email "richard.hoermann@inode.at"
-          git config --global user.name "rh1967"
-          git add data/ttl/text/          
-          git commit -m "Update TTL files"
-          git push
+      #- name: Commit files
+      #  run: |
+      #    git config --global user.email "richard.hoermann@inode.at"
+      #    git config --global user.name "rh1967"
+      #    git add data/ttl/text/          
+      #    git commit -m "Update TTL files"
+      #    git push
       #- name: Build ttl to ttl
       #  run: sudo bash build_ttl2ttl.sh
       #- name: Build ttl to json
