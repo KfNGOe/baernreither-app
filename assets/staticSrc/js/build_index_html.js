@@ -19,21 +19,9 @@ var i_xmlId = 0 ;
 var index_html = '' ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM (
-    '<!DOCTYPE html>' + LF + 
-    '<html xmlns="http://www.w3.org/1999/xhtml">' + LF
-    + '<head>' + LF
-    + '</head>' + LF
-    + '<body>' + LF
-    + '<header>' + LF
-    + '</header>' + LF
-    + '<main>' + LF
-    + '</main>' + LF
-    + '<footer class="footer mt-auto pt-5">' + LF
-    + '</footer>' + LF
-    + '</body>' + LF    
-    + '</html>' + LF
-) ;
+var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+const dom = new jsdom.JSDOM (dom_temp_str) ;
+
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);
