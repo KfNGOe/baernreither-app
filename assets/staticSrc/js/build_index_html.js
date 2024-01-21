@@ -60,10 +60,19 @@ var header_nav_str = fs.readFileSync("assets/txt/partials/header-nav.txt", 'utf8
 var header_nav = $.parseHTML(header_nav_str) ;
 $('html').find('header').replaceWith(header_nav) ;
 
+//build main
+var main_str = fs.readFileSync("assets/txt/index.txt", 'utf8');
+var main = $.parseHTML(main_str) ;
+$('html').find('main').replaceWith(main) ;
+
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
 var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
+
+//build scripts
+//$('html').find('body').append('<script src="js/bootstrap.bundle.min.js"></script>') ;
+//$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 index_html = dom.serialize() ;
 console.log('index.html =' + LF, index_html) ;
