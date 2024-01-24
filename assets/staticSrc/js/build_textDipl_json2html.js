@@ -12,16 +12,22 @@ var i_startTag = 0 ;
 var i_endTag = 0 ;
 var fullText = '' ;
 var pos_body = 0 ;
+var title_short = '' ;
+var groupedByPos = {} ;
+var allPos = [] ;
+var html = '' ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
+const dom = new jsdom.JSDOM(`<div id="content"></div>`);
+const $ = require('jquery')(dom.window) ;
+//dom = <html><head></head><body><div id="content"></div></body></html>
+$('div[id="content"]').append('<div>test</div>') ;
+html = $('div[id="content"]').html() ;
+//console.log('html = ', html) ;
 
 // Importing the jquery and providing it
 // with the window
-const jquery = require("jquery")(dom.window);
+//const jquery = require("jquery")(dom.window);
 
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_txt=process.env.filepath_out_txt ;
@@ -36,26 +42,43 @@ function buildDiplText(obj) {
                         && item.type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
                         pos_body = item.pos.value ;                        
                     }
+                    if (item.name.value == 'http://www.tei-c.org/ns/1.0/TEI' 
+                        && item.type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag'
+                        && item.attr.value == 'xmlns') {
+                        title_short = item.pos.value.substring(0, item.pos.value.length - 2) ;
+                    }
                 }                
             }
         }) ;
-        console.log('pos_body = ', pos_body) ;        
+        console.log('pos_body = ', pos_body) ;
+        console.log('title_short = ', title_short) ;        
     }
-    const groupedByPos = obj.results.bindings.groupBy( item => {        
+    groupedByPos = obj.results.bindings.groupBy( item => {        
         return item.pos.value ;
-     }) ;
-     let allPos = Object.keys(groupedByPos) ;
-        allPos.sort() ;
-        console.log('allPos = ', allPos) ;
-        allPos.forEach((key) => {
-            groupedByToken[key].forEach((item, index, array) => {
-                
+     }) ;    
+    allPos = Object.keys(groupedByPos) ;
+    //allPos.sort() ;        
+    allPos.forEach((key) => {
+        console.log('key = ', key) ;
+        if (key === pos_body) {
+            //console.log('key = ', key) ;
+            groupedByPos[key].forEach((item, index, array) => {
+                console.log('item = ', item) ;
+                switch(item.name.value) {
+                     case 'http://www.tei-c.org/ns/1.0/p': 
+                        fullText = fullText.concat('<p>') ;
+                        break ;
+                     default:
+                        break ;
+                  }
+
             }) ;
-        } ) ;
-        
+        }
+    }) ;
+            
      //iterate over pos
      Object.keys(groupedByPos).forEach((key) => {
-        console.log('key = ', key, ', value = ', grouprdByPos[key]) ;
+        console.log('key = ', key, ', value = ', groupedByPos[key]) ;
      } ) ;
     /*
    Object.keys(obj).forEach((key) => {
@@ -105,13 +128,14 @@ function buildDiplText(obj) {
    */
 } ; 
 
+
 //read full text json file
 let json_in = fs.readFileSync('./data/json/textDipl.json', 'utf8'); // ./data/json/fullText.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
-//jsonJs_in = {} ;
+
 buildDiplText(jsonJs_in) ;
 
 //write tei file
