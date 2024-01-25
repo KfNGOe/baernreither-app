@@ -5,6 +5,8 @@ const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 
+const html_path_left = 'main div.synoptik-box:nth-child(2) div.auswahl-content div.col-12' ;
+const html_path_right = 'main div.synoptik-box:nth-child(3) div.auswahl-content div.col-12' ;
 var i_xmlId = 0 ;
 var synoptik_html = '' ;
 
@@ -42,6 +44,12 @@ $('html').find('header').replaceWith(header_nav) ;
 var main_str = fs.readFileSync("assets/txt/synoptik.txt", 'utf8');
 var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
+
+//build content of left box
+var content_left_str = fs.readFileSync("data/txt/html_str.txt", 'utf8'); //data/txt/html_str.txt
+var content_left = $.parseHTML(content_left_str) ;
+$('html').find(html_path_left).children().remove() ;
+$('html').find(html_path_left).append(content_left) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');

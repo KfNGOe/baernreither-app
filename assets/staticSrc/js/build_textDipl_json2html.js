@@ -16,6 +16,7 @@ var title_short = '' ;
 var groupedByPos = {} ;
 var allPos = [] ;
 var html = '' ;
+var html_str = '' ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`<div id="content"></div>`);
@@ -31,6 +32,11 @@ html = $('div[id="content"]').html() ;
 
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_txt=process.env.filepath_out_txt ;
+
+function posStr2Nr(posStr) {
+   let pos_tmp = posStr.substring(title_short.length + 1) ;   
+   return +pos_tmp ;
+}
 
 function buildDiplText(obj) {   
     //find tei:body
@@ -51,81 +57,61 @@ function buildDiplText(obj) {
             }
         }) ;
         console.log('pos_body = ', pos_body) ;
-        console.log('title_short = ', title_short) ;        
+        console.log('title_short = ', title_short) ; 
+        //BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)       
     }
     groupedByPos = obj.results.bindings.groupBy( item => {        
         return item.pos.value ;
-     }) ;    
-    allPos = Object.keys(groupedByPos) ;
-    //allPos.sort() ;        
-    allPos.forEach((key) => {
-        console.log('key = ', key) ;
-        if (key === pos_body) {
-            //console.log('key = ', key) ;
-            groupedByPos[key].forEach((item, index, array) => {
-                console.log('item = ', item) ;
-                switch(item.name.value) {
-                     case 'http://www.tei-c.org/ns/1.0/p': 
-                        fullText = fullText.concat('<p>') ;
-                        break ;
-                     default:
-                        break ;
-                  }
-
-            }) ;
-        }
-    }) ;
-            
-     //iterate over pos
-     Object.keys(groupedByPos).forEach((key) => {
-        console.log('key = ', key, ', value = ', groupedByPos[key]) ;
-     } ) ;
-    /*
-   Object.keys(obj).forEach((key) => {
-      //console.log('key = ', key, ', value = ', obj[key]) ;       
-      switch(key) {
-         case 'results':
-            console.log('results = ', key) ;
-            let item = obj[key] ;
-            buildDiplText(item) ;
-            break ;
-         case 'bindings':
-            if(Array.isArray(obj[key])) {               
-               //level + 1
-               obj[key].forEach((item, index, array) => {
-                  if (typeof item === 'object') {
-                     //console.log('item = ', item, ', index = ', index) ;          
-                     buildDiplText(item) ;
-                  }
-               }) ;
-            } else {
-               //console.log(obj.constructor.name, 'property is not an array: ', key) ;
-            }
-            //console.log('bindings = ', obj[key]) ;
-            break ;
-         case 'pos':
-            console.log('pos = ', obj[key].value) ;
-            if (obj[key].value > pos_body) {
-                console.log('pos = ', obj[key].value) ;
-                fullText = fullText.concat(obj[key].value) ;
-            }
-            
-            break ;
-         case 'o_txt':
-            console.log('o_txt = ', obj[key]) ;
-            fullText = fullText.concat(obj[key].value) ;
-            console.log('fullText = ', fullText) ;            
-            break ;
-         case 'text':
-            obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
-            //console.log('result: ',obj[key]) ;
-            break ;         
-         default:
-            console.log('no case') ;
-            break ;
-      } 
+     }) ;
+   //iterate over pos
+   Object.keys(groupedByPos).forEach((key) => {
+      //console.log('key = ', key) ;
+      if (posStr2Nr(key) >= posStr2Nr(pos_body)) {
+         //console.log('key = ', key) ;
+         groupedByPos[key].forEach((item, index, array) => {
+               //console.log('item = ', item) ;
+               switch(item.type.value) {
+                  case 'https://github.com/KfNGOe/kfngoeo#StartTag':
+                     switch(item.name.value) {
+                        case 'http://www.tei-c.org/ns/1.0/p': 
+                           html_str = html_str.concat('<p>') ;                              
+                           break ;
+                        default:
+                           break ;
+                     }                        
+                     break ;
+                  case 'https://github.com/KfNGOe/kfngoeo#EndTag':
+                     switch(item.name.value) {
+                        case 'http://www.tei-c.org/ns/1.0/p': 
+                           html_str = html_str.concat('</p>') ;                              
+                           break ;
+                        default:
+                           break ;
+                     }
+                     break ;
+                  case 'https://github.com/KfNGOe/kfngoeo#Text':
+                     html_str = html_str.concat(item.cont.value) ;
+                     break ;                     
+                  default:
+                     break ;
+               }
+/*
+               if (item.name !== undefined) {
+               switch(item.name.value) {
+                  case 'http://www.tei-c.org/ns/1.0/p': 
+                     if (item.type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
+                        html_str = html_str.concat('<p>') ;
+                     } else if (item.type.value == 'https://github.com/KfNGOe/kfngoeo#EndTag') {
+                        html_str = html_str.concat('</p>') ;
+                     }
+                     break ;
+                  default:
+                     break ;
+               }
+               }*/ 
+         }) ;
+      }
    }) ;
-   */
 } ; 
 
 
@@ -139,5 +125,5 @@ var jsonJs_in = JSON.parse(json_in) ;
 buildDiplText(jsonJs_in) ;
 
 //write tei file
-fs.writeFileSync(filepath_out_txt, fullText ) ;  //./data/tei/register/register_place.xml
-console.log('text data written: ', fullText.length, ' bytes')
+fs.writeFileSync('./data/txt/html_str.txt', html_str ) ;  
+console.log('text data written: ', html_str.length, ' bytes')
