@@ -17,7 +17,7 @@ var title_short = '' ;
 var groupedByPos = {} ;
 var allPos = [] ;
 var html = '' ;
-var html_str = '<div id="content"></div>' ;
+var html_str = '' ;
 var appStack = {
    'start': '',
    'end': ''
@@ -48,7 +48,8 @@ function posNr2Str(posNr) {
 
 function generateId(item) {
    //random number + pos   
-   return uid.rnd() + '_' + item.pos.value ;
+   //return uid.rnd() + '_' + item.pos.value ;
+   return item.pos.value ;
 }
 
 function buildDiplText(obj, obj_1) {   
@@ -164,7 +165,7 @@ function buildDiplText(obj, obj_1) {
 } ; 
 
 //read full text json file
-let json_in = fs.readFileSync('./data/json/Bae_MF_6-2_dipl.json', 'utf8');
+let json_in = fs.readFileSync('./data/json/Bae_MF_6-2_dipl.json', 'utf8'); //data/json/Bae_TB_8_dipl.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object

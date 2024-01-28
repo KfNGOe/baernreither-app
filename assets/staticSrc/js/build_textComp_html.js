@@ -4,10 +4,9 @@ const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
-
 var convert = require('xml-js') ;
-const { group } = require("console");
-const { includes } = require("core-js/core/array");
+//const { group } = require("console");
+//const { includes } = require("core-js/core/array");
 var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
@@ -168,20 +167,19 @@ function buildDiplText(obj, obj_1) {
 
 function setRefValue(anchorSource, anchorRefSource, anchorId_pos_nr, anchorRef_pos_nr) {
    
-   $('html').find('body').children('div').each(function() {
-      //console.log('this = ', this) ;
+   $('html').find('body').children('div').each(function() {      
       let attrId = $(this).find('a').attr('id') ;
-      console.log('attrId = ', attrId) ;
-      
       if (attrId.includes(anchorSource)) {
          $(this).find('a').each(function() {
             console.log('this = ', $(this).attr('id')) ;
             if ($(this).attr('id').includes('comp_') && $(this).attr('id').includes(anchorId_pos_nr) ) {
-               $(this).attr('href', '#comp_' + anchorRef_pos_nr) ;
-            }            
+               let anchorRef = 'comp_' + anchorRefSource + '_' + anchorRef_pos_nr ;
+               if (anchorRef.length === $(this).attr('id').length) {
+                  $(this).attr('href', '#' + anchorRef) ;   
+               }               
+            }
+            console.log('this = ', $(this).attr('id')) ;            
          }) ;
-         $(this).find('a').attr('href', '#comp_' + anchorRef_pos_nr) ;
-         
       }            
    }) ; 
 } ;   
@@ -200,8 +198,8 @@ groupedBySource = jsonJs_in.results.bindings.groupBy( item => {
       console.log('key = ', key) ;
       let fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
       console.log('filename = ', fileNamePath) ;
-      //let html_str = fs.readFileSync(fileNamePath, 'utf8') ;
-      let html_str = '<div><a href="" id="comp_r6TJeVlGl9_Bae_TB_8_130">test</a>test<a href="" id="comp_r6TJeVlGl9_Bae_TB_8_140">test</a></div>';
+      let html_str = fs.readFileSync(fileNamePath, 'utf8') ;
+      //let html_str = '<div><a href="" id="comp_Bae_TB_8_130">test</a>test<a href="" id="comp_Bae_TB_8_140">test</a></div>';
       let html = $.parseHTML(html_str) ;      
       $('html').find('body').append('<div></div>') ;
       $('html').find('body').children('div:last-child').append(html) ;      
