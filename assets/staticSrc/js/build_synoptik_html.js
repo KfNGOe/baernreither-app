@@ -46,10 +46,16 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build content of left box
-var content_left_str = fs.readFileSync("data/txt/html_str.txt", 'utf8'); //data/txt/html_str.txt
+var content_left_str = fs.readFileSync("data/txt/html_str_left.txt", 'utf8'); //data/txt/html_str.txt
 var content_left = $.parseHTML(content_left_str) ;
 $('html').find(html_path_left).children().remove() ;
 $('html').find(html_path_left).append(content_left) ;
+
+//build content of right box
+var content_right_str = fs.readFileSync("data/txt/html_str_right.txt", 'utf8'); //data/txt/html_str.txt
+var content_right = $.parseHTML(content_right_str) ;
+$('html').find(html_path_right).children().remove() ;
+$('html').find(html_path_right).append(content_right) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');

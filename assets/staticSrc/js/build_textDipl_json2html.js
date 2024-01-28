@@ -17,18 +17,18 @@ var title_short = '' ;
 var groupedByPos = {} ;
 var allPos = [] ;
 var html = '' ;
-var html_str = '' ;
+var html_str = '<div id="content"></div>' ;
 var appStack = {
    'start': '',
    'end': ''
 } ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`<div id="content"></div>`);
+const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
-//dom = <html><head></head><body><div id="content"></div></body></html>
-$('div[id="content"]').append('<div>test</div>') ;
-html = $('div[id="content"]').html() ;
+//dom =  <html><head></head><body></body></html>
+//$('div[id="content"]').append('<div>test</div>') ;
+//html = $('div[id="content"]').html() ;
 
 //Instantiate ShortUniqueId
 const uid = new ShortUniqueId({ length: 10 });
@@ -164,20 +164,20 @@ function buildDiplText(obj, obj_1) {
 } ; 
 
 //read full text json file
-let json_in = fs.readFileSync('./data/json/textDipl.json', 'utf8');
+let json_in = fs.readFileSync('./data/json/Bae_MF_6-2_dipl.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
-let json_in_2 = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8');
-console.log('json data read: ', json_in_2.length, ' bytes') ;
+let json_in_1 = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8');
+console.log('json data read: ', json_in_1.length, ' bytes') ;
 
 //convert json to js object
-var jsonJs_in_2 = JSON.parse(json_in_2) ;
+var jsonJs_in_1 = JSON.parse(json_in_1) ;
 
-buildDiplText(jsonJs_in, jsonJs_in_2) ;
+buildDiplText(jsonJs_in, jsonJs_in_1) ;
 
 //write tei file
-fs.writeFileSync('./data/txt/html_str.txt', html_str ) ;  
+fs.writeFileSync('./data/txt/Bae_MF_6-2_dipl_html.txt', html_str ) ;  
 console.log('text data written: ', html_str.length, ' bytes')
