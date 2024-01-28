@@ -171,11 +171,13 @@ function setRefValue(anchorSource, anchorRefSource, anchorId_pos_nr, anchorRef_p
       let attrId = $(this).find('a').attr('id') ;
       if (attrId.includes(anchorSource)) {
          $(this).find('a').each(function() {
-            console.log('this = ', $(this).attr('id')) ;
+            console.log('this = ', $(this).attr('id').length) ;
             if ($(this).attr('id').includes('comp_') && $(this).attr('id').includes(anchorId_pos_nr) ) {
-               let anchorRef = 'comp_' + anchorRefSource + '_' + anchorRef_pos_nr ;
-               if (anchorRef.length === $(this).attr('id').length) {
-                  $(this).attr('href', '#' + anchorRef) ;   
+               let anchorId = 'comp_' + anchorSource + '_' + anchorId_pos_nr ;
+               console.log('anchorId = ', anchorId.length) ;
+               if (anchorId.length === $(this).attr('id').length) {
+                  let anchorRef = '#comp_' + anchorRefSource + '_' + anchorRef_pos_nr ;
+                  $(this).attr('href', anchorRef) ;   
                }               
             }
             console.log('this = ', $(this).attr('id')) ;            
