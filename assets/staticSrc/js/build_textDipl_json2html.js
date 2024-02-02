@@ -4,31 +4,17 @@ const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
-
 var convert = require('xml-js') ;
-var i_N = 0 ;
-var N = 0 ;
-var i_level = 0 ;
-var i_startTag = 0 ; 
-var i_endTag = 0 ;
-var fullText = '' ;
+
 var pos_body = 0 ;
 var title_short = '' ;
 var groupedByPos = {} ;
-var allPos = [] ;
-var html = '' ;
 var html_str = '' ;
-var appStack = {
-   'start': '',
-   'end': ''
-} ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
-//$('div[id="content"]').append('<div>test</div>') ;
-//html = $('div[id="content"]').html() ;
 
 //Instantiate ShortUniqueId
 const uid = new ShortUniqueId({ length: 10 });
@@ -77,8 +63,11 @@ function buildDiplText(obj, obj_1) {
     groupedByPos = obj.results.bindings.groupBy( item => {        
         return item.pos.value ;
      }) ;
-     groupedByAnchApp = obj_1.results.bindings.groupBy( item => {
+     groupedByStartPos = obj_1.results.bindings.groupBy( item => {
          return item.start.value ;
+     }) ;
+     groupedById = obj_1.results.bindings.groupBy( item => {
+         return item.id.value ;
      }) ;
    //iterate over pos
    Object.keys(groupedByPos).forEach((key) => {
@@ -93,19 +82,22 @@ function buildDiplText(obj, obj_1) {
                   case 'http://www.tei-c.org/ns/1.0/p': 
                      html_str = html_str.concat('<p>') ;                              
                      break ;
-                  case 'http://www.tei-c.org/ns/1.0/anchor':
-                     html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                           
-                     /*
-                     if (appStack.start == '' || appStack.end == '') {
-                        let pos_arr = groupedByAnchApp[posStr2Nr(item.pos.value).toString()] ;
-                        if (pos_arr !== undefined) {
-                           appStack.start = pos_arr[0].start.value ;
-                           appStack.end = pos_arr[0].end.value ;
-                           html_str = html_str.concat('<span class="comp-passage" style="display: none">') ;
-                        } else {
-                           console.log('pos anchor not in annoTextComp : ', posStr2Nr(item.pos.value).toString()) ;
-                        }                              
-                     }*/
+                  case 'http://www.tei-c.org/ns/1.0/anchor':                     
+                     if (groupedByStartPos[posStr2Nr(key)] !== undefined) {
+                        let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;                        
+                        if (groupedById[sourceBodyId] !== undefined) {
+                           let sourceBodyTarget = groupedById[sourceBodyId][0].source_target.value ;
+                           let sourceBodyStart = groupedById[sourceBodyId][0].start.value ;
+                           let ref = "comp_" + sourceBodyTarget + '_' + sourceBodyStart ;                     
+                           html_str = html_str.concat('<a href="#' + ref + '" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                        } else {                       
+                           console.log('sourceBodyId = ', sourceBodyId, ' not in annoTextComp') ;
+                           html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                        }                           
+                     } else {
+                        console.log('key = ', key, ' not in annoTextComp') ;
+                        html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                     }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/app':
                      break ;
@@ -164,21 +156,34 @@ function buildDiplText(obj, obj_1) {
    }) ;
 } ; 
 
-//read full text json file
-let json_in = fs.readFileSync('./data/json/Bae_MF_6-2_dipl.json', 'utf8'); //data/json/Bae_TB_8_dipl.json
+//read comp text json file
+json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8') ;
 console.log('json data read: ', json_in.length, ' bytes') ;
-
 //convert json to js object
-var jsonJs_in = JSON.parse(json_in) ;
-
-let json_in_1 = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8');
-console.log('json data read: ', json_in_1.length, ' bytes') ;
-
-//convert json to js object
-var jsonJs_in_1 = JSON.parse(json_in_1) ;
-
-buildDiplText(jsonJs_in, jsonJs_in_1) ;
-
-//write tei file
-fs.writeFileSync('./data/txt/Bae_MF_6-2_dipl_html.txt', html_str ) ;  
-console.log('text data written: ', html_str.length, ' bytes')
+var jsonJs_in_comp = JSON.parse(json_in) ;
+//group by source
+groupedBySource = jsonJs_in_comp.results.bindings.groupBy( item => {        
+   return item.source_target.value ;
+}) ;
+//iterate over source
+Object.keys(groupedBySource).forEach((key) => {
+   //read dipl text json files
+   let fileNamePath = 'data/json/' + key + '_dipl.json' ;   
+   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+   console.log('json data read: ', json_in.length, ' bytes') ;
+   let jsonJs_in_dipl = JSON.parse(json_in) ;
+   buildDiplText(jsonJs_in_dipl, jsonJs_in_comp) ;
+   //write html strings to files
+   fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
+   fs.writeFileSync(fileNamePath, html_str ) ;  
+   //convert html strings to html 
+   console.log('text data written: ', html_str.length, ' bytes')
+   let html = $.parseHTML(html_str) ;      
+   $('html').find('body').append('<div></div>') ;
+   $('html').find('body').children('div:last-child').append(html) ;
+   console.log('test') ;
+}) ;
+//write html file
+let fileNamePath = 'data/html/test.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
+fs.writeFileSync(fileNamePath, dom.serialize() ) ;
+console.log('html data written: ', dom.serialize().length, ' bytes') ;

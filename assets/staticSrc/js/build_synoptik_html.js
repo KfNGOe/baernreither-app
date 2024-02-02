@@ -46,13 +46,13 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build content of left box
-var content_left_str = fs.readFileSync("data/txt/html_str_left.txt", 'utf8'); //data/txt/html_str.txt
+var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_dipl_html.txt", 'utf8'); //data/txt/Bae_TB_8_dipl_html.txt
 var content_left = $.parseHTML(content_left_str) ;
 $('html').find(html_path_left).children().remove() ;
 $('html').find(html_path_left).append(content_left) ;
 
 //build content of right box
-var content_right_str = fs.readFileSync("data/txt/html_str_right.txt", 'utf8'); //data/txt/html_str.txt
+var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
 var content_right = $.parseHTML(content_right_str) ;
 $('html').find(html_path_right).children().remove() ;
 $('html').find(html_path_right).append(content_right) ;
@@ -63,8 +63,8 @@ var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
 //build scripts
-//$('html').find('body').append('<script src="js/bootstrap.bundle.min.js"></script>') ;
-//$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
+$('html').find('body').append('<script src="js/bootstrap.bundle.min.js"></script>') ;
+$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 synoptik_html = dom.serialize() ;
 console.log('synoptik.html =' + LF, synoptik_html) ;
