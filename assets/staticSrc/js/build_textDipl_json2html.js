@@ -89,14 +89,14 @@ function buildDiplText(obj, obj_1) {
                            let sourceBodyTarget = groupedById[sourceBodyId][0].source_target.value ;
                            let sourceBodyStart = groupedById[sourceBodyId][0].start.value ;
                            let ref = "comp_" + sourceBodyTarget + '_' + sourceBodyStart ;                     
-                           html_str = html_str.concat('<a href="#' + ref + '" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                           html_str = html_str.concat('<a href="#' + ref + '" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
                         } else {                       
                            console.log('sourceBodyId = ', sourceBodyId, ' not in annoTextComp') ;
-                           html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                           html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
                         }                           
                      } else {
                         console.log('key = ', key, ' not in annoTextComp') ;
-                        html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click"></a>') ;                                                      
+                        html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/app':
@@ -121,22 +121,36 @@ function buildDiplText(obj, obj_1) {
                }
                break ;
             case 'https://github.com/KfNGOe/kfngoeo#Text':
-               //check if text is between anchor and app pos                        
-               let item_hit = obj_1.results.bindings.find((item_1, index_1, array_1) => {
-                  //console.log('item_1 = ', item_1) ;
+               //check if text is between anchor and app pos
+               let item_comp = {} ;                        
+               let item_hit = obj_1.results.bindings.find((item_1, index_1, array_1) => {                  
                   //check if same text source
-                  let flag_source = (item.pos.value.includes(item_1.source_target.value)) ? true : false ;                        
+                  let flag_source = (item.pos.value.includes(item_1.source_target.value)) ? true : false ;
+                  item_comp = item_1 ;                  
                   return (+item_1.start.value < posStr2Nr(item.pos.value)) && (posStr2Nr(item.pos.value) < +item_1.end.value && flag_source) ;
                }) ;
                if (item_hit !== undefined) {
-                  //console.log('item_hit = ', item_hit) ;
-                  html_str = html_str.concat('<span class="comp-passage" id="comp_' + generateId(item) + '">') ;                           
+                  //text is between anchor and app pos
+                  //check status and set class
+                  switch(item_comp.status.value) {
+                     case 'equal': 
+                        html_str = html_str.concat('<span class="comp-passage-equal" id="comp_' + generateId(item) + '">') ;
+                        break ;
+                     case 'notEqual':
+                        html_str = html_str.concat('<span class="comp-passage-inequal" id="comp_' + generateId(item) + '">') ;
+                        break ;
+                     case 'missing':
+                        html_str = html_str.concat('<span class="comp-passage-not" id="comp_' + generateId(item) + '">') ;
+                        break ;
+                     default:
+                        break ;
+                  }                  
                   html_str = html_str.concat(item.cont.value) ;
                   html_str = html_str.concat('</span>') ;
                } else {                        
                   //check if text is between app pos
                   let pos_tmp = posNr2Str(posStr2Nr(item.pos.value) - 2) ;
-                  let pos_arr = groupedByPos[pos_tmp] ;                        
+                  let pos_arr = groupedByPos[pos_tmp] ;
                   if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/app' 
                      && pos_arr[0].type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
                         html_str = html_str.concat('<span id="comp_' + generateId(item) + '" style="display: none">') ;

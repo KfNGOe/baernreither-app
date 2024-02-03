@@ -47,7 +47,38 @@
 				});
 			})
 		}
-		// end if innerWidth
-
-	}); 
+		//end if innerWidth
+		//show compare buttons and load compare data		
+		$( 'div.synoptik-box:nth-child(2) div.nav-werke #navbar-baern li.nav-item:nth-child(5) a.dropdown-item' ).click(function() {	
+			console.log( this );
+			let click = $( this );
+			if (click.text() == "Bae_MF_6-2") {
+				$( 'div.compare-buttons' ).show();
+			}			
+		}) ;
+		//check if compare button is clicked
+		$( 'div.compare-buttons .comp-equal' ).click(function() {
+			console.log( this );
+			let click = $( this );
+			click.addClass('comp-selected');
+			$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
+			$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
+		}) ;		
+		$( 'div.compare-buttons .comp-inequal' ).click(function() {
+			console.log( this );
+			let click = $( this );
+			click.addClass('comp-selected');
+			$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
+			$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');			
+		}) ;
+		$( 'div.compare-buttons .comp-not' ).click(function() {
+			console.log( this );
+			let click = $( this );
+			click.addClass('comp-selected');			
+			$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
+			$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
+		}) ;		
+	}) ;
+	
+	
 	// DOMContentLoaded  end
