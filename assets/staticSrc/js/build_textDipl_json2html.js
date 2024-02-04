@@ -5,10 +5,11 @@ const { groupBy } = require('core-js/actual/array/group-by') ;
 const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
 var convert = require('xml-js') ;
+const { group } = require("console");
 
 var pos_body = 0 ;
 var title_short = '' ;
-var groupedByPos = {} ;
+//var groupedByPos = {} ;
 var html_str = '' ;
 
 // Creating a window with a document
@@ -39,7 +40,8 @@ function generateId(item) {
 }
 
 function buildDiplText(obj, obj_1) {   
-    //find tei:body
+   html_str = '' ; 
+   //find tei:body
     if (obj.head !== undefined) {        
         obj.results.bindings.forEach((item, index, array) => {
             if (typeof item === 'object') {                
@@ -84,12 +86,38 @@ function buildDiplText(obj, obj_1) {
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {
-                        let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;                        
+                        let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;
                         if (groupedById[sourceBodyId] !== undefined) {
+                           //build ref
                            let sourceBodyTarget = groupedById[sourceBodyId][0].source_target.value ;
                            let sourceBodyStart = groupedById[sourceBodyId][0].start.value ;
-                           let ref = "comp_" + sourceBodyTarget + '_' + sourceBodyStart ;                     
-                           html_str = html_str.concat('<a href="#' + ref + '" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
+                           let ref = "comp_" + sourceBodyTarget + '_' + sourceBodyStart ;
+                           //check status and set class
+                           let item_comp = {} ;                           
+                           let item_comp_arr = groupedByStartPos[posStr2Nr(key)] ;
+                           if (item_comp_arr.length > 1) {
+                              groupedBySourceTarget = item_comp_arr.groupBy( item => {
+                                 return item.source_target.value ;
+                              }) ;
+                              if (groupedBySourceTarget[title_short] !== undefined) {                                 
+                                 item_comp = groupedBySourceTarget[title_short][0] ;
+                              }                              
+                           } else {
+                              item_comp = item_comp_arr[0] ;
+                           }
+                           switch(item_comp.status.value) {
+                              case 'equal': 
+                                 html_str = html_str.concat('<a class="comp-img-equal" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                                 break ;
+                              case 'notEqual':
+                                 html_str = html_str.concat('<a class="comp-img-inequal" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                                 break ;
+                              case 'missing':
+                                 html_str = html_str.concat('<a class="comp-img-not" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                                 break ;
+                              default:
+                                 break ;
+                           }                           
                         } else {                       
                            console.log('sourceBodyId = ', sourceBodyId, ' not in annoTextComp') ;
                            html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
@@ -171,7 +199,7 @@ function buildDiplText(obj, obj_1) {
 } ; 
 
 //read comp text json file
-json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8') ;
+let json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8') ;
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 var jsonJs_in_comp = JSON.parse(json_in) ;
@@ -193,11 +221,10 @@ Object.keys(groupedBySource).forEach((key) => {
    //convert html strings to html 
    console.log('text data written: ', html_str.length, ' bytes')
    let html = $.parseHTML(html_str) ;      
-   $('html').find('body').append('<div></div>') ;
-   $('html').find('body').children('div:last-child').append(html) ;
-   console.log('test') ;
+   $('html').find('body').append('<div id="' + key + '"></div>') ;    
+   $('html').find('body').children('div:last-child').append(html) ;   
 }) ;
 //write html file
-let fileNamePath = 'data/html/test.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
+let fileNamePath = 'data/html/compRes.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
 fs.writeFileSync(fileNamePath, dom.serialize() ) ;
 console.log('html data written: ', dom.serialize().length, ' bytes') ;

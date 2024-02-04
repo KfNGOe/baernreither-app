@@ -57,10 +57,10 @@ $('html').find(html_path_left).children().remove() ;
 $('html').find(html_path_left).append(content_left) ;
 
 //build content of right box
-var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
-var content_right = $.parseHTML(content_right_str) ;
+//var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
+//var content_right = $.parseHTML(content_right_str) ;
 $('html').find(html_path_right).children().remove() ;
-$('html').find(html_path_right).append(content_right) ;
+//$('html').find(html_path_right).append(content_right) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
