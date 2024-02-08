@@ -1,48 +1,77 @@
+const LF = '\n' ;
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
-const header = require('./build_head.js') ;
-const navbar = require('./build_navbar.js') ;
-const footer = require('./build_footer.js') ;
 
-const path_in = process.env.path_in ;
-const file_in = process.env.file_in ;
-const ext_in = process.env.ext_in ;
-const filepath_in = path_in + file_in + ext_in ;
+const html_path_left = 'main div.synoptik-box:nth-child(2) div.auswahl-content div.col-12' ;
+const html_path_right = 'main div.synoptik-box:nth-child(3) div.auswahl-content div.col-12' ;
+var i_xmlId = 0 ;
+var synoptik_html = '' ;
 
-const path_out = process.env.path_out ;
-const file_out = process.env.file_out ;
-const ext_out = process.env.ext_out ;
-const filepath_out = path_out + file_out + ext_out ;
+// Creating a window with a document
+var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+const dom = new jsdom.JSDOM (dom_temp_str) ;
+console.log('dom: ', dom.serialize()) ;
 
-(async () => {
-    const dom = await JSDOM.fromFile("data/html/register_temp.html") ;
-    //console.log(dom.serialize()) ;
-    const $ = require("jquery")(dom.window) ;
+// Importing the jquery and providing it
+// with the window
+const $ = require("jquery")(dom.window);
+
+//build head
+var head_str = fs.readFileSync("assets/txt/partials/head.txt", 'utf8');
+var head = $.parseHTML(head_str) ;
+$('html').find('head').append(head) ;
+//build scripts
+$('html').find('head').append('<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>') ;
+$('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>') ;
     
-    //build head
-    var head = header ;
-    $('html').find('head').append(head) ;
 
-    //build nav bar
-    var nav = navbar ;
-    $('html').find('header').append(nav) ;
+//insert title
+//read about file
+/*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
+console.log('tei data read: ', xml.length, ' bytes') ;
 
-    //table    
-    var table = fs.readFileSync(filepath_in, 'utf8');
-    console.log('html data read: ', table.length, ' bytes') ;
-    //console.log('table =', table) ;
-    $('html').find('#pageContent div.row').append(table) ;
+xmlDoc = $.parseXML( xml ) ,
+$xml = $( xmlDoc ),
+titleSub = $xml.find( "[type='sub']" ).text();
 
-    //build footer
-    var foot = footer ;
-    $('html').find('footer').append(foot) ;
+$('html').find('head').append('<title>' + titleSub + '</title>') ;
+*/
+//build nav bar
+//var nav = navbar ;
+var header_nav_str = fs.readFileSync("assets/txt/partials/header-nav.txt", 'utf8');
+var header_nav = $.parseHTML(header_nav_str) ;
+$('html').find('header').replaceWith(header_nav) ;
 
-    //write html file    
-    var html = dom.serialize() ;
-    console.log('data: ', html) ;    
-    fs.writeFileSync(filepath_out, html ) ;
-    console.log('html data written: ', html.length, ' bytes')
-}) () ;
+//build main
+var main_str = fs.readFileSync("assets/txt/synoptik.txt", 'utf8');
+var main = $.parseHTML(main_str) ;
+$('html').find('main').replaceWith(main) ;
+
+//build content of left box
+var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_dipl_html.txt", 'utf8'); //data/txt/Bae_TB_8_dipl_html.txt
+var content_left = $.parseHTML(content_left_str) ;
+$('html').find(html_path_left).children().remove() ;
+$('html').find(html_path_left).append(content_left) ;
+
+//build content of right box
+//var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
+//var content_right = $.parseHTML(content_right_str) ;
+$('html').find(html_path_right).children().remove() ;
+//$('html').find(html_path_right).append(content_right) ;
+
+//build footer
+var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
+var footer = $.parseHTML(footer_str) ;
+$('html').find('footer').replaceWith(footer) ;
+
+synoptik_html = dom.serialize() ;
+console.log('synoptik.html =' + LF, synoptik_html) ;
+
+//write html file
+//filepath = path_out_tei + filename + ext_xml ;
+//console.log(filepath);
+fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
+console.log('html data written: ', synoptik_html.length, ' bytes')
