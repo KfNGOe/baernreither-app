@@ -39,7 +39,7 @@ function generateId(item) {
    return item.pos.value ;
 }
 
-function buildDiplText(obj, obj_1) {   
+function buildReg(obj) {   
    html_str = '' ; 
    //find tei:body
     if (obj.head !== undefined) {        
@@ -199,32 +199,13 @@ function buildDiplText(obj, obj_1) {
 } ; 
 
 //read comp text json file
-let json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8') ;
+let json_in = fs.readFileSync('./data/json/register/register_person.json', 'utf8') ; //data/json/register/register_person.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
-var jsonJs_in_comp = JSON.parse(json_in) ;
-//group by source
-groupedBySource = jsonJs_in_comp.results.bindings.groupBy( item => {        
-   return item.source_target.value ;
-}) ;
-//iterate over source
-Object.keys(groupedBySource).forEach((key) => {
-   //read dipl text json files
-   let fileNamePath = 'data/json/' + key + '_dipl.json' ;   
-   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
-   console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_dipl = JSON.parse(json_in) ;
-   buildDiplText(jsonJs_in_dipl, jsonJs_in_comp) ;
-   //write html strings to files
-   fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
-   fs.writeFileSync(fileNamePath, html_str ) ;  
-   //convert html strings to html 
-   console.log('text data written: ', html_str.length, ' bytes')
-   let html = $.parseHTML(html_str) ;      
-   $('html').find('body').append('<div id="' + key + '"></div>') ;    
-   $('html').find('body').children('div:last-child').append(html) ;   
-}) ;
-//write html file
-let fileNamePath = 'data/html/compRes.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
-fs.writeFileSync(fileNamePath, dom.serialize() ) ;
-console.log('html data written: ', dom.serialize().length, ' bytes') ;
+var jsonJs_in_reg = JSON.parse(json_in) ;
+//build html string
+buildReg(jsonJs_in_reg) ;
+//write html strings to files
+fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
+fs.writeFileSync(fileNamePath, html_str ) ;  
+   
