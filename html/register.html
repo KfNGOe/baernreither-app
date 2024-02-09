@@ -1,159 +1,238 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"><!-- head -->
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head>
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Kommission für neuere Geschichte Österreichs">
+    <meta name="generator" content="pixlerei 1.0">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="{$html_title}">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"> <!--load all styles -->
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link href="css/mockup/style.css" rel="stylesheet">
-    <!-- js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.js"></script>
-</head>
-<!-- body -->
+    <title>Startseite</title>   
 
-<body id="register">
-    <!-- headnav -->
-    <header>
-        <div class="container" id="headnav">
-            <div class="row">
-                <div class="titelgrafik" style="align-items: baseline; display: flex; flex:0 0 auto; width: 50%;">
-                    <a href="https://oesterreichische-geschichte.at/" target="_blank"
-                        style="flex: 0 0 25%;display: flex; max-width: 50%!important; justify-content: center;">
-                        <img style=" max-width: 100% !important;max-height: 100% !important;margin: 0;"
-                            src="dist/assets/images/mockup/logo-kommission-neuere-geschichte-oesterreichs.svg"
-                            title="Kommission für neue Geschichte Österreichs"
-                            alt="Kommission für neue Geschichte Österreichs">
-                    </a>
-                    <hr>
-                    <a href="./" style="flex: 0 0 50%;display: flex; justify-content: center;">
-                        <img style=" max-width: 100% !important;max-height: 100% !important;margin: 0;"
-                            src="dist/assets/images/mockup/schriftzug_de.png"
-                            title="Digitale Edition von Tagebüchern und Lebenserinnerungen Josef Maria Baernreithers">
-                    </a>
-                    <hr>
-                </div>
-                <div class="col-lg-6 pr-0" id="titelmenu">
-                    <div class="col-lg-12 langmenu">
-                        <!-- <a class="active" href="#0" lang="de">DE</a> / <a href="#0" lang="en">EN</a> -->
-                    </div>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top flex-column ml-5">
-                        <div class="container">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="register.html">
-                                            <span class="de">Register</span>
-                                            <span class="en"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+    <!-- Custom styles for this template -->
+    <link href="css/baernreither.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.7.1.js"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script></head>
+        <body>
+            <div class="col-lg-8 mx-auto px-0 pt-0 pb-5">
+                <header class="d-flex align-items-center">  
+  <a href="#"><img class="hero" src="images/header.jpg"></a>
+  <div class="hero-inserts">
+    <div class="site-title">
+        <h1><a href="index.html" alt="Startseite" title="Startseite">Joseph Maria Baernreither</a></h1>
+        <h2><a href="index.html" alt="Startseite" title="Startseite">Tagebücher – Online Edition</a></h2>
+    </div>
+    <a href="https://oesterreichische-geschichte.at/" target="_blank" alt="Kommission für Neuere Geschichte Österreichs" title="Kommission für Neuere Geschichte Österreichs"><img class="hero-logo" src="images/logo-kommission-neuere-geschichte-oesterreichs.svg"></a>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand" aria-label="Navigation">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-baern" aria-controls="navbar-baern" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-baern">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Infos zur Edition</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="editionsgeschichte.html">Geschichte der Edition</a></li>
+            <li><a class="dropdown-item" href="editionsrichtlinien.html">Editionsrichtlinien</a></li>
+            <li><a class="dropdown-item" href="technische-doku.html">Technische Dokumentation</a></li>
+              <li><a class="dropdown-item" href="nutzung.html">Nutzungshinweise</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tagebücher-Edition</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="uebersicht.html">Übersicht</a></li>
+            <li><a class="dropdown-item" href="synoptik.html">Synoptische Darstellung</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Baernreither</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="biographie.html">Biographie</a></li>
+            <li><a class="dropdown-item menu-arrow" href="#">Werkverzeichnis</a>
+                <ul class="submenu dropdown-menu">
+                <li><a class="dropdown-item" href="monopgraphien.html">Monographien</a></li>
+                <li><a class="dropdown-item" href="tagebuecher-editionen.html">Tagebücher-Editionen</a></li>
+                <li><a class="dropdown-item" href="herausgeberschaft.html">Herausgeberschaft</a></li>
+                <li><a class="dropdown-item" href="aufsaetze-beitraege.html">Aufsätze und Beiträge</a></li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="sekundaerliteratur.html">Sekundärliteratur</a></li>
+            <li><a class="dropdown-item" href="karte.html">Karte</a></li>
+            </ul>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="suche.html">Suche</a>
+        </li>
+        <!--
+        <li style="display:flex;">
+          <form role="search">
+            <input class="form-control" type="search" placeholder="Suche…" aria-label="Suche">
+          </form>
+          <img src="images/lupe.svg" />
+        </li> -->
+      </ul>      
+    </div>
+  </div>
+</nav>
+                <main id="register">
+    <h1>Register</h1>
+    <div class="row">
+      <div class="col-12 mt-4 mb-5">
+        <form class="search-category">
+          <!--
+          <div class="cat-head">Suche nach</div>
+        -->
+          <fieldset>
+            <input type="radio" id="search-person" name="Person" value="Person">
+            <label for="search-person"> Personen</label> 
+            <input type="radio" id="search-institution" name="Institution" value="Institution">
+            <label for="search-institution"> Institutionen</label> 
+
+
+            <input type="radio" id="search-ort" name="Ort" value="Ort">
+            <label for="search-person"> Orte</label> 
+
+            <input type="radio" id="search-index" name="Index" value="Index">
+            <label for="search-index"> Index</label> 
+
+
+
+
+          </fieldset>
+        </form> 
+        <!--
+        <div class="search-alphabet">
+          Suche per Auflistung nach Anfangsbuchstaben
+          <div class="letters"><a href="">A</a><a href="">B</a><a href="">C</a><a href="">D</a><a href="">E</a><a href="">F</a><a href="">G</a><a href="">H</a><a href="">I</a><a href="">J</a><a href="">K</a><a href="">L</a><a href="">M</a><a href="">N</a><a href="">O</a><a href="">P</a><a href="">Q</a><a href="">R</a><a href="">S</a><a href="">T</a><a href="">U</a><a href="">V</a><a href="">W</a><a href="">X</a><a href="">Y</a><a href="">Z</a></div>
+        </div> -->
+        <div class="search-input">          
+          <label for="suche">Suche per Eingabefeld</label> 
+          <input type="search" id="suche" placeholder="Begriff hier eingeben">
+           <button type="submit" class="btn">Absenden</button>
+        </div>
+        <div>
+          <h2>Einträge</h2>
+          <div class="table-register">
+            <table class="table table-striped table-borderless table-sm ">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Lebensdaten</th>
+                  <th scope="col">Kurzbio/Berufliche Funktionen</th>
+                  <th scope="col">GND</th>
+                  <th scope="col">Erwähnt in</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Baernreither, Joseph Maria</td>
+                  <td>∗ 12 April 1845 in Prag<br>† 19. September 1925 in Teplitz-Schönau</td>
+                  <td>Österreichischer Politiker, Mitglied des Abgeordnetenhauses und des Herrenhauses des Wiener Reichsrats</td>
+                  <td><a href="#">GND</a></td>
+                  <td>
+                    <div class="accordion" id="accordionSource1">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSource1" aria-expanded="false" aria-controls="collapseSource1">
+                          Quelle #1
+                        </button>
+                      </h2>
+                      <div id="collapseSource1" class="accordion-collapse collapse hide" data-bs-parent="#accordionSource1">
+                        <div class="accordion-body">
+                          Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. 
                         </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Page Title -->
-        <div class="container" id="pageTitle">
-            <div class="row justify">
-                <div class="col-lg-3 pl-0 pr-5">
-                    <!--&nbsp;  -->
-                </div>
-                <div class="col-lg-9 pl-5 pr-0">
-                    <h1>
-                        <span class="de">Register-Einträge</span>
-                        <!-- <span class="en">Registry entries</span> -->
-                        <a class="fas fa-redo-alt" title="zum Aktualisieren klicken" href="#"></a>
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Content -->
-        <div class="container" id="pageContent">
-            <div class="row">
-                <div class="col-12 px-0 register-menue">
-                    <a href="person.html" id="regPerson">
-                        <span class="de">Personenregister</span>
-                        <!-- <span class="en">Registry of persons</span> -->
-                    </a>
-                    <div class="container" id="table-register">
-                        <table class="table register-tabelle">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="display: none">Local-ID</th>
-                                    <th scope="col">
-                                        <span class="de">Eintrag</span>
-                                        <!-- <span class="en">Entry</span> -->
-                                    </th>
-                                    <th scope="col" style="display: none">Geschlecht</th>
-                                    <th scope="col">Geburtsjahr</th>
-                                    <th scope="col">Sterbejahr</th>
-                                    <th scope="col">Kurzbiographie</th>
-                                    <th scope="col">PID</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <!-- Local-ID -->
-                                    <td style="display: none"></td>
-                                    <!-- Entry -->
-                                    <td></td>
-                                    <!-- Sex -->
-                                    <td></td>
-                                    <!-- Birth -->
-                                    <td></td>
-                                    <!-- Death -->
-                                    <td></td>
-                                    <!-- Short biography -->
-                                    <td></td>
-                                    <!-- PID -->
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                      </div>
                     </div>
-                </div>
-                <!-- register table -->
-            </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Baernreither, Heinrich</td>
+                  <td>∗ 1. Jänner 1863 in Wien<br>† 7. März 1932 in Klam, Oberösterreich</td>
+                  <td>Politiker Österreich-Ungarns und k.k. Ministerpräsident im 1. Weltkrieg</td>
+                  <td><a href="#">GND</a></td>
+                  <td>
+                    <div class="accordion" id="accordionSource2">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSource2" aria-expanded="false" aria-controls="collapseSource2">
+                          Quelle #2
+                        </button>
+                      </h2>
+                      <div id="collapseSource2" class="accordion-collapse collapse hide" data-bs-parent="#accordionSource2">
+                        <div class="accordion-body">
+                          Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Baernreither, Conrad</td>
+                  <td>∗ 11. November 1852 in Penzing bei Wien<br>† 25. August 1925 in Mergentheim, Württemberg</td>
+                  <td>1906–1917 Chef des Generalstabes für die gesamte bewaffnete Macht Österreich-Ungarns</td>
+                  <td><a href="#">GND</a></td>
+                  <td>
+                    <div class="accordion" id="accordionSource3">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSource3" aria-expanded="false" aria-controls="collapseSource3">
+                          Quelle #3
+                        </button>
+                      </h2>
+                      <div id="collapseSource3" class="accordion-collapse collapse hide" data-bs-parent="#accordionSource3">
+                        <div class="accordion-body">
+                          Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-    </main>
 
-    <footer class="footer mt-auto pt-5">
-        <!-- footer -->
-    </footer>
+      </div>
+    </div> <!-- /row -->
 
-</body>
+  </main>
+            </div>
+            <hr>
+            <div class="col-lg-8 mx-auto px-0 pt-0 pb-5">
+                <footer class="d-flex flex-wrap align-items-center py-3 my-4">    
+    <div class="col-12 d-flex justify-content-between">
+        <div class="col"><a href="impressum.php" class="nav-link">Impressum</a></div>
+        <div class="col"><a href="barrierefreiheit.php" class="nav-link">Barrierefreiheit</a></div>
+        <div class="col"><a href="lizenzen.php" class="nav-link">Lizenzen</a></div>
+        <div class="col"><a href="foerdernde.php" class="nav-link">Fördergeber<sup>*</sup>innen</a></div>
+        <div class="col"><a href="datenschutz.php" class="nav-link">Datenschutzerklärung</a></div>
+    </div>
+    <div class="col-12 mt-4 d-flex justify-content-between">
+        <div class="col"><a href="https://oesterreichische-geschichte.at/" target="_blank"><img src="images/logo-kommission-neuere-geschichte-oesterreichs.svg" alt="Kommission für Neuere Geschichte Österreichs" title="Kommission für Neuere Geschichte Österreichs"></a></div>
+        <div class="col"><a href="https://www.uibk.ac.at/" target="_blank"><img src="images/logo-universitaet-innsbruck-rgb.png" alt="Universität Innsbruck" title="Universität Innsbruck"></a></div>
+        <div class="col"><a href="https://clariah.at" target="_blank"><img src="images/logo-clariah-rgb.png" alt="CLARIAH-AT" title="CLARIAH-AT"></a></div>
+        <div class="col"><a href="https://www.oesta.gv.at/" target="_blank"><img src="images/logo-bka-oesterreichisches-staatsarchiv-rgb.png" alt="Österreichisches Staatsarchiv" title="Österreichisches Staatsarchiv"></a></div>
+        <div class="col"><a href="#https://www.parlament.gv.at/" target="_blank"><img src="images/logo-parlament-oesterreich-rgb.png" alt="Parlament Österreich" title="Parlament Österreich"></a></div>
+    </div>
 
-</html>
+</footer>
+            </div>
+            <script src="js/bootstrap.bundle.min.js"></script>
+            <script src="js/nav-control.js"></script>
+            <script src="js/popper-init.js"></script>
+            
+    </body></html>

@@ -19,36 +19,22 @@ WHERE {
        kfngoeo:elementPos ?o_pos_text ;
 	.
     BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
-    {
-        SELECT DISTINCT ?o_key_person ?o_pid_person
-    	WHERE {            
-            ?s_person a kfngoeo:StartTag ;
+    ?s_person a kfngoeo:StartTag ;
 				kfngoeo:elementName tei:persName ;
                 kfngoeo:hasAttr [
                 	kfngoeo:attrName "key" ;
                     kfngoeo:attrValue ?o_key_person ;
-                ] ;                               
-     		.
+                ] ;
+                kfngoeo:elementPos ?o_pos_person ;
+			.
             OPTIONAL {
 				?s_person kfngoeo:hasAttr [
 							kfngoeo:attrName "ref" ;
 							kfngoeo:attrValue ?o_pid_person ;
 						] ;
      			.
-			}
-    	} GROUP BY ?o_key_person ?o_pid_person
-        ORDER BY ?o_key_person
-    }
-    BIND(IF(BOUND(?o_key_person), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
-    ?s_person a kfngoeo:StartTag ;
-		kfngoeo:elementName tei:persName ;
-		kfngoeo:hasAttr [
-        	kfngoeo:attrName "key" ;
-			kfngoeo:attrValue ?o_key ;
-		] ;
-  		kfngoeo:elementPos ?o_pos_person ;
-	.
-    FILTER (?o_key = ?o_key_person)    
+			}    
     BIND(xsd:integer(substr(?o_pos_person,strlen(?title_short)+2)) AS ?o_pos_person_nr)    
     FILTER(?o_pos_person_nr > ?o_pos_text_nr)
-}
+} GROUP BY ?o_key_person ?o_pid_person ?o_pos_person
+  ORDER BY ?o_key_person

@@ -5,10 +5,8 @@ const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 
-const html_path_left = 'main div.synoptik-box:nth-child(2) div.auswahl-content div.col-12' ;
-const html_path_right = 'main div.synoptik-box:nth-child(3) div.auswahl-content div.col-12' ;
 var i_xmlId = 0 ;
-var synoptik_html = '' ;
+var register_html = '' ;
 
 // Creating a window with a document
 var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
@@ -46,32 +44,28 @@ var header_nav = $.parseHTML(header_nav_str) ;
 $('html').find('header').replaceWith(header_nav) ;
 
 //build main
-var main_str = fs.readFileSync("assets/txt/synoptik.txt", 'utf8');
+var main_str = fs.readFileSync("assets/txt/register.txt", 'utf8');
 var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
-//build content of left box
+//build register
+/*
 var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_dipl_html.txt", 'utf8'); //data/txt/Bae_TB_8_dipl_html.txt
 var content_left = $.parseHTML(content_left_str) ;
 $('html').find(html_path_left).children().remove() ;
 $('html').find(html_path_left).append(content_left) ;
-
-//build content of right box
-//var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
-//var content_right = $.parseHTML(content_right_str) ;
-$('html').find(html_path_right).children().remove() ;
-//$('html').find(html_path_right).append(content_right) ;
+*/
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
 var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
-synoptik_html = dom.serialize() ;
-console.log('synoptik.html =' + LF, synoptik_html) ;
+register_html = dom.serialize() ;
+console.log('register.html =' + LF, register_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
-console.log('html data written: ', synoptik_html.length, ' bytes')
+fs.writeFileSync('html/register.html', register_html ) ;
+console.log('html data written: ', register_html.length, ' bytes')

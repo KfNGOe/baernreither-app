@@ -12,33 +12,20 @@ dev-baernreither-app
 
 # Workflow ingest
 
-1. check if xml:id or empty: 
-*.xml -> ./data/tei -> xml:id? or xml:id not empty? 
--> n: insert xml:id -> ./data/tei_xmlId 
--> y: -> ./data/tei_xmlId
- 
+*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 # Workflow register
-
+## convert xlsx to json
 *.xlsx -> build_xlsx2json.sh -> person_xlsx.json<br>
-person_xlsx.json -> build_person_json2ttl.sh -> personi.ttl<br>
-
-//add gender<br>
-personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl<br>
-
 *.xlsx -> build_xlsx2json.sh -> place_xlsx.json<br>
-place_xlsx.json -> build_place_json2ttl.sh -> placei.ttl<br>
+*.xlsx -> build_xlsx2json.sh -> org_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> index_xlsx.json<br>
 
-//add coordinates<br>
-personi.ttl + gnd.ttl -> gdb_queryRepo.sh -> annoPerson_6.rq -> personi.ttl<br>
-
-<mark>*.xml</mark> -> build_tei2ttl.sh -> *.ttl<br>
-*.ttl -> gdb_queryRepo.sh -> annoPerson_1.rq -> annoPersoni_1.ttl<br>
-annoPersoni_1.ttl -> gdb_queryRepo.sh -> annoPerson_2.rq -> annoPersoni_2.ttl<br>
-annoPersoni_2.ttl + *.ttl -> gdb_queryRepo.sh -> annoPerson_3.rq -> annoPersoni_3.ttl<br>
-annoPersoni_3.ttl + personi.ttl -> gdb_queryRepo.sh -> annoPerson_4.rq -> annoPersoni.ttl<br>
-
-personi.ttl + gnd.ttl + annoPersoni.ttl -> gdb_queryRepo.sh -> person.rq -> person.json<br>
-
-person.json + register_table_temp.html -> build_register_table.sh -> person.html<br>
-person.html + register_temp.html -> build_register.sh -> <mark>person.html</mark><br>
+## build json person entity from all ttl files 
+*.ttl -> gdb_queryRepo.sh -> person_1_json.rq -> person.json<br>
+## build json person register
+person_xlsx.json + person.json -> build_register_json.sh -> register_person.json<br>
+## convert json person register to html
+register_person.json -> build_register_json2html.sh -> register_person.txt<br>
+register_person.txt -> build_register_html.sh -> register_person.html<br>
+<br>
