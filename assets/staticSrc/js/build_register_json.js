@@ -3,8 +3,7 @@ const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 const { exit } = require("process") ;
-
-var convert = require('xml-js') ;
+const ShortUniqueId = require('short-unique-id');
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -15,10 +14,14 @@ const dom = new jsdom.JSDOM(`
 // Importing the jquery and providing it
 // with the window
 const jquery = require("jquery")(dom.window);
+//Instantiate ShortUniqueId
+const uid = new ShortUniqueId({ length: 10 });
 
+var convert = require('xml-js') ;
 var persons_json = {
     "head": {
         "vars": [
+            "id",
             "key", 
             "surname", 
             "forename",
@@ -34,6 +37,12 @@ var persons_json = {
         "bindings": []
     }
 } ;
+
+function generateId() {
+    //random number + pos   
+    return uid.rnd() ;
+    //return item.pos.value ;
+ }
 
 function buildRegPerson(obj, obj1) {               
     //check if keys exists
@@ -57,7 +66,8 @@ function buildRegPerson(obj, obj1) {
     //iterate over obj
     obj.results.bindings.forEach((item) => { //person.json    
         //console.log('key = ', item.o_key_person.value) ;
-        let person = {} ;        
+        let person = {} ;
+        let id = generateId() ;        
         let key = item.o_key_person.value ;
         let pid = '' ;
         let pos = item.o_pos_person.value ;
@@ -72,6 +82,7 @@ function buildRegPerson(obj, obj1) {
         if (!groupedByMain_tmp[key]) { //person_xlsx.json
             console.log('warning: no key ' + key + ' in person_xlsx.json') ;
             person = {
+                "id": id,
                 "key": key,
                 "surname": '',
                 "forename": '',
@@ -85,6 +96,7 @@ function buildRegPerson(obj, obj1) {
         } else {
             let item1 = groupedByMain_tmp[key][0] ;
             person = {
+                "id": id,
                 "key": key,
                 "surname": item1.A,
                 "forename": item1.C,

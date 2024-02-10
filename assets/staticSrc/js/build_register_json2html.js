@@ -35,45 +35,45 @@ function posNr2Str(posNr) {
 
 function generateId(item) {
    //random number + pos   
-   //return uid.rnd() + '_' + item.pos.value ;
-   return item.pos.value ;
+   return uid.rnd() ;
+   //return item.pos.value ;
 }
 
-function buildReg(obj) {   
-   html_str = '' ; 
-   //find tei:body
-    if (obj.head !== undefined) {        
-        obj.results.bindings.forEach((item, index, array) => {
-            if (typeof item === 'object') {                
-                if (item.name !== undefined) {
-                    if (item.name.value == 'http://www.tei-c.org/ns/1.0/body' 
-                        && item.type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
-                        pos_body = item.pos.value ;                        
-                    }
-                    if (item.name.value == 'http://www.tei-c.org/ns/1.0/TEI' 
-                        && item.type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag'
-                        && item.attr.value == 'xmlns') {
-                        title_short = item.pos.value.substring(0, item.pos.value.length - 2) ;
-                    }
-                }                
-            }
-        }) ;
-        console.log('pos_body = ', pos_body) ;
-        console.log('title_short = ', title_short) ; 
-        //BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)       
-    }
-    groupedByPos = obj.results.bindings.groupBy( item => {        
-        return item.pos.value ;
-     }) ;
-     groupedByStartPos = obj_1.results.bindings.groupBy( item => {
-         return item.start.value ;
-     }) ;
-     groupedById = obj_1.results.bindings.groupBy( item => {
-         return item.id.value ;
-     }) ;
-   //iterate over pos
-   Object.keys(groupedByPos).forEach((key) => {
-      //console.log('key = ', key) ;
+function buildReg(obj) {   //obj = register_person.json
+   html_str = '' ;
+   //group by key
+   groupedByKey = obj.results.bindings.groupBy( item => {        
+      return item.key ;
+   }) ;     
+   //iterate over keys
+   Object.keys(groupedByKey).forEach((key) => {
+      console.log('key = ', key) ;
+      console.log('groupedByKey[key] = ', groupedByKey[key]) ;
+      let key_arr = groupedByKey[key] ;
+      //start new row
+      html_str = html_str.concat('<tr>') ;      
+      //id
+      let id = key_arr[0].id ;
+      html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+      //entry
+      let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
+      html_str = html_str.concat('<td>' + entry + '</td>') ;
+      //life dates
+      let birth = key_arr[0].birth ;
+      let death = key_arr[0].death ;
+      html_str = html_str.concat('<td>' + '∗ ' + birth +'<br>' + '† ' + death + '</td>') ;
+      //description
+      let desc = key_arr[0].desc ;
+      html_str = html_str.concat('<td>' + desc + '</td>') ;
+      //pid
+      let pid = key_arr[0].pid ;
+      html_str = html_str.concat('<td>' + '<a href=#"' + pid + '" target="blank">GND</a></td>') ;      
+      
+      html_str = html_str.concat('</tr>') ;
+      
+      
+      
+      
       if (posStr2Nr(key) >= posStr2Nr(pos_body)) {
          //console.log('key = ', key) ;
          let item = groupedByPos[key][0] ;

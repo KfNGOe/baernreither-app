@@ -28,8 +28,7 @@ const filepath_out_tei=process.env.filepath_out_tei ;
 
 //function buildList(obj) {}
 
-function buildPerson(obj) {     
-   
+function buildPerson(obj) {   
    Object.keys(obj).forEach((key) => {
       //console.log('key = ', key, ', value = ', obj[key]) ;       
       switch(key) {
@@ -62,8 +61,7 @@ function buildPerson(obj) {
             break ;
          case 'name':
             if(obj[key] === 'list') {
-               //const groupedByMain = [] ;
-               //const groupedByMain_tmp = [] ;
+               //const groupedByMain = [] ;               
                let itemDataTemp = [] ;
                let itemDataTempMain = [] ;
                let itemDataTempSub = [] ;
@@ -71,18 +69,21 @@ function buildPerson(obj) {
                let temp = [] ;
                //init templates               
                itemDataTemp.push(obj.elements[0]) ; 
+               //console.log('itemDataTemp = ', JSON.stringify(itemDataTemp)) ;
                obj.elements = [] ;
-               itemDataTempMain.push(itemDataTemp[0].elements[0]) ; //key = o_key_person
-               itemDataTempSub.push(itemDataTemp[0].elements[1]) ;  //surname = .A
-               itemDataTempSub.push(itemDataTemp[0].elements[2]) ;  //forname = .C
-               itemDataTempSub.push(itemDataTemp[0].elements[3]) ;  //addname = .B
-               itemDataTempSub.push(itemDataTemp[0].elements[4]) ;  //birth = .D
-               itemDataTempSub.push(itemDataTemp[0].elements[5]) ;  //death = .E 
-               itemDataTempSub.push(itemDataTemp[0].elements[6]) ;  //desc = .F
-               itemDataTempSub.push(itemDataTemp[0].elements[7]) ;  //pid = o_pid_person               
-               itemDataTempPos.push(itemDataTemp[0].elements[8]) ;  //pos = o_pos_person 
+               itemDataTempMain.push(itemDataTemp[0].elements[0]) ; //.key = o_key_person
+               itemDataTempSub.push(itemDataTemp[0].elements[1]) ;  //id = .id
+               itemDataTempSub.push(itemDataTemp[0].elements[2]) ;  //.surname = .A
+               itemDataTempSub.push(itemDataTemp[0].elements[3]) ;  //.forename = .C
+               itemDataTempSub.push(itemDataTemp[0].elements[4]) ;  //.addName = .B
+               itemDataTempSub.push(itemDataTemp[0].elements[5]) ;  //.birth = .D
+               itemDataTempSub.push(itemDataTemp[0].elements[6]) ;  //.death = .E 
+               itemDataTempSub.push(itemDataTemp[0].elements[7]) ;  //.desc = .F
+               itemDataTempSub.push(itemDataTemp[0].elements[8]) ;  //.pid = o_pid_person               
+               itemDataTempPos.push(itemDataTemp[0].elements[9]) ;  //.pos = o_pos_person 
                //delete templates
                 itemDataTemp[0].elements.shift(itemDataTempMain) ;   //delete key template
+                itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete id template
                 itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete surname template
                 itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete forname template
                 itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete addname template
@@ -91,17 +92,14 @@ function buildPerson(obj) {
                 itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete desc template
                 itemDataTemp[0].elements.shift(itemDataTempSub) ;   //delete pid template
                 itemDataTemp[0].elements.shift(itemDataTempPos) ;   //delete pos template
-               
-               //check if keys exists
-               if (jsonJs_in.results.bindings.some(item => item.o_key_person)) {
-                    //group by key                
-                    groupedByMain = jsonJs_in.results.bindings.groupBy( item => {  //register_person.json
-                    return item.o_key_person.value ;
-                }) ;
-               } else {
-                    console.log('error: no keys') ;
-               }
+                               
+               //group by key                
+               groupedByMain = jsonJs_in.results.bindings.groupBy( item => {  //register_person.json
+               return item.key ;
+               }) ; 
+                              
                 //check if keys temp exists
+                /*
                if (jsonJs_in_xlsx.Tabelle1.some(item => item.H)) {
                     //group by key temp
                     groupedByMain_tmp = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
@@ -109,74 +107,84 @@ function buildPerson(obj) {
                  }) ;         
                } else {
                     console.log('error: no keys tmp') ;
-               }                              
-               //iterate over main
+               }
+               */                              
+               //iterate over persons
                 Object.keys(groupedByMain).forEach((key) => {                    
                     let termKey = key ;
                     console.log('termKey = ', termKey) ;
+                    //key
                     itemDataTempMain[0].elements[0].text = termKey ;
                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempMain[0]))) ;
-                    //check if surname exists
-                    if (groupedByMain_tmp[key].some(item => item.A)) {
-                        let termSur = groupedByMain_tmp[key][0].A ;
-                        itemDataTempSub[0].elements[0].text = termSur ;
+                    //check if id exists
+                     if (groupedByMain[key].some(item => item.id)) {
+                        let termId = groupedByMain[key][0].id ;
+                        itemDataTempSub[0].elements[0].text = termId ;
                         itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
+                     } else {
+                        console.log('no id') ;
+                     }
+                     //check if surname exists
+                    if (groupedByMain[key].some(item => item.surname)) {
+                        let termSur = groupedByMain[key][0].surname ;
+                        itemDataTempSub[1].elements[0].text = termSur ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[1]))) ;
                     } else {
                         console.log('no surname') ;
                     }
                     //check if forname exists                    
-                    if (groupedByMain_tmp[key].some(item => item.C)) {
-                        let termFor = groupedByMain_tmp[key][0].C ;
-                        itemDataTempSub[1].elements[0].text = termFor ;
-                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[1]))) ;
+                    if (groupedByMain[key].some(item => item.forename)) {
+                        let termFor = groupedByMain[key][0].forename ;
+                        itemDataTempSub[2].elements[0].text = termFor ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[2]))) ;
                     } else {
                         console.log('no forname') ;
                     }
                     //check if addname exists
-                    if (groupedByMain_tmp[key].some(item => item.B)) {
-                        let termAdd = groupedByMain_tmp[key][0].B ;
-                        itemDataTempSub[2].elements[0].text = termAdd ;
-                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[2]))) ;
+                    if (groupedByMain[key].some(item => item.addName)) {
+                        let termAdd = groupedByMain[key][0].addName ;
+                        itemDataTempSub[3].elements[0].text = termAdd ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[3]))) ;
                     } else {
                         console.log('no addname') ;
                     }
                     //check if birth exists
-                    if (groupedByMain_tmp[key].some(item => item.D)) {
-                        let termBirth = groupedByMain_tmp[key][0].D ;
-                        itemDataTempSub[3].elements[0].text = termBirth ;
-                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[3]))) ;
+                    if (groupedByMain[key].some(item => item.birth)) {
+                        let termBirth = groupedByMain[key][0].birth ;
+                        itemDataTempSub[4].elements[0].text = termBirth ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[4]))) ;
                     } else {
                         console.log('no birth') ;
                     }
                     //check if death exists
-                    if (groupedByMain_tmp[key].some(item => item.E)) {
-                     let termDeath = groupedByMain_tmp[key][0].E ;
-                     itemDataTempSub[4].elements[0].text = termDeath ;
-                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[4]))) ;
+                    if (groupedByMain[key].some(item => item.death)) {
+                     let termDeath = groupedByMain[key][0].death ;
+                     itemDataTempSub[5].elements[0].text = termDeath ;
+                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[5]))) ;
                      } else {
                            console.log('no death') ;
                      }
                      //check if desc exists
-                     if (groupedByMain_tmp[key].some(item => item.F)) {
-                     let termDesc = groupedByMain_tmp[key][0].F ;
-                     itemDataTempSub[5].elements[0].text = termDesc ;
-                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[5]))) ;
+                     if (groupedByMain[key].some(item => item.desc)) {
+                     let termDesc = groupedByMain[key][0].desc ;
+                     itemDataTempSub[6].elements[0].text = termDesc ;
+                     itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[6]))) ;
                      } else {
                            console.log('no description') ;
                      }
                      //check if pid exists
-                     if (groupedByMain[key].some(item => item.o_pid_person)) {
-                        let termPid = groupedByMain[key][0].o_pid_person.value ;
-                        itemDataTempSub[6].elements[0].text = termPid ;
-                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[6]))) ;
+                     if (groupedByMain[key].some(item => item.pid)) {
+                        let termPid = groupedByMain[key][0].pid ;
+                        itemDataTempSub[7].elements[0].text = termPid ;
+                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[7]))) ;
                         } else {
                               console.log('no pid') ;
                         }                    
                     //check if pos exists
-                    if (groupedByMain[key].some(item => item.o_pos_person)) {
+                    if (groupedByMain[key].some(item => item.pos)) {
                         //iterate over pos
                         groupedByMain[key].forEach((item) => {
-                            let termPos = item.o_pos_person.value ;
+                            let termPos = item.pos ;
                             itemDataTempPos[0].elements[0].text = termPos ;
                             itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;
                         }) ;
@@ -213,25 +221,25 @@ function buildPerson(obj) {
 } ; 
 
 //read person template tei file
-let tei_in = fs.readFileSync(filepath_in_tei, 'utf8'); //./data/tei/register/register_person_template.xml
+let tei_in = fs.readFileSync('./data/tei/register/register_person_template.xml', 'utf8'); //./data/tei/register/register_person_template.xml
 console.log('tei data read: ', tei_in.length, ' bytes') ;
 
 //convert tei to js object
 var teiJs_in = convert.xml2js(tei_in, {compact: false, spaces: 2}) ;
 
 //read person json file
-let json_in = fs.readFileSync(filepath_in_json, 'utf8'); //./data/json/register/register_person.json
+let json_in = fs.readFileSync('./data/json/register/register_person.json', 'utf8'); //./data/json/register/register_person.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
 //read person json file
-json_in = fs.readFileSync(filepath_in_json_xlsx, 'utf8'); //./data/json_xlsx/person_xlsx.json
-console.log('json data read: ', json_in.length, ' bytes') ;
+//json_in = fs.readFileSync(filepath_in_json_xlsx, 'utf8'); //./data/json_xlsx/person_xlsx.json
+//console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
-var jsonJs_in_xlsx = JSON.parse(json_in) ;
+//var jsonJs_in_xlsx = JSON.parse(json_in) ;
 
 buildPerson(teiJs_in) ;
 
@@ -240,5 +248,5 @@ let teiJs_out = teiJs_in ;
 //convert js object to tei
 var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
 //write tei file
-fs.writeFileSync(filepath_out_tei, tei_out ) ;  //./data/tei/register/register_person.xml
+fs.writeFileSync('./data/tei/register/register_person.xml', tei_out ) ;  //./data/tei/register/register_person.xml
 console.log('tei data written: ', tei_out.length, ' bytes')

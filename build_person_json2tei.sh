@@ -24,5 +24,8 @@ echo $FILEPATH_PERSON_JSON   #./data/json/register/register_person.json
 echo $FILEPATH_PERSON_JSON_XLSX   #./data/json_xlsx/person_xlsx.json
 echo $FILEPATH_PERSON_TEI    #./data/tei/register/register_person.xml
 
+#echo "build json to tei"
+#filepath_in_tei=$FILEPATH_PERSON_TMP_TEI filepath_in_json=$FILEPATH_PERSON_JSON filepath_in_json_xlsx=$FILEPATH_PERSON_JSON_XLSX filepath_out_tei=$FILEPATH_PERSON_TEI node assets/staticSrc/js/build_person_json2tei.js
+
 echo "build json to tei"
-filepath_in_tei=$FILEPATH_PERSON_TMP_TEI filepath_in_json=$FILEPATH_PERSON_JSON filepath_in_json_xlsx=$FILEPATH_PERSON_JSON_XLSX filepath_out_tei=$FILEPATH_PERSON_TEI node assets/staticSrc/js/build_person_json2tei.js
+node assets/staticSrc/js/build_person_json2tei.js
