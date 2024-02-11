@@ -5,43 +5,81 @@ PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-#import anno_Personi_11, register_person
+#import TB or MF
 
 CONSTRUCT {
-    ?s_anno a kfngoeo:AnnoPerson ;
-        rdfs:label "Annotation level of Person"@en ;
-    	rdfs:isDefinedBy ?o_key ;
-        kfngoeo:hasTarget ?target_person ;
-        kfngoeo:hasBody ?body_person ;
-	.
-}
-WHERE {
-    ?s_anno a kfngoeo:AnnoPerson ;
-        rdfs:isDefinedBy ?o_key ;
-        kfngoeo:hasTarget ?target_person ;
-        kfngoeo:hasBody ?body ;
+    ?s_anno 	
+        a kfngoeo:AnnoPerson ;
+		rdfs:label "Annotation level of Person"@en ;                
+		rdfs:isDefinedBy ?key ;        
+        kfngoeo:hasTarget 
+            [
+            kfngoeo:hasSource ?title_short ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr ;
+            	kfngoeo:end ?end_nr ;
+            ] 
+        ] ;
+		kfngoeo:hasBody <https://example.com> ;
     .
-	{
-        SELECT DISTINCT ?o_text (?s_item AS ?body_person)
-        WHERE {
-            OPTIONAL {
-                ?s_tei a kfngoeo:StartTag ;
-                         kfngoeo:elementName tei:TEI ;
-                         kfngoeo:elementPos ?o_pos_tei ;
-                .
-                BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
-                ?s_text a kfngoeo:Text ;
-                        kfngoeo:hasContent ?o_text ;
-                        kfngoeo:elementPos ?o_pos_text ;
-                .
-                BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
-                BIND(concat(?title_short, '_', str(?o_pos_text_nr-2)) AS ?o_pos_item)
-                ?s_item a kfngoeo:StartTag ;
-                        kfngoeo:elementName tei:item ;
-                        kfngoeo:elementPos ?o_pos_item ;
-                .
-            }
-        }
-	}    
-    FILTER (?body = ?o_text)
+}
+WHERE {    
+    {
+        SELECT DISTINCT ?o_key_person
+    	WHERE {            
+            ?s_person a kfngoeo:StartTag ;
+				kfngoeo:elementName tei:persName ;
+                kfngoeo:hasAttr [
+                	kfngoeo:attrName "key" ;
+                    kfngoeo:attrValue ?o_key_person ;
+                ] ;                
+     		.            
+    	} GROUP BY ?o_key_person
+        ORDER BY ?o_key_person
+    }
+    BIND (IF(BOUND(?o_key_person), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    #BIND(?o_key_person AS ?key)
+    ?s_start a kfngoeo:StartTag ;
+		kfngoeo:elementName tei:persName ;
+		kfngoeo:hasAttr [
+        	kfngoeo:attrName "key" ;
+			kfngoeo:attrValue ?o_key ;
+		] ;
+  		kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?xmlId;
+        ] ;
+  		kfngoeo:elementPos ?o_pos_start ;
+	.
+    ?s_end a kfngoeo:EndTag ;
+		kfngoeo:elementName tei:persName ;		
+  		kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?xmlId;
+        ] ;
+  		kfngoeo:elementPos ?o_pos_end ;    
+	.
+    FILTER (?o_key = ?o_key_person)
+    ?s_tei a kfngoeo:StartTag ;
+           kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    FILTER(CONTAINS(?o_pos_start, ?title_short))    
+    ?s_text a kfngoeo:StartTag ;
+       kfngoeo:elementName tei:text ;
+       kfngoeo:elementPos ?o_pos_text ;
+	.
+    BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
+    FILTER(CONTAINS(?o_pos_text, ?title_short))
+    BIND(xsd:integer(substr(?o_pos_start,strlen(?title_short)+2)) AS ?o_pos_start_nr)    
+    FILTER(CONTAINS(?o_pos_start, ?title_short))
+    FILTER(?o_pos_start_nr > ?o_pos_text_nr)
+    BIND(xsd:integer(substr(?o_pos_end,strlen(?title_short)+2)) AS ?o_pos_end_nr)
+    
+    BIND(?o_key AS ?key)
+    BIND(?o_pos_start_nr AS ?start_nr)
+    BIND(?o_pos_end_nr AS ?end_nr)
+    
 }
