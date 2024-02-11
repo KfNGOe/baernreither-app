@@ -1,19 +1,17 @@
 echo "build tei to ttl"
-data/tei/test.xml
-data/ttl/test.ttl
-
 #data/tei/register/register_person.xml
-PATH_TEI='./data/tei/'
-#PATH_TEI='./data/tei/register/'
+
+#PATH_TEI='./data/tei/'
+PATH_TEI='./data/tei/register/'
 PATH_TEI_XMLID='./data/tei_xmlId/'
-PATH_TTL='./data/ttl/'
-#PATH_TTL='./data/ttl/annotation/person/instance/'
 PATH_JSON_XMLID='./data/json_xmlId/'
-PATH_JSON_RDF='./data/json_rdf/'
 PATH_JSON_XMLJS='./data/json_xmlJs/'
+PATH_JSON_RDF='./data/json_rdf/'
+#PATH_TTL='./data/ttl/'
+PATH_TTL='./data/ttl/annotation/person/instance/'
 
 #FILENAME=$name
-FILENAME='test'
+FILENAME='register_person'
 #FILENAME='Tagebuch_Baernreither_8'
 #FILENAME='Bae_TB_8'
 #FILENAME='Bae_TB_7'
