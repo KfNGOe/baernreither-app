@@ -1,0 +1,23 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import: annoPersoni
+
+SELECT (?s_ttl AS ?id) ?key (?o_source_target AS ?source_target) (?o_start_nr AS ?start) (?o_end_nr AS ?end) (?o_source_body AS ?source_body)
+WHERE { 
+	?s_ttl 
+        a kfngoeo:AnnoPerson ;
+        rdfs:isDefinedBy ?key;
+        kfngoeo:hasTarget [
+        	kfngoeo:hasSource ?o_source_target ;
+    		kfngoeo:hasSelector [
+        		kfngoeo:start ?o_start_nr ;
+            	kfngoeo:end ?o_end_nr ;
+    		] ;
+    	] ;
+        kfngoeo:hasBody ?o_source_body ;
+    .    
+}
