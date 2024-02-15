@@ -39,11 +39,56 @@ function generateId(item) {
    //return item.pos.value ;
 }
 
-function buildReg(obj) {   //obj = register_person.json
+function persNameContext(source, pos) {
+   
+}
+
+function pos_str(key_arr,source_arr) {
+   //console.log('key_arr = ', key_arr) ;
+   let html_pos_str = '' ;
+   groupedByPos = key_arr.groupBy( item => {
+      return item.pos ;
+   }) ;
+   //table cell for pos
+   html_pos_str = html_pos_str.concat('<td>' + '<div class="accordion" id="accordionSource">') ;   
+   //iterate over sources
+   source_arr.forEach((source) => {
+      //load template for register item into dom 
+      $('html').find('body').append(reg_item_str) ;
+      //append source to dom
+      $('html').find('body').find('div.accordion-item:last-child .accordion-button').append(source) ;
+      //iterate over pos
+      Object.keys(groupedByPos).forEach((key) => {
+         if (key.includes(source)) {
+            //get person name in text and context
+            persNameContext(source, key) ;
+            //append pos to dom
+            $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + key + '</p>') ;
+            //$('html').find('body').find('.accordion-item .accordion-collapse .accordion-body').append(key) ;
+            console.log('dom: ', dom.serialize()) ;
+            console.log('key = ', key) ;               
+         }
+      }) ;
+   }) ;      
+   html_pos_str = html_pos_str.concat($('html').find('body').html()) ;
+   html_pos_str = html_pos_str.concat('</div>' + '</td>') ;
+   console.log('html_pos_str = ', html_pos_str) ;
+   html_str = html_str.concat(html_pos_str) ;     
+}
+
+function buildReg(obj,obj_1) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
    //group by key
    groupedByKey = obj.results.bindings.groupBy( item => {        
       return item.key ;
+   }) ;
+   //group by source_target
+   groupedBySourceTarget = obj_1.results.bindings.groupBy( item => {
+      return item.source_target.value ;
+   }) ;
+   let source_arr = [] ;
+   Object.keys(groupedBySourceTarget).forEach((key) => {
+      source_arr.push(key) ;
    }) ;     
    //iterate over keys
    Object.keys(groupedByKey).forEach((key) => {
@@ -68,12 +113,15 @@ function buildReg(obj) {   //obj = register_person.json
       //pid
       let pid = key_arr[0].pid ;
       html_str = html_str.concat('<td>' + '<a href=#"' + pid + '" target="blank">GND</a></td>') ;      
-      
+      //pos
+      let pos = key_arr[0].pos ;
+      html_str = html_str.concat(pos_str(key_arr,source_arr)) ;
+      //end row
       html_str = html_str.concat('</tr>') ;
       
       
       
-      
+      /*
       if (posStr2Nr(key) >= posStr2Nr(pos_body)) {
          //console.log('key = ', key) ;
          let item = groupedByPos[key][0] ;
@@ -194,17 +242,33 @@ function buildReg(obj) {   //obj = register_person.json
             default:
                break ;
          }
-      }
+      }*/
    }) ;
 } ; 
 
-//read comp text json file
+//read register json file
 let json_in = fs.readFileSync('./data/json/register/register_person.json', 'utf8') ; //data/json/register/register_person.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
-var jsonJs_in_reg = JSON.parse(json_in) ;
+let jsonJs_in_reg = JSON.parse(json_in) ;
+//read anno Person json file
+json_in = fs.readFileSync('./data/json/annoPerson.json', 'utf8') ; //data/json/annoPerson.json
+console.log('json data read: ', json_in.length, ' bytes') ;
+//convert json to js object
+let jsonJs_in_anno = JSON.parse(json_in) ;
+//read register item text template
+let reg_item_str = fs.readFileSync('./assets/txt/partials/register_table/register_item.txt', 'utf8') ;
+//parse register data text template
+var reg_item_html = $.parseHTML(reg_item_str) ;
+//let test = reg_item_html[0].outerHTML ;
+//read register p text template
+let reg_p_str = fs.readFileSync('./assets/txt/partials/register_table/register_p.txt', 'utf8') ;
+//parse register p text template
+var reg_p_html = $.parseHTML(reg_p_str) ;
+
+
 //build html string
-buildReg(jsonJs_in_reg) ;
+buildReg(jsonJs_in_reg, jsonJs_in_anno) ;
 //write html strings to files
 fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
 fs.writeFileSync(fileNamePath, html_str ) ;  

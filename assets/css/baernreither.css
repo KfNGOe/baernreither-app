@@ -254,11 +254,6 @@ hr {
   opacity: 1;
 }
 
-.accordion-body p {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
 .table td, .table-sm td {
   padding:.25rem 1rem .25rem .25rem;
 }
@@ -328,6 +323,9 @@ hr {
   --bs-accordion-btn-color: rgba(55,55,40,1);
   padding-top:0.2rem;
 }
+.accordion-item {
+  margin-bottom: 0.25rem;
+}
 .accordion-button:not(.collapsed) {
   color: rgba(55,55,40,1);
   background-color: transparent;
@@ -351,6 +349,10 @@ h2.accordion-header button.accordion-button {
 }
 .accordion-body {
   padding:5px 0;
+}
+.accordion-body p {
+  margin-top: 0;
+  margin-bottom: 0.1rem;
 }
 
 
