@@ -39,11 +39,27 @@ function generateId(item) {
    //return item.pos.value ;
 }
 
-function persNameContext(source, pos) {
-   
+function persNameContext(pos,source,sourceFile,annoFile) {
+   title_short = source ;
+   let startNr = posStr2Nr(pos) ;   
+   let pos_arr = annoFile[startNr] ; 
+   let endNr = pos_arr[0].end.value ;
+   let index_hit = 0 ;
+   if (sourceFile !== undefined) {
+      let item_hit = sourceFile.results.bindings.find((item, index, array) => {
+         //find pos in sourceFile between start and end, return item
+         console.log('index = ', index) ;
+         index_hit = index ; 
+         return (startNr < item.pos_txt_nr.value) && (item.pos_txt_nr.value < endNr) ;      
+      }) ;
+      contextBefore() ;
+      contextAfter() ;
+   } else {
+      console.log('sourceFile undefined') ;
+   }   
 }
 
-function pos_str(key_arr,source_arr) {
+function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    //console.log('key_arr = ', key_arr) ;
    let html_pos_str = '' ;
    groupedByPos = key_arr.groupBy( item => {
@@ -52,7 +68,9 @@ function pos_str(key_arr,source_arr) {
    //table cell for pos
    html_pos_str = html_pos_str.concat('<td>' + '<div class="accordion" id="accordionSource">') ;   
    //iterate over sources
-   source_arr.forEach((source) => {
+   source_arr.forEach((source,index) => {
+      console.log('index = ', index) ;
+      let sourceFile = sourceFile_arr[index] ;
       //load template for register item into dom 
       $('html').find('body').append(reg_item_str) ;
       //append source to dom
@@ -61,7 +79,7 @@ function pos_str(key_arr,source_arr) {
       Object.keys(groupedByPos).forEach((key) => {
          if (key.includes(source)) {
             //get person name in text and context
-            persNameContext(source, key) ;
+            persNameContext(key, source, sourceFile, annoFile) ;
             //append pos to dom
             $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + key + '</p>') ;
             //$('html').find('body').find('.accordion-item .accordion-collapse .accordion-body').append(key) ;
@@ -86,10 +104,26 @@ function buildReg(obj,obj_1) {   //obj = register_person.json //obj_1 = annoPers
    groupedBySourceTarget = obj_1.results.bindings.groupBy( item => {
       return item.source_target.value ;
    }) ;
+   groupedByStart = obj_1.results.bindings.groupBy( item => {
+      return item.start.value ;
+   }) ;
    let source_arr = [] ;
-   Object.keys(groupedBySourceTarget).forEach((key) => {
-      source_arr.push(key) ;
-   }) ;     
+   let sourceFile_arr = [] ;
+   let annoFile = groupedByStart ;
+   Object.keys(groupedBySourceTarget).forEach((key,index) => {
+      source_arr.push(key) ;      
+      let fileNamePath = 'data/json/' + key + '_full.json' ;    //data/json/Bae_TB_8_full.json
+      console.log('filename = ', fileNamePath) ;
+      console.log('index = ', index) ;      
+      if(fs.existsSync(fileNamePath)) {
+         console.log('file exists') ;
+         let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+         let jsonJs_in = JSON.parse(json_in) ;
+         sourceFile_arr[index] = jsonJs_in ;
+      } else {
+         console.log('file does not exist') ;
+      }      
+   }) ;   
    //iterate over keys
    Object.keys(groupedByKey).forEach((key) => {
       console.log('key = ', key) ;
@@ -115,7 +149,7 @@ function buildReg(obj,obj_1) {   //obj = register_person.json //obj_1 = annoPers
       html_str = html_str.concat('<td>' + '<a href=#"' + pid + '" target="blank">GND</a></td>') ;      
       //pos
       let pos = key_arr[0].pos ;
-      html_str = html_str.concat(pos_str(key_arr,source_arr)) ;
+      html_str = html_str.concat(pos_str(key_arr,source_arr,sourceFile_arr,annoFile)) ;
       //end row
       html_str = html_str.concat('</tr>') ;
       
