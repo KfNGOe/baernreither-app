@@ -7,6 +7,8 @@ const { exit } = require("process") ;
 var convert = require('xml-js') ;
 const { group } = require("console");
 
+const spaceMax = 5 ;
+const threeDots = '...' ;
 var pos_body = 0 ;
 var title_short = '' ;
 //var groupedByPos = {} ;
@@ -39,12 +41,58 @@ function generateId(item) {
    //return item.pos.value ;
 }
 
-function persNameContext(pos,source,sourceFile,annoFile) {
+function contextBefore(index_hit,sourceFile) {
+   let countSpace = 0 ;
+   let contextBefore = '' ;
+   let item_before = {} ;
+   let index_before = index_hit - 1 ;
+   let contextBefore_arr = [] ;   
+   while (countSpace < spaceMax && index_before >= 0) {
+      item_before = sourceFile.results.bindings[index_before] ;
+      contextBefore = item_before.o_txt.value + contextBefore ;
+      countSpace = (contextBefore.match(/\s/g) || []).length ;
+      index_before-- ;
+      console.log('countSpace = ', countSpace) ;      
+   }
+   if (countSpace > spaceMax) {      
+      contextBefore_arr = contextBefore.split(" ") ;
+      contextBefore_arr = contextBefore_arr.slice(-(spaceMax + 1)) ;
+      contextBefore = contextBefore_arr.join(" ") ;
+      contextBefore = threeDots + contextBefore ;
+   }
+   return contextBefore ;
+}
+
+function contextAfter(index_hit,sourceFile) {
+   let countSpace = 0 ;
+   let contextAfter = '' ;
+   let item_after = {} ;
+   let index_after = index_hit + 1 ;
+   let contextAfter_arr = [] ;
+   let spaceMax_rel = 0 ;   
+   while (countSpace < spaceMax && index_after >= 0) {
+      item_after = sourceFile.results.bindings[index_after] ;
+      contextAfter =  contextAfter + item_after.o_txt.value ;
+      countSpace = (contextAfter.match(/\s/g) || []).length ;
+      index_after++ ;
+      console.log('countSpace = ', countSpace) ;      
+   }
+   if (countSpace > spaceMax) {      
+      contextAfter_arr = contextAfter.split(" ") ;
+      contextAfter_arr = contextAfter_arr.slice(0, spaceMax + 1) ;
+      contextAfter = contextAfter_arr.join(" ") ;
+      contextAfter = contextAfter + threeDots ;
+   }
+   return contextAfter ;
+}
+
+function entryContext(pos,source,sourceFile,annoFile) {
    title_short = source ;
    let startNr = posStr2Nr(pos) ;   
    let pos_arr = annoFile[startNr] ; 
    let endNr = pos_arr[0].end.value ;
    let index_hit = 0 ;
+   let context_arr = [] ;
    if (sourceFile !== undefined) {
       let item_hit = sourceFile.results.bindings.find((item, index, array) => {
          //find pos in sourceFile between start and end, return item
@@ -52,16 +100,22 @@ function persNameContext(pos,source,sourceFile,annoFile) {
          index_hit = index ; 
          return (startNr < item.pos_txt_nr.value) && (item.pos_txt_nr.value < endNr) ;      
       }) ;
-      contextBefore() ;
-      contextAfter() ;
+      context_arr[0] = contextBefore(index_hit,sourceFile) ;
+      context_arr[1] = item_hit.o_txt.value;
+      context_arr[2] = contextAfter(index_hit,sourceFile) ;      
    } else {
       console.log('sourceFile undefined') ;
-   }   
+      context_arr[0] = '' ;
+      context_arr[1] = '' ;
+      context_arr[2] = '' ;      
+   }
+   return context_arr ;   
 }
 
 function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    //console.log('key_arr = ', key_arr) ;
    let html_pos_str = '' ;
+   let context_arr = [] ;
    groupedByPos = key_arr.groupBy( item => {
       return item.pos ;
    }) ;
@@ -79,9 +133,12 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
       Object.keys(groupedByPos).forEach((key) => {
          if (key.includes(source)) {
             //get person name in text and context
-            persNameContext(key, source, sourceFile, annoFile) ;
+            context_arr = entryContext(key, source, sourceFile, annoFile) ;
+            let contextBefore = context_arr[0] ;
+            let contextAfter = context_arr[2] ;            
+            let entry = '<a href="synoptik.html#person_' + key + '" id="person_' + key + '">'+ context_arr[1] +'</a>' ;
             //append pos to dom
-            $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + key + '</p>') ;
+            $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + contextBefore + entry + contextAfter + '</p>') ;
             //$('html').find('body').find('.accordion-item .accordion-collapse .accordion-body').append(key) ;
             console.log('dom: ', dom.serialize()) ;
             console.log('key = ', key) ;               
