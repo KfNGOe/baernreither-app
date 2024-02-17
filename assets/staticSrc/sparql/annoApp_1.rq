@@ -22,12 +22,7 @@ CONSTRUCT {
         #no annotation body               
     .
 }
-WHERE {
-    ?s_tei a kfngoeo:StartTag ;
-        kfngoeo:elementName tei:TEI ;
-        kfngoeo:elementPos ?o_pos_tei ;
-	.
-    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+WHERE {    
     ?s_app_start a kfngoeo:StartTag ;
         kfngoeo:elementName tei:app ;
         kfngoeo:hasAttr [            
@@ -36,7 +31,6 @@ WHERE {
         ] ;                    
         kfngoeo:elementPos ?o_pos_app_start ;
 	.
-    BIND(xsd:integer(SUBSTR(?o_pos_app_start,strlen(?title_short)+2)) AS ?start_nr)    
     ?s_app_end a kfngoeo:EndTag ;
         kfngoeo:elementName tei:app ;
         kfngoeo:hasAttr [            
@@ -45,6 +39,13 @@ WHERE {
         ] ;                    
         kfngoeo:elementPos ?o_pos_app_end ;
 	.
+    ?s_tei a kfngoeo:StartTag ;
+        kfngoeo:elementName tei:TEI ;
+        kfngoeo:elementPos ?o_pos_tei ;
+	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    FILTER(CONTAINS(?o_pos_app_start, ?title_short))
+    BIND(xsd:integer(SUBSTR(?o_pos_app_start,strlen(?title_short)+2)) AS ?start_nr)
     BIND(xsd:integer(SUBSTR(?o_pos_app_end,strlen(?title_short)+2)) AS ?end_nr)
     BIND(?title_short AS ?title_app)
     BIND(IF(BOUND(?s_app_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
