@@ -49,12 +49,10 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build register
-/*
-var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_dipl_html.txt", 'utf8'); //data/txt/Bae_TB_8_dipl_html.txt
-var content_left = $.parseHTML(content_left_str) ;
-$('html').find(html_path_left).children().remove() ;
-$('html').find(html_path_left).append(content_left) ;
-*/
+var register_str = fs.readFileSync("assets/txt/partials/register_table/register_table.txt", 'utf8'); //assets/txt/partials/register_table/register_table.txt
+var register = $.parseHTML(register_str) ;
+$('html').find('table.table tbody').replaceWith(register) ;
+console.log('dom: ', dom.serialize()) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');

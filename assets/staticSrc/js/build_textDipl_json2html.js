@@ -225,6 +225,6 @@ Object.keys(groupedBySource).forEach((key) => {
    $('html').find('body').children('div:last-child').append(html) ;   
 }) ;
 //write html file
-let fileNamePath = 'data/html/compRes.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
+let fileNamePath = 'html/compRes.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
 fs.writeFileSync(fileNamePath, dom.serialize() ) ;
 console.log('html data written: ', dom.serialize().length, ' bytes') ;
