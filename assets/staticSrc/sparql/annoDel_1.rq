@@ -6,6 +6,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
 
 #import TB or MF
 
@@ -37,6 +38,7 @@ WHERE {
         ] ;                    
         kfngoeo:elementPos ?o_pos_del_start ;
 	.
+    FILTER(CONTAINS(?o_pos_del_start, ?title_short))            
     BIND(xsd:integer(SUBSTR(?o_pos_del_start,STRLEN(?title_short)+2)) AS ?start_nr_del)    
     ?s_del_end a kfngoeo:EndTag ;
         kfngoeo:elementName tei:del ;

@@ -4,128 +4,283 @@
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
 @prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
 @prefix sesame: <http://www.openrdf.org/schema/sesame#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-kfngoei:61e20468-fa35-4fc3-9f03-ca8bb12cab4e a kfngoeo:AnnoDel;
+kfngoei:b9530433-b7f0-475e-9642-f2d758ed0dac a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343299 .
+  kfngoeo:hasTarget _:node537679 .
 
-_:node343299 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343300 .
+_:node537679 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537680 .
 
-_:node343300 a kfngoeo:TextPositionSelector;
+_:node537680 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 255;
+  kfngoeo:end 257 .
+
+kfngoei:f0d0ac3b-eb62-450e-a1be-324a0b8a6b39 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537681 .
+
+_:node537681 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537682 .
+
+_:node537682 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 399;
+  kfngoeo:end 401 .
+
+kfngoei:453c94dc-0007-4ca0-a90d-06b647b373ab a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537683 .
+
+_:node537683 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537684 .
+
+_:node537684 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 915;
+  kfngoeo:end 917 .
+
+kfngoei:75a788e0-2c4f-4b63-8743-55313234311f a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537685 .
+
+_:node537685 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537686 .
+
+_:node537686 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1102;
+  kfngoeo:end 1104 .
+
+kfngoei:241d38ee-f8a9-43c6-b10a-f5288e5db1b7 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537687 .
+
+_:node537687 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537688 .
+
+_:node537688 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1176;
+  kfngoeo:end 1178 .
+
+kfngoei:9c38cc51-b2d0-4315-af3b-4c1657496041 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537689 .
+
+_:node537689 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537690 .
+
+_:node537690 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1903;
+  kfngoeo:end 1905 .
+
+kfngoei:9be4b61f-3a94-4a91-8e3a-c0a550ff6c14 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537691 .
+
+_:node537691 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537692 .
+
+_:node537692 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1924;
+  kfngoeo:end 1926 .
+
+kfngoei:3d96d9e7-8c94-4727-879c-60d0344575c9 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537693 .
+
+_:node537693 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537694 .
+
+_:node537694 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2038;
+  kfngoeo:end 2040 .
+
+kfngoei:7a601a04-22b7-4618-826d-d3205ecfa189 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537695 .
+
+_:node537695 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537696 .
+
+_:node537696 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3559;
+  kfngoeo:end 3565 .
+
+kfngoei:9e8e8f1d-9364-43cc-bbcc-edc9f9cbc6db a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537697 .
+
+_:node537697 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537698 .
+
+_:node537698 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3570;
+  kfngoeo:end 3572 .
+
+kfngoei:bc684d12-a15f-42ef-bcf1-f8780ac9211f a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537699 .
+
+_:node537699 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537700 .
+
+_:node537700 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3577;
+  kfngoeo:end 3579 .
+
+kfngoei:25c09496-d7f6-437a-9a8e-58931b489915 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537701 .
+
+_:node537701 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537702 .
+
+_:node537702 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3581;
+  kfngoeo:end 3583 .
+
+kfngoei:7d2b0ba4-eda5-45b3-af46-d7abeb1f6999 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537703 .
+
+_:node537703 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537704 .
+
+_:node537704 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3986;
+  kfngoeo:end 3988 .
+
+kfngoei:09fbb5ea-04d9-41f8-b085-7a876dba4a92 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537705 .
+
+_:node537705 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node537706 .
+
+_:node537706 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5194;
+  kfngoeo:end 5196 .
+
+kfngoei:433a45c6-5770-4d7d-aaa2-aa4e79e26631 a kfngoeo:AnnoDel;
+  rdfs:label "Annotation level of Delete"@en;
+  kfngoeo:hasTarget _:node537707 .
+
+_:node537707 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537708 .
+
+_:node537708 a kfngoeo:TextPositionSelector;
   kfngoeo:start 459;
   kfngoeo:end 461 .
 
-kfngoei:ffa4e283-8a80-427c-acd3-e903936f608b a kfngoeo:AnnoDel;
+kfngoei:5bc00753-1a39-4e63-8c08-2d4de87ae487 a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343301 .
+  kfngoeo:hasTarget _:node537709 .
 
-_:node343301 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343302 .
+_:node537709 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537710 .
 
-_:node343302 a kfngoeo:TextPositionSelector;
+_:node537710 a kfngoeo:TextPositionSelector;
   kfngoeo:start 704;
   kfngoeo:end 708 .
 
-kfngoei:7b73271a-d6ad-4c36-9980-d19b9359d48a a kfngoeo:AnnoDel;
+kfngoei:ca2473ca-5de7-4234-80d7-b8e987bce22f a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343303 .
+  kfngoeo:hasTarget _:node537711 .
 
-_:node343303 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343304 .
+_:node537711 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537712 .
 
-_:node343304 a kfngoeo:TextPositionSelector;
+_:node537712 a kfngoeo:TextPositionSelector;
   kfngoeo:start 752;
   kfngoeo:end 754 .
 
-kfngoei:56add769-df82-4a5e-b15e-9f5d39e022f8 a kfngoeo:AnnoDel;
+kfngoei:34d0ce92-5cf6-4caa-b2f9-f56df1c57d7e a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343305 .
+  kfngoeo:hasTarget _:node537713 .
 
-_:node343305 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343306 .
+_:node537713 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537714 .
 
-_:node343306 a kfngoeo:TextPositionSelector;
+_:node537714 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1132;
   kfngoeo:end 1145 .
 
-kfngoei:59809adb-adb3-4015-aea9-2d615d97b6bb a kfngoeo:AnnoDel;
+kfngoei:86d1109b-078d-4790-b38a-8adbeb5c929f a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343307 .
+  kfngoeo:hasTarget _:node537715 .
 
-_:node343307 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343308 .
+_:node537715 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537716 .
 
-_:node343308 a kfngoeo:TextPositionSelector;
+_:node537716 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1565;
   kfngoeo:end 1567 .
 
-kfngoei:9b01ff1b-5a69-4bdf-9ca2-0d46c2a30225 a kfngoeo:AnnoDel;
+kfngoei:2845ce51-494f-4942-8da4-9bb6ae803ce5 a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343309 .
+  kfngoeo:hasTarget _:node537717 .
 
-_:node343309 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343310 .
+_:node537717 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537718 .
 
-_:node343310 a kfngoeo:TextPositionSelector;
+_:node537718 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1617;
   kfngoeo:end 1619 .
 
-kfngoei:f83309a8-e149-42a1-ab45-fb22f4deadfa a kfngoeo:AnnoDel;
+kfngoei:c355fcd2-c4df-401a-82c4-89ec8f1ded92 a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343311 .
+  kfngoeo:hasTarget _:node537719 .
 
-_:node343311 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343312 .
+_:node537719 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537720 .
 
-_:node343312 a kfngoeo:TextPositionSelector;
+_:node537720 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2145;
   kfngoeo:end 2151 .
 
-kfngoei:8ea852e1-8ffe-46d5-bb17-49742896eb0f a kfngoeo:AnnoDel;
+kfngoei:ce638d8c-58bd-4b60-a67a-e6ea6ad58991 a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343313 .
+  kfngoeo:hasTarget _:node537721 .
 
-_:node343313 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343314 .
+_:node537721 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537722 .
 
-_:node343314 a kfngoeo:TextPositionSelector;
+_:node537722 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3746;
   kfngoeo:end 3748 .
 
-kfngoei:da7a942b-7f90-4c0f-b594-f7e8e13b4d22 a kfngoeo:AnnoDel;
+kfngoei:60b84307-20e2-4e0e-8ec2-4bbee515517d a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343315 .
+  kfngoeo:hasTarget _:node537723 .
 
-_:node343315 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343316 .
+_:node537723 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537724 .
 
-_:node343316 a kfngoeo:TextPositionSelector;
+_:node537724 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4429;
   kfngoeo:end 4431 .
 
-kfngoei:c3b0cd62-b9c0-4a86-8c68-17a1325090ad a kfngoeo:AnnoDel;
+kfngoei:9df70d8d-ddaa-43c4-8b01-ecfdeae158ea a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343317 .
+  kfngoeo:hasTarget _:node537725 .
 
-_:node343317 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343318 .
+_:node537725 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537726 .
 
-_:node343318 a kfngoeo:TextPositionSelector;
+_:node537726 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4887;
   kfngoeo:end 4889 .
 
-kfngoei:40985aa9-eba4-462c-b56a-5d2bddcc1653 a kfngoeo:AnnoDel;
+kfngoei:7477ec09-24d7-4f4f-b162-97ee99bd9701 a kfngoeo:AnnoDel;
   rdfs:label "Annotation level of Delete"@en;
-  kfngoeo:hasTarget _:node343319 .
+  kfngoeo:hasTarget _:node537727 .
 
-_:node343319 kfngoeo:hasSource "Bae_TB_8";
-  kfngoeo:hasSelector _:node343320 .
+_:node537727 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node537728 .
 
-_:node343320 a kfngoeo:TextPositionSelector;
+_:node537728 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5048;
   kfngoeo:end 5050 .

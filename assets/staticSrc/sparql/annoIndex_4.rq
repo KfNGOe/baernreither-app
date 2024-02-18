@@ -34,8 +34,7 @@ WHERE {
             kfngoeo:start ?o_start ;
             kfngoeo:end ?o_end ;
         ] ;
-    .
-    FILTER (?o_key = ?o_text)
+    .    
 	{
         SELECT DISTINCT ?o_text (?s_item AS ?body_index)
         WHERE {
@@ -58,4 +57,5 @@ WHERE {
             }
         }
 	}
+    FILTER (?o_key = ?o_text)
 }

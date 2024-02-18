@@ -49,9 +49,9 @@ function buildFullText(obj) {
             //console.log('bindings = ', obj[key]) ;
             break ;
          case 'o_txt':
-            console.log('o_txt = ', obj[key]) ;
+            //console.log('o_txt = ', obj[key]) ;
             fullText = fullText.concat(obj[key].value) ;
-            console.log('fullText = ', fullText) ;            
+            //console.log('fullText = ', fullText) ;            
             break ;
          case 'text':
             obj[key] = obj[key].replace(/\n\s+$/g, '') ;            

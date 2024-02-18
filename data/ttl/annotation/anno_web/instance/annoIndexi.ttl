@@ -8,384 +8,1356 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-<https://github.com/KfNGOe/kfngoei/74e6a7e4-8ee3-4ebb-a801-53852c312e6d> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/b3d986bc-d38b-425a-9e21-51dc38cd29e2> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Arbeiter";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-65DB28B710C175AE8AB807D1A4C5ED96;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/157985bc-b33a-4d2f-b133-6129934433a8> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523411, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523415,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523429, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523463,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523595, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523597,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523599, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523679,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523715, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523723,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523727;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/112f48db-0bdb-417d-928e-ccc5cc4d2455> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-65DB28B710C175AE8AB807D1A4C5ED96 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331581, _:node331582, _:node331583, _:node331584 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523411 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524711 .
 
-_:node331581 a kfngoeo:TextPositionSelector;
+_:node524711 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 359;
+  kfngoeo:end 363 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523415 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524712 .
+
+_:node524712 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 484;
+  kfngoeo:end 488 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523429 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524713 .
+
+_:node524713 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1055;
+  kfngoeo:end 1059 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523463 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524714 .
+
+_:node524714 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1775;
+  kfngoeo:end 1779 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523595 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524715 .
+
+_:node524715 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6531;
+  kfngoeo:end 6535 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523597 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524716 .
+
+_:node524716 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6537;
+  kfngoeo:end 6546 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523599 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524717 .
+
+_:node524717 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6548;
+  kfngoeo:end 6557 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523679 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524718 .
+
+_:node524718 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3496;
   kfngoeo:end 3500 .
 
-_:node331582 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523715 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524719 .
+
+_:node524719 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4852;
   kfngoeo:end 4856 .
 
-_:node331583 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523723 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524720 .
+
+_:node524720 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5005;
   kfngoeo:end 5009 .
 
-_:node331584 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523727 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524721 .
+
+_:node524721 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5121;
   kfngoeo:end 5125 .
 
-<https://github.com/KfNGOe/kfngoei/4578c00d-4c5b-4965-ae6e-1049f0834f0e> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/25527715-b0b4-494b-bcf8-5f99704f1ec4> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Aristokratie";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-ADC683511736DDE0542D61B456C710E5;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/21e82a2f-ee05-492c-ba8d-4833fe350520> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523403, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523707,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523721;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/137fe948-c208-4571-bb4b-eb20f985a14f> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-ADC683511736DDE0542D61B456C710E5 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331585, _:node331586 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523403 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524722 .
 
-_:node331585 a kfngoeo:TextPositionSelector;
+_:node524722 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 205;
+  kfngoeo:end 209 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523707 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524723 .
+
+_:node524723 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4730;
   kfngoeo:end 4734 .
 
-_:node331586 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523721 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524724 .
+
+_:node524724 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4929;
   kfngoeo:end 4933 .
 
-<https://github.com/KfNGOe/kfngoei/2671950b-8fe1-4564-a0fa-fa3885f90815> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/78d74f45-251e-437a-aff8-697fceb10c6c> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Buergertum";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-218EF0951F1EFA1A3ACD7F99E6674D96;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/56874fcf-098d-4964-b52b-a85c6e8b7f8e> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523405, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523709,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523729, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523731;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/68ed3ad2-4c16-427d-ac8c-04e870a382f4> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-218EF0951F1EFA1A3ACD7F99E6674D96 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331587, _:node331588, _:node331589 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523405 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524725 .
 
-_:node331587 a kfngoeo:TextPositionSelector;
+_:node524725 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 211;
+  kfngoeo:end 215 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523709 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524726 .
+
+_:node524726 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4736;
   kfngoeo:end 4740 .
 
-_:node331588 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523729 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524727 .
+
+_:node524727 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5224;
   kfngoeo:end 5228 .
 
-_:node331589 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523731 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524728 .
+
+_:node524728 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5279;
   kfngoeo:end 5283 .
 
-<https://github.com/KfNGOe/kfngoei/dc692fdc-d55a-403a-8bd4-1e33a5a0e6c4> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/06df573b-07a3-4e16-883d-6f402902c4a7> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "KaiserFranzJoseph";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-F6807267BD86D1BF2D8E71B9B172D6FA;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/da4e782f-35d1-4b1d-9a8c-2ddcad30a84a> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523421, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523455,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523497, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523543,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523547, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523631,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523643;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/769dd5d2-4dd5-4d3a-b17a-343d23793265> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-F6807267BD86D1BF2D8E71B9B172D6FA kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331590, _:node331591 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523421 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524729 .
 
-_:node331590 a kfngoeo:TextPositionSelector;
+_:node524729 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 724;
+  kfngoeo:end 733 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523455 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524730 .
+
+_:node524730 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1556;
+  kfngoeo:end 1565 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523497 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524731 .
+
+_:node524731 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2805;
+  kfngoeo:end 2814 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523543 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524732 .
+
+_:node524732 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4604;
+  kfngoeo:end 4613 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523547 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524733 .
+
+_:node524733 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4715;
+  kfngoeo:end 4724 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523631 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524734 .
+
+_:node524734 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1330;
   kfngoeo:end 1339 .
 
-_:node331591 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523643 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524735 .
+
+_:node524735 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1569;
   kfngoeo:end 1578 .
 
-<https://github.com/KfNGOe/kfngoei/0f503a25-7fb2-4266-b282-ea23dfc90522> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/f8353c11-2e4b-40c4-b5c0-fa9ad6556f1c> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "KaiserlichesNotverordnungsrecht";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-A028395050D01FAFFA2295F8E5FE55A2;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/9b72c8cf-cf68-40d0-9dcc-35b2b4405b20> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523443, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523445,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523451, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523675;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/6184e2bd-75d1-4488-a527-98f4a81f2421> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-A028395050D01FAFFA2295F8E5FE55A2 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331592 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523443 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524736 .
 
-_:node331592 a kfngoeo:TextPositionSelector;
+_:node524736 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1286;
+  kfngoeo:end 1295 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523445 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524737 .
+
+_:node524737 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1322;
+  kfngoeo:end 1331 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523451 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524738 .
+
+_:node524738 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1452;
+  kfngoeo:end 1461 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523675 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524739 .
+
+_:node524739 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3362;
   kfngoeo:end 3371 .
 
-<https://github.com/KfNGOe/kfngoei/e608a8a0-0aef-4a99-a10e-1f6d8e2ca425> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/5c795f98-2670-45b9-8585-4a3521a475b6> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Liberalismus";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-AB9F63A8CB640F3E4FEFB73A6A17D0CC;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/2d7946a7-19ba-4409-9ed3-62e199a0af6f> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523409, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523713;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/f53ac68c-989e-4178-a330-6e3520bff25c> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-AB9F63A8CB640F3E4FEFB73A6A17D0CC kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331593 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523409 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524740 .
 
-_:node331593 a kfngoeo:TextPositionSelector;
+_:node524740 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 293;
+  kfngoeo:end 297 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523713 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524741 .
+
+_:node524741 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4813;
   kfngoeo:end 4817 .
 
-<https://github.com/KfNGOe/kfngoei/578b4203-0850-44ad-9d6e-6fcdb496cc91> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/2e5014c9-e4a0-4954-a586-f3fd2103ed64> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Nationalitaetenkonflikt";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523475, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523493;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/61e88c99-a448-4f1b-aaa5-1c386aec49df> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523475 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524742 .
+
+_:node524742 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1877;
+  kfngoeo:end 1881 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523493 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524743 .
+
+_:node524743 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2560;
+  kfngoeo:end 2569 .
+
+<https://github.com/KfNGOe/kfngoei/5be99d32-e121-433a-8fd9-65ff34855f26> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Oestereich-Ungarn";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523527, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523591;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/6775f2e0-ac0b-43f0-bcee-63f79b1ebd2f> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523527 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524744 .
+
+_:node524744 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4045;
+  kfngoeo:end 4054 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523591 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524745 .
+
+_:node524745 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6457;
+  kfngoeo:end 6466 .
+
+<https://github.com/KfNGOe/kfngoei/31c30a60-17a0-4030-b8f4-1277f8d009c1> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Oesterreich-Ungarn";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-71A8D1FC96B3DFD1C13183B7EDCC9238;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/da632756-adc5-4c18-8917-b6e0b102a2f2> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523441, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523503,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523505, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523521,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523523, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523529,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523531, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523533,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523541, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523587,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523637, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523639,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523661, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523663,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523665, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523667,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523685;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/f32aabef-560b-4e5a-91b3-1f56a4d29676> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-71A8D1FC96B3DFD1C13183B7EDCC9238 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331594, _:node331595, _:node331596, _:node331597, _:node331598,
-    _:node331599, _:node331600 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523441 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524746 .
 
-_:node331594 a kfngoeo:TextPositionSelector;
+_:node524746 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1263;
+  kfngoeo:end 1272 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523503 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524747 .
+
+_:node524747 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2958;
+  kfngoeo:end 2967 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523505 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524748 .
+
+_:node524748 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2969;
+  kfngoeo:end 2978 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523521 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524749 .
+
+_:node524749 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3851;
+  kfngoeo:end 3860 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523523 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524750 .
+
+_:node524750 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3862;
+  kfngoeo:end 3871 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523529 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524751 .
+
+_:node524751 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4070;
+  kfngoeo:end 4079 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523531 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524752 .
+
+_:node524752 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4251;
+  kfngoeo:end 4260 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523533 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524753 .
+
+_:node524753 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4290;
+  kfngoeo:end 4299 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523541 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524754 .
+
+_:node524754 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4487;
+  kfngoeo:end 4496 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523587 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524755 .
+
+_:node524755 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6376;
+  kfngoeo:end 6385 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523637 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524756 .
+
+_:node524756 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1487;
   kfngoeo:end 1496 .
 
-_:node331595 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523639 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524757 .
+
+_:node524757 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1498;
   kfngoeo:end 1507 .
 
-_:node331596 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523661 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524758 .
+
+_:node524758 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2457;
   kfngoeo:end 2466 .
 
-_:node331597 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523663 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524759 .
+
+_:node524759 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2482;
   kfngoeo:end 2491 .
 
-_:node331598 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523665 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524760 .
+
+_:node524760 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2664;
   kfngoeo:end 2673 .
 
-_:node331599 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523667 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524761 .
+
+_:node524761 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2713;
   kfngoeo:end 2722 .
 
-_:node331600 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523685 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524762 .
+
+_:node524762 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3923;
   kfngoeo:end 3932 .
 
-<https://github.com/KfNGOe/kfngoei/7c1b638c-4289-4fa3-b08b-b9cf3cebce5d> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/e1e8f97b-c030-4f48-8426-4949705acdce> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Parteien";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-F3B75C5563F9397C4AA9A4AD7222C03C;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/8e02a780-4984-4d0f-b64d-6f0e9732ec4b> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523489, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523491,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523495, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523499,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523507, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523509,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523511, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523519,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523573, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523577,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523581, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523583,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523585, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523613,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523615, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523629,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523633, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523641,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523645, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523655,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523657, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523671,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523699;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/94d04466-3a8b-4743-9b59-38683081c2d3> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-F3B75C5563F9397C4AA9A4AD7222C03C kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331601, _:node331602, _:node331603, _:node331604, _:node331605,
-    _:node331606, _:node331607, _:node331608, _:node331609, _:node331610 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523489 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524763 .
 
-_:node331601 a kfngoeo:TextPositionSelector;
+_:node524763 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2463;
+  kfngoeo:end 2472 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523491 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524764 .
+
+_:node524764 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2517;
+  kfngoeo:end 2526 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523495 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524765 .
+
+_:node524765 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2689;
+  kfngoeo:end 2698 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523499 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524766 .
+
+_:node524766 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2925;
+  kfngoeo:end 2934 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523507 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524767 .
+
+_:node524767 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2995;
+  kfngoeo:end 3004 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523509 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524768 .
+
+_:node524768 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3038;
+  kfngoeo:end 3047 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523511 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524769 .
+
+_:node524769 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3061;
+  kfngoeo:end 3070 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523519 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524770 .
+
+_:node524770 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3676;
+  kfngoeo:end 3685 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523573 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524771 .
+
+_:node524771 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6095;
+  kfngoeo:end 6104 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523577 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524772 .
+
+_:node524772 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6176;
+  kfngoeo:end 6185 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523581 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524773 .
+
+_:node524773 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6220;
+  kfngoeo:end 6229 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523583 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524774 .
+
+_:node524774 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6255;
+  kfngoeo:end 6264 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523585 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524775 .
+
+_:node524775 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6324;
+  kfngoeo:end 6333 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523613 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524776 .
+
+_:node524776 a kfngoeo:TextPositionSelector;
   kfngoeo:start 522;
   kfngoeo:end 531 .
 
-_:node331602 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523615 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524777 .
+
+_:node524777 a kfngoeo:TextPositionSelector;
   kfngoeo:start 617;
   kfngoeo:end 626 .
 
-_:node331603 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523629 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524778 .
+
+_:node524778 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1285;
   kfngoeo:end 1294 .
 
-_:node331604 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523633 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524779 .
+
+_:node524779 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1456;
   kfngoeo:end 1465 .
 
-_:node331605 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523641 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524780 .
+
+_:node524780 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1528;
   kfngoeo:end 1537 .
 
-_:node331606 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523645 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524781 .
+
+_:node524781 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1604;
   kfngoeo:end 1613 .
 
-_:node331607 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523655 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524782 .
+
+_:node524782 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2115;
   kfngoeo:end 2124 .
 
-_:node331608 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523657 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524783 .
+
+_:node524783 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2179;
   kfngoeo:end 2188 .
 
-_:node331609 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523671 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524784 .
+
+_:node524784 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3030;
   kfngoeo:end 3039 .
 
-_:node331610 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523699 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524785 .
+
+_:node524785 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4366;
   kfngoeo:end 4375 .
 
-<https://github.com/KfNGOe/kfngoei/5d3bb028-6ff6-4850-8b80-4c5a053b4e5b> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/a0294e9d-8725-4d9f-8c2c-01fec760dbb9> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Presse";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-9B993A9EB484D935A0D67FF0E132131D;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/71dd1133-4d81-4c4f-8207-6dac32d2fd05> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523483, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523487,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523525, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523607,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523611, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523625,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523627, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523659;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/6f4c4ebc-8e78-45b6-b87c-22d44c4f8e06> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-9B993A9EB484D935A0D67FF0E132131D kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331611, _:node331612, _:node331613, _:node331614, _:node331615 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523483 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524786 .
 
-_:node331611 a kfngoeo:TextPositionSelector;
+_:node524786 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2160;
+  kfngoeo:end 2164 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523487 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524787 .
+
+_:node524787 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2420;
+  kfngoeo:end 2424 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523525 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524788 .
+
+_:node524788 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3900;
+  kfngoeo:end 3904 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523607 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524789 .
+
+_:node524789 a kfngoeo:TextPositionSelector;
   kfngoeo:start 239;
   kfngoeo:end 243 .
 
-_:node331612 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523611 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524790 .
+
+_:node524790 a kfngoeo:TextPositionSelector;
   kfngoeo:start 472;
   kfngoeo:end 476 .
 
-_:node331613 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523625 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524791 .
+
+_:node524791 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1035;
   kfngoeo:end 1039 .
 
-_:node331614 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523627 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524792 .
+
+_:node524792 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1041;
   kfngoeo:end 1050 .
 
-_:node331615 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523659 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524793 .
+
+_:node524793 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2327;
   kfngoeo:end 2331 .
 
-<https://github.com/KfNGOe/kfngoei/ad846020-09a7-4547-af57-9253f0092b94> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/9701884f-001f-4898-918f-edb866e82575> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Reichsrat";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-7A4694C3FF5B3623F763056C714D170A;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/83ebadd8-a0d6-4f88-92da-2267d6524ac0> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523435, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523437,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523501, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523635,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523695;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/13c05979-2e1a-4f51-ba2c-ffb8c97061c6> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-7A4694C3FF5B3623F763056C714D170A kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331616, _:node331617 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523435 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524794 .
 
-_:node331616 a kfngoeo:TextPositionSelector;
+_:node524794 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1218;
+  kfngoeo:end 1227 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523437 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524795 .
+
+_:node524795 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1241;
+  kfngoeo:end 1250 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523501 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524796 .
+
+_:node524796 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2947;
+  kfngoeo:end 2956 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523635 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524797 .
+
+_:node524797 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1476;
   kfngoeo:end 1485 .
 
-_:node331617 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523695 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524798 .
+
+_:node524798 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4169;
   kfngoeo:end 4178 .
 
-<https://github.com/KfNGOe/kfngoei/c2d0aba3-7e40-40e5-b89b-b654cad6dcb1> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/982e7cfd-5161-4e53-90fb-65ee8a98138f> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Russland";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523419, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523467;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/7180860e-020c-4600-9375-6e495b21babb> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523419 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524799 .
+
+_:node524799 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 698;
+  kfngoeo:end 707 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523467 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524800 .
+
+_:node524800 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1823;
+  kfngoeo:end 1832 .
+
+<https://github.com/KfNGOe/kfngoei/2fe7b385-2776-4467-99d0-c507ab5fbe45> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "SozialeFuersorge";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523601;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/3a03cd69-7432-40e7-b30a-54c21904e5c9> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523601 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524801 .
+
+_:node524801 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6566;
+  kfngoeo:end 6570 .
+
+<https://github.com/KfNGOe/kfngoei/9162aac8-b59d-4cac-9f2e-e3e8bef101ca> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "UngarischerReichstag";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523417, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523453;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/01e47471-edb9-4fda-923f-2aa68b300dc5> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523417 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524802 .
+
+_:node524802 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 589;
+  kfngoeo:end 598 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523453 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524803 .
+
+_:node524803 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1500;
+  kfngoeo:end 1509 .
+
+<https://github.com/KfNGOe/kfngoei/376d93d4-0530-4b7f-ae47-f47e07264a9b> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Verwaltung";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-EDF4CD7481F4354395087AB2D6229709;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/329fd62b-a585-4d1a-9a38-8c17e5c333e3> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523407, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523481,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523711;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/53ac5864-0455-47fb-bdf3-5505579a5f03> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-EDF4CD7481F4354395087AB2D6229709 kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331618 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523407 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524804 .
 
-_:node331618 a kfngoeo:TextPositionSelector;
+_:node524804 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 268;
+  kfngoeo:end 277 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523481 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524805 .
+
+_:node524805 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1967;
+  kfngoeo:end 1976 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523711 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524806 .
+
+_:node524806 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4788;
   kfngoeo:end 4797 .
 
-<https://github.com/KfNGOe/kfngoei/2a16c00a-2266-4649-b2b1-ca8993d4e08a> a kfngoeo:AnnoIndex;
+<https://github.com/KfNGOe/kfngoei/29a6e8f1-d737-48e9-a1fd-92a7b8e15a0f> a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Wahlrechtsreform";
-  kfngoeo:hasTarget _:genid-b3eaaae5e606422b83641cb67585f2864288520-DDA3C4E38CF7A2AE5F4120A97ED851DD;
-  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/d35030f1-7b35-4fa6-a0ba-f7c4a933d9e4> .
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523401, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523413,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523423, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523425,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523427, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523431,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523433, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523439,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523447, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523449,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523457, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523459,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523461, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523465,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523469, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523471,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523473, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523479,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523485, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523513,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523515, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523517,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523535, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523537,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523539, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523545,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523549, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523551,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523553, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523557,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523559, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523561,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523563, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523565,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523567, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523569,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523571, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523575,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523579, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523589,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523593, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523605,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523609, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523617,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523619, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523621,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523623, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523647,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523649, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523651,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523653, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523669,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523673, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523677,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523681, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523683,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523687, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523689,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523691, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523693;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/08c5f90a-1a9f-474f-813b-5111d8f84ea5> .
 
-_:genid-b3eaaae5e606422b83641cb67585f2864288520-DDA3C4E38CF7A2AE5F4120A97ED851DD kfngoeo:hasSource
-    "Bae_TB_8";
-  kfngoeo:hasSelector _:node331619, _:node331620, _:node331621, _:node331622, _:node331623,
-    _:node331624, _:node331625, _:node331626, _:node331627, _:node331628, _:node331629,
-    _:node331630, _:node331631, _:node331632, _:node331633, _:node331634, _:node331635,
-    _:node331636, _:node331637, _:node331638, _:node331639, _:node331640, _:node331641,
-    _:node331642, _:node331643, _:node331644 .
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523401 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524807 .
 
-_:node331619 a kfngoeo:TextPositionSelector;
+_:node524807 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 133;
+  kfngoeo:end 137 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523413 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524808 .
+
+_:node524808 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 387;
+  kfngoeo:end 391 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523423 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524809 .
+
+_:node524809 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 735;
+  kfngoeo:end 739 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523425 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524810 .
+
+_:node524810 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 937;
+  kfngoeo:end 946 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523427 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524811 .
+
+_:node524811 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 948;
+  kfngoeo:end 957 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523431 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524812 .
+
+_:node524812 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1157;
+  kfngoeo:end 1166 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523433 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524813 .
+
+_:node524813 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1198;
+  kfngoeo:end 1207 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523439 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524814 .
+
+_:node524814 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1252;
+  kfngoeo:end 1261 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523447 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524815 .
+
+_:node524815 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1333;
+  kfngoeo:end 1337 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523449 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524816 .
+
+_:node524816 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1441;
+  kfngoeo:end 1450 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523457 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524817 .
+
+_:node524817 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1618;
+  kfngoeo:end 1627 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523459 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524818 .
+
+_:node524818 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1727;
+  kfngoeo:end 1736 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523461 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524819 .
+
+_:node524819 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1738;
+  kfngoeo:end 1747 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523465 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524820 .
+
+_:node524820 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1781;
+  kfngoeo:end 1790 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523469 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524821 .
+
+_:node524821 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1844;
+  kfngoeo:end 1853 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523471 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524822 .
+
+_:node524822 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1855;
+  kfngoeo:end 1864 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523473 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524823 .
+
+_:node524823 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1866;
+  kfngoeo:end 1875 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523479 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524824 .
+
+_:node524824 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1961;
+  kfngoeo:end 1965 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523485 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524825 .
+
+_:node524825 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2166;
+  kfngoeo:end 2175 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523513 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524826 .
+
+_:node524826 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3217;
+  kfngoeo:end 3221 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523515 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524827 .
+
+_:node524827 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3434;
+  kfngoeo:end 3443 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523517 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524828 .
+
+_:node524828 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3451;
+  kfngoeo:end 3460 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523535 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524829 .
+
+_:node524829 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4322;
+  kfngoeo:end 4326 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523537 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524830 .
+
+_:node524830 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4444;
+  kfngoeo:end 4453 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523539 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524831 .
+
+_:node524831 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4455;
+  kfngoeo:end 4464 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523545 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524832 .
+
+_:node524832 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4668;
+  kfngoeo:end 4672 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523549 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524833 .
+
+_:node524833 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4795;
+  kfngoeo:end 4799 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523551 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524834 .
+
+_:node524834 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4847;
+  kfngoeo:end 4856 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523553 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524835 .
+
+_:node524835 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4928;
+  kfngoeo:end 4937 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523557 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524836 .
+
+_:node524836 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5090;
+  kfngoeo:end 5099 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523559 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524837 .
+
+_:node524837 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5183;
+  kfngoeo:end 5192 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523561 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524838 .
+
+_:node524838 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5565;
+  kfngoeo:end 5569 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523563 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524839 .
+
+_:node524839 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5585;
+  kfngoeo:end 5594 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523565 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524840 .
+
+_:node524840 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5663;
+  kfngoeo:end 5667 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523567 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524841 .
+
+_:node524841 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5714;
+  kfngoeo:end 5723 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523569 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524842 .
+
+_:node524842 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5755;
+  kfngoeo:end 5764 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523571 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524843 .
+
+_:node524843 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5959;
+  kfngoeo:end 5963 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523575 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524844 .
+
+_:node524844 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6106;
+  kfngoeo:end 6110 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523579 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524845 .
+
+_:node524845 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6187;
+  kfngoeo:end 6196 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523589 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524846 .
+
+_:node524846 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6430;
+  kfngoeo:end 6439 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523593 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524847 .
+
+_:node524847 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6478;
+  kfngoeo:end 6487 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523605 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524848 .
+
+_:node524848 a kfngoeo:TextPositionSelector;
   kfngoeo:start 214;
   kfngoeo:end 223 .
 
-_:node331620 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523609 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524849 .
+
+_:node524849 a kfngoeo:TextPositionSelector;
   kfngoeo:start 249;
   kfngoeo:end 258 .
 
-_:node331621 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523617 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524850 .
+
+_:node524850 a kfngoeo:TextPositionSelector;
   kfngoeo:start 653;
   kfngoeo:end 662 .
 
-_:node331622 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523619 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524851 .
+
+_:node524851 a kfngoeo:TextPositionSelector;
   kfngoeo:start 668;
   kfngoeo:end 672 .
 
-_:node331623 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523621 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524852 .
+
+_:node524852 a kfngoeo:TextPositionSelector;
   kfngoeo:start 759;
   kfngoeo:end 763 .
 
-_:node331624 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523623 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524853 .
+
+_:node524853 a kfngoeo:TextPositionSelector;
   kfngoeo:start 847;
   kfngoeo:end 851 .
 
-_:node331625 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523647 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524854 .
+
+_:node524854 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1737;
   kfngoeo:end 1741 .
 
-_:node331626 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523649 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524855 .
+
+_:node524855 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1932;
   kfngoeo:end 1941 .
 
-_:node331627 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523651 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524856 .
+
+_:node524856 a kfngoeo:TextPositionSelector;
   kfngoeo:start 1951;
   kfngoeo:end 1960 .
 
-_:node331628 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523653 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524857 .
+
+_:node524857 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2015;
   kfngoeo:end 2024 .
 
-_:node331629 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523669 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524858 .
+
+_:node524858 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3017;
   kfngoeo:end 3021 .
 
-_:node331630 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523673 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524859 .
+
+_:node524859 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3236;
   kfngoeo:end 3240 .
 
-_:node331631 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523677 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524860 .
+
+_:node524860 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3407;
   kfngoeo:end 3416 .
 
-_:node331632 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523681 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524861 .
+
+_:node524861 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3506;
   kfngoeo:end 3515 .
 
-_:node331633 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523683 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524862 .
+
+_:node524862 a kfngoeo:TextPositionSelector;
   kfngoeo:start 3581;
   kfngoeo:end 3585 .
 
-_:node331634 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523687 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524863 .
+
+_:node524863 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4001;
   kfngoeo:end 4005 .
 
-_:node331635 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523689 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524864 .
+
+_:node524864 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4021;
   kfngoeo:end 4030 .
 
-_:node331636 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523691 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524865 .
+
+_:node524865 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4108;
   kfngoeo:end 4112 .
 
-_:node331637 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523693 kfngoeo:hasSource "Bae_TB_8" .
+
+_:node524866 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4158;
   kfngoeo:end 4167 .
 
-_:node331638 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523693 kfngoeo:hasSelector _:node524866 .
+
+<https://github.com/KfNGOe/kfngoei/29a6e8f1-d737-48e9-a1fd-92a7b8e15a0f> kfngoeo:hasTarget
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523697, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523701,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523703, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523705,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523717, _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523719,
+    _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523725 .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523697 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524867 .
+
+_:node524867 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4216;
   kfngoeo:end 4225 .
 
-_:node331639 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523701 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524868 .
+
+_:node524868 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4439;
   kfngoeo:end 4443 .
 
-_:node331640 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523703 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524869 .
+
+_:node524869 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4453;
   kfngoeo:end 4462 .
 
-_:node331641 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523705 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524870 .
+
+_:node524870 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4674;
   kfngoeo:end 4678 .
 
-_:node331642 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523717 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524871 .
+
+_:node524871 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4901;
   kfngoeo:end 4910 .
 
-_:node331643 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523719 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524872 .
+
+_:node524872 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4912;
   kfngoeo:end 4921 .
 
-_:node331644 a kfngoeo:TextPositionSelector;
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523725 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node524873 .
+
+_:node524873 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5021;
   kfngoeo:end 5030 .
+
+<https://github.com/KfNGOe/kfngoei/bad14286-2e43-4e82-aa11-a19dff3a330e> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Wahlrechtsreform/";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523603;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/4033dcbd-12fd-49ab-801a-2294eb4809e2> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523603 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524874 .
+
+_:node524874 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6603;
+  kfngoeo:end 6612 .
+
+<https://github.com/KfNGOe/kfngoei/fc954d80-679a-46ce-8f59-fd6510729dad> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Wahlreform";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523555;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/bb52f2d7-8291-4de2-b336-f9d7a4539b48> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523555 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524875 .
+
+_:node524875 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5062;
+  kfngoeo:end 5071 .
+
+<https://github.com/KfNGOe/kfngoei/ed809c08-d507-4686-970c-1ba481fdb056> a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Zentralismus";
+  kfngoeo:hasTarget _:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523477;
+  kfngoeo:hasBody <https://github.com/KfNGOe/kfngoei/9aef4d6e-a960-4ed6-b46f-d373e32df1be> .
+
+_:genid-5b7ce4aae3d6435ca330c0e508e9d526529076-node523477 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node524876 .
+
+_:node524876 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1947;
+  kfngoeo:end 1951 .

@@ -9,6 +9,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 #import TB or MF
 
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
 CONSTRUCT {
     ?s_anno a kfngoeo:AnnoAbbr ;
         	rdfs:label "Annotation level of Abbreviation"@en ;
@@ -37,6 +38,7 @@ WHERE {
         ] ;                    
         kfngoeo:elementPos ?o_pos_ch_start ;
 	.
+    FILTER(CONTAINS(?o_pos_ch_start, ?title_short))            
     BIND(xsd:integer(SUBSTR(?o_pos_ch_start,STRLEN(?title_short)+2)) AS ?start_nr_ch)
     BIND(CONCAT(?title_short, '_', STR(?start_nr_ch+1)) AS ?o_pos_abbr)    
     ?s_abbr a kfngoeo:StartTag ;
@@ -54,4 +56,4 @@ WHERE {
     BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)
     BIND(?title_short AS ?title_abbr)
     BIND(IF(BOUND(?s_ch_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
-}
+} LIMIT 10
