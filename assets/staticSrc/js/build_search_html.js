@@ -5,19 +5,13 @@ const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 
-const path_in_tei=process.env.path_in_tei 
-const path_out_json=process.env.path_out_json
-const path_out_tei=process.env.path_out_tei
-const filename = process.env.file; 
-const ext_xml=process.env.ext_xml
-const ext_json=process.env.ext_json
-
 var i_xmlId = 0 ;
-var index_html = '' ;
+var search_html = '' ;
 
 // Creating a window with a document
 var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
 const dom = new jsdom.JSDOM (dom_temp_str) ;
+console.log('dom: ', dom.serialize()) ;
 
 // Importing the jquery and providing it
 // with the window
@@ -27,6 +21,10 @@ const $ = require("jquery")(dom.window);
 var head_str = fs.readFileSync("assets/txt/partials/head.txt", 'utf8');
 var head = $.parseHTML(head_str) ;
 $('html').find('head').append(head) ;
+//build scripts
+$('html').find('head').append('<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>') ;
+$('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>') ;
+    
 
 //insert title
 //read about file
@@ -46,24 +44,26 @@ var header_nav = $.parseHTML(header_nav_str) ;
 $('html').find('header').replaceWith(header_nav) ;
 
 //build main
-var main_str = fs.readFileSync("assets/txt/index.txt", 'utf8');
+var main_str = fs.readFileSync("assets/txt/register.txt", 'utf8');
 var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
+
+//build register
+var register_str = fs.readFileSync("assets/txt/partials/register_table/register_table.txt", 'utf8'); //assets/txt/partials/register_table/register_table.txt
+var register = $.parseHTML(register_str) ;
+$('html').find('table.table tbody').replaceWith(register) ;
+console.log('dom: ', dom.serialize()) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
 var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
-//build scripts
-//$('html').find('body').append('<script src="js/bootstrap.bundle.min.js"></script>') ;
-//$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
-
-index_html = dom.serialize() ;
-console.log('index.html =' + LF, index_html) ;
+register_html = dom.serialize() ;
+console.log('register.html =' + LF, register_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/index.html', index_html ) ;
-console.log('html data written: ', index_html.length, ' bytes')
+fs.writeFileSync('html/register.html', register_html ) ;
+console.log('html data written: ', register_html.length, ' bytes')
