@@ -237,14 +237,14 @@ console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 let jsonJs_in_anno = JSON.parse(json_in) ;
 //read register item text template
-let reg_item_str = fs.readFileSync('./assets/txt/partials/register_table/register_item.txt', 'utf8') ;
+let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
 //parse register data text template
 var reg_item_html = $.parseHTML(reg_item_str) ;
 
 //build html string
 buildReg(jsonJs_in_reg, jsonJs_in_anno) ;
 //write html strings to file
-fileNamePath = 'assets/txt/partials/register_table/register_table.txt' ;    //assets/txt/partials/register_table/register_table.txt
+fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
 fs.writeFileSync(fileNamePath, html_str ) ;
 console.log('html data written: ', html_str.length, ' bytes') ;  
    

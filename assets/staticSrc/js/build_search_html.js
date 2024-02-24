@@ -9,9 +9,10 @@ var i_xmlId = 0 ;
 var search_html = '' ;
 
 // Creating a window with a document
-var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let search_scripts = fs.readFileSync("assets/txt/partials/search/search_scripts.txt", 'utf8');
+dom_temp_str = dom_temp_str.concat(search_scripts) ;
 const dom = new jsdom.JSDOM (dom_temp_str) ;
-console.log('dom: ', dom.serialize()) ;
 
 // Importing the jquery and providing it
 // with the window
@@ -21,6 +22,7 @@ const $ = require("jquery")(dom.window);
 var head_str = fs.readFileSync("assets/txt/partials/head.txt", 'utf8');
 var head = $.parseHTML(head_str) ;
 $('html').find('head').append(head) ;
+console.log('head: ', dom.serialize()) ;
 //build scripts
 $('html').find('head').append('<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>') ;
 $('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>') ;
@@ -44,26 +46,30 @@ var header_nav = $.parseHTML(header_nav_str) ;
 $('html').find('header').replaceWith(header_nav) ;
 
 //build main
-var main_str = fs.readFileSync("assets/txt/register.txt", 'utf8');
+var main_str = fs.readFileSync("assets/txt/search.txt", 'utf8');
 var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
-//build register
-var register_str = fs.readFileSync("assets/txt/partials/register_table/register_table.txt", 'utf8'); //assets/txt/partials/register_table/register_table.txt
-var register = $.parseHTML(register_str) ;
-$('html').find('table.table tbody').replaceWith(register) ;
-console.log('dom: ', dom.serialize()) ;
+//build search input
+var input_str = fs.readFileSync("assets/txt/partials/search/search_input.txt", 'utf8'); //assets/txt/partials/search/search_input.txt
+var input = $.parseHTML(input_str) ;
+$('html').find('div.row').append(input) ;
+//build search results
+var results_str = fs.readFileSync("assets/txt/partials/search/search_result.txt", 'utf8');
+var results = $.parseHTML(results_str) ;
+$('html').find('div.row').append(results) ;
+//console.log('dom: ', dom.serialize()) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
 var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
-register_html = dom.serialize() ;
-console.log('register.html =' + LF, register_html) ;
+search_html = dom.serialize() ;
+//console.log('search.html =' + LF, search_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/register.html', register_html ) ;
-console.log('html data written: ', register_html.length, ' bytes')
+fs.writeFileSync('html/suche.html', search_html ) ;
+console.log('html data written: ', search_html.length, ' bytes')

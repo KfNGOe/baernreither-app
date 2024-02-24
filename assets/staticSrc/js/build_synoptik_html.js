@@ -11,9 +11,10 @@ var i_xmlId = 0 ;
 var synoptik_html = '' ;
 
 // Creating a window with a document
-var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let index_scripts = fs.readFileSync("assets/txt/partials/synoptik/synoptik_scripts.txt", 'utf8');
+dom_temp_str = dom_temp_str.concat(synoptik_scripts) ;
 const dom = new jsdom.JSDOM (dom_temp_str) ;
-console.log('dom: ', dom.serialize()) ;
 
 // Importing the jquery and providing it
 // with the window

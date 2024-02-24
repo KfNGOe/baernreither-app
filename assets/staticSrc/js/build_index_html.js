@@ -16,7 +16,9 @@ var i_xmlId = 0 ;
 var index_html = '' ;
 
 // Creating a window with a document
-var dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
+let index_scripts = fs.readFileSync("assets/txt/partials/index/index_scripts.txt", 'utf8');
+dom_temp_str = dom_temp_str.concat(index_scripts) ;
 const dom = new jsdom.JSDOM (dom_temp_str) ;
 
 // Importing the jquery and providing it
