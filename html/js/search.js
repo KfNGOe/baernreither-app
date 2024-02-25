@@ -17,9 +17,14 @@ $(document).ready(function() {
 window.addEventListener('load', function() {
     searchFinishedHook = function(num) {    
     console.log('hook nr: ', num) ;
-    console.log('get search index done') ;
-    console.log('text_in: ', text_in) ;    
+    console.log('get search index done') ;    
   }
+} ) ;
+
+$('button[type="submit"]').click(function() {
+  let click = $(this);
+  console.log('text_in: ', text_in) ;    
+  console.log('click =', click.text()) ;  
 } ) ;
 
 /*
