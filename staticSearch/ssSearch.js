@@ -1,19 +1,7 @@
 // Importing the jsdom module
-const jsdom = require("jsdom") ;
-const fs = require('fs');
-const normalize = require('normalize-space') ;
-const { groupBy } = require('core-js/actual/array/group-by') ;
-const { findIndex } = require('core-js/actual/array/find-index') ;
-const { sort } = require('core-js/actual/array/sort') ;
-const { exit } = require("process");
-
 const separator = '|' ;
 const tokenOffset = 3 ;
 const title_short = 'Bae_TB_8' ;
-
-var Tokenizer = require('tokenize-text');
-const { get } = require("jquery");
-var tokenize = new Tokenizer();
 
 //var searchStr = 'die aus Gründen' ;
 var searchStr = 'WahlreformDie drei' ;
@@ -32,29 +20,13 @@ var hits_curr = {
     "token": "",
     "instances": []
 } ;
-
-
-
-// Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-
-const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_tei=process.env.filepath_out_tei ;
-
+/*
 var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) {
     return [
         text.slice(i_char, tokenOffset + i_char)                    
     ]
 }); 
-
+*/
 function hitsFilter(hits) {
     let hitsFileName_filtered = [] ;
     let hitsFileName = [] ;
@@ -192,146 +164,7 @@ function checkHitsPrevious(hit, hits_prev) {
     return hit_prev ;
 }
 
-//read file with tokens as string
-let text_in = fs.readFileSync('./staticSearch/ssTokenString.txt', 'utf8');
-console.log('text data read: ', text_in.length, ' bytes') ;
-
-//tokenize search string
-let searchStrLength = searchStr.length ;
-console.log('searchStrLength = ', searchStrLength) ;
-let tokens_N = searchStrLength - 2 ;
-searchTokens = [] ;            
-for (i_char = 0; i_char < tokens_N; i_char++) {
-    tokens = splitIn(searchStr);
-    token = {
-            "token": tokens[0].value
-        } ;
-    searchTokens.push(token) ;                
+function ssSearch(input_search, text_in) {    
+    console.log('input_search =', input_search) ;
+    console.log('text_in =', text_in) ;
 }
-console.log('searchTokens =', searchTokens) ;
-
-//find first token of search string in tokens
-searchToken = separator + searchTokens[0].token + separator ;
-if (text_in.includes(searchToken)) {
-    console.log('search string found') ;
-    for (i_tok = 0; i_tok < tokens_N; i_tok++) {
-        console.log('i_tok = ', i_tok) ;
-//tokens of search string
-        if(0 < i_tok && i_tok < tokens_N-1) {            
-            hits.instances.forEach((hit, index, array) => {
-            //compare current hit with next hits
-                if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
-                    let hits_next = getHits(hit.token_next_uri) ;
-                    console.log('hits next = ', hits_next) ;
-                    let hit_next = checkHitsNext(hit, hits_next) ;                    
-                    if (hit_next !== undefined) {                    
-//compare current hit with previous hits                        
-                        if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
-                            let hits_prev = getHits(hit.token_prev_uri) ;
-                            console.log('hits prev = ', hits_prev) ;
-                            let hit_prev = checkHitsPrevious(hit, hits_prev) ;
-                            if (hit_prev !== undefined) {
-                                console.log(hit_next) ;                    
-                                hits_curr.token = hits_next.token ;
-                                hits_curr.instances.push(hit_next) ;
-                            }
-                        }                            
-                    }
-                }                
-            }) ;
-            hits.token = hits_curr.token ;
-            hits.instances = hits_curr.instances ;
-            hits_curr.token = '' ;
-            hits_curr.instances = [] ;
-        } else {
-//first token of search string
-            if(i_tok === 0) {
-                let searchTokenFileName = searchTokens[0].token + '.json' ;
-                //get start hits
-                hits_start = getHits(searchTokenFileName) ;
-                console.log('hits start = ', hits_start) ;
-                hits.token = hits_start.token ;
-                hits.instances = hits_start.instances ;
-                hits.instances.forEach((hit, index, array) => {
-                //compare current hit with next hits
-                    if (hit.token_next_uri === searchTokens[i_tok+1].token + '.json') {
-                        let hits_next = getHits(hit.token_next_uri) ;
-                        console.log('hits next = ', hits_next) ;
-                        let hit_next = checkHitsNext(hit, hits_next) ;
-                        if (hit_next !== undefined) {                                                
-                            hits_curr.token = hits_next.token ;
-                            hits_curr.instances.push(hit_next) ;                            
-                        }                    
-                    }                
-                }) ;                
-                hits.token = hits_curr.token ;
-                hits.instances = hits_curr.instances ;
-                hits_curr.token = '' ;
-                hits_curr.instances = [] ;
-            } else {
-//last token of search string                
-                if(i_tok === tokens_N - 1) {
-                    hits.instances.forEach((hit, index, array) => {
-                        //compare current hit with previous hits                        
-                        if (hit.token_prev_uri === searchTokens[i_tok-1].token + '.json') {
-                            let hits_prev = getHits(hit.token_prev_uri) ;
-                            console.log('hits prev = ', hits_prev) ;
-                            let hit_prev = checkHitsPrevious(hit, hits_prev) ;                            
-                            if (hit_prev !== undefined) {
-                                hits_curr.token = hits.token ;
-                                hits_curr.instances.push(hit) ;                                
-                            }
-                        }                            
-                    }) ;
-                    hits.token = hits_curr.token ;
-                    hits.instances = hits_curr.instances ;
-                    hits_curr.token = '' ;
-                    hits_curr.instances = [] ;
-                }
-            }
-        }    
-    }
-    //get end hits
-    hits_end.token = hits.token ;
-    hits_end.instances = hits.instances ;
-    hits.token = '' ;
-    hits.instances = [] ;                    
-    console.log('hits start = ', JSON.stringify(hits_start)) ;
-    console.log('hits end = ', JSON.stringify(hits_end)) ;
-    //find for each end hit the start hit
-    if(!(hits_start.instances.length === 1 && hits_end.instances.length === 1)) {
-        hits_end.instances.forEach((hit_end, index, array) => {
-            //get start hit for each end hit        
-            let i_tok = 0 ;        
-            i_tok = (tokens_N - 1) - (hit_end.index + 1) ;
-            getHitStart(hit_end, i_tok) ;
-            console.log('hit_start_test = ', hit_start_test) ;                
-            let hit_start = hits_start.instances.find((hit_start, index, array) => {
-                let flag = false ;
-                flag = (JSON.stringify(hit_start) === JSON.stringify(hit_start_test)) ? true : false ;            
-                return flag ;
-            }) ;
-            if (hit_start !== undefined) {
-                hits_curr.token = hits_start.token ;
-                hits_curr.instances.push(hit_start) ;                
-            }                 
-        }) ;
-        hits_start.token = hits_curr.token ;
-        hits_start.instances = hits_curr.instances ;        
-    } else {        
-        console.log('hits_start.length = hits_end.length = 1') ;
-    }
-    //make a JsonJs object
-    if(hits_start.instances.length === hits_end.instances.length) {
-        hits = {} ;
-        hits.hitsAll = {} ;
-        hits.hitsAll.start = hits_start ;
-        hits.hitsAll.end = hits_end ;
-        console.log('hits = ', JSON.stringify(hits)) ;
-    } else {
-        console.log('ERROR: hits_start.length !== hits_end.length') ;
-    }
-} else {
-    console.log('search string not found: first token missing') ; 
-}
-

@@ -1,6 +1,8 @@
 //import groupBy from "https://cdn.jsdelivr.net/npm/core-js-bundle@3.36.0/minified.js";
 //import { Octokit } from "https://cdn.skypack.dev/@octokit/core" ;
 var text_in ;
+var flag_index = false;
+
 searchFinishedHook = function(num){} ;
 
 $(document).ready(function() {
@@ -16,16 +18,30 @@ $(document).ready(function() {
 
 window.addEventListener('load', function() {
     searchFinishedHook = function(num) {    
-    console.log('hook nr: ', num) ;
-    console.log('get search index done') ;    
+    console.log('hook nr: ', num) ;    
+    if (num == 1) {
+      console.log('get search index done') ;
+      flag_index = true ;
+    }    
   }
-} ) ;
+}) ;
 
-$('button[type="submit"]').click(function() {
+$('button#ssDoSearch').click(function() {
   let click = $(this);
   console.log('text_in: ', text_in) ;    
-  console.log('click =', click.text()) ;  
-} ) ;
+  console.log('click =', click.text()) ;
+  if (click.text() == 'Absenden') {
+    if (flag_index) {
+      console.log('start search') ;
+      let input_search = $("input#ssQuery").val(); //get the search query
+      console.log('input_search =', input_search) ;
+      ssSearch(input_search, text_in) ;
+    }
+    else {
+      console.log('search not ready') ;
+    }    
+  }  
+}) ;
 
 /*
 window.git_login = async function() {

@@ -24,23 +24,24 @@ window.addEventListener('load', function() {
       flag_index = true ;
     }    
   }
-} ) ;
+}) ;
 
-$('button #ssDoSearch').click(function() {
+$('button#ssDoSearch').click(function() {
   let click = $(this);
   console.log('text_in: ', text_in) ;    
   console.log('click =', click.text()) ;
   if (click.text() == 'Absenden') {
     if (flag_index) {
-      console.log('search start') ;
+      console.log('start search') ;
       let input_search = $("input#ssQuery").val(); //get the search query
       console.log('input_search =', input_search) ;
+      ssSearch(input_search, text_in) ;
     }
     else {
       console.log('search not ready') ;
     }    
   }  
-} ) ;
+}) ;
 
 /*
 window.git_login = async function() {
