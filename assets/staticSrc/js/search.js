@@ -11,14 +11,15 @@ $(document).ready(function() {
     (async () => {
         //get search index
         console.log('get search index start') ;
-        text_in = await fetchData() ;        
+        let filepath = './staticSearch/ssTokenString.txt' ;
+        text_in = await fetchData(filepath) ;        
         searchFinishedHook(1);
-    })() ;
+    })() ;    
 }) ;
 
 window.addEventListener('load', function() {
-    searchFinishedHook = function(num) {    
-    console.log('hook nr: ', num) ;    
+  searchFinishedHook = function(num) {
+    //console.log('hook nr: ', num) ;    
     if (num == 1) {
       console.log('get search index done') ;
       flag_index = true ;

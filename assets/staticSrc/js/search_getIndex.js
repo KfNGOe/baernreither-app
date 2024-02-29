@@ -1,11 +1,15 @@
 //var result ;
 
-async function fetchData() {
+async function fetchData(filepath) {
     try {
-        const response = await fetch('./staticSearch/ssTokenString.txt') ; //staticSearch/ssTokenString.txt
-        let text_in = await response.text();
-        //console.log('jsonJS: ', JSON.stringify(jsonJS) ) ;
-        return text_in ;
+        const response = await fetch(filepath) ; //staticSearch/ssTokenString.txt
+        if (filepath.includes('.json')) {            
+            const json_in = await response.json();
+            return json_in ;            
+        } else {
+            const text_in = await response.text();
+            return text_in ;
+        }        
     } catch (error) {
         console.error('Error:', error);
     }

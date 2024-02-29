@@ -210,10 +210,10 @@ for (i_char = 0; i_char < tokens_N; i_char++) {
 }
 console.log('searchTokens =', searchTokens) ;
 
-//find first token of search string in tokens
+//find first token of search string in tokens string
 searchToken = separator + searchTokens[0].token + separator ;
 if (text_in.includes(searchToken)) {
-    console.log('search string found') ;
+    console.log('search token found') ;
     for (i_tok = 0; i_tok < tokens_N; i_tok++) {
         console.log('i_tok = ', i_tok) ;
 //tokens of search string
