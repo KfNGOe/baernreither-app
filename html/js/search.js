@@ -2,6 +2,7 @@
 //import { Octokit } from "https://cdn.skypack.dev/@octokit/core" ;
 var text_in ;
 var flag_index = false;
+var flag_search = false;
 
 searchFinishedHook = function(num){} ;
 
@@ -21,8 +22,12 @@ window.addEventListener('load', function() {
   searchFinishedHook = function(num) {
     //console.log('hook nr: ', num) ;    
     if (num == 1) {
-      console.log('get search index done') ;
       flag_index = true ;
+      console.log('get search index done') ;      
+    }
+    if (num == 2) {
+      flag_search = true ;
+      console.log('get search token done') ;      
     }    
   }
 }) ;
