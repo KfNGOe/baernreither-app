@@ -1,22 +1,11 @@
 //import groupBy from "https://cdn.jsdelivr.net/npm/core-js-bundle@3.36.0/minified.js";
 //import { Octokit } from "https://cdn.skypack.dev/@octokit/core" ;
 var text_in ;
-var flag_index = false;
+var json_in = {} ;
+var flag_index = true;
 var flag_search = false;
 
 searchFinishedHook = function(num){} ;
-
-$(document).ready(function() {
-    console.log("ready!");    
-
-    (async () => {
-        //get search index
-        console.log('get search index start') ;
-        let filepath = './staticSearch/ssTokenString.txt' ;
-        text_in = await fetchData(filepath) ;        
-        searchFinishedHook(1);
-    })() ;    
-}) ;
 
 window.addEventListener('load', function() {
   searchFinishedHook = function(num) {
@@ -32,16 +21,39 @@ window.addEventListener('load', function() {
   }
 }) ;
 
-$('button#ssDoSearch').click(function() {
+$(document).ready(function() {
+    console.log("ready!");    
+/*
+    (async () => {
+        //get search index
+        console.log('get search index start') ;
+        let filepath = './staticSearch/ssTokenString.txt' ;
+        text_in = await fetchData(filepath) ;        
+        searchFinishedHook(1);
+    })() ;    
+    */    
+}) ; 
+
+
+
+$('button#ssDoSearch').click(function(event) {
+  event.preventDefault() ;
   let click = $(this);
-  console.log('text_in: ', text_in) ;    
+  //console.log('text_in: ', text_in) ;    
   console.log('click =', click.text()) ;
   if (click.text() == 'Absenden') {
     if (flag_index) {
       console.log('start search') ;
       let input_search = $("input#ssQuery").val(); //get the search query
-      console.log('input_search =', input_search) ;
-      ssSearch(input_search, text_in) ;
+      console.log('input_search =', input_search) ;      
+      //let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;//staticSearch/stems                      
+      let searchTokenFilePath = './staticSearch/stems/die.json' ;//staticSearch/stems/die.json            
+      (async () => {
+        json_in = await fetchData(searchTokenFilePath) ;        
+        //hits_start = json_in ;
+        searchFinishedHook(2);                    
+      })() ;            
+      //ssSearch(input_search, text_in) ;
     }
     else {
       console.log('search not ready') ;

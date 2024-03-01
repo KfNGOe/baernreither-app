@@ -7,8 +7,6 @@ const title_short = 'Bae_TB_8' ;
 //var searchStr = 'WahlreformDie drei' ;
 var searchTokens = [] ;
 var tokens = [] ;
-var json_in = {} ;
-var jsonJs_in = {} ;
 var hits = {} ;
 var hits_start = {} ;
 var hit_start_test = {} ;
@@ -28,7 +26,7 @@ function tokenize (input_search, searchTokens) {
     }
     return searchTokens ;
 };
-
+/*
 function getHits (hitFileName) {
     (async () => {
         //get         
@@ -36,7 +34,7 @@ function getHits (hitFileName) {
         searchFinishedHook(2);
     })() ;
 } ;
-
+*/
 function ssSearch(input_search, text_in) {    
     console.log('input_search =', input_search) ;
     //check input search string
@@ -57,33 +55,23 @@ function ssSearch(input_search, text_in) {
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {            
             //check if token is first token of tokens string
             if(i_tok === 0) {
-                console.log('i_tok = ', i_tok) ;
-                let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;//staticSearch/stems                
+                console.log('i_tok = ', i_tok) ;                    
                 /*
-                (async () => {                    
-                    jsonJs_in = await fetchData(searchTokenFilePath) ;        
-                    searchFinishedHook(2);                    
-                })() ;
-                */
-                fetchData(searchTokenFilePath).then(jsonJs_in => {
-                    hits_start = jsonJs_in ;
-                    searchFinishedHook(2) ;
-                    //console.log('fetch search token done') ;
-                }) ;
                 while (flag_search === false) {
                     console.log('fetch search token not ready') ;
-                }
+                }                
                 flag_search = false ;
                 hits_start = jsonJs_in ;
-                console.log('fetch search token done') ;
+                //console.log('fetch search token done') ;
+                */
             } else {
                 //check if token is between first and last token of tokens string
                 if(0 < i_tok && i_tok < tokens_N-1) {
-                    console.log('i_tok = ', i_tok) ;
+                    //console.log('i_tok = ', i_tok) ;
                 } else {
                     //check if token is last token of tokens string
                     if(i_tok === tokens_N-1) {
-                        console.log('i_tok = ', i_tok) ;
+                        //console.log('i_tok = ', i_tok) ;
                     }
                 }
             }            

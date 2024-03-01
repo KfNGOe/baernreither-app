@@ -1,8 +1,8 @@
-//var result ;
-
 window.fetchData = async function(filepath) {
     try {        
         const response = await fetch(filepath) ;
+        //response.ok;     
+        //response.status; 
         if (filepath.includes('.json')) {            
             const json_in = await response.json();
             return json_in ;            
@@ -13,4 +13,4 @@ window.fetchData = async function(filepath) {
     } catch (error) {        
         console.error('Error:', error);        
     }
-}
+  } ;
