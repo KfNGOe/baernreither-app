@@ -12,6 +12,5 @@ cp -r staticSearch/ html/
 cp -r assets/staticSrc/js/bootstrap.bundle.js html/js
 cp -r assets/staticSrc/js/nav-control.js html/js
 cp -r assets/staticSrc/js/search.js html/js
-cp -r assets/staticSrc/js/search_getIndex.js html/js
 
 echo "copy assets done"

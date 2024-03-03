@@ -16,16 +16,7 @@ var hits_curr = {
     "instances": []
 } ;
 
-function tokenize (input_search, searchTokens) {
-    let searchStrLength = input_search.length ;    
-    let tokens_N = searchStrLength - 2 ;    
-    let tokens = [] ;
-    for (i_char = 0; i_char < tokens_N; i_char++) {
-        tokens = input_search.slice(i_char, tokenOffset + i_char) ;        
-        searchTokens.push(tokens) ;                
-    }
-    return searchTokens ;
-};
+
 /*
 function getHits (hitFileName) {
     (async () => {
