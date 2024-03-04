@@ -118,10 +118,12 @@ $('button#ssDoSearch').click(function(event) {
         //build result array
         let hits_start = hits_arr[0] ;
         let hits_path_arr = new Array(hits_arr.length).fill(0) ;
+        hits_path_arr[0] = hits_start ;
         let result_arr = new Array(hits_start.instances.length).fill(0) ;
         result_arr.forEach(function(result, index) {
-          result.push(hits_path_arr) ;
+          result_arr[index] = hits_path_arr ;
         } ) ;
+        console.log('result_arr =', result_arr) ;
         //build search paths
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {
           console.log('i_tok = ', i_tok) ;
@@ -138,8 +140,6 @@ $('button#ssDoSearch').click(function(event) {
 
               } ) ;
             console.log('hits_arr_index = ', hits_arr_index) ;
-
-
           }
             if(0 < i_tok && i_tok < tokens_N-1) {
               let hits_arr_index = hits_arr.findIndex(function(hit,index) {
