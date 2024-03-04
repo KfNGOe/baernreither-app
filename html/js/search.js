@@ -106,9 +106,8 @@ $('button#ssDoSearch').click(function(event) {
           let searchToken = separator + searchTokens[i_tok] + separator ;
           if (text_in.includes(searchToken)) {          
             //if token found, fetch token file
-            let searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok] + '.json' ;
-            //jsonJs_in = await fetchData(searchTokenFilePath) ;            
-            hits_arr.push(await fetchData(searchTokenFilePath)) ; //ATTENTION: withour JSON.parse(JSON.stringify()) the array is not iterable           ;          
+            let searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok] + '.json' ;            
+            hits_arr.push(await fetchData(searchTokenFilePath)) ;
           } else {
               console.log('search token "' + searchTokens[i_tok] + '" in "' + input_search + '" not found') ;
               alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
@@ -116,6 +115,13 @@ $('button#ssDoSearch').click(function(event) {
           }
         }
         console.log('hits_arr =', hits_arr) ;
+        //build result array
+        let hits_start = hits_arr[0] ;
+        let hits_path_arr = new Array(hits_arr.length).fill(0) ;
+        let result_arr = new Array(hits_start.instances.length).fill(0) ;
+        result_arr.forEach(function(result, index) {
+          result.push(hits_path_arr) ;
+        } ) ;
         //build search paths
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {
           console.log('i_tok = ', i_tok) ;
@@ -125,18 +131,32 @@ $('button#ssDoSearch').click(function(event) {
             let hits_arr_index = hits_arr.findIndex(function(hit) {
               return hit.token === searchTokens[i_tok] ;
             }) ;
+            if (hits_arr_index === -1) {
+              console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
+            } else {
+              hits_arr[hits_arr_index].instances.forEach(function(instance) {
+
+              } ) ;
             console.log('hits_arr_index = ', hits_arr_index) ;
-          } else {
+
+
+          }
             if(0 < i_tok && i_tok < tokens_N-1) {
               let hits_arr_index = hits_arr.findIndex(function(hit,index) {
                 return hits_arr[index].token === searchTokens[i_tok] ;
               }) ;
+              if (hits_arr_index === -1) {
+                console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
+              }
               console.log('hits_arr_index = ', hits_arr_index) ;
             } else {
               if(i_tok === tokens_N-1) {
                 let hits_arr_index = hits_arr.findIndex(function(hit,index) {
                   return hits_arr[index].token === searchTokens[i_tok] ;
                 }) ;
+                if (hits_arr_index === -1) {
+                  console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
+                }
                 console.log('hits_arr_index = ', hits_arr_index) ;              
               }
             }
