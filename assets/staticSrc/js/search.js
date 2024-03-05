@@ -118,9 +118,14 @@ $('button#ssDoSearch').click(function(event) {
         //build result array
         let hits_start = hits_arr[0] ;
         let hits_path_arr = new Array(hits_arr.length).fill(0) ;
-        hits_path_arr[0] = hits_start ;
+        //hits_path_arr[0] = hits_start ;
         let result_arr = new Array(hits_start.instances.length).fill(0) ;
         result_arr.forEach(function(result, index) {
+          let hit_start = {} ;
+          hit_start.token = hits_start.token ;
+          hit_start.instances = [] ;
+          hit_start.instances.push(hits_start.instances[index]) ;
+          hits_path_arr[0] = hit_start ;
           result_arr[index] = hits_path_arr ;
         } ) ;
         console.log('result_arr =', result_arr) ;
