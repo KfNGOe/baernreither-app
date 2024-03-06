@@ -119,7 +119,8 @@ $('button#ssDoSearch').click(function(event) {
         let hits_start = hits_arr[0] ;
         let hits_path_arr = new Array(hits_arr.length).fill(0) ;
         //hits_path_arr[0] = hits_start ;
-        let result_arr = new Array(hits_start.instances.length).fill(0) ;
+        let searchPathNr = hits_start.instances.length ;
+        let result_arr = new Array(searchPathNr).fill(0) ;
         result_arr.forEach(function(result, index) {
           let hit_start = {} ;
           hit_start.token = hits_start.token ;
@@ -132,42 +133,32 @@ $('button#ssDoSearch').click(function(event) {
         //build search paths
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {
           console.log('i_tok = ', i_tok) ;
-          if(i_tok === 0) {
-            //array.findIndex(function(currentValue, index, arr), thisValue)          
-            //hits_arr[0].token
-            let hits_arr_index = hits_arr.findIndex(function(hit) {
-              return hit.token === searchTokens[i_tok] ;
-            }) ;
-            if (hits_arr_index === -1) {
-              console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
-            } else {
-              hits_arr[hits_arr_index].instances.forEach(function(instance) {
-
-              } ) ;
-            console.log('hits_arr_index = ', hits_arr_index) ;
-          }
-            if(0 < i_tok && i_tok < tokens_N-1) {
-              let hits_arr_index = hits_arr.findIndex(function(hit,index) {
-                return hits_arr[index].token === searchTokens[i_tok] ;
-              }) ;
-              if (hits_arr_index === -1) {
-                console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
-              }
-              console.log('hits_arr_index = ', hits_arr_index) ;
-            } else {
-              if(i_tok === tokens_N-1) {
-                let hits_arr_index = hits_arr.findIndex(function(hit,index) {
-                  return hits_arr[index].token === searchTokens[i_tok] ;
-                }) ;
-                if (hits_arr_index === -1) {
-                  console.log('search token "' + searchTokens[i_tok] + '" not found') ;              
+          for (i_path = 0; i_path < searchPathNr; i_path++) {
+            console.log('i_path = ', i_path) ;
+            if(i_tok === 0) {
+              //compare current hit with next hits
+              let hit = result_arr[i_path][i_tok] ;
+              if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
+                let hits_next = hits_arr[i_tok + 1] ;
+                console.log('hits next = ', hits_next) ;
+                let hit_next = checkHitsNext(hit, hits_next) ;
+                if (hit_next !== undefined) {                                                
+                    hits_curr.token = hits_next.token ;
+                    hits_curr.instances.push(hit_next) ;                            
+                }                    
+              } 
+              
+              } else {
+              if(0 < i_tok && i_tok < tokens_N-1) {
+                
+              } else {
+                if(i_tok === tokens_N-1) {
+                                
                 }
-                console.log('hits_arr_index = ', hits_arr_index) ;              
               }
             }
-          }
+          }                 
         }
-
       }
       else {
         console.log('search not ready') ;
