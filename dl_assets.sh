@@ -5,8 +5,8 @@ mkdir -p html/images/
 cp -r assets/images/*.* html/images/
 mkdir -p html/css/
 cp -r assets/css/ html/
-#mkdir -p html/data/
-#cp -r data/ html/
+mkdir -p html/data/json/
+cp -r data/json/ html/data/
 mkdir -p html/staticSearch/
 cp -r staticSearch/ html/
 cp -r assets/staticSrc/js/bootstrap.bundle.js html/js

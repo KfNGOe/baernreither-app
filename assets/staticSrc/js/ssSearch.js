@@ -7,6 +7,7 @@ var text_in ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
+var result_arr_test = [] ;
 var flag_index = true;
 var flag_searchDone = false;
 var test ;
@@ -180,6 +181,7 @@ $('button#ssDoSearch').click(function(event) {
         //hits_path_arr[0] = hits_start ;
         let searchPathNr = hits_start.instances.length ;
         let result_arr_tmp = new Array(searchPathNr).fill(0) ;
+        console.log('result_arr_tmp =', result_arr_tmp) ;
         result_arr_tmp.forEach(function(result, index) {
           let hit_start = {} ;
           hit_start.instances = [] ;
@@ -189,6 +191,7 @@ $('button#ssDoSearch').click(function(event) {
           hits_path_arr[0] = hit_start ;
           result_arr_tmp[index] = JSON.parse(JSON.stringify(hits_path_arr)) ;
         }) ;
+        result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
         console.log('result_arr_tmp =', result_arr_tmp) ;
         //build search paths
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {
