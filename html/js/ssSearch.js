@@ -1,7 +1,9 @@
 //import groupBy from "https://cdn.jsdelivr.net/npm/core-js-bundle@3.36.0/minified.js";
 //import { Octokit } from "https://cdn.skypack.dev/@octokit/core" ;
 const separator = '|' ;
+const threeDots = '...' ;
 const tokenOffset = 3 ;
+const spaceMax = 5 ;
 
 var text_in ;
 var jsonJs_in = {} ;
@@ -191,7 +193,7 @@ $('button#ssDoSearch').click(function(event) {
           hits_path_arr[0] = hit_start ;
           result_arr_tmp[index] = JSON.parse(JSON.stringify(hits_path_arr)) ;
         }) ;
-        result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
+        //result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
         console.log('result_arr_tmp =', result_arr_tmp) ;
         //build search paths
         for (i_tok = 0; i_tok < tokens_N; i_tok++) {
