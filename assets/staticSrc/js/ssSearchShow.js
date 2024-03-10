@@ -118,7 +118,43 @@ window.contextAfter = function(source, sourceFile, result_path) {
 
 }
 
-window.showResults = function () {
+window.markedHit = function(source, sourceFile, result_path) {
+    //get start pos    
+    let flagStart = result_path[0].instances[0].pos !== undefined ? true : false ;
+    let startNr = flagStart ? result_path[0].instances[0].pos : result_path[0].instances[0].pos_pr ;
+    if (startNr === undefined) {
+        console.log('error: pos and pos_pr undefined in first result token') ;         
+    }
+    //get end pos
+    let flagEnd = result_path[result_path.length-1].instances[0].pos !== undefined ? true : false ;
+    let endNr = flagEnd ? result_path[result_path.length - 1].instances[0].pos : result_path[result_path.length - 1].instances[0].pos_next ;
+    if (endNr === undefined) {
+        console.log('error: pos and pos_pr undefined in last result token') ;
+    }
+    if (startNr === endNr) {
+        //start and end pos are the same
+        if (result_path[0].instances[0].index === result_path[result_path.length-1].instances[0].index) {
+            //start and end index are the same            
+        } else {
+            //start and end index are different
+        }                
+    } else {
+        //start and end pos are different
+        //get source index of start pos
+        //get source index of end pos
+        while (index_source < source_indexMax) {
+            item_hit = sourceFile.results.bindings[index_source] ;
+            if (startNr === item_hit.pos_txt_nr.value) {
+                break ;
+            }
+            index_source++ ;
+        }
+
+    }
+
+}
+
+window.showResults = function (source, sourceFile, result_path) {
     (async () => {
         console.log('showResults') ;
         console.log('results: ', result_arr) ;
