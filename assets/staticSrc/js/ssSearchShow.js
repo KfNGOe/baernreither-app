@@ -148,6 +148,7 @@ window.markedHit = function(source, sourceFile, result_path) {
             markedToken.offset = result_path[0].instances[0].index ;
             markedToken.chN = result_path[0].instances[0].chN ;
             markedToken.txt = result_path[0].token ;
+            markedTokens_arr.push(markedToken) ;
         } else {
             //start and end index are different
             markedToken.source = source ;
@@ -155,13 +156,13 @@ window.markedHit = function(source, sourceFile, result_path) {
             markedToken.offset = result_path[0].instances[0].index ;
             markedToken.chN = result_path[0].instances[0].chN ;
             markedToken.txt = input_search ;
+            markedTokens_arr.push(markedToken) ;
         }                
     } else {
         //start and end pos are different
-        //get source index of start pos
-        //find index of start pos in sourceFile
-        let ind_source_start = 0 ;
-        let searchToken = '' ;
+        let searchToken = '' ;        
+        //get source index of start pos        
+        let ind_source_start = 0 ;        
         if (sourceFile !== undefined) {
             //find index of start pos in sourceFile
             let item_hit = sourceFile.results.bindings.find((item, index) => {           
@@ -171,35 +172,68 @@ window.markedHit = function(source, sourceFile, result_path) {
             if (item_hit !== undefined) {
                 //get offset of start token 
                 let offset_start = 0 ;
-                let chN_pr = 0 ;
+                let chN_start = 0 ;
                 if (flagStart && startNr !== undefined) {
                     offset_start = result_path[0].instances[0].index ;
                 } else {
                     if (!flagStart && startNr !== undefined) {                
-                        chN_pr = sourceFile.results.bindings[ind_source_start].o_txt.value.length ;
-                        offset_start = chN_pr + result_path[0].instances[0].index - 2 ;
+                        chN_start = sourceFile.results.bindings[ind_source_start].o_txt.value.length ;
+                        offset_start = chN_start + result_path[0].instances[0].index - 2 ;
                     }        
                 }                                         
             } else {
                 console.log('item of pos ' + pos + ' not found') ;
                 searchToken = '' ;
-            } 
-
-        }
-
-
-        
-        //get source index of end pos
-        while (index_source < ind_source_end) {
-            item_hit = sourceFile.results.bindings[index_source] ;
-            if (startNr === item_hit.pos_txt_nr.value) {
-                break ;
             }
+        }        
+        //get source index of end pos
+        let ind_source_end = 0 ;
+        if (sourceFile !== undefined) {
+            //find index of end pos in sourceFile
+            let item_hit = sourceFile.results.bindings.find((item, index) => {           
+                ind_source_end = index ; 
+                return endNr === item.pos_txt_nr.value ;
+            }) ;
+            if (item_hit !== undefined) {
+                //get offset of end token
+                let offset_end = 0 ;
+                let chN_end = sourceFile.results.bindings[ind_source_end].o_txt.value.length ;
+                if (flagEnd && endNr !== undefined) {
+                    offset_end = result_path[result_path.length-1].instances[0].index + tokenOffset ;
+                } else {
+                    if (!flagStart && startNr !== undefined) {                                    
+                        offset_end = result_path[result_path.length-1].instances[0].index + 1 ;
+                    }        
+                }                                         
+            } else {
+                console.log('item of pos ' + pos + ' not found') ;
+                searchToken = '' ;
+            }
+        }
+        //fill markedTokens_arr
+        //start token        
+        markedToken.pos = startNr ;
+        markedToken.offset = offset_start ;
+        markedToken.chN = chN_start ;
+        markedToken.txt = sourceFile.results.bindings[ind_source_start].o_txt.value.substring(markedToken.offset,markedToken.chN) ;
+        markedTokens_arr.push(markedToken) ;
+        //tokens between start and end
+        let index_source = ind_source_start++ ;
+        while (index_source < ind_source_end) {
+            markedToken.pos = sourceFile.results.bindings[index_source].pos_txt_nr.value ;
+            markedToken.offset = 0 ;
+            markedToken.chN = sourceFile.results.bindings[index_source].o_txt.value.length ;
+            markedToken.txt = sourceFile.results.bindings[index_source] ;
+            markedTokens_arr.push(markedToken) ;            
             index_source++ ;
         }
-
+        //end token
+        markedToken.pos = endNr ;
+        markedToken.offset = offset_end ;
+        markedToken.chN = chN_end ;
+        markedToken.txt = sourceFile.results.bindings[ind_source_end].o_txt.value.substring(0,markedToken.offset) ;
+        markedTokens_arr.push(markedToken) ;
     }
-
 }
 
 window.showResults = function (source, sourceFile, result_path) {
