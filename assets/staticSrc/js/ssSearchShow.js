@@ -287,48 +287,6 @@ window.showResults = function () {
             $('html').find('tbody').children().remove() ;
             $('html').find('tbody').append(html) ;        
             html_str = '' ;        
-        }
-    
-        /** 
-    //start new row
-    html_str = html_str.concat('<tr>') ;
-    //end row
-    html_str = html_str.concat('</tr>') ;
-    //insert html_str into table
-    //var register = $.parseHTML(register_str) ;
-    $('html').find('tbody').append("<tr><td>test</td></tr>") ;    
-    console.log('html: ', $('html').find('tbody').html() ) ;      
-     */    
+        }        
     })() ;    
 } ;
-
-//window.markedHit = function(source, sourceFile_arr[index], result_arr[i_path]) {} 
-   
-    /**
-    //find pos of hits in result_path
-    let markedHit_arr = [] ; //array of strings to mark
-    let markedHit =  {} ; //object of string to mark
-    result_path.forEach(function(item,i_tok) {
-        if (i_tok === 0) {
-            markedHit.pos = flagStart ? item.instances[0].pos : item.instances[0].pos_pr ;
-            markedHit.offset = flagStart ? item.instances[0].index : item.instances[0].index - 2 ;
-            markedHit.chN = item.instances[0].chN ;
-            markedHit_arr.push(markedHit) ;             
-        }
-        if (i_tok > 0 && i_tok < result_path.length - 1) {
-            if (item.instances[0].index === 0 && item.instances[0].pos_pr === undefined && item.instances[0].pos_next === undefined) {
-                markedHit.pos = item.instances[0].pos ;
-                markedHit.offset = item.instances[0].index ;
-                markedHit.chN = item.instances[0].chN ;
-                markedHit_arr.push(markedHit) ;
-            }
-        }
-        if (i_tok === result_path.length - 1) {
-            markedHit.pos = flagEnd ? item.instances[0].pos : item.instances[0].pos_next ;
-            markedHit.offset = flagEnd ? item.instances[0].index + tokenOffset : (-1) * (item.instances[0].index + 1) ;
-            markedHit.chN = item.instances[0].chN ;
-            markedHit_arr.push(markedHit) ;
-        }
-    } ) ;
-    console.log('markedHit_arr: ', markedHit_arr) ;
- */ 

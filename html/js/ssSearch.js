@@ -155,82 +155,54 @@ $('button#ssDoSearch').click(function(event) {
         //check input search string
         if (input_search.length < tokenOffset) {        
           alert('Suchbegriff zu kurz! Mindestens 3 Zeichen eingeben!') ;      
-        }    
-        //tokenize search string
-        searchTokens = [] ;
-        searchTokens = tokenize(input_search, searchTokens) ;    
-        console.log('searchTokens =', searchTokens) ;
-        //check search string
-        let searchStrLength = input_search.length ;    
-        let tokens_N = searchStrLength - 2 ;        
-        for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
-          //find token of search string in tokens string        
-          let searchToken = separator + searchTokens[i_tok] + separator ;
-          if (text_in.includes(searchToken)) {          
-            //if token found, fetch token file
-            let searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok] + '.json' ;            
-            hits_arr.push(await fetchData(searchTokenFilePath)) ;
-          } else {
-              console.log('search token "' + searchTokens[i_tok] + '" in "' + input_search + '" not found') ;
-              alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
-              return ;
-          }
-        }
-        console.log('hits_arr =', hits_arr) ;
-        //build result array
-        let hits_start = hits_arr[0] ;
-        let hits_path_arr = new Array(hits_arr.length).fill(0) ;
-        //hits_path_arr[0] = hits_start ;
-        let searchPathNr = hits_start.instances.length ;
-        let result_arr_tmp = new Array(searchPathNr).fill(0) ;
-        console.log('result_arr_tmp =', result_arr_tmp) ;
-        result_arr_tmp.forEach(function(result, index) {
-          let hit_start = {} ;
-          hit_start.instances = [] ;
-          hits_path_arr[0] = 0 ;
-          hit_start.token = hits_start.token ;          
-          hit_start.instances.push(hits_start.instances[index]) ;
-          hits_path_arr[0] = hit_start ;
-          result_arr_tmp[index] = JSON.parse(JSON.stringify(hits_path_arr)) ;
-        }) ;
-        //result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
-        console.log('result_arr_tmp =', result_arr_tmp) ;
-        //build search paths
-        for (i_tok = 0; i_tok < tokens_N; i_tok++) {
-          console.log('i_tok = ', i_tok) ;
-          for (i_path = 0; i_path < searchPathNr; i_path++) {
-            console.log('i_path = ', i_path) ;
-            //check if token is first token of tokens string
-            //and if token is not last token of tokens string
-            if(i_tok === 0 && i_tok < tokens_N-1) {
-              //compare current hit with next hits
-              let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
-              if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
-                let hits_next = hits_arr[i_tok + 1] ;
-                console.log('hits next = ', hits_next) ;
-                let hit_next = checkHitsNext(hit, hits_next) ;
-                if (hit_next !== undefined) {
-                    console.log('hit next = ', hit_next) ;
-                    //build current hit
-                    let hit_curr = {} ;
-                    hit_curr.instances = [] ;                            
-                    hit_curr.token = hits_next.token ;
-                    hit_curr.instances.push(hit_next) ;
-                    //add current hit to result array
-                    result_arr_tmp[i_path][i_tok+1] = hit_curr ;                    
-                } else {                    
-                    //remove path from result array
-                    result_arr_tmp.splice(i_path, 1) ;
-                    searchPathNr-- ;
-                    i_path-- ;
-                    console.log('no next token found') ;
-                  }
-              } else {
-                console.log('no next token in search string') ;
-              }
+        } else {
+          //tokenize search string
+          searchTokens = [] ;
+          searchTokens = tokenize(input_search, searchTokens) ;    
+          console.log('searchTokens =', searchTokens) ;
+          //check search string
+          let searchStrLength = input_search.length ;    
+          let tokens_N = searchStrLength - 2 ;        
+          for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
+            //find token of search string in tokens string        
+            let searchToken = separator + searchTokens[i_tok] + separator ;
+            if (text_in.includes(searchToken)) {          
+              //if token found, fetch token file
+              let searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok] + '.json' ;            
+              hits_arr.push(await fetchData(searchTokenFilePath)) ;
             } else {
-              //check if token is between first and last token of tokens string
-              if(0 < i_tok && i_tok < tokens_N-1) {
+                console.log('search token "' + searchTokens[i_tok] + '" in "' + input_search + '" not found') ;
+                alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
+                return ;
+            }
+          }
+          console.log('hits_arr =', hits_arr) ;
+          //build result array
+          let hits_start = hits_arr[0] ;
+          let hits_path_arr = new Array(hits_arr.length).fill(0) ;
+          //hits_path_arr[0] = hits_start ;
+          let searchPathNr = hits_start.instances.length ;
+          let result_arr_tmp = new Array(searchPathNr).fill(0) ;
+          console.log('result_arr_tmp =', result_arr_tmp) ;
+          result_arr_tmp.forEach(function(result, index) {
+            let hit_start = {} ;
+            hit_start.instances = [] ;
+            hits_path_arr[0] = 0 ;
+            hit_start.token = hits_start.token ;          
+            hit_start.instances.push(hits_start.instances[index]) ;
+            hits_path_arr[0] = hit_start ;
+            result_arr_tmp[index] = JSON.parse(JSON.stringify(hits_path_arr)) ;
+          }) ;
+          //result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
+          console.log('result_arr_tmp =', result_arr_tmp) ;
+          //build search paths
+          for (i_tok = 0; i_tok < tokens_N; i_tok++) {
+            console.log('i_tok = ', i_tok) ;
+            for (i_path = 0; i_path < searchPathNr; i_path++) {
+              console.log('i_path = ', i_path) ;
+              //check if token is first token of tokens string
+              //and if token is not last token of tokens string
+              if(i_tok === 0 && i_tok < tokens_N-1) {
                 //compare current hit with next hits
                 let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
                 if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
@@ -238,32 +210,15 @@ $('button#ssDoSearch').click(function(event) {
                   console.log('hits next = ', hits_next) ;
                   let hit_next = checkHitsNext(hit, hits_next) ;
                   if (hit_next !== undefined) {
-                    if (hit.token_prev_uri === searchTokens[i_tok-1] + '.json') {                    
-                      //let hits_prev = hits_arr[i_tok - 1] ;
-                      let hits_prev = result_arr_tmp[i_path][i_tok - 1] ;
-                      console.log('hits prev = ', hits_prev) ;
-                      hit_prev = checkHitsPrevious(hit, hits_prev) ;
-                      if (hit_prev !== undefined) {
-                        console.log('hit next = ', hit_next) ;
-                        //build current hit
-                        let hit_curr = {} ;
-                        hit_curr.instances = [] ;                            
-                        hit_curr.token = hits_next.token ;
-                        hit_curr.instances.push(hit_next) ;
-                        //add current hit to result array
-                        result_arr_tmp[i_path][i_tok+1] = hit_curr ;
-                        console.log('result_arr_tmp =', result_arr_tmp) ;
-                      } else {
-                        //remove path from result array
-                        result_arr_tmp.splice(i_path, 1) ;
-                        searchPathNr-- ;
-                        i_path-- ;
-                        console.log('no prev token found') ;                        
-                      }
-                    } else {
-                      console.log('no prev token in search string') ;
-                    } 
-                  } else {                      
+                      console.log('hit next = ', hit_next) ;
+                      //build current hit
+                      let hit_curr = {} ;
+                      hit_curr.instances = [] ;                            
+                      hit_curr.token = hits_next.token ;
+                      hit_curr.instances.push(hit_next) ;
+                      //add current hit to result array
+                      result_arr_tmp[i_path][i_tok+1] = hit_curr ;                    
+                  } else {                    
                       //remove path from result array
                       result_arr_tmp.splice(i_path, 1) ;
                       searchPathNr-- ;
@@ -271,47 +226,93 @@ $('button#ssDoSearch').click(function(event) {
                       console.log('no next token found') ;
                     }
                 } else {
-                  //remove path from result array
-                  result_arr_tmp.splice(i_path, 1) ;
-                  searchPathNr-- ;
-                  i_path-- ;
                   console.log('no next token in search string') ;
-                }                
+                }
               } else {
-                //check if token is last token of tokens string
-                //and if token is not first token of tokens string
-                if(i_tok === tokens_N-1 && i_tok > 0) {
+                //check if token is between first and last token of tokens string
+                if(0 < i_tok && i_tok < tokens_N-1) {
                   //compare current hit with next hits
                   let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
-                  if (hit.token_prev_uri === searchTokens[i_tok - 1] + '.json') {
-                    let hits_prev = result_arr_tmp[i_path][i_tok - 1] ;
-                    console.log('hits prev = ', hits_prev) ;
-                    hit_prev = checkHitsPrevious(hit, hits_prev) ;
-                    if (hit_prev !== undefined) {                      
-                      console.log('result_arr_tmp =', result_arr_tmp) ;
-                    } else {
-                      //remove path from result array
-                      result_arr_tmp.splice(i_path, 1) ;
-                      searchPathNr-- ;
-                      i_path-- ;
-                      console.log('no prev token found') ;                        
-                    }                                
+                  if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
+                    let hits_next = hits_arr[i_tok + 1] ;
+                    console.log('hits next = ', hits_next) ;
+                    let hit_next = checkHitsNext(hit, hits_next) ;
+                    if (hit_next !== undefined) {
+                      if (hit.token_prev_uri === searchTokens[i_tok-1] + '.json') {                    
+                        //let hits_prev = hits_arr[i_tok - 1] ;
+                        let hits_prev = result_arr_tmp[i_path][i_tok - 1] ;
+                        console.log('hits prev = ', hits_prev) ;
+                        hit_prev = checkHitsPrevious(hit, hits_prev) ;
+                        if (hit_prev !== undefined) {
+                          console.log('hit next = ', hit_next) ;
+                          //build current hit
+                          let hit_curr = {} ;
+                          hit_curr.instances = [] ;                            
+                          hit_curr.token = hits_next.token ;
+                          hit_curr.instances.push(hit_next) ;
+                          //add current hit to result array
+                          result_arr_tmp[i_path][i_tok+1] = hit_curr ;
+                          console.log('result_arr_tmp =', result_arr_tmp) ;
+                        } else {
+                          //remove path from result array
+                          result_arr_tmp.splice(i_path, 1) ;
+                          searchPathNr-- ;
+                          i_path-- ;
+                          console.log('no prev token found') ;                        
+                        }
+                      } else {
+                        console.log('no prev token in search string') ;
+                      } 
+                    } else {                      
+                        //remove path from result array
+                        result_arr_tmp.splice(i_path, 1) ;
+                        searchPathNr-- ;
+                        i_path-- ;
+                        console.log('no next token found') ;
+                      }
                   } else {
                     //remove path from result array
                     result_arr_tmp.splice(i_path, 1) ;
                     searchPathNr-- ;
                     i_path-- ;
-                    console.log('no prev token in search string') ;
+                    console.log('no next token in search string') ;
+                  }                
+                } else {
+                  //check if token is last token of tokens string
+                  //and if token is not first token of tokens string
+                  if(i_tok === tokens_N-1 && i_tok > 0) {
+                    //compare current hit with next hits
+                    let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
+                    if (hit.token_prev_uri === searchTokens[i_tok - 1] + '.json') {
+                      let hits_prev = result_arr_tmp[i_path][i_tok - 1] ;
+                      console.log('hits prev = ', hits_prev) ;
+                      hit_prev = checkHitsPrevious(hit, hits_prev) ;
+                      if (hit_prev !== undefined) {                      
+                        console.log('result_arr_tmp =', result_arr_tmp) ;
+                      } else {
+                        //remove path from result array
+                        result_arr_tmp.splice(i_path, 1) ;
+                        searchPathNr-- ;
+                        i_path-- ;
+                        console.log('no prev token found') ;                        
+                      }                                
+                    } else {
+                      //remove path from result array
+                      result_arr_tmp.splice(i_path, 1) ;
+                      searchPathNr-- ;
+                      i_path-- ;
+                      console.log('no prev token in search string') ;
+                    }
                   }
                 }
               }
-            }
-          }                 
+            }                 
+          }
+          console.log('result_arr_tmp =', result_arr_tmp) ;
+          result_arr = result_arr_tmp ;
+          //hook search finished
+          searchFinishedHook(2);
         }
-        console.log('result_arr_tmp =', result_arr_tmp) ;
-        result_arr = result_arr_tmp ;
-        //hook search finished
-        searchFinishedHook(2);
       }
       else {
         console.log('search not ready') ;
