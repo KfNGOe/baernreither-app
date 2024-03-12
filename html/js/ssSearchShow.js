@@ -118,10 +118,129 @@ window.contextAfter = function(source, sourceFile, result_path) {
 
 }
 
+window.markedHit = function(source, sourceFile, result_path) {
+    let markedTokens_arr = [] ;
+    let markedToken = {} ;
+    //get start pos    
+    let flagStart = result_path[0].instances[0].pos !== undefined ? true : false ;
+    let startNr = flagStart ? result_path[0].instances[0].pos : result_path[0].instances[0].pos_pr ;
+    if (startNr === undefined) {
+        console.log('error: pos and pos_pr undefined in first result token') ;         
+    }
+    //get end pos
+    let flagEnd = result_path[result_path.length-1].instances[0].pos !== undefined ? true : false ;
+    let endNr = flagEnd ? result_path[result_path.length - 1].instances[0].pos : result_path[result_path.length - 1].instances[0].pos_next ;
+    if (endNr === undefined) {
+        console.log('error: pos and pos_pr undefined in last result token') ;
+    }
+    if (startNr === endNr) {
+        //start and end pos are the same
+        if (result_path[0].instances[0].index === result_path[result_path.length-1].instances[0].index) {
+            //start and end index are the same
+            markedToken.source = source ;
+            markedToken.pos = startNr ;
+            markedToken.offset = result_path[0].instances[0].index ;
+            markedToken.chN = result_path[0].instances[0].chN ;
+            markedToken.txt = result_path[0].token ;
+            markedTokens_arr.push(markedToken) ;
+        } else {
+            //start and end index are different
+            markedToken.source = source ;
+            markedToken.pos = startNr ;
+            markedToken.offset = result_path[0].instances[0].index ;
+            markedToken.chN = result_path[0].instances[0].chN ;
+            markedToken.txt = input_search ;
+            markedTokens_arr.push(markedToken) ;
+        }                
+    } else {
+        //start and end pos are different
+        let offset_start = 0 ;
+        let chN_start = 0 ;
+        let offset_end = 0 ;
+        let chN_end = 0 ;
+        //get source index of start pos        
+        let ind_source_start = 0 ;        
+        if (sourceFile !== undefined) {
+            //find index of start pos in sourceFile
+            let item_hit = sourceFile.results.bindings.find((item, index) => {           
+                ind_source_start = index ; 
+                return startNr === item.pos_txt_nr.value ;
+            }) ;
+            if (item_hit !== undefined) {
+                //get offset of start token
+                chN_start = sourceFile.results.bindings[ind_source_start].o_txt.value.length ;
+                if (flagStart && startNr !== undefined) {
+                    offset_start = result_path[0].instances[0].index ;
+                } else {
+                    if (!flagStart && startNr !== undefined) {
+                        offset_start = chN_start + result_path[0].instances[0].index - 2 ;
+                    }        
+                }                                         
+            } else {
+                console.log('item of pos ' + pos + ' not found') ;
+                searchToken = '' ;
+            }
+        }        
+        //get source index of end pos
+        let ind_source_end = 0 ;
+        if (sourceFile !== undefined) {
+            //find index of end pos in sourceFile
+            let item_hit = sourceFile.results.bindings.find((item, index) => {           
+                ind_source_end = index ; 
+                return endNr === item.pos_txt_nr.value ;
+            }) ;
+            if (item_hit !== undefined) {
+                //get offset of end token                
+                chN_end = sourceFile.results.bindings[ind_source_end].o_txt.value.length ;
+                if (flagEnd && endNr !== undefined) {
+                    offset_end = result_path[result_path.length-1].instances[0].index + tokenOffset ;
+                } else {
+                    if (!flagStart && startNr !== undefined) {                                    
+                        offset_end = result_path[result_path.length-1].instances[0].index + 1 ;
+                    }        
+                }                                         
+            } else {
+                console.log('item of pos ' + pos + ' not found') ;
+                searchToken = '' ;
+            }
+        }
+        //fill markedTokens_arr
+        //start token
+        markedToken.source = source ;        
+        markedToken.pos = startNr ;
+        markedToken.offset = offset_start ;
+        markedToken.chN = chN_start ;
+        markedToken.txt = sourceFile.results.bindings[ind_source_start].o_txt.value.substring(markedToken.offset,markedToken.chN) ;
+        markedTokens_arr.push(markedToken) ;
+        //tokens between start and end
+        let index_source = ind_source_start + 1 ;
+        while (index_source < ind_source_end) {
+            markedToken = {} ;
+            markedToken.source = source ;
+            markedToken.pos = sourceFile.results.bindings[index_source].pos_txt_nr.value ;
+            markedToken.offset = 0 ;
+            markedToken.chN = sourceFile.results.bindings[index_source].o_txt.value.length ;
+            markedToken.txt = sourceFile.results.bindings[index_source].o_txt.value ;
+            markedTokens_arr.push(markedToken) ;            
+            index_source++ ;
+        }
+        //end token
+        markedToken = {} ;
+        markedToken.source = source ;
+        markedToken.pos = endNr ;
+        markedToken.offset = offset_end ;
+        markedToken.chN = chN_end ;
+        markedToken.txt = sourceFile.results.bindings[ind_source_end].o_txt.value.substring(0,markedToken.offset) ;
+        markedTokens_arr.push(markedToken) ;
+    }
+    return markedTokens_arr ;
+}
+
 window.showResults = function () {
     (async () => {
         console.log('showResults') ;
         console.log('results: ', result_arr) ;
+        console.log('marked Hits ', markedHits_arr) ;
         if (Array.isArray(result_arr) && result_arr.length) {
             let source_arr = [] ;            
             //get path length
@@ -151,8 +270,9 @@ window.showResults = function () {
                 for (i_path = 0; i_path < searchPathNr; i_path++) {            
                     if (result_arr[i_path][0].instances[0].docId === source) {
                         html_str = html_str.concat('<p>') ;
-                        let contextBefore_str = contextBefore(source, sourceFile_arr[index], result_arr[i_path]) ; ;
-                        //let markedHit = markedHit(source, sourceFile_arr[index], result_arr[i_path]) ;
+                        let contextBefore_str = contextBefore(source, sourceFile_arr[index], result_arr[i_path]) ;
+                        let markedTokens_arr = markedHit(source, sourceFile_arr[index], result_arr[i_path]) ;
+                        markedHits_arr[i_path] = markedTokens_arr ;
                         let hit = '<span class="search-highlight">' + '<a href="#">' + input_search + '</a>' + '</span>'
                         let contextAfter_str = contextAfter(source, sourceFile_arr[index], result_arr[i_path]) ;
                         html_str = html_str.concat(threeDots + contextBefore_str + hit + contextAfter_str + threeDots) ;

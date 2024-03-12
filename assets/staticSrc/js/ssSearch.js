@@ -9,7 +9,7 @@ var text_in ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
-var result_arr_test = [] ;
+var markedHits_arr = [] ;
 var flag_index = true;
 var flag_searchDone = false;
 var test ;
