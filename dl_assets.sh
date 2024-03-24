@@ -8,7 +8,8 @@ cp -r assets/css/ html/
 mkdir -p html/data/json/
 cp -r data/json/ html/data/
 mkdir -p html/staticSearch/
-cp -r staticSearch/ html/
+cp -r staticSearch/stems html/staticSearch/
+cp -r staticSearch/ssTokenString.txt html/staticSearch/
 cp -r assets/staticSrc/js/bootstrap.bundle.js html/js
 cp -r assets/staticSrc/js/nav-control.js html/js
 cp -r assets/staticSrc/js/ssSearch.js html/js
