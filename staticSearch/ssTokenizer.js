@@ -41,7 +41,7 @@ const dom = new jsdom.JSDOM(`
 const jquery = require("jquery")(dom.window);
 
 const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json=process.env.filepath_in_json ;
+const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
 const filepath_out_tei=process.env.filepath_out_tei ;
 
 var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) {
@@ -161,7 +161,7 @@ function buildTokens(obj) {
 } ; 
 
 //read test json file
-let json_in = fs.readFileSync('./data/json/fullText.json', 'utf8'); 
+let json_in = fs.readFileSync(filepath_in_json, 'utf8'); //data/json/Bae_MF_6-2_full.json
 console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
