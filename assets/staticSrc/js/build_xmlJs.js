@@ -26,7 +26,7 @@ const filename = process.env.file;
 const ext_xml=process.env.ext_xml
 const ext_json=process.env.ext_json
 
-function getObject(obj) {
+function buildJs(obj) {
    let length = Object.keys(obj).length ;
    ////console.log('object length =', length) ;
    //console.log('first object key  =', Object.keys(obj)[0]) ;
@@ -60,7 +60,7 @@ function getObject(obj) {
                obj[key].forEach((item, index, array) => {
                   if (typeof item === 'object') {
                      //console.log('item = ', item, ', index = ', index) ;          
-                     getObject(item) ;
+                     buildJs(item) ;
                   }
                }) ;
                //level - 1               
@@ -117,7 +117,7 @@ console.log('tei data read: ', xml.length, ' bytes')
 //convert xml to js object
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
 
-getObject(xmlJs) ;
+buildJs(xmlJs) ;
 if (i_startTag > i_endTag) {
    N = i_startTag ;
 } else {

@@ -10,7 +10,7 @@ PATH_JSON_RDF='./data/json_rdf/'
 PATH_TTL='./data/ttl/text/'
 #PATH_TTL='./data/ttl/annotation/index/instance/'
 
-FILENAME=$name
+#FILENAME=$name
 #FILENAME='register_index'
 #FILENAME='Tagebuch_Baernreither_8'
 #FILENAME='Bae_TB_8'
