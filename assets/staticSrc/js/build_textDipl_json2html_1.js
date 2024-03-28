@@ -192,7 +192,10 @@ function buildDiplText(obj, obj_1) {
                      html_str = html_str.concat('</span>') ;                           
                   }
                }
-               break ;                     
+               break ;
+            case 'https://github.com/KfNGOe/kfngoeo#Comment':
+               console.log('Comment: ', item.cont.value) ;
+               break ;
             default:
                break ;
          }
