@@ -50,13 +50,20 @@ register_person.txt -> build_register_html.sh -> register_person.html<br>
 
 ### tei:note
 ```
--> <div class="editorial" id="note_Bae_TB_8_388" style="">...</div>
+-> <div class="note editorial" id="note_Bae_TB_8_388" style="">...</div>
 ```
 
 ### tei:p
 ```
 -> <p>...</p>
 ```
+
+### tei:div
+```
+-> <div class="div diaryEntry" id="div_Bae_TB_8_460" style="">...</div>
+-> <div class="div chapter" id="div_Bae_TB_8_4010" style="">...</div>
+```
+
 
 ### tei text node
 #### text is between tei:anchor and tei:app pos
@@ -102,6 +109,11 @@ register_person.txt -> build_register_html.sh -> register_person.html<br>
 -> <span class="norm addSpan start ..." id="text_Bae_TB_8_755" style="">...</span>
 -> <span class="norm addSpan ..." id="text_Bae_TB_8_760" style="">...</span>
 -> <span class="norm addSpan end ..." id="text_Bae_TB_8_780" style="">...</span>
+
+```
+#### text is between tei:date pos
+```
+-> <span class="date ..." id="text_Bae_TB_8_529" style="">...</span>
 
 ```
 
