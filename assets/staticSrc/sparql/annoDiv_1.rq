@@ -33,7 +33,7 @@ WHERE {
                     ] ;
                     kfngoeo:elementPos ?o_pos_div ;
             .            
-            FILTER(?o_val_div = "diary-entry")            
+            FILTER(?o_val_div = "diaryEntry")            
             BIND(?o_val_div AS ?key_div)
         } GROUP BY ?s_div ?key_div
     }

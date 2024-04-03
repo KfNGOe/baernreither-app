@@ -35,7 +35,7 @@ register_person.json -> build_register_json2html.sh -> register_person.txt<br>
 register_person.txt -> build_register_html.sh -> register_person.html<br>
 <br>
 
-# Attribute values
+# HTML Attribute values
 ## @class, @id and @href
 ### tei:anchor
 ```
@@ -60,13 +60,14 @@ register_person.txt -> build_register_html.sh -> register_person.html<br>
 
 ### tei:pb
 ```
--> <span class="pb" id="4r"><a href="#facs_F_K-5_Bae_TB_8-002" id="pb_Bae_TB_8_121" style=""><img src="images/pageBreak.png" title="4r" style="display: none"></a>
+-> <span class="pb pageLocator" id="4r"><a href="#F_K-5_Bae_TB_8-002" id="pb_Bae_TB_8_121" style=""><img src="images/pageBreak.png" title="4r" style="display: none"></a></span>
 ```
 
 ### tei:div
 ```
--> <div class="div diaryEntry" id="div_Bae_TB_8_460" style="">...</div>
--> <div class="div chapter" id="div_Bae_TB_8_4010" style="">...</div>
+-> <div class="div" id="div_Bae_TB_8_460" style="">...</div>
+-> <div class="div diaryEntry" title="1905-01" id="div_Bae_TB_8_460" style="">...</div>
+-> <div class="div chapter" title="2" id="div_Bae_TB_8_4010" style="">...</div>
 ```
 
 ### tei:head

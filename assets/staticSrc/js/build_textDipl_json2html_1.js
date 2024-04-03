@@ -39,7 +39,7 @@ function generateId(item) {
    return item.pos.value ;
 }
 
-function buildDiplText(obj, obj_1) {   
+function buildDiplText(obj) {   
    html_str = '' ; 
    //find tei:body
     if (obj.head !== undefined) {        
@@ -78,14 +78,91 @@ function buildDiplText(obj, obj_1) {
       //console.log('key = ', key) ;
       if (posStr2Nr(key) >= posStr2Nr(pos_body)) {
          //console.log('key = ', key) ;
-         let item = groupedByPos[key][0] ;
+         let item = groupedByPos[key] ;
          //console.log('item = ', item) ;
-         switch(item.type.value) {
+         let classNames = "" ;
+         let href = "" ;
+         let title = "" ;
+         let id = "" ;
+         let html_str_tmp = "" ;
+         switch(item[0].type.value) {
             case 'https://github.com/KfNGOe/kfngoeo#StartTag':
-               switch(item.name.value) {
-                  case 'http://www.tei-c.org/ns/1.0/p': 
-                     html_str = html_str.concat('<p>') ;                              
+               switch(item[0].name.value) {
+                  case 'http://www.tei-c.org/ns/1.0/div':                     
+                     classNames = classNames.concat('div ') ;
+                     item.forEach((item, index, array) => {                        
+                        //console.log('item = ', item) ;
+                        switch(item.attr.value) {
+                           case 'type':
+                              switch(item.val.value) {
+                                 case 'diaryEntry':
+                                    classNames = classNames.concat('diaryEntry ') ;
+                                    break ;
+                                 case 'chapter':
+                                    classNames = classNames.concat('chapter ') ;
+                                    break ;                                 
+                                 default:
+                                    break ;
+                              }
+                              break ;
+                           case 'n':
+                              //set title
+                              title = item.val.value ;
+                              break ;
+                           default:
+                              break ;
+                        }
+                     } ) ;
+                     //remove last space from classNames
+                     classNames = classNames.substring(0, classNames.length - 1) ;
+                     //set id
+                     id = 'div_' + item[0].pos.value ;
+                     //concatenate html string
+                     html_str = html_str.concat('<div class="' + classNames + '" title="' + title + '" id="' + id + '">') ;                     
+                     break ;                  
+                  case 'http://www.tei-c.org/ns/1.0/head':
+                     //set class
+                     classNames = classNames.concat('head') ;
+                     //set id
+                     id = 'head_' + item[0].pos.value ;
+                     //concatenate html string
+                     html_str = html_str.concat('<h5 class="' + classNames + '" id="' + id + '">') ;                     
                      break ;
+                  case 'http://www.tei-c.org/ns/1.0/p':
+                     //set class
+                     classNames = classNames.concat('p') ;
+                     //set id
+                     id = 'p_' + item[0].pos.value ;
+                     //concatenate html string
+                     html_str = html_str.concat('<p class="' + classNames + '" id="' + id + '">') ;                     
+                     break ;
+                  case 'http://www.tei-c.org/ns/1.0/pb':
+                     classNames = classNames.concat('pb pageLocator') ;
+                     item.forEach((item, index, array) => {                        
+                        //console.log('item = ', item) ;
+                        switch(item.attr.value) {
+                           case 'facs':
+                              //set href
+                              href = item.val.value ;                              
+                              break ;
+                           case 'n':
+                              //set 1st id
+                              id = item.val.value ;
+                              html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
+                              //set html string for img with 1st id
+                              html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '" style="display: none">') ;
+                              break ;
+                           default:
+                              break ;
+                        }
+                     } ) ;                     
+                     //set 2nd id
+                     id = 'pb_' + item[0].pos.value ;
+                     //concatenate html string
+                     html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
+                     html_str = html_str.concat('</span>') ;
+                     break ;                  
+                  /*
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {
                         let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;
@@ -134,22 +211,32 @@ function buildDiplText(obj, obj_1) {
                   case 'http://www.tei-c.org/ns/1.0/note':
                      html_str = html_str.concat('<span id="note_' + generateId(item) + '" style="display: none">') ;
                      break ;
+                  */
                   default:
                      break ;
                }                        
                break ;
             case 'https://github.com/KfNGOe/kfngoeo#EndTag':
-               switch(item.name.value) {
+               switch(item[0].name.value) {
+                  case 'http://www.tei-c.org/ns/1.0/div': 
+                     html_str = html_str.concat('</div>') ;
+                     break ;
+                  case 'http://www.tei-c.org/ns/1.0/head':
+                     html_str = html_str.concat('</h5>') ;
+                     break ;
                   case 'http://www.tei-c.org/ns/1.0/p': 
                      html_str = html_str.concat('</p>') ;
                      break ;
+                  /*
                   case 'http://www.tei-c.org/ns/1.0/note':
                      html_str = html_str.concat('</span>') ;
                      break ;
+                  */
                   default:
                      break ;
                }
                break ;
+            /*
             case 'https://github.com/KfNGOe/kfngoeo#Text':
                //check if text is between anchor and app pos
                let item_comp = {} ;                        
@@ -196,9 +283,10 @@ function buildDiplText(obj, obj_1) {
             case 'https://github.com/KfNGOe/kfngoeo#Comment':
                console.log('Comment: ', item.cont.value) ;
                break ;
+            */
             default:
                break ;
-         }
+         }         
       }
    }) ;
 } ; 
@@ -222,18 +310,24 @@ jsonFiles.forEach((file) => {
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_dipl = JSON.parse(json_in) ;
-   buildDiplText(jsonJs_in_dipl, jsonJs_in_comp) ;
+   //buildDiplText(jsonJs_in_dipl, jsonJs_in_comp) ;
+   buildDiplText(jsonJs_in_dipl) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_dipl_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
    //convert html strings to html 
    console.log('text data written: ', html_str.length, ' bytes')
    let html = $.parseHTML(html_str) ;   
-   $('html').find('body').append('<div id="' + key + '"></div>') ;    
-   $('html').find('body').children('div:last-child').append(html) ;   
-}) ;
+   $('html').find('body').append('<div id="' + file.replace('.json', '') + '"></div>') ;    
+   $('html').find('body').children('div').append(html) ;   
 
-//write html file
-let fileNamePath = 'html/compRes.html' ;    //data/txt/Bae_TB_8_dipl_html.txt
-fs.writeFileSync(fileNamePath, dom.serialize() ) ;
-console.log('html data written: ', dom.serialize().length, ' bytes') ;
+   //write html file
+   fileNamePath = 'html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_dipl.html
+   fs.writeFileSync(fileNamePath, dom.serialize() ) ;
+   console.log('html data written: ', dom.serialize().length, ' bytes') ;
+
+   //remove appended html
+   $('html').find('body *').remove() ;
+   //reset html string
+   html_str = '' ;
+}) ;
