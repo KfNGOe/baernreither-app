@@ -26,7 +26,7 @@ CONSTRUCT {
     .
 }
 WHERE {
-    ?s_app ?a kfngoeo:StartTag ;
+    ?s_app a kfngoeo:StartTag ;
             kfngoeo:elementName tei:app ;
             kfngoeo:hasAttr [
                 kfngoeo:attrName "from" ;

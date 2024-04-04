@@ -162,7 +162,7 @@ function buildDiplText(obj) {
                      html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
                      html_str = html_str.concat('</span>') ;
                      break ;                  
-                  /*
+                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {
                         let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;
@@ -206,6 +206,7 @@ function buildDiplText(obj) {
                         html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
                      }
                      break ;
+                     /*
                   case 'http://www.tei-c.org/ns/1.0/app':
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/note':
