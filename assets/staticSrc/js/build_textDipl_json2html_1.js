@@ -39,8 +39,9 @@ function generateId(item) {
    return item.pos.value ;
 }
 
-function buildDiplText(obj) {   
-   html_str = '' ; 
+function buildDiplText(obj, obj_1) {   
+   html_str = '' ;
+   console.log('obj_1 = ', obj_1) ; 
    //find tei:body
     if (obj.head !== undefined) {        
         obj.results.bindings.forEach((item, index, array) => {
@@ -65,10 +66,13 @@ function buildDiplText(obj) {
     groupedByPos = obj.results.bindings.groupBy( item => {        
         return item.pos.value ;
      }) ;
-     /*
-     groupedByStartPos = obj_1.results.bindings.groupBy( item => {
-         return item.start.value ;
+     groupedByStartPos = obj_1['annoTextComp'].results.bindings.groupBy( item => {
+         return item.start_target.value ;
      }) ;
+     groupedBySourceTarget = obj_1['annoTextComp'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+  }) ;
+     /*
      groupedById = obj_1.results.bindings.groupBy( item => {
          return item.id.value ;
      }) ;
@@ -89,7 +93,6 @@ function buildDiplText(obj) {
             case 'https://github.com/KfNGOe/kfngoeo#StartTag':
                switch(item[0].name.value) {
                   case 'http://www.tei-c.org/ns/1.0/div':                     
-                     classNames = classNames.concat('div ') ;
                      item.forEach((item, index, array) => {                        
                         //console.log('item = ', item) ;
                         switch(item.attr.value) {
@@ -128,13 +131,11 @@ function buildDiplText(obj) {
                      //concatenate html string
                      html_str = html_str.concat('<h5 class="' + classNames + '" id="' + id + '">') ;                     
                      break ;
-                  case 'http://www.tei-c.org/ns/1.0/p':
-                     //set class
-                     classNames = classNames.concat('p') ;
+                  case 'http://www.tei-c.org/ns/1.0/p':                     
                      //set id
                      id = 'p_' + item[0].pos.value ;
                      //concatenate html string
-                     html_str = html_str.concat('<p class="' + classNames + '" id="' + id + '">') ;                     
+                     html_str = html_str.concat('<p id="' + id + '">') ;                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/pb':
                      classNames = classNames.concat('pb pageLocator') ;
@@ -159,51 +160,46 @@ function buildDiplText(obj) {
                      //set 2nd id
                      id = 'pb_' + item[0].pos.value ;
                      //concatenate html string
-                     html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
+                     html_str = html_str.concat('<a href="#' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
                      html_str = html_str.concat('</span>') ;
                      break ;                  
-                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
-                     if (groupedByStartPos[posStr2Nr(key)] !== undefined) {
-                        let sourceBodyId = groupedByStartPos[posStr2Nr(key)][0].source_body.value ;
-                        if (groupedById[sourceBodyId] !== undefined) {
-                           //build ref
-                           let sourceBodyTarget = groupedById[sourceBodyId][0].source_target.value ;
-                           let sourceBodyStart = groupedById[sourceBodyId][0].start.value ;
-                           let ref = "comp_" + sourceBodyTarget + '_' + sourceBodyStart ;
+                     if (groupedByStartPos[posStr2Nr(key)] !== undefined) {                        
+                        //check target source
+                        let item_anno_arr = groupedByStartPos[posStr2Nr(key)] ;
+                        let item_anno = {} ;                        
+                        groupedBySourceTarget_pos = item_anno_arr.groupBy( item => {
+                           return item.source_target.value ;
+                        }) ;
+                        //get right target
+                        if (groupedBySourceTarget_pos[title_short] !== undefined) {
+                           item_anno = groupedBySourceTarget_pos[title_short][0] ;                           
                            //check status and set class
-                           let item_comp = {} ;                           
-                           let item_comp_arr = groupedByStartPos[posStr2Nr(key)] ;
-                           if (item_comp_arr.length > 1) {
-                              groupedBySourceTarget = item_comp_arr.groupBy( item => {
-                                 return item.source_target.value ;
-                              }) ;
-                              if (groupedBySourceTarget[title_short] !== undefined) {                                 
-                                 item_comp = groupedBySourceTarget[title_short][0] ;
-                              }                              
-                           } else {
-                              item_comp = item_comp_arr[0] ;
-                           }
-                           switch(item_comp.status.value) {
-                              case 'equal': 
-                                 html_str = html_str.concat('<a class="comp-img-equal" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                           switch(item_anno.status.value) {
+                              case 'equal':
+                                 classNames = classNames.concat('anchor comp-equal') ;                                  
                                  break ;
                               case 'notEqual':
-                                 html_str = html_str.concat('<a class="comp-img-inequal" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                                 classNames = classNames.concat('anchor comp-inequal') ;                                 
                                  break ;
                               case 'missing':
-                                 html_str = html_str.concat('<a class="comp-img-not" href="#' + ref + '" id="comp_' + generateId(item) + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                 
+                                 classNames = classNames.concat('anchor comp-not') ;                                 
                                  break ;
                               default:
                                  break ;
-                           }                           
-                        } else {                       
-                           console.log('sourceBodyId = ', sourceBodyId, ' not in annoTextComp') ;
-                           html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
-                        }                           
+                           }
+                           //set href
+                           href = "comp_" + item_anno.source_body.value + '_' + item_anno.start_body.value ;
+                           //set id
+                           id = 'comp_' + item[0].pos.value ;
+                           //concatenate html string
+                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                                   
+                        } else {
+                           console.log('source target = ', title_short, ' not in anno items at pos = ', key) ; 
+                        }                        
                      } else {
                         console.log('key = ', key, ' not in annoTextComp') ;
-                        html_str = html_str.concat('<a href="#" id="comp_' + generateId(item) + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
+                        //html_str = html_str.concat('<a href="#" id="' + id + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
                      }
                      break ;
                      /*
@@ -236,55 +232,63 @@ function buildDiplText(obj) {
                   default:
                      break ;
                }
-               break ;
-            /*
+               break ;            
             case 'https://github.com/KfNGOe/kfngoeo#Text':
+               let hit_flag = false ;               
                //check if text is between anchor and app pos
-               let item_comp = {} ;                        
-               let item_hit = obj_1.results.bindings.find((item_1, index_1, array_1) => {                  
-                  //check if same text source
-                  let flag_source = (item.pos.value.includes(item_1.source_target.value)) ? true : false ;
-                  item_comp = item_1 ;                  
-                  return (+item_1.start.value < posStr2Nr(item.pos.value)) && (posStr2Nr(item.pos.value) < +item_1.end.value && flag_source) ;
-               }) ;
+               let item_anno = {} ;               
+               let item_hit = groupedBySourceTarget[title_short].find((item_source) => {
+                  item_anno = item_source ;
+                  return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
+               } ) ;
                if (item_hit !== undefined) {
                   //text is between anchor and app pos
+                  hit_flag = true ;
                   //check status and set class
-                  switch(item_comp.status.value) {
+                  switch(item_anno.status.value) {
                      case 'equal': 
-                        html_str = html_str.concat('<span class="comp-passage-equal" id="comp_' + generateId(item) + '">') ;
+                        classNames = classNames.concat('comp-equal ') ;                        
                         break ;
                      case 'notEqual':
-                        html_str = html_str.concat('<span class="comp-passage-inequal" id="comp_' + generateId(item) + '">') ;
+                        classNames = classNames.concat('comp-inequal ') ;                        
                         break ;
                      case 'missing':
-                        html_str = html_str.concat('<span class="comp-passage-not" id="comp_' + generateId(item) + '">') ;
+                        classNames = classNames.concat('comp-not ') ;                        
                         break ;
                      default:
                         break ;
-                  }                  
-                  html_str = html_str.concat(item.cont.value) ;
-                  html_str = html_str.concat('</span>') ;
-               } else {                        
+                  }
+               } else {
                   //check if text is between app pos
-                  let pos_tmp = posNr2Str(posStr2Nr(item.pos.value) - 2) ;
-                  let pos_arr = groupedByPos[pos_tmp] ;
+                  let pos_tmp = posNr2Str(posStr2Nr(item[0].pos.value) - 2) ;
+                  let pos_arr = groupedByPos[pos_tmp] ;                     
                   if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/app' 
                      && pos_arr[0].type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
-                        html_str = html_str.concat('<span id="comp_' + generateId(item) + '" style="display: none">') ;
-                        html_str = html_str.concat(item.cont.value) ;
-                        html_str = html_str.concat('</span>') ;
-                  } else {
-                     html_str = html_str.concat('<span id="text_' + generateId(item) + '">') ;
-                     html_str = html_str.concat(item.cont.value) ;
-                     html_str = html_str.concat('</span>') ;                           
+                     hit_flag = true ;
+                     classNames = classNames.concat('rdg ') ;
+                     item[0].cont.value = '' ;
                   }
+               }               
+               //remove last space from classNames
+               if (classNames.length > 0) {
+                  classNames = classNames.substring(0, classNames.length - 1) ;
                }
+               //set id
+               id = 'text_' + item[0].pos.value ;               
+               if (hit_flag) {                  
+                  //concatenate html string
+                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
+                  html_str = html_str.concat(item[0].cont.value) ;
+                  html_str = html_str.concat('</span>') ;                  
+               } else {                   
+                  html_str = html_str.concat('<span id="' + id + '">') ;
+                  html_str = html_str.concat(item[0].cont.value) ;
+                  html_str = html_str.concat('</span>') ;
+               }                                             
                break ;
             case 'https://github.com/KfNGOe/kfngoeo#Comment':
-               console.log('Comment: ', item.cont.value) ;
-               break ;
-            */
+               //console.log('Comment: ', item.cont.value) ;
+               break ;            
             default:
                break ;
          }         
@@ -292,19 +296,25 @@ function buildDiplText(obj) {
    }) ;
 } ; 
 
-//read comp text json file
-//let json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8') ;
-let json_in_comp = '{}' ;
-console.log(json_in_comp) ;
-//console.log('json data read: ', json_in.length, ' bytes') ;
-//convert json to js object
-let jsonJs_in_comp = JSON.parse(json_in_comp) ;
+//read json anno directory
+let jsonFiles = fs.readdirSync('data/json/anno/') ;
+console.log('json files: ', jsonFiles) ;
+//iterate over anno files
+let jsonJs_anno_files = {} ;
+jsonFiles.forEach((file) => {
+   //read anno text json files   
+   let fileNamePath = 'data/json/anno/' + file ;   
+   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+   console.log('json data read: ', json_in.length, ' bytes') ;
+   let jsonJs_in_anno = JSON.parse(json_in) ;
+   jsonJs_anno_files[file.replace('.json', '')] = jsonJs_in_anno ;
+   console.log('jsonJs_anno_files = ', jsonJs_anno_files) ;   
+}) ;
 
 //read json dipl directory
-let jsonFiles = fs.readdirSync('data/json/dipl/') ;
+jsonFiles = fs.readdirSync('data/json/dipl/') ;
 console.log('json files: ', jsonFiles) ;
-
-//iterate over source files
+//iterate over dipl files
 jsonFiles.forEach((file) => {
    //read dipl text json files
    let fileNamePath = 'data/json/dipl/' + file ;   
@@ -312,7 +322,7 @@ jsonFiles.forEach((file) => {
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_dipl = JSON.parse(json_in) ;
    //buildDiplText(jsonJs_in_dipl, jsonJs_in_comp) ;
-   buildDiplText(jsonJs_in_dipl) ;
+   buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_dipl_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
