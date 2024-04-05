@@ -70,13 +70,15 @@ function buildDiplText(obj, obj_1) {
          return item.start_target.value ;
      }) ;
      groupedBySourceTarget = obj_1['annoTextComp'].results.bindings.groupBy( item => {
-      return item.source_target.value ;
-  }) ;
-     /*
-     groupedById = obj_1.results.bindings.groupBy( item => {
-         return item.id.value ;
+         return item.source_target.value ;
      }) ;
-     */
+     groupedByStartPos_addSpan = obj_1['annoAddSpan'].results.bindings.groupBy( item => {
+         return item.start_target.value ;
+     }) ;
+     groupedBySourceTarget_addSpan = obj_1['annoAddSpan'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+     }) ;
+     
    //iterate over pos
    Object.keys(groupedByPos).forEach((key) => {
       //console.log('key = ', key) ;
@@ -268,7 +270,19 @@ function buildDiplText(obj, obj_1) {
                      classNames = classNames.concat('rdg ') ;
                      item[0].cont.value = '' ;
                   }
-               }               
+               }
+               //check if text is between addSpan and anchor pos
+               item_anno = {} ;
+               item_hit = groupedBySourceTarget_addSpan[title_short].find((item_source) => {
+                  item_anno = item_source ;
+                  return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
+               } ) ;
+               if (item_hit !== undefined) {
+                  //text is between addSpan and anchor pos
+                  hit_flag = true ;
+                  //set class
+                  classNames = classNames.concat('addSpan ') ;
+               }
                //remove last space from classNames
                if (classNames.length > 0) {
                   classNames = classNames.substring(0, classNames.length - 1) ;
