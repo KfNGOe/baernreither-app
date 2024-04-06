@@ -15,7 +15,7 @@ dev-baernreither-app
 
 *.xml -> build_tei2ttl.sh -> *.ttl<br>
 
-## Workflow conversion text dipl ttl to json
+## Workflow conversion text ttl to json
 
 *.ttl -> build_textDipl_ttl2json.sh -> *_dipl.json
 

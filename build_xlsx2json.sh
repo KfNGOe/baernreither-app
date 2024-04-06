@@ -1,12 +1,12 @@
 echo "convert excel to json"
 
 PATH_XLSX='./data/xlsx/'
-PATH_JSON_XLSX='./data/json_xlsx/'
+PATH_JSON_XLSX='./data/json/register/'
 
 #FILENAME=$name
-FILENAME_IN='Baernreither_Personenregister_2023'
+FILENAME_IN='Baernreither_Index_2023'
 #FILENAME_IN='Baernreither_Ortsregister_2023'
-FILENAME_OUT='person_xlsx'
+FILENAME_OUT='register_index_xlsx'
 #FILENAME_OUT='place_xlsx'
 
 EXTENSION_XLSX='.xlsx'
