@@ -238,51 +238,55 @@ function buildDiplText(obj, obj_1) {
             case 'https://github.com/KfNGOe/kfngoeo#Text':
                let hit_flag = false ;               
                //check if text is between anchor and app pos
-               let item_anno = {} ;               
-               let item_hit = groupedBySourceTarget[title_short].find((item_source) => {
-                  item_anno = item_source ;
-                  return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
-               } ) ;
-               if (item_hit !== undefined) {
-                  //text is between anchor and app pos
-                  hit_flag = true ;
-                  //check status and set class
-                  switch(item_anno.status.value) {
-                     case 'equal': 
-                        classNames = classNames.concat('comp-equal ') ;                        
-                        break ;
-                     case 'notEqual':
-                        classNames = classNames.concat('comp-inequal ') ;                        
-                        break ;
-                     case 'missing':
-                        classNames = classNames.concat('comp-not ') ;                        
-                        break ;
-                     default:
-                        break ;
-                  }
-               } else {
-                  //check if text is between app pos
-                  let pos_tmp = posNr2Str(posStr2Nr(item[0].pos.value) - 2) ;
-                  let pos_arr = groupedByPos[pos_tmp] ;                     
-                  if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/app' 
-                     && pos_arr[0].type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
+               if (groupedBySourceTarget[title_short] !== undefined) {
+                  let item_anno = {} ;               
+                  let item_hit = groupedBySourceTarget[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between anchor and app pos
                      hit_flag = true ;
-                     classNames = classNames.concat('rdg ') ;
-                     item[0].cont.value = '' ;
+                     //check status and set class
+                     switch(item_anno.status.value) {
+                        case 'equal': 
+                           classNames = classNames.concat('comp-equal ') ;                        
+                           break ;
+                        case 'notEqual':
+                           classNames = classNames.concat('comp-inequal ') ;                        
+                           break ;
+                        case 'missing':
+                           classNames = classNames.concat('comp-not ') ;                        
+                           break ;
+                        default:
+                           break ;
+                     }
+                  } else {
+                     //check if text is between app pos
+                     let pos_tmp = posNr2Str(posStr2Nr(item[0].pos.value) - 2) ;
+                     let pos_arr = groupedByPos[pos_tmp] ;                     
+                     if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/app' 
+                        && pos_arr[0].type.value == 'https://github.com/KfNGOe/kfngoeo#StartTag') {
+                        hit_flag = true ;
+                        classNames = classNames.concat('rdg ') ;
+                        item[0].cont.value = '' ;
+                     }
                   }
-               }
-               //check if text is between addSpan and anchor pos
-               item_anno = {} ;
-               item_hit = groupedBySourceTarget_addSpan[title_short].find((item_source) => {
-                  item_anno = item_source ;
-                  return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
-               } ) ;
-               if (item_hit !== undefined) {
-                  //text is between addSpan and anchor pos
-                  hit_flag = true ;
-                  //set class
-                  classNames = classNames.concat('addSpan ') ;
-               }
+               }               
+               //check if text is between addSpan and anchor pos               
+               if (groupedBySourceTarget_addSpan[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_addSpan[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(item[0].pos.value)) && (posStr2Nr(item[0].pos.value) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between addSpan and anchor pos
+                     hit_flag = true ;
+                     //set class
+                     classNames = classNames.concat('addSpan ') ;
+                  }
+               }               
                //remove last space from classNames
                if (classNames.length > 0) {
                   classNames = classNames.substring(0, classNames.length - 1) ;
