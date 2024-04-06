@@ -12,27 +12,36 @@ dev-baernreither-app
 
 # Workflows
 ## Workflow ingest
-
-*.xml -> build_tei2ttl.sh -> *.ttl<br>
+/tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ## Workflow conversion text ttl to json
+/ttl/text/*.ttl -> build_textDipl_ttl2json.sh -> *_dipl.json
 
-*.ttl -> build_textDipl_ttl2json.sh -> *_dipl.json
+## Workfloe build full text json
+/ttl/text/*.ttl + anno*.json -> gdb_queryRepo.sh -> textFull.rq -> *_full.json
 
 ## Workflow register
 ### convert xlsx to json
-*.xlsx -> build_xlsx2json.sh -> person_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> place_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> org_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> index_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> register_person_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> register_place_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> register_org_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> register_index_xlsx.json<br>
 
-### build json person entity from all ttl files 
-*.ttl -> gdb_queryRepo.sh -> person_1_json.rq -> person.json<br>
-### build json person register
-person_xlsx.json + person.json -> build_register_json.sh -> register_person.json<br>
-### convert json person register to html
-register_person.json -> build_register_json2html.sh -> register_person.txt<br>
-register_person.txt -> build_register_html.sh -> register_person.html<br>
+### build person entity json from all ttl files 
+/ttl/text/*.ttl -> gdb_queryRepo.sh -> person_text_json.rq -> register_person_text.json<br>
+### build register person json tmp
+register_person_xlsx.json + register_person_text.json -> build_register_json.sh -> build_register_json.js -> register_person_tmp.json<br>
+### convert register person tmp to xml
+register_person_tmp.json -> build_person_json2tei.sh -> build_person_json2tei.js -> register_person.xml<br>
+### convert register person xml to ttl
+register_person.xml -> build_tei2ttl.sh -> register_person.ttl<br>
+### convert register person ttl to json
+register_person.ttl -> gdb_queryRepo.sh -> person_json.rq -> register_person.json
+### build anno person
+/ttl/text/*.ttl + register_person.ttl -> gdb_queryRepo.sh -> annoPerson.rq -> annoPerson.ttl
+annoPerson.ttl -> gdb_queryRepo.sh -> annoPerson_json.rq -> annoPerson.json
+### convert json person register to html 
+data/json/full/*_full.json + register_person.json + annoPerson.json -> build_register_json2html.sh -> build_register_json2html.js -> register_person.html<br>
 <br>
 
 # HTML Attribute values
