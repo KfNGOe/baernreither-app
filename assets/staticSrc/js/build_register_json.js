@@ -18,25 +18,6 @@ const jquery = require("jquery")(dom.window);
 const uid = new ShortUniqueId({ length: 10 });
 
 var convert = require('xml-js') ;
-var persons_json = {
-    "head": {
-        "vars": [
-            "id",
-            "key", 
-            "surname", 
-            "forename",
-            "addName",
-            "birth",
-            "death",
-            "desc",
-            "pid",
-            "pos"
-        ]
-    },    
-    "results": {
-        "bindings": []
-    }
-} ;
 
 function generateId() {
     //random number + pos   
@@ -44,11 +25,36 @@ function generateId() {
     //return item.pos.value ;
  }
 
-function buildRegPerson(obj, obj1) {               
+function buildReg(jsonJs_reg_files) { 
+    console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
+    //get persons
+    let persons_json = {
+        "head": {
+            "vars": [            
+                "key", 
+                "surname", 
+                "forename",
+                "addName",
+                "birth",
+                "death",
+                "birthPlace",
+                "deathPlace",
+                "desc",
+                "pid",
+                "pos"
+            ]
+        },    
+        "results": {
+            "bindings": []
+        }
+    } ;
+    let jsonJs_in = jsonJs_reg_files['register_person_text'] ; //person.json
+    let jsonJs_in_xlsx = jsonJs_reg_files['register_person_xlsx'] ; //person_xlsx.json
+    
     //check if keys exists
     if (jsonJs_in.results.bindings.some(item => item.o_key_person)) {
         //group by key                
-        groupedByMain = jsonJs_in.results.bindings.groupBy( item => {  //person.json
+        groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //person_text.json
         return item.o_key_person.value ;
     }) ;
     } else {
@@ -57,32 +63,32 @@ function buildRegPerson(obj, obj1) {
     //check if keys temp exists
     if (jsonJs_in_xlsx.Tabelle1.some(item => item.H)) {
         //group by key temp
-        groupedByMain_tmp = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
-        return item.H ;
+        groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
+        return item.J ;
         }) ;         
     } else {
         console.log('error: no keys in person xlsx') ;
     }                              
-    //iterate over obj
-    obj.results.bindings.forEach((item) => { //person.json    
+    //iterate over text file
+    jsonJs_in.results.bindings.forEach((item) => { //person.json    
         //console.log('key = ', item.o_key_person.value) ;
         let person = {} ;
-        let id = generateId() ;        
+        //let id = generateId() ;        
         let key = item.o_key_person.value ;
         let pid = '' ;
         let pos = item.o_pos_person.value ;
         //check if pid exists
         if (!item.o_pid_person) {
-            console.log('warning: no pid '+ key + ' in person.json') ;
+            console.log('warning: no pid '+ key + ' in person_text.json') ;
             pid = '' ;
         } else {
             pid = item.o_pid_person.value ;
         }
         //check if key in xlsx exists
-        if (!groupedByMain_tmp[key]) { //person_xlsx.json
+        if (!groupedByKey_xlsx[key]) { //person_xlsx.json
             console.log('warning: no key ' + key + ' in person_xlsx.json') ;
             person = {
-                "id": id,
+                //"id": id,
                 "key": key,
                 "surname": '',
                 "forename": '',
@@ -94,7 +100,7 @@ function buildRegPerson(obj, obj1) {
                 "pos": pos
             } ;
         } else {
-            let item1 = groupedByMain_tmp[key][0] ;
+            let item1 = groupedByKey_xlsx[key][0] ;
             person = {
                 "id": id,
                 "key": key,
@@ -114,21 +120,22 @@ function buildRegPerson(obj, obj1) {
     }) ;
 } ; 
 
-//read person json file
-let json_in = fs.readFileSync('./data/json/person.json', 'utf8'); //./data/json/person.json
-console.log('json data read: ', json_in.length, ' bytes') ;
-
-//convert json to js object
-var jsonJs_in = JSON.parse(json_in) ;
-
-//read person xlsx json file
-json_in = fs.readFileSync('./data/json_xlsx/person_xlsx.json', 'utf8'); //./data/json_xlsx/person_xlsx.json
-console.log('json data read: ', json_in.length, ' bytes') ;
-
-//convert json to js object
-var jsonJs_in_xlsx = JSON.parse(json_in) ;
-
-buildRegPerson(jsonJs_in, jsonJs_in_xlsx) ;
+//read json register directory
+let jsonFiles = fs.readdirSync('data/json/register/') ;
+console.log('json files: ', jsonFiles) ;
+//iterate over anno files
+let jsonJs_reg_files = {} ;
+jsonFiles.forEach((file) => {
+   //read register *_text or *_xlsx file   
+   if (file.includes('_text.json') || file.includes('_xlsx.json')) {
+    let fileNamePath = 'data/json/register/' + file ;
+    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+    var jsonJs_in_reg = JSON.parse(json_in) ;
+    jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;
+    //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;       
+   }
+}) ;
+buildReg(jsonJs_reg_files) ;
 
 //console.log('persons_json = ', persons_json) ;
 
