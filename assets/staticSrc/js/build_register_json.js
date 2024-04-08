@@ -27,7 +27,8 @@ function generateId() {
 
 function buildReg(jsonJs_reg_files) { 
     //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
-    //get persons
+    //build register templates
+    //persons
     let persons_json = {
         "head": {
             "vars": [            
@@ -48,6 +49,23 @@ function buildReg(jsonJs_reg_files) {
             "bindings": []
         }
     } ;
+    let places_json = {
+        "head": {
+            "vars": [            
+                "key", 
+                "name", 
+                "name_today",
+                "lat",
+                "long",                
+                "pid",
+                "pos"
+            ]
+        },    
+        "results": {
+            "bindings": []
+        }
+    } ;
+    //read person json files
     let jsonJs_in = jsonJs_reg_files['register_person_text'] ; //person.json
     let jsonJs_in_xlsx = jsonJs_reg_files['register_person_xlsx'] ; //person_xlsx.json    
     
@@ -95,7 +113,7 @@ function buildReg(jsonJs_reg_files) {
             } else {
                 let item1 = groupedByKey_xlsx[key][0] ;
                 person = {
-                    "id": id,
+                   //"id": id,
                     "key": key,
                     "surname": item1.A,
                     "forename": item1.C,
@@ -112,9 +130,69 @@ function buildReg(jsonJs_reg_files) {
             //console.log('person = ', person) ;
             persons_json.results.bindings.push(person) ;                
         } else {
-            console.log('warning: no key at in person_text.json') ;
+            console.log('warning: no key in person_text.json') ;
         }        
     }) ;
+
+    //read place json files
+    jsonJs_in = jsonJs_reg_files['register_place_text'] ; //place.json
+    jsonJs_in_xlsx = jsonJs_reg_files['register_place_xlsx'] ; //place_xlsx.json
+
+    //group by key                
+    groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //place_text.json
+        return item.o_key_place.value ;    
+    }) ;        
+    groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //place_xlsx.json
+        return item.D ;
+    }) ;
+
+    //iterate over text file
+    jsonJs_in.results.bindings.forEach((item) => { //place.json 
+        console.log('key = ', item.o_key_place.value) ;
+        if (item.o_key_place) {
+            let place = {} ;
+            //let id = generateId() ;        
+            let key = item.o_key_place.value ;
+            let pid = '' ;
+            let pos = item.o_pos_place.value ;
+            //check if pid exists
+            if (!item.o_pid_place) {
+                console.log('warning: no pid '+ key + ' in place_text.json') ;
+                pid = '' ;
+            } else {
+                pid = item.o_pid_place.value ;
+            }
+            //check if key in xlsx exists
+            if (!groupedByKey_xlsx[key]) { //place_xlsx.json
+                console.log('warning: no key ' + key + ' in place_xlsx.json') ;
+                place = {
+                    //"id": id,
+                    "key": key,
+                    "name": '', 
+                    "name_today": '',
+                    "lat": '',
+                    "long": '',
+                    "pid": pid,
+                    "pos": pos
+                } ;
+            } else {
+                let item1 = groupedByKey_xlsx[key][0] ;
+                place = {
+                    "key": key,
+                    "name": item1.A, 
+                    "name_today": item1.B,
+                    "lat": '',
+                    "long": '',
+                    "pid": pid,
+                    "pos": pos
+                } ;
+            } ;
+            //console.log('place = ', place) ;
+            places_json.results.bindings.push(place) ;                
+        } else {
+            console.log('warning: no key in place_text.json') ;
+        }  
+    }) ;   
 } ; 
 
 //read json register directory
