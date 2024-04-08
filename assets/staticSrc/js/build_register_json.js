@@ -26,7 +26,7 @@ function generateId() {
  }
 
 function buildReg(jsonJs_reg_files) { 
-    console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
+    //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
     //get persons
     let persons_json = {
         "head": {
@@ -49,74 +49,71 @@ function buildReg(jsonJs_reg_files) {
         }
     } ;
     let jsonJs_in = jsonJs_reg_files['register_person_text'] ; //person.json
-    let jsonJs_in_xlsx = jsonJs_reg_files['register_person_xlsx'] ; //person_xlsx.json
+    let jsonJs_in_xlsx = jsonJs_reg_files['register_person_xlsx'] ; //person_xlsx.json    
     
-    //check if keys exists
-    if (jsonJs_in.results.bindings.some(item => item.o_key_person)) {
-        //group by key                
-        groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //person_text.json
-        return item.o_key_person.value ;
-    }) ;
-    } else {
-        console.log('error: no keys person json') ;
-    }
-    //check if keys temp exists
-    if (jsonJs_in_xlsx.Tabelle1.some(item => item.H)) {
-        //group by key temp
-        groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
+    //group by key                
+    groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //person_text.json
+    return item.o_key_person.value ;    
+    }) ;        
+    groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
         return item.J ;
-        }) ;         
-    } else {
-        console.log('error: no keys in person xlsx') ;
-    }                              
+    }) ;         
+                                  
     //iterate over text file
     jsonJs_in.results.bindings.forEach((item) => { //person.json    
-        //console.log('key = ', item.o_key_person.value) ;
-        let person = {} ;
-        //let id = generateId() ;        
-        let key = item.o_key_person.value ;
-        let pid = '' ;
-        let pos = item.o_pos_person.value ;
-        //check if pid exists
-        if (!item.o_pid_person) {
-            console.log('warning: no pid '+ key + ' in person_text.json') ;
-            pid = '' ;
-        } else {
-            pid = item.o_pid_person.value ;
-        }
-        //check if key in xlsx exists
-        if (!groupedByKey_xlsx[key]) { //person_xlsx.json
-            console.log('warning: no key ' + key + ' in person_xlsx.json') ;
-            person = {
-                //"id": id,
-                "key": key,
-                "surname": '',
-                "forename": '',
-                "addName": '',
-                "birth": '',
-                "death": '',
-                "desc": '',
-                "pid": pid,
-                "pos": pos
+        console.log('key = ', item.o_key_person.value) ;
+        if (item.o_key_person) {
+            let person = {} ;
+            //let id = generateId() ;        
+            let key = item.o_key_person.value ;
+            let pid = '' ;
+            let pos = item.o_pos_person.value ;
+            //check if pid exists
+            if (!item.o_pid_person) {
+                console.log('warning: no pid '+ key + ' in person_text.json') ;
+                pid = '' ;
+            } else {
+                pid = item.o_pid_person.value ;
+            }
+            //check if key in xlsx exists
+            if (!groupedByKey_xlsx[key]) { //person_xlsx.json
+                console.log('warning: no key ' + key + ' in person_xlsx.json') ;
+                person = {
+                    //"id": id,
+                    "key": key,
+                    "surname": '',
+                    "forename": '',
+                    "addName": '',
+                    "birth": '',
+                    "death": '',
+                    "birthPlace": '',
+                    "deathPlace": '',
+                    "desc": '',
+                    "pid": pid,
+                    "pos": pos
+                } ;
+            } else {
+                let item1 = groupedByKey_xlsx[key][0] ;
+                person = {
+                    "id": id,
+                    "key": key,
+                    "surname": item1.A,
+                    "forename": item1.C,
+                    "addName": item1.B,
+                    "birth": item1.D,
+                    "death": item1.E,
+                    "birthPlace": item1.F,
+                    "deathPlace": item.G,
+                    "desc": item1.H,
+                    "pid": pid,
+                    "pos": pos
+                } ;
             } ;
+            //console.log('person = ', person) ;
+            persons_json.results.bindings.push(person) ;                
         } else {
-            let item1 = groupedByKey_xlsx[key][0] ;
-            person = {
-                "id": id,
-                "key": key,
-                "surname": item1.A,
-                "forename": item1.C,
-                "addName": item1.B,
-                "birth": item1.D,
-                "death": item1.E,
-                "desc": item1.F,
-                "pid": pid,
-                "pos": pos
-            } ;
-        } ;
-        //console.log('person = ', person) ;
-        //add person to persons_json
-        persons_json.results.bindings.push(person) ;                
+            console.log('warning: no key at in person_text.json') ;
+        }        
     }) ;
 } ; 
 
