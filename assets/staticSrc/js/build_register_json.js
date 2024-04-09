@@ -302,8 +302,13 @@ function buildReg(jsonJs_reg_files) {
             console.log('warning: no main term in index_text.json') ;
         }
     }) ;
+    let json_reg_files = {} ;
+    json_reg_files['register_person'] = persons_json ;
+    json_reg_files['register_place'] = places_json ;
+    json_reg_files['register_org'] = orgs_json ;
+    json_reg_files['register_index'] = indexes_json ;
+    return json_reg_files ;     
 } ;
-
 
 //read json register directory
 let jsonFiles = fs.readdirSync('data/json/register/') ;
@@ -320,11 +325,12 @@ jsonFiles.forEach((file) => {
     //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;       
    }
 }) ;
-buildReg(jsonJs_reg_files) ;
-
-//console.log('persons_json = ', persons_json) ;
-
-//write json file
-let persons_str = JSON.stringify(persons_json);
-fs.writeFileSync('data/json/register/register_person.json', persons_str ) ; //data/json/register/register_person.json
-console.log('json data written: ', persons_str.length, ' bytes')
+//build register json files
+let json_reg_files = buildReg(jsonJs_reg_files) ;
+//iterate over register json tmp files
+for (let key in json_reg_files) {
+    //let jsonStr = JSON.stringify(json_reg_files[key]) ;
+    //write json file
+    fs.writeFileSync('data/json/register/' + key + '_tmp.json', json_reg_files[key]) ;
+    console.log('json file written: ', key + '.json') ;
+}
