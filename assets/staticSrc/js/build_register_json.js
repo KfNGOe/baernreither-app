@@ -147,7 +147,7 @@ function buildReg(jsonJs_reg_files) {
                     "birth": item1.D,
                     "death": item1.E,
                     "birthPlace": item1.F,
-                    "deathPlace": item.G,
+                    "deathPlace": item1.G,
                     "desc": item1.H,
                     "pid": pid,
                     "pos": pos
@@ -269,7 +269,9 @@ function buildReg(jsonJs_reg_files) {
             } ;
             //console.log('org = ', org) ;
             orgs_json.results.bindings.push(org) ;                
-        }
+        } else {
+            console.log('warning: no key in org_text.json') ;
+        } 
     }) ;
 
     //read index json files
@@ -296,12 +298,21 @@ function buildReg(jsonJs_reg_files) {
             //check if sub exists
             if (item.o_sub_index) {            
                 sub = item.o_sub_index.value ;
-            }        
+            }
+            //build index object
+            index = {
+                //"id": id,
+                "main": main,
+                "sub": sub,                
+                "pos": pos
+            } ;                    
             indexes_json.results.bindings.push(index) ;                
         } else {
             console.log('warning: no main term in index_text.json') ;
         }
     }) ;
+
+    //return json register files
     let json_reg_files = {} ;
     json_reg_files['register_person'] = persons_json ;
     json_reg_files['register_place'] = places_json ;
@@ -329,8 +340,8 @@ jsonFiles.forEach((file) => {
 let json_reg_files = buildReg(jsonJs_reg_files) ;
 //iterate over register json tmp files
 for (let key in json_reg_files) {
-    //let jsonStr = JSON.stringify(json_reg_files[key]) ;
+    let jsonStr = JSON.stringify(json_reg_files[key]) ;
     //write json file
-    fs.writeFileSync('data/json/register/' + key + '_tmp.json', json_reg_files[key]) ;
+    fs.writeFileSync('data/json/register/' + key + '_tmp.json', jsonStr) ;
     console.log('json file written: ', key + '.json') ;
 }
