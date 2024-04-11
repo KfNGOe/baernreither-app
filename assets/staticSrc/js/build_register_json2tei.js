@@ -10,6 +10,7 @@ var N = 0 ;
 var i_level = 0 ;
 var i_startTag = 0 ; 
 var i_endTag = 0 ;
+var type = '' ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -26,7 +27,7 @@ const filepath_in_json=process.env.filepath_in_json ;
 const filepath_in_json_xlsx=process.env.filepath_in_json_xlsx ;
 const filepath_out_tei=process.env.filepath_out_tei ;
 
-function buildReg(teiJsFile, jsonJs_reg_files) {        
+function buildReg(teiJsFile, jsonJs_reg_files) {     
     //iterate over tei template file
     Object.keys(teiJsFile).forEach((key) => {
         console.log('key = ', key) ;
@@ -54,8 +55,7 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                     console.log(teiJsFile.constructor.name, 'property is not an array: ', key) ;
                 }
                 break ;
-            case 'attributes':
-                let type = '' ;
+            case 'attributes':                
                 console.log('attributes =  ', teiJsFile[key]) ;
                 //console.log('attributes =  ', teiJsFile[key].type) ;
                 if (teiJsFile[key].type) {
@@ -107,27 +107,22 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                     }
                     itemDataTemp[0].elements.shift(itemDataTempPos) ;   //delete pos template
 
+                    //iterate over register tmp files
                     Object.keys(jsonJs_reg_files).forEach((key) => {
                         console.log('key = ', key) ;
                         console.log('value = ', jsonJs_reg_files[key]) ;
-                    }) ;
-                   
-                    //group by key                
-                    groupedByMain = jsonJs_in.results.bindings.groupBy( item => {  //register_person.json
-                    return item.key ;
-                    }) ; 
-                                    
-                    //check if keys temp exists
-                    /*
-                    if (jsonJs_in_xlsx.Tabelle1.some(item => item.H)) {
-                        //group by key temp
-                        groupedByMain_tmp = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
-                        return item.H ;
-                        }) ;         
-                    } else {
-                        console.log('error: no keys tmp') ;
-                    }
-                    */                              
+                        if(key.includes(type)) {
+                            jsonJs_in = jsonJs_reg_files[key] ;
+                            //group by key
+                            groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
+                                if (!type === 'index') {
+                                    return item.key ;
+                                } else {
+                                    return item.main ;
+                                }
+                            } ) ;
+                        }                        
+                    }) ;          
                     //iterate over persons
                     Object.keys(groupedByMain).forEach((key) => {                    
                         let termKey = key ;
@@ -257,7 +252,7 @@ console.log('tei files: ', teiFiles) ;
 teiFiles.forEach((file) => {
    if(file.includes('_template.xml')) {
       let teiFile = fs.readFileSync('data/tei/register/' + file, 'utf8') ;
-      let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;
+      let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;      
       buildReg(teiJsFile, jsonJs_reg_files) ;
    }
 }) ;
