@@ -123,7 +123,7 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                             } ) ;
                         }                        
                     }) ;          
-                    //iterate over persons
+                    //iterate over 
                     Object.keys(groupedByMain).forEach((key) => {                    
                         let termKey = key ;
                         console.log('termKey = ', termKey) ;
