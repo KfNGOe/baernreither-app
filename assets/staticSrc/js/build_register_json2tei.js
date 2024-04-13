@@ -31,32 +31,32 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
     //iterate over tei template file
     Object.keys(teiJsFile).forEach((key) => {
         console.log('key = ', key) ;
-        console.log('value = ', teiJsFile[key]) ;
+        //console.log('value = ', teiJsFile[key]) ;
         //switch
         switch(key) {
             case 'declaration':
-                console.log('declaration = ', teiJsFile[key]) ;
+                //console.log('declaration = ', teiJsFile[key]) ;
                 break ;
             case 'instruction':
-                console.log('instruction = ', teiJsFile[key]) ;
+                //console.log('instruction = ', teiJsFile[key]) ;
                 break ;
             case 'elements':
-                console.log('elements = ',teiJsFile[key]) ;
+                //console.log('elements = ',teiJsFile[key]) ;
                 if(Array.isArray(teiJsFile[key])) {
                     //level + 1
                     teiJsFile[key].forEach((item, index, array) => {
                         if (typeof item === 'object') {
-                            console.log('item = ', item, ', index = ', index) ;
+                            //console.log('item = ', item, ', index = ', index) ;
                             buildReg(item, jsonJs_reg_files) ;
                         }
                     }) ;
                     //level - 1
                 } else {
-                    console.log(teiJsFile.constructor.name, 'property is not an array: ', key) ;
+                    //console.log(teiJsFile.constructor.name, 'property is not an array: ', key) ;
                 }
                 break ;
             case 'attributes':                
-                console.log('attributes =  ', teiJsFile[key]) ;
+                //console.log('attributes =  ', teiJsFile[key]) ;
                 //console.log('attributes =  ', teiJsFile[key].type) ;
                 if (teiJsFile[key].type) {
                     if (teiJsFile[key].type.includes('person')) {
@@ -110,13 +110,14 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
 
                     //iterate over register tmp files
                     Object.keys(jsonJs_reg_files).forEach((key) => {
-                        console.log('key = ', key) ;
-                        console.log('value = ', jsonJs_reg_files[key]) ;
+                        //console.log('key = ', key) ;
+                        //console.log('value = ', jsonJs_reg_files[key]) ;
                         if(key.includes(type)) {
                             //get register tmp file
                             jsonJs_in = jsonJs_reg_files[key] ;
                             //group by key
                             groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
+                                //check if type is index
                                 if (!type === 'index') {
                                     return item.key ;
                                 } else {
@@ -129,85 +130,74 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                             //iterate over register tmp items
                             Object.keys(groupedByMain).forEach((key) => {                    
                                 let termKey = key ;
-                                console.log('termKey = ', termKey) ;
+                                //console.log('termKey = ', termKey) ;
                                 //key
                                 itemDataTempMain[0].elements[0].text = termKey ;
                                 itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempMain[0]))) ;
-                                //check if id exists
-                                    if (groupedByMain[key].some(item => item.id)) {
-                                    let termId = groupedByMain[key][0].id ;
-                                    itemDataTempSub[0].elements[0].text = termId ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
-                                    } else {
-                                    console.log('no id') ;
+                                //check if type is index
+                                if (type === 'index') {
+                                    //check if item without sub exists
+                                    if (groupedByMain[key].some(item => item.sub === '')) {
+                                        //filter and group by empty sub
+                                        const groupedByNoSub = groupedByMain[key].filter(item => item.sub === '').groupBy( item => {
+                                            return item.main ;                        
+                                        }) ;
+                                        //console.log('groupedByNoSub = ', groupedByNoSub) ;
+                                        //iterate over empty sub
+                                        groupedByNoSub[key].forEach((item) => {
+                                            let termPos = item.pos ;
+                                            itemDataTempPos[0].elements[0].text = termPos ;                           
+                                            itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                           
+                                        }) ;                                       
+                                    } 
+                                    //check if item with sub exists
+                                    if (groupedByMain[key].some(item => item.sub)) {
+                                        //filter and group by sub
+                                        const groupedBySub = groupedByMain[key].filter(item => item.sub).groupBy( item => {
+                                            return item.sub ;                        
+                                        }) ;                     
+                                        //iterate over sub       
+                                        Object.keys(groupedBySub).forEach((key) => {                        
+                                            let termSub = key ;                        
+                                            itemDataTempSub[0].elements[0].text = termSub ;
+                                            //push sub to main (JSON.parse(JSON.stringify()) is used to copy by value)
+                                            itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;                        
+                                            if (groupedBySub[key].some(item => item.pos)) {
+                                                groupedBySub[key].forEach((item) => {
+                                                    let termPos = item.pos ;
+                                                    itemDataTempPos[0].elements[0].text = termPos ;                           
+                                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;                              
+                                                }) ;
+                                            } else {
+                                                console.log('error: no pos') ;
+                                            }                        
+                                        }) ;                     
                                     }
-                                    //check if surname exists
-                                if (groupedByMain[key].some(item => item.surname)) {
-                                    let termSur = groupedByMain[key][0].surname ;
-                                    itemDataTempSub[1].elements[0].text = termSur ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[1]))) ;
                                 } else {
-                                    console.log('no surname') ;
-                                }
-                                //check if forname exists                    
-                                if (groupedByMain[key].some(item => item.forename)) {
-                                    let termFor = groupedByMain[key][0].forename ;
-                                    itemDataTempSub[2].elements[0].text = termFor ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[2]))) ;
-                                } else {
-                                    console.log('no forname') ;
-                                }
-                                //check if addname exists
-                                if (groupedByMain[key].some(item => item.addName)) {
-                                    let termAdd = groupedByMain[key][0].addName ;
-                                    itemDataTempSub[3].elements[0].text = termAdd ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[3]))) ;
-                                } else {
-                                    console.log('no addname') ;
-                                }
-                                //check if birth exists
-                                if (groupedByMain[key].some(item => item.birth)) {
-                                    let termBirth = groupedByMain[key][0].birth ;
-                                    itemDataTempSub[4].elements[0].text = termBirth ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[4]))) ;
-                                } else {
-                                    console.log('no birth') ;
-                                }
-                                //check if death exists
-                                if (groupedByMain[key].some(item => item.death)) {
-                                    let termDeath = groupedByMain[key][0].death ;
-                                    itemDataTempSub[5].elements[0].text = termDeath ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[5]))) ;
-                                    } else {
-                                        console.log('no death') ;
+                                    //type is not index
+                                    console.log('type', type) ;
+                                    //iterate over terms
+                                    for (let i = 1; i < termsLength; i++) {
+                                        //check if term exists
+                                        if (groupedByMain[key].some(item => item[terms[i]])) {
+                                            if (terms[i] === 'pos') {
+                                                //iterate over pos
+                                                groupedByMain[key].forEach((item) => {
+                                                    let termPos = item.pos ;
+                                                    itemDataTempPos[0].elements[0].text = termPos ;
+                                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
+                                                }) ;
+                                            } else {
+                                                //get term
+                                                let term = groupedByMain[key][0][terms[i]] ;
+                                                itemDataTempSub[i].elements[0].text = term ;
+                                                itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[i]))) ;
+                                            }                                            
+                                        } else {
+                                            console.log('no term') ;
+                                        }
                                     }
-                                    //check if desc exists
-                                    if (groupedByMain[key].some(item => item.desc)) {
-                                    let termDesc = groupedByMain[key][0].desc ;
-                                    itemDataTempSub[6].elements[0].text = termDesc ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[6]))) ;
-                                    } else {
-                                        console.log('no description') ;
-                                    }
-                                    //check if pid exists
-                                    if (groupedByMain[key].some(item => item.pid)) {
-                                    let termPid = groupedByMain[key][0].pid ;
-                                    itemDataTempSub[7].elements[0].text = termPid ;
-                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[7]))) ;
-                                    } else {
-                                            console.log('no pid') ;
-                                    }                    
-                                //check if pos exists
-                                if (groupedByMain[key].some(item => item.pos)) {
-                                    //iterate over pos
-                                    groupedByMain[key].forEach((item) => {
-                                        let termPos = item.pos ;
-                                        itemDataTempPos[0].elements[0].text = termPos ;
-                                        itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;
-                                    }) ;
-                                } else {
-                                    console.log('error: no pos') ;
-                                }                    
+                                }                                                    
                                 //push item to temp (JSON.parse(JSON.stringify()) is used to copy by value)
                                 temp.push(JSON.parse(JSON.stringify(itemDataTemp[0]))) ;                  
                                 //delete all elements except first
