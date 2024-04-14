@@ -1,14 +1,16 @@
 echo "build tei to ttl"
 #data/tei/register/register_index.xml
 
-PATH_TEI='./data/tei/'
-#PATH_TEI='./data/tei/register/'
+PATH_TEI=$pathName
+#PATH_TEI='./data/tei/'
+PATH_TEI='./data/tei/register/'
 PATH_TEI_XMLID='./data/tei_xmlId/'
 PATH_JSON_XMLID='./data/json_xmlId/'
 PATH_JSON_XMLJS='./data/json_xmlJs/'
 PATH_JSON_RDF='./data/json_rdf/'
-PATH_TTL='./data/ttl/text/'
-#PATH_TTL='./data/ttl/annotation/index/instance/'
+#PATH_TTL='./data/ttl/text/'
+#data/ttl/annotation/index
+PATH_TTL='./data/ttl/annotation/register/instance/'
 
 FILENAME=$name
 #FILENAME='register_index'
@@ -28,6 +30,7 @@ mkdir -p $PATH_JSON_XMLJS
 mkdir -p $PATH_JSON_RDF
 mkdir -p $PATH_TTL
 
+echo "${PATH_TEI}"
 echo "${FILENAME}"
 
 echo "normalize whitespace"
@@ -49,4 +52,3 @@ echo "remove temporary paths"
 rm -r $PATH_JSON_XMLID
 rm -r $PATH_JSON_XMLJS
 rm -r $PATH_JSON_RDF
-
