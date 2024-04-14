@@ -36,7 +36,7 @@ register_person_tmp.json -> build_person_json2tei.sh -> build_person_json2tei.js
 ### convert register person xml to ttl
 register_person.xml -> build_tei2ttl.sh -> register_person.ttl<br>
 ### convert register person ttl to json
-register_person.ttl -> gdb_queryRepo.sh -> person_json.rq -> register_person.json
+register_person.ttl + register_person_tmp.json -> register_id_json.rq -> build_register_id.js -> register_person.json
 ### build anno person
 /ttl/text/*.ttl + register_person.ttl -> gdb_queryRepo.sh -> annoPerson.rq -> annoPerson.ttl
 annoPerson.ttl -> gdb_queryRepo.sh -> annoPerson_json.rq -> annoPerson.json

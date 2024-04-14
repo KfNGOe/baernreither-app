@@ -324,7 +324,7 @@ function buildReg(jsonJs_reg_files) {
 //read json register directory
 let jsonFiles = fs.readdirSync('data/json/register/') ;
 console.log('json files: ', jsonFiles) ;
-//iterate over anno files
+//iterate over register files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    //read register *_text or *_xlsx file   
