@@ -10,7 +10,7 @@ var N = 0 ;
 var i_level = 0 ;
 var i_startTag = 0 ; 
 var i_endTag = 0 ;
-var type = '' ;
+var typeReg = '' ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
@@ -60,16 +60,16 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                 //console.log('attributes =  ', teiJsFile[key].type) ;
                 if (teiJsFile[key].type) {
                     if (teiJsFile[key].type.includes('person')) {
-                        type = 'person' ;
+                        typeReg = 'person' ;
                     } ;
                     if (teiJsFile[key].type.includes('place')) {
-                        type = 'place' ;
+                        typeReg = 'place' ;
                     } ;
                     if (teiJsFile[key].type.includes('org')) {
-                        type = 'org' ;
+                        typeReg = 'org' ;
                     } ;
                     if (teiJsFile[key].type.includes('index')) {
-                        type = 'index' ;
+                        typeReg = 'index' ;
                     } ;
                 }            
                 break ;         
@@ -112,13 +112,13 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                     Object.keys(jsonJs_reg_files).forEach((key) => {
                         //console.log('key = ', key) ;
                         //console.log('value = ', jsonJs_reg_files[key]) ;
-                        if(key.includes(type)) {
+                        if(key.includes(typeReg)) {
                             //get register tmp file
                             jsonJs_in = jsonJs_reg_files[key] ;
                             //group by key
                             groupedByMain = jsonJs_in.results.bindings.groupBy( item => {
-                                //check if type is index
-                                if (!type === 'index') {
+                                //check if typeReg is index
+                                if (typeReg !== 'index') {
                                     return item.key ;
                                 } else {
                                     return item.main ;
@@ -134,8 +134,8 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                                 //key
                                 itemDataTempMain[0].elements[0].text = termKey ;
                                 itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempMain[0]))) ;
-                                //check if type is index
-                                if (type === 'index') {
+                                //check if typeReg is index
+                                if (typeReg === 'index') {
                                     //check if item without sub exists
                                     if (groupedByMain[key].some(item => item.sub === '')) {
                                         //filter and group by empty sub
@@ -174,8 +174,8 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                                         }) ;                     
                                     }
                                 } else {
-                                    //type is not index
-                                    console.log('type', type) ;
+                                    //typeReg is not index
+                                    console.log('typeReg', typeReg) ;
                                     //iterate over terms
                                     for (let i = 1; i < termsLength; i++) {
                                         //check if term exists
@@ -185,15 +185,18 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                                                 groupedByMain[key].forEach((item) => {
                                                     let termPos = item.pos ;
                                                     itemDataTempPos[0].elements[0].text = termPos ;
-                                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[0]))) ;
+                                                    itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempPos[0]))) ;
                                                 }) ;
                                             } else {
                                                 //get term
-                                                let term = groupedByMain[key][0][terms[i]] ;
-                                                itemDataTempSub[i].elements[0].text = term ;
-                                                itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[i]))) ;
+                                                let term = groupedByMain[key][0][terms[i]] ;                                                
+                                                itemDataTempSub[i-1].elements[0].text = term ;
+                                                itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[i-1]))) ;
                                             }                                            
                                         } else {
+                                            let term = '' ;                                                
+                                            itemDataTempSub[i-1].elements[0].text = term ;
+                                            itemDataTemp[0].elements.push(JSON.parse(JSON.stringify(itemDataTempSub[i-1]))) ;
                                             console.log('no term') ;
                                         }
                                     }
@@ -205,7 +208,7 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                                 itemDataTemp[0].elements.splice(0,delCount) ; 
                             }) ;
                             //copy temp to teiJsFile
-                            teiJsFile.elements = temp.slice() ;
+                            teiJsFile.elements = temp.slice() ;                            
                         }                        
                     }) ;
                 }            
@@ -226,7 +229,7 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                 //console.log('no case') ;
                 break ;
         }
-    }) ;       
+    }) ;    
 } ; 
 
 //read json register directory
@@ -245,19 +248,17 @@ let teiFiles = fs.readdirSync('data/tei/register/') ;
 console.log('tei files: ', teiFiles) ;
 //iterate over tei files
 teiFiles.forEach((file) => {
-   if(file.includes('_template.xml')) {
-      let teiFile = fs.readFileSync('data/tei/register/' + file, 'utf8') ;
-      let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;      
-      buildReg(teiJsFile, jsonJs_reg_files) ;
+    //filter template files
+    if(file.includes('_template.xml')) {
+        let teiFile = fs.readFileSync('data/tei/register/' + file, 'utf8') ;
+        let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;      
+        buildReg(teiJsFile, jsonJs_reg_files) ;
+        let teiJs_out = teiJsFile ;
+        //convert js object to tei
+        let tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
+        //write tei file
+        //data/tei/register
+        fs.writeFileSync('./data/tei/register/' + file.replace('_template', ''), tei_out ) ;  //./data/tei/register/register_person.xml
+        console.log('tei data written: ', tei_out.length, ' bytes')        
    }
 }) ;
-
-
-
-let teiJs_out = teiJs_in ;
-
-//convert js object to tei
-var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
-//write tei file
-fs.writeFileSync('./data/tei/register/register_person.xml', tei_out ) ;  //./data/tei/register/register_person.xml
-console.log('tei data written: ', tei_out.length, ' bytes')
