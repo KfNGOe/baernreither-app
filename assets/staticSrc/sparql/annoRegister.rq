@@ -7,7 +7,28 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 #import Work files
 
-SELECT ?o_key_val ?o_el ?type_anno
+CONSTRUCT {
+    ?s_anno 	
+        a ?type_anno ;
+		rdfs:label ?label_anno ;                
+		rdfs:isDefinedBy ?key ;        
+        kfngoeo:hasTarget 
+            [
+            kfngoeo:hasSource ?title_target ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr_target ;
+            	kfngoeo:end ?end_nr_target ;
+            ] 
+        ] ;
+		kfngoeo:hasBody [        
+            a kfngoeo:TextualBody;
+            kfngoeo:hasSource ?title_body ; 
+            kfngoeo:hasSelector ?start_nr_body ;	#start nr of body            
+        ] ; 
+    .
+}
+#SELECT ?o_key_val ?o_el ?type_anno
 WHERE {    
     {
         SELECT DISTINCT ?o_key_val ?o_el ?type_anno
