@@ -39,7 +39,7 @@ register_person.xml -> build_tei2ttl.sh -> register_person.ttl<br>
 register_person.ttl + register_person_tmp.json -> register_id_json.rq -> build_register_id.js -> register_person.json
 ### build anno person
 /ttl/text/*.ttl + register_person.ttl -> gdb_queryRepo.sh -> annoPerson.rq -> annoPerson.ttl
-annoPerson.ttl -> gdb_queryRepo.sh -> annoPerson_json.rq -> annoPerson.json
+annoPerson.ttl -> gdb_queryRepo.sh -> annoPerson_json.rq -> annoPerson_json.json
 ### convert json person register to html 
 data/json/full/*_full.json + register_person.json + annoPerson.json -> build_register_json2html.sh -> build_register_json2html.js -> register_person.html<br>
 <br>
@@ -59,7 +59,7 @@ data/json/full/*_full.json + register_person.json + annoPerson.json -> build_reg
 
 ### tei:note
 ```
--> <div class="note editorial" id="note_Bae_TB_8_388" style="">...</div>
+-> <a href="#note_Bae_TB_8_388" style=""><img src="images/note.png" title="note" style="display: none"></a><div class="note editorial" id="note_Bae_TB_8_388" style="">...</div>
 ```
 
 ### tei:p
@@ -87,22 +87,22 @@ data/json/full/*_full.json + register_person.json + annoPerson.json -> build_reg
 
 ### tei:index
 ```
--> <a class="index" href="#index_Bae_REG_Index_39" id="index_Bae_TB_8_233" style="">...</a>
+-> <a class="index" href="#reg_Bae_REG_Index_39" id="index_Bae_TB_8_233" style="">...</a>
 ```
 
 ### tei:orgName
 ```
--> <a class="index" href="#index_Bae_REG_Org_310 id="index_Bae_TB_8_233" style="">...</a>
+-> <a class="org" href="#reg_Bae_REG_Org_310 id="org_Bae_TB_8_233" style="">...</a>
 ```
 
 ### tei:persName
 ```
--> <a class="index" href="#index_Bae_REG_Person_390" id="index_Bae_TB_8_233" style="">...</a>
+-> <a class="person" href="#reg_Bae_REG_Person_390" id="person_Bae_TB_8_233" style="">...</a>
 ```
 
 ### tei:placeName
 ```
--> <a class="index" href="#index_Bae_REG_Place_139" id="index_Bae_TB_8_233" style="">...</a>
+-> <a class="place" href="#reg_Bae_REG_Place_139" id="place_Bae_TB_8_233" style="">...</a>
 ```
 
 ### tei:ref
