@@ -270,23 +270,31 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      //set class
                      classNames = classNames.concat('person') ;
                      //set href
-                     let key_person = item[0].val.value ;                  
-                     href = "reg_" + groupedByKey_person[key_person][0].id.value ;                     
-                     //set id
-                     id = 'person_' + key ;
-                     //concatenate html string
-                     html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     let key_person = item[0].val.value ;
+                     if (groupedByKey_person[key_person] === undefined) {
+                        console.log('key_person = ', key_person, ' not in annoPerson') ;
+                     } else {
+                        href = "reg_" + groupedByKey_person[key_person][0].id.value ;
+                        //set id
+                        id = 'person_' + key ;
+                        //concatenate html string
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     }                     
                      break ;   
                   case 'http://www.tei-c.org/ns/1.0/placeName':
                   //set class
                      classNames = classNames.concat('place') ;
                      //set href
                      let key_place = item[0].val.value ;
-                     href = "reg_" + groupedByKey_place[key_place][0].id.value ;
-                     //set id
-                     id = 'place_' + key ;
-                     //concatenate html string
-                     html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     if (groupedByKey_place[key_place] === undefined) {
+                        console.log('key_place = ', key_place, ' not in annoPlace') ;
+                     } else {
+                        href = "reg_" + groupedByKey_place[key_place][0].id.value ;
+                        //set id
+                        id = 'place_' + key ;
+                        //concatenate html string
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     }                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/note':                     
                      //set class
