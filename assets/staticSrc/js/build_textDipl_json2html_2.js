@@ -2,7 +2,7 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-const ShortUniqueId = require('short-unique-id');
+//const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
 var convert = require('xml-js') ;
 const { group } = require("console");
@@ -16,9 +16,8 @@ var html_str = '' ;
 const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
-
 //Instantiate ShortUniqueId
-const uid = new ShortUniqueId({ length: 10 });
+//const uid = new ShortUniqueId({ length: 10 });
 
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_txt=process.env.filepath_out_txt ;
@@ -256,12 +255,16 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      //set class
                      classNames = classNames.concat('org') ;
                      //set href
-                     let key_org = item[0].val.value ;                  
-                     href = "reg_" + groupedByKey_org[key_org][0].id.value ;                     
-                     //set id
-                     id = 'org_' + key ;
-                     //concatenate html string
-                     html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     let key_org = item[0].val.value ; 
+                     if (groupedByKey_org[key_org] === undefined) {
+                        console.log('key_org = ', key_org, ' not in annoOrg') ;
+                     } else {
+                        href = "reg_" + groupedByKey_org[key_org][0].id.value ;                     
+                        //set id
+                        id = 'org_' + key ;
+                        //concatenate html string
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                     }                     
                      break ;                     
                   case 'http://www.tei-c.org/ns/1.0/persName':
                      //set class
@@ -307,8 +310,25 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set id
                      id = 'note_' + key ;
-                     html_str = html_str.concat('<div class="' + classNames + '" id="' + id + '" style="display: none">') ;
+                     html_str = html_str.concat('<a href="#' + key + '" style=""><img src="images/note.png" title="note" style="display: none"></a><div class="' + classNames + '" id="' + id + '" style="display: none">') ;
                      break ;
+                  case 'http://www.tei-c.org/ns/1.0/ref':
+                     //set class
+                     classNames = classNames.concat('ref') ;
+                     //set href                     
+                     item.forEach((item) => {                        
+                        switch(item.attr.value) {
+                           case 'target':
+                              href = item.val.value ;                              
+                              break ;                           
+                           default:
+                              break ;
+                        }
+                     } ) ;
+                     //set id
+                     id = 'ref_' + key ;
+                     html_str = html_str.concat('<a class="' + classNames + '" href="' + href + '" id="' + id + '" style="" target="_blank">') ;
+                     break
                      /*
                   case 'http://www.tei-c.org/ns/1.0/app':
                      break ;
@@ -346,7 +366,10 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                   case 'http://www.tei-c.org/ns/1.0/note':
                      html_str = html_str.concat('</div>') ;
                      break ;                  
-                  default:
+                  case 'http://www.tei-c.org/ns/1.0/ref':
+                     html_str = html_str.concat('</a>') ;
+                     break ;
+                     default:
                      break ;
                }
                break ;            
