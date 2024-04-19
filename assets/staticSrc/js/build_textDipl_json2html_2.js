@@ -432,6 +432,20 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      //set class
                      classNames = classNames.concat('addSpan ') ;
                   }
+               }
+               //check if text is between choice pos
+               if (groupedBySourceTarget_choice[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_choice[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between addSpan and anchor pos
+                     hit_flag = true ;
+                     //set class
+                     classNames = classNames.concat('addSpan ') ;
+                  }
                }               
                //remove last space from classNames
                if (classNames.length > 0) {
