@@ -4,72 +4,877 @@
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
 @prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
 @prefix sesame: <http://www.openrdf.org/schema/sesame#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-kfngoei:44c368a5-0204-4272-af81-6f0221744075 a kfngoeo:AnnoAdd;
+kfngoei:30acbb92-583b-4466-9a01-20ef6042a049 a kfngoeo:AnnoAdd;
   rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:feb467e0-a65e-4d63-952a-56732ce9dc72 .
+  kfngoeo:hasTarget _:node1006292 .
 
-kfngoei:cf1798fd-3210-428e-ab74-a4f964129455 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:682fa03e-57b9-45dc-b7b0-0bb5a2110712 .
+_:node1006292 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006293 .
 
-kfngoei:2000623c-4425-447a-ae24-a114473d0ea7 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:14804314-8cbd-406d-919d-29595685b998 .
+_:node1006293 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 722;
+  kfngoeo:end 724 .
 
-kfngoei:4a39cc14-f871-4e25-874a-cf39a3eccbfc a kfngoeo:AnnoAdd;
+kfngoei:03044a6e-fd06-4d2a-88ae-231fcf0e8ddb a kfngoeo:AnnoAdd;
   rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:e7c69832-4b3f-450b-ae26-b8a8b40f6fbf .
+  kfngoeo:hasTarget _:node1006294 .
 
-kfngoei:d07a1f42-6184-4b72-8a9b-39c3c5af0af8 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:8477a3eb-883c-4623-bd6d-d0186945f358 .
+_:node1006294 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006295 .
 
-kfngoei:df5ac3f5-0007-4cb8-b9cd-f8b9f85e4755 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:509e9259-ec3f-43df-8de1-79677238dc2b .
+_:node1006295 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 729;
+  kfngoeo:end 731 .
 
-kfngoei:aa8580de-c60e-4835-9b46-68cb4418c7d5 a kfngoeo:AnnoAdd;
+kfngoei:16a12d2b-a570-4142-bf2f-d2172c2e32ca a kfngoeo:AnnoAdd;
   rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:a1aa986e-0a9d-4180-aef3-bf69cb3de5ad .
+  kfngoeo:hasTarget _:node1006296 .
 
-kfngoei:3f2e4673-5709-4274-9a87-a2aa307c2b6b a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:e1ea9bb8-efe6-48d9-ba1e-0c49431dfc77 .
+_:node1006296 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006297 .
 
-kfngoei:2a84fe16-48be-409c-84c1-704760f93977 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:c1635b95-5deb-4509-902d-5c996ac998c4 .
+_:node1006297 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 848;
+  kfngoeo:end 850 .
 
-kfngoei:ec52b5cb-3230-4335-b4a5-19e9ef3cd843 a kfngoeo:AnnoAdd;
+kfngoei:80812b67-f5e6-45e9-9495-14ddee270e42 a kfngoeo:AnnoAdd;
   rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:72230ac4-79f8-41cc-9409-902a1aa68087 .
+  kfngoeo:hasTarget _:node1006298 .
 
-kfngoei:c0d3d4df-00c5-4e4a-976d-1601a31a50c3 a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:131e2c85-7dff-4942-971e-961f4fef399d .
+_:node1006298 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006299 .
 
-kfngoei:b97e1e28-6bfc-4138-8667-833bfb7e9fdc a kfngoeo:AnnoAdd;
-  rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:593ff6dd-c530-45b0-bf0c-18e721f704a8 .
+_:node1006299 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 934;
+  kfngoeo:end 936 .
 
-kfngoei:e73bef4f-6d22-4df9-b86a-085b0cf738ae a kfngoeo:AnnoAdd;
+kfngoei:4fd57c21-29ac-4ab7-a423-857b1172d10d a kfngoeo:AnnoAdd;
   rdfs:label "Annotation level of Add"@en;
-  rdfs:isDefinedBy "Bae_TB_8";
-  kfngoeo:hasTarget kfngoei:875b8a25-f89c-4b63-ae9f-8864d631046f .
+  kfngoeo:hasTarget _:node1006300 .
+
+_:node1006300 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006301 .
+
+_:node1006301 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 996;
+  kfngoeo:end 998 .
+
+kfngoei:93e34b41-0d0c-457d-b77e-7c59f4786ed9 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006302 .
+
+_:node1006302 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006303 .
+
+_:node1006303 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1000;
+  kfngoeo:end 1002 .
+
+kfngoei:bb08beae-13c5-4953-a06d-2253613ad91c a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006304 .
+
+_:node1006304 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006305 .
+
+_:node1006305 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1045;
+  kfngoeo:end 1047 .
+
+kfngoei:b685d671-0029-4f85-84f7-01b3b970a2b5 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006306 .
+
+_:node1006306 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006307 .
+
+_:node1006307 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1053;
+  kfngoeo:end 1059 .
+
+kfngoei:43930e90-7c22-400f-9f80-37a813bfef92 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006308 .
+
+_:node1006308 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006309 .
+
+_:node1006309 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1067;
+  kfngoeo:end 1069 .
+
+kfngoei:fdea9978-d9c2-470b-b4ac-c231cde89e75 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006310 .
+
+_:node1006310 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006311 .
+
+_:node1006311 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1471;
+  kfngoeo:end 1473 .
+
+kfngoei:68023624-c771-4ef6-b784-e07050a74561 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006312 .
+
+_:node1006312 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006313 .
+
+_:node1006313 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1960;
+  kfngoeo:end 1965 .
+
+kfngoei:1780ed22-b619-4c82-ac44-cfc6e45f9ffa a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006314 .
+
+_:node1006314 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006315 .
+
+_:node1006315 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2018;
+  kfngoeo:end 2024 .
+
+kfngoei:0415fdcc-197a-4987-b93a-3b871efd1522 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006316 .
+
+_:node1006316 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006317 .
+
+_:node1006317 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2072;
+  kfngoeo:end 2074 .
+
+kfngoei:ab13215f-bdce-45b2-8b1e-b2b3b1ff1384 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006318 .
+
+_:node1006318 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006319 .
+
+_:node1006319 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2739;
+  kfngoeo:end 2748 .
+
+kfngoei:1c9d3755-e09f-4902-83f2-8231505ae848 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006320 .
+
+_:node1006320 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006321 .
+
+_:node1006321 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2768;
+  kfngoeo:end 2770 .
+
+kfngoei:766fd2b5-c7fc-4c32-a3c2-1f55c645e682 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006322 .
+
+_:node1006322 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006323 .
+
+_:node1006323 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4282;
+  kfngoeo:end 4284 .
+
+kfngoei:e50f02b1-913f-4963-81d7-76efbd2ba7e6 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006324 .
+
+_:node1006324 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006325 .
+
+_:node1006325 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4307;
+  kfngoeo:end 4309 .
+
+kfngoei:4c3648bb-792b-49e8-a75a-1b28488596b4 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006326 .
+
+_:node1006326 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006327 .
+
+_:node1006327 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4355;
+  kfngoeo:end 4357 .
+
+kfngoei:9c2184fc-188c-4fcc-b7f8-798d79bb60f0 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006328 .
+
+_:node1006328 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006329 .
+
+_:node1006329 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4382;
+  kfngoeo:end 4384 .
+
+kfngoei:b5048c8a-e54a-40a0-a58f-d9a93961ef6a a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006330 .
+
+_:node1006330 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006331 .
+
+_:node1006331 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4532;
+  kfngoeo:end 4534 .
+
+kfngoei:db9de63e-0cad-4a8a-9023-e461b303b674 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006332 .
+
+_:node1006332 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006333 .
+
+_:node1006333 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4548;
+  kfngoeo:end 4550 .
+
+kfngoei:1372a0d5-5483-4fa9-8d04-475e40d1a502 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006334 .
+
+_:node1006334 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006335 .
+
+_:node1006335 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4610;
+  kfngoeo:end 4612 .
+
+kfngoei:7daef8c6-bd3e-4836-9eb8-dd1ecd0b16fc a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006336 .
+
+_:node1006336 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:node1006337 .
+
+_:node1006337 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4788;
+  kfngoeo:end 4790 .
+
+kfngoei:e85d2fb0-a99c-4839-b578-d845865028f5 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006338 .
+
+_:node1006338 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006339 .
+
+_:node1006339 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 258;
+  kfngoeo:end 260 .
+
+kfngoei:b869e220-53f2-4cea-8139-bc682f5b95ef a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006340 .
+
+_:node1006340 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006341 .
+
+_:node1006341 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 407;
+  kfngoeo:end 409 .
+
+kfngoei:9fb87ba3-6cd9-4a11-a18c-5ebc75e9c7ae a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006342 .
+
+_:node1006342 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006343 .
+
+_:node1006343 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 660;
+  kfngoeo:end 662 .
+
+kfngoei:ec46ba86-faa4-416b-ae94-2b8d21c70292 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006344 .
+
+_:node1006344 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006345 .
+
+_:node1006345 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 681;
+  kfngoeo:end 683 .
+
+kfngoei:98bd99c6-5734-4d4c-a74c-477b204b5649 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006346 .
+
+_:node1006346 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006347 .
+
+_:node1006347 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 850;
+  kfngoeo:end 859 .
+
+kfngoei:9b76d543-18d0-45b7-adc0-ee948fde95b6 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006348 .
+
+_:node1006348 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006349 .
+
+_:node1006349 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 918;
+  kfngoeo:end 920 .
+
+kfngoei:5f9567a0-3332-44a7-9ed0-b023dbbe6946 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006350 .
+
+_:node1006350 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006351 .
+
+_:node1006351 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1105;
+  kfngoeo:end 1107 .
+
+kfngoei:5dd483a6-3c65-4671-acca-842c7cab6969 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006352 .
+
+_:node1006352 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006353 .
+
+_:node1006353 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1179;
+  kfngoeo:end 1181 .
+
+kfngoei:1e65a8fb-ebde-4b91-a4ca-f52e82b4b2d1 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006354 .
+
+_:node1006354 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006355 .
+
+_:node1006355 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1688;
+  kfngoeo:end 1690 .
+
+kfngoei:537736eb-dc50-46d3-a89c-b97c735d032a a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006356 .
+
+_:node1006356 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006357 .
+
+_:node1006357 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1709;
+  kfngoeo:end 1711 .
+
+kfngoei:188d408e-f4c8-4137-bb74-0c5be453db32 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006358 .
+
+_:node1006358 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006359 .
+
+_:node1006359 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1906;
+  kfngoeo:end 1908 .
+
+kfngoei:5550bb5d-65a7-4f75-9cae-4ee1f8628c1a a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006360 .
+
+_:node1006360 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006361 .
+
+_:node1006361 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1927;
+  kfngoeo:end 1929 .
+
+kfngoei:4c0fa337-c630-4818-a0a3-20a4b5652d2e a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006362 .
+
+_:node1006362 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006363 .
+
+_:node1006363 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2041;
+  kfngoeo:end 2043 .
+
+kfngoei:1af637dc-c23d-4ce6-8716-a39ac5466fd6 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006364 .
+
+_:node1006364 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006365 .
+
+_:node1006365 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3551;
+  kfngoeo:end 3553 .
+
+kfngoei:fbd461c2-3dc4-4e68-ad68-f517c9efa4fd a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006366 .
+
+_:node1006366 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006367 .
+
+_:node1006367 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3566;
+  kfngoeo:end 3568 .
+
+kfngoei:cf634c23-197e-4a25-8d4f-bb39d97a1f06 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006368 .
+
+_:node1006368 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006369 .
+
+_:node1006369 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3573;
+  kfngoeo:end 3575 .
+
+kfngoei:5fb46294-c583-42e5-ac03-d67587828a27 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006370 .
+
+_:node1006370 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006371 .
+
+_:node1006371 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3584;
+  kfngoeo:end 3586 .
+
+kfngoei:b63c8611-0393-4b93-b802-f94d838ab5b4 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006372 .
+
+_:node1006372 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006373 .
+
+_:node1006373 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3654;
+  kfngoeo:end 3656 .
+
+kfngoei:45e0a4b6-baab-4dc8-b099-89dd0f7b834b a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006374 .
+
+_:node1006374 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006375 .
+
+_:node1006375 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3766;
+  kfngoeo:end 3768 .
+
+kfngoei:de8f30ad-89f6-4514-83e5-60eba3c3b7d3 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006376 .
+
+_:node1006376 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006377 .
+
+_:node1006377 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3989;
+  kfngoeo:end 3991 .
+
+kfngoei:31a29730-1b5d-4b58-8de5-fd5f506691ac a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006378 .
+
+_:node1006378 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006379 .
+
+_:node1006379 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4013;
+  kfngoeo:end 4015 .
+
+kfngoei:503752c3-4397-4835-8576-62022f0eb6bb a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006380 .
+
+_:node1006380 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006381 .
+
+_:node1006381 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4301;
+  kfngoeo:end 4303 .
+
+kfngoei:5c57610c-9dfa-44b7-a1ee-732fd6cc175a a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006382 .
+
+_:node1006382 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006383 .
+
+_:node1006383 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4553;
+  kfngoeo:end 4555 .
+
+kfngoei:17c6a698-f463-4ba1-9f72-81899fe99f84 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006384 .
+
+_:node1006384 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006385 .
+
+_:node1006385 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4623;
+  kfngoeo:end 4625 .
+
+kfngoei:4e2a3f15-b415-4add-a485-0e898d47aa34 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006386 .
+
+_:node1006386 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006387 .
+
+_:node1006387 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4686;
+  kfngoeo:end 4688 .
+
+kfngoei:0fa39bd4-94e3-4b84-a0a3-991929c0b81e a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006388 .
+
+_:node1006388 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006389 .
+
+_:node1006389 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5140;
+  kfngoeo:end 5142 .
+
+kfngoei:9e550340-2d82-4bee-931e-44f1784cf365 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006390 .
+
+_:node1006390 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:node1006391 .
+
+_:node1006391 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5197;
+  kfngoeo:end 5199 .
+
+kfngoei:8b6fd4d3-0023-4351-8f51-988bc06a6949 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006392 .
+
+_:node1006392 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006393 .
+
+_:node1006393 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 147;
+  kfngoeo:end 149 .
+
+kfngoei:a0387ef2-d5f1-48a6-9433-b9cd7a7ec329 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006394 .
+
+_:node1006394 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006395 .
+
+_:node1006395 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1187;
+  kfngoeo:end 1199 .
+
+kfngoei:347615ee-8345-4c62-b465-1507f0b110d3 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006396 .
+
+_:node1006396 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006397 .
+
+_:node1006397 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4403;
+  kfngoeo:end 4407 .
+
+kfngoei:cbc557a4-f3b6-4359-a65b-eb7b8824b8d7 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006398 .
+
+_:node1006398 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006399 .
+
+_:node1006399 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4618;
+  kfngoeo:end 4642 .
+
+kfngoei:dddfe2ac-0361-4093-be81-9a7367c29acf a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006400 .
+
+_:node1006400 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006401 .
+
+_:node1006401 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5208;
+  kfngoeo:end 5216 .
+
+kfngoei:a3c985bb-4d8a-4ee7-a527-1db208a1fd3c a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006402 .
+
+_:node1006402 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006403 .
+
+_:node1006403 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5486;
+  kfngoeo:end 5488 .
+
+kfngoei:452fae42-b60a-4c28-bf53-5bfb7d16491b a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006404 .
+
+_:node1006404 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006405 .
+
+_:node1006405 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5505;
+  kfngoeo:end 5507 .
+
+kfngoei:4fb21270-b6ec-4148-83a7-0e06ef059ddf a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006406 .
+
+_:node1006406 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006407 .
+
+_:node1006407 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6474;
+  kfngoeo:end 6476 .
+
+kfngoei:d7eae9bc-62ea-4ad0-b583-9a9969fc671d a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006408 .
+
+_:node1006408 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006409 .
+
+_:node1006409 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 7096;
+  kfngoeo:end 7098 .
+
+kfngoei:1ae6853d-1a0d-4c93-bc0e-dd2e50a0a487 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006410 .
+
+_:node1006410 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006411 .
+
+_:node1006411 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 7547;
+  kfngoeo:end 7561 .
+
+kfngoei:cbfc4e4f-8753-47f3-9df7-2a5ee03ed78f a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006412 .
+
+_:node1006412 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006413 .
+
+_:node1006413 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8621;
+  kfngoeo:end 8636 .
+
+kfngoei:249fe2bd-816e-4306-9450-057662c5ceab a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006414 .
+
+_:node1006414 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006415 .
+
+_:node1006415 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 10192;
+  kfngoeo:end 10198 .
+
+kfngoei:a4d8a5b5-71bf-49e9-a582-ad02bcc23aa2 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006416 .
+
+_:node1006416 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006417 .
+
+_:node1006417 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 10625;
+  kfngoeo:end 10627 .
+
+kfngoei:8ca73df5-7854-46a4-8a9c-54fc68753de3 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006418 .
+
+_:node1006418 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006419 .
+
+_:node1006419 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11155;
+  kfngoeo:end 11157 .
+
+kfngoei:499994c7-7f67-4442-a9dc-a7a30b4665ae a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006420 .
+
+_:node1006420 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006421 .
+
+_:node1006421 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11287;
+  kfngoeo:end 11295 .
+
+kfngoei:17015790-732a-46d4-a23c-35eed79ba4d2 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006422 .
+
+_:node1006422 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:node1006423 .
+
+_:node1006423 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11399;
+  kfngoeo:end 11401 .
+
+kfngoei:39344a0d-1893-4cf0-a7d9-e7a62cdfebd4 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006424 .
+
+_:node1006424 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006425 .
+
+_:node1006425 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 754;
+  kfngoeo:end 779 .
+
+kfngoei:a1dcc77a-84b7-4b33-a0df-da5dac56cf8c a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006426 .
+
+_:node1006426 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006427 .
+
+_:node1006427 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 863;
+  kfngoeo:end 867 .
+
+kfngoei:c7b9f406-daf1-43e7-94b0-f9e0a33f89c8 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006428 .
+
+_:node1006428 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006429 .
+
+_:node1006429 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 902;
+  kfngoeo:end 904 .
+
+kfngoei:61323ed9-ed09-4564-ba5e-c18c3829dd2d a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006430 .
+
+_:node1006430 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006431 .
+
+_:node1006431 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 909;
+  kfngoeo:end 911 .
+
+kfngoei:fd28fc2e-fbdf-44c6-ab8b-c5b90d3a285d a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006432 .
+
+_:node1006432 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006433 .
+
+_:node1006433 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1074;
+  kfngoeo:end 1076 .
+
+kfngoei:23c95046-dadc-4e4c-b7e0-a382d2569240 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006434 .
+
+_:node1006434 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006435 .
+
+_:node1006435 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1112;
+  kfngoeo:end 1122 .
+
+kfngoei:693ca75d-42d3-45f4-8564-97034ebcf1fc a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006436 .
+
+_:node1006436 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006437 .
+
+_:node1006437 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1124;
+  kfngoeo:end 1130 .
+
+kfngoei:54f784c6-8fd1-4d5f-9fe6-4c17d005b358 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006438 .
+
+_:node1006438 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006439 .
+
+_:node1006439 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1867;
+  kfngoeo:end 1869 .
+
+kfngoei:aeb935b3-d8ce-4daf-bb2a-ab0049d08726 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006440 .
+
+_:node1006440 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006441 .
+
+_:node1006441 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1894;
+  kfngoeo:end 1899 .
+
+kfngoei:ac2a6ace-8f62-4b53-b375-06a89afd8514 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006442 .
+
+_:node1006442 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006443 .
+
+_:node1006443 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1934;
+  kfngoeo:end 1936 .
+
+kfngoei:d19e0284-ea28-4edf-b05b-39ebd54a00b3 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006444 .
+
+_:node1006444 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006445 .
+
+_:node1006445 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2386;
+  kfngoeo:end 2402 .
+
+kfngoei:92d51390-ad55-407d-a5d2-dbe258d0ce31 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006446 .
+
+_:node1006446 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006447 .
+
+_:node1006447 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5360;
+  kfngoeo:end 5362 .
+
+kfngoei:b45b9fba-9925-4f4f-9c56-19e460cf0a23 a kfngoeo:AnnoAdd;
+  rdfs:label "Annotation level of Add"@en;
+  kfngoeo:hasTarget _:node1006448 .
+
+_:node1006448 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node1006449 .
+
+_:node1006449 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5988;
+  kfngoeo:end 5990 .

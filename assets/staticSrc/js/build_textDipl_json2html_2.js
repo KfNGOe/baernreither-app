@@ -77,6 +77,15 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
     groupedBySourceTarget_addSpan = jsonJs_anno_files['annoAddSpan'].results.bindings.groupBy( item => {
       return item.source_target.value ;
     }) ;
+    groupedBySourceTarget_choice = jsonJs_anno_files['annoChoice'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+    }) ;
+    groupedBySourceTarget_add = jsonJs_anno_files['annoAdd'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+    }) ;
+    groupedBySourceTarget_del = jsonJs_anno_files['annoDel'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+    }) ;
     groupedByKey_person = jsonJs_anno_files['annoPerson'].results.bindings.groupBy( item => {
       return item.key.value ;
     }) ;
@@ -441,12 +450,53 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
                   } ) ;
                   if (item_hit !== undefined) {
-                     //text is between addSpan and anchor pos
+                     //text is between choice pos
+                     hit_flag = true ;
+                     //check if text is between abbr pos
+                     let pos_tmp = posNr2Str(posStr2Nr(key) - 2) ;
+                     let pos_arr = groupedByPos[pos_tmp] ;
+                     if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/choice') {
+                        //set class
+                        classNames = classNames.concat('abbr ') ;
+                     }
+                     //check if text is between expan pos
+                     pos_tmp = posNr2Str(posStr2Nr(key) + 2) ;
+                     pos_arr = groupedByPos[pos_tmp] ;
+                     if (pos_arr[0].name !== undefined && pos_arr[0].name.value == 'http://www.tei-c.org/ns/1.0/choice') {
+                        //set class
+                        classNames = classNames.concat('expan ') ;
+                     }
+                     
+                  }
+               }
+               //check if text is between add pos
+               if (groupedBySourceTarget_add[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_add[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between app pos
                      hit_flag = true ;
                      //set class
-                     classNames = classNames.concat('addSpan ') ;
+                     classNames = classNames.concat('add ') ;
                   }
-               }               
+               }
+               //check if text is between del pos
+               if (groupedBySourceTarget_del[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_del[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between app pos
+                     hit_flag = true ;
+                     //set class
+                     classNames = classNames.concat('del ') ;
+                  }
+               }
                //remove last space from classNames
                if (classNames.length > 0) {
                   classNames = classNames.substring(0, classNames.length - 1) ;
@@ -455,7 +505,7 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                id = 'text_' + key ;               
                if (hit_flag) {                  
                   //concatenate html string
-                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
+                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '" style="">') ;
                   html_str = html_str.concat(item[0].cont.value) ;
                   html_str = html_str.concat('</span>') ;                  
                } else {                   

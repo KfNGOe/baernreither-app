@@ -123,7 +123,7 @@ data/json/full/*_full.json + register_person.json + annoPerson.json -> build_reg
 
 #### text is between tei:app pos
 ```
--> <span id="text_Bae_TB_8_137" style="display: none">...</span>
+-> <span class="rdg" id="text_Bae_TB_8_137" style="display: none">...</span>
 ```
 
 #### text is between tei:choice pos

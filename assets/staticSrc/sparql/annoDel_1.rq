@@ -8,7 +8,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
 
-#import TB or MF
+#import Text files
 
 CONSTRUCT {
     ?s_anno a kfngoeo:AnnoDel ;
@@ -50,5 +50,7 @@ WHERE {
 	.
     BIND(xsd:integer(SUBSTR(?o_pos_del_end,strlen(?title_short)+2)) AS ?end_nr_del)
     BIND(?title_short AS ?title_del)
-    BIND(IF(BOUND(?s_del_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    OPTIONAL {
+        BIND (IF(BOUND(?s_del_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    }
 }
