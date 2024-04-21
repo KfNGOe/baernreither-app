@@ -1,0 +1,44 @@
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import: annoAppi, annoNotei, annoIndexi, annoDeli, annoAbbri
+
+CONSTRUCT {
+    ?s_anno 
+        a kfngoeo:AnnoFull ;
+        rdfs:label "Annotation level of Full Text"@en ;
+        rdfs:isDefinedBy ?type_anno ;
+        kfngoeo:hasTarget [
+            kfngoeo:hasSource ?title_anno ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr ;
+                kfngoeo:end ?end_nr ;
+            ] 
+        ] ;
+        #no annotation body               
+    .
+}
+WHERE {
+    {
+        SELECT ?s_anno ?title_anno (?start_nr_anno AS ?start_nr) (?end_nr_anno AS ?end_nr) (?o_type_anno AS ?type_anno)
+        WHERE {            
+            ?s_anno
+                a ?o_type_anno ;                
+                kfngoeo:hasTarget [
+                    kfngoeo:hasSource ?title_anno ;
+                    kfngoeo:hasSelector [
+                        a kfngoeo:TextPositionSelector ;
+                        kfngoeo:start ?start_nr_anno ;
+                        kfngoeo:end ?end_nr_anno ;
+                    ] 
+                ] ;                
+            .            
+        }
+    } .
+} 

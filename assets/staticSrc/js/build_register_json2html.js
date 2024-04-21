@@ -165,17 +165,17 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    return html_pos_str ;   
 }
 
-function buildReg(obj,obj_1) {   //obj = register_person.json //obj_1 = annoPerson.json
+function buildReg(jsonJs_in_reg,jsonJs_in_anno) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
    //group by key
-   groupedByKey = obj.results.bindings.groupBy( item => {        
+   groupedByKey = jsonJs_in_reg.results.bindings.groupBy( item => {        
       return item.key ;
    }) ;
    //group by source_target
-   groupedBySourceTarget = obj_1.results.bindings.groupBy( item => {
+   groupedBySourceTarget = jsonJs_in_anno.results.bindings.groupBy( item => {
       return item.source_target.value ;
    }) ;
-   groupedByStart = obj_1.results.bindings.groupBy( item => {  //obj_1 = annoPerson.json
+   groupedByStart = jsonJs_in_anno.results.bindings.groupBy( item => {  //obj_1 = annoPerson.json
       return item.start.value ;
    }) ;
    let source_arr = [] ;
