@@ -38,9 +38,79 @@ function generateId(item) {
    return item.pos.value ;
 }
 
-function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {   
-   html_str = '' ;
-   console.log('jsonJs_anno_files = ', jsonJs_anno_files) ; 
+function groupAnnoFiles(jsonJs_anno_files) {
+   let groupedBy_files = {} ;
+   groupedByStartPos = jsonJs_anno_files['annoTextComp'].results.bindings.groupBy( item => {
+      return item.start_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedByStartPos})] = groupedByStartPos ;
+   
+   groupedBySourceTarget = jsonJs_anno_files['annoTextComp'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget})] = groupedBySourceTarget ;
+   
+   groupedByStartPos_addSpan = jsonJs_anno_files['annoAddSpan'].results.bindings.groupBy( item => {
+      return item.start_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedByStartPos_addSpan})] = groupedByStartPos_addSpan ;
+   
+   groupedBySourceTarget_addSpan = jsonJs_anno_files['annoAddSpan'].results.bindings.groupBy( item => {
+   return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_addSpan})] = groupedBySourceTarget_addSpan ;
+   
+   groupedBySourceTarget_choice = jsonJs_anno_files['annoChoice'].results.bindings.groupBy( item => {
+   return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_choice})] = groupedBySourceTarget_choice ;
+   
+   groupedBySourceTarget_add = jsonJs_anno_files['annoAdd'].results.bindings.groupBy( item => {
+   return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_add})] = groupedBySourceTarget_add ;
+   
+   groupedBySourceTarget_del = jsonJs_anno_files['annoDel'].results.bindings.groupBy( item => {
+   return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_del})] = groupedBySourceTarget_del ;
+   
+   groupedBySourceTarget_date = jsonJs_anno_files['annoDate'].results.bindings.groupBy( item => {
+      return item.source_target.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_date})] = groupedBySourceTarget_date ;
+   
+   groupedBySourceTarget_hi = jsonJs_anno_files['annoHi'].results.bindings.groupBy( item => {
+      return item.source_target.value ;      
+   }) ;
+   groupedBy_files[Object.keys({groupedBySourceTarget_hi})] = groupedBySourceTarget_hi ;
+   
+   groupedByKey_person = jsonJs_anno_files['annoPerson'].results.bindings.groupBy( item => {
+   return item.key.value ;
+   }) ;
+   groupedBy_files[Object.keys({groupedByKey_person})] = groupedByKey_person ;
+   
+   groupedByKey_place = jsonJs_anno_files['annoPlace'].results.bindings.groupBy( item => {
+   return item.key.value ;
+   } ) ;
+   groupedBy_files[Object.keys({groupedByKey_place})] = groupedByKey_place ;
+   
+   groupedByStartPos_index = jsonJs_anno_files['annoIndex'].results.bindings.groupBy( item => {
+   return item.start_target.value ;
+   } ) ;
+   groupedBy_files[Object.keys({groupedByStartPos_index})] = groupedByStartPos_index ;
+   
+   groupedByKey_org = jsonJs_anno_files['annoOrg'].results.bindings.groupBy( item => {
+   return item.key.value ;
+   } ) ;
+   groupedBy_files[Object.keys({groupedByKey_org})] = groupedByKey_org ;
+
+   return groupedBy_files ;
+}
+
+function buildDiplText(jsonJs_in_dipl, groupedBy_files) {   
+   html_str = '' ;   
+   //console.log('groupedBy_files =', groupedBy_files) ; 
    //find tei:body
     if (jsonJs_in_dipl.head !== undefined) {        
         jsonJs_in_dipl.results.bindings.forEach((item, index, array) => {
@@ -62,42 +132,24 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
         console.log('title_short = ', title_short) ; 
         //BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)       
     }
+    //group by pos
     groupedByPos = jsonJs_in_dipl.results.bindings.groupBy( item => {
       return item.pos.value ;
     }) ;
-    groupedByStartPos = jsonJs_anno_files['annoTextComp'].results.bindings.groupBy( item => {
-         return item.start_target.value ;
-    }) ;
-    groupedBySourceTarget = jsonJs_anno_files['annoTextComp'].results.bindings.groupBy( item => {
-         return item.source_target.value ;
-    }) ;
-    groupedByStartPos_addSpan = jsonJs_anno_files['annoAddSpan'].results.bindings.groupBy( item => {
-         return item.start_target.value ;
-    }) ;
-    groupedBySourceTarget_addSpan = jsonJs_anno_files['annoAddSpan'].results.bindings.groupBy( item => {
-      return item.source_target.value ;
-    }) ;
-    groupedBySourceTarget_choice = jsonJs_anno_files['annoChoice'].results.bindings.groupBy( item => {
-      return item.source_target.value ;
-    }) ;
-    groupedBySourceTarget_add = jsonJs_anno_files['annoAdd'].results.bindings.groupBy( item => {
-      return item.source_target.value ;
-    }) ;
-    groupedBySourceTarget_del = jsonJs_anno_files['annoDel'].results.bindings.groupBy( item => {
-      return item.source_target.value ;
-    }) ;
-    groupedByKey_person = jsonJs_anno_files['annoPerson'].results.bindings.groupBy( item => {
-      return item.key.value ;
-    }) ;
-    groupedByKey_place = jsonJs_anno_files['annoPlace'].results.bindings.groupBy( item => {
-      return item.key.value ;
-    } ) ;    
-    groupedByStartPos_index = jsonJs_anno_files['annoIndex'].results.bindings.groupBy( item => {
-      return item.start_target.value ;
-    } ) ;
-    groupedByKey_org = jsonJs_anno_files['annoOrg'].results.bindings.groupBy( item => {
-      return item.key.value ;
-    } ) ;
+    //get grouped anno files from groupedBy_files
+   let groupedByStartPos = groupedBy_files['groupedByStartPos'] ;
+   let groupedBySourceTarget = groupedBy_files['groupedBySourceTarget'] ;
+   let groupedByStartPos_addSpan = groupedBy_files['groupedByStartPos_addSpan'] ;
+   let groupedBySourceTarget_addSpan = groupedBy_files['groupedBySourceTarget_addSpan'] ;
+   let groupedBySourceTarget_choice = groupedBy_files['groupedBySourceTarget_choice'] ;
+   let groupedBySourceTarget_add = groupedBy_files['groupedBySourceTarget_add'] ;
+   let groupedBySourceTarget_del = groupedBy_files['groupedBySourceTarget_del'] ;
+   let groupedBySourceTarget_date = groupedBy_files['groupedBySourceTarget_date'] ;
+   let groupedBySourceTarget_hi = groupedBy_files['groupedBySourceTarget_hi'] ;
+   let groupedByKey_person = groupedBy_files['groupedByKey_person'] ;
+   let groupedByKey_place = groupedBy_files['groupedByKey_place'] ;
+   let groupedByStartPos_index = groupedBy_files['groupedByStartPos_index'] ;
+   let groupedByKey_org = groupedBy_files['groupedByKey_org'] ;
 
     //find first pos of index main term
       let index_main_item = [] ;
@@ -497,6 +549,59 @@ function buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) {
                      classNames = classNames.concat('del ') ;
                   }
                }
+               //check if text is between date pos
+               if (groupedBySourceTarget_date[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_date[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between date pos
+                     hit_flag = true ;
+                     //set class
+                     classNames = classNames.concat('date ') ;
+                  }
+               }
+               //check if text is between hi pos
+               if (groupedBySourceTarget_hi[title_short] !== undefined) {
+                  let item_anno = {} ;
+                  let item_hit = groupedBySourceTarget_hi[title_short].find((item_source) => {
+                     item_anno = item_source ;
+                     return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                  } ) ;
+                  if (item_hit !== undefined) {
+                     //text is between hi pos
+                     hit_flag = true ;
+                     //set class
+                     classNames = classNames.concat('hi ') ;
+                     // check tei:hi attributes                     
+                     let pos_tmp = posNr2Str(posStr2Nr(key) - 1) ;
+                     let item_hi = groupedByPos[pos_tmp] ; //let item = groupedByPos[key] ;
+                     //iterate over item_hi
+                     item_hi.forEach((item) => {                        
+                        switch(item.attr.value) {
+                           case 'rend':
+                              //set class
+                              switch(item.val.value) {
+                                 case '#g':
+                                    classNames = classNames.concat('letter-spacing ') ;
+                                    break ;
+                                 case '#b':
+                                    classNames = classNames.concat('bold ') ;
+                                    break ;
+                                 case '#ul':
+                                    classNames = classNames.concat('ul ') ;
+                                    break ;
+                                 default:
+                                    break ; 
+                              }
+                           default:
+                              break ;
+                        }                         
+                     }) ;
+                  }
+               }               
                //remove last space from classNames
                if (classNames.length > 0) {
                   classNames = classNames.substring(0, classNames.length - 1) ;
@@ -539,6 +644,10 @@ jsonFiles.forEach((file) => {
    console.log('jsonJs_anno_files = ', jsonJs_anno_files) ;   
 }) ;
 
+//groupBy anno files
+let groupedBy_files = {} ;
+groupedBy_files = groupAnnoFiles(jsonJs_anno_files) ;
+
 //read json dipl directory
 jsonFiles = fs.readdirSync('data/json/dipl/') ;
 console.log('json files: ', jsonFiles) ;
@@ -549,7 +658,7 @@ jsonFiles.forEach((file) => {
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_dipl = JSON.parse(json_in) ;   
-   buildDiplText(jsonJs_in_dipl, jsonJs_anno_files) ;
+   buildDiplText(jsonJs_in_dipl, groupedBy_files) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_dipl_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  

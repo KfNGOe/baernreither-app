@@ -6,12 +6,12 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-#import: annoChoicei
+#import: annoHii
 
 SELECT (?s_ttl AS ?id) (?o_source_target AS ?source_target) (?o_start_nr_target AS ?start_target) (?o_end_nr_target AS ?end_target)
 WHERE { 
 	?s_ttl 
-        a kfngoeo:AnnoChoice ;
+        a kfngoeo:AnnoHi ;
         kfngoeo:hasTarget [
         	kfngoeo:hasSource ?o_source_target ;
     		kfngoeo:hasSelector [
