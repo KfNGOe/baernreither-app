@@ -165,11 +165,16 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    return html_pos_str ;   
 }
 
-function buildReg(jsonJs_in_reg,jsonJs_in_anno) {   //obj = register_person.json //obj_1 = annoPerson.json
+function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
-   //group by key
-   groupedByKey = jsonJs_in_reg.results.bindings.groupBy( item => {        
-      return item.key ;
+   //group by key/main      
+   groupedByKey = jsonJs_reg_file.results.bindings.groupBy( item => {   
+      //filter index    
+      if (jsonJs_reg_file.head.vars[0] === 'key') {
+         return item.key ;
+     } else {
+         return item.main ;
+     }
    }) ;
    //group by source_target
    groupedBySourceTarget = jsonJs_in_anno.results.bindings.groupBy( item => {
@@ -226,33 +231,7 @@ function buildReg(jsonJs_in_reg,jsonJs_in_anno) {   //obj = register_person.json
    }) ;
 } ; 
 
-//read json register directory
-let jsonFiles = fs.readdirSync('data/json/register/') ;
-console.log('json files: ', jsonFiles) ;
-//read json anno directory
-let jsonFiles_anno = fs.readdirSync('data/json/anno/') ;
-console.log('json files anno: ', jsonFiles_anno) ;
-//iterate over json files
-let jsonJs_reg_files = {} ;
-jsonFiles.forEach((file) => {
-   //choose ordinary register files
-   //count number of '_' in file name
-   let count = (file.match(/_/g) || []).length ;
-   if (count < 2 && !file.includes('_id')) {
-      let jsonFile = fs.readFileSync('data/json/register/' + file, 'utf8') ;
-      jsonJs_reg_files[file] = JSON.parse(jsonFile) ;
-      let file_tmp = file.replace('.json','').replace('register_','') ;
-      //iterate over anno files
-      jsonFiles_anno.forEach((file_anno) => {
-         if (file_anno.toLowerCase().includes(file_tmp)) {          
-            console.log('file_anno = ', file_anno) ;
-         }
-            
-      } ) ;
-      //str.match(/Stark/i);
-   } ;      
-}) ;
-
+//build full texts
 //read anno text full json file
 json_in = fs.readFileSync('./data/json/anno/annoTextFull.json', 'utf8') ; //data/json/annoTextFull.json
 console.log('json data read: ', json_in.length, ' bytes') ;
@@ -265,7 +244,6 @@ groupedByType_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
 //read json dipl directory
 jsonFiles = fs.readdirSync('data/json/dipl/') ;
 console.log('json files: ', jsonFiles) ;
-
 //build full text from dipl text json files
 let groupedByTextFull_files = {} ;
 //iterate over dipl files
@@ -312,24 +290,49 @@ jsonFiles.forEach((file) => {
          groupedByPos_full[key] = groupedByPos_text[key] ;
       }
    }) ;
-   //write full text to file
+   //write full text to files
    groupedByTextFull_files[title_short + '_full'] = groupedByPos_full ;
    //console.log('groupedByTextFull_files = ', groupedByTextFull_files) ;
 }) ;
-//read anno Person json file
-json_in = fs.readFileSync('./data/json/annoPerson.json', 'utf8') ; //data/json/annoPerson.json
-console.log('json data read: ', json_in.length, ' bytes') ;
-//convert json to js object
-let jsonJs_in_anno = JSON.parse(json_in) ;
+
+//read json register directory
+let jsonFiles = fs.readdirSync('data/json/register/') ;
+console.log('json files: ', jsonFiles) ;
+//read json anno directory
+let jsonFiles_anno = fs.readdirSync('data/json/anno/') ;
+console.log('json files anno: ', jsonFiles_anno) ;
+//iterate over json file names
+jsonFiles.forEach((file) => {
+   //choose ordinary register files
+   //count number of '_' in file name
+   let count = (file.match(/_/g) || []).length ;
+   if (count < 2 && !file.includes('_id')) {
+      json_in = fs.readFileSync('data/json/register/' + file, 'utf8') ;
+      let jsonJs_reg_file = JSON.parse(json_in) ;
+      //use register file name to find corresponding anno file
+      let file_tmp = file.replace('.json','').replace('register_','') ;
+      //iterate over anno files
+      jsonFiles_anno.forEach((file_anno) => {
+         if (file_anno.toLowerCase().includes(file_tmp)) {          
+            console.log('file_anno = ', file_anno) ;
+            json_in = fs.readFileSync('data/json/anno/' + file_anno, 'utf8') ;
+            let jsonJs_anno_file = JSON.parse(json_in) ;
+         }            
+      }) ;
+      //build html string
+      buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) ;
+      //write html strings to file
+      fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
+      fs.writeFileSync(fileNamePath, html_str ) ;
+      console.log('html data written: ', html_str.length, ' bytes') ;  
+   } ;      
+}) ;
+
 //read register item text template
 let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
 //parse register data text template
 var reg_item_html = $.parseHTML(reg_item_str) ;
 
-//build html string
-buildReg(jsonJs_reg_files, groupedByTextFull_files) ;
-//write html strings to file
-fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
-fs.writeFileSync(fileNamePath, html_str ) ;
-console.log('html data written: ', html_str.length, ' bytes') ;  
+
+
    
