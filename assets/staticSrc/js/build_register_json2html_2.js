@@ -167,7 +167,7 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
 
 function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
-   //group by key/main      
+   //group register by key/main      
    groupedByKey = jsonJs_reg_file.results.bindings.groupBy( item => {   
       //filter index    
       if (jsonJs_reg_file.head.vars[0] === 'key') {
@@ -176,21 +176,22 @@ function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) { 
          return item.main ;
      }
    }) ;
-   //group by source_target
-   groupedBySourceTarget = jsonJs_in_anno.results.bindings.groupBy( item => {
+   //group anno by target source
+   groupedBySourceTarget = jsonJs_anno_file.results.bindings.groupBy( item => {
       return item.source_target.value ;
    }) ;
-   groupedByStart = jsonJs_in_anno.results.bindings.groupBy( item => {  //obj_1 = annoPerson.json
-      return item.start.value ;
+   //group anno by target start
+   groupedByStart = jsonJs_anno_file.results.bindings.groupBy( item => {  //obj_1 = annoPerson.json
+      return item.start_target.value ;
    }) ;
    let source_arr = [] ;
    let sourceFile_arr = [] ;
    let annoFile = groupedByStart ;
-   Object.keys(groupedBySourceTarget).forEach((key,index) => {
+   //iterate over anno target sources
+   Object.keys(groupedBySourceTarget).forEach((key, index) => {
       source_arr.push(key) ;      
       let fileNamePath = 'data/json/' + key + '_full.json' ;    //data/json/Bae_TB_8_full.json
-      //console.log('filename = ', fileNamePath) ;
-      //console.log('index = ', index) ;      
+      
       if(fs.existsSync(fileNamePath)) {
          console.log('file exists') ;
          let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
@@ -200,17 +201,17 @@ function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) { 
          console.log('file does not exist') ;
       }      
    }) ;   
-   //iterate over keys
+   //iterate over register keys
    Object.keys(groupedByKey).forEach((key) => {
       console.log('key = ', key) ;
       //console.log('groupedByKey[key] = ', groupedByKey[key]) ;
       let key_arr = groupedByKey[key] ;
       //start new row
       html_str = html_str.concat('<tr>') ;      
-      //id
+      //table data 1 = id
       let id = key_arr[0].id ;
       html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
-      //entry
+      //tabel data 2
       let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
       html_str = html_str.concat('<td>' + entry + '</td>') ;
       //life dates
@@ -312,11 +313,12 @@ jsonFiles.forEach((file) => {
       //use register file name to find corresponding anno file
       let file_tmp = file.replace('.json','').replace('register_','') ;
       //iterate over anno files
+      let jsonJs_anno_file = {} ;
       jsonFiles_anno.forEach((file_anno) => {
          if (file_anno.toLowerCase().includes(file_tmp)) {          
             console.log('file_anno = ', file_anno) ;
             json_in = fs.readFileSync('data/json/anno/' + file_anno, 'utf8') ;
-            let jsonJs_anno_file = JSON.parse(json_in) ;
+            jsonJs_anno_file = JSON.parse(json_in) ;
          }            
       }) ;
       //build html string
