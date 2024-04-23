@@ -53,7 +53,7 @@ function contextBefore(index_hit,sourceFile) {
    let contextBefore_arr = [] ;   
    while (countSpace < spaceMax && index_before >= 0) {
       item_before = sourceFile.results.bindings[index_before] ;
-      contextBefore = item_before.o_txt.value + contextBefore ;
+      contextBefore = item_before.cont.value + contextBefore ;
       countSpace = (contextBefore.match(/\s/g) || []).length ;
       index_before-- ;
       //console.log('countSpace = ', countSpace) ;      
@@ -74,7 +74,7 @@ function contextAfter(index_hit,sourceFile) {
    let contextAfter_arr = [] ;   
    while (countSpace < spaceMax && index_after >= 0) {
       item_after = sourceFile.results.bindings[index_after] ;
-      contextAfter =  contextAfter + item_after.o_txt.value ;
+      contextAfter =  contextAfter + item_after.cont.value ;
       countSpace = (contextAfter.match(/\s/g) || []).length ;
       index_after++ ;
       //console.log('countSpace = ', countSpace) ;      
@@ -100,25 +100,22 @@ function entryContext(pos,source,sourceFile,annoFile) {
    }   
    let index_hit = 0 ;
    let context_arr = [] ;
+   //find text pos in sourceFile
    if (sourceFile !== undefined) {      
-      let i_pos_nr = posStr2Nr(pos) ;
-      let i_pos = posNr2Str(i_pos_nr) ;
-      while (sourceFile[i_pos] === undefined && i_pos_nr < endNr) {
-         i_pos_nr++ ;
-         i_pos = posNr2Str(i_pos_nr) ;         
-      }
-      if(sourceFile[i_pos] !== undefined) {
-         index_hit = i_pos_nr ;
+      if(sourceFile.results.bindings.find((item, index, array) => {         
+         index_hit = index ; 
+         return (startNr < posStr2Nr(item.pos.value)) && (posStr2Nr(item.pos.value) < endNr) ;      
+      })) {
          context_arr[0] = contextBefore(index_hit,sourceFile) ;
-         context_arr[1] = item_hit.o_txt.value;
+         context_arr[1] = sourceFile.results.bindings[index_hit].cont.value ;         
          context_arr[2] = contextAfter(index_hit,sourceFile) ;         
          return context_arr ;
       } else {
-         console.log('item of pos ' + pos + ' not found') ;
+         console.log('pos ' + pos + ' not found') ;
          context_arr[0] = '' ;
          context_arr[1] = '' ;
          context_arr[2] = '' ;
-      }            
+      }                  
    } else {
       console.log('sourceFile undefined') ;
       context_arr[0] = '' ;
@@ -128,19 +125,19 @@ function entryContext(pos,source,sourceFile,annoFile) {
    return context_arr ;   
 }
 
-function pos_str(key_arr,annoFile,groupedByTextFull_files) {
+function pos_str(key_arr,annoFile,textFull_files) {
    //console.log('key_arr = ', key_arr) ;
    let html_pos_str = '' ;
    let context_arr = [] ;
-   groupedByPos = key_arr.groupBy( item => {
+   groupedByPos = key_arr.groupBy( item => { //key_arr = one key of group register by key/main
       return item.pos ;
    }) ;
    //table cell for pos
    html_pos_str = html_pos_str.concat('<td>' + '<div class="accordion" id="accordionSource">') ;   
    //iterate over sources
-   Object.keys(groupedByTextFull_files).forEach((key_source) => {
+   Object.keys(textFull_files).forEach((key_source) => {
       //console.log('index = ', index) ;
-      let sourceFile = groupedByTextFull_files[key_source] ;
+      let sourceFile = textFull_files[key_source] ;
       //load template for register item into dom 
       $('html').find('body').append(reg_item_str) ;      
       let source = key_source.replace('_full','') ;
@@ -177,7 +174,7 @@ function pos_str(key_arr,annoFile,groupedByTextFull_files) {
    return html_pos_str ;   
 }
 
-function buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
+function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
    //group register by key/main      
    groupedByKey = jsonJs_reg_file.results.bindings.groupBy( item => {   
@@ -204,6 +201,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) {   
       console.log('key = ', key) ;
       //console.log('groupedByKey[key] = ', groupedByKey[key]) ;
       let key_arr = groupedByKey[key] ;
+      //index
       if (key_arr[0].id.toLowerCase().includes('index')) {
          //start new row
          html_str = html_str.concat('<tr>') ;      
@@ -214,11 +212,82 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) {   
          let main = key_arr[0].main ;
          html_str = html_str.concat('<td>' + main + '</td>') ;         
          //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,groupedByTextFull_files)) ;
+         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
          //end row
          html_str = html_str.concat('</tr>') ;   
       }
-      
+      //org
+      if (key_arr[0].id.toLowerCase().includes('org')) {
+         //start new row
+         html_str = html_str.concat('<tr>') ;      
+         //id
+         let id = key_arr[0].id ;
+         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         //name
+         let name = key_arr[0].name ;
+         html_str = html_str.concat('<td>' + name + '</td>') ;         
+         //pid
+         let pid = key_arr[0].pid ;
+         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
+         //pos         
+         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+         //end row
+         html_str = html_str.concat('</tr>') ;   
+      }
+      //person
+      if (key_arr[0].id.toLowerCase().includes('person')) {
+         //start new row
+         html_str = html_str.concat('<tr>') ;      
+         //id
+         let id = key_arr[0].id ;
+         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         //entry
+         let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
+         html_str = html_str.concat('<td>' + entry + '</td>') ;
+         //life dates
+         let birth = key_arr[0].birth ;
+         let death = key_arr[0].death ;
+         let birthPlace = key_arr[0].birthPlace ;
+         let deathPlace = key_arr[0].deathPlace ;
+         html_str = html_str.concat('<td>' + '∗ ' + birth +', ' + birthPlace +'<br>' + '† ' + death + ', ' + deathPlace + '</td>') ;
+         //description
+         let desc = key_arr[0].desc ;
+         html_str = html_str.concat('<td>' + desc + '</td>') ;
+         //pid
+         let pid = key_arr[0].pid ;
+         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;      
+         //pos         
+         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+         //end row
+         html_str = html_str.concat('</tr>') ;   
+      }
+      //place
+      if (key_arr[0].id.toLowerCase().includes('place')) {
+         //start new row
+         html_str = html_str.concat('<tr>') ;      
+         //id
+         let id = key_arr[0].id ;
+         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         //name
+         let name = key_arr[0].name ;
+         html_str = html_str.concat('<td>' + name + '</td>') ;
+         //name today
+         let nameToday = key_arr[0].name_today ;
+         html_str = html_str.concat('<td>' + name_today + '</td>') ;
+         //lat
+         let lat = key_arr[0].lat ;
+         html_str = html_str.concat('<td>' + lat + '</td>') ;
+         //long
+         let long = key_arr[0].long ;
+         html_str = html_str.concat('<td>' + long + '</td>') ;
+         //pid
+         let pid = key_arr[0].pid ;
+         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
+         //pos         
+         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+         //end row
+         html_str = html_str.concat('</tr>') ;   
+      }      
    }) ;
 } ; 
 
@@ -228,10 +297,6 @@ json_in = fs.readFileSync('./data/json/anno/annoTextFull.json', 'utf8') ; //data
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 let jsonJs_in_annoFull = JSON.parse(json_in) ;
-//group by type anno text full
-groupedByType_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
-   return item.type_anno.value ;
-}) ;
 //group by source target
 groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
    return item.source_target.value ;
@@ -240,11 +305,13 @@ groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => 
 let jsonFiles = fs.readdirSync('data/json/dipl/') ;
 console.log('json files: ', jsonFiles) ;
 //build full text from dipl text json files
-let groupedByTextFull_files = {} ;
+let textFull_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {
    //get title_short
    title_short = file.replace('_dipl.json','') ;
+   //init text full
+   let text_full = JSON.parse(JSON.stringify(text_full_temp)) ;
    //read dipl text json files
    let fileNamePath = 'data/json/dipl/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
@@ -272,22 +339,23 @@ jsonFiles.forEach((file) => {
          }) === undefined) {
             //console.log('key not found in anno full text: ', key) ;               
          } else {
-            console.log(key,' found in anno full text at start pos: ', item_hit.start_target.value) ;
+            //console.log(key,' found in anno full text at start pos: ', item_hit.start_target.value) ;
             hit_flag = true ;
          }
       }      
       //check hit_flag
       if (hit_flag === false) {
          //console.log('no hit of', key, ' in anno full text: ', title_short) ;
-         groupedByPos_full[key] = groupedByPos_text[key] ;
+         text_full.results.bindings.push(groupedByPos_text[key][0]) ;         
       }
    }) ;
    //write full text to files
-   groupedByTextFull_files[title_short + '_full'] = groupedByPos_full ;   
+   textFull_files[title_short + '_full'] = text_full ;   
 }) ;
-//console.log('groupedByTextFull_files = ', groupedByTextFull_files) ;
+//console.log('textFull_files = ', textFull_files) ;
 //
 
+//build register
 //read json register directory
 jsonFiles = fs.readdirSync('data/json/register/') ;
 console.log('json files: ', jsonFiles) ;
@@ -307,14 +375,14 @@ jsonFiles.forEach((file) => {
       //iterate over anno files
       let jsonJs_anno_file = {} ;
       jsonFiles_anno.forEach((file_anno) => {
-         if (file_anno.toLowerCase().includes(file_tmp)) {          
+         if (file_anno.toLowerCase().includes(file_tmp) && !(file_anno.toLocaleLowerCase().includes('sub'))) {          
             console.log('file_anno = ', file_anno) ;
             json_in = fs.readFileSync('data/json/anno/' + file_anno, 'utf8') ;
             jsonJs_anno_file = JSON.parse(json_in) ;
          }            
       }) ;
       //build html string
-      buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) ;
+      buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) ;
       //write html strings to file
       fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
       fs.writeFileSync(fileNamePath, html_str ) ;
