@@ -19,8 +19,18 @@ const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
 
-//Instantiate ShortUniqueId
-const uid = new ShortUniqueId({ length: 10 });
+//read register item text template
+let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
+
+//build template for full text item
+let text_full_temp = {
+   "head" : {
+     "vars" : [ "id", "type", "cont", "pos" ]
+   },
+   "results" : {
+       "bindings" : []
+   }
+}   
 
 const filepath_in_json=process.env.filepath_in_json ;
 const filepath_out_txt=process.env.filepath_out_txt ;
@@ -83,21 +93,22 @@ function entryContext(pos,source,sourceFile,annoFile) {
    let endNr = 0 ;   
    let pos_arr = annoFile[startNr] ;
    if (pos_arr !== undefined) {
-      endNr = pos_arr[0].end.value ;      
+      endNr = pos_arr[0].end_target.value ;      
    } else {
       console.log('pos ' + pos + ' undefined') ;
       endNr = startNr ;
    }   
    let index_hit = 0 ;
    let context_arr = [] ;
-   if (sourceFile !== undefined) {
-      let item_hit = sourceFile.results.bindings.find((item, index, array) => {
-         //find pos in sourceFile between start and end, return item
-         //console.log('index = ', index) ;
-         index_hit = index ; 
-         return (startNr < item.pos_txt_nr.value) && (item.pos_txt_nr.value < endNr) ;      
-      }) ;
-      if (item_hit !== undefined) {
+   if (sourceFile !== undefined) {      
+      let i_pos_nr = posStr2Nr(pos) ;
+      let i_pos = posNr2Str(i_pos_nr) ;
+      while (sourceFile[i_pos] === undefined && i_pos_nr < endNr) {
+         i_pos_nr++ ;
+         i_pos = posNr2Str(i_pos_nr) ;         
+      }
+      if(sourceFile[i_pos] !== undefined) {
+         index_hit = i_pos_nr ;
          context_arr[0] = contextBefore(index_hit,sourceFile) ;
          context_arr[1] = item_hit.o_txt.value;
          context_arr[2] = contextAfter(index_hit,sourceFile) ;         
@@ -106,8 +117,8 @@ function entryContext(pos,source,sourceFile,annoFile) {
          console.log('item of pos ' + pos + ' not found') ;
          context_arr[0] = '' ;
          context_arr[1] = '' ;
-         context_arr[2] = '' ;         
-      }      
+         context_arr[2] = '' ;
+      }            
    } else {
       console.log('sourceFile undefined') ;
       context_arr[0] = '' ;
@@ -117,7 +128,7 @@ function entryContext(pos,source,sourceFile,annoFile) {
    return context_arr ;   
 }
 
-function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
+function pos_str(key_arr,annoFile,groupedByTextFull_files) {
    //console.log('key_arr = ', key_arr) ;
    let html_pos_str = '' ;
    let context_arr = [] ;
@@ -127,21 +138,22 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    //table cell for pos
    html_pos_str = html_pos_str.concat('<td>' + '<div class="accordion" id="accordionSource">') ;   
    //iterate over sources
-   source_arr.forEach((source,index) => {
+   Object.keys(groupedByTextFull_files).forEach((key_source) => {
       //console.log('index = ', index) ;
-      let sourceFile = sourceFile_arr[index] ;
+      let sourceFile = groupedByTextFull_files[key_source] ;
       //load template for register item into dom 
       $('html').find('body').append(reg_item_str) ;      
-      //iterate over pos
+      let source = key_source.replace('_full','') ;
       let flag_source = false ;
-      Object.keys(groupedByPos).forEach((key) => {
-         if (key.includes(source)) {
+      //iterate over pos
+      Object.keys(groupedByPos).forEach((key_pos) => {
+         if (key_pos.includes(source)) {
             flag_source = true ;
             //get person name in text and context
-            context_arr = entryContext(key, source, sourceFile, annoFile) ;
+            context_arr = entryContext(key_pos, source, sourceFile, annoFile) ;
             let contextBefore = context_arr[0] ;
             let contextAfter = context_arr[2] ;            
-            let entry = '<a href="synoptik.html#person_' + key + '" id="person_' + key + '">'+ context_arr[1] +'</a>' ;
+            let entry = '<a href="synoptik.html#person_' + key_pos + '" id="person_' + key_pos + '">'+ context_arr[1] +'</a>' ;
             //append pos to dom
             $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + threeDots + contextBefore + entry + contextAfter + threeDots + '</p>') ;            
          }
@@ -165,7 +177,7 @@ function pos_str(key_arr,source_arr,sourceFile_arr,annoFile) {
    return html_pos_str ;   
 }
 
-function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
+function buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) {   //obj = register_person.json //obj_1 = annoPerson.json
    html_str = '' ;
    //group register by key/main      
    groupedByKey = jsonJs_reg_file.results.bindings.groupBy( item => {   
@@ -186,49 +198,27 @@ function buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) { 
    }) ;
    let source_arr = [] ;
    let sourceFile_arr = [] ;
-   let annoFile = groupedByStart ;
-   //iterate over anno target sources
-   Object.keys(groupedBySourceTarget).forEach((key, index) => {
-      source_arr.push(key) ;      
-      let fileNamePath = 'data/json/' + key + '_full.json' ;    //data/json/Bae_TB_8_full.json
-      
-      if(fs.existsSync(fileNamePath)) {
-         console.log('file exists') ;
-         let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
-         let jsonJs_in = JSON.parse(json_in) ;
-         sourceFile_arr[index] = jsonJs_in ;
-      } else {
-         console.log('file does not exist') ;
-      }      
-   }) ;   
+   let annoFile = groupedByStart ;   
    //iterate over register keys
    Object.keys(groupedByKey).forEach((key) => {
       console.log('key = ', key) ;
       //console.log('groupedByKey[key] = ', groupedByKey[key]) ;
       let key_arr = groupedByKey[key] ;
-      //start new row
-      html_str = html_str.concat('<tr>') ;      
-      //table data 1 = id
-      let id = key_arr[0].id ;
-      html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
-      //tabel data 2
-      let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
-      html_str = html_str.concat('<td>' + entry + '</td>') ;
-      //life dates
-      let birth = key_arr[0].birth ;
-      let death = key_arr[0].death ;
-      html_str = html_str.concat('<td>' + '∗ ' + birth +'<br>' + '† ' + death + '</td>') ;
-      //description
-      let desc = key_arr[0].desc ;
-      html_str = html_str.concat('<td>' + desc + '</td>') ;
-      //pid
-      let pid = key_arr[0].pid ;
-      html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;      
-      //pos
-      let pos = key_arr[0].pos ;
-      html_str = html_str.concat(pos_str(key_arr,source_arr,sourceFile_arr,annoFile)) ;
-      //end row
-      html_str = html_str.concat('</tr>') ;
+      if (key_arr[0].id.toLowerCase().includes('index')) {
+         //start new row
+         html_str = html_str.concat('<tr>') ;      
+         //id
+         let id = key_arr[0].id ;
+         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         //main
+         let main = key_arr[0].main ;
+         html_str = html_str.concat('<td>' + main + '</td>') ;         
+         //pos         
+         html_str = html_str.concat(pos_str(key_arr,annoFile,groupedByTextFull_files)) ;
+         //end row
+         html_str = html_str.concat('</tr>') ;   
+      }
+      
    }) ;
 } ; 
 
@@ -242,8 +232,12 @@ let jsonJs_in_annoFull = JSON.parse(json_in) ;
 groupedByType_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
    return item.type_anno.value ;
 }) ;
+//group by source target
+groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
+   return item.source_target.value ;
+} ) ;
 //read json dipl directory
-jsonFiles = fs.readdirSync('data/json/dipl/') ;
+let jsonFiles = fs.readdirSync('data/json/dipl/') ;
 console.log('json files: ', jsonFiles) ;
 //build full text from dipl text json files
 let groupedByTextFull_files = {} ;
@@ -257,34 +251,31 @@ jsonFiles.forEach((file) => {
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_dipl = JSON.parse(json_in) ;
    //get only text items
-   //group text by Text
+   //group by Text
    groupedByText_text = jsonJs_in_dipl.results.bindings.groupBy( item => {
       return item.type.value === 'https://github.com/KfNGOe/kfngoeo#Text' ;      
    }) ;
-   //group text by pos
+   //group Text by pos
    groupedByPos_text = groupedByText_text['true'].groupBy( item => {
       return item.pos.value ;
    }) ;   
    let groupedByPos_full = {} ;
    //iterate over pos
    Object.keys(groupedByPos_text).forEach((key) => {
-      let hit_flag = false ;               
-      //iterate over type
-      Object.keys(groupedByType_annoFull).forEach((type) => {
-         //group specific type by source         
-         groupedByTypeSource_annoFull = groupedByType_annoFull[type].groupBy( item => {
-            return item.source_target.value ;
-         }) ;
-         //check if key in anno full text
-         if (groupedByTypeSource_annoFull[title_short] !== undefined) {
-            if (groupedByTypeSource_annoFull[title_short].find(item => (+item.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item.end_target.value)) === undefined) {
-               //console.log('key not found in anno full text: ', key) ;               
-            } else {
-               //console.log('key found in anno full text: ', key) ;
-               hit_flag = true ;
-            }
-         }         
-      }) ;
+      let hit_flag = false ;
+      let item_hit = {} ;
+      //check if key in anno full text
+      if (groupedBySource_annoFull[title_short] !== undefined) {
+         if (groupedBySource_annoFull[title_short].find((item, index) => {
+            item_hit = item ; 
+            return (+item.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item.end_target.value)
+         }) === undefined) {
+            //console.log('key not found in anno full text: ', key) ;               
+         } else {
+            console.log(key,' found in anno full text at start pos: ', item_hit.start_target.value) ;
+            hit_flag = true ;
+         }
+      }      
       //check hit_flag
       if (hit_flag === false) {
          //console.log('no hit of', key, ' in anno full text: ', title_short) ;
@@ -292,12 +283,13 @@ jsonFiles.forEach((file) => {
       }
    }) ;
    //write full text to files
-   groupedByTextFull_files[title_short + '_full'] = groupedByPos_full ;
-   //console.log('groupedByTextFull_files = ', groupedByTextFull_files) ;
+   groupedByTextFull_files[title_short + '_full'] = groupedByPos_full ;   
 }) ;
+//console.log('groupedByTextFull_files = ', groupedByTextFull_files) ;
+//
 
 //read json register directory
-let jsonFiles = fs.readdirSync('data/json/register/') ;
+jsonFiles = fs.readdirSync('data/json/register/') ;
 console.log('json files: ', jsonFiles) ;
 //read json anno directory
 let jsonFiles_anno = fs.readdirSync('data/json/anno/') ;
@@ -322,19 +314,10 @@ jsonFiles.forEach((file) => {
          }            
       }) ;
       //build html string
-      buildReg(jsonJs_reg_file, jsonJs_anno_file, groupedByTextFull_files) ;
+      buildReg(jsonJs_reg_file,jsonJs_anno_file,groupedByTextFull_files) ;
       //write html strings to file
       fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
       fs.writeFileSync(fileNamePath, html_str ) ;
       console.log('html data written: ', html_str.length, ' bytes') ;  
    } ;      
-}) ;
-
-//read register item text template
-let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
-//parse register data text template
-var reg_item_html = $.parseHTML(reg_item_str) ;
-
-
-
-   
+}) ;   
