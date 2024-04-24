@@ -18,7 +18,7 @@ dev-baernreither-app
 /ttl/text/*.ttl -> build_textDipl_ttl2json.sh -> *_dipl.json
 
 ## Workfloe build full text json
-/ttl/text/*.ttl + anno*.json -> gdb_queryRepo.sh -> textFull.rq -> *_full.json
+*_dipl.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
 
 ## Workflow register
 ### convert xlsx to json

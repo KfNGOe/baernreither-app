@@ -9,9 +9,7 @@ const { group } = require("console");
 
 const spaceMax = 5 ;
 const threeDots = '...' ;
-var pos_body = 0 ;
 var title_short = '' ;
-//var groupedByPos = {} ;
 var html_str = '' ;
 
 // Creating a window with a document
@@ -272,7 +270,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          let name = key_arr[0].name ;
          html_str = html_str.concat('<td>' + name + '</td>') ;
          //name today
-         let nameToday = key_arr[0].name_today ;
+         let name_today = key_arr[0].name_today ;
          html_str = html_str.concat('<td>' + name_today + '</td>') ;
          //lat
          let lat = key_arr[0].lat ;
@@ -371,12 +369,12 @@ jsonFiles.forEach((file) => {
       json_in = fs.readFileSync('data/json/register/' + file, 'utf8') ;
       let jsonJs_reg_file = JSON.parse(json_in) ;
       //use register file name to find corresponding anno file
-      let file_tmp = file.replace('.json','').replace('register_','') ;
+      let fileName = file.replace('.json','').replace('register_','') ;      
       //iterate over anno files
       let jsonJs_anno_file = {} ;
       jsonFiles_anno.forEach((file_anno) => {
-         if (file_anno.toLowerCase().includes(file_tmp) && !(file_anno.toLocaleLowerCase().includes('sub'))) {          
-            console.log('file_anno = ', file_anno) ;
+         if (file_anno.toLowerCase().includes(fileName) && !(file_anno.toLocaleLowerCase().includes('sub'))) {          
+            console.log('file_anno = ', file_anno) ;            
             json_in = fs.readFileSync('data/json/anno/' + file_anno, 'utf8') ;
             jsonJs_anno_file = JSON.parse(json_in) ;
          }            
@@ -384,8 +382,11 @@ jsonFiles.forEach((file) => {
       //build html string
       buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) ;
       //write html strings to file
-      fileNamePath = 'assets/txt/partials/register/register_table.txt' ;    //assets/txt/partials/register/register_table.txt
-      fs.writeFileSync(fileNamePath, html_str ) ;
-      console.log('html data written: ', html_str.length, ' bytes') ;  
+      //exclude indexsub
+      if (!fileName.toLowerCase().includes('indexsub')) {
+         let fileNamePath = 'assets/txt/partials/register/register_table_' + fileName + '.txt' ;    //assets/txt/partials/register/register_table.txt
+         fs.writeFileSync(fileNamePath, html_str ) ;
+         console.log('html data written: ', html_str.length, ' bytes') ;  
+      }      
    } ;      
 }) ;   
