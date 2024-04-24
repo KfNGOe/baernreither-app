@@ -1,3 +1,3 @@
 echo "build ssTest"
-node staticSearch/ssTokenizer.js
+node staticSearch/ssTokenizer_2.js
 

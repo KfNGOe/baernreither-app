@@ -15,8 +15,7 @@ const tokenOffset = 3 ;
 var tokenAll_tmp = {
    "tokenAll": []
 } ;
-var tokensPoss_tmp = {} ;
-var tokensPoss12_tmp = {} ;
+
 var tokens_tmp = [] ;
 var tokens12_tmp = [] ;
 var token_tmp = {} ;
@@ -40,6 +39,18 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const jquery = require("jquery")(dom.window);
 
+const fullTextAll_temp = {
+    "head": {
+        "vars": [
+            "tokens", 
+            "poss"
+        ]
+    },
+    "results": {
+        "bindings": [] 
+    }
+}
+
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
 const filepath_out_tei=process.env.filepath_out_tei ;
@@ -54,129 +65,109 @@ function countText(obj) {
     return obj.results.bindings.length ;    
 } ;
 
-
-function buildTokens(obj) {   
-   Object.keys(obj).forEach((key) => {
-      //console.log('key = ', key, ', value = ', obj[key]) ;       
-      switch(key) {
-        case 'results':
-            if (typeof obj[key] === 'object') {
-                //console.log('item = ', item, ', index = ', index) ;          
-                buildTokens(obj[key]) ;
+function buildTokens(fullTextAll,textFull_files) {
+    let tokensPoss_tmp = {} ;
+    let tokensPoss12_tmp = {} ;
+    //iterate over full text files
+    fullTextAll.results.bindings.forEach((item, index) => {
+        i_text = index + 1 ;
+        console.log('i_text = ', i_text) ;
+        //iterate over keys
+        Object.keys(item).forEach((key) => {
+            //console.log('key = ', key, ', value = ', item[key]) ;
+            switch(key) {
+                case 'cont':
+                    let text = item[key].value ;
+                    let textLength = text.length ;
+                    let N_char = textLength - 2 ;            
+                    if (i_text > 1) {                        
+                        tokens12_tmp = [] ;                
+                        text_prev = fullTextAll.results.bindings[i_text - 2].cont.value ;                
+                        let text12 = text_prev + text ;                
+                        for (i_char = text_prev.length - 2; i_char < text_prev.length; i_char++) {
+                            tokens = splitIn(text12);
+                            token12_tmp = {
+                                "token": tokens[0].value
+                            } ;                    
+                            tokens12_tmp.push(token12_tmp) ;                
+                        }
+                        tokensPoss12_tmp['tokens'] = tokens12_tmp ;
+                    }
+                    tokens_tmp = [] ;            
+                    for (i_char = 0; i_char < N_char; i_char++) {
+                        tokens = splitIn(text);
+                        token_tmp = {
+                            "token": tokens[0].value
+                        } ;
+                        tokens_tmp.push(token_tmp) ;                
+                    }                    
+                    tokensPoss_tmp['tokens'] = tokens_tmp ;
+                    index = 0 ;
+                    break ;
+                case 'pos':
+                    const pos = item[key].value ;
+                    if (i_text > 1) {
+                        poss12_tmp = [] ;
+                        pos_prev = fullTextAll.results.bindings[i_text - 2].pos.value ;
+                        pos12_tmp = {
+                            "pos": pos_prev            
+                        } ;
+                        poss12_tmp.push(pos12_tmp) ;
+                        pos12_tmp = {
+                            "pos": pos
+                        } ;            
+                        poss12_tmp.push(pos12_tmp) ;                        
+                        tokensPoss12_tmp['poss'] = poss12_tmp ;
+                        tokenAll_tmp.tokenAll.push(tokensPoss12_tmp) ;
+                    }
+                    poss_tmp = [] ;
+                    pos_tmp = {
+                    "pos": pos
+                    } ;            
+                    poss_tmp.push(pos_tmp) ;                    
+                    tokensPoss_tmp['poss'] = poss_tmp ;
+                    break ;                
+                default:
+                    break ;
             }
-            break ;
-         case 'bindings':
-            //console.log('results = ', obj[key]) ;
-            if(Array.isArray(obj[key])) {               
-                //level + 1
-                obj[key].forEach((item, index, array) => {
-                   if (typeof item === 'object') {
-                      //console.log('item = ', item, ', index = ', index) ;          
-                      buildTokens(item) ;
-                   }
-                }) ;
-                //level - 1               
-             } else {
-                //console.log(obj[key].bindings) ;
-                //console.log(obj.constructor.name, 'property is not an array: ', key) ;
-             }
-            //console.log('tokenAll ready') ;
-            break ;
-         case 'o_txt':
-            let text = obj[key].value ;
-            let textLength = text.length ;
-            let N_char = textLength - 2 ;            
-            if (i_text > 1) {
-                tokens12_tmp = [] ;                
-                text_prev = jsonJs_in.results.bindings[i_text - 2].o_txt.value ;                
-                let text12 = text_prev + text ;                
-                for (i_char = text_prev.length - 2; i_char < text_prev.length; i_char++) {
-                    tokens = splitIn(text12);
-                    token12_tmp = {
-                         "token": tokens[0].value
-                     } ;                    
-                    tokens12_tmp.push(token12_tmp) ;                
-                }                
-                tokensPoss12_tmp = {
-                    "tokens": tokens12_tmp ,
-                    "poss": poss12_tmp
-                } ;             
-                tokenAll_tmp.tokenAll.push(tokensPoss12_tmp) ;
-            } else {
-                console.log('i_text = ', i_text) ;
-            }
-            tokens_tmp = [] ;            
-            for (i_char = 0; i_char < N_char; i_char++) {
-                tokens = splitIn(text);
-                token_tmp = {
-                     "token": tokens[0].value
-                 } ;
-                tokens_tmp.push(token_tmp) ;                
-            }
-            tokensPoss_tmp = {
-                "tokens": tokens_tmp ,
-                "poss": poss_tmp
-            }             
-            tokenAll_tmp.tokenAll.push(tokensPoss_tmp) ;
-            //console.log('tokenAll_tmp = ', JSON.stringify(tokenAll_tmp)) ;
-            break ;
-         case 'pos_txt_nr':            
-            const pos = obj[key] ;
-            tokensPoss_tmp = {} ;
-            tokensPoss12_tmp = {} ;            
-            i_text++ ;
-            if (i_text > 1) {
-                poss12_tmp = [] ;
-                pos_prev = jsonJs_in.results.bindings[i_text - 2].pos_txt_nr ;
-                pos12_tmp = {
-                    "pos": pos_prev.value
-                } ;
-                poss12_tmp.push(pos12_tmp) ;
-                pos12_tmp = {
-                    "pos": pos.value
-                 } ;            
-                 poss12_tmp.push(pos12_tmp) ;            
-            }
-            poss_tmp = [] ;
-            pos_tmp = {
-               "pos": pos.value
-            } ;            
-            poss_tmp.push(pos_tmp) ;            
-            break ;
-         case 'name':
-            //console.log('name = ', obj[key]) ;            
-            break ;
-         case 'text':
-            obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
-            //console.log('result: ',obj[key]) ;
-            break ;
-         case 'comment':
-            //console.log('comment = ', obj[key]) ;            
-            break ;
-         default:
-            //console.log('no case') ;
-            break ;
-      } 
-   }) ;
+        }) ;
+        //add token to tokens        
+        tokenAll_tmp.tokenAll.push(tokensPoss_tmp) ;
+        //clear tokens
+        tokensPoss12_tmp = {} ;            
+        tokensPoss_tmp = {} ;        
+    }) ;    
 } ; 
 
-//read test json file
-let json_in = fs.readFileSync(filepath_in_json, 'utf8'); //data/json/Bae_MF_6-2_full.json
-console.log('json data read: ', json_in.length, ' bytes') ;
-
-//convert json to js object
-var jsonJs_in = JSON.parse(json_in) ;
-
-countTextN = jsonJs_in.results.bindings.length ;    
-console.log('countTextN = ', countTextN) ;
-
-buildTokens(jsonJs_in) ;
-
+//get full texts
+//read json full directory
+let jsonFiles = fs.readdirSync('data/json/full/') ;
+console.log('json files: ', jsonFiles) ;
+//build full text from dipl text json files
+let textFull_files = {} ;
+//iterate over dipl files
+jsonFiles.forEach((file) => {   
+   //read full text json files
+   let fileNamePath = 'data/json/full/' + file ;   
+   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+   console.log('json data read: ', json_in.length, ' bytes') ;
+   let jsonJs_in_full = JSON.parse(json_in) ;   
+   //read full text to files
+   let fileName = file.replace('.json','') ;
+   textFull_files[fileName] = jsonJs_in_full ;   
+}) ;
+//
+//tokenize all full text files
+//init template for all tokens
+let fullTextAll = JSON.parse(JSON.stringify(fullTextAll_temp)) ;
+//iterate over full text files
+Object.keys(textFull_files).forEach((key_source) => {
+    fullTextAll.results.bindings = fullTextAll.results.bindings.concat(textFull_files[key_source].results.bindings) ;
+}) ;
+buildTokens(fullTextAll,textFull_files) ;
 let jsonJs_out = tokenAll_tmp ;
-
-//convert js object to tei
-//var json_out = convert.js2json(jsonJs_out, {compact: false, spaces: 2}) ;
+//convert js object to json
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
-//write tei file
+//write json file
 fs.writeFileSync('./staticSearch/ssTokens_tmp.json', json_out ) ;
 console.log('json data written: ', json_out.length, ' bytes')

@@ -95,7 +95,6 @@ function buildSearchTokenAll(obj) {
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/ssTokens_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
-
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
