@@ -62,20 +62,20 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
             if (item.pos_nxt !== undefined) {
                 instance_tmp.pos_pr = item.pos_pr ;
                 instance_tmp.pos_nxt = item.pos_nxt ;
-                index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos_pr === instance_tmp.pos_pr && item.pos_nxt === instance_tmp.pos_nxt) ;
+                index_tokenAll = tokenAll_tmp.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos_pr === instance_tmp.pos_pr && item.pos_nxt === instance_tmp.pos_nxt) ;
             } else {
                 instance_tmp.pos = item.pos ;
-                index_tokenAll = jsonJs_in.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
+                index_tokenAll = tokenAll_tmp.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
             }
             instance_tmp.chN = item.chN ;                        
             //console.log('index_tokenAll = ', index_tokenAll) ;
             if (index_tokenAll > -1) {
                 if (index_tokenAll + 1 < countArrNr) {
-                    instance_tmp.token_next_uri = jsonJs_in.tokenAll[index_tokenAll + 1].token + '.json' ;
+                    instance_tmp.token_next_uri = tokenAll_tmp.tokenAll[index_tokenAll + 1].token + '.json' ;
                     //console.log('instance_tmp = ', instance_tmp.token_next_uri) ;
                 }
                 if (index_tokenAll > 0) {
-                    instance_tmp.token_prev_uri = jsonJs_in.tokenAll[index_tokenAll - 1].token + '.json' ;
+                    instance_tmp.token_prev_uri = tokenAll_tmp.tokenAll[index_tokenAll - 1].token + '.json' ;
                     //console.log('instance_tmp = ', instance_tmp.token_prev_uri) ;                                
                 }                       
             } else {
