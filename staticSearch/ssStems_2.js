@@ -57,7 +57,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
         instance_tmp = {} ;
         groupedByToken[key].forEach((item, index, array) => {
             //console.log('item = ', item) ;
-            instance_tmp.docId = title_short ;
+            //instance_tmp.docId = title_short ;
             instance_tmp.index = item.index ;                        
             if (item.pos_nxt !== undefined) {
                 instance_tmp.pos_pr = item.pos_pr ;
@@ -85,15 +85,13 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
             instance_tmp = {} ;
         }) ;
         ssStem_tmp.token = key ;
-        ssStem_tmp.instances = instances_tmp ;
-        //console.log('ssStem_tmp = ', ssStem_tmp) ;
+        ssStem_tmp.instances = instances_tmp ;        
         let ssStem_filePath = './staticSearch/stems/' + key + '.json' ;
         json_out = JSON.stringify(ssStem_tmp, null, 2) ;
         fs.writeFileSync(ssStem_filePath, json_out ) ;
-        //console.log('json data written: ', json_out.length, ' bytes')
+        console.log(key,': json data written: ', json_out.length, ' bytes')
     }) ;
-    ssTokenStr = ssTokenStr.endsWith(separator) ? ssTokenStr.slice(0, -1) : ssTokenStr ;                               
- 
+    ssTokenStr = ssTokenStr.endsWith(separator) ? ssTokenStr.slice(0, -1) : ssTokenStr ;
 } ; 
 
 //read test json file

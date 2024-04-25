@@ -3,7 +3,7 @@ var html_str = '' ;
 window.contextBefore = function(source, sourceFile, result_path) {
     //get start pos    
     let flagStart = result_path[0].instances[0].pos !== undefined ? true : false ;
-    let startNr = flagStart ? result_path[0].instances[0].pos : result_path[0].instances[0].pos_pr ;
+    let startNr = flagStart ? result_path[0].instances[0].pos : result_path[0].instances[0].pos_pr ; //e.g. Bae_MF_6-1_1321
     if (startNr === undefined) {
         console.log('error: pos and pos_pr undefined in first result token') ;         
     }
@@ -12,50 +12,37 @@ window.contextBefore = function(source, sourceFile, result_path) {
     let contextBefore = '' ;
     let context_arr = [] ;    
     context_arr[1] = ''; //placeholder for search string
-    if (sourceFile !== undefined) {
-        //find index of start pos in sourceFile
-        let item_hit = sourceFile.results.bindings.find((item, index) => {           
-           index_source = index ; 
-           return startNr === item.pos_txt_nr.value ;
-        }) ;
-        if (item_hit !== undefined) {
-            //get offset of start token 
-            let offset = 0 ;
-            let chN_pr = 0 ;
-            if (flagStart && startNr !== undefined) {
-                offset = result_path[0].instances[0].index ;
-            } else {
-                if (!flagStart && startNr !== undefined) {                
-                    chN_pr = sourceFile.results.bindings[index_source].o_txt.value.length ;
-                    offset = chN_pr + result_path[0].instances[0].index - 2 ;
-                }        
-            }
-            //get context before start token        
-            contextBefore =  sourceFile.results.bindings[index_source].o_txt.value.substring(0,offset) ;
-            let countSpace = (contextBefore.match(/\s/g) || []).length ; //count spaces in contextBefore
-            let item_before = {} ;
-            let index_before = index_source - 1 ;
-            let contextBefore_arr = [] ;           
-            while (countSpace < spaceMax && index_before >= 0) {
-            item_before = sourceFile.results.bindings[index_before] ;
-            contextBefore = item_before.o_txt.value + contextBefore ;
-            countSpace = (contextBefore.match(/\s/g) || []).length ;
-            index_before-- ;
-            //console.log('countSpace = ', countSpace) ;      
-            }
-            if (countSpace > spaceMax) {      
-            contextBefore_arr = contextBefore.split(" ") ;
-            contextBefore_arr = contextBefore_arr.slice(-(spaceMax + 1)) ;
-            contextBefore = contextBefore_arr.join(" ") ;      
-            }            
-        } else {
-            console.log('item of pos ' + pos + ' not found') ;
-            contextBefore = '' ;
-        }        
+        
+    //get offset of start token 
+    let offset = 0 ;
+    let chN_pr = 0 ;
+    if (flagStart && startNr !== undefined) {
+        offset = result_path[0].instances[0].index ; //e.g. 22
     } else {
-        console.log('sourceFile undefined') ;
-        contextBefore = '' ;
+        if (!flagStart && startNr !== undefined) {                
+            chN_pr = sourceFile.results.bindings[index_source].o_txt.value.length ;
+            offset = chN_pr + result_path[0].instances[0].index - 2 ; //index 0 or 1
+        }        
     }
+    //get context before start token        
+    contextBefore =  sourceFile.results.bindings[index_source].o_txt.value.substring(0,offset) ;
+    let countSpace = (contextBefore.match(/\s/g) || []).length ; //count spaces in contextBefore
+    let item_before = {} ;
+    let index_before = index_source - 1 ;
+    let contextBefore_arr = [] ;           
+    while (countSpace < spaceMax && index_before >= 0) {
+    item_before = sourceFile.results.bindings[index_before] ;
+    contextBefore = item_before.o_txt.value + contextBefore ;
+    countSpace = (contextBefore.match(/\s/g) || []).length ;
+    index_before-- ;
+    //console.log('countSpace = ', countSpace) ;      
+    }
+    if (countSpace > spaceMax) {      
+    contextBefore_arr = contextBefore.split(" ") ;
+    contextBefore_arr = contextBefore_arr.slice(-(spaceMax + 1)) ;
+    contextBefore = contextBefore_arr.join(" ") ;      
+    }                            
+    
     return contextBefore ;           
 }
 

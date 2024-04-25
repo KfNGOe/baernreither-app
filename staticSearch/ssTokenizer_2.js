@@ -12,10 +12,6 @@ var tokenize = new Tokenizer();
 
 const tokenOffset = 3 ;
 
-var tokenAll_tmp = {
-   "tokenAll": []
-} ;
-
 var tokens_tmp = [] ;
 var tokens12_tmp = [] ;
 var token_tmp = {} ;
@@ -39,17 +35,23 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const jquery = require("jquery")(dom.window);
 
+//templates
 const fullTextAll_temp = {
     "head": {
         "vars": [
-            "tokens", 
-            "poss"
+            "id", 
+            "type",
+            "cont",
+            "pos"
         ]
     },
     "results": {
         "bindings": [] 
     }
 }
+var tokenAll_tmp = {
+    "tokenAll": []
+ } ;
 
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
