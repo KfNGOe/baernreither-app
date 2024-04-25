@@ -82,7 +82,7 @@ function buildSearchTokenAll(tokenAll_tmp) {
 let json_in = fs.readFileSync('./staticSearch/ssTokens_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
-var tokenAll_tmp = JSON.parse(json_in) ;
+let tokenAll_tmp = JSON.parse(json_in) ;
 buildSearchTokenAll(tokenAll_tmp) ;
 let jsonJs_out = tokenAll ;
 //convert js object to tei

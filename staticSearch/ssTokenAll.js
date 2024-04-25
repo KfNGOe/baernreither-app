@@ -38,57 +38,43 @@ function myCallback({ token, index }) {
    return token ;
  }
 
-function buildSearchTokenAll(obj) {   
-   Object.keys(obj).forEach((key) => {
-      switch(key) {
-         case 'tokenAll':
-            if(Array.isArray(obj[key])) {               
-                //level + 1
-                obj[key].forEach((item, index, array) => {
-                   if (typeof item === 'object') {
-                     buildSearchTokenAll(item) ;
-                   }
-                }) ;
-                //level - 1               
-             } else {
-             }
-            break ;
-         case 'tokens':
-            let index_token = 0 ;
-            let tokens = obj[key] ;
-            tokensLength = tokens.length ;
-            tokens.forEach((item, index, array) => {
-               item['index'] = index_token ;               
-               index_token++ ;
-               tokenPos.push(item) ;
-            }) ;
-            break ;
-         case 'poss':            
-            let pos = obj[key] ;
-            tokenPos.forEach((item, index, array) => {
-               if (pos.length > 1) {                  
-                  item['pos_pr'] = pos[0].pos ;
-                  item['pos_nxt'] = pos[1].pos ;
-                  item['chN'] = tokensLength + 2 ;
-                  tokenAll.tokenAll.push(item) ; 
-               } else {                  
-                  item['pos'] = pos[0].pos ;
-                  item['chN'] = tokensLength + 2 ;
-                  tokenAll.tokenAll.push(item) ; 
-               }
-            }) ;
-            tokenPos = [] ;            
-            break ;
-         case 'name':
-            break ;
-         case 'text':
-            obj[key] = obj[key].replace(/\n\s+$/g, '') ;            
-            break ;
-         case 'comment':
-            break ;
-         default:
-            break ;
-      } 
+function buildSearchTokenAll(tokenAll_tmp) {   
+   tokenAll_tmp.tokenAll.forEach((item, index, array) => {
+      //console.log('item = ', item) ;
+      Object.keys(item).forEach((key) => {
+            console.log('key = ', key) ;
+            switch(key) {
+                case 'tokens':
+                    let index_token = 0 ;
+                    let tokens = item[key] ;
+                    tokensLength = tokens.length ;
+                    tokens.forEach((item, index, array) => {
+                        //add index to token
+                        item['index'] = index_token ;               
+                        index_token++ ;
+                        tokenPos.push(item) ;
+                    }) ;
+                    break ;
+                case 'poss':
+                    let pos = item[key] ;
+                    tokenPos.forEach((item, index, array) => {
+                        if (pos.length > 1) {                  
+                            item['pos_pr'] = pos[0].pos ;
+                            item['pos_nxt'] = pos[1].pos ;
+                            item['chN'] = tokensLength + 2 ;
+                            tokenAll.tokenAll.push(item) ; 
+                        } else {                  
+                            item['pos'] = pos[0].pos ;
+                            item['chN'] = tokensLength + 2 ;
+                            tokenAll.tokenAll.push(item) ; 
+                        }
+                    }) ;
+                    tokenPos = [] ;            
+                    break ;
+                default:
+                    break ;
+            }
+      } ) ;
    }) ;
 } ; 
 
@@ -96,12 +82,9 @@ function buildSearchTokenAll(obj) {
 let json_in = fs.readFileSync('./staticSearch/ssTokens_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
-var jsonJs_in = JSON.parse(json_in) ;
-
-buildSearchTokenAll(jsonJs_in) ;
-
+let tokenAll_tmp = JSON.parse(json_in) ;
+buildSearchTokenAll(tokenAll_tmp) ;
 let jsonJs_out = tokenAll ;
-
 //convert js object to tei
 //var json_out = convert.js2json(jsonJs_out, {compact: false, spaces: 2}) ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;

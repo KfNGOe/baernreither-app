@@ -1,2 +1,2 @@
 echo "build ssTest"
-node staticSearch/ssStems.js
+node staticSearch/ssStems_2.js
