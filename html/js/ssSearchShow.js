@@ -235,7 +235,7 @@ window.markedHit = function(source, sourceFile, result_path) {
     }
     return markedTokens_arr ;
 }
-
+//show search results after search
 window.showResults = function () {
     (async () => {
         console.log('showResults') ;

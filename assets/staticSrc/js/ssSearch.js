@@ -6,6 +6,7 @@ const tokenOffset = 3 ;
 const spaceMax = 5 ;
 
 var text_in ;
+var fullTextAll_in ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
@@ -70,7 +71,10 @@ $(document).ready(function() {
         //get search index
         console.log('get search index start') ;
         let filepath = './staticSearch/ssTokenString.txt' ;
-        text_in = await fetchData(filepath) ;        
+        text_in = await fetchData(filepath) ;
+        //get full texts
+        filepath = './data/json/full/fullTextAll_tmp.json' ;
+        fullTextAll_in = await fetchData(filepath) ;      
         searchFinishedHook(1);
     })() ;
 }) ;

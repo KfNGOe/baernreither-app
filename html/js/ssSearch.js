@@ -6,6 +6,7 @@ const tokenOffset = 3 ;
 const spaceMax = 5 ;
 
 var text_in ;
+var fullTextAll_in ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
@@ -70,7 +71,10 @@ $(document).ready(function() {
         //get search index
         console.log('get search index start') ;
         let filepath = './staticSearch/ssTokenString.txt' ;
-        text_in = await fetchData(filepath) ;        
+        text_in = await fetchData(filepath) ;
+        //get full texts
+        filepath = './data/json/full/fullTextAll_tmp.json' ;
+        fullTextAll_in = await fetchData(filepath) ;      
         searchFinishedHook(1);
     })() ;
 }) ;
@@ -139,7 +143,7 @@ window.checkHitsPrevious = function(hit, hits_prev) {
       return undefined ;
   }
 }
-
+//start search on button click
 $('button#ssDoSearch').click(function(event) {
   (async () => {
     event.preventDefault() ; //ATTENTION: this is important to prevent the form from being submitted; fetch will not work otherwise
@@ -200,6 +204,7 @@ $('button#ssDoSearch').click(function(event) {
             console.log('i_tok = ', i_tok) ;
             for (i_path = 0; i_path < searchPathNr; i_path++) {
               console.log('i_path = ', i_path) ;
+
               //check if token is first token of tokens string
               //and if token is not last token of tokens string
               if(i_tok === 0 && i_tok < tokens_N-1) {
@@ -229,6 +234,7 @@ $('button#ssDoSearch').click(function(event) {
                   console.log('no next token in search string') ;
                 }
               } else {
+
                 //check if token is between first and last token of tokens string
                 if(0 < i_tok && i_tok < tokens_N-1) {
                   //compare current hit with next hits
@@ -278,6 +284,7 @@ $('button#ssDoSearch').click(function(event) {
                     console.log('no next token in search string') ;
                   }                
                 } else {
+                  
                   //check if token is last token of tokens string
                   //and if token is not first token of tokens string
                   if(i_tok === tokens_N-1 && i_tok > 0) {
