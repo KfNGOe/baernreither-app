@@ -74,7 +74,9 @@ $(document).ready(function() {
         text_in = await fetchData(filepath) ;
         //get full texts
         filepath = './data/json/full/fullTextAll_tmp.json' ;
-        fullTextAll_in = await fetchData(filepath) ;      
+        fullTextAll_in = await fetchData(filepath) ;
+        
+        //group full texts by       
         searchFinishedHook(1);
     })() ;
 }) ;
