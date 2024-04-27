@@ -16,5 +16,3 @@ cp -r assets/staticSrc/js/ssSearch.js html/js
 cp -r assets/staticSrc/js/ssSearchShow.js html/js
 
 echo "copy assets done"
-
-html/data/json/full/fullTextAll_tmp.json

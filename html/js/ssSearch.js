@@ -6,7 +6,9 @@ const tokenOffset = 3 ;
 const spaceMax = 5 ;
 
 var text_in ;
+var textData_in ;
 var fullTextAll_in ;
+var diplTexts = {} ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
@@ -66,18 +68,27 @@ window.addEventListener('load', function() {
 }) ;
 
 $(document).ready(function() {
-    console.log("ready!");
-    (async () => {
-        //get search index
-        console.log('get search index start') ;
-        let filepath = './staticSearch/ssTokenString.txt' ;
-        text_in = await fetchData(filepath) ;
-        //get full texts
-        filepath = './data/json/full/fullTextAll_tmp.json' ;
-        fullTextAll_in = await fetchData(filepath) ;      
-        searchFinishedHook(1);
-    })() ;
+  console.log("ready!");
+  (async () => {
+      //get search index
+      console.log('get search index start') ;
+      let filepath = './staticSearch/ssTokenString.txt' ;
+      text_in = await fetchData(filepath) ;
+      //get text data
+      filepath = './data/json/textData.json' ;
+      textData_in = await fetchData(filepath) ;
+      //get dipl texts
+      let textData_arr = textData_in.results.bindings
+      textData_arr.forEach(async function(result, index) {          
+        filepath = './data/json/dipl/' + result.fileName ;
+        diplTexts[result.fileName] = await fetchData(filepath) ;
+      });
+      filepath = './data/json/full/fullTextAll_tmp.json' ;
+      fullTextAll_in = await fetchData(filepath) ;      
+      searchFinishedHook(1);
+  })() ;
 }) ;
+
 
 window.checkHitsNext = function(hit, hits_next) {
   let hit_next = hits_next.instances.find((hit_next, index, array) => {

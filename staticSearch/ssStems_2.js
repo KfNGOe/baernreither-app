@@ -53,6 +53,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
     allKeys.sort() ;
     allKeys.forEach((key) => {        
         ssTokenStr = ssTokenStr + key + separator + separator ;        
+        console.log('key = ', key) ;
         instances_tmp = [] ;
         instance_tmp = {} ;
         groupedByToken[key].forEach((item, index, array) => {
@@ -89,7 +90,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
         let ssStem_filePath = './staticSearch/stems/' + key + '.json' ;
         json_out = JSON.stringify(ssStem_tmp, null, 2) ;
         fs.writeFileSync(ssStem_filePath, json_out ) ;
-        console.log(key,': json data written: ', json_out.length, ' bytes')
+        //console.log(key,': json data written: ', json_out.length, ' bytes')
     }) ;
     ssTokenStr = ssTokenStr.endsWith(separator) ? ssTokenStr.slice(0, -1) : ssTokenStr ;
 } ; 
