@@ -9,6 +9,7 @@ var text_in ;
 var textData_in ;
 var fullTextAll_in ;
 var diplTexts = {} ;
+var fullTexts = {} ;
 var jsonJs_in = {} ;
 var input_search ;
 var result_arr = [] ;
@@ -83,8 +84,14 @@ $(document).ready(function() {
         filepath = './data/json/dipl/' + result.fileName ;
         diplTexts[result.fileName] = await fetchData(filepath) ;
       });
-      filepath = './data/json/full/fullTextAll_tmp.json' ;
-      fullTextAll_in = await fetchData(filepath) ;      
+      //get full texts
+      textData_arr.forEach(async function(result, index) {
+        let fileName_full = result.fileName.replace('_dipl', '_full') ;          
+        filepath = './data/json/full/' + fileName_full ;
+        fullTexts[fileName_full] = await fetchData(filepath) ;
+      });
+      //filepath = './data/json/full/fullTextAll_tmp.json' ;
+      //fullTextAll_in = await fetchData(filepath) ;      
       searchFinishedHook(1);
   })() ;
 }) ;
