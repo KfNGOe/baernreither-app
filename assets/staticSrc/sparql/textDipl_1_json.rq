@@ -1,7 +1,7 @@
 PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
 PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
 
-#import: TB or MF
+#import: Text files
 
 SELECT (?s_tei AS ?id) ?type ?name ?attr ?val ?cont ?pos
 WHERE { 
@@ -19,5 +19,3 @@ WHERE {
         ?s_tei kfngoeo:hasContent ?cont ;
     }
 }
-#ORDER BY ?pos
-#LMIT 100

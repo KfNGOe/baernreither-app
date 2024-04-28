@@ -22,16 +22,19 @@ FILEPATH_RQ=$PATH_RQ$FILENAME_RQ$EXTENSION_RQ
 FILEPATH_OUT=$PATH_OUT$FILENAME_OUT$EXTENSION_OUT
 
 echo "clear graphdb repo"
-endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
+endpoint=$ENDPOINT repo_name=$REPO_NAME 
+node assets/staticSrc/js/gdb_clearRepo.js
 
 MIME_TYPE='text/turtle'
 
 echo "import file to graphdb repo"
 echo "import text ttl file"
-endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE filepath=$FILEPATH_IN node assets/staticSrc/js/gdb_importFile.js
+endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE filepath=$FILEPATH_IN 
+node assets/staticSrc/js/gdb_importFile.js
 
 MIME_TYPE='application/sparql-results+json'
 QUERY_TYPE='SELECT'
 
 echo "query graphdb repo"
-endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE query_type=$QUERY_TYPE filepath_rq=$FILEPATH_RQ filepath_out=$FILEPATH_OUT node assets/staticSrc/js/gdb_queryRepo.js
+endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE query_type=$QUERY_TYPE filepath_rq=$FILEPATH_RQ filepath_out=$FILEPATH_OUT 
+node assets/staticSrc/js/gdb_queryRepo.js

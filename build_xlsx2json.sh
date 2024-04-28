@@ -13,4 +13,5 @@ EXTENSION_XLSX='.xlsx'
 EXTENSION_JSON='.json'
 
 echo "build xlsx to json"
-path_in=$PATH_XLSX file_in=$FILENAME_IN ext_in=$EXTENSION_XLSX path_out=$PATH_JSON_XLSX file_out=$FILENAME_OUT ext_out=$EXTENSION_JSON node assets/staticSrc/js/build_xlsx2json.js
+path_in=$PATH_XLSX file_in=$FILENAME_IN ext_in=$EXTENSION_XLSX path_out=$PATH_JSON_XLSX file_out=$FILENAME_OUT ext_out=$EXTENSION_JSON 
+node assets/staticSrc/js/build_xlsx2json.js

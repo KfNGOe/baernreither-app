@@ -15,17 +15,17 @@ dev-baernreither-app
 /tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ## Workflow conversion text ttl to json
-/ttl/text/*.ttl -> build_textDipl_ttl2json.sh -> *_dipl.json
+/ttl/text/*.ttl -> build_textDipl_ttl2json.sh -> textDipl_json.rq -> *_dipl.json
 
 ## Workfloe build full text json
-*_dipl.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
+*_dipl.json + annoTextFull.json -> build_textFull_json2json.sh -> build_textFull_json2json.js -> *_full.json
 
 ## Workflow register
 ### convert xlsx to json
-*.xlsx -> build_xlsx2json.sh -> register_person_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> register_place_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> register_org_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> register_index_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_person_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_place_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_org_xlsx.json<br>
+*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_index_xlsx.json<br>
 
 ### build person entity json from all ttl files 
 /ttl/text/*.ttl -> gdb_queryRepo.sh -> person_text_json.rq -> register_person_text.json<br>

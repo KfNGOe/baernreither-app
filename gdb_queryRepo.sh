@@ -17,4 +17,5 @@ FILEPATH_OUT=$PATH_OUT$FILENAME_OUT$EXTENSION_OUT
 
 echo "query graphdb repo"
 echo "group keys from TEI statements"
-endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE query_type=$QUERY_TYPE filepath_rq=$FILEPATH_RQ filepath_out=$FILENAME_OUT node assets/staticSrc/js/gdb_queryRepo.js
+endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE query_type=$QUERY_TYPE filepath_rq=$FILEPATH_RQ filepath_out=$FILENAME_OUT 
+node assets/staticSrc/js/gdb_queryRepo.js

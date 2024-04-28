@@ -659,6 +659,7 @@ jsonFiles.forEach((file) => {
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_dipl = JSON.parse(json_in) ;   
    buildDiplText(jsonJs_in_dipl, groupedBy_files) ;
+   
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_dipl_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
@@ -669,7 +670,7 @@ jsonFiles.forEach((file) => {
    $('html').find('body').children('div').append(html) ;   
 
    //write html file
-   fileNamePath = 'html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_dipl.html
+   fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_dipl.html
    fs.writeFileSync(fileNamePath, dom.serialize() ) ;
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
 

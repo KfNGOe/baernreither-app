@@ -7,6 +7,7 @@ const file = process.env.file;
 const ext = process.env.ext ;
 const filepath = path + file + ext ;
 
+console.log('normalize whitespace in: ', filepath) ;
 var xml = fs.readFileSync(filepath , 'utf8');
 console.log('tei data read: ', xml.length, ' bytes') ;
 
