@@ -1,0 +1,58 @@
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+#import: Work files
+
+SELECT ?o_main_index ?o_sub_index ?o_pos_index
+WHERE {
+    #get element position of tei:TEI
+	?s_tei a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:TEI ;
+            kfngoeo:elementPos ?o_pos_tei ;
+ 	.        
+    #get short title from element position of tei:TEI
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)
+    #get tei:index
+    ?s_index a kfngoeo:StartTag ;
+          kfngoeo:elementName tei:index ;
+          kfngoeo:hasAttr [
+        	kfngoeo:attrName "xml:id" ;
+			kfngoeo:attrValue ?o_xmlid ;
+		  ] ;
+          kfngoeo:elementPos ?o_pos_index ;
+	.
+    #filter current source text
+    FILTER(CONTAINS(?o_pos_index, ?title_short))            
+    #get numeric value of element position of tei:index
+    BIND(xsd:integer(substr(?o_pos_index,strlen(?title_short)+1)) AS ?o_pos_index_nr)
+    #get element position of tei:term
+    BIND(concat(?title_short, str(?o_pos_index_nr+1)) AS ?o_pos_term)
+    #get main term of index   	
+    ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;
+            kfngoeo:hasAttr [
+        		kfngoeo:attrName "key" ;
+                kfngoeo:attrValue ?o_main_index ;
+			] ;			
+            kfngoeo:elementPos ?o_pos_term ;
+    #get sub term of index
+    OPTIONAL{
+        #get element position of tei:term
+        BIND(concat(?title_short, str(?o_pos_index_nr+5)) AS ?o_pos_term_sub)
+        ?s_term_sub a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;            		
+            kfngoeo:elementPos ?o_pos_term_sub ;  	
+    	.
+        #get element position of tei:term content
+    	BIND(concat(?title_short, str(?o_pos_index_nr+6)) AS ?o_pos_text)
+        ?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+			kfngoeo:elementPos ?o_pos_text ;
+ 		.
+        BIND (?o_text AS ?o_sub_index)
+    }
+} ORDER BY ?o_main_index ?o_sub_index

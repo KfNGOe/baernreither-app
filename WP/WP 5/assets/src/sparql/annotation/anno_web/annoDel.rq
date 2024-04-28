@@ -1,0 +1,56 @@
+#build Annotation level of Deletion
+
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+
+#import Text files
+
+CONSTRUCT {
+    ?s_anno a kfngoeo:AnnoDel ;
+        	rdfs:label "Annotation level of Delete"@en ;    		
+        	kfngoeo:hasTarget [
+                kfngoeo:hasSource ?title_del ;
+                kfngoeo:hasSelector [
+                    a kfngoeo:TextPositionSelector ;
+                    kfngoeo:start ?start_nr_del ;
+                    kfngoeo:end ?end_nr_del ;
+                ] 
+            ] ;
+        #no annotation body               
+    .
+}
+WHERE {
+    ?s_tei a kfngoeo:StartTag ;
+           kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+	.
+    BIND(SUBSTR(?o_pos_tei,1,STRLEN(?o_pos_tei)-2) AS ?title_short)
+    ?s_del_start a kfngoeo:StartTag ;
+        kfngoeo:elementName tei:del ;
+        kfngoeo:hasAttr [            
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_id_del ;
+        ] ;                    
+        kfngoeo:elementPos ?o_pos_del_start ;
+	.
+    FILTER(CONTAINS(?o_pos_del_start, ?title_short))            
+    BIND(xsd:integer(SUBSTR(?o_pos_del_start,STRLEN(?title_short)+2)) AS ?start_nr_del)    
+    ?s_del_end a kfngoeo:EndTag ;
+        kfngoeo:elementName tei:del ;
+        kfngoeo:hasAttr [            
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_id_del ;
+        ] ;                    
+        kfngoeo:elementPos ?o_pos_del_end ;
+	.
+    BIND(xsd:integer(SUBSTR(?o_pos_del_end,strlen(?title_short)+2)) AS ?end_nr_del)
+    BIND(?title_short AS ?title_del)
+    OPTIONAL {
+        BIND (IF(BOUND(?s_del_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+    }
+}
