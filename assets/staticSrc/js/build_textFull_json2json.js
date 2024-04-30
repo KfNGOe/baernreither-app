@@ -69,6 +69,16 @@ jsonFiles.forEach((file) => {
    groupedByPos_text = groupedByText_text['true'].groupBy( item => {
       return item.pos.value ;
    }) ;
+   let item_hit = {} ;
+   let item_text_pos = '' ;
+   if(jsonJs_in_dipl.results.bindings.find((item, index) => {
+      item_hit = item ; 
+      return item.type.value === 'https://github.com/KfNGOe/kfngoeo#StartTag' 
+      && item.name.value === 'http://www.tei-c.org/ns/1.0/text'}) !== undefined) {
+         item_text_pos = item_hit.pos.value ;
+   } else {
+      console.log('no text tag found in: ', title_short) ;      
+   }
    //iterate over pos
    Object.keys(groupedByPos_text).forEach((key) => {
       let hit_flag = false ;
@@ -79,7 +89,11 @@ jsonFiles.forEach((file) => {
             item_hit = item ; 
             return (+item.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item.end_target.value)
          }) === undefined) {
-            //console.log('key not found in anno full text: ', key) ;               
+            //console.log('key not found in anno full text: ', key) ;
+            //check if key greater then text tag
+            if (posStr2Nr(key) < posStr2Nr(item_text_pos)) {               
+               hit_flag = true ;
+            }
          } else {
             //console.log(key,' found in anno full text at start pos: ', item_hit.start_target.value) ;
             hit_flag = true ;

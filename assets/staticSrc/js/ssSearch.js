@@ -7,7 +7,7 @@ const spaceMax = 5 ;
 
 var text_in ;
 var textData_in ;
-var fullTextAll_in ;
+var fullTextAll = {} ;
 var diplTexts = {} ;
 var fullTexts = {} ;
 var jsonJs_in = {} ;
@@ -91,7 +91,7 @@ $(document).ready(function() {
         fullTexts[fileName_full] = await fetchData(filepath) ;
       });
       //filepath = './data/json/full/fullTextAll_tmp.json' ;
-      //fullTextAll_in = await fetchData(filepath) ;      
+      //fullTextAll = await fetchData(filepath) ;      
       searchFinishedHook(1);
   })() ;
 }) ;
@@ -99,30 +99,27 @@ $(document).ready(function() {
 
 window.checkHitsNext = function(hit, hits_next) {
   let hit_next = hits_next.instances.find((hit_next, index, array) => {
-      let flag = false ;
-      //find next hit which has same docId as current hit
-      if (hit_next.docId === hit.docId) {
-          //check if index of next hit is index + 1 of curent hit
-          if (hit_next.index === hit.index + 1) {
-              //check if prev pos of next hit exists
-              if (hit_next.pos_pr !== undefined) {
-                  //find next hit which prev pos is same as next pos of current hit
-                  flag = (hit_next.pos_nxt === hit.pos_nxt) ? true : false ;
-              } else {
-                  //find next hit which pos is same as pos of current hit
-                  flag = (hit_next.pos === hit.pos) ? true : false ;                                        
-              }
-          } else {
-              //check if index of current hit is last token of current hit position and prev pos of next hit exists
-              if (hit.index + 3 === hit.chN && hit_next.pos_pr !== undefined) {                                    
-                  //find next hit which index is 0 and prev pos is same as pos of current hit
-                  flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
-              } else {
-                  //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
-                  flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
-              }    
+      let flag = false ;      
+      //check if index of next hit is index + 1 of curent hit
+      if (hit_next.index === hit.index + 1) {
+          //check if prev pos of next hit exists
+          if (hit_next.pos_pr !== undefined) {                  
+              //find next hit which prev pos is same as next pos of current hit
+              flag = (hit_next.pos_nxt === hit.pos_nxt) ? true : false ;
+          } else {                  
+              //find next hit which pos is same as pos of current hit
+              flag = (hit_next.pos === hit.pos) ? true : false ;
           }
-      }
+      } else {
+          //check if index of current hit is last token of current hit position and prev pos of next hit exists
+          if (hit.index + 3 === hit.chN && hit_next.pos_pr !== undefined) {                                    
+              //find next hit which index is 0 and prev pos is same as pos of current hit
+              flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
+          } else {
+              //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
+              flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
+          }    
+      }      
       return flag ;
   }) ;
   return hit_next ;
@@ -131,30 +128,27 @@ window.checkHitsNext = function(hit, hits_next) {
 window.checkHitsPrevious = function(hit, hits_prev) {
   //only one hit in hits_prev
   let hit_prev = hits_prev.instances[0] ;
-      let flag = false ;
-      //find prev hit which has same docId as current hit
-      if (hit_prev.docId === hit.docId) {
-          //check if index of prev hit is index - 1 of curent hit
-          if (hit_prev.index === hit.index - 1) {
-              //check if prev pos of prev hit exists
-              if (hit_prev.pos_nxt !== undefined) {
-                  //find prev hit which prev pos is same as next pos of current hit
-                  flag = (hit_prev.pos_pr === hit.pos_pr) ? true : false ;                                            
-              } else {
-                  //find prev hit which pos is same as pos of current hit
-                  flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
-              }
+      let flag = false ;      
+      //check if index of prev hit is index - 1 of curent hit
+      if (hit_prev.index === hit.index - 1) {
+          //check if prev pos of prev hit exists
+          if (hit_prev.pos_nxt !== undefined) {
+              //find prev hit which prev pos is same as next pos of current hit
+              flag = (hit_prev.pos_pr === hit.pos_pr) ? true : false ;                                            
           } else {
-              //check if index of current hit is first token of current hit position and next pos of prev hit exists
-              if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
-                  //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
-                  flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-              } else {
-                  //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
-                  flag = (hit_prev.index === hit_prev.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;
-              }    
+              //find prev hit which pos is same as pos of current hit
+              flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
           }
-      }
+      } else {
+          //check if index of current hit is first token of current hit position and next pos of prev hit exists
+          if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
+              //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
+              flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
+          } else {
+              //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
+              flag = (hit_prev.index === hit_prev.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;
+          }    
+      }      
   if (flag) {
       return hit_prev ;    
   } else {
@@ -217,6 +211,7 @@ $('button#ssDoSearch').click(function(event) {
           }) ;
           //result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
           console.log('result_arr_tmp =', result_arr_tmp) ;
+          
           //build search paths
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {
             console.log('i_tok = ', i_tok) ;
@@ -225,7 +220,7 @@ $('button#ssDoSearch').click(function(event) {
 
               //check if token is first token of tokens string
               //and if token is not last token of tokens string
-              if(i_tok === 0 && i_tok < tokens_N-1) {
+              if(i_tok === 0) {
                 //compare current hit with next hits
                 let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
                 if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
@@ -246,10 +241,14 @@ $('button#ssDoSearch').click(function(event) {
                       result_arr_tmp.splice(i_path, 1) ;
                       searchPathNr-- ;
                       i_path-- ;
-                      console.log('no next token found') ;
+                      console.log('no next token', hit.token_next_uri.replace('.json',''),'found') ;
                     }
                 } else {
-                  console.log('no next token in search string') ;
+                  //remove path from result array
+                  result_arr_tmp.splice(i_path, 1) ;
+                  searchPathNr-- ;
+                  i_path-- ;
+                  console.log('no next token', hit.token_next_uri.replace('.json',''),'in search string') ;
                 }
               } else {
 
@@ -282,24 +281,28 @@ $('button#ssDoSearch').click(function(event) {
                           result_arr_tmp.splice(i_path, 1) ;
                           searchPathNr-- ;
                           i_path-- ;
-                          console.log('no prev token found') ;                        
+                          console.log('no prev', hit.token_prev_uri.replace('.json',''),' token found') ;                        
                         }
                       } else {
-                        console.log('no prev token in search string') ;
+                        //remove path from result array
+                        result_arr_tmp.splice(i_path, 1) ;
+                        searchPathNr-- ;
+                        i_path-- ;
+                        console.log('no prev token', hit.token_prev_uri.replace('.json',''),' in search string') ;
                       } 
                     } else {                      
                         //remove path from result array
                         result_arr_tmp.splice(i_path, 1) ;
                         searchPathNr-- ;
                         i_path-- ;
-                        console.log('no next token found') ;
+                        console.log('no next', hit.token_next_uri.replace('.json',''),' token found') ;
                       }
                   } else {
                     //remove path from result array
                     result_arr_tmp.splice(i_path, 1) ;
                     searchPathNr-- ;
                     i_path-- ;
-                    console.log('no next token in search string') ;
+                    console.log('no next token', hit.token_next_uri.replace('.json',''),' in search string') ;
                   }                
                 } else {
                   
@@ -319,14 +322,14 @@ $('button#ssDoSearch').click(function(event) {
                         result_arr_tmp.splice(i_path, 1) ;
                         searchPathNr-- ;
                         i_path-- ;
-                        console.log('no prev token found') ;                        
+                        console.log('no prev token', hit.token_prev_uri.replace('.json',''),' found') ;                        
                       }                                
                     } else {
                       //remove path from result array
                       result_arr_tmp.splice(i_path, 1) ;
                       searchPathNr-- ;
                       i_path-- ;
-                      console.log('no prev token in search string') ;
+                      console.log('no prev token', hit.token_prev_uri.replace('.json',''),' in search string') ;
                     }
                   }
                 }
