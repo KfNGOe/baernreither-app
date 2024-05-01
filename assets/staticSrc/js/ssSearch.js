@@ -99,13 +99,12 @@ $(document).ready(function() {
 
 window.checkHitsNext = function(hit, hits_next) {
   let flag = false ;           
+  if(hit.pos_pr === "Bae_MF_6-1_144") { //"pos_pr": "Bae_MF_6-1_144",
+    console.log('hit =', hit) ;
+    //console.log('hit_next =', hit_next) ;
+  }
   //only one hit in hits_next
-  let hit_next = hits_next.instances.find((hit_next, index, array) => {
-    
-    if(hit.pos === "Bae_TB_8_175" && hit.index === 1) {
-      console.log('hit =', hit) ;
-      console.log('hit_next =', hit_next) ;
-    }
+  let hit_next = hits_next.instances.find((hit_next, index, array) => {    
     //build source from hit.pos or hit.pos_pr
     let pos_tmp = (hit.pos_pr !== undefined) ? hit.pos_pr : hit.pos ;
     let source = pos_tmp.substring(0, pos_tmp.lastIndexOf('_')) ;
@@ -172,7 +171,7 @@ window.checkHitsPrevious = function(hit, hits_prev) {
         //check if index of current hit is first token of current hit position and next pos of prev hit exists
         if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
             //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
-            flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === (hit.pos_pr !== undefined ? hit.pos_pr : "NaN")) ? true : false ;                                            
+            flag = (hit_prev.index === hit.index + 1 && hit_prev.pos_nxt === (hit.pos !== undefined ? hit.pos : "NaN")) ? true : false ;                                            
         } else {
           //check if pos of prev hit exists
           if (hit_prev.pos !== undefined) {
