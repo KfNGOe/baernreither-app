@@ -49,7 +49,7 @@ window.contextBefore = function(source, sourceFile, result_path) {
             contextBefore = contextBefore_arr.join(" ") ;      
             }            
         } else {
-            console.log('item of pos ' + pos + ' not found') ;
+            console.log('start nr ' + startNr + ' not found') ;
             contextBefore = '' ;
         }        
     } else {
@@ -108,7 +108,7 @@ window.contextAfter = function(source, sourceFile, result_path) {
              }
              return contextAfter ;        
         } else {
-            console.log('item of pos ' + pos + ' not found') ;            
+            console.log('end nr ' + endNr + ' not found') ;            
             contextAfter = '' ;
          }              
      } else {
@@ -177,7 +177,7 @@ window.markedHit = function(source, sourceFile, result_path) {
                     }        
                 }                                         
             } else {
-                console.log('item of pos ' + pos + ' not found') ;
+                console.log('start nr ' + startNr + ' not found') ;
                 searchToken = '' ;
             }
         }        
@@ -200,7 +200,7 @@ window.markedHit = function(source, sourceFile, result_path) {
                     }        
                 }                                         
             } else {
-                console.log('item of pos ' + pos + ' not found') ;
+                console.log('end nr ' + endNr + ' not found') ;
                 searchToken = '' ;
             }
         }
@@ -217,7 +217,7 @@ window.markedHit = function(source, sourceFile, result_path) {
         while (index_source < ind_source_end) {
             markedToken = {} ;
             markedToken.source = source ;
-            markedToken.pos = sourceFile.results.bindings[index_source].pos_txt_nr.value ;
+            markedToken.pos = sourceFile.results.bindings[index_source].pos.value ;
             markedToken.offset = 0 ;
             markedToken.chN = sourceFile.results.bindings[index_source].cont.value.length ;
             markedToken.txt = sourceFile.results.bindings[index_source].cont.value ;

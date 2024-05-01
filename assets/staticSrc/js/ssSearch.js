@@ -98,29 +98,48 @@ $(document).ready(function() {
 
 
 window.checkHitsNext = function(hit, hits_next) {
+  let flag = false ;           
+  //only one hit in hits_next
   let hit_next = hits_next.instances.find((hit_next, index, array) => {
-      let flag = false ;      
+    
+    if(hit.pos === "Bae_TB_8_175" && hit.index === 1) {
+      console.log('hit =', hit) ;
+      console.log('hit_next =', hit_next) ;
+    }
+    //build source from hit.pos or hit.pos_pr
+    let pos_tmp = (hit.pos_pr !== undefined) ? hit.pos_pr : hit.pos ;
+    let source = pos_tmp.substring(0, pos_tmp.lastIndexOf('_')) ;
+    //build source from hit_next.pos or hit_next.pos_pr
+    let pos_tmp_next = (hit_next.pos_pr !== undefined) ? hit_next.pos_pr : hit_next.pos ;
+    let source_next = pos_tmp_next.substring(0, pos_tmp_next.lastIndexOf('_')) ;
+    
+    //find next hit which has same source as current hit
+    if (source_next === source) {    
       //check if index of next hit is index + 1 of curent hit
       if (hit_next.index === hit.index + 1) {
           //check if prev pos of next hit exists
           if (hit_next.pos_pr !== undefined) {                  
               //find next hit which prev pos is same as next pos of current hit
-              flag = (hit_next.pos_nxt === hit.pos_nxt) ? true : false ;
+              flag = (hit_next.pos_nxt === (hit.pos_nxt !== undefined ? hit.pos_nxt : "NaN")) ? true : false ;
           } else {                  
               //find next hit which pos is same as pos of current hit
-              flag = (hit_next.pos === hit.pos) ? true : false ;
+              flag = (hit_next.pos === (hit.pos !== undefined ? hit.pos : "NaN")) ? true : false ;
           }
       } else {
           //check if index of current hit is last token of current hit position and prev pos of next hit exists
           if (hit.index + 3 === hit.chN && hit_next.pos_pr !== undefined) {                                    
               //find next hit which index is 0 and prev pos is same as pos of current hit
-              flag = (hit_next.index === 0 && hit_next.pos_pr === hit.pos) ? true : false ;                                        
+              flag = (hit_next.index === 0 && hit_next.pos_pr === (hit.pos !== undefined ? hit.pos : "NaN")) ? true : false ;                                        
           } else {
+            //check if pos of next hit exists
+            if (hit_next.pos !== undefined) {
               //find next hit which index is index - 1 of current hit and pos is same as next pos of current hit
-              flag = (hit_next.index === hit.index - 1 && hit_next.pos === hit.pos_nxt) ? true : false ;                                        
+              flag = (hit_next.index === hit.index - 1 && hit_next.pos === (hit.pos_nxt !== undefined ? hit.pos_nxt : "NaN")) ? true : false ;
+            }              
           }    
-      }      
-      return flag ;
+      }
+    }
+    return flag ;
   }) ;
   return hit_next ;
 }
@@ -128,33 +147,48 @@ window.checkHitsNext = function(hit, hits_next) {
 window.checkHitsPrevious = function(hit, hits_prev) {
   //only one hit in hits_prev
   let hit_prev = hits_prev.instances[0] ;
-      let flag = false ;      
-      //check if index of prev hit is index - 1 of curent hit
-      if (hit_prev.index === hit.index - 1) {
-          //check if prev pos of prev hit exists
-          if (hit_prev.pos_nxt !== undefined) {
-              //find prev hit which prev pos is same as next pos of current hit
-              flag = (hit_prev.pos_pr === hit.pos_pr) ? true : false ;                                            
-          } else {
-              //find prev hit which pos is same as pos of current hit
-              flag = (hit_prev.pos === hit.pos) ? true : false ;                                            
+  let flag = false ;
+      
+  //build source from hit.pos or hit.pos_pr
+  let pos_tmp = (hit.pos_pr !== undefined) ? hit.pos_pr : hit.pos ;
+  let source = pos_tmp.substring(0, pos_tmp.lastIndexOf('_')) ;
+  //build source from hit_next.pos or hit_next.pos_pr
+  let pos_tmp_prev = (hit_prev.pos_pr !== undefined) ? hit_prev.pos_pr : hit_prev.pos ;
+  let source_prev = pos_tmp_prev.substring(0, pos_tmp_prev.lastIndexOf('_')) ;
+
+  //find prev hit which has same source as current hit
+  if (source_prev === source) {
+    //check if index of prev hit is index - 1 of curent hit
+    if (hit_prev.index === hit.index - 1) {
+        //check if prev pos of prev hit exists
+        if (hit_prev.pos_nxt !== undefined) {
+            //find prev hit which prev pos is same as next pos of current hit
+            flag = (hit_prev.pos_pr === (hit.pos_pr !== undefined ? hit.pos_pr : "NaN")) ? true : false ;                                            
+        } else {
+            //find prev hit which pos is same as pos of current hit
+            flag = (hit_prev.pos === (hit.pos !== undefined ? hit.pos : "NaN")) ? true : false ;                                            
+        }
+    } else {
+        //check if index of current hit is first token of current hit position and next pos of prev hit exists
+        if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
+            //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
+            flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === (hit.pos_pr !== undefined ? hit.pos_pr : "NaN")) ? true : false ;                                            
+        } else {
+          //check if pos of prev hit exists
+          if (hit_prev.pos !== undefined) {
+            //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
+            flag = (hit_prev.index === hit_prev.chN - 3 && hit_prev.pos === (hit.pos_pr !== undefined ? hit.pos_pr : "NaN")) ? true : false ;
           }
+        }
+      }
+      if (flag) {
+        return hit_prev ;
       } else {
-          //check if index of current hit is first token of current hit position and next pos of prev hit exists
-          if (hit.index === 0 && hit_prev.pos_nxt !== undefined) {
-              //find prev hit which index is index + 1 of current hit and pos is same as prev pos of current hit
-              flag = (hit_prev.index === hit.index + 1 && hit_prev.pos === hit.pos_pr) ? true : false ;                                            
-          } else {
-              //find prev hit which index is chN - 3 and pos is same as prev pos of current hit
-              flag = (hit_prev.index === hit_prev.chN - 3 && hit_prev.pos === hit.pos_pr) ? true : false ;
-          }    
-      }      
-  if (flag) {
-      return hit_prev ;    
-  } else {
-      return undefined ;
-  }
+        return undefined ;
+      }
+  } 
 }
+
 //start search on button click
 $('button#ssDoSearch').click(function(event) {
   (async () => {
@@ -220,7 +254,7 @@ $('button#ssDoSearch').click(function(event) {
 
               //check if token is first token of tokens string
               //and if token is not last token of tokens string
-              if(i_tok === 0) {
+              if(i_tok === 0 && i_tok < tokens_N-1) {
                 //compare current hit with next hits
                 let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
                 if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
