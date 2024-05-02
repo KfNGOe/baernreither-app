@@ -12,7 +12,7 @@ var synoptik_html = '' ;
 
 // Creating a window with a document
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
-let index_scripts = fs.readFileSync("assets/txt/partials/synoptik/synoptik_scripts.txt", 'utf8');
+let synoptik_scripts = fs.readFileSync("assets/txt/partials/synoptik/synoptik_scripts.txt", 'utf8');
 dom_temp_str = dom_temp_str.concat(synoptik_scripts) ;
 const dom = new jsdom.JSDOM (dom_temp_str) ;
 
@@ -55,7 +55,7 @@ $('html').find('main').replaceWith(main) ;
 var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_dipl_html.txt", 'utf8'); //data/txt/Bae_TB_8_dipl_html.txt
 var content_left = $.parseHTML(content_left_str) ;
 $('html').find(html_path_left).children().remove() ;
-$('html').find(html_path_left).append(content_left) ;
+//$('html').find(html_path_left).append(content_left) ;
 
 //build content of right box
 //var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_dipl_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_dipl_html.txt
