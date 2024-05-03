@@ -1,13 +1,113 @@
+var textData_in ;
+
+window.fetchData = async function(filepath) {
+	try {        
+		const response = await fetch(filepath, {
+		  signal:  AbortSignal.timeout(3000)
+		}) ;      
+		if (filepath.includes('.json')) {            
+			const json_in = await response.json();
+			return json_in ;            
+		} else {
+			const text_in = await response.text();
+			return text_in ;
+		}        
+	} catch (error) {        
+		console.error('Error:', error);
+		if (error.name === 'AbortError') {
+			alert('fetch data: Timeout!') ;
+		}        
+	}
+  } ;
+
+window.boxNavItems = function(li,date,groupedByTitle) {	
+	//get title
+	let title = li.text() ;		
+	//get textdata for title
+	let textData = groupedByTitle[title] ;
+	//get date of textData
+	let dateFile ;
+	dateFile = textData[0].date.includes('-') ? textData[0].date.substring(0, textData[0].date.indexOf('-')) : textData[0].date ;		
+	//check if date of textData is equal to clicked date
+	if(dateFile !== date) {
+		li.hide() ;
+	} else {
+		li.show() ;
+	}
+} ;  
+
 $( document ).ready(function() {
-    console.log( "ready!" );    
+    console.log( "ready!" );
+	//highlight active nav item	
     $("ul.navbar-nav li.nav-item a.nav-link").removeClass("active");
-    $( "ul.navbar-nav li.nav-item a[href='#TgbEdit']" ).addClass("active");	
+    $( "ul.navbar-nav li.nav-item a#navbar_TBEDIT" ).addClass("active");
+	//remove data from navbar dropdowns
+	$( 'div#box-left ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
+	$( 'div#box-right ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
+	//load text data    
+	(async () => {		
+		//get text data
+		let filepath = './data/json/textData.json' ;
+		textData_in = await fetchData(filepath) ;
+		console.log( textData_in ) ;
+		//get text data
+		let dateFile ;
+		let textData_arr = textData_in.results.bindings
+		textData_arr.forEach(function(result, index) {
+			if(result.date.includes('-')) {
+				dateFile = result.date.substring(0, result.date.indexOf('-')) ;
+			} else {
+				dateFile = result.date ;
+			}			
+			console.log(dateFile) ;
+			//build id
+			let id = 'scroll_nav_' + dateFile ;
+			//set years containing works
+			$( 'nav.scroll-nav li a#' + id ).addClass('back') ;
+			//build dropdown menu			
+			if(result.title.short.includes('Bae_TB')) {
+				let li = '<li><a class="dropdown-item" href="#" id="navbar_' + result.title.short + '">' + result.title.short + '</a></li>' ;
+				//let li = $.parseHTML(li_str) ;
+				$( 'div#box-left a#navbar_TB_left' ).siblings('ul.dropdown-menu').append(li) ;
+				$( 'div#box-right a#navbar_TB_right' ).siblings('ul.dropdown-menu').append(li) ;
+			}
+			if(result.title.short.includes('Bae_MF')) {
+				let li = '<li><a class="dropdown-item" href="#" id="navbar_' + result.title.short + '">' + result.title.short + '</a></li>' ;
+				//let li = $.parseHTML(li_str) ;
+				$( 'div#box-left a#navbar_MF_left' ).siblings('ul.dropdown-menu').append(li) ;
+				$( 'div#box-right a#navbar_MF_right' ).siblings('ul.dropdown-menu').append(li) ;
+			}
+		}) ;
+	})() ;	
 }) ;
 
-$( 'nav.scroll-nav li a' ).click(function() {
-	console.log( this );
+$( 'div.synoptik-box nav.scroll-nav li a' ).click(function() {
+	//find box of clicked element
 	let click = $( this );
-	$( 'nav.scroll-nav li a' ).removeClass('active');
+	let parent = click.parents('div.synoptik-box').attr('id') ;
+	//get date of clicked element
+	let id = click.attr('id') ; 
+	let date = id.replace('scroll_nav_', '') ;
+	//check if another date is active
+	//if (click.hasClass('back')) {
+	//	$( 'div#' + parent + ' nav.scroll-nav li a' ).removeClass('active');
+	//	click.addClass('active');	
+	//}	
+	//group textdata by title short
+	let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short)
+	//check box side
+	let boxSide = parent.includes('left') ? 'left' : 'right' ; 		
+	//iterate over synoptik-nav items
+	$( 'div#box-' + boxSide + ' a#navbar_TB_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
+		let li = $( this ) ;
+		boxNavItems(li,date,groupedByTitle) ;		
+	}) ;
+	$( 'div#box-' + boxSide + ' a#navbar_MF_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
+		let li = $( this ) ;
+		boxNavItems(li,date,groupedByTitle) ;
+	}) ;	
+
+	$( 'div#' + parent + ' nav.scroll-nav li a' ).removeClass('active');
 	click.addClass('active');
 }) ;
 	

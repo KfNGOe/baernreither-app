@@ -758,7 +758,7 @@ form button.btn:hover {
 
 .table-register table tbody tr td button:hover {
   color:rgba(115,71,208,1);
-  text-decoraton:none;
+  text-decoration:none;
 }
 
 textarea:focus,
@@ -824,7 +824,7 @@ input[type="color"]:focus,
   letter-spacing:0.01px;
   font-size:1rem;
   color:rgba(55,55,40,1);
-  text-tecoration:underline;
+  text-decoration:underline;
 }
 .search-result a:hover {
   color:rgba(115,71,208,1);
@@ -1066,6 +1066,10 @@ body::-webkit-scrollbar-thumb {
    .scroll-nav ul li a {
     line-height: 2rem!important;
   }
+}
+
+scroll-nav ul li a.back {
+  background-color: #4b4b4b;    
 }
 
 .scroll-nav ul li a:hover, .scroll-nav ul li a.active {

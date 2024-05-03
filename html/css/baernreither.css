@@ -323,9 +323,6 @@ hr {
   --bs-accordion-btn-color: rgba(55,55,40,1);
   padding-top:0.2rem;
 }
-.accordion-item {
-  margin-bottom: 0.25rem;
-}
 .accordion-button:not(.collapsed) {
   color: rgba(55,55,40,1);
   background-color: transparent;
@@ -349,10 +346,6 @@ h2.accordion-header button.accordion-button {
 }
 .accordion-body {
   padding:5px 0;
-}
-.accordion-body p {
-  margin-top: 0;
-  margin-bottom: 0.1rem;
 }
 
 
@@ -710,7 +703,7 @@ fahl-lila: rgba(96,96,140,1);
   color:#fff;
 }
 
-#ssQuery {
+#suche {
   border: 1px solid rgba(96,96,140,1);
   border-radius: 0;
   font-family:'Work Sans', sans-serif;
@@ -720,11 +713,10 @@ fahl-lila: rgba(96,96,140,1);
   margin-left:5px;
 }
  
-#ssQuery:focus {
+#suche:focus {
   font-size: 1.5em;
   width: 50%;
 }
-
 .li-col-content form button.btn,
 .search-input button.btn {
   color:#fff;
@@ -766,7 +758,7 @@ form button.btn:hover {
 
 .table-register table tbody tr td button:hover {
   color:rgba(115,71,208,1);
-  text-decoraton:none;
+  text-decoration:none;
 }
 
 textarea:focus,
@@ -795,7 +787,7 @@ input[type="color"]:focus,
   display:flex;
   flex-flow:column;
 }
-.li-col-content #ssQuery {
+.li-col-content #suche {
   margin-left:0;
 }
 
@@ -812,7 +804,7 @@ input[type="color"]:focus,
   border:rgba(115,71,208,1);
 }
 
-.li-col-content form #ssQuery:focus {
+.li-col-content form #suche:focus {
   width:100%;
 }
 
@@ -832,7 +824,7 @@ input[type="color"]:focus,
   letter-spacing:0.01px;
   font-size:1rem;
   color:rgba(55,55,40,1);
-  text-tecoration:underline;
+  text-decoration:underline;
 }
 .search-result a:hover {
   color:rgba(115,71,208,1);
@@ -1076,7 +1068,11 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-.scroll-nav ul li a:hover {
+.scroll-nav ul li a.back {
+  background-color: #c9c9c9;    
+}
+
+.scroll-nav ul li a:hover, .scroll-nav ul li a.active {
     color:rgba(115,71,208,1);
 }
 
