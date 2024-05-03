@@ -36,20 +36,25 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 	}
 } ;  
 
-$( document ).ready(function() {
+$( function() {
     console.log( "ready!" );
 	//highlight active nav item	
     $("ul.navbar-nav li.nav-item a.nav-link").removeClass("active");
     $( "ul.navbar-nav li.nav-item a#navbar_TBEDIT" ).addClass("active");
 	//remove data from navbar dropdowns
 	$( 'div#box-left ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
-	$( 'div#box-right ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
-	//load text data    
+	$( 'div#box-right ul.navbar-nav ul.dropdown-menu' ).children().remove() ;
+	//set work of page
+	$( 'div#box-left div.page-skip div#page_work_left' ).text('') ;
+	$( 'div#box-right div.page-skip div#page_work_right' ).text('') ;
+	//remove page numbers
+	$( 'div#box-left div.page-skip span#page_nr_left' ).text('') ;
+	$( 'div#box-right div.page-skip span#page_nr_right' ).text('') ;
+	//set years containing works
 	(async () => {		
 		//get text data
 		let filepath = './data/json/textData.json' ;
-		textData_in = await fetchData(filepath) ;
-		console.log( textData_in ) ;
+		textData_in = await fetchData(filepath) ;		
 		//get text data
 		let dateFile ;
 		let textData_arr = textData_in.results.bindings
@@ -58,8 +63,7 @@ $( document ).ready(function() {
 				dateFile = result.date.substring(0, result.date.indexOf('-')) ;
 			} else {
 				dateFile = result.date ;
-			}			
-			console.log(dateFile) ;
+			}
 			//build id
 			let id = 'scroll_nav_' + dateFile ;
 			//set years containing works
@@ -78,9 +82,10 @@ $( document ).ready(function() {
 				$( 'div#box-right a#navbar_MF_right' ).siblings('ul.dropdown-menu').append(li) ;
 			}
 		}) ;
-	})() ;	
+	})() ;		
 }) ;
 
+//timebar click event
 $( 'div.synoptik-box nav.scroll-nav li a' ).click(function() {
 	//find box of clicked element
 	let click = $( this );
@@ -110,7 +115,36 @@ $( 'div.synoptik-box nav.scroll-nav li a' ).click(function() {
 	$( 'div#' + parent + ' nav.scroll-nav li a' ).removeClass('active');
 	click.addClass('active');
 }) ;
-	
+
+//werke dropdown click event
+$( 'li.nav-item ul.dropdown-menu li a' ).on('click', function() {
+	//div.synoptik-box ul.navbar-nav li.nav-item 
+	//find box of clicked element
+	let click = $( this );
+	let text = click.find('a.dropdown-item').text() ;
+	console.log( click.text() );
+	/*
+	let parent = click.parents('div.synoptik-box').attr('id') ;
+	//get title of clicked element
+	let title = click.text() ;
+	//get date of clicked element
+	let date = $( 'div#' + parent + ' nav.scroll-nav li a.active' ).attr('id').replace('scroll_nav_', '') ;
+	//group textdata by title short
+	let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short)
+	//check box side
+	let boxSide = parent.includes('left') ? 'left' : 'right' ; 
+	//iterate over synoptik-nav items
+	$( 'div#box-' + boxSide + ' a#navbar_TB_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
+		let li = $( this ) ;
+		boxNavItems(li,date,groupedByTitle) ;		
+	}) ;
+	$( 'div#box-' + boxSide + ' a#navbar_MF_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
+		let li = $( this ) ;
+		boxNavItems(li,date,groupedByTitle) ;
+	}) ;
+	*/	
+}) ;
+
 //show compare buttons and load html compare data
 $( 'div.synoptik-box:nth-child(2) div.nav-werke #navbar-baern li.nav-item:nth-child(5) a.dropdown-item' ).click(function() {	
 	console.log( this );

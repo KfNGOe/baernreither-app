@@ -73,7 +73,9 @@
                               <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="navbar_MF_left">Lebenserinnerungen</a>
                                 <ul class="dropdown-menu">                                      
-                                    <li><a class="dropdown-item" href="#">Erinnerung 7 1914</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Erinnerung 7 1914</a>
+                                    </li>
                                 </ul>
                               </li>
 
@@ -94,10 +96,10 @@
         <!-- page-skip -->
         <div class="page-skip">
             <div class="row">
-                <div class="col-6 pe-2">Tagebuch Nr. XXXX</div>
+                <div class="col-6 pe-2" id="page_work_left">Tagebuch Nr. XXXX</div>
                 <div class="col-6 ps-2">
                     <div class="arrow-left"></div>
-                    <form >Seite <input type="text" name="pagination-select" size="3" /> von 136</form>
+                    <form>Seite <input type="text" name="pagination-select" size="3" /> von <span id="page_nr_left">136</span></form>
                     <div class="arrow-right"></div>  
                 </div>                  
             </div> <!-- /row -->
@@ -277,10 +279,10 @@
         <!-- page-skip -->
         <div class="page-skip">
             <div class="row">
-                <div class="col-6 pe-2">Tagebuch Nr. YYYY</div>
+                <div class="col-6 pe-2" id="page_work_right">Tagebuch Nr. YYYY</div>
                 <div class="col-6 ps-2">
                     <div class="arrow-left"></div>
-                    <form >Seite <input type="text" name="pagination-select" size="3" /> von 136</form>
+                    <form >Seite <input type="text" name="pagination-select" size="3" /> von <span id="page_nr_right">136</span></form>
                     <div class="arrow-right"></div>  
                 </div>                  
             </div> <!-- /row -->
