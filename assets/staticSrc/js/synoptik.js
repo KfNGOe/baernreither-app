@@ -26,24 +26,42 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 	//get textdata for title
 	let textData = groupedByTitle[title] ;
 	//get date of textData
-	let dateFile ;
-	dateFile = textData[0].date.includes('-') ? textData[0].date.substring(0, textData[0].date.indexOf('-')) : textData[0].date ;		
+	let dateData ;
+	dateData = textData[0].date.includes('-') ? textData[0].date.substring(0, textData[0].date.indexOf('-')) : textData[0].date ;		
 	//check if date of textData is equal to clicked date
-	if(dateFile !== date) {
+	if(dateData !== date) {
 		li.hide() ;
 	} else {
 		li.show() ;
 	}
-} ;  
+} ;
+
+//function to get transcription type
+window.getTransType = function() {
+	let type = $( 'div.synoptik-box div.nav-werke ul.dropdown-menu li.active a' ).attr('id') ;
+	return type ;
+} ;
+
+//function to insert work data in DOM
+window.insertWorkData = function(filepath,boxSide) {
+	(async () => {
+		//remove old data
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;		
+		//get text data		
+		let content_str = await fetchData(filepath) ;
+		let content = $.parseHTML(content_str) ;
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;		
+	})() ;
+} 	
 
 $( function() {
-    console.log( "ready!" );
+    console.log( "ready!" );	
 	//highlight active nav item	
     $("ul.navbar-nav li.nav-item a.nav-link").removeClass("active");
     $( "ul.navbar-nav li.nav-item a#navbar_TBEDIT" ).addClass("active");
 	//remove data from navbar dropdowns
-	$( 'div#box-left ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
-	$( 'div#box-right ul.navbar-nav ul.dropdown-menu' ).children().remove() ;
+	$( 'div#box-left div.werke-dropdown ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
+	$( 'div#box-right div.werke-dropdown ul.navbar-nav ul.dropdown-menu' ).children().remove() ;
 	//set work of page
 	$( 'div#box-left div.page-skip div#page_work_left' ).text('') ;
 	$( 'div#box-right div.page-skip div#page_work_right' ).text('') ;
@@ -68,25 +86,23 @@ $( function() {
 			let id = 'scroll_nav_' + dateFile ;
 			//set years containing works
 			$( 'nav.scroll-nav li a#' + id ).addClass('back') ;
-			//build dropdown menu			
-			if(result.title.short.includes('Bae_TB')) {
-				let li = '<li><a class="dropdown-item" href="#" id="navbar_' + result.title.short + '">' + result.title.short + '</a></li>' ;
-				//let li = $.parseHTML(li_str) ;
-				$( 'div#box-left a#navbar_TB_left' ).siblings('ul.dropdown-menu').append(li) ;
-				$( 'div#box-right a#navbar_TB_right' ).siblings('ul.dropdown-menu').append(li) ;
+			//build dropdown menu
+			let li_left = '<li><a class="dropdown-item" href="#" id="work_sel_left_' + result.title.short + '">' + result.title.short + '</a></li>' ;
+			let li_right = '<li><a class="dropdown-item" href="#" id="work_sel_right_' + result.title.short + '">' + result.title.short + '</a></li>' ;			
+			if(result.title.short.includes('Bae_TB')) {				
+				$( 'div#box-left a#navbar_TB_left' ).siblings('ul.dropdown-menu').append(li_left) ;
+				$( 'div#box-right a#navbar_TB_right' ).siblings('ul.dropdown-menu').append(li_right) ;
 			}
-			if(result.title.short.includes('Bae_MF')) {
-				let li = '<li><a class="dropdown-item" href="#" id="navbar_' + result.title.short + '">' + result.title.short + '</a></li>' ;
-				//let li = $.parseHTML(li_str) ;
-				$( 'div#box-left a#navbar_MF_left' ).siblings('ul.dropdown-menu').append(li) ;
-				$( 'div#box-right a#navbar_MF_right' ).siblings('ul.dropdown-menu').append(li) ;
+			if(result.title.short.includes('Bae_MF')) {								
+				$( 'div#box-left a#navbar_MF_left' ).siblings('ul.dropdown-menu').append(li_left) ;
+				$( 'div#box-right a#navbar_MF_right' ).siblings('ul.dropdown-menu').append(li_right) ;
 			}
 		}) ;
 	})() ;		
 }) ;
 
 //timebar click event
-$( 'div.synoptik-box nav.scroll-nav li a' ).click(function() {
+$( 'div.synoptik-box nav.scroll-nav li a' ).on('click',function() {
 	//find box of clicked element
 	let click = $( this );
 	let parent = click.parents('div.synoptik-box').attr('id') ;
@@ -117,12 +133,41 @@ $( 'div.synoptik-box nav.scroll-nav li a' ).click(function() {
 }) ;
 
 //werke dropdown click event
-$( 'li.nav-item ul.dropdown-menu li a' ).on('click', function() {
-	//div.synoptik-box ul.navbar-nav li.nav-item 
+$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',function() {	
 	//find box of clicked element
-	let click = $( this );
-	let text = click.find('a.dropdown-item').text() ;
-	console.log( click.text() );
+	let click = $( this ) ;
+	
+	//check if clicked work is already active
+	if(click.hasClass('active')) {
+		return ;
+	}
+	
+	//get id
+	let id = click.find('a.dropdown-item').attr('id') ;
+	//get box side
+	let boxSide = id.includes('work_sel_left') ? 'left' : 'right' ;
+	//get work title
+	let workTitle = id.includes('work_sel_left') ? id.replace('work_sel_left_', '') : id.replace('work_sel_right_', '') ;
+	//get number of pages
+	let pageCount = textData_in.results.bindings.find((item, index) => {
+		return item.title.short === workTitle ;
+	}).pageCount ;	
+	//put work title in DOM
+	$( 'div#box-' + boxSide + ' div.page-skip div#page_work_' + boxSide ).text(workTitle) ;
+	//put number of pages in DOM
+	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;	
+	//get transcription type in nav-werke
+	let type = getTransType() ;
+	
+	//get file name
+	let fileName = workTitle + '_dipl_html.txt' ;	
+	//get text data
+	let filepath = './data/txt/' + fileName ;
+	//set class for text data to active		
+	click.siblings().removeClass('active') ;
+	click.addClass('active') ;
+	//insert work data in DOM	
+	insertWorkData(filepath,boxSide) ;
 	/*
 	let parent = click.parents('div.synoptik-box').attr('id') ;
 	//get title of clicked element
@@ -143,6 +188,18 @@ $( 'li.nav-item ul.dropdown-menu li a' ).on('click', function() {
 		boxNavItems(li,date,groupedByTitle) ;
 	}) ;
 	*/	
+}) ;
+
+//nav werke click event
+$( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
+	//find box of clicked element
+	let click = $( this ) ;	
+	//get id
+	let id = click.find('a.dropdown-item').attr('id') ;
+	//get box side
+	let boxSide = id.includes('_left') ? 'left' : 'right' ;
+	//get transcript type
+	let type = id.includes('dipl') ? 'dipl' : 'full' ;
 }) ;
 
 //show compare buttons and load html compare data
