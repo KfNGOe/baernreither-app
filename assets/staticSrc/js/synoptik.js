@@ -42,6 +42,13 @@ window.getTransType = function(boxSide) {
 	return type ;
 } ;
 
+//function to set transcription type
+window.setTransType = function(boxSide,type) {
+	//$( '#trans_' + boxSide + ' ul.dropdown-menu li a#' + type ).addClass('active') ;
+	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a').removeClass('active') ;
+	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a#' + type + '_' + boxSide).addClass('active') ;
+} ;
+
 //function to insert work data in DOM
 window.insertWorkData = function(filepath,boxSide) {
 	(async () => {
@@ -167,27 +174,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 	click.siblings().removeClass('active') ;
 	click.addClass('active') ;
 	//insert work data in DOM	
-	insertWorkData(filepath,boxSide) ;
-	/*
-	let parent = click.parents('div.synoptik-box').attr('id') ;
-	//get title of clicked element
-	let title = click.text() ;
-	//get date of clicked element
-	let date = $( 'div#' + parent + ' nav.scroll-nav li a.active' ).attr('id').replace('scroll_nav_', '') ;
-	//group textdata by title short
-	let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short)
-	//check box side
-	let boxSide = parent.includes('left') ? 'left' : 'right' ; 
-	//iterate over synoptik-nav items
-	$( 'div#box-' + boxSide + ' a#navbar_TB_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
-		let li = $( this ) ;
-		boxNavItems(li,date,groupedByTitle) ;		
-	}) ;
-	$( 'div#box-' + boxSide + ' a#navbar_MF_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
-		let li = $( this ) ;
-		boxNavItems(li,date,groupedByTitle) ;
-	}) ;
-	*/	
+	insertWorkData(filepath,boxSide) ;		
 }) ;
 
 //nav werke click event
@@ -200,6 +187,12 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	let boxSide = id.includes('_left') ? 'left' : 'right' ;
 	//get transcript type
 	let type = id.includes('dipl') ? 'dipl' : 'full' ;
+	//hide dropdown
+	click.parents('ul.dropdown-menu').removeClass('show') ;
+	//set active class
+	setTransType(boxSide,type) ;
+	//click.siblings().children('a.dropdown-item').removeClass('active') ;
+	//click.children('a.dropdown-item').addClass('active') ;	
 }) ;
 
 //show compare buttons and load html compare data
