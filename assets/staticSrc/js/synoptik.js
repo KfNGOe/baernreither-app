@@ -37,8 +37,8 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 } ;
 
 //function to get transcription type
-window.getTransType = function() {
-	let type = $( 'div.synoptik-box div.nav-werke ul.dropdown-menu li.active a' ).attr('id') ;
+window.getTransType = function(boxSide) {
+	let type = $( '#trans_' + boxSide + ' ul.dropdown-menu li.active a' ).attr('id') ;
 	return type ;
 } ;
 
@@ -157,7 +157,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 	//put number of pages in DOM
 	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;	
 	//get transcription type in nav-werke
-	let type = getTransType() ;
+	let type = getTransType(boxSide) ;
 	
 	//get file name
 	let fileName = workTitle + '_dipl_html.txt' ;	
