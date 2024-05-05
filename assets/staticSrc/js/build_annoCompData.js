@@ -60,7 +60,8 @@ Object.keys(groupedBySourceTarget).forEach((key, index) => {
         annoCompData_temp.source_body.push(JSON.parse(JSON.stringify(key))) ;
     }) ;    
     annoCompData_results.results.bindings.push(JSON.parse(JSON.stringify(annoCompData_temp))) ;
-    console.log('groupedBySourceBody') ;    
+    //reset temp object
+    annoCompData_temp.source_body = [] ;    
 }) ;
 //write compare data json file
 let json_out = JSON.stringify(annoCompData_results) ;
