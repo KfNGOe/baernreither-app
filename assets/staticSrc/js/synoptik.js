@@ -213,62 +213,91 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 	click.parents('ul.dropdown-menu').removeClass('show') ;
 }) ;
 
-//nav werke click event
-$( 'div.synoptik-box li.nav-item' ).on('click','a',function() {
+//transcription click event
+$( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
 	//find box of clicked element
-	let click = $( this ) ;	
-	//get id
-	let id = click.attr('id') ;
-	//get box side
-	let boxSide = id.includes('_left') ? 'left' : 'right' ;
-	//check nav item in id
-	let type_nav = id.substring(0, id.indexOf('_')) ;
-	switch(type_nav) {
-		case 'trans':
-			transType() ;
-			break ;
-		case 'facs':
-			facs() ;
-			break ;
-		case 'tei':
-			tei() ;
-			break ;
-		case 'rdf':
-			rdf() ;
-			break ;
-		case 'text-comp':
-			textComp() ;
-			break ;
-		default:
-			break ;
-	} ;	
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_trans = click.parents('a').attr('id') ;
+	//check if clicked element is a transcription type
+	if(id_trans.includes('trans')) {
+		//get id
+		let id = click.find('a.dropdown-item').attr('id') ;
+		//get box side
+		let boxSide = id.includes('_left') ? 'left' : 'right' ;
+		//get old transcription type
+		let typeOld = getTransType(boxSide) ;
+		//get new transcript type	
+		let typeNew = id.includes('dipl') ? 'dipl' : 'full' ;
+		if(typeOld !== typeNew) {
+			//set new type
+			setTransType(boxSide,typeNew) ;
+			//get work
+			let workTitle = getWork(boxSide) ;
+			if(typeNew === 'dipl') {
+				//get file name
+				let fileName = workTitle + '_dipl_html.txt' ;	
+				//get text data
+				let filepath = './data/txt/' + fileName ;		
+				//insert dipl text data in DOM	
+				insertDiplText(filepath, boxSide) ;
+			} else {
+				//insert Full text data in DOM
+				insertFullText(boxSide) ;
+			}		
+		}	
+		//hide dropdown
+		click.parents('ul.dropdown-menu').removeClass('show') ;	
+	}
 }) ;
 
-window.transType = function() {
-	//get old transcription type
-	let typeOld = getTransType(boxSide) ;
-	//get new transcript type	
-	let typeNew = id.includes('dipl') ? 'dipl' : 'full' ;
-	if(typeOld !== typeNew) {
-		//set new type
-		setTransType(boxSide,typeNew) ;
-		//get work
-		let workTitle = getWork(boxSide) ;
-		if(typeNew === 'dipl') {
-			//get file name
-			let fileName = workTitle + '_dipl_html.txt' ;	
-			//get text data
-			let filepath = './data/txt/' + fileName ;		
-			//insert dipl text data in DOM	
-			insertDiplText(filepath, boxSide) ;
-		} else {
-			//insert Full text data in DOM
-			insertFullText(boxSide) ;
-		}		
-	}	
-	//hide dropdown
-	click.parents('ul.dropdown-menu').removeClass('show') ;	
-} ;
+//facs click event
+$( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_facs = click.attr('id') ;
+	//check if clicked element is a facs type
+	if(id_facs.includes('facs')) {
+		
+	}
+}) ;
+
+//tei click event
+$( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_tei = click.attr('id') ;
+	//check if clicked element is a tei type
+	if(id_tei.includes('tei')) {
+		
+	}
+}) ;
+
+//rdf click event
+$( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_rdf = click.attr('id') ;
+	//check if clicked element is a rdf type
+	if(id_rdf.includes('rdf')) {
+		
+	}
+}) ;
+
+//compare click event
+$( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_trans = click.parents('a').attr('id') ;
+	//check if clicked element is a transcription type
+	if(id_trans.includes('text-comp')) {
+		
+	}
+}) ;
 
 //show compare buttons and load html compare data
 $( 'div.synoptik-box:nth-child(2) div.nav-werke #navbar-baern li.nav-item:nth-child(5) a.dropdown-item' ).click(function() {	
