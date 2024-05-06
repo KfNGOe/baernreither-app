@@ -214,13 +214,37 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 }) ;
 
 //nav werke click event
-$( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
+$( 'div.synoptik-box li.nav-item' ).on('click','a',function() {
 	//find box of clicked element
 	let click = $( this ) ;	
 	//get id
-	let id = click.find('a.dropdown-item').attr('id') ;
+	let id = click.attr('id') ;
 	//get box side
 	let boxSide = id.includes('_left') ? 'left' : 'right' ;
+	//check nav item in id
+	let type_nav = id.substring(0, id.indexOf('_')) ;
+	switch(type_nav) {
+		case 'trans':
+			transType() ;
+			break ;
+		case 'facs':
+			facs() ;
+			break ;
+		case 'tei':
+			tei() ;
+			break ;
+		case 'rdf':
+			rdf() ;
+			break ;
+		case 'text-comp':
+			textComp() ;
+			break ;
+		default:
+			break ;
+	} ;	
+}) ;
+
+window.transType = function() {
 	//get old transcription type
 	let typeOld = getTransType(boxSide) ;
 	//get new transcript type	
@@ -243,9 +267,8 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		}		
 	}	
 	//hide dropdown
-	click.parents('ul.dropdown-menu').removeClass('show') ;
-	
-}) ;
+	click.parents('ul.dropdown-menu').removeClass('show') ;	
+} ;
 
 //show compare buttons and load html compare data
 $( 'div.synoptik-box:nth-child(2) div.nav-werke #navbar-baern li.nav-item:nth-child(5) a.dropdown-item' ).click(function() {	
