@@ -389,13 +389,14 @@ $( 'div.compare-buttons .comp-equal' ).click(function() {
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
 	//show equal elements
-	$( 'a.comp-img-equal' ).show();
-	$( 'a.comp-img-inequal' ).hide();
-	$( 'a.comp-img-not' ).hide();
+	//anchor comp-not
+	$( 'a.anchor.comp-span-equal' ).show();
+	$( 'a.anchor.comp-span-inequal' ).hide();
+	$( 'a.anchor.comp-span-not' ).hide();
 	//highlight equal elements
-	$( 'span.comp-passage-equal' ).css( "background-color", "#f7e0c7" );
-	$( 'span.comp-passage-inequal' ).css( "background-color", "transparent" );
-	$( 'span.comp-passage-not' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-equal' ).css( "background-color", "#f7e0c7" );
+	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
 }) ;		
 $( 'div.compare-buttons .comp-inequal' ).click(function() {
 	console.log( this );
@@ -403,14 +404,14 @@ $( 'div.compare-buttons .comp-inequal' ).click(function() {
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//show not equal elements		
-	$( 'a.comp-img-inequal' ).show();
-	$( 'a.comp-img-equal' ).hide();
-	$( 'a.comp-img-not' ).hide();
+	//show not equal elements	
+	$( 'a.anchor.comp-span-inequal' ).show();
+	$( 'a.anchor.comp-span-equal' ).hide();
+	$( 'a.anchor.comp-span-not' ).hide();	
 	//highlight not equal elements
-	$( 'span.comp-passage-inequal' ).css( "background-color", "#f7e0c7" );
-	$( 'span.comp-passage-equal' ).css( "background-color", "transparent" );
-	$( 'span.comp-passage-not' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-inequal' ).css( "background-color", "#f7e0c7" );
+	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
 }) ;
 $( 'div.compare-buttons .comp-not' ).click(function() {
 	console.log( this );
@@ -419,13 +420,13 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
 	//show missing elements
-	$( 'a.comp-img-not' ).show();
-	$( 'a.comp-img-equal' ).hide();
-	$( 'a.comp-img-inequal' ).hide();
+	$( 'a.anchor.comp-span-not' ).show();
+	$( 'a.anchor.comp-span-equal' ).hide();
+	$( 'a.anchor.comp-span-inequal' ).hide();
 	//highlight missing elements
-	$( 'span.comp-passage-not' ).css( "background-color", "#f7e0c7" );
-	$( 'span.comp-passage-equal' ).css( "background-color", "transparent" );
-	$( 'span.comp-passage-inequal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-not' ).css( "background-color", "#f7e0c7" );
+	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 
 }) ;		
 //}) ;

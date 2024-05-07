@@ -236,7 +236,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                            case 'n':
                               //set 1st id
                               id = item.val.value ;
-                              html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
+                              html_str = html_str.concat('<br><span class="' + classNames + '" id="' + id + '">') ;
                               //set html string for img with 1st id
                               html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '">') ;
                               break ;
@@ -247,8 +247,8 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                      //set 2nd id
                      id = 'pb_' + key ;
                      //concatenate html string
-                     html_str = html_str.concat('<a href="#' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
-                     html_str = html_str.concat('</span>') ;
+                     html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
+                     html_str = html_str.concat('</span><br>') ;
                      break ;                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {                        
@@ -264,13 +264,13 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                            //check status and set class
                            switch(item_anno.status.value) {
                               case 'equal':
-                                 classNames = classNames.concat('anchor comp-equal') ;                                  
+                                 classNames = classNames.concat('anchor comp-span-equal') ;                                  
                                  break ;
                               case 'notEqual':
-                                 classNames = classNames.concat('anchor comp-inequal') ;                                 
+                                 classNames = classNames.concat('anchor comp-span-inequal') ;                                 
                                  break ;
                               case 'missing':
-                                 classNames = classNames.concat('anchor comp-not') ;                                 
+                                 classNames = classNames.concat('anchor comp-span-not') ;                                 
                                  break ;
                               default:
                                  break ;
@@ -280,7 +280,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                            //set id
                            id = 'comp_' + key ;
                            //concatenate html string
-                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '"><img src="images/anchor.png" title="click"></a>') ;                                                   
+                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                                   
                         } else {
                            console.log('source target = ', title_short, ' not in anno items at pos = ', key) ; 
                         }                        
@@ -379,7 +379,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                      classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set id
                      id = 'note_' + key ;
-                     html_str = html_str.concat('<a href="#' + key + '" style=""><img src="images/note.png" title="note"></a><div class="' + classNames + '" id="' + id + '">') ;
+                     html_str = html_str.concat('<a href="#' + key + '"><img src="images/note.png" title="note"></a><div class="' + classNames + '" id="' + id + '" style="display: none">') ;
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/ref':
                      //set class
@@ -396,7 +396,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                      } ) ;
                      //set id
                      id = 'ref_' + key ;
-                     html_str = html_str.concat('<a class="' + classNames + '" href="' + href + '" id="' + id + '" style="" target="_blank">') ;
+                     html_str = html_str.concat('<a class="' + classNames + '" href="' + href + '" id="' + id + '" target="_blank">') ;
                      break
                      /*
                   case 'http://www.tei-c.org/ns/1.0/app':
@@ -457,13 +457,13 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                      //check status and set class
                      switch(item_anno.status.value) {
                         case 'equal': 
-                           classNames = classNames.concat('comp-equal ') ;                        
+                           classNames = classNames.concat('comp-span-equal ') ;                        
                            break ;
                         case 'notEqual':
-                           classNames = classNames.concat('comp-inequal ') ;                        
+                           classNames = classNames.concat('comp-span-inequal ') ;                        
                            break ;
                         case 'missing':
-                           classNames = classNames.concat('comp-not ') ;                        
+                           classNames = classNames.concat('comp-span-not ') ;                        
                            break ;
                         default:
                            break ;
@@ -610,7 +610,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                id = 'text_' + key ;               
                if (hit_flag) {                  
                   //concatenate html string
-                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '" style="">') ;
+                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
                   html_str = html_str.concat(item[0].cont.value) ;
                   html_str = html_str.concat('</span>') ;                  
                } else {                   
