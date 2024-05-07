@@ -1,5 +1,5 @@
 var textData_in ;
-var annoCompData ;
+var annoCompData_in ;
 
 window.fetchData = async function(filepath) {
 	try {        
@@ -56,8 +56,9 @@ window.setPagenr = function(boxSide,pageNr) {
 
 //function to get work
 window.getWork = function(boxSide) {
-	let work = $( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id') ;	
-	return work.replace('work_' + boxSide + '_', '') ; 	
+	let work = $( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id') ;
+	work = work === undefined ? work : work.replace('work_' + boxSide + '_', '') ;	
+	return work ; 	
 }
 
 //function to set work
@@ -86,7 +87,7 @@ window.insertDiplText = function(filepath,boxSide) {
 
 //function to insert Full text data in DOM
 window.insertFullText = function(boxSide) {
-
+	console.log( "insert full text!" ) ;
 } ;
 
 $( function() {
@@ -124,7 +125,7 @@ $( function() {
 			let id = 'scroll_nav_' + dateFile ;
 			//set years containing works
 			$( 'nav.scroll-nav li a#' + id ).addClass('back') ;
-			//build dropdown menu
+			//build dropdown menu for works
 			let li_left = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_left">' + result.title.short + '</a></li>' ;
 			let li_right = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_right">' + result.title.short + '</a></li>' ;			
 			if(result.title.short.includes('Bae_TB')) {				
@@ -135,7 +136,13 @@ $( function() {
 				$( 'div#box-left a#MF_left' ).siblings('ul.dropdown-menu').append(li_left) ;
 				$( 'div#box-right a#MF_right' ).siblings('ul.dropdown-menu').append(li_right) ;
 			}
-		}) ;		
+			//hide dropdown menu for compare
+			$( 'div#box-left a#text-comp_left' ).siblings('ul').find('li').remove() ;
+			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;			
+		}) ;
+		//get anno compare data
+		filepath = './data/json/annoCompData.json' ;
+		annoCompData_in = await fetchData(filepath) ;
 	})() ;		
 }) ;
 
@@ -214,11 +221,12 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 }) ;
 
 //transcription click event
-$( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
-	//find box of clicked element
+$( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','li',function() {
+	console.log( "trans clicked!" ) ;
+	//find box of clicked element	
 	let click = $( this ) ;
 	//get id of parents a element
-	let id_trans = click.parents('a').attr('id') ;
+	let id_trans = click.parent('ul').siblings('a').attr('id') ;
 	//check if clicked element is a transcription type
 	if(id_trans.includes('trans')) {
 		//get id
@@ -259,7 +267,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	let id_facs = click.attr('id') ;
 	//check if clicked element is a facs type
 	if(id_facs.includes('facs')) {
-		
+		console.log( "facs clicked!" ) ;
 	}
 }) ;
 
@@ -271,7 +279,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	let id_tei = click.attr('id') ;
 	//check if clicked element is a tei type
 	if(id_tei.includes('tei')) {
-		
+		console.log( "tei clicked!" ) ;
 	}
 }) ;
 
@@ -283,33 +291,96 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	let id_rdf = click.attr('id') ;
 	//check if clicked element is a rdf type
 	if(id_rdf.includes('rdf')) {
-		
+		console.log( "rdf clicked!" ) ;
 	}
 }) ;
 
 //compare click event
+$( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_comp = click.attr('id') ;
+	//check if clicked element is a  type
+	if(id_comp.includes('text-comp')) {
+		console.log( "comp clicked!" ) ;
+		//get box side
+		let boxSide = id_comp.includes('_left') ? 'left' : 'right' ;
+		//get work
+		let workTitle = getWork(boxSide) ;
+		//TEST
+		//workTitle = 'Bae_MF_6-2' ;
+		//check if work is selected
+		if(workTitle !== undefined && workTitle !== '') {
+			console.log( "work selected!" ) ;			
+			//group anno compare data by source target			
+			let groupedBySourceTarget = Object.groupBy(annoCompData_in.results.bindings, ({ source_target }) => source_target) ;
+			//get compare data
+			let compData = groupedBySourceTarget[workTitle] ;
+			let boxSide_opp = boxSide === 'left' ? 'right' : 'left' ;
+			//delete old data
+			$( 'div#box-' + boxSide + ' a#text-comp_' + boxSide ).siblings('ul.dropdown-menu').find('li').remove() ;			
+			//build dropdown menu for compare
+			compData[0].source_body.forEach(function(result, index) {
+				let li = '<li><a class="dropdown-item" href="#" id="' + result + '_' + boxSide_opp + '">' + result + '</a></li>' ;
+				$( 'div#box-' + boxSide + ' a#text-comp_' + boxSide ).siblings('ul.dropdown-menu').append(li) ;
+			}) ;
+			//hide dropdown
+			//click.siblings('ul.dropdown-menu').removeClass('show') ;
+		} else {
+			alert('Please select a work!') ;
+		}
+	}
+}) ;
+
+//compare text select click event
 $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function() {
 	//find box of clicked element
 	let click = $( this ) ;
 	//get id of parents a element
-	let id_trans = click.parents('a').attr('id') ;
+	let id_this = click.parent('ul').siblings('a').attr('id') ;	
+	//get box side of parents
+	let boxSide_this = id_this.includes('_left') ? 'left' : 'right' ;
 	//check if clicked element is a transcription type
-	if(id_trans.includes('text-comp')) {
-		
+	if(id_this.includes('text-comp')) {		
+		//get id
+		let id_opp = click.children('a.dropdown-item').attr('id') ;
+		//get box side
+		let boxSide_opp = id_opp.includes('_left') ? 'left' : 'right' ;
+		//get work title of opposite text
+		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
+		//get actual transcription type
+		let type_this = getTransType(boxSide_this) ;
+		//check if dipl type is selected
+		if(type_this === 'dipl') {			
+			//insert full text data in DOM	
+			insertFullText(boxSide_this) ;
+			//change trans to full text
+			setTransType(boxSide_this,'full') ;			
+		}
+		//insert compare text data in DOM
+		//get opposite file name
+		let fileName_opp = workTitle_opp + '_dipl_html.txt' ;
+		//get opposite text data
+		let filepath_opp = './data/txt/' + fileName_opp ;
+		//insert dipl text data in DOM
+		insertDiplText(filepath_opp, boxSide_opp) ;
+		//insert full text data in DOM
+		insertFullText(boxSide_opp) ;
+		//set work
+		setWork(boxSide_opp,workTitle_opp) ;
+		//set page number
+		setPagenr(boxSide_opp,'T1') ;
+		//change trans to full text
+		setTransType(boxSide_opp,'full') ;
+		//hide dropdown
+		click.parents('ul.dropdown-menu').removeClass('show') ;
+		//show compare buttons
+		$( 'div.compare-buttons' ).show() ;
+		console.log( "text comp clicked!" ) ;		
 	}
 }) ;
 
-//show compare buttons and load html compare data
-$( 'div.synoptik-box:nth-child(2) div.nav-werke #navbar-baern li.nav-item:nth-child(5) a.dropdown-item' ).click(function() {	
-	console.log( this );
-	let click = $( this );
-	if (click.text() == "Bae_MF_6-2") {
-		$( 'div.compare-buttons' ).show();
-		//remove old + load new html data
-		$( 'div.synoptik-box:nth-child(3) div.auswahl-content div.col-12' ).children().remove() ;
-		$( 'div.synoptik-box:nth-child(3) div.auswahl-content div.col-12' ).load("compRes.html div#Bae_MF_6-2") ;
-	}
-}) ;
 //check if compare button is clicked
 $( 'div.compare-buttons .comp-equal' ).click(function() {
 	console.log( this );

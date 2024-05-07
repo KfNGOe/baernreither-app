@@ -238,7 +238,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                               id = item.val.value ;
                               html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
                               //set html string for img with 1st id
-                              html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '" style="display: none">') ;
+                              html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '">') ;
                               break ;
                            default:
                               break ;
@@ -280,7 +280,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                            //set id
                            id = 'comp_' + key ;
                            //concatenate html string
-                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                                   
+                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '"><img src="images/anchor.png" title="click"></a>') ;                                                   
                         } else {
                            console.log('source target = ', title_short, ' not in anno items at pos = ', key) ; 
                         }                        
@@ -309,7 +309,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                         //set id
                         id = 'index_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')   
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/orgName':
@@ -324,7 +324,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                         //set id
                         id = 'org_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;                     
                   case 'http://www.tei-c.org/ns/1.0/persName':
@@ -339,7 +339,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                         //set id
                         id = 'person_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;   
                   case 'http://www.tei-c.org/ns/1.0/placeName':
@@ -354,7 +354,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                         //set id
                         id = 'place_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/note':                     
@@ -379,7 +379,7 @@ function buildDiplText(jsonJs_in_dipl, groupedBy_files) {
                      classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set id
                      id = 'note_' + key ;
-                     html_str = html_str.concat('<a href="#' + key + '" style=""><img src="images/note.png" title="note" style="display: none"></a><div class="' + classNames + '" id="' + id + '" style="display: none">') ;
+                     html_str = html_str.concat('<a href="#' + key + '" style=""><img src="images/note.png" title="note"></a><div class="' + classNames + '" id="' + id + '">') ;
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/ref':
                      //set class
@@ -662,8 +662,8 @@ jsonFiles.forEach((file) => {
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_dipl_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
-   //convert html strings to html 
    console.log('text data written: ', html_str.length, ' bytes')
+   //convert html strings to html    
    let html = $.parseHTML(html_str) ;   
    $('html').find('body').append('<div id="' + file.replace('.json', '') + '"></div>') ;    
    $('html').find('body').children('div').append(html) ;   
