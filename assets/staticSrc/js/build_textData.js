@@ -107,6 +107,14 @@ jsonFiles.forEach((file,index_file) => {
     } ) ;
     let pageCount = Object.keys(groupedByPage).length ;
     textData_result.pageCount = pageCount ;
+    //get first page number
+    let page_array = [] ;
+    groupedByName['http://www.tei-c.org/ns/1.0/pb'].forEach((item, index_page) => {
+        if(item.attr.value === "n") {
+            page_array.push(item.val.value) ;
+        }
+    }) ;
+    textData_result.firstPageNr = page_array[0] ;
     //add item object to text data    
     textData_results.results.bindings.push(JSON.parse(JSON.stringify(textData_result))) ;
     //reset text data result

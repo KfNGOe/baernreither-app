@@ -1,6 +1,33 @@
 var textData_in ;
 var annoCompData_in ;
 
+function onContainerScroll(boxSide) {
+	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
+  
+	//Scroll vars (not needed for page-position but can be usefull in the future)
+	var scroll = container.scrollTop;
+	var totalHeight = container.scrollHeight;
+	var visibleHeight = container.offsetHeight;
+	var hiddenHeight = totalHeight - visibleHeight;
+	var percentage = (scroll / hiddenHeight) * 100;
+  
+	//get all page-locator
+	var anchors = document.getElementsByClassName("pageLocator");
+  
+	//get current page
+	var currentPage = 0;
+	for (var i = 0; i < anchors.length; i++) {
+	  var anchor = anchors[i];
+	  if (scroll >= anchor.offsetTop) {
+		currentPage = anchor.id;
+	  }
+	}
+	if(currentPage === 0) {
+		currentPage = getPageNr(boxSide) ;
+	}
+	setPageNr(boxSide, currentPage);
+  }
+
 window.fetchData = async function(filepath) {
 	try {        
 		const response = await fetch(filepath, {
@@ -50,8 +77,22 @@ window.setTransType = function(boxSide,type) {
 	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a#' + type + '_' + boxSide).addClass('active') ;
 } ;
 
-window.setPagenr = function(boxSide,pageNr) {
+window.getPageNr = function(boxSide) {
+	let pageNr = $( '#page_input_' + boxSide ).val() ;
+	return pageNr ;
+} ;
+
+window.setPageNr = function(boxSide,pageNr) {
 	$( '#page_input_' + boxSide ).val(pageNr) ;
+} ;
+
+window.getPageCount = function(boxSide) {
+	let pageCount = $( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text() ;
+	return pageCount ;
+} ;
+
+window.setPageCount = function(boxSide,pageCount) {
+	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
 } ;
 
 //function to get work
@@ -204,8 +245,10 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let filepath = './data/txt/' + fileName ;		
 		//set work
 		setWork(boxSide,workTitle) ;
-		//set page number
-		setPagenr(boxSide,'T1') ;
+		//set page number				
+		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;
+		setPageNr(boxSide,pageNr) ;
 		//set transcription type
 		setTransType(boxSide,type) ;		
 		if(type === 'dipl') {		
@@ -263,11 +306,35 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	//find box of clicked element
 	let click = $( this ) ;
-	//get id of parents a element
+	//get id of element
 	let id_facs = click.attr('id') ;
 	//check if clicked element is a facs type
 	if(id_facs.includes('facs')) {
-		console.log( "facs clicked!" ) ;
+		//get box side
+		let boxSide = id_facs.includes('_left') ? 'left' : 'right' ;
+		//get work
+		let workTitle = getWork(boxSide) ;		
+		//check if work is selected
+		if(workTitle !== undefined && workTitle !== '') {
+			//get page number
+			let pageNr = getPageNr(boxSide) ;
+			//get id of pb element
+			let facsId = $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).children('a').attr('href') ;
+			//remove #
+			facsId = facsId.replace('#', '') ;
+			//remove old text data content			
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;
+			//insert facs data in DOM
+			let div = '<div class="facs"><img src="./data/img/' + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;
+			//scroll to facs element
+			//$( 'div#box-' + boxSide + ' div.auswahl-content-scroll' ).animate({
+			//	scrollTop: $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).offset().top
+			//}, 1000) ;
+
+			
+			console.log( "facs clicked!" ) ;
+		}		
 	}
 }) ;
 
@@ -345,7 +412,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	if(id_this.includes('text-comp')) {		
 		//get id
 		let id_opp = click.children('a.dropdown-item').attr('id') ;
-		//get box side
+		//get opposite box side 
 		let boxSide_opp = id_opp.includes('_left') ? 'left' : 'right' ;
 		//get work title of opposite text
 		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
@@ -369,8 +436,16 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		insertFullText(boxSide_opp) ;
 		//set work
 		setWork(boxSide_opp,workTitle_opp) ;
-		//set page number
-		setPagenr(boxSide_opp,'T1') ;
+		//set page number				
+		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		let pageNr_opp = groupedByTitle[workTitle_opp][0].firstPageNr ;
+		setPageNr(boxSide_opp,pageNr_opp) ;
+		//get number of pages
+		let pageCount_opp = textData_in.results.bindings.find((item, index) => {
+			return item.title.short === workTitle_opp ;
+		}).pageCount ;
+		//put number of pages in DOM
+		$( 'div#box-' + boxSide_opp + ' div.page-skip span#page_nr_' + boxSide_opp ).text(pageCount_opp) ;
 		//change trans to full text
 		setTransType(boxSide_opp,'full') ;
 		//hide dropdown
@@ -428,8 +503,33 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 
-}) ;		
-//}) ;
+}) ;
 
-
-// DOMContentLoaded  end
+//check if pb in text is clicked
+$( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of element
+	let id_pb = click.attr('id') ;
+	//get box side
+	let boxSide_this = click.parents('div.synoptik-box').attr('id').includes('left') ? 'left' : 'right' ;	
+	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;
+	//get work
+	let workTitle_this = getWork(boxSide_this) ;
+	setWork(boxSide_opp,workTitle_this) ;
+	//get page number
+	let pageNr_this = id_pb ;
+	setPageNr(boxSide_opp,pageNr_this) ;
+	//get page count
+	let pageCount_this = getPageCount(boxSide_this) ;
+	setPageCount(boxSide_opp,pageCount_this) ;
+	//get id of pb element
+	let facsId = click.children('a').attr('href') ;
+	//remove #
+	facsId = facsId.replace('#', '') ;
+	//remove old text opposite content
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
+	//insert facs data in DOM
+	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;		
+}) ;

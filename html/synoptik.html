@@ -186,7 +186,7 @@
                 <div class="col-6 pe-2" id="work_left"><span>Tagebuch Nr. XXXX</span></div>
                 <div class="col-6 ps-2">
                     <div class="arrow-left"></div>
-                    <form>Seite <input type="text" name="pagination-select" size="3" id="page_input_left"> von <span id="page_nr_left">136</span></form>
+                    <form>Seite <input type="text" name="pagination-select" size="3" id="page_input_left"> von <span id="page_nr_left">136</span> Seiten</form>
                     <div class="arrow-right"></div>  
                 </div>                  
             </div> <!-- /row -->
@@ -239,8 +239,8 @@
         </div>
         <!-- /nav-werke -->
 
-        <!-- auswahl-content -->
-        <div class="auswahl-content">
+        <!-- auswahl-content -->        
+        <div class="auswahl-content" id="auswahl-content-scroll_left" onscroll="onContainerScroll('left')">
             <div class="row">
                 <div class="col-12">
                     
@@ -361,7 +361,7 @@
                 <div class="col-6 pe-2" id="work_right"><span>Tagebuch Nr. XXXX</span></div>
                 <div class="col-6 ps-2">
                     <div class="arrow-left"></div>
-                    <form>Seite <input type="text" name="pagination-select" size="3" id="page_input_right"> von <span id="page_nr_right">136</span></form>
+                    <form>Seite <input type="text" name="pagination-select" size="3" id="page_input_right"> von <span id="page_nr_right">136</span> Seiten</form>
                     <div class="arrow-right"></div>  
                 </div>                  
             </div> <!-- /row -->
@@ -415,7 +415,7 @@
         <!-- /nav-werke -->
 
         <!-- auswahl-content -->
-        <div class="auswahl-content">
+        <div class="auswahl-content" id="auswahl-content-scroll_right" onscroll="onContainerScroll('right')">        
             <div class="row">
                 <div class="col-12">
                     
