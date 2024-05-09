@@ -1,5 +1,9 @@
 var textData_in ;
 var annoCompData_in ;
+var regPersonData_in ;
+var regIndexData_in ;
+
+let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
 
 function onContainerScroll(boxSide) {
 	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
@@ -183,7 +187,20 @@ $( function() {
 		}) ;
 		//get anno compare data
 		filepath = './data/json/annoCompData.json' ;
-		annoCompData_in = await fetchData(filepath) ;
+		annoCompData_in = await fetchData(filepath) ;		
+		//get index register data
+		filepath = './data/json/register/register_index.json' ;
+		regIndexData_in = await fetchData(filepath) ;		
+		//get org register data
+		filepath = './data/json/register/register_org.json' ;
+		regOrgData_in = await fetchData(filepath) ;
+		//get person register data
+		filepath = './data/json/register/register_person.json' ;
+		regPersonData_in = await fetchData(filepath) ;
+		//get place register data
+		filepath = './data/json/register/register_place.json' ;
+		regPlaceData_in = await fetchData(filepath) ;				
+		console.log( "data loaded!" ) ;		
 	})() ;		
 }) ;
 
@@ -505,7 +522,7 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 
 }) ;
 
-//check if pb in text is clicked
+//check if page break in text is clicked
 $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//find box of clicked element
 	let click = $( this ) ;
@@ -532,4 +549,168 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;		
+}) ;
+
+//check if register in text is clicked
+$( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get box side
+	let boxSide = click.parents('div.synoptik-box').attr('id').includes('left') ? 'left' : 'right' ;
+	//get id of element
+	let id = click.attr('id') ;
+	//get href of element
+	let href = click.attr('href') ;
+	//remove reg
+	href = href.replace('#reg_', '') ;
+	//reset html string
+	let html_str = '' ;	
+	//check if register index is clicked
+	if(click.hasClass('index')) {		
+		//group register data by main
+		let groupedById = Object.groupBy(regIndexData_in.results.bindings, ({ id }) => id) ;
+		//get register data
+		let regData = groupedById[href] ;
+		//group register data by sub
+		let groupedBySub = Object.groupBy(regData, ({ sub }) => sub) ;
+		//build html string		
+		Object.keys(regData[0]).forEach(function(key) {
+			switch(key) {				
+				case 'main':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Hauptbegriff' + table_snips[2]) ;					
+					let main = regData[0].main ;		
+					html_str = html_str.concat(table_snips[3] + main + table_snips[4] + table_snips[5]) ;
+					break;				
+				case 'sub':
+					//check if no sub
+					let length = Object.keys(groupedBySub).length ;
+					if(length === 1 && groupedBySub[''] !== undefined) {
+						console.log( "no sub!" ) ;
+					} else {
+						//get pos from id
+						let pos_id = id.replace('index_', '') ;
+						Object.keys(groupedBySub).forEach(function(sub) {
+							//group sub by pos
+							let groupedByPos = Object.groupBy(groupedBySub[sub], ({ pos }) => pos) ;
+							//compare with pos in id of clicked element
+							if(groupedByPos[pos_id] !== undefined) {
+								//build html string
+								html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Unterbegriff' + table_snips[2]) ;
+								html_str = html_str.concat(table_snips[3] + sub + table_snips[4]) ;
+								html_str = html_str.concat(table_snips[5]) ;
+							} ;
+						});
+					}
+					break;				
+				default:
+					break;
+			}			
+		}) ;		
+	}
+	//check if register org is clicked
+	if(click.hasClass('org')) {
+		//group register data by id
+		let groupedById = Object.groupBy(regOrgData_in.results.bindings, ({ id }) => id) ;
+		//get register data
+		let regData = groupedById[href] ;		
+		//build html string				
+		Object.keys(regData[0]).forEach(function(key) {
+			switch(key) {				
+				case 'name':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Name' + table_snips[2]) ;
+					let name = regData[0].name ;		
+					html_str = html_str.concat(table_snips[3] + name + table_snips[4] + table_snips[5]) ;
+					break;				
+				case 'pid':
+					if(regData[0].pid.includes("gnd")) {
+						html_str = html_str.concat(table_snips[0] + table_snips[1] + 'PID' + table_snips[2]) ;
+						let pid = '<a href="' + regData[0].pid + '" target="blank">'+ regData[0].pid +'</a>' ;						
+						html_str = html_str.concat(table_snips[3] + pid + table_snips[4] + table_snips[5]) ;
+					}					
+					break;				
+				default:
+					break;
+			}			
+		}) ;		
+	}
+	//check if register person is clicked
+	if(click.hasClass('person')) {				
+		//group register data by id
+		let groupedById = Object.groupBy(regPersonData_in.results.bindings, ({ id }) => id) ;
+		//get register data
+		let regData = groupedById[href] ;		
+		//build html string				
+		Object.keys(regData[0]).forEach(function(key) {
+			switch(key) {				
+				case 'surname':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Name' + table_snips[2]) ;
+					let name = regData[0].surname + ', ' + regData[0].forename + ' ' + regData[0].addName ;		
+					html_str = html_str.concat(table_snips[3] + name + table_snips[4] + table_snips[5]) ;
+					break;				
+				case 'birth':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Lebensdaten' + table_snips[2]) ;					
+					let birth = regData[0].birth ;
+         			let death = regData[0].death ;
+         			let birthPlace = regData[0].birthPlace ;
+         			let deathPlace = regData[0].deathPlace ;         			
+					let lifeData = '∗ ' + birth +', ' + birthPlace +'<br>' + '† ' + death + ', ' + deathPlace ;
+					html_str = html_str.concat(table_snips[3] + lifeData + table_snips[4] + table_snips[5]) ;
+					break;				
+				case 'desc':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Kurzbio/Berufliche Funktionen' + table_snips[2]) ;					
+					let desc = regData[0].desc ;
+					html_str = html_str.concat(table_snips[3] + desc + table_snips[4] + table_snips[5]) ;
+					break;
+				case 'pid':
+					if(regData[0].pid.includes("gnd")) {
+						html_str = html_str.concat(table_snips[0] + table_snips[1] + 'PID' + table_snips[2]) ;
+						let pid = '<a href="' + regData[0].pid + '" target="blank">'+ regData[0].pid +'</a>' ;						
+						html_str = html_str.concat(table_snips[3] + pid + table_snips[4] + table_snips[5]) ;
+					}					
+					break;				
+				default:
+					break;
+			}			
+		}) ;		
+	}
+	//check if register place is clicked
+	if(click.hasClass('place')) {				
+		//group register data by id
+		let groupedById = Object.groupBy(regPlaceData_in.results.bindings, ({ id }) => id) ;
+		//get register data
+		let regData = groupedById[href] ;		
+		//build html string				
+		Object.keys(regData[0]).forEach(function(key) {
+			switch(key) {				
+				case 'name':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Name' + table_snips[2]) ;
+					let name = regData[0].name ;		
+					html_str = html_str.concat(table_snips[3] + name + table_snips[4] + table_snips[5]) ;
+					break;
+				case 'name_today':
+					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'heute' + table_snips[2]) ;
+					name_today = regData[0].name_today ;		
+					html_str = html_str.concat(table_snips[3] + name_today + table_snips[4] + table_snips[5]) ;
+					break;				
+				case 'pid':
+					if(regData[0].pid.includes("geonames")) {
+						html_str = html_str.concat(table_snips[0] + table_snips[1] + 'PID' + table_snips[2]) ;
+						let pid = '<a href="' + regData[0].pid + '" target="blank">'+ regData[0].pid +'</a>' ;						
+						html_str = html_str.concat(table_snips[3] + pid + table_snips[4] + table_snips[5]) ;
+					}					
+					break;				
+				default:
+					break;
+			}			
+		}) ;		
+	}
+	//parse html string
+	let html = $.parseHTML(html_str) ;
+	//remove meta box
+	$( 'div#box-' + boxSide + ' div.meta-box' ).find('*').remove() ;
+	//insert meta box in DOM
+	$( 'div#box-' + boxSide + ' div.meta-box' ).append(html) ;
+	//show meta box
+	$( 'div#box-' + boxSide + ' div.meta-box' ).show() ;
+	console.log( "register clicked!" ) ;
 }) ;

@@ -9,8 +9,8 @@ mkdir -p html/data/json/
 cp -r data/json/ html/data/
 mkdir -p html/data/txt/
 cp -r data/txt/ html/data/
-mkdir -p html/data/img/
-cp -r data/img/ html/data/
+#mkdir -p html/data/img/
+#cp -r data/img/ html/data/
 mkdir -p html/staticSearch/
 cp -r staticSearch/stems html/staticSearch/
 cp -r staticSearch/ssTokenString.txt html/staticSearch/
