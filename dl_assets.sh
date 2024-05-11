@@ -17,6 +17,7 @@ cp -r staticSearch/ssTokenString.txt html/staticSearch/
 cp -r assets/staticSrc/js/bootstrap.bundle.js html/js
 cp -r assets/staticSrc/js/nav-control.js html/js
 cp -r assets/staticSrc/js/index.js html/js
+cp -r assets/staticSrc/js/register.js html/js
 cp -r assets/staticSrc/js/synoptik.js html/js
 cp -r assets/staticSrc/js/ssSearch.js html/js
 cp -r assets/staticSrc/js/ssSearchShow.js html/js

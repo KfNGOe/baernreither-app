@@ -2,8 +2,29 @@ var textData_in ;
 var annoCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
+var link ;
+var testDOM ;
+
+synFinishedHook = function(num){} ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
+
+const sleepUntil = async (f, timeoutMs) => {
+	return new Promise((resolve, reject) => {
+	  const timeWas = new Date();
+	  const wait = setInterval(function() {
+		if (f()) {
+		  console.log("resolved after", new Date() - timeWas, "ms");
+		  clearInterval(wait);
+		  resolve();
+		} else if (new Date() - timeWas > timeoutMs) { // Timeout
+		  console.log("rejected after", new Date() - timeWas, "ms");
+		  clearInterval(wait);
+		  reject();
+		}
+	  }, 20);
+	});
+  }
 
 function onContainerScroll(boxSide) {
 	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
@@ -36,7 +57,7 @@ window.fetchData = async function(filepath) {
 	try {        
 		const response = await fetch(filepath, {
 		  signal:  AbortSignal.timeout(3000)
-		}) ;      
+		}) ;		
 		if (filepath.includes('.json')) {            
 			const json_in = await response.json();
 			return json_in ;            
@@ -135,8 +156,32 @@ window.insertFullText = function(boxSide) {
 	console.log( "insert full text!" ) ;
 } ;
 
+window.addEventListener('load', function() {
+	synFinishedHook = function(num) {
+	  //console.log('hook nr: ', num) ;    
+	  if (num == 1) {
+		(async () => {
+			try {
+				await sleepUntil(() => document.querySelector('#hashDummy'), 100);
+				document.querySelector('#hashDummy').click();
+			} catch {
+				alert('timeout') ;
+			}	
+			$('a#hashDummy').remove() ;
+		})() ;		
+	  }
+	  if (num == 2) {		
+	  }        
+	}
+  }) ;
+
 $( function() {
-    console.log( "ready!" );	
+    console.log( "ready!" );
+	//get location #hash
+	let hash = window.location.hash ;
+	//let anchor = $(location).attr('hash');  //get link anchor (#...)                        
+    //    if(anchor.length!=0){  //check if link anchor exists	
+
 	//highlight active nav item	
     $("ul.navbar-nav li.nav-item a.nav-link").removeClass("active");
     $( "ul.navbar-nav li.nav-item a#TBEDIT" ).addClass("active");
@@ -156,7 +201,23 @@ $( function() {
 	(async () => {		
 		//get text data
 		let filepath = './data/json/textData.json' ;
-		textData_in = await fetchData(filepath) ;		
+		textData_in = await fetchData(filepath) ;				
+		//get anno compare data
+		filepath = './data/json/annoCompData.json' ;
+		annoCompData_in = await fetchData(filepath) ;		
+		//get index register data
+		filepath = './data/json/register/register_index.json' ;
+		regIndexData_in = await fetchData(filepath) ;		
+		//get org register data
+		filepath = './data/json/register/register_org.json' ;
+		regOrgData_in = await fetchData(filepath) ;
+		//get person register data
+		filepath = './data/json/register/register_person.json' ;
+		regPersonData_in = await fetchData(filepath) ;
+		//get place register data
+		filepath = './data/json/register/register_place.json' ;
+		regPlaceData_in = await fetchData(filepath) ;				
+
 		//get text data
 		let dateFile ;
 		let textData_arr = textData_in.results.bindings
@@ -185,22 +246,24 @@ $( function() {
 			$( 'div#box-left a#text-comp_left' ).siblings('ul').find('li').remove() ;
 			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;			
 		}) ;
-		//get anno compare data
-		filepath = './data/json/annoCompData.json' ;
-		annoCompData_in = await fetchData(filepath) ;		
-		//get index register data
-		filepath = './data/json/register/register_index.json' ;
-		regIndexData_in = await fetchData(filepath) ;		
-		//get org register data
-		filepath = './data/json/register/register_org.json' ;
-		regOrgData_in = await fetchData(filepath) ;
-		//get person register data
-		filepath = './data/json/register/register_person.json' ;
-		regPersonData_in = await fetchData(filepath) ;
-		//get place register data
-		filepath = './data/json/register/register_place.json' ;
-		regPlaceData_in = await fetchData(filepath) ;				
-		console.log( "data loaded!" ) ;		
+
+		//check if hash exists
+		if(hash.length!=0){
+			//set dummy link
+			link = $('<a>', {
+				id: 'hashDummy',
+				href: hash, // Anchor's ID to be scrolled to				
+			});
+			$('body').append(link);		  
+			//get work title
+			let workTitle = hash.replace('#', '') ;			
+			workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
+			workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
+			//insert text data in DOM
+			insertDiplText('./data/txt/' + workTitle + '_dipl_html.txt','left') ;
+			//insertFullText('left') ;
+			synFinishedHook(1);		
+		}		
 	})() ;		
 }) ;
 
@@ -363,7 +426,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	let id_tei = click.attr('id') ;
 	//check if clicked element is a tei type
 	if(id_tei.includes('tei')) {
-		console.log( "tei clicked!" ) ;
+		console.log( "tei clicked!" ) ;		
 	}
 }) ;
 

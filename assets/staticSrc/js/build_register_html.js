@@ -10,7 +10,7 @@ var register_html = '' ;
 
 // Creating a window with a document
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
-let index_scripts = fs.readFileSync("assets/txt/partials/register/register_scripts.txt", 'utf8');
+let register_scripts = fs.readFileSync("assets/txt/partials/register/register_scripts.txt", 'utf8'); 
 dom_temp_str = dom_temp_str.concat(register_scripts) ;
 const dom = new jsdom.JSDOM (dom_temp_str) ;
 
@@ -50,7 +50,7 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build register
-var register_str = fs.readFileSync("assets/txt/partials/register/register_table.txt", 'utf8'); //assets/txt/partials/register/register_table.txt
+var register_str = fs.readFileSync("data/txt/register/register_table_person.txt", 'utf8');
 var register = $.parseHTML(register_str) ;
 $('html').find('table.table tbody').replaceWith(register) ;
 console.log('dom: ', dom.serialize()) ;
