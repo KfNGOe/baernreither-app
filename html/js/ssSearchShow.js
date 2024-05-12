@@ -282,7 +282,8 @@ window.showResults = function () {
                         let contextBefore_str = contextBefore(source, sourceFile_arr[index], result_arr[i_path]) ;
                         let markedTokens_arr = markedHit(source, sourceFile_arr[index], result_arr[i_path]) ;
                         markedHits_arr[i_path] = markedTokens_arr ;
-                        let hit = '<span class="search-highlight">' + '<a href="#">' + input_search + '</a>' + '</span>'
+                        //href="synoptik.html#search_Bae_MF_6-1_144
+                        let hit = '<span class="search-highlight">' + '<a href="synoptik.html#text_' + markedHits_arr[i_path][0].pos + '" id="search_' + i_path + '">' + input_search + '</a>' + '</span>'
                         let contextAfter_str = contextAfter(source, sourceFile_arr[index], result_arr[i_path]) ;
                         html_str = html_str.concat(threeDots + contextBefore_str + hit + contextAfter_str + threeDots) ;
                         html_str = html_str.concat('</p>') ;                    

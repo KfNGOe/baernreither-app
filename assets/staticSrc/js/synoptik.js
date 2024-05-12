@@ -2,12 +2,12 @@ var textData_in ;
 var annoCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
+var hash ;
 var link ;
-var testDOM ;
-
-synFinishedHook = function(num){} ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
+
+synFinishedHook = function(num){} ;
 
 const sleepUntil = async (f, timeoutMs) => {
 	return new Promise((resolve, reject) => {
@@ -156,6 +156,63 @@ window.insertFullText = function(boxSide) {
 	console.log( "insert full text!" ) ;
 } ;
 
+//function to highlight search results
+window.ssMark = function() {
+	//check hash if text included
+	if(hash.includes('text_')) {
+		//get search string
+		let search = hash.replace('#text_', '') ;
+		//check localstroage if markedHit
+		if(localStorage.getItem('markedHit') !== null) {
+			//get markedHit
+			let markedHit = localStorage.getItem('markedHit') ;			
+			let hit_arr_length = markedHit.length ;
+			switch(length) {
+				//search text in one text content
+				case 1:
+					//check if text is still marked
+					if(!$(hash).hasClass('mark')) {
+						let str2mark = markedHit[0].txt ;
+						let marked_str = '<mark>' + str2mark + '</mark>' ;
+						//insert marked text in DOM
+						$(hash).html($(hash).text().replaceAll(str2mark, marked_str)) ;						
+					} else {
+						console.log( "text already marked!" ) ;
+					}					
+					break;
+				//search text deployed in two or more text contents
+				default:
+					markedHit.forEach(function(hit, index) {
+						switch(index) {
+							case 0:
+								let sub_before = hash.text().substring(0, hit.offset) ;
+								let str2mark = hit.txt ;								
+								let marked_str = '<mark>' + str2mark + '</mark>' ;
+								//insert marked text in DOM
+								$(hash).html(sub_before + marked_str) ;
+								break;
+							case hit_arr_length-1:
+								str2mark = hit.txt ;
+								marked_str = '<mark>' + str2mark + '</mark>' ;	
+								let sub_after = hash.text().substring(hit.offset) ;
+								//insert marked text in DOM
+								$(hash).html(marked_str + sub_after) ;
+							default:
+								str2mark = hit.txt ;
+								marked_str = '<mark>' + str2mark + '</mark>' ;
+								//insert marked text in DOM
+								$(hash).html(marked_str) ;
+								break;
+						}
+					}) ;
+					break;
+			}
+			console.log( "markedHit: ", markedHit ) ;
+		}
+		
+	}
+} ;
+
 window.addEventListener('load', function() {
 	synFinishedHook = function(num) {
 	  //console.log('hook nr: ', num) ;    
@@ -163,6 +220,7 @@ window.addEventListener('load', function() {
 		(async () => {
 			try {
 				await sleepUntil(() => document.querySelector('#hashDummy'), 100);
+				ssMark() ;
 				document.querySelector('#hashDummy').click();
 			} catch {
 				alert('timeout') ;
@@ -178,7 +236,7 @@ window.addEventListener('load', function() {
 $( function() {
     console.log( "ready!" );
 	//get location #hash
-	let hash = window.location.hash ;
+	hash = window.location.hash ;
 	//let anchor = $(location).attr('hash');  //get link anchor (#...)                        
     //    if(anchor.length!=0){  //check if link anchor exists	
 

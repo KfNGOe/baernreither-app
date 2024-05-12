@@ -12,10 +12,6 @@ var tokenize = new Tokenizer();
 
 const tokenOffset = 3 ;
 
-var tokenAll_tmp = {
-   "tokenAll": []
-} ;
-
 var tokens_tmp = [] ;
 var tokens12_tmp = [] ;
 var token_tmp = {} ;
@@ -39,17 +35,23 @@ const dom = new jsdom.JSDOM(`
 // with the window
 const jquery = require("jquery")(dom.window);
 
+//templates
 const fullTextAll_temp = {
     "head": {
         "vars": [
-            "tokens", 
-            "poss"
+            "id", 
+            "type",
+            "cont",
+            "pos"
         ]
     },
     "results": {
         "bindings": [] 
     }
 }
+var tokenAll_tmp = {
+    "tokenAll": []
+ } ;
 
 const filepath_in_tei=process.env.filepath_in_tei ;
 const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
@@ -88,7 +90,11 @@ function buildTokens(fullTextAll,textFull_files) {
                             tokens = splitIn(text12);
                             token12_tmp = {
                                 "token": tokens[0].value
-                            } ;                    
+                            } ;
+                            //check if token has a /
+                            if (token12_tmp.token.includes('/')) {
+                                token12_tmp.token = token12_tmp.token.replace('/','0x2F') ; //utf8 code for /
+                            }                    
                             tokens12_tmp.push(token12_tmp) ;                
                         }
                         tokensPoss12_tmp['tokens'] = tokens12_tmp ;
@@ -99,6 +105,10 @@ function buildTokens(fullTextAll,textFull_files) {
                         token_tmp = {
                             "token": tokens[0].value
                         } ;
+                        //check if token has a /
+                        if (token_tmp.token.includes('/')) {
+                            token_tmp.token = token_tmp.token.replace('/','0x2F') ; //utf8 code for /
+                        }
                         tokens_tmp.push(token_tmp) ;                
                     }                    
                     tokensPoss_tmp['tokens'] = tokens_tmp ;
@@ -169,5 +179,5 @@ let jsonJs_out = tokenAll_tmp ;
 //convert js object to json
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
-fs.writeFileSync('./staticSearch/ssTokens_tmp.json', json_out ) ;
+fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
 console.log('json data written: ', json_out.length, ' bytes')

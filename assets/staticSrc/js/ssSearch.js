@@ -96,7 +96,6 @@ $(document).ready(function() {
   })() ;
 }) ;
 
-
 window.checkHitsNext = function(hit, hits_next) {
   let flag = false ;           
   if(hit.pos_pr === "Bae_MF_6-1_144") { //"pos_pr": "Bae_MF_6-1_144",
@@ -380,4 +379,25 @@ $('button#ssDoSearch').click(function(event) {
       }    
     }
   }) () ;  
+}) ;
+
+//check if register in text is clicked
+$( 'div.search-result table tbody' ).on('click','a',function() {
+  console.log('hit is clicked!') ;  
+  let click = $(this) ;
+  //get id of clicked hit
+  let hitId = click.attr('id') ;
+  hitId = hitId.replace('search_', '') ;
+  //get href of clicked hit
+  let hitHref = click.attr('href') ;
+  //build marked hit
+  let markedHit = {} ;
+  markedHit =  markedHits_arr[hitId] ;
+  //check if marked hit exists in local storage
+  if (localStorage.getItem('markedHit') !== null) {    
+      //delete local storage
+      localStorage.removeItem('markedHit') ;      
+  }
+  //store marked hit in local storage
+  localStorage.setItem('markedHit', JSON.stringify(markedHit)) ;
 }) ;
