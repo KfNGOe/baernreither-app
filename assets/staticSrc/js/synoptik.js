@@ -159,57 +159,51 @@ window.insertFullText = function(boxSide) {
 //function to highlight search results
 window.ssMark = function() {
 	//check hash if text included
-	if(hash.includes('text_')) {
-		//get search string
-		let search = hash.replace('#text_', '') ;
+	if(hash.includes('text_')) {		
 		//check localstroage if markedHit
 		if(localStorage.getItem('markedHit') !== null) {
 			//get markedHit
-			let markedHit = localStorage.getItem('markedHit') ;			
+			let markedHit_str = localStorage.getItem('markedHit') ;			
+			let markedHit = JSON.parse(markedHit_str) ;
 			let hit_arr_length = markedHit.length ;
-			switch(length) {
-				//search text in one text content
-				case 1:
-					//check if text is still marked
-					if(!$(hash).hasClass('mark')) {
-						let str2mark = markedHit[0].txt ;
-						let marked_str = '<mark>' + str2mark + '</mark>' ;
-						//insert marked text in DOM
-						$(hash).html($(hash).text().replaceAll(str2mark, marked_str)) ;						
-					} else {
-						console.log( "text already marked!" ) ;
-					}					
-					break;
-				//search text deployed in two or more text contents
-				default:
-					markedHit.forEach(function(hit, index) {
-						switch(index) {
-							case 0:
-								let sub_before = hash.text().substring(0, hit.offset) ;
-								let str2mark = hit.txt ;								
-								let marked_str = '<mark>' + str2mark + '</mark>' ;
-								//insert marked text in DOM
-								$(hash).html(sub_before + marked_str) ;
-								break;
-							case hit_arr_length-1:
-								str2mark = hit.txt ;
-								marked_str = '<mark>' + str2mark + '</mark>' ;	
-								let sub_after = hash.text().substring(hit.offset) ;
-								//insert marked text in DOM
-								$(hash).html(marked_str + sub_after) ;
-							default:
-								str2mark = hit.txt ;
-								marked_str = '<mark>' + str2mark + '</mark>' ;
-								//insert marked text in DOM
-								$(hash).html(marked_str) ;
-								break;
-						}
-					}) ;
-					break;
-			}
+			let str2mark = '' ;
+			let marked_str = '' ;
+			let sub_before = '' ;
+			let sub_after = '' ;			
+			let hit_id = '' ;
+			let hit_html = '' ;
+			let hit_class = markedHit[0].pos ;
+			markedHit.forEach(function(hit, index) {
+				hit_id = $('#text_' + hit.pos) ;
+				if(index === 0) {					
+					hit_html = hit_id.html() ;
+					let sub_before_tmp = hit_html.slice(-(hit.chN - hit.offset)) ;
+					let lastIndex = hit_html.lastIndexOf(sub_before_tmp) ;
+					sub_before = hit_html.slice(0, lastIndex) ;					
+					str2mark = hit.txt ;
+					marked_str = '<mark class="' + hit_class + '">' + str2mark + '</mark>' ;
+					let sub_after = hit_html.slice(lastIndex + hit.txt.length) ;					
+					//insert marked text in DOM
+					hit_id.html(sub_before + marked_str + sub_after) ;
+					//console.log( "hit marked!" ) ;
+				}
+				if(index > 0 && index < hit_arr_length-1) {					
+					str2mark = hit.txt ;
+					marked_str = '<mark class="' + hit_class + '">' + str2mark + '</mark>' ;
+					//insert marked text in DOM
+					hit_id.html(marked_str) ;
+				}
+				if(index === hit_arr_length-1 && index !== 0) {
+					hit_html = hit_id.html() ;
+					sub_after = hit_html.slice(hit.offset) ;					
+					str2mark = hit.txt ;
+					marked_str = '<mark class="' + hit_class + '">' + str2mark + '</mark>' ;
+					//insert marked text in DOM
+					hit_id.html(marked_str + sub_after) ;
+				}
+			}) ;			
 			console.log( "markedHit: ", markedHit ) ;
-		}
-		
+		}		
 	}
 } ;
 
@@ -219,16 +213,17 @@ window.addEventListener('load', function() {
 	  if (num == 1) {
 		(async () => {
 			try {
-				await sleepUntil(() => document.querySelector('#hashDummy'), 100);
-				ssMark() ;
+				await sleepUntil(() => document.querySelector('#hashDummy'), 100);				
 				document.querySelector('#hashDummy').click();
+				synFinishedHook(2);						
 			} catch {
 				alert('timeout') ;
 			}	
 			$('a#hashDummy').remove() ;
 		})() ;		
 	  }
-	  if (num == 2) {		
+	  if (num == 2) {
+		ssMark() ;		
 	  }        
 	}
   }) ;
