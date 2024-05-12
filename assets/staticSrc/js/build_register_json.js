@@ -163,6 +163,7 @@ function buildReg(jsonJs_reg_files) {
     //read place json files
     jsonJs_in = jsonJs_reg_files['register_place_text'] ; //place.json
     jsonJs_in_xlsx = jsonJs_reg_files['register_place_xlsx'] ; //place_xlsx.json
+    jsonJs_in_temp = jsonJs_reg_files['register_place_temp'] ; //place_temp.json
 
     //group by key                
     groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //place_text.json
@@ -170,6 +171,10 @@ function buildReg(jsonJs_reg_files) {
     }) ;        
     groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //place_xlsx.json
         return item.D ;
+    }) ;
+    //group by key temp
+    groupedByKey_temp = jsonJs_in_temp.results.groupBy( item => {  //place_temp.json
+        return item.B ;
     }) ;
 
     //iterate over text file
@@ -213,6 +218,14 @@ function buildReg(jsonJs_reg_files) {
                     "pos": pos
                 } ;
             } ;
+            //check if key in temp exists
+            if (!groupedByKey_temp[key]) { //place_temp.json
+                console.log('warning: no key ' + key + ' in place_temp.json') ;
+            } else {
+                let item1 = groupedByKey_temp[key][0] ;
+                place.lat = item1.Lat ;
+                place.long = item1.Long ;
+            }        
             //console.log('place = ', place) ;
             places_json.results.bindings.push(place) ;                
         } else {
@@ -328,14 +341,14 @@ console.log('json files: ', jsonFiles) ;
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    //read register *_text or *_xlsx file   
-   if (file.includes('_text.json') || file.includes('_xlsx.json')) {
+   if (file.includes('_text.json') || file.includes('_xlsx.json') || file.includes('_temp.json')) {
     let fileNamePath = 'data/json/register/' + file ;
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     var jsonJs_in_reg = JSON.parse(json_in) ;
-    jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;
-    //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;       
+    jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;    
    }
 }) ;
+console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;       
 //build register json files
 let json_reg_files = buildReg(jsonJs_reg_files) ;
 //iterate over register json tmp files
