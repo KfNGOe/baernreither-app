@@ -799,9 +799,16 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 		Object.keys(regData[0]).forEach(function(key) {
 			switch(key) {				
 				case 'name':
+					//build pid nr
+					let pid = regData[0].pid ;         			
+         			if(pid.includes('geonames')) {            			
+            			pid_nr = pid.replace('https://www.geonames.org/','') ;
+            			pid_nr = pid_nr.replace(pid_nr.substring(pid_nr.lastIndexOf('/')),'') ;            
+         			} ;
 					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Name' + table_snips[2]) ;
 					let name = regData[0].name ;		
-					html_str = html_str.concat(table_snips[3] + name + table_snips[4] + table_snips[5]) ;
+					//html_str = html_str.concat(table_snips[3] + name + table_snips[4] + table_snips[5]) ;
+					html_str = html_str.concat(table_snips[3] + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + table_snips[4] + table_snips[5]) ;
 					break;
 				case 'name_today':
 					html_str = html_str.concat(table_snips[0] + table_snips[1] + 'heute' + table_snips[2]) ;
