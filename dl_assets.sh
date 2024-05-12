@@ -21,5 +21,6 @@ cp -r assets/staticSrc/js/register.js html/js
 cp -r assets/staticSrc/js/synoptik.js html/js
 cp -r assets/staticSrc/js/ssSearch.js html/js
 cp -r assets/staticSrc/js/ssSearchShow.js html/js
+cp -r assets/staticSrc/js/map.js html/js
 
 echo "copy assets done"

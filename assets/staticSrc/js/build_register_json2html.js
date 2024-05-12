@@ -140,7 +140,24 @@ function pos_str(key_arr,annoFile,textFull_files) {
             context_arr = entryContext(key_pos, source, sourceFile, annoFile) ;
             let contextBefore = context_arr[0] ;
             let contextAfter = context_arr[2] ;            
-            let entry = '<a href="synoptik.html#person_' + key_pos + '" id="person_' + key_pos + '">'+ context_arr[1] +'</a>' ;
+            //check register type
+            let entry = '' ;
+            if (key_arr[0].id.toLowerCase().includes('index')) {
+               entry = '<a href="synoptik.html#index_' + key_pos + '" id="index_' + key_pos + '">'+ context_arr[1] +'</a>' ;
+            } ;
+            if (key_arr[0].id.toLowerCase().includes('org')) {
+               entry = '<a href="synoptik.html#org_' + key_pos + '" id="org_' + key_pos + '">'+ context_arr[1] +'</a>' ;
+            } ;
+            if (key_arr[0].id.toLowerCase().includes('person')) {
+               entry = '<a href="synoptik.html#person_' + key_pos + '" id="person_' + key_pos + '">'+ context_arr[1] +'</a>' ;
+            }
+            if (key_arr[0].id.toLowerCase().includes('place')) {
+               entry = '<a href="synoptik.html#place_' + key_pos + '" id="place_' + key_pos + '">'+ context_arr[1] +'</a>' ;
+            }
+            //append button data target + aria controls to dom
+            $('html').find('body').find('div.accordion-item:last-child .accordion-button').attr('data-bs-target','#acc_' + key_pos).attr('aria-controls','acc_' + key_pos) ;
+            //append collapse data parent to dom
+            $('html').find('body').find('div.accordion-item:last-child div.accordion-collapse').attr('id','acc_' + key_pos) ;
             //append pos to dom
             $('html').find('body').find('div.accordion-item:last-child div.accordion-body').append('<p>' + threeDots + contextBefore + entry + contextAfter + threeDots + '</p>') ;            
          }
@@ -156,6 +173,7 @@ function pos_str(key_arr,annoFile,textFull_files) {
    }) ;
    //fetch html from dom and append to html_pos_str         
    html_pos_str = html_pos_str.concat($('html').find('body').html()) ;
+   //console.log('html_pos_str = ', html_pos_str) ;
    //remove appended html from dom
    $('html').find('body *').remove() ;
    //close table cell for pos   
@@ -197,7 +215,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
          //main
          let main = key_arr[0].main ;
          html_str = html_str.concat('<td>' + main + '</td>') ;         
@@ -212,7 +230,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
          //name
          let name = key_arr[0].name ;
          html_str = html_str.concat('<td>' + name + '</td>') ;         
@@ -230,7 +248,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
          //entry
          let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
          html_str = html_str.concat('<td>' + entry + '</td>') ;
@@ -253,26 +271,34 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
       }      
       //place
       if (key_arr[0].id.toLowerCase().includes('place')) {
+         //build pid
+         let pid = key_arr[0].pid ;
+         let pid_name = '';
+         if(pid.includes('geonames')) {
+            pid_name = 'GN' ;
+            pid_nr = pid.replace('http://www.geonames.org/','') ;
+            pid_nr = pid_nr.replace(pid_nr.substring(pid_nr.lastIndexOf('/')),'') ;            
+         } ;
          //start new row
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none">' + id + '</td>') ;
+         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
          //name
          let name = key_arr[0].name ;
-         html_str = html_str.concat('<td>' + name + '</td>') ;
+         //<a class="org" href="#reg_Bae_REG_Org_416">
+         html_str = html_str.concat('<td>' + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + '</td>') ;
          //name today
          let name_today = key_arr[0].name_today ;
          html_str = html_str.concat('<td>' + name_today + '</td>') ;
          //lat
          let lat = key_arr[0].lat ;
-         html_str = html_str.concat('<td>' + lat + '</td>') ;
+         html_str = html_str.concat('<td style="display: none">' + lat + '</td>') ;
          //long
          let long = key_arr[0].long ;
-         html_str = html_str.concat('<td>' + long + '</td>') ;
-         //pid
-         let pid = key_arr[0].pid ;
-         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
+         html_str = html_str.concat('<td style="display: none">' + long + '</td>') ;
+         //pid         
+         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">' + pid_name + '</a></td>') ;
          //pos         
          html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
          //end row
@@ -330,8 +356,8 @@ jsonFiles.forEach((file) => {
       buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) ;
       //write html strings to file
       //exclude indexsub
-      if (!fileName.toLowerCase().includes('indexsub')) {
-         let fileNamePath = 'assets/txt/partials/register/register_table_' + fileName + '.txt' ;    //assets/txt/partials/register/register_table.txt
+      if (!fileName.toLowerCase().includes('indexsub')) {   
+         let fileNamePath = 'data/txt/register/register_table_' + fileName + '.txt' ;    
          fs.writeFileSync(fileNamePath, html_str ) ;
          console.log('html data written: ', html_str.length, ' bytes') ;  
       }      
