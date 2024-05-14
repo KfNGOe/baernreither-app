@@ -19,7 +19,8 @@ CONSTRUCT {
                     a kfngoeo:TextPositionSelector ;
                     kfngoeo:start ?start_nr_del ;
                     kfngoeo:end ?end_nr_del ;
-                ] 
+                ] ;
+                kfngoeo:hasSelector ?s_del_start ;  
             ] ;
         #no annotation body               
     .

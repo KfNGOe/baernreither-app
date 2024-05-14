@@ -1,4 +1,4 @@
-echo "build anno abbrevation"
+echo "build anno index sub"
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
@@ -28,33 +28,33 @@ for file in $inputDir*.ttl; do
     fi
 done
 
-echo "build anno abbr ttl"
+echo "build anno index sub ttl"
 export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
-export file_rq='annoAbbr'
+export file_rq='annoIndexSub'
 export path_out='./data/ttl/annotation/anno_web/instance/'
-export file_out='annoAbbri'
+export file_out='annoIndexSubi'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
 
-echo "import abbri ttl to graphdb"
+echo "import indexSubi ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
 export pathName='data/ttl/annotation/anno_web/instance/'
-export name='annoAbbri'                
+export name='annoIndexSubi'                
 ./gdb_importFile.sh
 
-echo "build anno abbr json"
+echo "build anno index sub json"
 export mime_type='application/sparql-results+json'
 export query_type='SELECT'
 export path_rq='assets/staticSrc/sparql/'
-export file_rq='annoAbbr_json'
+export file_rq='annoIndexSub_json'
 export path_out='./data/json/anno/'
-export file_out='annoAbbr'
+export file_out='annoIndexSub'
 export ext_out='.json'
 ./gdb_queryRepo.sh
 
-echo "build anno abbrevation done!"
+echo "build anno index sub done!"

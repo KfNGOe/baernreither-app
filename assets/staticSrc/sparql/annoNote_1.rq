@@ -17,14 +17,15 @@ CONSTRUCT {
                 a kfngoeo:TextPositionSelector ;
                 kfngoeo:start ?start_nr ;
                 kfngoeo:end ?end_nr ;
-            ] 
+            ] ;
+            kfngoeo:hasSelector ?s_start ; 
         ] ;
         kfngoeo:hasBody ?text_note ;
     .
 }
 WHERE {    
     {
-    	SELECT ?start_nr ?end_nr ?title_short (GROUP_CONCAT(?o_text) AS ?text_note)
+    	SELECT ?s_start ?start_nr ?end_nr ?title_short (GROUP_CONCAT(?o_text) AS ?text_note)
         WHERE {
             ?s_tei 
                 a kfngoeo:StartTag ;
@@ -66,7 +67,7 @@ WHERE {
             .
             BIND(xsd:integer(SUBSTR(?o_pos_text,strlen(?title_short)+2)) AS ?text_nr)
     		FILTER(?start_nr < ?text_nr && ?text_nr < ?end_nr)            
-        } GROUP BY ?start_nr ?end_nr ?title_short
+        } GROUP BY ?start_nr ?end_nr ?title_short ?s_start
     }  
     BIND (IF(BOUND(?start_nr), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno)
     BIND(?title_short AS ?title_note)
