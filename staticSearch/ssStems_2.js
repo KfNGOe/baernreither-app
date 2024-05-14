@@ -95,6 +95,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
     ssTokenStr = ssTokenStr.endsWith(separator) ? ssTokenStr.slice(0, -1) : ssTokenStr ;
 } ; 
 
+console.time('buildStems') ;
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
@@ -104,4 +105,5 @@ countArrNr = tokenAll_tmp.tokenAll.length ;
 buildStems(tokenAll_tmp) ;
 //write text file
 fs.writeFileSync('./staticSearch/ssTokenString.txt', ssTokenStr ) ;
-console.log('text data written: ', ssTokenStr.length, ' bytes')
+console.log('text data written: ', ssTokenStr.length, ' bytes') ;
+console.timeEnd('buildStems') ;

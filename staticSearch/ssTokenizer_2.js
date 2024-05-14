@@ -156,15 +156,18 @@ console.log('json files: ', jsonFiles) ;
 //build full text from dipl text json files
 let textFull_files = {} ;
 //iterate over dipl files
-jsonFiles.forEach((file) => {   
-   //read full text json files
-   let fileNamePath = 'data/json/full/' + file ;   
-   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
-   console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_full = JSON.parse(json_in) ;   
-   //read full text to files
-   let fileName = file.replace('.json','') ;
-   textFull_files[fileName] = jsonJs_in_full ;   
+jsonFiles.forEach((file) => {
+    //exclude _tmp.json files
+    if (!file.includes('_tmp.json')) {
+        //read full text json files
+        let fileNamePath = 'data/json/full/' + file ;   
+        let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+        console.log('json data read: ', json_in.length, ' bytes') ;
+        let jsonJs_in_full = JSON.parse(json_in) ;   
+        //read full text to files
+        let fileName = file.replace('.json','') ;
+        textFull_files[fileName] = jsonJs_in_full ;        
+    }
 }) ;
 //
 //tokenize all full text files
