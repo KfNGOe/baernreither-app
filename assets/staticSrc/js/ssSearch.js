@@ -86,7 +86,7 @@ $(document).ready(function() {
       });
       //get full texts
       textData_arr.forEach(async function(result, index) {
-        let fileName_full = result.fileName.replace('_dipl', '_full') ;          
+        let fileName_full = result.fileName.replace('_all', '_full') ;          
         filepath = './data/json/full/' + fileName_full ;
         fullTexts[fileName_full] = await fetchData(filepath) ;
       });

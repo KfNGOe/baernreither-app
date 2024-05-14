@@ -50,12 +50,12 @@ jsonFiles.forEach((file,index_file) => {
     let fileNamePath = 'data/json/dipl/' + file ;   
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     console.log('json data read: ', json_in.length, ' bytes') ;
-    let text_dipl = JSON.parse(json_in) ;       
-    //find title in text_dipl json    
-    groupedByType = text_dipl.results.bindings.groupBy( item => {
+    let text_all = JSON.parse(json_in) ;       
+    //find title in text_all json    
+    groupedByType = text_all.results.bindings.groupBy( item => {
         return item.type.value ;
     } ) ;
-    groupedByPos = text_dipl.results.bindings.groupBy( item => {
+    groupedByPos = text_all.results.bindings.groupBy( item => {
         return item.pos.value ;
     } ) ;
     let title = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
@@ -81,7 +81,7 @@ jsonFiles.forEach((file,index_file) => {
     } else {
         console.log('error: no title') ;
     }
-    //find date in text_dipl json
+    //find date in text_all json
     let date = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
         return (item.name.value == 'http://www.tei-c.org/ns/1.0/date'
             && item.attr.value == 'when') ;
@@ -92,8 +92,8 @@ jsonFiles.forEach((file,index_file) => {
     } else {
         console.log('error: no date') ;
     }
-    //find page number of text_dipl json
-    groupedByName = text_dipl.results.bindings.groupBy( item => {
+    //find page number of text_all json
+    groupedByName = text_all.results.bindings.groupBy( item => {
         if (item.type.value === "https://github.com/KfNGOe/kfngoeo#StartTag") {
             if (item.name.value === "http://www.tei-c.org/ns/1.0/pb") {
                 return item.name.value ;

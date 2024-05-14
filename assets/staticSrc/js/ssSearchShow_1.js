@@ -262,7 +262,7 @@ window.showResults = function () {
             let sourceFile_arr = [] ;            
             for (i_source = 0; i_source < source_arr.length; i_source++) {
                 let source = source_arr[i_source] ;                
-                sourceFile_arr.push(diplTexts[source + '_dipl.json']) ;    
+                sourceFile_arr.push(diplTexts[source + '_all.json']) ;    
                 //let fileNamePath = 'data/json/' + source + '_full.json' ;    //data/json/Bae_TB_8_full.json
                 //sourceFile_arr.push(await fetchData(fileNamePath)) ;                
             }

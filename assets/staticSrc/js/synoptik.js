@@ -313,7 +313,7 @@ $( function() {
 			workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
 			workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
 			//insert text data in DOM
-			insertDiplText('./data/txt/' + workTitle + '_dipl_html.txt','left') ;
+			insertDiplText('./data/txt/' + workTitle + '_all_html.txt','left') ;
 			//insertFullText('left') ;
 			synFinishedHook(1);		
 		}		
@@ -420,7 +420,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 			let workTitle = getWork(boxSide) ;
 			if(typeNew === 'dipl') {
 				//get file name
-				let fileName = workTitle + '_dipl_html.txt' ;	
+				let fileName = workTitle + '_all_html.txt' ;	
 				//get text data
 				let filepath = './data/txt/' + fileName ;		
 				//insert dipl text data in DOM	
@@ -560,7 +560,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		}
 		//insert compare text data in DOM
 		//get opposite file name
-		let fileName_opp = workTitle_opp + '_dipl_html.txt' ;
+		let fileName_opp = workTitle_opp + '_all_html.txt' ;
 		//get opposite text data
 		let filepath_opp = './data/txt/' + fileName_opp ;
 		//insert dipl text data in DOM

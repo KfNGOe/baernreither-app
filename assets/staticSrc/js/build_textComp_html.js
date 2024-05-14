@@ -86,7 +86,7 @@ groupedBySource = jsonJs_in.results.bindings.groupBy( item => {
  //collect the html partials of the works into one html dom
  Object.keys(groupedBySource).forEach((key) => {
       console.log('key = ', key) ;
-      let fileNamePath = 'data/txt/' + key + '_dipl_html.txt' ;    //data/txt/Bae_TB_8_dipl_html.txt  
+      let fileNamePath = 'data/txt/' + key + '_all_html.txt' ;    //data/txt/Bae_TB_8_all_html.txt  
       console.log('filename = ', fileNamePath) ;
       let html_str = fs.readFileSync(fileNamePath, 'utf8') ;
       //let html_str = '<div><a href="" id="comp_Bae_TB_8_130">test</a>test<a href="" id="comp_Bae_TB_8_140">test</a></div>';

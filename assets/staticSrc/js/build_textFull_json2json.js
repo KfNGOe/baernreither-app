@@ -44,25 +44,25 @@ let jsonJs_in_annoFull = JSON.parse(json_in) ;
 groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => {
    return item.source_target.value ;
 } ) ;
-//read json dipl directory
-let jsonFiles = fs.readdirSync('data/json/dipl/') ;
+//read json all directory
+let jsonFiles = fs.readdirSync('data/json/all/') ;
 console.log('json files: ', jsonFiles) ;
-//build full text from dipl text json files
+//build full text from all text json files
 let textFull_files = {} ;
-//iterate over dipl files
+//iterate over *all files
 jsonFiles.forEach((file) => {
    //get title_short
-   title_short = file.replace('_dipl.json','') ;
+   title_short = file.replace('_all.json','') ;
    //init text full
    let text_full = JSON.parse(JSON.stringify(text_full_temp)) ;
-   //read dipl text json files
-   let fileNamePath = 'data/json/dipl/' + file ;   
+   //read all text json files
+   let fileNamePath = 'data/json/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_dipl = JSON.parse(json_in) ;
+   let jsonJs_in_all = JSON.parse(json_in) ;
    //get only text items
    //group by Text
-   groupedByText_text = jsonJs_in_dipl.results.bindings.groupBy( item => {
+   groupedByText_text = jsonJs_in_all.results.bindings.groupBy( item => {
       return item.type.value === 'https://github.com/KfNGOe/kfngoeo#Text' ;      
    }) ;
    //group Text by pos
@@ -71,7 +71,7 @@ jsonFiles.forEach((file) => {
    }) ;
    let item_hit = {} ;
    let item_text_pos = '' ;
-   if(jsonJs_in_dipl.results.bindings.find((item, index) => {
+   if(jsonJs_in_all.results.bindings.find((item, index) => {
       item_hit = item ; 
       return item.type.value === 'https://github.com/KfNGOe/kfngoeo#StartTag' 
       && item.name.value === 'http://www.tei-c.org/ns/1.0/text'}) !== undefined) {

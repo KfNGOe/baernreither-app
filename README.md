@@ -11,14 +11,20 @@ dev-baernreither-app
 - https://fleetdm.com/engineering/tips-for-github-actions-usability
 
 # Workflows
-## Workflow ingest
+## Workflow conversion text xml to ttl
 /tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ## Workflow conversion text ttl to json
-/ttl/text/*.ttl -> build_textDipl_ttl2json.sh -> textDipl_json.rq -> *_dipl.json
+/ttl/text/*.ttl -> build_texts_ttl2json.sh -> /*_all.json
+
+## Workflow build annotation levels for full texts
+*.ttl -> 
+
+## Workflow build annotation level for full texts
+-> annoTextFull.json
 
 ## Workfloe build full text json
-*_dipl.json + annoTextFull.json -> build_textFull_json2json.sh -> build_textFull_json2json.js -> *_full.json
+*_all.json + annoTextFull.json -> build_textFull_json2json.sh -> build_textFull_json2json.js -> *_full.json
 
 ## Workflow register
 ### convert xlsx to json
