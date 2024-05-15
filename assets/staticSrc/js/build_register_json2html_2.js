@@ -316,15 +316,16 @@ let textFull_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {   
    //read full text json files
-   let fileNamePath = 'data/json/full/' + file ;   
-   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
-   console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_full = JSON.parse(json_in) ;   
-   //read full text to files
-   let fileName = file.replace('.json','') ;
-   textFull_files[fileName] = jsonJs_in_full ;   
+   if(!file.includes('_tmp.json')) {
+      let fileNamePath = 'data/json/full/' + file ;   
+      let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+      console.log('json data read: ', json_in.length, ' bytes') ;
+      let jsonJs_in_full = JSON.parse(json_in) ;   
+      //read full text to files
+      let fileName = file.replace('.json','') ;
+      textFull_files[fileName] = jsonJs_in_full ;   
+   }   
 }) ;
-//
 
 //get register
 //read json register directory

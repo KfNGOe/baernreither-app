@@ -53,7 +53,7 @@ register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_
                                                             -> anno*_json.json
 
 ### convert json person register to html 
-data/json/full/*_full.json + register_person.json + annoPerson.json -> build_register_json2html.sh -> build_register_json2html.js -> register_person.html<br>
+data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_*.html<br>
 <br>
 
 ## Workflow search
