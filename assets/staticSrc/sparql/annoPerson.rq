@@ -20,19 +20,25 @@ CONSTRUCT {
                 a kfngoeo:TextPositionSelector ;
                 kfngoeo:start ?start_nr_target ;
             	kfngoeo:end ?end_nr_target ;
-            ] 
+            ] ;
+            kfngoeo:hasSelector ?s_start ; 
         ] ;
 		kfngoeo:hasBody ?_bn_body 
     .
     ?_bn_body
             a kfngoeo:TextualBody;
             kfngoeo:hasSource ?title_body ; 
-            kfngoeo:hasSelector ?start_nr_body ;	#start nr of register item                
+            kfngoeo:hasSelector ?_bn_body_selector ;
+            kfngoeo:hasSelector ?s_item ;	
+    .
+    ?_bn_body_selector
+        a kfngoeo:TextPositionSelector ;
+        kfngoeo:start ?start_nr_body ;
     .
 }
 WHERE {    
     {
-        SELECT DISTINCT ?start_nr_body ?o_key_txt ?title_body
+        SELECT DISTINCT ?s_item ?start_nr_body ?o_key_txt ?title_body
         WHERE {
             ?s_tei 
                 a kfngoeo:StartTag ;
@@ -60,11 +66,11 @@ WHERE {
     OPTIONAL {
         BIND (IF(BOUND(?o_key_txt), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
         BIND(IF(BOUND(?s_anno), BNODE(), ?nothing) AS ?_bn_body)
+        BIND(IF(BOUND(?s_anno), BNODE(), ?nothing) AS ?_bn_body_selector)
     }
     {
-        SELECT ?o_key ?o_pos_start_nr ?o_pos_end_nr ?title_target
-		WHERE {
-            #BIND (IF(BOUND(?o_key_val), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+        SELECT ?s_start ?o_key ?o_pos_start_nr ?o_pos_end_nr ?title_target
+		WHERE {            
             ?s_tei_1 
                 a kfngoeo:StartTag ;
                 kfngoeo:elementName tei:TEI ;

@@ -18,7 +18,7 @@ for file in $inputDir*.xml; do
         #export pathName
         export pathName=$pathname
         export name=$name
-        ./build_text_tei2ttl.sh
+        ./build_tei2ttl.sh
         fi
     fi
 done

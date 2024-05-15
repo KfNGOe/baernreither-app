@@ -30,24 +30,28 @@ anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
 
 ## Workflow register
 ### convert xlsx to json
-*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_person_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_place_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_org_xlsx.json<br>
-*.xlsx -> build_xlsx2json.sh -> build_xlsx2json.js -> register_index_xlsx.json<br>
+*.xlsx -> build_register_xlsx2json.sh -> register_*_xlsx.json<br>
 
-### build person entity json from all ttl files 
-/ttl/text/*.ttl -> gdb_queryRepo.sh -> person_text_json.rq -> register_person_text.json<br>
-### build register person json tmp
-register_person_xlsx.json + register_person_text.json -> build_register_json.sh -> build_register_json.js -> register_person_tmp.json<br>
-### convert register person tmp to xml
-register_person_tmp.json -> build_person_json2tei.sh -> build_person_json2tei.js -> register_person.xml<br>
-### convert register person xml to ttl
-register_person.xml -> build_tei2ttl.sh -> register_person.ttl<br>
-### convert register person ttl to json
-register_person.ttl + register_person_tmp.json -> register_id_json.rq -> build_register_id.js -> register_person.json
-### build anno person
-/ttl/text/*.ttl + register_person.ttl -> gdb_queryRepo.sh -> annoPerson.rq -> annoPerson.ttl
-annoPerson.ttl -> gdb_queryRepo.sh -> annoPerson_json.rq -> annoPerson_json.json
+### build register entities from all ttl files 
+/ttl/text/*.ttl -> build_register_texts_ttl2json.sh -> register_*_text.json<br>
+
+### build register json tmp
+register_*_xlsx.json + register_*_text.json -> build_register_json.sh -> register_*_tmp.json<br>
+
+### convert register tmp to xml
+register_*_tmp.json -> build_register_json2tei.sh -> register_*.xml<br>
+
+### convert register xml to ttl
+register_*.xml -> build_register_tei2ttl.sh -> register_*.ttl<br>
+
+### add id to register
+register_*.ttl -> build_register_id_ttl2json.sh -> register_id.json
+register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_*.json
+
+### build anno levels of register
+/ttl/text/*.ttl + register_*_.ttl -> build_annoRegister.sh  -> anno*.ttl
+                                                            -> anno*_json.json
+
 ### convert json person register to html 
 data/json/full/*_full.json + register_person.json + annoPerson.json -> build_register_json2html.sh -> build_register_json2html.js -> register_person.html<br>
 <br>

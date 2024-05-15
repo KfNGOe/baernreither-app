@@ -44,15 +44,12 @@ WHERE {
         #get element position of tei:term
         BIND(concat(?title_short, str(?o_pos_index_nr+5)) AS ?o_pos_term_sub)
         ?s_term_sub a kfngoeo:StartTag ;
-            kfngoeo:elementName tei:term ;            		
+            kfngoeo:elementName tei:term ;
+            kfngoeo:hasAttr [
+        		kfngoeo:attrName "key" ;
+                kfngoeo:attrValue ?o_sub_index ;
+			] ;			
             kfngoeo:elementPos ?o_pos_term_sub ;  	
-    	.
-        #get element position of tei:term content
-    	BIND(concat(?title_short, str(?o_pos_index_nr+6)) AS ?o_pos_text)
-        ?s_text a kfngoeo:Text ;
-			kfngoeo:hasContent ?o_text ;
-			kfngoeo:elementPos ?o_pos_text ;
- 		.
-        BIND (?o_text AS ?o_sub_index)
+    	.        
     }
 } ORDER BY ?o_main_index ?o_sub_index

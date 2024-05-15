@@ -21,7 +21,9 @@ WHERE {
     	] ;
         kfngoeo:hasBody [
   			kfngoeo:hasSource ?o_source_body ;
-  			kfngoeo:hasSelector ?o_start_nr_body
+  			kfngoeo:hasSelector [
+				kfngoeo:start ?o_start_nr_body ;
+			] ;			
     	]
     .
     BIND(concat(?o_source_body, '_', str(?o_start_nr_body)) AS ?id)

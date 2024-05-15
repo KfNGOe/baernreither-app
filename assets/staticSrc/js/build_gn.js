@@ -39,8 +39,8 @@ async function getGNDData(gndUrl) {
   }
 
 (async () => {
-
-    var json = fs.readFileSync('./data/json_xlsx/place_xlsx.json', 'utf8');
+    
+    var json = fs.readFileSync('./data/json/register/register_place_xlsx.json', 'utf8');
     console.log('json data read: ', json.length, ' bytes')
     var jsonJS = JSON.parse(json) ;
     var places = jsonJS.Tabelle1 ;

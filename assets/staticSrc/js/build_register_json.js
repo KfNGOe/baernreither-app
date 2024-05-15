@@ -19,12 +19,6 @@ const uid = new ShortUniqueId({ length: 10 });
 
 var convert = require('xml-js') ;
 
-function generateId() {
-    //random number + pos   
-    return uid.rnd() ;
-    //return item.pos.value ;
- }
-
 function buildReg(jsonJs_reg_files) { 
     //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
     //build register templates
@@ -355,6 +349,6 @@ let json_reg_files = buildReg(jsonJs_reg_files) ;
 for (let key in json_reg_files) {
     let jsonStr = JSON.stringify(json_reg_files[key]) ;
     //write json file
-    fs.writeFileSync('data/json/register/' + key + '_tmp.json', jsonStr) ;
-    console.log('json file written: ', key + '.json') ;
+    fs.writeFileSync('data/json/register/' + key + '_tmp.json', jsonStr) ;    
+    console.log('json data write: ', jsonStr.length, ' bytes') ;
 }
