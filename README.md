@@ -18,13 +18,15 @@ dev-baernreither-app
 /ttl/text/*.ttl -> build_texts_ttl2json.sh -> /*_all.json
 
 ## Workflow build annotation levels for full texts
-*.ttl -> 
+*.ttl -> build_anno*.sh -> anno*i.ttl
+                        -> anno*.json
 
 ## Workflow build annotation level for full texts
--> annoTextFull.json
+anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
+                                    -> annoTextFull.json
 
 ## Workfloe build full text json
-*_all.json + annoTextFull.json -> build_textFull_json2json.sh -> build_textFull_json2json.js -> *_full.json
+*_all.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
 
 ## Workflow register
 ### convert xlsx to json
