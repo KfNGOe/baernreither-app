@@ -19,16 +19,17 @@ CONSTRUCT {
                 a kfngoeo:TextPositionSelector ;
                 kfngoeo:start ?start_nr ;
                 kfngoeo:end ?end_nr ;
-            ] 
+            ] ;
+            kfngoeo:hasSelector ?s_ttl ;
         ] ;
         #no annotation body               
     .
 }
 WHERE {
     {
-        SELECT ?s_anno ?title_anno (?start_nr_anno AS ?start_nr) (?end_nr_anno AS ?end_nr) (?o_type_anno AS ?type_anno)
+        SELECT DISTINCT  ?s_anno ?s_ttl ?title_anno (?start_nr_anno AS ?start_nr) (?end_nr_anno AS ?end_nr) (?o_type_anno AS ?type_anno)
         WHERE {            
-            ?s_anno
+            ?s_ttl
                 a ?o_type_anno ;                
                 kfngoeo:hasTarget [
                     kfngoeo:hasSource ?title_anno ;
@@ -36,9 +37,12 @@ WHERE {
                         a kfngoeo:TextPositionSelector ;
                         kfngoeo:start ?start_nr_anno ;
                         kfngoeo:end ?end_nr_anno ;
-                    ] 
+                    ] ;                    
                 ] ;                
-            .            
+            .
+            OPTIONAL {
+                BIND(IF(BOUND(?s_ttl), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+            }            
         }
     } .
 } 
