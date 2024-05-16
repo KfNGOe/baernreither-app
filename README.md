@@ -11,22 +11,25 @@ dev-baernreither-app
 - https://fleetdm.com/engineering/tips-for-github-actions-usability
 
 # Workflows
-## Workflow conversion text xml to ttl
+## Workflow texts
+### conversion text xml to ttl
 /tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
-## Workflow conversion text ttl to json
+### conversion text ttl to json
 /ttl/text/*.ttl -> build_texts_ttl2json.sh -> /*_all.json
 
-## Workflow build annotation levels for full texts
+### build annotation levels for full texts
 *.ttl -> build_anno*.sh -> anno*i.ttl
                         -> anno*.json
 
-## Workflow build annotation level for full texts
+### build annotation level for full texts
 anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
                                     -> annoTextFull.json
 
-## Workfloe build full text json
+### build full text json
 *_all.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
+
+### conversion texts all json to html 
 
 ## Workflow register
 ### convert xlsx to json
@@ -52,12 +55,20 @@ register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_
 /ttl/text/*.ttl + register_*_.ttl -> build_annoRegister.sh  -> anno*.ttl
                                                             -> anno*_json.json
 
-### convert json person register to html 
+### convert register json to html 
 data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_*.html<br>
 <br>
 
 ## Workflow search
+### tokenize full texts
+data/json/full/*_full.json -> build_ssTokenizer.sh -> ssTokens_tmp.json
 
+### build all tokens
+ssTokens_tmp.json -> build_ssTokenAll.sh -> tokenAll_tmp.json
+
+### build stemms
+tokenAll_tmp.json -> build_ssStems.sh   -> /stems/*.json
+                                        -> ssTokenString.txt
 
 # HTML Attribute values
 ## @class, @id and @href

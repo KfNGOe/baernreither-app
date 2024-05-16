@@ -17,8 +17,8 @@ const filepath_rq = process.env.filepath_rq ;
 //const ext_out = process.env.ext_out ; // '.ttl'
 const filepath_out = process.env.filepath_out ;
 
-const readTimeout = 30000 ;
-const writeTimeout = 30000 ;
+const readTimeout = 60000 ;
+const writeTimeout = 60000 ;
 const config = new RepositoryClientConfig(endpoint)
     .setEndpoints([ endpoint + '/repositories/' + repo_name])
     //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')

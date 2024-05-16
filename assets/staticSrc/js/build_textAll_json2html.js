@@ -108,7 +108,7 @@ function groupAnnoFiles(jsonJs_anno_files) {
    return groupedBy_files ;
 }
 
-function buildDiplText(jsonJs_in_all, groupedBy_files) {   
+function buildAllText(jsonJs_in_all, groupedBy_files) {   
    html_str = '' ;   
    //console.log('groupedBy_files =', groupedBy_files) ; 
    //find tei:body
@@ -236,9 +236,9 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                            case 'n':
                               //set 1st id
                               id = item.val.value ;
-                              html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
+                              html_str = html_str.concat('<br><span class="' + classNames + '" id="' + id + '">') ;
                               //set html string for img with 1st id
-                              html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '" style="display: none">') ;
+                              html_str_tmp = html_str_tmp.concat('<img src="images/pageBreak.png" title="' + id + '">') ;
                               break ;
                            default:
                               break ;
@@ -247,8 +247,8 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                      //set 2nd id
                      id = 'pb_' + key ;
                      //concatenate html string
-                     html_str = html_str.concat('<a href="#' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
-                     html_str = html_str.concat('</span>') ;
+                     html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
+                     html_str = html_str.concat('</span><br>') ;
                      break ;                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {                        
@@ -264,13 +264,13 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                            //check status and set class
                            switch(item_anno.status.value) {
                               case 'equal':
-                                 classNames = classNames.concat('anchor comp-equal') ;                                  
+                                 classNames = classNames.concat('anchor comp-span-equal') ;                                  
                                  break ;
                               case 'notEqual':
-                                 classNames = classNames.concat('anchor comp-inequal') ;                                 
+                                 classNames = classNames.concat('anchor comp-span-inequal') ;                                 
                                  break ;
                               case 'missing':
-                                 classNames = classNames.concat('anchor comp-not') ;                                 
+                                 classNames = classNames.concat('anchor comp-span-not') ;                                 
                                  break ;
                               default:
                                  break ;
@@ -309,7 +309,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                         //set id
                         id = 'index_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')   
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/orgName':
@@ -324,7 +324,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                         //set id
                         id = 'org_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;                     
                   case 'http://www.tei-c.org/ns/1.0/persName':
@@ -339,7 +339,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                         //set id
                         id = 'person_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;   
                   case 'http://www.tei-c.org/ns/1.0/placeName':
@@ -354,7 +354,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                         //set id
                         id = 'place_' + key ;
                         //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none">')
+                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')
                      }                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/note':                     
@@ -379,7 +379,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                      classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set id
                      id = 'note_' + key ;
-                     html_str = html_str.concat('<a href="#' + key + '" style=""><img src="images/note.png" title="note" style="display: none"></a><div class="' + classNames + '" id="' + id + '" style="display: none">') ;
+                     html_str = html_str.concat('<a href="#' + key + '"><img src="images/note.png" title="note"></a><div class="' + classNames + '" id="' + id + '" style="display: none">') ;
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/ref':
                      //set class
@@ -396,7 +396,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                      } ) ;
                      //set id
                      id = 'ref_' + key ;
-                     html_str = html_str.concat('<a class="' + classNames + '" href="' + href + '" id="' + id + '" style="" target="_blank">') ;
+                     html_str = html_str.concat('<a class="' + classNames + '" href="' + href + '" id="' + id + '" target="_blank">') ;
                      break
                      /*
                   case 'http://www.tei-c.org/ns/1.0/app':
@@ -457,13 +457,13 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                      //check status and set class
                      switch(item_anno.status.value) {
                         case 'equal': 
-                           classNames = classNames.concat('comp-equal ') ;                        
+                           classNames = classNames.concat('comp-span-equal ') ;                        
                            break ;
                         case 'notEqual':
-                           classNames = classNames.concat('comp-inequal ') ;                        
+                           classNames = classNames.concat('comp-span-inequal ') ;                        
                            break ;
                         case 'missing':
-                           classNames = classNames.concat('comp-not ') ;                        
+                           classNames = classNames.concat('comp-span-not ') ;                        
                            break ;
                         default:
                            break ;
@@ -610,7 +610,7 @@ function buildDiplText(jsonJs_in_all, groupedBy_files) {
                id = 'text_' + key ;               
                if (hit_flag) {                  
                   //concatenate html string
-                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '" style="">') ;
+                  html_str = html_str.concat('<span class="' + classNames + '" id="' + id + '">') ;
                   html_str = html_str.concat(item[0].cont.value) ;
                   html_str = html_str.concat('</span>') ;                  
                } else {                   
@@ -648,29 +648,28 @@ jsonFiles.forEach((file) => {
 let groupedBy_files = {} ;
 groupedBy_files = groupAnnoFiles(jsonJs_anno_files) ;
 
-//read json dipl directory
-jsonFiles = fs.readdirSync('data/json/dipl/') ;
+//read json all directory
+jsonFiles = fs.readdirSync('data/json/all/') ;
 console.log('json files: ', jsonFiles) ;
-//iterate over dipl files
+//iterate over files all
 jsonFiles.forEach((file) => {
-   //read dipl text json files
-   let fileNamePath = 'data/json/dipl/' + file ;   
+   //read text all json files
+   let fileNamePath = 'data/json/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_all = JSON.parse(json_in) ;   
-   buildDiplText(jsonJs_in_all, groupedBy_files) ;
-   
+   buildAllText(jsonJs_in_all, groupedBy_files) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_all_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
-   //convert html strings to html 
    console.log('text data written: ', html_str.length, ' bytes')
+   //convert html strings to html    
    let html = $.parseHTML(html_str) ;   
    $('html').find('body').append('<div id="' + file.replace('.json', '') + '"></div>') ;    
    $('html').find('body').children('div').append(html) ;   
 
    //write html file
-   fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
+   fileNamePath = 'html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
    fs.writeFileSync(fileNamePath, dom.serialize() ) ;
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
 

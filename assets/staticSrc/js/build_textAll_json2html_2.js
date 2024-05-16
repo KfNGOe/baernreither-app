@@ -108,7 +108,7 @@ function groupAnnoFiles(jsonJs_anno_files) {
    return groupedBy_files ;
 }
 
-function buildDiplText(jsonJs_in_all, groupedBy_files) {   
+function buildAllText(jsonJs_in_all, groupedBy_files) {   
    html_str = '' ;   
    //console.log('groupedBy_files =', groupedBy_files) ; 
    //find tei:body
@@ -648,17 +648,17 @@ jsonFiles.forEach((file) => {
 let groupedBy_files = {} ;
 groupedBy_files = groupAnnoFiles(jsonJs_anno_files) ;
 
-//read json dipl directory
-jsonFiles = fs.readdirSync('data/json/dipl/') ;
+//read json all directory
+jsonFiles = fs.readdirSync('data/json/all/') ;
 console.log('json files: ', jsonFiles) ;
-//iterate over dipl files
+//iterate over files all
 jsonFiles.forEach((file) => {
-   //read dipl text json files
-   let fileNamePath = 'data/json/dipl/' + file ;   
+   //read text all json files
+   let fileNamePath = 'data/json/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_all = JSON.parse(json_in) ;   
-   buildDiplText(jsonJs_in_all, groupedBy_files) ;
+   buildAllText(jsonJs_in_all, groupedBy_files) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_all_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
@@ -669,7 +669,7 @@ jsonFiles.forEach((file) => {
    $('html').find('body').children('div').append(html) ;   
 
    //write html file
-   fileNamePath = 'html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
+   fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
    fs.writeFileSync(fileNamePath, dom.serialize() ) ;
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
 
