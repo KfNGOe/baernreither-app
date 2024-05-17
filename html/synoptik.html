@@ -10,8 +10,9 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">    
     <!-- Custom styles for this template -->
-    <link href="css/baernreither.css" rel="stylesheet">    
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.7.1.js"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script></head>
+    <link href="css/baernreither.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">        
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.7.1.js"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script></head>
         <body>
             <div class="col-lg-8 mx-auto px-0 pt-0 pb-5">
                 <header class="d-flex align-items-center">  
@@ -217,10 +218,10 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" id="facs_left">Faksimile</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="display: none">
             <a class="nav-link" href="#" id="tei_left">TEI</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="display: none">
             <a class="nav-link" href="#" id="rdf_left">RDF</a>
           </li>
 
@@ -245,11 +246,6 @@
         <div class="auswahl-content" id="auswahl-content-scroll_left" onscroll="onContainerScroll('left')">
             <div class="row">
                 <div class="col-12">
-                    
-                    
-                    
-                    
-                    
                 </div>                
             </div> <!-- /row -->
         </div>
@@ -519,4 +515,5 @@
 <script src="js/nav-control.js"></script>
 <script src="js/popper-init.js"></script>
 <script src="js/synoptik.js"></script>
+<script>hljs.highlightAll();</script>
 </body></html>

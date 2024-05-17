@@ -38,16 +38,16 @@ let textData_temp = jsonJs_in.results.bindings[0] ;
 //delete template object
 delete textData_results.results.bindings[0] ;
 textData_results.results.bindings.shift() ;
-//read json dipl directory
-jsonFiles = fs.readdirSync('data/json/dipl/') ;
+//read json all directory
+jsonFiles = fs.readdirSync('data/json/all/') ;
 console.log('json files: ', jsonFiles) ;
-//iterate over dipl files
+//iterate over all files
 jsonFiles.forEach((file,index_file) => {
     //write file name to text data
     let textData_result = textData_temp ;
     textData_result.fileName = file ;    
-    //read json dipl file
-    let fileNamePath = 'data/json/dipl/' + file ;   
+    //read json all file
+    let fileNamePath = 'data/json/all/' + file ;   
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     console.log('json data read: ', json_in.length, ' bytes') ;
     let text_all = JSON.parse(json_in) ;       
@@ -83,12 +83,16 @@ jsonFiles.forEach((file,index_file) => {
     }
     //find date in text_all json
     let date = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
-        return (item.name.value == 'http://www.tei-c.org/ns/1.0/date'
-            && item.attr.value == 'when') ;
+        return item.name.value == 'http://www.tei-c.org/ns/1.0/creation' ;
     }) ;
     if (date !== undefined) {
         //get date
-        textData_result.date = date.val.value ;
+        pos_tmp = date.pos.value ;
+        pos_nr = posStr2Nr(pos_tmp) + 2 ;
+        pos_tmp = posNr2Str(pos_nr, pos_tmp) ;
+        textData_result.date = groupedByPos[pos_tmp][0].cont.value ;
+        console.log('date: ', textData_result.date) ;
+        //textData_result.date = date.val.value ;
     } else {
         console.log('error: no date') ;
     }
@@ -106,7 +110,7 @@ jsonFiles.forEach((file,index_file) => {
         }
     } ) ;
     let pageCount = Object.keys(groupedByPage).length ;
-    textData_result.pageCount = pageCount ;
+    textData_result.pageCount = Math.round(pageCount/2) ;
     //get first page number
     let page_array = [] ;
     groupedByName['http://www.tei-c.org/ns/1.0/pb'].forEach((item, index_page) => {

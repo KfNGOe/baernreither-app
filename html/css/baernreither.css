@@ -1400,6 +1400,27 @@ body::-webkit-scrollbar-thumb {
   color:rgba(195,161,108,1);
 }
 
+.addSpan {
+  background-color:rgba(200, 190, 200, 0.2);
+  padding:0 2px;
+  line-height:1rem;
+}
+.del {
+  text-decoration: line-through;
+}
+.frac {
+  border:1px dotted silver ; 
+  font-weight:700;
+}
+.ul {
+  text-decoration: underline;
+}
+.bold  {
+  font-weight:700;
+}
+.letter-spacing {
+  letter-spacing: 0.075rem;
+}
 /*--------------- /auswahl-content ----------------*/
 
 /*---------------- meta-box ----------------*/

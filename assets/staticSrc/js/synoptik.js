@@ -4,6 +4,8 @@ var regPersonData_in ;
 var regIndexData_in ;
 var hash ;
 var link ;
+var input_left = document.getElementById("page_input_left") ;
+var input_right = document.getElementById("page_input_right") ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
 
@@ -25,7 +27,7 @@ const sleepUntil = async (f, timeoutMs) => {
 	  }, 20);
 	});
   }
-
+  
 function onContainerScroll(boxSide) {
 	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
   
@@ -52,6 +54,36 @@ function onContainerScroll(boxSide) {
 	}
 	setPageNr(boxSide, currentPage);
   }
+input_left.addEventListener("keypress", function(event) {	
+	if (event.key === "Enter") {	  
+		event.preventDefault();
+		console.log("Enter pressed") ;
+		let pageNr = input_left.value ;
+		setPage(pageNr, 'left') ;
+	}
+});
+input_right.addEventListener("keypress", function(event) {
+	if (event.key === "Enter") {
+		event.preventDefault();
+		console.log("Enter pressed") ;
+		let pageNr = input_right.value ;
+		setPage(pageNr, 'right') ;
+	}
+});
+
+window.setPage = function(page, boxSide) {
+	var container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
+	var anchors = document.getElementsByClassName("pageLocator") ;
+
+	for (var i = 0; i < anchors.length-1; i++) {
+		var anchor = anchors[i];
+		if (anchor.id == page) {
+			container.scrollTop = anchor.offsetTop;			
+			//setPageNr(boxSide, page);
+			console.log("set page to: ", page);
+		}
+	}	
+}  
 
 window.fetchData = async function(filepath) {
 	try {        
@@ -92,7 +124,7 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 //function to get transcription type
 window.getTransType = function(boxSide) {
 	let type = $( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a.active').attr('id') ;
-	type = type === undefined ? 'dipl' : type.replace('_' + boxSide, '') ;		
+	type = type === undefined ? 'all' : type.replace('_' + boxSide, '') ;		
 	return type ;
 } ;
 
@@ -140,7 +172,7 @@ window.setWork = function(boxSide,workTitle) {
 }
 
 //function to insert work data in DOM
-window.insertDiplText = function(filepath,boxSide) {
+window.insertAllText = function(filepath,boxSide) {
 	(async () => {
 		//remove old data
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;		
@@ -148,12 +180,41 @@ window.insertDiplText = function(filepath,boxSide) {
 		let content_str = await fetchData(filepath) ;
 		let content = $.parseHTML(content_str) ;
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
+		//set dipl text style
+		displayDiplText(boxSide) ;
 	})() ;
 }
 
 //function to insert Full text data in DOM
 window.insertFullText = function(boxSide) {
+	displayFullText(boxSide) ;
 	console.log( "insert full text!" ) ;
+} ;
+
+window.displayDiplText = function(boxSide) {
+	$('div#box-' + boxSide + ' .abbr').show();      //show all elements with abbr class
+    $('div#box-' + boxSide + ' .expan').hide();		//hide all elements with expan class
+
+	$('div#box-' + boxSide + ' .add').css( "background-color", "rgb(217, 209, 236)" );
+
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" );
+
+	$('div#box-' + boxSide + ' .del').show();		
+
+	console.log( "display Dipl text!" ) ;
+} ;
+
+window.displayFullText = function(boxSide) {
+	$('div#box-' + boxSide + ' .expan').show();      
+    $('div#box-' + boxSide + ' .abbr').hide();
+	
+	$('div#box-' + boxSide + ' .add').css( "background-color", "transparent" );
+
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" );
+
+	$('div#box-' + boxSide + ' .del').hide();
+	
+	console.log( "display Full text!" ) ;
 } ;
 
 //function to highlight search results
@@ -313,7 +374,7 @@ $( function() {
 			workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
 			workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
 			//insert text data in DOM
-			insertDiplText('./data/txt/' + workTitle + '_all_html.txt','left') ;
+			insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
 			//insertFullText('left') ;
 			synFinishedHook(1);		
 		}		
@@ -371,7 +432,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;			
 		//get transcription type in nav-werke
 		let type = getTransType(boxSide) ;
-		type = type === undefined ? 'dipl' : type ;
+		type = type === undefined ? 'all' : type ;
 		//get file name
 		let fileName = workTitle + '_' + type + '_html.txt' ;	
 		//get text data
@@ -384,11 +445,12 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		setPageNr(boxSide,pageNr) ;
 		//set transcription type
 		setTransType(boxSide,type) ;		
-		if(type === 'dipl') {		
-			//insert dipl text data in DOM	
-			insertDiplText(filepath,boxSide) ;		
+		if(type === 'all') {		
+			//insert all text data in DOM	
+			insertAllText(filepath,boxSide) ;		
 		} else {
 			//insert Full text data in DOM
+			insertAllText(filepath,boxSide) ;
 			insertFullText(boxSide) ;
 		}
 	}
@@ -423,8 +485,8 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 				let fileName = workTitle + '_all_html.txt' ;	
 				//get text data
 				let filepath = './data/txt/' + fileName ;		
-				//insert dipl text data in DOM	
-				insertDiplText(filepath, boxSide) ;
+				//insert all text data in DOM	
+				insertAllText(filepath, boxSide) ;
 			} else {
 				//insert Full text data in DOM
 				insertFullText(boxSide) ;
@@ -551,8 +613,8 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
 		//get actual transcription type
 		let type_this = getTransType(boxSide_this) ;
-		//check if dipl type is selected
-		if(type_this === 'dipl') {			
+		//check if all type is selected
+		if(type_this === 'all') {			
 			//insert full text data in DOM	
 			insertFullText(boxSide_this) ;
 			//change trans to full text
@@ -563,8 +625,8 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		let fileName_opp = workTitle_opp + '_all_html.txt' ;
 		//get opposite text data
 		let filepath_opp = './data/txt/' + fileName_opp ;
-		//insert dipl text data in DOM
-		insertDiplText(filepath_opp, boxSide_opp) ;
+		//insert all text data in DOM
+		insertAllText(filepath_opp, boxSide_opp) ;
 		//insert full text data in DOM
 		insertFullText(boxSide_opp) ;
 		//set work
@@ -677,10 +739,16 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	let id = click.attr('id') ;
 	//get href of element
 	let href = click.attr('href') ;
-	//remove reg
-	href = href.replace('#reg_', '') ;
+	//check href
+	href = href.includes('#reg_') ? href.replace('#reg_', '') : href ;	
 	//reset html string
-	let html_str = '' ;	
+	let html_str = '' ;
+	//check if note is clicked
+	if(href.includes('note')) {
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Anmerkung' + table_snips[2]) ;					
+		let note_text = click.html() ;
+		html_str = html_str.concat(table_snips[3] + note_text + table_snips[4] + table_snips[5]) ;
+	}	
 	//check if register index is clicked
 	if(click.hasClass('index')) {		
 		//group register data by main
