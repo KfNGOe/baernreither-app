@@ -73,6 +73,19 @@ jsonFiles.forEach((file,index_file) => {
         //pos = pos.substring(0, pos.lastIndexOf('_')) + '_' + (pos_nr+1).toString() ;
         //get title volume
         textData_result.title.main = groupedByPos[pos][0].cont.value ;
+        //get title display
+        if(file.includes('Bae_MF_6-1')) {
+            textData_result.title.display = 'Manuskript Fragmente 6/1' ;
+        }
+        if(file.includes('Bae_MF_6-2')) {
+            textData_result.title.display = 'Manuskript Fragmente 6/2' ;
+        }
+        if(file.includes('Bae_TB_7')) {
+            textData_result.title.display = 'Tagebuch 7' ;
+        }
+        if(file.includes('Bae_TB_8')) {
+            textData_result.title.display = 'Tagebuch 8' ;
+        }
         //get title short
         //+3
         pos_nr = pos_nr + 3;

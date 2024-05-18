@@ -26,11 +26,15 @@ WHERE {
           kfngoeo:elementPos ?o_pos_index ;
 	.
     #filter current source text
-    FILTER(CONTAINS(?o_pos_index, ?title_short))            
+    FILTER(CONTAINS(?o_pos_index, ?title_short))
     #get numeric value of element position of tei:index
     BIND(xsd:integer(substr(?o_pos_index,strlen(?title_short)+1)) AS ?o_pos_index_nr)
     #get element position of tei:term
     BIND(concat(?title_short, str(?o_pos_index_nr+1)) AS ?o_pos_term)
+    #get element position of Text
+    BIND(concat(?title_short, str(?o_pos_index_nr+2)) AS ?o_pos_text)
+    #get element position of 2nd tei:term
+    BIND(concat(?title_short, str(?o_pos_index_nr+5)) AS ?o_pos_term_sub)    
     #get main term of index   	
     ?s_term a kfngoeo:StartTag ;
             kfngoeo:elementName tei:term ;
@@ -39,10 +43,13 @@ WHERE {
                 kfngoeo:attrValue ?o_main_index ;
 			] ;			
             kfngoeo:elementPos ?o_pos_term ;
-    #get sub term of index
+    .    
+    ?s_text a kfngoeo:Text ;
+	    kfngoeo:hasContent ?o_text;
+	    kfngoeo:elementPos ?o_pos_text;
+    .        
+    #get sub term of index    
     OPTIONAL{
-        #get element position of tei:term
-        BIND(concat(?title_short, str(?o_pos_index_nr+5)) AS ?o_pos_term_sub)
         ?s_term_sub a kfngoeo:StartTag ;
             kfngoeo:elementName tei:term ;
             kfngoeo:hasAttr [

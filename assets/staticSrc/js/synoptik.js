@@ -152,6 +152,15 @@ window.setPageCount = function(boxSide,pageCount) {
 	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
 } ;
 
+//function to set download link
+window.setDownloadLink = function(workTitle,boxSide) {
+	//get file name
+	let fileName = workTitle + '.xml' ;	
+	//get text data
+	let filepath = './data/tei_xmlId/' + fileName ;		
+	$( 'div#box-' + boxSide + ' div.download-tab a' ).attr('href', filepath) ;
+} ;
+
 //function to get work
 window.getWork = function(boxSide) {
 	let work = $( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id') ;
@@ -161,14 +170,32 @@ window.getWork = function(boxSide) {
 
 //function to set work
 window.setWork = function(boxSide,workTitle) {
+	//convert short title to display title
+	dispTitle = short2DispTitle(workTitle) ;
 	//put work title in DOM
 	//set id
 	$( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id', 'work_' + boxSide + '_' + workTitle) ;
 	//insert title
-	$( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').text(workTitle) ;	
+	$( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').text(dispTitle) ;	
 	//set work active
 	$( '#works_' + boxSide + 'ul.dropdown-menu').find('a').removeClass('active') ;
 	$( '#works_' + boxSide + 'ul.dropdown-menu').find('a#' + workTitle + '_' + boxSide).addClass('active') ;		
+}
+
+window.short2DispTitle = function(short) {
+	let title = textData_in.results.bindings.find((item, index) => {
+		return item.title.short === short ;
+	}).title.display ;
+	title = title === undefined ? '' : title ;	
+	return title ;
+}
+window.disp2ShortTitle = function(disp) {
+	let title = textData_in.results.bindings.find((item, index) => {
+		return item.title.display === disp ;
+	}
+	).title.short ;
+	title = title === undefined ? '' : title ;
+	return title ;
 }
 
 //function to insert work data in DOM
@@ -215,6 +242,33 @@ window.displayFullText = function(boxSide) {
 	$('div#box-' + boxSide + ' .del').hide();
 	
 	console.log( "display Full text!" ) ;
+} ;
+
+window.displayAnchors = function() {
+	//get work title of left box
+	let shortTitle_left = getWork('left') ;
+	//get work title of right box
+	let shortTitle_right = getWork('right') ;	
+	//hide all anchors
+	$( 'a.anchor' ).hide() ;
+	//iterate over all anchors left
+	$( 'div#box-left a.anchor' ).each(function() {
+		let anchor = $( this ) ;
+		//get href of anchor
+		let href = anchor.attr('href') ;
+		if(href.includes(shortTitle_right)) {
+			$(this).show() ;			
+		}
+	}) ;
+	//iterate over all anchors right
+	$( 'div#box-right a.anchor' ).each(function() {
+		let anchor = $( this ) ;
+		//get href of anchor
+		let href = anchor.attr('href') ;
+		if(href.includes(shortTitle_left)) {
+			$(this).show() ;
+		}
+	}) ;
 } ;
 
 //function to highlight search results
@@ -362,21 +416,29 @@ $( function() {
 		}) ;
 
 		//check if hash exists
-		if(hash.length!=0){
-			//set dummy link
-			link = $('<a>', {
-				id: 'hashDummy',
-				href: hash, // Anchor's ID to be scrolled to				
-			});
-			$('body').append(link);		  
-			//get work title
-			let workTitle = hash.replace('#', '') ;			
-			workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
-			workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
-			//insert text data in DOM
-			insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
-			//insertFullText('left') ;
-			synFinishedHook(1);		
+		if(hash.length!=0){			
+			if(hash.includes('over_')) {
+				//get work title
+				let workTitle = hash.replace('#', '') ;			
+				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;
+				//insert text data in DOM
+				insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
+			} else {
+				//set dummy link
+				link = $('<a>', {
+					id: 'hashDummy',
+					href: hash, // Anchor's ID to be scrolled to				
+				});
+				$('body').append(link);		  
+				//get work title
+				let workTitle = hash.replace('#', '') ;			
+				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
+				workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
+				//insert text data in DOM
+				insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
+				//insertFullText('left') ;
+				synFinishedHook(1);
+			}			
 		}		
 	})() ;		
 }) ;
@@ -434,7 +496,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let type = getTransType(boxSide) ;
 		type = type === undefined ? 'all' : type ;
 		//get file name
-		let fileName = workTitle + '_' + type + '_html.txt' ;	
+		let fileName = workTitle + '_all_html.txt' ;	
 		//get text data
 		let filepath = './data/txt/' + fileName ;		
 		//set work
@@ -443,6 +505,8 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
 		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;
 		setPageNr(boxSide,pageNr) ;
+		//set download link
+		setDownloadLink(workTitle,boxSide) ;		
 		//set transcription type
 		setTransType(boxSide,type) ;		
 		if(type === 'all') {		
@@ -652,14 +716,15 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 }) ;
 
 //check if compare button is clicked
-$( 'div.compare-buttons .comp-equal' ).click(function() {
+$( 'div.compare-buttons .comp-equal' ).on('click',function() {
 	console.log( this );
 	let click = $( this );
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//show equal elements
-	//anchor comp-not
+	//select anchors to show
+	displayAnchors() ;
+	//show equal elements	
 	$( 'a.anchor.comp-span-equal' ).show();
 	$( 'a.anchor.comp-span-inequal' ).hide();
 	$( 'a.anchor.comp-span-not' ).hide();
@@ -674,6 +739,8 @@ $( 'div.compare-buttons .comp-inequal' ).click(function() {
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
+	//select anchors to show
+	displayAnchors() ;
 	//show not equal elements	
 	$( 'a.anchor.comp-span-inequal' ).show();
 	$( 'a.anchor.comp-span-equal' ).hide();
@@ -689,6 +756,8 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	click.addClass('comp-selected');			
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
+	//select anchors to show
+	displayAnchors() ;
 	//show missing elements
 	$( 'a.anchor.comp-span-not' ).show();
 	$( 'a.anchor.comp-span-equal' ).hide();
@@ -697,7 +766,6 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	$( 'span.comp-span-not' ).css( "background-color", "#f7e0c7" );
 	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
-
 }) ;
 
 //check if page break in text is clicked
@@ -729,7 +797,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;		
 }) ;
 
-//check if register in text is clicked
+//check if linked entity in text is clicked
 $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//find box of clicked element
 	let click = $( this ) ;
@@ -746,7 +814,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//check if note is clicked
 	if(href.includes('note')) {
 		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Anmerkung' + table_snips[2]) ;					
-		let note_text = click.html() ;
+		let note_text = $( '[href="' + href + '"] ~ span.note' ).text() ;		 
 		html_str = html_str.concat(table_snips[3] + note_text + table_snips[4] + table_snips[5]) ;
 	}	
 	//check if register index is clicked
@@ -789,7 +857,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 				default:
 					break;
 			}			
-		}) ;		
+		}) ;
+		//let id = regData[0].id ;
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;							
 	}
 	//check if register org is clicked
 	if(click.hasClass('org')) {

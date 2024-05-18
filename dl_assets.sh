@@ -9,6 +9,8 @@ mkdir -p html/data/json/
 cp -r data/json/ html/data/
 mkdir -p html/data/txt/
 cp -r data/txt/ html/data/
+cp -r data/html/uebersicht.html html/
+cp -r data/tei_xmlId html/data/
 #mkdir -p html/data/img/
 #cp -r data/img/ html/data/
 mkdir -p html/staticSearch/
