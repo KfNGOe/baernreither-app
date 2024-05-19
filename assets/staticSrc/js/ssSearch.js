@@ -8,10 +8,10 @@ const spaceMax = 5 ;
 var text_in ;
 var textData_in ;
 var fullTextAll = {} ;
-var diplTexts = {} ;
+var allTexts = {} ;
 var fullTexts = {} ;
 var jsonJs_in = {} ;
-var input_search ;
+var input_search = '' ;
 var result_arr = [] ;
 var markedHits_arr = [] ;
 var flag_index = true;
@@ -24,6 +24,10 @@ function tokenize (input_search, searchTokens) {
   let tokens = [] ;
   for (i_char = 0; i_char < tokens_N; i_char++) {
       tokens = input_search.slice(i_char, tokenOffset + i_char) ;        
+      //check if token has a "
+      if (tokens.includes('"')) {
+          tokens = tokens.replace('"','&quot;') ; //utf8 code for "
+      }
       searchTokens.push(tokens) ;                
   }
   return searchTokens ;
@@ -63,6 +67,13 @@ window.addEventListener('load', function() {
       console.log('input_search =', input_search) ;
       console.log('result_arr =', result_arr) ;
       console.log('search done') ;
+      //put search string in search-input field
+      $('span.search-input').text(input_search) ;
+      //clear input field
+      $("input#ssQuery").val('') ;
+      //show number of hits
+      let hits_N = result_arr.length ;
+      $('span.results-number').text(hits_N) ; 
       showResults() ;
     }        
   }
@@ -78,11 +89,11 @@ $(document).ready(function() {
       //get text data
       filepath = './data/json/textData.json' ;
       textData_in = await fetchData(filepath) ;
-      //get dipl texts
+      //get all texts
       let textData_arr = textData_in.results.bindings
       textData_arr.forEach(async function(result, index) {          
-        filepath = './data/json/dipl/' + result.fileName ;
-        diplTexts[result.fileName] = await fetchData(filepath) ;
+        filepath = './data/json/all/' + result.fileName ;
+        allTexts[result.fileName] = await fetchData(filepath) ;
       });
       //get full texts
       textData_arr.forEach(async function(result, index) {
@@ -187,6 +198,18 @@ window.checkHitsPrevious = function(hit, hits_prev) {
   } 
 }
 
+window.checkSpecChar = function(token) {
+  //check if token has a /
+  //if (token.includes('/')) {
+  //  token = token.replaceAll('/','0x2F') ; //utf8 code for /
+  //}
+  //check if token has a "
+  if (token.includes('"')) {
+    token = token.replaceAll('"','&quot;') ; //utf8 code for "
+  }
+  return token ;
+}
+
 //start search on button click
 $('button#ssDoSearch').click(function(event) {
   (async () => {
@@ -200,6 +223,7 @@ $('button#ssDoSearch').click(function(event) {
         result_arr = [] ;
         input_search = $("input#ssQuery").val(); //get the search query
         console.log('input_search =', input_search) ;
+        console.log('input_search length =', input_search.length) ;        
         //check input search string
         if (input_search.length < tokenOffset) {        
           alert('Suchbegriff zu kurz! Mindestens 3 Zeichen eingeben!') ;      
@@ -208,9 +232,16 @@ $('button#ssDoSearch').click(function(event) {
           searchTokens = [] ;
           searchTokens = tokenize(input_search, searchTokens) ;    
           console.log('searchTokens =', searchTokens) ;
+          //check if search string has a "
+          //if (input_search.includes('"')) {
+          //  input_search = input_search.replaceAll('"','&quot;') ; //utf8 code for "
+          //}        
+          console.log('input_search =', input_search) ;
+          console.log('input_search length =', input_search.length) ;
           //check search string
-          let searchStrLength = input_search.length ;    
-          let tokens_N = searchStrLength - 2 ;        
+          //let searchStrLength = input_search.length ;    
+          //let tokens_N = searchStrLength - 2 ;
+          let tokens_N = searchTokens.length ;                
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
             //find token of search string in tokens string        
             let searchToken = separator + searchTokens[i_tok] + separator ;
@@ -381,7 +412,7 @@ $('button#ssDoSearch').click(function(event) {
   }) () ;  
 }) ;
 
-//check if register in text is clicked
+//check if hit in text is clicked
 $( 'div.search-result table tbody' ).on('click','a',function() {
   console.log('hit is clicked!') ;  
   let click = $(this) ;

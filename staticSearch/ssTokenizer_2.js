@@ -79,7 +79,14 @@ function buildTokens(fullTextAll,textFull_files) {
             //console.log('key = ', key, ', value = ', item[key]) ;
             switch(key) {
                 case 'cont':
-                    let text = item[key].value ;
+                    let text_in = item[key].value ;
+                    let textLength_in = text_in.length ;
+                    //check if text has a &quot;
+                    if (text_in.includes('&quot;')) {
+                        text = text_in.replaceAll('&quot;','"') ; //utf8 code for "
+                    } else {
+                        text = text_in ;
+                    }
                     let textLength = text.length ;
                     let N_char = textLength - 2 ;            
                     if (i_text > 1) {                        
@@ -93,7 +100,11 @@ function buildTokens(fullTextAll,textFull_files) {
                             } ;
                             //check if token has a /
                             if (token12_tmp.token.includes('/')) {
-                                token12_tmp.token = token12_tmp.token.replace('/','0x2F') ; //utf8 code for /
+                                token12_tmp.token = token12_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
+                            }
+                            //check if token has a "
+                            if (token12_tmp.token.includes('"')) {
+                                token12_tmp.token = token12_tmp.token.replaceAll('"','&quot;') ; //utf8 code for 
                             }                    
                             tokens12_tmp.push(token12_tmp) ;                
                         }
@@ -107,8 +118,12 @@ function buildTokens(fullTextAll,textFull_files) {
                         } ;
                         //check if token has a /
                         if (token_tmp.token.includes('/')) {
-                            token_tmp.token = token_tmp.token.replace('/','0x2F') ; //utf8 code for /
+                            token_tmp.token = token_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
                         }
+                        //check if token has a "
+                        if (token_tmp.token.includes('"')) {
+                            token_tmp.token = token_tmp.token.replaceAll('"','&quot;') ; //utf8 code for "
+                        }                        
                         tokens_tmp.push(token_tmp) ;                
                     }                    
                     tokensPoss_tmp['tokens'] = tokens_tmp ;

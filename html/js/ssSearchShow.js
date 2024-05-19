@@ -23,15 +23,19 @@ window.contextBefore = function(source, sourceFile, result_path) {
             let offset = 0 ;
             let chN_pr = 0 ;
             if (flagStart && startNr !== undefined) {
-                offset = result_path[0].instances[0].index ;
+                offset = result_path[0].instances[0].index ;rgba(238,211,188,1)
             } else {
                 if (!flagStart && startNr !== undefined) {                
-                    chN_pr = sourceFile.results.bindings[index_source].cont.value.length ;
+                    //check if token has a '&quot;'
+                    if (item_hit.cont.value.includes('&quot;')) {
+                        item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
+                    }
+                    chN_pr = item_hit.cont.value.length ;
                     offset = chN_pr + result_path[0].instances[0].index - 2 ;
                 }        
             }
             //get context before start token        
-            contextBefore =  sourceFile.results.bindings[index_source].cont.value.substring(0,offset) ;
+            contextBefore =  item_hit.cont.value.substring(0,offset) ;
             let countSpace = (contextBefore.match(/\s/g) || []).length ; //count spaces in contextBefore
             let item_before = {} ;
             let index_before = index_source - 1 ;
@@ -81,7 +85,8 @@ window.contextAfter = function(source, sourceFile, result_path) {
         if (item_hit !== undefined) {   
             //get offset of end token
             let offset = 0 ; 
-            let chN_nxt = sourceFile.results.bindings[index_source].cont.value.length ;
+            //let chN_nxt = sourceFile.results.bindings[index_source].cont.value.length ;
+            let chN_nxt = result_path[result_path.length-1].instances[0].chN ;
             if (flagEnd && endNr !== undefined) {
                 offset = result_path[result_path.length-1].instances[0].index + tokenOffset ;
             } else {
@@ -90,7 +95,12 @@ window.contextAfter = function(source, sourceFile, result_path) {
                 }        
             }
             //get context after end token
-            contextAfter =  sourceFile.results.bindings[index_source].cont.value.substring(offset,chN_nxt) ; 
+            //check if token has a '&quot;'
+            if (item_hit.cont.value.includes('&quot;')) {
+                item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
+            }
+            contextAfter =  item_hit.cont.value.substring(offset,chN_nxt) ; 
+            //contextAfter =  sourceFile.results.bindings[index_source].cont.value.substring(offset,chN_nxt) ; 
             let countSpace = (contextAfter.match(/\s/g) || []).length ; //count spaces in contextBefore
             let item_after = {} ;
             let index_after = index_source + 1 ;

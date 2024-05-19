@@ -70,6 +70,14 @@ ssTokens_tmp.json -> build_ssTokenAll.sh -> tokenAll_tmp.json
 tokenAll_tmp.json -> build_ssStems.sh   -> /stems/*.json
                                         -> ssTokenString.txt
 
+## build complete search
+data/json/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
+                                                    -> ssTokenString.txt
+
+## Workflow Data of Texts
+### build Text Data
+*_all.json -> build_textData.sh -> textData.json
+
 # HTML Attribute values
 ## @class, @id and @href
 ### tei:anchor

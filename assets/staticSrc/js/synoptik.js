@@ -290,9 +290,17 @@ window.ssMark = function() {
 			let hit_class = markedHit[0].pos ;
 			markedHit.forEach(function(hit, index) {
 				hit_id = $('#text_' + hit.pos) ;
+				//check if first part of hit
 				if(index === 0) {					
-					hit_html = hit_id.html() ;
-					let sub_before_tmp = hit_html.slice(-(hit.chN - hit.offset)) ;
+					hit_html = hit_id.text() ;
+					//check if hit has a "
+					//if (hit_html.includes('"')) {
+					//	hit_html = hit_html.replaceAll('"','&quot;') ; //utf8 code for "
+					//}					
+					let hit_length = hit_html.length ;
+					console.log( "hit_length: ", hit_length ) ;
+					let hit_offset = hit.chN - hit.offset ;
+					let sub_before_tmp = hit_html.slice((-1)*hit_offset) ;
 					let lastIndex = hit_html.lastIndexOf(sub_before_tmp) ;
 					sub_before = hit_html.slice(0, lastIndex) ;					
 					str2mark = hit.txt ;
@@ -302,12 +310,14 @@ window.ssMark = function() {
 					hit_id.html(sub_before + marked_str + sub_after) ;
 					//console.log( "hit marked!" ) ;
 				}
+				//check if middle part of hit
 				if(index > 0 && index < hit_arr_length-1) {					
 					str2mark = hit.txt ;
 					marked_str = '<mark class="' + hit_class + '">' + str2mark + '</mark>' ;
 					//insert marked text in DOM
 					hit_id.html(marked_str) ;
 				}
+				//check if last part of hit
 				if(index === hit_arr_length-1 && index !== 0) {
 					hit_html = hit_id.html() ;
 					sub_after = hit_html.slice(hit.offset) ;					
@@ -328,7 +338,7 @@ window.addEventListener('load', function() {
 	  if (num == 1) {
 		(async () => {
 			try {
-				await sleepUntil(() => document.querySelector('#hashDummy'), 100);				
+				await sleepUntil(() => document.querySelector('#hashDummy'), 300);				
 				document.querySelector('#hashDummy').click();
 				synFinishedHook(2);						
 			} catch {
