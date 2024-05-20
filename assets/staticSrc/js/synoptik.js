@@ -868,8 +868,8 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 					break;
 			}			
 		}) ;
-		//let id = regData[0].id ;
-		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;							
+		let id_reg = regData[0].id ;
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#' + id_reg + '"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;							
 	}
 	//check if register org is clicked
 	if(click.hasClass('org')) {
