@@ -231,10 +231,10 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          }
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
+         html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
          //main
          let main = key_arr[0].main ;
-         html_str = html_str.concat('<td>' + main + '</td>') ;         
+         html_str = html_str.concat('<td><span id="' + id + '">' + main + '</span></td>') ;         
          //pos         
          html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
          //end row
@@ -252,10 +252,10 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          }                  
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
+         html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
          //name
          let name = key_arr[0].name ;
-         html_str = html_str.concat('<td>' + name + '</td>') ;         
+         html_str = html_str.concat('<td><span id="' + id + '">' + name + '</span></td>') ;         
          //pid
          let pid = key_arr[0].pid ;
          html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
@@ -272,10 +272,10 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
+         html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
          //entry
          let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
-         html_str = html_str.concat('<td>' + entry + '</td>') ;
+         html_str = html_str.concat('<td><span id="' + id + '">' + entry + '</span></td>') ;
          //life dates
          let birth = key_arr[0].birth ;
          let death = key_arr[0].death ;
@@ -307,13 +307,14 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          html_str = html_str.concat('<tr>') ;      
          //id
          let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
+         html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
          //name
          let name = key_arr[0].name ;
          //<a class="org" href="#reg_Bae_REG_Org_416">
-         html_str = html_str.concat('<td>' + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + '</td>') ;
+         html_str = html_str.concat('<td><span id="' + id + '">' + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + '</span></td>') ;
          //name today
          let name_today = key_arr[0].name_today ;
+         name_today = name_today === undefined ? '' : name_today ;
          html_str = html_str.concat('<td>' + name_today + '</td>') ;
          //lat
          let lat = key_arr[0].lat ;

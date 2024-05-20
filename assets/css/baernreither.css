@@ -171,8 +171,8 @@ fahl-lila: rgba(96,96,140,1);
 fahl-lila1: rgba(131,126,180,1);
 */
 
-body, * {
-  font-family: 'EB Garamond', serif;
+body, * {  
+  /*! font-family: 'EB Garamond', serif; */
   font-style: normal;
   font-weight: 400;
   color:rgba(55,55,40,1);
@@ -1329,6 +1329,10 @@ body::-webkit-scrollbar-thumb {
 
 #navbar-baern.collapse.navbar-collapse ul.navbar-nav {
   justify-content:space-between;
+}
+
+#navbar-baern a.back {
+  background-color: rgba(238, 196, 164, 1);
 }
 
 /*--------------- /navbar-baern ----------------*/

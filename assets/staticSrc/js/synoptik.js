@@ -423,7 +423,8 @@ $( function() {
 		}) ;
 
 		//check if hash exists
-		if(hash.length!=0){			
+		if(hash.length!=0){
+			//check if hash is from uebersicht	
 			if(hash.includes('over_')) {
 				//get work title
 				let workTitle = hash.replace('#', '') ;			
@@ -431,18 +432,26 @@ $( function() {
 				//insert text data in DOM
 				insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
 			} else {
+				//hash is from register or seach
 				//set dummy link
 				link = $('<a>', {
 					id: 'hashDummy',
 					href: hash, // Anchor's ID to be scrolled to				
 				});
-				$('body').append(link);		  
+				$('body').append(link);
+				//remove old box data
+				$( 'div.synoptik-box div.auswahl-content div.col-12' ).find('*').remove() ;		  
 				//get work title
 				let workTitle = hash.replace('#', '') ;			
 				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;			
-				workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;			
+				workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;
+				//check hash if text included
+				if(hash.includes('text_')) {
+					setTransType('left','full') ;
+				}		
+				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
 				//insert text data in DOM
-				insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
+				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
 				//insertFullText('left') ;
 				synFinishedHook(1);
 			}			
@@ -551,17 +560,22 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 			setTransType(boxSide,typeNew) ;
 			//get work
 			let workTitle = getWork(boxSide) ;
-			if(typeNew === 'dipl') {
-				//get file name
-				let fileName = workTitle + '_all_html.txt' ;	
-				//get text data
-				let filepath = './data/txt/' + fileName ;		
-				//insert all text data in DOM	
-				insertAllText(filepath, boxSide) ;
+			//check worktitle
+			if(workTitle !== undefined && workTitle !== '') {
+				if(typeNew === 'dipl') {
+					//get file name
+					let fileName = workTitle + '_all_html.txt' ;	
+					//get text data
+					let filepath = './data/txt/' + fileName ;		
+					//insert all text data in DOM	
+					insertAllText(filepath, boxSide) ;
+				} else {
+					//insert Full text data in DOM
+					insertFullText(boxSide) ;
+				}
 			} else {
-				//insert Full text data in DOM
-				insertFullText(boxSide) ;
-			}		
+				alert('Please select a work!') ;				
+			}					
 		}	
 		//hide dropdown
 		click.parents('ul.dropdown-menu').removeClass('show') ;	
@@ -596,10 +610,10 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			//scroll to facs element
 			//$( 'div#box-' + boxSide + ' div.auswahl-content-scroll' ).animate({
 			//	scrollTop: $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).offset().top
-			//}, 1000) ;
-
-			
+			//}, 1000) ;			
 			console.log( "facs clicked!" ) ;
+		} else {
+			alert('Please select a work!') ;
 		}		
 	}
 }) ;
@@ -640,9 +654,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		//get box side
 		let boxSide = id_comp.includes('_left') ? 'left' : 'right' ;
 		//get work
-		let workTitle = getWork(boxSide) ;
-		//TEST
-		//workTitle = 'Bae_MF_6-2' ;
+		let workTitle = getWork(boxSide) ;		
 		//check if work is selected
 		if(workTitle !== undefined && workTitle !== '') {
 			console.log( "work selected!" ) ;			
@@ -673,9 +685,14 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	//get id of parents a element
 	let id_this = click.parent('ul').siblings('a').attr('id') ;	
 	//get box side of parents
-	let boxSide_this = id_this.includes('_left') ? 'left' : 'right' ;
+	let boxSide_this = id_this.includes('_left') ? 'left' : 'right' ;	
 	//check if clicked element is a transcription type
-	if(id_this.includes('text-comp')) {		
+	if(id_this.includes('text-comp')) {
+		//check if back class is set
+		if (!click.hasClass('back')) {
+			//set back class
+			click.parent('ul').siblings('a').addClass('back') ;
+		}		
 		//get id
 		let id_opp = click.children('a.dropdown-item').attr('id') ;
 		//get opposite box side 
@@ -721,6 +738,26 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		console.log( "text comp clicked!" ) ;		
 	}
 }) ;
+//check if one of other box buttons is clicked
+$( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
+	console.log( "button clicked!" ) ;	
+	let click = $( this ) ;
+	let id = click.attr('id') ;
+	let boxSide = id.includes('left') ? 'left' : 'right' ;
+	if ($('a#text-comp_' + boxSide + '').hasClass('back')) {
+		//remove background
+		$('a#text-comp_' + boxSide + '').removeClass('back') ;
+		//close dropdown
+		$('a#text-comp_' + boxSide + '').siblings('ul.dropdown-menu').removeClass('show') ;
+		click.siblings('ul.dropdown-menu').removeClass('show') ;
+		//remove compare data
+		$( 'div.compare-buttons' ).hide() ;		
+		//hide anchors	
+		$( 'a.anchor' ).hide();		
+		//remove background
+		$( 'span' ).css( "background-color", "transparent" );		
+	}	
+} ) ;
 
 //check if compare button is clicked
 $( 'div.compare-buttons .comp-equal' ).on('click',function() {
@@ -892,7 +929,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 				default:
 					break;
 			}			
-		}) ;		
+		}) ;
+		let id_reg = regData[0].id ;
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#' + id_reg + '"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;							
 	}
 	//check if register person is clicked
 	if(click.hasClass('person')) {				
@@ -932,7 +971,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 				default:
 					break;
 			}			
-		}) ;		
+		}) ;
+		let id_reg = regData[0].id ;
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#' + id_reg + '"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;									
 	}
 	//check if register place is clicked
 	if(click.hasClass('place')) {				
@@ -970,7 +1011,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 				default:
 					break;
 			}			
-		}) ;		
+		}) ;
+		let id_reg = regData[0].id ;
+		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Register <a href="register.html#' + id_reg + '"><img src="images/right-arrow.png" title="Register"></a>' + table_snips[2]) ;									
 	}
 	//parse html string
 	let html = $.parseHTML(html_str) ;

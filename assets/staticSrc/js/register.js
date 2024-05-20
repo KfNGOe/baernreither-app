@@ -88,22 +88,44 @@ $( function() {
         //check if hash exists
 		if(hash.length!=0){			
 			if(hash.toLowerCase().includes('reg')) {
-                //remove old register data
-                $('div.table-register#org table.table tbody').empty() ;
-                //trigger
-                $( 'input#search-index' ).trigger('click') ;
-				console.log('register index selected!') ;			
+        //remove old register data
+        $('div.table-register#org table.table tbody').empty() ;
+        
+        //check if hash is person
+        if(hash.toLowerCase().includes('person')) {
+          //trigger
+          $( 'input#search-person' ).trigger('click') ;
+          console.log('register person selected!') ;
+        }
+        //check if hash is org
+        if(hash.toLowerCase().includes('org')) {
+          //trigger
+          $( 'input#search-institution' ).trigger('click') ;
+          console.log('register org selected!') ;
+        }
+        //check if hash is place
+        if(hash.toLowerCase().includes('place')) {
+          //trigger
+          $( 'input#search-place' ).trigger('click') ;
+          console.log('register place selected!') ;
+        }
+        //check if hash is index
+        if(hash.toLowerCase().includes('index')) {
+          //trigger
+          $( 'input#search-index' ).trigger('click') ;
+          console.log('register index selected!') ;
+        }
+        
 				//set dummy link
 				link = $('<a>', {
 					id: 'hashDummy',
 					href: hash, // Anchor's ID to be scrolled to				
 				});
 				$('body').append(link);
-                //show hash
-                let hash_tmp = hash.replace('#','') ;
-                $('span#' + hash_tmp +'').parent('td').show() ;
-				regFinishedHook(1);
-            
+        //show hash
+        let reg_id = hash.replace('#','') ;
+        $('span#' + reg_id +'').parent('td').show() ;
+				regFinishedHook(1);            
 			}			
 		}
 	})() ;		
