@@ -20,16 +20,16 @@
           <a class="nav-link active" aria-current="page" href="index.html">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Infos zur Edition</a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="info_edit">Infos zur Edition</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="editionsgeschichte.html">Geschichte der Edition</a></li>
             <li><a class="dropdown-item" href="editionsrichtlinien.html">Editionsrichtlinien</a></li>
-            <li><a class="dropdown-item" href="technische-doku.html">Technische Dokumentation</a></li>
-              <li><a class="dropdown-item" href="nutzung.html">Nutzungshinweise</a></li>
+            <li style="display:none"><a class="dropdown-item" href="technische-doku.html">Technische Dokumentation</a></li>
+            <li style="display:none"><a class="dropdown-item" href="nutzung.html">Nutzungshinweise</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="TBEDIT">Tagebücher-Edition</a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="tb_edit">Tagebücher-Edition</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="uebersicht.html">Übersicht</a></li>
             <li><a class="dropdown-item" href="synoptik.html">Synoptische Darstellung</a></li>
@@ -37,10 +37,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Baernreither</a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="info_baern">Baernreither</a>
             <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="biographie.html">Biographie</a></li>
-            <li><a class="dropdown-item menu-arrow" href="#">Werkverzeichnis</a>
+            <li style="display:none"><a class="dropdown-item menu-arrow" href="#">Werkverzeichnis</a>
                 <ul class="submenu dropdown-menu">
                 <li><a class="dropdown-item" href="monopgraphien.html">Monographien</a></li>
                 <li><a class="dropdown-item" href="tagebuecher-editionen.html">Tagebücher-Editionen</a></li>
@@ -48,7 +48,7 @@
                 <li><a class="dropdown-item" href="aufsaetze-beitraege.html">Aufsätze und Beiträge</a></li>
               </ul>
             </li>
-            <li><a class="dropdown-item" href="sekundaerliteratur.html">Sekundärliteratur</a></li>            
+            <li style="display:none"><a class="dropdown-item" href="sekundaerliteratur.html">Sekundärliteratur</a></li>            
             </ul>
         </li>        
         <li class="nav-item">

@@ -359,10 +359,7 @@ $( function() {
 	hash = window.location.hash ;
 	//let anchor = $(location).attr('hash');  //get link anchor (#...)                        
     //    if(anchor.length!=0){  //check if link anchor exists	
-
-	//highlight active nav item	
-    $("ul.navbar-nav li.nav-item a.nav-link").removeClass("active");
-    $( "ul.navbar-nav li.nav-item a#TBEDIT" ).addClass("active");
+	
 	//remove data from navbar dropdowns
 	$( 'div#box-left div.werke-dropdown ul.navbar-nav ul.dropdown-menu' ).children().remove() ;			
 	$( 'div#box-right div.werke-dropdown ul.navbar-nav ul.dropdown-menu' ).children().remove() ;

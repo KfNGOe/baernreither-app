@@ -1,16 +1,34 @@
-//	window.addEventListener("resize", function() {
-//		"use strict"; window.location.reload(); 
-//	});
 
-$( "ul.navbar-nav li.nav-item a.nav-link.dropdown-toggle" ) .click(function() {
-	console.log( this );
-	let click = $( this );
-	$( 'ul.navbar-nav li.nav-item a.nav-link' ).removeClass('active');
-	click.addClass('active');
-}) ;
+let url = window.location.pathname ;
+let fullName = url.substring(url.lastIndexOf('/')+1) ;//test.html
+let fileName = fullName.substring(0, fullName.indexOf('.')) ; //test
 
-document.addEventListener("DOMContentLoaded", function(){
-        
+//highlight active nav item	
+$("ul.navbar-nav li.nav-item a").removeClass("active");
+$( '[href="' + fullName + '"]' ).addClass("active");
+
+if(fullName == "editionsgeschichte.html") {
+	$( '#info_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+if(fullName == "editionsrichtlinien.html") {
+	$( '#info_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+if(fullName == "uebersicht.html") {
+	$( '#tb_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+if(fullName == "synoptik.html") {
+	$( '#tb_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+if(fullName == "biographie.html") {
+	$( '#info_baern' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+
+document.addEventListener("DOMContentLoaded", function(){       
 
 	/////// Prevent closing from click inside dropdown
 	document.querySelectorAll('.dropdown-menu').forEach(function(element){
@@ -18,8 +36,6 @@ document.addEventListener("DOMContentLoaded", function(){
 		  e.stopPropagation();
 		});
 	})
-
-
 
 	// make it as accordion for smaller screens
 	if (window.innerWidth < 992) {
@@ -54,7 +70,13 @@ document.addEventListener("DOMContentLoaded", function(){
 		})
 	}
 	//end if innerWidth
+
 }) ;
 
+$( "ul.dropdown-menu li a.dropdown-item" ) .click(function() {
+	console.log( this );
+	let click = $( this );
+	click.parent('ul.dropdown-menu').siblings('a.nav-link').addClass('active') ;	
+}) ;
 
 // DOMContentLoaded  end
