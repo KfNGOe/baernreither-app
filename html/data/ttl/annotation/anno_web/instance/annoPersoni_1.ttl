@@ -1,33 +1,26 @@
-@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix schema: <http://schema.org/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix geonames: <http://www.geonames.org/ontology#> .
-@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
-@prefix tei: <http://www.tei-c.org/ns/1.0> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
 @prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
 @prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
 kfngoei:nnnn a kfngoeo:AnnoPerson;
   rdfs:label "Annotation level of Persons"@en;
-  rdfs:isDefinedBy "BaernreitherJosephMaria", "PacakBedrich", "DerschattaJulius", "StürgkhKarl",
-    "ChiariKarl", "GautschPaul", "PradeHeinrich", "KramarKarel", "ZacekJan", "PergeltAnton",
-    "GroßGustav", "KoerberErnest", "SteinFranko", "KaiserFranzJosef", "NostitzErwein",
-    "FuerstenbergMaxEgon", "LobkowitzFerdinand", "RohanAlain", "SchwarzenbergKarl", "Silva-TaroucaErnst",
-    "Clam-MartinicHeinrich", "CzerninOttokar", "ThunFranz", "HohenwartKarl", "SchaeffleAlbert",
-    "GrabmayrKarl", "GoluchowskiAgenor", "WekerleSandor", "AndrassyGyula", "BismarckOtto",
-    "KaiserWilhelmII.", "HohenloheKonrad", "BeckMaxWladimir", "CoudenhoveKarl", "DaszynskiIgnacy",
-    "DzieduszyckiWojciech", "UrbanKarl", "LecherOtto", "LoeckerJulius", "MarchetGustav",
-    "VetterMoritz", "TerlagoRobert", "TollingerJohann", "ChlumeckyJohann", "TaaffeEduard",
-    "SteinbachEmil", "FejervaryGeza", "KristoffyJozsef";
+  rdfs:isDefinedBy "BaernreitherJosephMaria", "PacakBedrich", "DerschattaJulius", "ChiariKarl",
+    "GautschPaul", "PradeHeinrich", "KramarKarel", "ZacekJan", "PergeltAnton", "GroßGustav",
+    "KoerberErnest", "SteinFranko", "KaiserFranzJosef", "NostitzErwein", "FuerstenbergMaxEgon",
+    "LobkowitzFerdinand", "RohanAlain", "SchwarzenbergKarl", "Silva-TaroucaErnst", "Clam-MartinicHeinrich",
+    "CzerninOttokar", "ThunFranz", "HohenwartKarl", "SchaeffleAlbert", "GrabmayrKarl",
+    "GoluchowskiAgenor", "WekerleSandor", "AndrassyGyula", "BismarckOtto", "KaiserWilhelmII.",
+    "HohenloheKonrad", "DaszynskiIgnacy", "KaljajewIwan", "DzieduszyckiWojciech", "AbrahamowiczDawid",
+    "BeckMaxWladimir", "CoudenhoveKarl", "UrbanKarl", "LecherOtto", "KienmannEmerich",
+    "LoeckerJulius", "MarchetGustav", "VetterMoritz", "StürgkhKarl", "TerlagoRobert",
+    "TollingerJohann", "ChlumeckyJohann", "Georg", "TaaffeEduard", "SteinbachEmil", "FejervaryGeza",
+    "KristoffyJozsef";
   kfngoeo:hasTarget kfngoei:nnnnnn;
   kfngoeo:hasBody kfngoei:nnnnnn .
