@@ -748,6 +748,7 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 	let click = $( this ) ;
 	let id = click.attr('id') ;
 	let boxSide = id.includes('left') ? 'left' : 'right' ;
+	//check if compare is active
 	if ($('a#text-comp_' + boxSide + '').hasClass('back')) {
 		//remove background
 		$('a#text-comp_' + boxSide + '').removeClass('back') ;
@@ -760,7 +761,9 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 		$( 'a.anchor' ).hide();		
 		//remove background
 		$( 'span' ).css( "background-color", "transparent" );		
-	}	
+	}
+	//hide meta boxes
+	$( 'div.meta-box' ).hide() ;	
 } ) ;
 
 //check if compare button is clicked
