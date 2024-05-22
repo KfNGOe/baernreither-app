@@ -2,7 +2,9 @@
 echo "copy assets"
 
 mkdir -p html/images/
+mkdir -p html/images/favicons/
 cp -r assets/images/*.* html/images/
+cp -r assets/images/favicons/*.* html/images/favicons/
 mkdir -p html/css/
 cp -r assets/css/ html/
 mkdir -p html/data/json/

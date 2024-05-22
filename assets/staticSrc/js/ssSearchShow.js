@@ -23,7 +23,7 @@ window.contextBefore = function(source, sourceFile, result_path) {
             let offset = 0 ;
             let chN_pr = 0 ;
             if (flagStart && startNr !== undefined) {
-                offset = result_path[0].instances[0].index ;rgba(238,211,188,1)
+                offset = result_path[0].instances[0].index ;
             } else {
                 if (!flagStart && startNr !== undefined) {                
                     //check if token has a '&quot;'

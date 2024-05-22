@@ -2,7 +2,9 @@ var textData_in ;
 var annoCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
+var textsAllData = {};
 var hash ;
+var markedHit ;
 var link ;
 var input_left = document.getElementById("page_input_left") ;
 var input_right = document.getElementById("page_input_right") ;
@@ -207,9 +209,12 @@ window.insertAllText = function(filepath,boxSide) {
 	(async () => {
 		//remove old data
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;		
-		//get text data		
-		let content_str = await fetchData(filepath) ;
-		let content = $.parseHTML(content_str) ;
+		//get text data	
+		//let testUrl = 'Bae_MF_6-1_dipl.html' ;
+		//load text data
+		//$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).load(filepath) ;		
+		//let content_str = await fetchData(filepath) ;
+		let content = textsAllData[filepath] ;
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
 		//set dipl text style
 		displayDiplText(boxSide) ;
@@ -280,7 +285,7 @@ window.ssMark = function() {
 	//check hash if text included
 	if(hash.includes('text_')) {		
 		//check localstroage if markedHit
-		if(localStorage.getItem('markedHit') !== null) {
+		if(markedHit !== null) {
 			//get markedHit
 			let markedHit_str = localStorage.getItem('markedHit') ;			
 			let markedHit = JSON.parse(markedHit_str) ;
@@ -332,6 +337,8 @@ window.ssMark = function() {
 				}
 			}) ;			
 			console.log( "markedHit: ", markedHit ) ;
+			//remove markedHit from localstorage
+			localStorage.removeItem('markedHit') ;
 		}		
 	}
 } ;
@@ -361,6 +368,8 @@ $( function() {
     console.log( "ready!" );
 	//get location #hash
 	hash = window.location.hash ;
+	//get local storage
+	markedHit = localStorage.getItem('markedHit') ;
 	//let anchor = $(location).attr('hash');  //get link anchor (#...)                        
     //    if(anchor.length!=0){  //check if link anchor exists	
 	
@@ -395,11 +404,40 @@ $( function() {
 		regPersonData_in = await fetchData(filepath) ;
 		//get place register data
 		filepath = './data/json/register/register_place.json' ;
-		regPlaceData_in = await fetchData(filepath) ;				
+		regPlaceData_in = await fetchData(filepath) ;
+		
+		//get text all data		
+		filepath = './data/txt/Bae_MF_6-1_all_html.txt' ; 
+		let file_txt = await fetchData(filepath) ;
+		//parse to html
+		let file_html = $.parseHTML(file_txt) ;
+		textsAllData['Bae_MF_6-1'] = file_html ;
 
-		//get text data
-		let dateFile ;
-		let textData_arr = textData_in.results.bindings
+		//$( 'div#box-left div.auswahl-content div.col-12' ).append(textsAllData['Bae_MF_6-1']) ;
+		
+		filepath = './data/txt/Bae_MF_6-2_all_html.txt' ;
+		file_txt = await fetchData(filepath) ;
+		//parse to html
+		file_html = $.parseHTML(file_txt) ;
+		textsAllData['Bae_TB_6-2'] = file_html ;
+
+		filepath = './data/txt/Bae_TB_7_all_html.txt' ;
+		file_txt = await fetchData(filepath) ;
+		//parse to html
+		file_html = $.parseHTML(file_txt) ;
+		textsAllData['Bae_TB_7'] = file_html ;
+
+		filepath = './data/txt/Bae_TB_8_all_html.txt' ;
+		file_txt = await fetchData(filepath) ;
+		//parse to html
+		file_html = $.parseHTML(file_txt) ;
+		textsAllData['Bae_TB_8'] = file_html ;
+
+		console.log( "textsAllData: ", textsAllData ) ;
+
+		//get dates of textData
+		let textData_arr = textData_in.results.bindings ;		
+		let dateFile ;		
 		textData_arr.forEach(function(result, index) {
 			if(result.date.includes('-')) {
 				dateFile = result.date.substring(0, result.date.indexOf('-')) ;
@@ -410,9 +448,9 @@ $( function() {
 			let id = 'scroll_nav_' + dateFile ;
 			//set years containing works
 			$( 'nav.scroll-nav li a#' + id ).addClass('back') ;
-			//build dropdown menu for works
-			let li_left = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_left">' + result.title.short + '</a></li>' ;
-			let li_right = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_right">' + result.title.short + '</a></li>' ;			
+			//build dropdown menu for works			
+			let li_left = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_left">' + result.title.display + '</a></li>' ;
+			let li_right = '<li><a class="dropdown-item" href="#" id="' + result.title.short + '_right">' + result.title.display + '</a></li>' ;			
 			if(result.title.short.includes('Bae_TB')) {				
 				$( 'div#box-left a#TB_left' ).siblings('ul.dropdown-menu').append(li_left) ;
 				$( 'div#box-right a#TB_right' ).siblings('ul.dropdown-menu').append(li_right) ;
@@ -433,14 +471,19 @@ $( function() {
 				//get work title
 				let workTitle = hash.replace('#', '') ;			
 				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;
+				//workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;
+				//workTitle = workTitle + '_all.html'
+				setTransType('left','dipl') ;
 				//insert text data in DOM
-				insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
+				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;				
+				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
 			} else {
 				//hash is from register or seach
 				//set dummy link
 				link = $('<a>', {
 					id: 'hashDummy',
 					href: hash, // Anchor's ID to be scrolled to				
+					//href: '#text_Bae_MF_6-1_447', 
 				});
 				$('body').append(link);
 				//remove old box data
@@ -454,6 +497,9 @@ $( function() {
 					setTransType('left','full') ;
 				}		
 				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
+				//TEST
+				//document.querySelector('#hashDummy').click();
+				console.log( "hashDummy clicked!" ) ;
 				//insert text data in DOM
 				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
 				//insertFullText('left') ;
@@ -516,9 +562,11 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let type = getTransType(boxSide) ;
 		type = type === undefined ? 'all' : type ;
 		//get file name
-		let fileName = workTitle + '_all_html.txt' ;	
+		//let fileName = workTitle + '_all.html' ;	
+		let fileName = workTitle ;	
 		//get text data
-		let filepath = './data/txt/' + fileName ;		
+		//let filepath = './data/txt/' + fileName ;		
+		let filepath = fileName ;		
 		//set work
 		setWork(boxSide,workTitle) ;
 		//set page number				
@@ -568,9 +616,12 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 			if(workTitle !== undefined && workTitle !== '') {
 				if(typeNew === 'dipl') {
 					//get file name
-					let fileName = workTitle + '_all_html.txt' ;	
+					//let fileName = workTitle + '_all_html.txt' ;	
+					//let fileName = workTitle + '_all.html' ;	
+					let fileName = workTitle ;	
 					//get text data
-					let filepath = './data/txt/' + fileName ;		
+					//let filepath = './data/txt/' + fileName ;		
+					let filepath = fileName ;		
 					//insert all text data in DOM	
 					insertAllText(filepath, boxSide) ;
 				} else {
@@ -714,9 +765,11 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		}
 		//insert compare text data in DOM
 		//get opposite file name
-		let fileName_opp = workTitle_opp + '_all_html.txt' ;
+		//let fileName_opp = workTitle_opp + '_all.html' ;
+		let fileName_opp = workTitle_opp ;
 		//get opposite text data
-		let filepath_opp = './data/txt/' + fileName_opp ;
+		//let filepath_opp = './data/txt/' + fileName_opp ;
+		let filepath_opp = fileName_opp ;
 		//insert all text data in DOM
 		insertAllText(filepath_opp, boxSide_opp) ;
 		//insert full text data in DOM
@@ -748,6 +801,7 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 	let click = $( this ) ;
 	let id = click.attr('id') ;
 	let boxSide = id.includes('left') ? 'left' : 'right' ;
+	//check if compare is active
 	if ($('a#text-comp_' + boxSide + '').hasClass('back')) {
 		//remove background
 		$('a#text-comp_' + boxSide + '').removeClass('back') ;
@@ -760,7 +814,9 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 		$( 'a.anchor' ).hide();		
 		//remove background
 		$( 'span' ).css( "background-color", "transparent" );		
-	}	
+	}
+	//hide meta boxes
+	$( 'div.meta-box' ).hide() ;	
 } ) ;
 
 //check if compare button is clicked
