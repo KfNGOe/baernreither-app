@@ -1,0 +1,292 @@
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+
+
+            ######################################## Data ########################################
+
+
+<https://www.wikidata.org/wiki/Special:EntityData/Q34713>
+    a schema:Dataset ;
+    schema:about <http://www.wikidata.org/entity/Q34713> ;
+    cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    schema:softwareVersion "1.0.0" ;
+    schema:version 996796843 ;
+    schema:dateModified "2019-08-15T16:14:21Z"^^xsd:dateTime ;
+    wikibase:statements 112 ;
+    wikibase:identifiers 27 ;
+    wikibase:sitelinks 138 .
+
+<http://www.wikidata.org/entity/Q34713>
+    a wikibase:Item ;
+    rdfs:label "Salzburg"@jv, "Salzburgo"@eu, "Salzburg"@pl, "Salzburg"@qu, "Salzburg"@gd, "Salzburg"@bs, "Salzburg"@vo, "Salzburgo"@es, "Salzburg"@af, "Salzborg"@oc, "Salzburg"@hu, "Salzburg"@ms, "Зальцбург"@ce, "Salzburg"@sw, "Salzburg"@et, "জালৎস্‌বুর্গ"@bn, "Salzburg"@br, "Salzburg"@sq, "Σάλτσμπουργκ"@el, "Salzburg"@ia, "Salzburg"@ga, "Salzburg"@nl, "سالزبورغ"@ar, "Salzburg"@sv, "Salzburgo"@pt, "Salzburg"@eo, "Salzburg"@is, "זאלצבורג"@yi, "Зальцбург"@ru, "Салцбург"@sr, "Salzburg"@tr, "Salzburg"@fi, "Зальцбург"@uk, "Зальцбург"@be-tarask, "Salzburg"@nn, "સાલ્ઝબર્ગ"@gu, "Salzburg"@io, "Salzburg"@hr, "Zaltsburq"@az, "Salisburgh"@lmo, "Salzburg"@tl, "Зальцбург"@kk, "Salzburgo"@an, "Salzburg"@da, "Salzburg"@nan, "Sałisburgo"@vec, "Salzburg"@gsw, "זלצבורג"@he, "Зальцбург"@be, "Salzbourg"@fr, "잘츠부르크"@ko, "Saltzburg"@ug, "Salzburgo"@lad, "Såizburg"@bar, "Zalcburga"@lv, "Salisburgo"@it, "Estado de Salzburgo"@gl, "Salzburg"@id, "Salzburg"@de, "ザルツブルク"@ja, "Salzburg"@vi, "Salzburg"@en, "Salzburg"@sh, "Salisburgu"@scn, "Salzburg"@hsb, "साल्ज़बोर्ग"@hi, "柴尔兹孛格"@wuu, "Salzburg"@sk, "Иёлати Залтсбург"@tg, "ಸಾಲ್ಜ್‌ಬರ್ಗ್‌"@kn, "ซาลซ์บูร์ก"@th, "Salzburg"@ro, "Salzburg"@ca, "Salisburgum"@la, "Salzburg"@cy, "Salzburg"@sl, "Salzburg"@war, "Зальцбург"@os, "Зальцбург"@mhr, "Salzburg"@cs, "زالتسبورگ"@fa, "Залцбург"@bg, "जाल्त्सबुर्ग"@mr, "ზალცბურგი"@ka, "سالزبرگ"@ur, "Zalcburgas"@lt, "Salzburg"@nb, "Salzburg"@gv, "Զալցբուրգ"@hy, "Salzburgo"@pt-br, "Salzburg"@en-gb, "薩爾茨堡"@zh-hant, "萨尔茨堡"@zh-hans, "Salzburg"@de-ch, "Salzburg"@en-ca, "Зальцбург"@mn, "Zalsburg"@uz, "萨尔茨堡"@zh, "Salisborgh"@pms, "Salzburg"@dsb, "Salzburg"@sco, "Salisburgu"@co, "Салцбург"@mk, "Salzburg"@ie, "Salzburg"@nah, "Salzburg"@tw, "Zalsburg"@kaa, "Salzburg"@sc, "Зальцбург"@tt, "Salzburg"@lb, "薩爾斯堡"@yue, "Zalsburg"@tk, "Salzburg Stadt"@ceb, "Зальцбург"@lez, "ሳልጽቡርግ"@am, "Salzburg"@pap, "زالتسبورق"@azb, "Salzburg"@szl, "சால்ஸபர்க்"@ta, "సాల్జ్ బర్గ్"@te, "Saliżburgu"@mt, "සලස්බර්ග්"@si, "薩爾斯堡"@zh-tw, "Salzburg"@se, "Salzburgu"@ast, "Soltborg"@nds, "Salzburg"@vls, "Зальцбург"@ba, "സാൽസ്ബുർഗ്"@ml, "Սալզպուրկ"@hyw, "Zaltsburg"@crh, "Zaltsburg"@crh-latn ;
+    skos:prefLabel "Salzburg"@jv, "Salzburgo"@eu, "Salzburg"@pl, "Salzburg"@qu, "Salzburg"@gd, "Salzburg"@bs, "Salzburg"@vo, "Salzburgo"@es, "Salzburg"@af, "Salzborg"@oc, "Salzburg"@hu, "Salzburg"@ms, "Зальцбург"@ce, "Salzburg"@sw, "Salzburg"@et, "জালৎস্‌বুর্গ"@bn, "Salzburg"@br, "Salzburg"@sq, "Σάλτσμπουργκ"@el, "Salzburg"@ia, "Salzburg"@ga, "Salzburg"@nl, "سالزبورغ"@ar, "Salzburg"@sv, "Salzburgo"@pt, "Salzburg"@eo, "Salzburg"@is, "זאלצבורג"@yi, "Зальцбург"@ru, "Салцбург"@sr, "Salzburg"@tr, "Salzburg"@fi, "Зальцбург"@uk, "Зальцбург"@be-tarask, "Salzburg"@nn, "સાલ્ઝબર્ગ"@gu, "Salzburg"@io, "Salzburg"@hr, "Zaltsburq"@az, "Salisburgh"@lmo, "Salzburg"@tl, "Зальцбург"@kk, "Salzburgo"@an, "Salzburg"@da, "Salzburg"@nan, "Sałisburgo"@vec, "Salzburg"@gsw, "זלצבורג"@he, "Зальцбург"@be, "Salzbourg"@fr, "잘츠부르크"@ko, "Saltzburg"@ug, "Salzburgo"@lad, "Såizburg"@bar, "Zalcburga"@lv, "Salisburgo"@it, "Estado de Salzburgo"@gl, "Salzburg"@id, "Salzburg"@de, "ザルツブルク"@ja, "Salzburg"@vi, "Salzburg"@en, "Salzburg"@sh, "Salisburgu"@scn, "Salzburg"@hsb, "साल्ज़बोर्ग"@hi, "柴尔兹孛格"@wuu, "Salzburg"@sk, "Иёлати Залтсбург"@tg, "ಸಾಲ್ಜ್‌ಬರ್ಗ್‌"@kn, "ซาลซ์บูร์ก"@th, "Salzburg"@ro, "Salzburg"@ca, "Salisburgum"@la, "Salzburg"@cy, "Salzburg"@sl, "Salzburg"@war, "Зальцбург"@os, "Зальцбург"@mhr, "Salzburg"@cs, "زالتسبورگ"@fa, "Залцбург"@bg, "जाल्त्सबुर्ग"@mr, "ზალცბურგი"@ka, "سالزبرگ"@ur, "Zalcburgas"@lt, "Salzburg"@nb, "Salzburg"@gv, "Զալցբուրգ"@hy, "Salzburgo"@pt-br, "Salzburg"@en-gb, "薩爾茨堡"@zh-hant, "萨尔茨堡"@zh-hans, "Salzburg"@de-ch, "Salzburg"@en-ca, "Зальцбург"@mn, "Zalsburg"@uz, "萨尔茨堡"@zh, "Salisborgh"@pms, "Salzburg"@dsb, "Salzburg"@sco, "Salisburgu"@co, "Салцбург"@mk, "Salzburg"@ie, "Salzburg"@nah, "Salzburg"@tw, "Zalsburg"@kaa, "Salzburg"@sc, "Зальцбург"@tt, "Salzburg"@lb, "薩爾斯堡"@yue, "Zalsburg"@tk, "Salzburg Stadt"@ceb, "Зальцбург"@lez, "ሳልጽቡርግ"@am, "Salzburg"@pap, "زالتسبورق"@azb, "Salzburg"@szl, "சால்ஸபர்க்"@ta, "సాల్జ్ బర్గ్"@te, "Saliżburgu"@mt, "සලස්බර්ග්"@si, "薩爾斯堡"@zh-tw, "Salzburg"@se, "Salzburgu"@ast, "Soltborg"@nds, "Salzburg"@vls, "Зальцбург"@ba, "സാൽസ്ബുർഗ്"@ml, "Սալզպուրկ"@hyw, "Zaltsburg"@crh, "Zaltsburg"@crh-latn ;
+    schema:name "Salzburg"@jv, "Salzburgo"@eu, "Salzburg"@pl, "Salzburg"@qu, "Salzburg"@gd, "Salzburg"@bs, "Salzburg"@vo, "Salzburgo"@es, "Salzburg"@af, "Salzborg"@oc, "Salzburg"@hu, "Salzburg"@ms, "Зальцбург"@ce, "Salzburg"@sw, "Salzburg"@et, "জালৎস্‌বুর্গ"@bn, "Salzburg"@br, "Salzburg"@sq, "Σάλτσμπουργκ"@el, "Salzburg"@ia, "Salzburg"@ga, "Salzburg"@nl, "سالزبورغ"@ar, "Salzburg"@sv, "Salzburgo"@pt, "Salzburg"@eo, "Salzburg"@is, "זאלצבורג"@yi, "Зальцбург"@ru, "Салцбург"@sr, "Salzburg"@tr, "Salzburg"@fi, "Зальцбург"@uk, "Зальцбург"@be-tarask, "Salzburg"@nn, "સાલ્ઝબર્ગ"@gu, "Salzburg"@io, "Salzburg"@hr, "Zaltsburq"@az, "Salisburgh"@lmo, "Salzburg"@tl, "Зальцбург"@kk, "Salzburgo"@an, "Salzburg"@da, "Salzburg"@nan, "Sałisburgo"@vec, "Salzburg"@gsw, "זלצבורג"@he, "Зальцбург"@be, "Salzbourg"@fr, "잘츠부르크"@ko, "Saltzburg"@ug, "Salzburgo"@lad, "Såizburg"@bar, "Zalcburga"@lv, "Salisburgo"@it, "Estado de Salzburgo"@gl, "Salzburg"@id, "Salzburg"@de, "ザルツブルク"@ja, "Salzburg"@vi, "Salzburg"@en, "Salzburg"@sh, "Salisburgu"@scn, "Salzburg"@hsb, "साल्ज़बोर्ग"@hi, "柴尔兹孛格"@wuu, "Salzburg"@sk, "Иёлати Залтсбург"@tg, "ಸಾಲ್ಜ್‌ಬರ್ಗ್‌"@kn, "ซาลซ์บูร์ก"@th, "Salzburg"@ro, "Salzburg"@ca, "Salisburgum"@la, "Salzburg"@cy, "Salzburg"@sl, "Salzburg"@war, "Зальцбург"@os, "Зальцбург"@mhr, "Salzburg"@cs, "زالتسبورگ"@fa, "Залцбург"@bg, "जाल्त्सबुर्ग"@mr, "ზალცბურგი"@ka, "سالزبرگ"@ur, "Zalcburgas"@lt, "Salzburg"@nb, "Salzburg"@gv, "Զալցբուրգ"@hy, "Salzburgo"@pt-br, "Salzburg"@en-gb, "薩爾茨堡"@zh-hant, "萨尔茨堡"@zh-hans, "Salzburg"@de-ch, "Salzburg"@en-ca, "Зальцбург"@mn, "Zalsburg"@uz, "萨尔茨堡"@zh, "Salisborgh"@pms, "Salzburg"@dsb, "Salzburg"@sco, "Salisburgu"@co, "Салцбург"@mk, "Salzburg"@ie, "Salzburg"@nah, "Salzburg"@tw, "Zalsburg"@kaa, "Salzburg"@sc, "Зальцбург"@tt, "Salzburg"@lb, "薩爾斯堡"@yue, "Zalsburg"@tk, "Salzburg Stadt"@ceb, "Зальцбург"@lez, "ሳልጽቡርግ"@am, "Salzburg"@pap, "زالتسبورق"@azb, "Salzburg"@szl, "சால்ஸபர்க்"@ta, "సాల్జ్ బర్గ్"@te, "Saliżburgu"@mt, "සලස්බර්ග්"@si, "薩爾斯堡"@zh-tw, "Salzburg"@se, "Salzburgu"@ast, "Soltborg"@nds, "Salzburg"@vls, "Зальцбург"@ba, "സാൽസ്ബുർഗ്"@ml, "Սալզպուրկ"@hyw, "Zaltsburg"@crh, "Zaltsburg"@crh-latn ;
+    schema:description "ciudad de Austria"@es, "commune autrichienne"@fr, "by i Salzburg i Østerrike"@nb, "city in Salzburg federated state, Austria"@en, "Stadt in Österreich"@de, "hoofdstad van de Oostenrijkse deelstaat Salzburg"@nl, "cidade da Áustria"@pt-br, "città austriaca"@it, "город в Австрии, Зальцбург"@ru, "πόλη της Αυστρίας, πρωτεύουσα του ομώνυμου ομοσπονδιακού κρατιδίου"@el, "град во Австрија"@mk, "העיר הרביעית בגודלה באוסטריה"@he, "osztrák város, Salzburg tartomány székhelye"@hu, "місто на заході Австрії"@uk, "město v Rakousku"@cs, "奧地利城市"@zh-tw, "奥地利城市"@zh, "奧地利城市"@zh-hant, "komunë në Austri"@sq, "stad i Salzburgs delstat, Österrike"@sv, "miasto w Austrii"@pl, "অস্ট্রিয়ার শহর"@bn, "kumun aostriat"@br, "municipi d'Àustria"@ca, "مدينة نمساوية"@ar, "mesto v Rakúsku"@sk ;
+    skos:altLabel "薩斯堡"@zh, "薩爾茨保"@zh, "薩爾斯堡"@zh, "薩爾茲堡"@zh, "萨尔斯堡"@zh, "盐城"@zh, "Salzburg"@eu, "Salzburgo"@qu, "Salisburgo"@qu, "Salzburgu"@qu, "Salisburgu"@qu, "Salisburgo"@es, "Salzburg"@es, "Salzbourg"@br, "Salcburg"@sq, "Salzburgu"@sq, "Σαλτσβούργο"@el, "Ζάλτσμπουργκ"@el, "Ζάλστμπουργκ"@el, "سالزبرغ"@ar, "سالتسبرغ"@ar, "سالزبورج"@ar, "Salzburg"@pt, "Juvavum"@pt, "Salisburgo"@pt, "Salcburgo"@eo, "Salzburgo"@eo, "Zalcburgo"@eo, "Salzburg"@ru, "Ювава"@ru, "Ювавум"@ru, "Салзбург"@sr, "Залцбург"@sr, "Salzburg"@sr, "Salzburg-Şehir"@tr, "Зальцбурґ"@uk, "Salzburg"@lmo, "Lungsod ng Salzburg"@tl, "Salisburgo"@vec, "זאלצבורג"@he, "Salzburg"@fr, "짤츠부르크"@ko, "찰츠부르크"@ko, "찰스부르크"@ko, "سالتزبۇرگ"@ug, "Salzbuag"@bar, "Solzburg"@bar, "Soijzbuag"@bar, "Sålzbuag"@bar, "Saizburg"@bar, "Soizbuag"@bar, "Salzburg"@bar, "Soizburga"@bar, "Saizbuag"@bar, "Sålzburg"@bar, "Såizbuag"@bar, "Solzbuag"@bar, "Soizburg"@bar, "Salzburg"@it, "Såizburg"@id, "Stadt Salzburg"@de, "Salzburg Stadt"@de, "サルツブルグ"@ja, "ザルツブルグ"@ja, "Juvavum"@sh, "Салцбург"@sh, "Solnohród"@hsb, "Soľnohrad"@sk, "Salzburg"@th, "Salisburgium"@la, "Iuvavum"@la, "Iuvavia"@la, "Solnograd"@sl, "Salzburgo"@war, "Salzburg"@mhr, "Salcburg"@cs, "Salzburk"@cs, "Salcpurk"@cs, "Solnohrad"@cs, "Salcburk"@cs, "سالزبورگ"@fa, "ایالت سالزبورگ"@fa, "साल्झबुर्ग"@mr, "साल्झबर्ग"@mr, "ევროპული მარშრუტი E60"@ka, "Salzburg"@lt, "Solnogrod"@dsb, "Залцбург"@mk, "সলজবুর্গ"@bn, "Salzburg"@ceb ;
+    wdt:P1151 <http://www.wikidata.org/entity/Q10999191> ;
+    wdt:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Salzburg%20Altstadt%20vom%20M%C3%B6nchsberg.jpg> ;
+    wdt:P206 <http://www.wikidata.org/entity/Q152661>, <http://www.wikidata.org/entity/Q438289> ;
+    wdt:P1082 154076.0 ;
+    wdt:P190 <http://www.wikidata.org/entity/Q41876>, <http://www.wikidata.org/entity/Q23556>, <http://www.wikidata.org/entity/Q2028>, <http://www.wikidata.org/entity/Q208151>, <http://www.wikidata.org/entity/Q216>, <http://www.wikidata.org/entity/Q1731>, <http://www.wikidata.org/entity/Q164234>, <http://www.wikidata.org/entity/Q131605>, <http://www.wikidata.org/entity/Q8686>, <http://www.wikidata.org/entity/Q565287>, <http://www.wikidata.org/entity/Q153331>, <http://www.wikidata.org/entity/Q100772>, <http://www.wikidata.org/entity/Q70>, <http://www.wikidata.org/entity/Q8673> ;
+    wdt:P1036 "2--43632" ;
+    wdt:P31 <http://www.wikidata.org/entity/Q1549591>, <http://www.wikidata.org/entity/Q667509>, <http://www.wikidata.org/entity/Q13539802>, <http://www.wikidata.org/entity/Q262882>, <http://www.wikidata.org/entity/Q871419> ;
+    wdt:P17 <http://www.wikidata.org/entity/Q40> ;
+    wdt:P373 "Salzburg" ;
+    wdt:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/AUT%20Salzburg%20%28Stadt%29%20COA.svg> ;
+    wdt:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/Karte%20A%20Sbg%20S.svg> ;
+    wdt:P281 "5020", "5023", "5026", "5061", "5071", "5081", "5082" ;
+    wdt:P473 "0662" ;
+    wdt:P421 <http://www.wikidata.org/entity/Q6655>, <http://www.wikidata.org/entity/Q6723> ;
+    wdt:P131 <http://www.wikidata.org/entity/Q43325> ;
+    wdt:P625 "Point(13.0333 47.8)"^^geo:wktLiteral, "Point(13.0477 47.7972)"^^geo:wktLiteral ;
+    wdt:P910 <http://www.wikidata.org/entity/Q7032532> ;
+    wdt:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Salzburg%20banner.jpg> ;
+    wdt:P964 "50101" ;
+    wdt:P998 "Regional/Europe/Austria/Localities/Salzburg/" ;
+    wdt:P935 "Salzburg (Stadt)" ;
+    wdt:P982 "f0590317-8b42-4498-a2e4-34cc5562fcf8" ;
+    wdtn:P982 <http://musicbrainz.org/area/f0590317-8b42-4498-a2e4-34cc5562fcf8> ;
+    wdt:P349 "00628569" ;
+    wdtn:P349 <http://id.ndl.go.jp/auth/ndlna/00628569> ;
+    wdt:P646 "/m/0b1mf" ;
+    wdtn:P646 <http://g.co/kg/m/0b1mf> ;
+    wdt:P227 "4076982-3" ;
+    wdtn:P227 <http://d-nb.info/gnd/4076982-3> ;
+    wdt:P244 "n80024359" ;
+    wdtn:P244 <http://id.loc.gov/authorities/names/n80024359> ;
+    wdt:P214 "143061561" ;
+    wdtn:P214 <http://viaf.org/viaf/143061561> ;
+    wdt:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Salzburg%20%28state%29.svg> ;
+    wdt:P1464 <http://www.wikidata.org/entity/Q8053928> ;
+    wdt:P1465 <http://www.wikidata.org/entity/Q9219792> ;
+    wdt:P1566 "2766818" ;
+    wdtn:P1566 <http://sws.geonames.org/2766818/> ;
+    wdt:P856 <http://www.stadt-salzburg.at/> ;
+    wdt:P47 <http://www.wikidata.org/entity/Q10530> ;
+    wdt:P527 <http://www.wikidata.org/entity/Q1852160> ;
+    wdt:P1792 <http://www.wikidata.org/entity/Q6449101> ;
+    wdt:P1376 <http://www.wikidata.org/entity/Q43325>, <http://www.wikidata.org/entity/Q2215865> ;
+    wdt:P1997 "102189213155511" ;
+    wdt:P2044 424.0, 437.0 ;
+    wdt:P1705 "Salzburg"@de ;
+    wdt:P1448 "Salzburg"@de ;
+    wdt:P2888 <http://open.salzburgerland.com/de/entity/stadt_salzburg> ;
+    wdt:P3417 "Salzburg-Austria" ;
+    wdt:P2046 66.0, 65.65 ;
+    wdt:P395 "S" ;
+    wdt:P6 <http://www.wikidata.org/entity/Q43464436> ;
+    wdt:P1791 <http://www.wikidata.org/entity/Q14864065> ;
+    wdt:P2347 "504575" ;
+    wdtn:P2347 <http://www.yso.fi/onto/yso/p504575> ;
+    wdt:P1225 "10044880" ;
+    wdt:P4613 "14819" ;
+    wdt:P1343 <http://www.wikidata.org/entity/Q1138524> ;
+    wdt:P3219 "salzbourg-ville" ;
+    wdt:P402 "86538" ;
+    wdt:P4212 "pcrtFkrHtfHQxo" ;
+    wdt:P463 <http://www.wikidata.org/entity/Q1768108> ;
+    wdt:P706 <http://www.wikidata.org/entity/Q1781206> ;
+    wdt:P1621 <http://commons.wikimedia.org/wiki/Special:FilePath/Salzburger%20Stadtteile.jpg> ;
+    wdt:P2633 <http://www.wikidata.org/entity/Q1503146> ;
+    wdt:P2184 <http://www.wikidata.org/entity/Q279257> ;
+    wdt:P1456 <http://www.wikidata.org/entity/Q1188436> ;
+    wdt:P138 <http://www.wikidata.org/entity/Q2216084> ;
+    wdt:P2924 "1986796" ;
+    wdt:P1417 "place/Salzburg-Austria" ;
+    wdt:P5573 "1355" ;
+    wdt:P691 "ge134471" ;
+    wdt:P1830 <http://www.wikidata.org/entity/Q2204778> ;
+    wdt:P6228 "14" ;
+    wdt:P1667 "7003256" ;
+    wdtn:P1667 <http://vocab.getty.edu/tgn/7003256> ;
+    wdt:P3722 "Maps of Salzburg" ;
+    wdt:P6573 "Salzburg" ;
+    wdt:P3222 "salzburg" ;
+    wdt:P6821 "alvin-place:778" 
+    .
+
+            ######################################## Shapes ########################################
+
+<https://dhplus.sbg.ac.at/shapes/place/>
+  a <http://owl.org/Ontology> ;
+  dc11:title "dhPLUS Place SHACL" ;
+  dc11:creator "Richard Hörmann" ;
+  owl:comment "This is a SHACL graph for validating the dhPLUS OWL ontology."@en .
+  # owl:imports <http://njh.me/> .
+
+
+<http://schema.org/Dataset>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> ;
+    sh:property [
+                    sh:path schema:about ;
+                    sh:nodeKind sh:IRI ;
+                    sh:pattern "http://www.wikidata.org/entity/"
+                ] , [
+                      sh:path cc:license ;
+                      sh:nodeKind sh:IRI ;
+                      sh:pattern "http://creativecommons.org/publicdomain/"
+                    ] , [
+                            sh:path schema:version ;
+                            sh:datatype xsd:integer
+                        ] , [
+                              sh:path schema:dateModified ;
+                              sh:datatype xsd:dateTime
+                            ] .
+#[sh:path (schema:about rdfs:label) ; sh:datatype rdf:langString ; sh:languageIn ( "de" "en"); ].
+
+_:WikiDataItemShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf schema:about ;
+    sh:property [
+                    sh:path rdf:type ;
+                    sh:hasValue wikibase:Item
+                ] , [
+                        sh:path rdfs:label ;
+                        sh:datatype rdf:langString
+                    ] ;
+    sh:or (
+              [
+                  sh:not [
+                             sh:property [
+                                             sh:path rdfs:label ;
+                                             sh:datatype rdf:langString
+                                         ]
+                         ]
+              ]
+              [
+                  sh:property [
+                                sh:path rdfs:label ;
+                                sh:languageIn ("de" "en")
+                              ]
+              ]
+          )
+.
+
+<http://wikiba.se/ontology#Item>
+    a owl:Class, <http://www.w3.org/ns/shacl#NodeShape> .
+
+_:WikiDataDatasetRuleShape
+    a sh:NodeShape ;
+    sh:targetClass <schema:Dataset> .
+#    sh:rule [   ]
+.
+
+_:TestSparql a sh:NodeShape;
+             sh:targetClass wikibase:Item ;
+             sh:sparql [
+                           sh:prefixes rdfs: ;
+                           sh:select """
+                            SELECT $this ?op
+                            WHERE {
+                                    $this rdfs:label ?op .
+                                    FILTER ( lang(?op) = "de" )
+                            }
+                           """
+                       ]
+.
+
+_:WikiDataItemRuleShape
+    a sh:NodeShape ;
+    sh:targetClass wikibase:Item ;
+    sh:rule [
+                a sh:TripleRule ;
+                sh:condition _:WikiDataItemShape ;
+                sh:subject sh:this ;
+                sh:predicate <rdfs:label> ;
+                sh:object [
+                              spr:placeName (
+                                               [
+                                                   sh:path rdfs:label
+                                               ]
+                                           )
+                          ] ;
+            ] .
+
+spr:placeName
+    rdf:type sh:SPARQLFunction ;
+    sh:parameter [
+                     sh:path spr:op1 ;
+                     sh:datatype rdf:langString ;
+                 ] ;
+    sh:returnType rdf:langString ;
+    sh:select """
+        SELECT ($op1 AS ?result)
+		{ FILTER ( lang($op1) = "de" )
+		}
+    """ .
+
+spr:tagName
+    rdf:type sh:SPARQLFunction ;
+    sh:parameter [
+                     sh:path spr:op2 ;
+                     sh:datatype rdf:langString ;
+                 ] ;
+    sh:ask """
+        ASK
+		{
+		    FILTER ( lang($op2) = "de" )
+		}
+    """
+.
+
+_:ItemRuleShape
+    a sh:NodeShape ;
+    sh:targetClass wikibase:Item ;
+    sh:rule [
+                a sh:TripleRule;
+                sh:subject sh:this ;
+                sh:predicate <rdf:type> ;
+                sh:object [sh:path rdf:type]
+            ] , [
+                    a sh:TripleRule;
+                    #sh:condition _:E48_Place_NameRuleShape ;
+                    sh:subject [ sh:path ( [sh:inversePath dhplusPlace:hasPart] [sh:inversePath dhplusPlace:source] dhplusPlace:P87_is_identified_by dhplusPlace:isReplacedBy )];
+                    #sh:path ( [ sh:inversePath dhplusPlace:P87_is_identified_by] dhplusPlace:source dhplusPlace:hasPart <rdfs:label> ) ;
+                    sh:predicate <rdfs:label> ;
+                    sh:object [ sh:path <rdfs:label> ];
+                ]
+.
+
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9>
+    a <https://dhplus.sbg.ac.at/place/E53_Place> ;
+    dhplusPlace:source <http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#wikiData-local> ;
+    dhplusPlace:P87_is_identified_by [
+                                          rdf:type dhplusPlace:E48_Place_Name ;
+                                          dhplusPlace:isReplacedBy [
+                                                                       a dhplusPlace:ReplacedPlaceOrGeographicName ;
+                                                                   ]
+                                     ]
+.
+
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#wikiData-local>
+    rdf:type dhplusPlace:WikiData ;
+    dhplusPlace:hasPart <http://www.wikidata.org/entity/Q34713> ;
+    dhplusPlace:hasPart <https://www.wikidata.org/wiki/Special:EntityData/Q34713>
+.
+
+<http://www.wikidata.org/entity/Q34713>
+    rdf:type <http://wikiba.se/ontology#Item> ;
+    <rdfs:label>  "Salzburg"@de , "Salzburg"@en ;
+    <wdt:P2044>   437.0 , 424.0 ;
+    <wdt:P625>    "Point(13.0333 47.8)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> , "Point(13.0477 47.7972)"^^<http://www.opengis.net/ont/geosparql#wktLiteral>
+.
+
+<https://www.wikidata.org/wiki/Special:EntityData/Q34713>
+    rdf:type <http://schema.org/Dataset> ;
+    <rdfs:label>  () ;
+.

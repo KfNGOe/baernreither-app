@@ -1,0 +1,26 @@
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:nnnn a kfngoeo:AnnoPerson;
+  rdfs:label "Annotation level of Persons"@en;
+  rdfs:isDefinedBy "BaernreitherJosephMaria", "PacakBedrich", "DerschattaJulius", "ChiariKarl",
+    "GautschPaul", "PradeHeinrich", "KramarKarel", "ZacekJan", "PergeltAnton", "GroßGustav",
+    "KoerberErnest", "SteinFranko", "KaiserFranzJosef", "NostitzErwein", "FuerstenbergMaxEgon",
+    "LobkowitzFerdinand", "RohanAlain", "SchwarzenbergKarl", "Silva-TaroucaErnst", "Clam-MartinicHeinrich",
+    "CzerninOttokar", "ThunFranz", "HohenwartKarl", "SchaeffleAlbert", "GrabmayrKarl",
+    "GoluchowskiAgenor", "WekerleSandor", "AndrassyGyula", "BismarckOtto", "KaiserWilhelmII.",
+    "HohenloheKonrad", "DaszynskiIgnacy", "KaljajewIwan", "DzieduszyckiWojciech", "AbrahamowiczDawid",
+    "BeckMaxWladimir", "CoudenhoveKarl", "UrbanKarl", "LecherOtto", "KienmannEmerich",
+    "LoeckerJulius", "MarchetGustav", "VetterMoritz", "StürgkhKarl", "TerlagoRobert",
+    "TollingerJohann", "ChlumeckyJohann", "Georg", "TaaffeEduard", "SteinbachEmil", "FejervaryGeza",
+    "KristoffyJozsef";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .

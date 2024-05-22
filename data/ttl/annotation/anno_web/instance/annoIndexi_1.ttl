@@ -1,0 +1,19 @@
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:nnnn a kfngoeo:AnnoIndex;
+  rdfs:label "Annotation level of Index"@en;
+  rdfs:isDefinedBy "Arbeiter", "Aristokratie", "Buergertum", "KaiserFranzJoseph", "KaiserlichesNotverordnungsrecht",
+    "Liberalismus", "Nationalitaetenkonflikt", "Oestereich-Ungarn", "Oesterreich-Ungarn",
+    "Parteien", "Presse", "Reichsrat", "Russland", "SozialeFuersorge", "UngarischerReichstag",
+    "Verwaltung", "Wahlrechtsreform", "Wahlrechtsreform/", "Wahlreform", "Zentralismus";
+  kfngoeo:hasTarget kfngoei:nnnnnn;
+  kfngoeo:hasBody kfngoei:nnnnnn .

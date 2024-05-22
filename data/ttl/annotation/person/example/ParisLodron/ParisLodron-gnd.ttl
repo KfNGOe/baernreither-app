@@ -1,0 +1,124 @@
+@prefix schema: <http://schema.org/> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix lib: <http://purl.org/library/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix editeur: <https://ns.editeur.org/thema/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix umbel: <http://umbel.org/umbel#> .
+@prefix rdau: <http://rdaregistry.info/Elements/u/> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix isbd: <http://iflastandards.info/ns/isbd/elements/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix marcRole: <http://id.loc.gov/vocabulary/relators/> .
+@prefix agrelon: <https://d-nb.info/standards/elementset/agrelon#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix dnbt: <https://d-nb.info/standards/elementset/dnb#> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix dnb_intern: <http://dnb.de/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix v: <http://www.w3.org/2006/vcard/ns#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix ebu: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix gbv: <http://purl.org/ontology/gbv/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<https://d-nb.info/gnd/11873931X> a gndo:DifferentiatedPerson;
+  wdrs:describedby <https://d-nb.info/gnd/11873931X/about> .
+
+<https://d-nb.info/gnd/11873931X/about> dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/>;
+  dcterms:modified "2016-04-08T17:02:52.000"^^xsd:dateTime .
+
+<https://d-nb.info/gnd/11873931X> gndo:gndIdentifier "11873931X";
+  foaf:page <https://de.wikipedia.org/wiki/Paris_von_Lodron>;
+  owl:sameAs <http://viaf.org/viaf/20475700>, <http://isni.org/isni/0000000061514014>,
+    <http://www.wikidata.org/entity/Q877419>, <http://id.loc.gov/rwo/agents/n92116121>;
+  gndo:oldAuthorityNumber "(DE-588a)11873931X", "(DE-588c)4102877-6";
+  gndo:variantNameForThePerson "Lateranus, Paris";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786792 .
+
+_:node1e86a1c2fx786792 gndo:forename "Paris";
+  gndo:surname "Lateranus" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Lodron, Paris von";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786793 .
+
+_:node1e86a1c2fx786793 gndo:forename "Paris";
+  gndo:prefix "von";
+  gndo:surname "Lodron" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Lodroni, Paris zu";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786794 .
+
+_:node1e86a1c2fx786794 gndo:forename "Paris";
+  gndo:prefix "zu";
+  gndo:surname "Lodroni" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Lodronius, Paris";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786795 .
+
+_:node1e86a1c2fx786795 gndo:forename "Paris";
+  gndo:surname "Lodronius" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Lodrono, Paris de";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786796 .
+
+_:node1e86a1c2fx786796 gndo:forename "Paris";
+  gndo:prefix "de";
+  gndo:surname "Lodrono" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Paris, Archiepiscopus Salisburgensis";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786797 .
+
+_:node1e86a1c2fx786797 gndo:personalName "Paris";
+  gndo:nameAddition "Archiepiscopus Salisburgensis" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Paris, Lodronius";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786798 .
+
+_:node1e86a1c2fx786798 gndo:personalName "Paris";
+  gndo:nameAddition "Lodronius" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Paris, Salisburgum, Archiepiscopus";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786799 .
+
+_:node1e86a1c2fx786799 gndo:personalName "Paris";
+  gndo:nameAddition "Salisburgum, Archiepiscopus" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Paris, Erzbischof von Salzburg";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786800 .
+
+_:node1e86a1c2fx786800 gndo:personalName "Paris";
+  gndo:nameAddition "Erzbischof von Salzburg" .
+
+<https://d-nb.info/gnd/11873931X> gndo:variantNameForThePerson "Lodron, Paris von, Erzbischof von Salzburg";
+  gndo:variantNameEntityForThePerson _:node1e86a1c2fx786801 .
+
+_:node1e86a1c2fx786801 gndo:forename "Paris";
+  gndo:prefix "von";
+  gndo:surname "Lodron";
+  gndo:nameAddition "Erzbischof von Salzburg" .
+
+<https://d-nb.info/gnd/11873931X> gndo:preferredNameForThePerson "Paris, Salzburg, Erzbischof";
+  gndo:preferredNameEntityForThePerson _:node1e86a1c2fx786802 .
+
+_:node1e86a1c2fx786802 gndo:personalName "Paris";
+  gndo:nameAddition "Salzburg, Erzbischof" .
+
+<https://d-nb.info/gnd/11873931X> gndo:professionOrOccupation <https://d-nb.info/gnd/4015471-3>;
+  gndo:gndSubjectCategory <https://d-nb.info/standards/vocab/gnd/gnd-sc#3.6p>, <https://d-nb.info/standards/vocab/gnd/gnd-sc#16.5p>;
+  gndo:geographicAreaCode <https://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-DE>;
+  gndo:publication "Laymann, Paul: Disputatio philosophica de varietate scientiarum et artium. - 1604",
+    "Leo Lateranus Ill.mae Gentis Lodroniae aeternum decus Paridi Laterano Principi atque Archiepiscopo salisburgensis sedis apostolocae Legato Nato. - 1621";
+  gndo:gender <https://d-nb.info/standards/vocab/gnd/gender#male>;
+  gndo:dateOfBirth "1586"^^xsd:gYear;
+  gndo:dateOfDeath "1653"^^xsd:gYear .
+

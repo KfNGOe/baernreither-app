@@ -1,0 +1,54 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:2d80f715-c924-4809-a416-0f446ff58a5d a kfngoeo:AnnoAnchorSpan;
+  rdfs:label "Annotation level of Anchor for AddSpan"@en;
+  kfngoeo:hasTarget _:node285497 .
+
+_:node285497 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node285498 .
+
+_:node285498 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 604;
+  kfngoeo:end 1029 .
+
+kfngoei:94db9ad4-e30b-44c6-9c86-838d70534b57 a kfngoeo:AnnoAnchorSpan;
+  rdfs:label "Annotation level of Anchor for AddSpan"@en;
+  kfngoeo:hasTarget _:node285499 .
+
+_:node285499 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node285500 .
+
+_:node285500 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1072;
+  kfngoeo:end 1125 .
+
+kfngoei:b8e392fd-9954-4b6d-b763-904897bb808b a kfngoeo:AnnoAnchorSpan;
+  rdfs:label "Annotation level of Anchor for AddSpan"@en;
+  kfngoeo:hasTarget _:node285501 .
+
+_:node285501 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node285502 .
+
+_:node285502 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2872;
+  kfngoeo:end 2961 .
+
+kfngoei:2315bc5d-cc81-4232-852d-6504dfa3cb88 a kfngoeo:AnnoAnchorSpan;
+  rdfs:label "Annotation level of Anchor for AddSpan"@en;
+  kfngoeo:hasTarget _:node285503 .
+
+_:node285503 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node285504 .
+
+_:node285504 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3188;
+  kfngoeo:end 3319 .

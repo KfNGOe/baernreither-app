@@ -1,0 +1,43 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:0fbe9f21-4f04-4974-bc52-35170d47cc4c a kfngoeo:AnnoInsertion;
+  rdfs:label "Annotation level of insertion"@en;
+  kfngoeo:hasTarget _:node28829 .
+
+_:node28829 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node28830 .
+
+_:node28830 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 604;
+  kfngoeo:end 1029 .
+
+kfngoei:5a3478d8-0f43-43ca-85d4-943c20e6bc0b a kfngoeo:AnnoInsertion;
+  rdfs:label "Annotation level of insertion"@en;
+  kfngoeo:hasTarget _:node28831 .
+
+_:node28831 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node28832 .
+
+_:node28832 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1072;
+  kfngoeo:end 1125 .
+
+kfngoei:0edf67d0-0c4c-4947-8d6a-d8a99c26fe91 a kfngoeo:AnnoInsertion;
+  rdfs:label "Annotation level of insertion"@en;
+  kfngoeo:hasTarget _:node28833 .
+
+_:node28833 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:node28834 .
+
+_:node28834 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2872;
+  kfngoeo:end 2961 .

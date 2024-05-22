@@ -1,0 +1,84 @@
+@prefix kfngoei: <http://dhplus.sbg.ac.at/kfngoe/instance/> .
+@prefix kfngoeo: <http://dhplus.sbg.ac.at/kfngoe/ontology#> .
+
+
+#kfngoei
+kfngoei:n1
+    a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:item ;	
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+.
+
+kfngoei:n2
+    a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:term ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "main"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+ .
+
+kfngoei:n3
+	a kfngoeo:Text ;
+	kfngoeo:hasContent ?term_main ;
+	kfngoeo:elementPos rdf:nnnn ;
+. 
+
+kfngoei:n4
+    a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:term ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+.
+
+kfngoei:n5
+    a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:term ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "sub"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+.
+
+kfngoei:n6
+	a kfngoeo:Text ;
+	kfngoeo:hasContent ?term_sub ;
+	kfngoeo:elementPos rdf:nnnn ;
+.
+
+kfngoei:n7
+    a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:term ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+ .
+
+kfngoei:n8
+    a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:item ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue rdf:nnnn ;
+	] ;
+	kfngoeo:elementPos rdf:nnnn ;
+ .

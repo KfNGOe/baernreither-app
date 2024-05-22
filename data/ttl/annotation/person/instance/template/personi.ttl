@@ -1,0 +1,70 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wikibase: <http://wikiba.se/ontology#Statement> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dhpluso: <https://dhplus.sbg.ac.at/ontology#> .
+@prefix dhplusi: <http://dhplus.sbg.ac.at/instance/> .
+@prefix ebneri: <http://dhplus.sbg.ac.at/ebner/instance/> .
+@prefix mhdbdbi: <http://dhplus.sbg.ac.at/mhdbdb/instance/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix kfngoei: <http://dhplus.sbg.ac.at/kfngoe/instance/> .
+@prefix kfngoeo: <http://dhplus.sbg.ac.at/kfngoe/ontology#> .
+
+
+#kfngoei
+kfngoei:nnnnnn
+    a   kfngoeo:Person ; #subclass of gndo:DifferentiatedPerson, schema:Person, dct:Agent    
+
+    #administrative    
+    kfngoeo:modified "0001-01-01T00:00:00"^^xsd:dateTime ; #subprop of dct:modified
+    kfngoeo:license <http://creativecommons.org/publicdomain/zero/1.0/>; #subprop of dct:license
+    
+    #relation
+    kfngoeo:source <nnnn> ; #subprop of dct:source
+    
+    #name
+    kfngoeo:preferredNameEntityForThePerson [ 
+        a kfngoeo:NameOfThePerson ; #subprop of gndo:NameOfThePerson
+        rdfs:label  "NN"@en , "NN"@de ; #from wikidata
+        kfngoeo:preferredNameForThePerson "NN"^^xsd:string ; #subprop of gndo:preferredNameForThePerson
+        kfngoeo:forename "NN"^^xsd:string ; #subprop of gndo:forename
+        kfngoeo:surname "NN"^^xsd:string ; #subprop of gndo:surname
+        kfngoeo:nameAddition "NN"^^xsd:string ; #subprop of gndo:nameAddition
+    ] ; #subprop of gndo:preferredNameEntityForThePerson
+
+    #gender
+    kfngoeo:gender <https://d-nb.info/standards/vocab/gnd/gender#male> ; #subprop of gndo:gender
+    
+    #birth
+    kfngoeo:dateOfBirth "yyyy-mm-dd"^^xsd:date ; #subprop of gndo:dateOfBirth
+    
+    #death
+    kfngoeo:dateOfDeath "yyyy-mm-dd"^^xsd:date ; #subprop of gndo:dateOfDeath
+    
+    #description
+    kfngoeo:biographicalOrHistoricalInformation "xxxx"^^xsd:string ; #subprop of gndo:biographicalOrHistoricalInformation
+    
+    #identifier
+    kfngoeo:identifier [ #subprop of schema:identifier
+        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
+        kfngoeo:propertyID "GND"^^xsd:string ; #subprop of schema:propertyID
+        kfngoeo:value "xxxxxxxxx"^^xsd:string ; #subprop of schema:value
+    ] 
+    #identifier
+    kfngoeo:identifier [
+        a kfngoeo:PropertyValue ; #subprop of schema:PropertyValue
+        kfngoeo:propertyID "CamelCase"^^xsd:string ; #subprop of schema:propertyID
+        kfngoeo:value "xxxxxxxxx"^^xsd:string ; #subprop of schema:value
+    ] #subprop of schema:identifier
+.

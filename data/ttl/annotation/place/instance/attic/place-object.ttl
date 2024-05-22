@@ -1,0 +1,93 @@
+@prefix dhplusPlace: <https://dhplus.sbg.ac.at/place/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+#dhplus
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9>
+  a dhplusPlace:E53_Place ;
+  dhplusPlace:source <http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#gnd-local> ;
+  dhplusPlace:source <http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#wikiData-local> ;
+  dhplusPlace:source <http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#projSpec> ;
+
+  dhplusPlace:P87_is_identified_by [
+                                     a dhplusPlace:E48_Place_Name ;
+                                     dhplusPlace:isDefinedBy [
+                                                               a dhplusPlace:DefinedPlaceOrGeographicName ;
+                                                             ] ;
+                                     dhplusPlace:isReplacedBy [
+                                                                a dhplusPlace:ReplacedPlaceOrGeographicName ;
+                                                              ]
+                                   ], [
+                                        a dhplusPlace:E47_Spatial_Coordinates ;
+                                        dhplusPlace:isDefinedBy [
+                                                                    a dhplusPlace:DefinedFeature ;
+                                                                    dhplusPlace:hasDefinedGeometry []
+                                                                ] ;
+                                        dhplusPlace:isReplacedBy [
+                                                                    a dhplusPlace:ReplacedFeature ;
+                                                                    dhplusPlace:hasReplacedGeometry []
+                                                                 ]
+                                      ]
+.
+
+#gnd
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#gnd-local>
+    a dhplusPlace:Gnd ;
+    dhplusPlace:hasPart <http://d-nb.info/gnd/4076982-3>
+.
+
+<http://d-nb.info/gnd/4076982-3>
+    <rdf:type>                 <http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit> ;
+    <wdrs:describedby>         <http://d-nb.info/gnd/040769828/about> ;
+    <owl:sameAs>               <http://d-nb.info/gnd/2021245-8> , <http://sws.geonames.org/2766824> , <http://www.wikidata.org/entity/Q34713> , <http://viaf.org/viaf/236812937> ;
+    <geo:hasGeometry>          [ <geo:asWKT>  "Point ( +013.043888 +047.799166 )"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                 <rdf:type>   <http://www.opengis.net/ont/sf#Point>
+                               ] ;
+    <gndo:geographicAreaCode>  <http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-AT-5> ;
+    <gndo:gndIdentifier>       "4076982-3" ;
+    <gndo:preferredNameForThePlaceOrGeographicName>
+                               "Salzburg" ;
+    <gndo:variantNameForThePlaceOrGeographicName>
+                               "Salisburgo" , "Stadtgemeinde Salzburg" , "Salisburgum" , "Stadt Salzburg" , "Iuvavum" , "Landeshauptstadt Salzburg" , "Zalʹcburg" , "Salzbourg" , "Saltzburg" ;
+.
+
+<http://d-nb.info/gnd/040769828/about>
+    <dc:license>   <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    <dc:modified>  "2019-04-29T08:40:00.000"^^xsd:dateTime
+.
+
+#wikidata
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#wikiData-local>
+    a dhplusPlace:WikiData ;
+    dhplusPlace:hasPart <http://www.wikidata.org/entity/Q34713> ;
+    dhplusPlace:hasPart <https://www.wikidata.org/wiki/Special:EntityData/Q34713>
+.
+
+<http://www.wikidata.org/entity/Q34713>
+    <rdf:type>    <http://wikiba.se/ontology#Item> ;
+    <rdfs:label>  "Salzburg"@de , "Salzburg"@en ;
+    <wdt:P2044>   437.0 , 424.0 ;
+    <wdt:P625>    "Point(13.0333 47.8)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> , "Point(13.0477 47.7972)"^^<http://www.opengis.net/ont/geosparql#wktLiteral>
+.
+
+<https://www.wikidata.org/wiki/Special:EntityData/Q34713>
+    <rdf:type>             <http://schema.org/Dataset> ;
+    <schema:about>         <http://www.wikidata.org/entity/Q34713> ;
+    <cc:license>           <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    <schema:dateModified>  "2019-08-15T16:14:21Z"^^xsd:dateTime ;
+    <schema:version>       996796843
+.
+
+#projspec
+<http://dhplus.sbg.ac.at/place/4abf89eb-cafa-4972-b5da-934e9d2ca4d9#projSpec>
+    <rdf:type> <dhplusPlace:ProjectSpecific> ;
+.
