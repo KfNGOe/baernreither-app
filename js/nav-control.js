@@ -7,6 +7,12 @@ let fileName = fullName.substring(0, fullName.indexOf('.')) ; //test
 $("ul.navbar-nav li.nav-item a").removeClass("active");
 $( '[href="' + fullName + '"]' ).addClass("active");
 
+if(fullName == "") {
+	$("ul.navbar-nav li.nav-item a").removeClass("active");
+$( '[href="index.html"]' ).addClass("active");
+	console.log( fullName ) ;	
+}
+
 if(fullName == "editionsgeschichte.html") {
 	$( '#info_edit' ).addClass("active") ;
 	console.log( fullName ) ;	
