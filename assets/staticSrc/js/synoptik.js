@@ -548,7 +548,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;			
 		//get transcription type in nav-werke
 		let type = getTransType(boxSide) ;
-		type = type === undefined ? 'all' : type ;
+		type = type === undefined ? 'dipl' : type ;
 		//get file name
 		//let fileName = workTitle + '_all.html' ;	
 		let fileName = workTitle ;	
@@ -565,7 +565,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		setDownloadLink(workTitle,boxSide) ;		
 		//set transcription type
 		setTransType(boxSide,type) ;		
-		if(type === 'all') {		
+		if(type === 'dipl') {		
 			//insert all text data in DOM	
 			insertAllText(filepath,boxSide) ;		
 		} else {
@@ -764,7 +764,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		//get actual transcription type
 		let type_this = getTransType(boxSide_this) ;
 		//check if all type is selected
-		if(type_this === 'all') {			
+		if(type_this === 'dipl') {			
 			//insert full text data in DOM	
 			insertFullText(boxSide_this) ;
 			//change trans to full text
