@@ -448,8 +448,8 @@ $( function() {
 			//hide dropdown menu for compare
 			$( 'div#box-left a#text-comp_left' ).siblings('ul').find('li').remove() ;
 			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;	
-			//hide meta boxes
-			$( 'div.meta-box' ).hide() ;			
+			//remove meta box content
+			$( 'div.meta-box' ).find('*').remove() ;
 		}) ;
 
 		//check if hash exists
@@ -822,8 +822,8 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 		//remove background
 		$( 'span' ).css( "background-color", "transparent" );		
 	}
-	//hide meta boxes
-	$( 'div.meta-box' ).hide() ;	
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;
 } ) ;
 
 //check if compare button is clicked
@@ -881,8 +881,8 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 
 //check if anchor is clicked
 $( 'div.synoptik-box div.auswahl-content' ).on('click','a.anchor',function() {
-	//hide meta boxes
-	$( 'div.meta-box' ).hide() ;	
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;	
 }) ;
 
 //check if page break in text is clicked
@@ -912,8 +912,8 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
-	//hide meta boxes
-	$( 'div.meta-box' ).hide() ;			
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;			
 }) ;
 
 //check if linked entity in text is clicked
@@ -1092,7 +1092,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	}
 	//parse html string
 	let html = $.parseHTML(html_str) ;
-	//remove meta box
+	//remove meta box content
 	$( 'div#box-' + boxSide + ' div.meta-box' ).find('*').remove() ;
 	//insert meta box in DOM
 	$( 'div#box-' + boxSide + ' div.meta-box' ).append(html) ;
