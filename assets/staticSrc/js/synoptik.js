@@ -593,6 +593,8 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
 			//show old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
+			displayDiplText(boxSide) ;
+			$('a.anchor').hide() ;
 		}
 	}
 }) ;
@@ -800,7 +802,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		//show compare buttons
 		$( 'div.compare-buttons' ).show() ;
 		console.log( "text comp clicked!" ) ;		
-	}
+	} 
 }) ;
 //check if one of other box buttons is clicked
 $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
