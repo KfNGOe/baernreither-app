@@ -1,5 +1,13 @@
 var html_str = '' ;
 
+window.short2DispTitle = function(short) {
+	let title = textData_in.results.bindings.find((item, index) => {
+		return item.title.short === short ;
+	}).title.display ;
+	title = title === undefined ? '' : title ;	
+	return title ;
+}
+
 window.contextBefore = function(source, sourceFile, result_path) {
     //get start pos    
     let flagStart = result_path[0].instances[0].pos !== undefined ? true : false ;
@@ -253,7 +261,7 @@ window.showResults = function () {
         console.log('marked Hits ', markedHits_arr) ;
         if (Array.isArray(result_arr) && result_arr.length) {
             let source_arr = [] ;
-            let textData_arr = textData_in.results.bindings ;
+            let textData_arr = textData_in.results.bindings ;            
             //get path length
             let searchPathNr = result_arr.length ;
             for (i_path = 0; i_path < searchPathNr; i_path++) {
@@ -270,6 +278,7 @@ window.showResults = function () {
             console.log('source_arr: ', source_arr) ;             
             //fetch source Files
             let sourceFile_arr = [] ;            
+            let dispSource = '' ;
             for (let i_source = 0; i_source < source_arr.length; i_source++) {
                 let source = source_arr[i_source] ;                
                 sourceFile_arr.push(fullTexts[source + '_full.json']) ;    
@@ -278,9 +287,10 @@ window.showResults = function () {
             }
             //console.log('sourceFile_arr: ', sourceFile_arr) ;            
             //fill table data with source data            
-            source_arr.forEach(function(source,index) {                
+            source_arr.forEach(function(source,index) {
+                dispSource = short2DispTitle(source) ;                
                 html_str = html_str.concat('<tr>') ;
-                html_str = html_str.concat('<td>' + source + '</td>') ;
+                html_str = html_str.concat('<td>' + dispSource + '</td>') ;
                 html_str = html_str.concat('<td>') ;
                 //fill table data with search results
                 let searchPathNr = result_arr.length ;

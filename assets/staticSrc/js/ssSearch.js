@@ -100,7 +100,7 @@ $(document).ready(function() {
         let fileName_full = result.fileName.replace('_all', '_full') ;          
         filepath = './data/json/full/' + fileName_full ;
         fullTexts[fileName_full] = await fetchData(filepath) ;
-      });
+      });      
       //filepath = './data/json/full/fullTextAll_tmp.json' ;
       //fullTextAll = await fetchData(filepath) ;      
       searchFinishedHook(1);

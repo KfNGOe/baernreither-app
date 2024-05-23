@@ -109,7 +109,8 @@ window.fetchData = async function(filepath) {
 
 window.boxNavItems = function(li,date,groupedByTitle) {	
 	//get title
-	let title = li.text() ;		
+	let dispTitle = li.text() ;		
+	let title = disp2ShortTitle(dispTitle) ;
 	//get textdata for title
 	let textData = groupedByTitle[title] ;
 	//get date of textData
@@ -126,7 +127,7 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 //function to get transcription type
 window.getTransType = function(boxSide) {
 	let type = $( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a.active').attr('id') ;
-	type = type === undefined ? 'all' : type.replace('_' + boxSide, '') ;		
+	type = type === undefined ? 'dipl' : type.replace('_' + boxSide, '') ;		
 	return type ;
 } ;
 
@@ -209,12 +210,9 @@ window.insertAllText = function(filepath,boxSide) {
 	(async () => {
 		//remove old data
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;		
-		//get text data	
-		//let testUrl = 'Bae_MF_6-1_dipl.html' ;
-		//load text data
-		//$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).load(filepath) ;		
-		//let content_str = await fetchData(filepath) ;
-		let content = textsAllData[filepath] ;
+		//get text data			
+		let content_str = textsAllData[filepath] ;
+		let content = $.parseHTML(content_str) ;
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
 		//set dipl text style
 		displayDiplText(boxSide) ;
@@ -408,32 +406,20 @@ $( function() {
 		
 		//get text all data		
 		filepath = './data/txt/Bae_MF_6-1_all_html.txt' ; 
-		let file_txt = await fetchData(filepath) ;
-		//parse to html
-		let file_html = $.parseHTML(file_txt) ;
-		textsAllData['Bae_MF_6-1'] = file_html ;
+		let file_txt = await fetchData(filepath) ;		
+		textsAllData['Bae_MF_6-1'] = file_txt ;
 
-		//$( 'div#box-left div.auswahl-content div.col-12' ).append(textsAllData['Bae_MF_6-1']) ;
-		
 		filepath = './data/txt/Bae_MF_6-2_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;
-		//parse to html
-		file_html = $.parseHTML(file_txt) ;
-		textsAllData['Bae_TB_6-2'] = file_html ;
+		file_txt = await fetchData(filepath) ;		
+		textsAllData['Bae_MF_6-2'] = file_txt ;
 
 		filepath = './data/txt/Bae_TB_7_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;
-		//parse to html
-		file_html = $.parseHTML(file_txt) ;
-		textsAllData['Bae_TB_7'] = file_html ;
+		file_txt = await fetchData(filepath) ;		
+		textsAllData['Bae_TB_7'] = file_txt ;
 
 		filepath = './data/txt/Bae_TB_8_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;
-		//parse to html
-		file_html = $.parseHTML(file_txt) ;
-		textsAllData['Bae_TB_8'] = file_html ;
-
-		console.log( "textsAllData: ", textsAllData ) ;
+		file_txt = await fetchData(filepath) ;		
+		textsAllData['Bae_TB_8'] = file_txt ;
 
 		//get dates of textData
 		let textData_arr = textData_in.results.bindings ;		
@@ -461,7 +447,9 @@ $( function() {
 			}
 			//hide dropdown menu for compare
 			$( 'div#box-left a#text-comp_left' ).siblings('ul').find('li').remove() ;
-			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;			
+			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;	
+			//hide meta boxes
+			$( 'div.meta-box' ).hide() ;			
 		}) ;
 
 		//check if hash exists
@@ -531,7 +519,7 @@ $( 'div.synoptik-box nav.scroll-nav li a' ).on('click',function() {
 		let li = $( this ) ;
 		boxNavItems(li,date,groupedByTitle) ;		
 	}) ;
-	$( 'div#box-' + boxSide + ' a#_MF_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
+	$( 'div#box-' + boxSide + ' a#MF_' + boxSide ).siblings('ul.dropdown-menu').children('li').each(function() {
 		let li = $( this ) ;
 		boxNavItems(li,date,groupedByTitle) ;
 	}) ;	
@@ -590,7 +578,26 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 	click.parents('ul.dropdown-menu').removeClass('show') ;
 }) ;
 
-//transcription click event
+//transcription box click event
+$( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
+	//find box of clicked element
+	let click = $( this ) ;
+	//get id of parents a element
+	let id_trans = click.attr('id') ;
+	//check if clicked element is a transcription
+	if(id_trans.includes('trans')) {
+		//get boxside
+		let boxSide = id_trans.includes('_left') ? 'left' : 'right' ;
+		let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+		if(facs !== undefined) {
+			$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
+			//show old text data content			
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
+		}
+	}
+}) ;
+
+//transcription type click event
 $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','li',function() {
 	console.log( "trans clicked!" ) ;
 	//find box of clicked element	
@@ -657,8 +664,8 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			let facsId = $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).children('a').attr('href') ;
 			//remove #
 			facsId = facsId.replace('#', '') ;
-			//remove old text data content			
-			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').remove() ;
+			//hide old text data content			
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').hide() ;
 			//insert facs data in DOM
 			let div = '<div class="facs"><img src="./data/img/' + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;
@@ -872,6 +879,12 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 }) ;
 
+//check if anchor is clicked
+$( 'div.synoptik-box div.auswahl-content' ).on('click','a.anchor',function() {
+	//hide meta boxes
+	$( 'div.meta-box' ).hide() ;	
+}) ;
+
 //check if page break in text is clicked
 $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//find box of clicked element
@@ -898,7 +911,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
-	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;		
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
+	//hide meta boxes
+	$( 'div.meta-box' ).hide() ;			
 }) ;
 
 //check if linked entity in text is clicked
