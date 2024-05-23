@@ -447,7 +447,9 @@ $( function() {
 			}
 			//hide dropdown menu for compare
 			$( 'div#box-left a#text-comp_left' ).siblings('ul').find('li').remove() ;
-			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;			
+			$( 'div#box-right a#text-comp_right' ).siblings('ul').find('li').remove() ;	
+			//remove meta box content
+			$( 'div.meta-box' ).find('*').remove() ;
 		}) ;
 
 		//check if hash exists
@@ -546,7 +548,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;			
 		//get transcription type in nav-werke
 		let type = getTransType(boxSide) ;
-		type = type === undefined ? 'all' : type ;
+		type = type === undefined ? 'dipl' : type ;
 		//get file name
 		//let fileName = workTitle + '_all.html' ;	
 		let fileName = workTitle ;	
@@ -563,7 +565,7 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		setDownloadLink(workTitle,boxSide) ;		
 		//set transcription type
 		setTransType(boxSide,type) ;		
-		if(type === 'all') {		
+		if(type === 'dipl') {		
 			//insert all text data in DOM	
 			insertAllText(filepath,boxSide) ;		
 		} else {
@@ -762,7 +764,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		//get actual transcription type
 		let type_this = getTransType(boxSide_this) ;
 		//check if all type is selected
-		if(type_this === 'all') {			
+		if(type_this === 'dipl') {			
 			//insert full text data in DOM	
 			insertFullText(boxSide_this) ;
 			//change trans to full text
@@ -820,8 +822,8 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 		//remove background
 		$( 'span' ).css( "background-color", "transparent" );		
 	}
-	//hide meta boxes
-	$( 'div.meta-box' ).hide() ;	
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;
 } ) ;
 
 //check if compare button is clicked
@@ -877,6 +879,12 @@ $( 'div.compare-buttons .comp-not' ).click(function() {
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 }) ;
 
+//check if anchor is clicked
+$( 'div.synoptik-box div.auswahl-content' ).on('click','a.anchor',function() {
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;	
+}) ;
+
 //check if page break in text is clicked
 $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//find box of clicked element
@@ -903,7 +911,9 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
-	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;		
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
+	//remove meta box content
+	$( 'div.meta-box' ).find('*').remove() ;			
 }) ;
 
 //check if linked entity in text is clicked
@@ -1082,7 +1092,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	}
 	//parse html string
 	let html = $.parseHTML(html_str) ;
-	//remove meta box
+	//remove meta box content
 	$( 'div#box-' + boxSide + ' div.meta-box' ).find('*').remove() ;
 	//insert meta box in DOM
 	$( 'div#box-' + boxSide + ' div.meta-box' ).append(html) ;
