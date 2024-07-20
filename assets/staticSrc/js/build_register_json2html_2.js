@@ -220,25 +220,42 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
       //console.log('groupedByKey[key] = ', groupedByKey[key]) ;
       let key_arr = groupedByKey[key] ;      
       //index
-      if (key_arr[0].id.toLowerCase().includes('index')) {
-         //start new row
+      if (key_arr[0].id.toLowerCase().includes('index')) {         
          //test if main is empty or undefined
          if (key_arr[0].main === undefined || key_arr[0].main === '') {
             html_str = html_str.concat('<tr style="display: none">') ;      
             console.log('main empty or undefined') ;            
          } else {
-            html_str = html_str.concat('<tr>') ;         
-         }
-         //id
-         let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
-         //main
-         let main = key_arr[0].main ;
-         html_str = html_str.concat('<td><span id="' + id + '">' + main + '</span></td>') ;         
-         //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
-         //end row
-         html_str = html_str.concat('</tr>') ;   
+            //group key_arr by sub
+            groupedBySub = key_arr.groupBy( item => {
+               return item.sub ;
+            }) ;
+            //get length of groupedBySub
+            let groupedBySub_length = Object.keys(groupedBySub).length ;
+            Object.keys(groupedBySub).forEach((key_sub, index) => {
+               console.log('key_sub = ', key_sub) ;
+               let key_sub_arr = groupedBySub[key_sub] ; 
+               //start new row
+               html_str = html_str.concat('<tr>') ;
+               if (index === 0) {                  
+                  //main                  
+                  let id = key_arr[0].id ;   
+                  let main = key_arr[0].main ;
+                  //html_str = html_str.concat('<td rowspan="' + groupedBySub_length + '"><span id="' + id + '">' + main + '</span></td>') ;
+                  html_str = html_str.concat('<td><span id="' + id + '">' + main + '</span></td>') ;                  
+               } else {
+                  //empty td
+                  html_str = html_str.concat('<td></td>') ;
+               }
+               //sub
+               let sub = key_sub ;
+               html_str = html_str.concat('<td><span>' + sub + '</span></td>') ;
+               //pos                  
+               html_str = html_str.concat(pos_str(key_sub_arr,annoFile,textFull_files)) ;
+               //end row
+               html_str = html_str.concat('</tr>') ;                              
+            }) ;            
+         }         
       }
       //org
       if (key_arr[0].id.toLowerCase().includes('org')) {
