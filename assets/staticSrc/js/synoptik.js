@@ -11,7 +11,10 @@ var input_right = document.getElementById("page_input_right") ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
 
-synFinishedHook = function(num){} ;
+const arrow_left_left = document.getElementById("arrow-left_left") ;
+const arrow_right_left = document.getElementById("arrow-right_left") ;
+const arrow_left_right = document.getElementById("arrow-left_right") ;
+const arrow_right_right = document.getElementById("arrow-right_right") ;
 
 const sleepUntil = async (f, timeoutMs) => {
 	return new Promise((resolve, reject) => {
@@ -29,6 +32,8 @@ const sleepUntil = async (f, timeoutMs) => {
 	  }, 20);
 	});
   }
+
+synFinishedHook = function(num){} ;
   
 function onContainerScroll(boxSide) {
 	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
@@ -72,6 +77,59 @@ input_right.addEventListener("keypress", function(event) {
 		setPage(pageNr, 'right') ;
 	}
 });
+
+arrow_left_left.addEventListener("click", function() {
+	console.log("left arrow of left box clicked") ;
+	stepPage('left','left') ;
+}) ;
+arrow_right_left.addEventListener("click", function() {	
+	console.log("right arrow of left box clicked") ;
+	stepPage('right','left') ;
+}) ;
+arrow_left_right.addEventListener("click", function() {
+	console.log("left arrow of right box clicked") ;
+	stepPage('left','right') ;			
+}) ;
+arrow_right_right.addEventListener("click", function() {
+	console.log("right arrow of right box clicked") ;
+	stepPage('right','right') ;	
+}) ;
+
+window.stepPage = function(arrowDir, boxSide) {
+	//get all page-locator
+	var anchors = document.getElementsByClassName("pageLocator");
+
+	let pageNr = getPageNr(boxSide) ;
+	//check if pagenr is undefined
+	if(pageNr === '' || pageNr === undefined) {
+		return ;
+	} else {
+		//find index of pageNr in anchors
+		let index = 0 ;
+		for (var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if (anchor.id == pageNr) {
+				index = i ;
+			}
+		}
+		//get next page
+		if(arrowDir === 'left') {
+			if(index === 0) {
+				return ;
+			} else {
+				let prevPage = anchors[index-1].id ;
+				setPage(prevPage, boxSide) ;	
+			}
+		} else {
+			if(index === anchors.length-1) {
+				return ;
+			} else {
+				let nextPage = anchors[index+1].id ;
+				setPage(nextPage, boxSide) ;	
+			}
+		}	
+	}	
+}
 
 window.setPage = function(page, boxSide) {
 	var container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
