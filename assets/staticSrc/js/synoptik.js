@@ -36,22 +36,22 @@ const sleepUntil = async (f, timeoutMs) => {
 synFinishedHook = function(num){} ;
   
 function onContainerScroll(boxSide) {
-	var container = document.getElementById("auswahl-content-scroll_" + boxSide);
+	let container = document.getElementById("auswahl-content-scroll_" + boxSide);
   
 	//Scroll vars (not needed for page-position but can be usefull in the future)
-	var scroll = container.scrollTop;
-	var totalHeight = container.scrollHeight;
-	var visibleHeight = container.offsetHeight;
-	var hiddenHeight = totalHeight - visibleHeight;
-	var percentage = (scroll / hiddenHeight) * 100;
+	let scroll = container.scrollTop;
+	let totalHeight = container.scrollHeight;
+	let visibleHeight = container.offsetHeight;
+	let hiddenHeight = totalHeight - visibleHeight;
+	let percentage = (scroll / hiddenHeight) * 100;
   
 	//get all page-locator
-	var anchors = document.getElementsByClassName("pageLocator");
+	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
   
 	//get current page
 	var currentPage = 0;
 	for (var i = 0; i < anchors.length; i++) {
-	  var anchor = anchors[i];
+	  let anchor = anchors[i];
 	  if (scroll >= anchor.offsetTop) {
 		currentPage = anchor.id;
 	  }
@@ -97,7 +97,7 @@ arrow_right_right.addEventListener("click", function() {
 
 window.stepPage = function(arrowDir, boxSide) {
 	//get all page-locator
-	var anchors = document.getElementsByClassName("pageLocator");
+	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
 
 	let pageNr = getPageNr(boxSide) ;
 	//check if pagenr is undefined
@@ -107,7 +107,7 @@ window.stepPage = function(arrowDir, boxSide) {
 		//find index of pageNr in anchors
 		let index = 0 ;
 		for (var i = 0; i < anchors.length; i++) {
-			var anchor = anchors[i];
+			let anchor = anchors[i];
 			if (anchor.id == pageNr) {
 				index = i ;
 			}
@@ -132,11 +132,11 @@ window.stepPage = function(arrowDir, boxSide) {
 }
 
 window.setPage = function(page, boxSide) {
-	var container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
-	var anchors = document.getElementsByClassName("pageLocator") ;
+	let container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
+	let anchors = document.getElementsByClassName("pageLocator " + boxSide) ;
 
 	for (var i = 0; i < anchors.length-1; i++) {
-		var anchor = anchors[i];
+		let anchor = anchors[i];
 		if (anchor.id == page) {
 			container.scrollTop = anchor.offsetTop;			
 			//setPageNr(boxSide, page);
@@ -274,6 +274,8 @@ window.insertAllText = function(filepath,boxSide) {
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
 		//set dipl text style
 		displayDiplText(boxSide) ;
+		//add class boxside to class pageLocator
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('span.pageLocator').addClass(boxSide) ;
 	})() ;
 }
 
