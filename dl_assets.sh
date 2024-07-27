@@ -12,14 +12,14 @@ cp -r data/json/ html/data/
 mkdir -p html/data/txt/
 cp -r data/txt/ html/data/
 cp -r data/ttl/ html/data/
-cp -r data/html/biographie.html html/
-cp -r data/html/datenschutz.html html/
-cp -r data/html/editionsgeschichte.html html/
-cp -r data/html/editionsrichtlinien.html html/
-cp -r data/html/foerdernde.html html/
-cp -r data/html/impressum.html html/
-cp -r data/html/karte.html html/
-cp -r data/html/uebersicht.html html/
+#cp -r data/html/biographie.html html/
+#cp -r data/html/datenschutz.html html/
+#cp -r data/html/editionsgeschichte.html html/
+#cp -r data/html/editionsrichtlinien.html html/
+#cp -r data/html/foerdernde.html html/
+#cp -r data/html/impressum.html html/
+#cp -r data/html/karte.html html/
+#cp -r data/html/uebersicht.html html/
 cp -r data/tei_xmlId html/data/
 #mkdir -p html/data/img/
 #cp -r data/img/ html/data/

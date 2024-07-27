@@ -21,6 +21,14 @@ if(fullName == "editionsrichtlinien.html") {
 	$( '#info_edit' ).addClass("active") ;
 	console.log( fullName ) ;	
 }
+if(fullName == "zeitplantagebuecher.html") {
+	$( '#info_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
+if(fullName == "nutzung.html") {
+	$( '#info_edit' ).addClass("active") ;
+	console.log( fullName ) ;	
+}
 if(fullName == "uebersicht.html") {
 	$( '#tb_edit' ).addClass("active") ;
 	console.log( fullName ) ;	
