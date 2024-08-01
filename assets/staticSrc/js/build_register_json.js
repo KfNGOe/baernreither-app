@@ -1,23 +1,6 @@
 // Importing the jsdom module
-const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-const { exit } = require("process") ;
-const ShortUniqueId = require('short-unique-id');
-
-// Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-//Instantiate ShortUniqueId
-const uid = new ShortUniqueId({ length: 10 });
-
-var convert = require('xml-js') ;
 
 function buildReg(jsonJs_reg_files) { 
     //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
@@ -25,17 +8,17 @@ function buildReg(jsonJs_reg_files) {
     //persons
     let persons_json = {
         "head": {
-            "vars": [            
-                "key", 
+            "vars": [                            
                 "surname", 
-                "forename",
                 "addName",
+                "forename",                
                 "birth",
                 "death",
                 "birthPlace",
                 "deathPlace",
                 "desc",
                 "pid",
+                "key",
                 "pos"
             ]
         },    
@@ -45,13 +28,13 @@ function buildReg(jsonJs_reg_files) {
     } ;
     let places_json = {
         "head": {
-            "vars": [
-                "key",
+            "vars": [                
                 "name", 
-                "name_today",
-                 "lat",
-                "long",
+                "name_today",                
                 "pid",
+                "key",
+                "lat",
+                "long",
                 "pos"
             ]
         } ,
@@ -61,10 +44,10 @@ function buildReg(jsonJs_reg_files) {
     } ;
     let orgs_json = {
         "head": {
-            "vars": [            
-                "key", 
+            "vars": [                            
                 "name",                                
                 "pid",
+                "key", 
                 "pos"
             ]
         },    
@@ -95,13 +78,17 @@ function buildReg(jsonJs_reg_files) {
     }) ;        
     groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //person_xlsx.json
         return item.J ;
-    }) ;         
+    }) ;
+    
+    //create log data
+    let logData_person = '' ;
                                   
     //iterate over text file
     jsonJs_in.results.bindings.forEach((item) => { //person.json    
         console.log('key = ', item.o_key_person.value) ;
+        //check if key exists in person_text.json
         if (item.o_key_person) {
-            let person = {} ;
+            let person = {} ;            
             //let id = generateId() ;        
             let key = item.o_key_person.value ;
             let pid = '' ;
@@ -109,6 +96,7 @@ function buildReg(jsonJs_reg_files) {
             //check if pid exists
             if (!item.o_pid_person) {
                 console.log('warning: no pid '+ key + ' in person_text.json') ;
+                logData_person = logData_person + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in person_text.json' + '\n' ;
                 pid = '' ;
             } else {
                 pid = item.o_pid_person.value ;
@@ -116,48 +104,66 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //person_xlsx.json
                 console.log('warning: no key ' + key + ' in person_xlsx.json') ;
-                person = {
-                    //"id": id,
-                    "key": key,
-                    "surname": '',
-                    "forename": '',
-                    "addName": '',
-                    "birth": '',
-                    "death": '',
-                    "birthPlace": '',
-                    "deathPlace": '',
-                    "desc": '',
-                    "pid": pid,
-                    "pos": pos
+                logData_person = logData_person + 'warning: no key ' + key + ' at pos ' + pos + ' in person_xlsx.json' + '\n' ;
+                //loop over persons_json array
+                for (let i = 0; i < persons_json.head.vars.length; i++) {
+                    switch (persons_json.head.vars[i]) {
+                        case 'key':
+                            person[persons_json.head.vars[i]] = key ;
+                            break ;
+                        case 'pid':
+                            person[persons_json.head.vars[i]] = pid ;
+                            break ;                        
+                        default:
+                            person[persons_json.head.vars[i]] = '' ;
+                            break ;
+                    } ;
                 } ;
-            } else {
-                let item1 = groupedByKey_xlsx[key][0] ;
-                person = {
-                   //"id": id,
-                    "key": key,
-                    "surname": item1.A,
-                    "forename": item1.C,
-                    "addName": item1.B,
-                    "birth": item1.D,
-                    "death": item1.E,
-                    "birthPlace": item1.F,
-                    "deathPlace": item1.G,
-                    "desc": item1.H,
-                    "pid": pid,
-                    "pos": pos
-                } ;
+            } else {                                
+                let item_xlsx = groupedByKey_xlsx[key][0] ;
+                //surname
+                item_xlsx.A = item_xlsx.A === undefined ? '' : item_xlsx.A ;
+                person.surname = item_xlsx.A ;
+                //addName
+                item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B ;
+                person.addName = item_xlsx.B ;
+                //forename
+                item_xlsx.C = item_xlsx.C === undefined ? '' : item_xlsx.C ;
+                person.forename = item_xlsx.C ;
+                //birth
+                item_xlsx.D = item_xlsx.D === undefined ? '' : item_xlsx.D ;
+                person.birth = item_xlsx.D ;
+                //death
+                item_xlsx.E = item_xlsx.E === undefined ? '' : item_xlsx.E ;
+                person.death = item_xlsx.E ;
+                //birthPlace
+                item_xlsx.F = item_xlsx.F === undefined ? '' : item_xlsx.F ;
+                person.birthPlace = item_xlsx.F ;
+                //deathPlace
+                item_xlsx.G = item_xlsx.G === undefined ? '' : item_xlsx.G ;
+                person.deathPlace = item_xlsx.G ;
+                //desc
+                item_xlsx.H = item_xlsx.H === undefined ? '' : item_xlsx.H ;
+                person.desc = item_xlsx.H ;
+                //pid
+                person.pid = pid ;
+                //key
+                person.key = key ;
             } ;
+            //pos
+            person.pos = pos ;                
             //console.log('person = ', person) ;
             persons_json.results.bindings.push(person) ;                
         } else {
             console.log('warning: no key in person_text.json') ;
+            logData_person = logData_person + 'warning: no key at pos ' + pos + ' in person_text.json' + '\n' ;
         }        
     }) ;
 
     //read place json files
     jsonJs_in = jsonJs_reg_files['register_place_text'] ; //place.json
     jsonJs_in_xlsx = jsonJs_reg_files['register_place_xlsx'] ; //place_xlsx.json
-    jsonJs_in_temp = jsonJs_reg_files['register_place_temp'] ; //place_temp.json
+    jsonJs_in_geo = jsonJs_reg_files['register_place_geo'] ; //place_geo.json
 
     //group by key                
     groupedByKey = jsonJs_in.results.bindings.groupBy( item => {  //place_text.json
@@ -166,14 +172,17 @@ function buildReg(jsonJs_reg_files) {
     groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //place_xlsx.json
         return item.D ;
     }) ;
-    //group by key temp
-    groupedByKey_temp = jsonJs_in_temp.results.groupBy( item => {  //place_temp.json
+    //group by key geo
+    groupedByKey_geo = jsonJs_in_geo.results.groupBy( item => {  //place_geo.json
         return item.B ;
     }) ;
+    //create log data
+    let logData_place = '' ;
 
     //iterate over text file
     jsonJs_in.results.bindings.forEach((item) => { //place.json 
         console.log('key = ', item.o_key_place.value) ;
+        //check if key exists in place_text.json
         if (item.o_key_place) {
             let place = {} ;
             //let id = generateId() ;        
@@ -182,7 +191,8 @@ function buildReg(jsonJs_reg_files) {
             let pos = item.o_pos_place.value ;
             //check if pid exists
             if (!item.o_pid_place) {
-                console.log('warning: no pid '+ key + ' in place_text.json') ;
+                console.log('warning: no pid '+ key + ' in place_text.json') ;                
+                logData_place = logData_place + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in place_text.json' + '\n' ;                
                 pid = '' ;
             } else {
                 pid = item.o_pid_place.value ;
@@ -190,40 +200,53 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //place_xlsx.json
                 console.log('warning: no key ' + key + ' in place_xlsx.json') ;
-                place = {
-                    //"id": id,
-                    "key": key,
-                    "name": '', 
-                    "name_today": '',
-                    "lat": '',
-                    "long": '',
-                    "pid": pid,
-                    "pos": pos
-                } ;
-            } else {
-                let item1 = groupedByKey_xlsx[key][0] ;
-                place = {
-                    "key": key,
-                    "name": item1.A, 
-                    "name_today": item1.B,
-                    "lat": '',
-                    "long": '',
-                    "pid": pid,
-                    "pos": pos
-                } ;
+                logData_place = logData_place + 'warning: no key ' + key + ' at pos ' + pos + ' in place_xlsx.json' + '\n' ;                
+                //loop over persons_json array
+                for (let i = 0; i < places_json.head.vars.length; i++) {
+                    switch (places_json.head.vars[i]) {
+                        case 'key':
+                            place[places_json.head.vars[i]] = key ;
+                            break ;
+                        case 'pid':
+                            place[places_json.head.vars[i]] = pid ;
+                            break ;                        
+                        default:
+                            place[places_json.head.vars[i]] = '' ;
+                            break ;
+                    } ;
+                } ;                
+            } else {                
+                let item_xlsx = groupedByKey_xlsx[key][0] ;
+                //name
+                item_xlsx.A = item_xlsx.A === undefined ? '' : item_xlsx.A ;
+                place.name = item_xlsx.A ;
+                //name_today
+                item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B ;
+                place.name_today = item_xlsx.B ;
+                //pid
+                place.pid = pid ;
+                //key
+                place.key = key ;   
             } ;
-            //check if key in temp exists
-            if (!groupedByKey_temp[key]) { //place_temp.json
-                console.log('warning: no key ' + key + ' in place_temp.json') ;
+            //check if key in geo file exists
+            if (!groupedByKey_geo[key]) { //place_geo.json
+                console.log('error: no key ' + key + ' in place_geo.json') ;                
+                logData_place = logData_place + 'error: no key ' + key + ' at pos ' + pos + ' in place_geo.json' + '\n' ;
+                place.lat = '' ;
+                place.long = '' ;
             } else {
-                let item1 = groupedByKey_temp[key][0] ;
-                place.lat = item1.Lat ;
-                place.long = item1.Long ;
-            }        
+                let item_geo = groupedByKey_geo[key][0] ;
+                item_geo.Lat = item_geo.Lat === undefined ? '' : item_geo.Lat ;
+                place.lat = item_geo.Lat ;
+                item_geo.Long = item_geo.Long === undefined ? '' : item_geo.Long ;
+                place.long = item_geo.Long ;                
+            }
+            place.pos = pos ;                        
             //console.log('place = ', place) ;
             places_json.results.bindings.push(place) ;                
         } else {
             console.log('warning: no key in place_text.json') ;
+            logData_place = logData_place + 'warning: no key at pos ' + pos + ' in place_text.json' + '\n' ;
         }  
     }) ;
     
@@ -238,6 +261,8 @@ function buildReg(jsonJs_reg_files) {
     groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //org_xlsx.json
         return item.C ;
     }) ;
+    //create log data
+    let logData_org = '' ;
 
     //iterate over text file
     jsonJs_in.results.bindings.forEach((item) => { //org.json 
@@ -251,6 +276,7 @@ function buildReg(jsonJs_reg_files) {
             //check if pid exists
             if (!item.o_pid_org) {
                 console.log('warning: no pid '+ key + ' in org_text.json') ;
+                logData_org = logData_org + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in org_text.json' + '\n' ;
                 pid = '' ;
             } else {
                 pid = item.o_pid_org.value ;
@@ -258,26 +284,48 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //org_xlsx.json
                 console.log('warning: no key ' + key + ' in org_xlsx.json') ;
-                org = {
-                    //"id": id,
-                    "key": key,
-                    "name": '',                    
-                    "pid": pid,
-                    "pos": pos
+                logData_org = logData_org + 'warning: no key ' + key + ' at pos ' + pos + ' in org_xlsx.json' + '\n' ;
+                //loop over orgs_json array
+                for (let i = 0; i < orgs_json.head.vars.length; i++) {
+                    switch (orgs_json.head.vars[i]) {
+                        case 'key':
+                            org[orgs_json.head.vars[i]] = key ;
+                            break ;
+                        case 'pid':
+                            org[orgs_json.head.vars[i]] = pid ;
+                            break ;                        
+                        default:
+                            org[orgs_json.head.vars[i]] = '' ;
+                            break ;
+                    } ;
                 } ;
-            } else {
-                let item1 = groupedByKey_xlsx[key][0] ;
-                org = {
-                    "key": key,
-                    "name": item1.A,                    
-                    "pid": pid,
-                    "pos": pos
-                } ;
+            } else {                
+                let item_xlsx = groupedByKey_xlsx[key][0] ;
+                if (item_xlsx === undefined) {
+                    console.log('error: no key ' + key + ' in org_xlsx.json') ;
+                    logData_org = logData_org + 'error: no key ' + key + ' at pos ' + pos + ' in org_xlsx.json' + '\n' ;
+                } else {
+                    //name
+                    item_xlsx.A = item_xlsx.A === undefined ? '' : item_xlsx.A ;
+                    org.name = item_xlsx.A ;
+                    //pid
+                    item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B ;
+                    if (pid === item_xlsx.B) {
+                        org.pid = pid ;
+                    } else {
+                        console.log('error: pid mismatch in org_xlsx.json') ;
+                        logData_org = logData_org + 'error: pid mismatch at pos ' + pos + ' in org_xlsx.json' + '\n' ;
+                    }                
+                    //key                
+                    org.key = key ;     
+                }                
             } ;
+            org.pos = pos ;
             //console.log('org = ', org) ;
             orgs_json.results.bindings.push(org) ;                
         } else {
             console.log('warning: no key in org_text.json') ;
+            logData_org = logData_org + 'warning: no key at pos ' + pos + ' in org_text.json' + '\n' ;
         } 
     }) ;
 
@@ -292,13 +340,14 @@ function buildReg(jsonJs_reg_files) {
     groupedByKey_xlsx = jsonJs_in_xlsx.Tabelle1.groupBy( item => {  //index_xlsx.json
         return item.A ;
     }) ;
+    //create log data
+    let logData_index = '' ;
 
     //iterate over text file
     jsonJs_in.results.bindings.forEach((item) => { //index.json 
         console.log('key = ', item.o_main_index.value) ;
         if (item.o_main_index) {
-            let index = {} ;
-            //let id = generateId() ;        
+            let index = {} ;            
             let main = item.o_main_index.value ;
             let sub = '' ;
             let pos = item.o_pos_index.value ;
@@ -307,17 +356,42 @@ function buildReg(jsonJs_reg_files) {
                 sub = item.o_sub_index.value ;
             }
             //build index object
-            index = {
-                //"id": id,
-                "main": main,
-                "sub": sub,                
-                "pos": pos
-            } ;                    
-            indexes_json.results.bindings.push(index) ;                
+            let item_xlsx = groupedByKey_xlsx[key][0] ;
+            if (item_xlsx === undefined) {
+                console.log('error: no main term ' + main + ' in index_xlsx.json') ;
+                logData_index = logData_index + 'error: no main term ' + main + ' at pos ' + pos + ' in index_xlsx.json' + '\n' ;
+            } else {
+                //main
+                item_xlsx.A = item_xlsx.A === undefined ? '' : item_xlsx.A ;
+                if (main === item_xlsx.A) {
+                    index.main = main ;
+                } else {
+                    console.log('error: main term mismatch in index_xlsx.json') ;
+                    logData_index = logData_index + 'error: main term mismatch at pos ' + pos + ' in index_xlsx.json' + '\n' ;
+                }            
+                //sub
+                item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B ;
+                if (sub === item_xlsx.B) {
+                    index.sub = sub ;
+                } else {
+                    console.log('error: sub term mismatch in index_xlsx.json') ;
+                    logData_index = logData_index + 'error: sub term mismatch at pos ' + pos + ' in index_xlsx.json' + '\n' ;
+                }
+            }
+            //pos
+            index.pos = pos ;      
+            indexes_json.results.bindings.push(index) ;                            
         } else {
-            console.log('warning: no main term in index_text.json') ;
+            console.log('error: no main term in index_text.json') ;
+            logData_index = logData_index + 'error: no main term at pos ' + pos + ' in index_text.json' + '\n' ;
         }
     }) ;
+
+    //write log files    
+    fs.writeFileSync('data/txt/register/log/log_person.txt', logData_person) ;
+    fs.writeFileSync('data/txt/register/log/log_place.txt', logData_place) ;
+    fs.writeFileSync('data/txt/register/log/log_org.txt', logData_org) ;
+    fs.writeFileSync('data/txt/register/log/log_index.txt', logData_index) ;
 
     //return json register files
     let json_reg_files = {} ;
@@ -335,7 +409,7 @@ console.log('json files: ', jsonFiles) ;
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    //read register *_text or *_xlsx file   
-   if (file.includes('_text.json') || file.includes('_xlsx.json') || file.includes('_temp.json')) {
+   if (file.includes('_text.json') || file.includes('_xlsx.json') || file.includes('_geo.json')) {
     let fileNamePath = 'data/json/register/' + file ;
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     var jsonJs_in_reg = JSON.parse(json_in) ;

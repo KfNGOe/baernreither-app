@@ -231,7 +231,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
                return item.sub ;
             }) ;
             //get length of groupedBySub
-            let groupedBySub_length = Object.keys(groupedBySub).length ;
+            //let groupedBySub_length = Object.keys(groupedBySub).length ;
             Object.keys(groupedBySub).forEach((key_sub, index) => {
                console.log('key_sub = ', key_sub) ;
                let key_sub_arr = groupedBySub[key_sub] ; 
@@ -291,6 +291,8 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
          let id = key_arr[0].id ;
          html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
          //entry
+         //check if addName is empty         
+         key_arr[0].addName = key_arr[0].addName === undefined ? '' : key_arr[0].addName ;
          let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
          html_str = html_str.concat('<td><span id="' + id + '">' + entry + '</span></td>') ;
          //life dates
