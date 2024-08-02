@@ -103,8 +103,8 @@ function buildReg(jsonJs_reg_files) {
             }
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //person_xlsx.json
-                console.log('warning: no key ' + key + ' in person_xlsx.json');
-                logData_person = logData_person + 'warning: no key ' + key + ' at pos ' + pos + ' in person_xlsx.json' + '\n';
+                console.log('error: no key ' + key + ' in person_xlsx.json');
+                logData_person = logData_person + 'error: no key ' + key + ' at pos ' + pos + ' in person_xlsx.json' + '\n';
                 //loop over persons_json array
                 for (let i = 0; i < persons_json.head.vars.length; i++) {
                     switch (persons_json.head.vars[i]) {
@@ -155,8 +155,8 @@ function buildReg(jsonJs_reg_files) {
             //console.log('person = ', person) ;
             persons_json.results.bindings.push(person);
         } else {
-            console.log('warning: no key in person_text.json');
-            logData_person = logData_person + 'warning: no key at pos ' + pos + ' in person_text.json' + '\n';
+            console.log('error: no key in person_text.json');
+            logData_person = logData_person + 'error: no key at pos ' + pos + ' in person_text.json' + '\n';
         }
     });
 
@@ -199,8 +199,8 @@ function buildReg(jsonJs_reg_files) {
             }
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //place_xlsx.json
-                console.log('warning: no key ' + key + ' in place_xlsx.json');
-                logData_place = logData_place + 'warning: no key ' + key + ' at pos ' + pos + ' in place_xlsx.json' + '\n';
+                console.log('error: no key ' + key + ' in place_xlsx.json');
+                logData_place = logData_place + 'error: no key ' + key + ' at pos ' + pos + ' in place_xlsx.json' + '\n';
                 //loop over persons_json array
                 for (let i = 0; i < places_json.head.vars.length; i++) {
                     switch (places_json.head.vars[i]) {
@@ -245,8 +245,8 @@ function buildReg(jsonJs_reg_files) {
             //console.log('place = ', place) ;
             places_json.results.bindings.push(place);
         } else {
-            console.log('warning: no key in place_text.json');
-            logData_place = logData_place + 'warning: no key at pos ' + pos + ' in place_text.json' + '\n';
+            console.log('error: no key in place_text.json');
+            logData_place = logData_place + 'error: no key at pos ' + pos + ' in place_text.json' + '\n';
         }
     });
 
@@ -364,16 +364,16 @@ function buildReg(jsonJs_reg_files) {
                 if (main === item_xlsx.A) {
                     index.main = main;
                 } else {
-                    console.log('error: main term mismatch in index_xlsx.json');
-                    logData_index = logData_index + 'error: main term mismatch at pos ' + pos + ' in index_xlsx.json' + '\n';
+                    console.log('error: main term ' + main + ' mismatch with ' + item_xlsx.A + ' in index_xlsx.json');
+                    logData_index = logData_index + 'error: main term ' + main + ' mismatch with ' + item_xlsx.A + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
                 }
                 //sub
                 item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B;
                 if (sub === item_xlsx.B) {
                     index.sub = sub;
                 } else {
-                    console.log('error: sub term mismatch in index_xlsx.json');
-                    logData_index = logData_index + 'error: sub term mismatch at pos ' + pos + ' in index_xlsx.json' + '\n';
+                    console.log('error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' in index_xlsx.json');
+                    logData_index = logData_index + 'error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
                 }
             } ;            
             //pos
