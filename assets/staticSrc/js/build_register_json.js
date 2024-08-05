@@ -359,7 +359,8 @@ function buildReg(jsonJs_reg_files) {
                 logData_index = logData_index + 'error: no main term ' + main + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
             } else {
                 //main
-                let item_xlsx = groupedByKey_xlsx[main][0];
+                let items_xlsx = groupedByKey_xlsx[main];
+                let item_xlsx = items_xlsx[0];
                 item_xlsx.A = item_xlsx.A === undefined ? '' : item_xlsx.A;
                 if (main === item_xlsx.A) {
                     index.main = main;
@@ -368,12 +369,16 @@ function buildReg(jsonJs_reg_files) {
                     logData_index = logData_index + 'error: main term ' + main + ' mismatch with ' + item_xlsx.A + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
                 }
                 //sub
-                item_xlsx.B = item_xlsx.B === undefined ? '' : item_xlsx.B;
-                if (sub === item_xlsx.B) {
-                    index.sub = sub;
-                } else {
+                //find item_xlsx.B in items_xlsx
+                item_xlsx = items_xlsx.find(item => {
+                    item.B = item.B === undefined ? '' : item.B;
+                    return item.B === sub ;
+                });
+                if (!item_xlsx) {
                     console.log('error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' in index_xlsx.json');
                     logData_index = logData_index + 'error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
+                } else {
+                    index.sub = sub;
                 }
             } ;            
             //pos
