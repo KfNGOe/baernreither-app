@@ -2,8 +2,7 @@
 const fs = require('fs');
 const { groupBy } = require('core-js/actual/array/group-by');
 
-function buildReg(jsonJs_reg_files) {
-    //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
+function buildReg(jsonJs_reg_files, textFull_files) {    
     //build register templates
     //persons
     let persons_json = {
@@ -407,8 +406,28 @@ function buildReg(jsonJs_reg_files) {
     return json_reg_files;
 };
 
+//get full texts
+//read json full directory
+let jsonFiles = fs.readdirSync('data/json/full/') ;
+console.log('json files: ', jsonFiles) ;
+//build full text from dipl text json files
+let textFull_files = {} ;
+//iterate over dipl files
+jsonFiles.forEach((file) => {   
+   //read full text json files
+   if(!file.includes('_tmp.json')) {
+      let fileNamePath = 'data/json/full/' + file ;   
+      let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+      console.log('json data read: ', json_in.length, ' bytes') ;
+      let jsonJs_in_full = JSON.parse(json_in) ;   
+      //read full text to files
+      let fileName = file.replace('.json','') ;
+      textFull_files[fileName] = jsonJs_in_full ;   
+   }   
+}) ;
+
 //read json register directory
-let jsonFiles = fs.readdirSync('data/json/register/');
+jsonFiles = fs.readdirSync('data/json/register/');
 console.log('json files: ', jsonFiles);
 //iterate over register files
 let jsonJs_reg_files = {};
@@ -423,7 +442,7 @@ jsonFiles.forEach((file) => {
 });
 console.log('jsonJs_reg_files = ', jsonJs_reg_files);
 //build register json files
-let json_reg_files = buildReg(jsonJs_reg_files);
+let json_reg_files = buildReg(jsonJs_reg_files, textFull_files);
 //iterate over register json tmp files
 for (let key in json_reg_files) {
     let jsonStr = JSON.stringify(json_reg_files[key]);
