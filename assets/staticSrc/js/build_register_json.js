@@ -365,18 +365,20 @@ function buildReg(jsonJs_reg_files) {
                 if (main === item_xlsx.A) {
                     index.main = main;
                 } else {
-                    console.log('error: main term ' + main + ' mismatch with ' + item_xlsx.A + ' in index_xlsx.json');
-                    logData_index = logData_index + 'error: main term ' + main + ' mismatch with ' + item_xlsx.A + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
+                    console.log('error: main term ' + main + ' not in index_xlsx.json');
+                    logData_index = logData_index + 'error: main term ' + main + ' at pos ' + pos + ' not in index_xlsx.json' + '\n';
                 }
-                //sub
-                //find item_xlsx.B in items_xlsx
+                //sub                
+                //find item_xlsx.B in items_xlsx                
                 item_xlsx = items_xlsx.find(item => {
                     item.B = item.B === undefined ? '' : item.B;
                     return item.B === sub ;
                 });
                 if (!item_xlsx) {
-                    console.log('error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' in index_xlsx.json');
-                    logData_index = logData_index + 'error: sub term ' + sub + ' mismatch with ' + item_xlsx.B + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
+                    let item_xlsx = items_xlsx[0];
+                    item_xlsx.B = '' ;                    
+                    console.log('error: sub term ' + sub + ' not in index_xlsx.json');
+                    logData_index = logData_index + 'error: sub term ' + sub + ' at pos ' + pos + ' not in index_xlsx.json' + '\n';
                 } else {
                     index.sub = sub;
                 }
