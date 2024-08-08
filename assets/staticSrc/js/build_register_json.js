@@ -2,7 +2,23 @@
 const fs = require('fs');
 const { groupBy } = require('core-js/actual/array/group-by');
 
-function buildReg(jsonJs_reg_files) {    
+function pos2xmlId(pos, groupedAll_files) {
+    let xmlId = '' ;
+    Object.keys(groupedAll_files).forEach((key) => {
+        if (groupedAll_files[key][pos]) {
+            let pos_array = groupedAll_files[key][pos] ;
+            //group by xmlId
+            let groupedByXmlId = pos_array.groupBy(item => {
+                return item.attr.value;
+            });
+            xmlId = groupedByXmlId['xml:id'][0].val.value ;
+            console.log('xmlId = ', xmlId) ;            
+        }
+    });
+    return xmlId ;
+} ;
+
+function buildReg(jsonJs_reg_files, groupedAll_files) {    
     //build register templates
     //persons
     let persons_json = {
@@ -67,6 +83,7 @@ function buildReg(jsonJs_reg_files) {
         }
     };
 
+    //* person *//
     //read person json files
     let jsonJs_in = jsonJs_reg_files['register_person_text']; //person.json
     let jsonJs_in_xlsx = jsonJs_reg_files['register_person_xlsx']; //person_xlsx.json    
@@ -91,11 +108,11 @@ function buildReg(jsonJs_reg_files) {
             //let id = generateId() ;        
             let key = item.o_key_person.value;
             let pid = '';
-            let pos = item.o_pos_person.value;
+            let pos = item.o_pos_person.value;            
             //check if pid exists
             if (!item.o_pid_person) {
                 console.log('warning: no pid ' + key + ' in person_text.json');
-                logData_person = logData_person + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in person_text.json' + '\n';
+                logData_person = logData_person + 'warning: key ' + key + ' with no pid at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
                 pid = '';
             } else {
                 pid = item.o_pid_person.value;
@@ -103,7 +120,7 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //person_xlsx.json
                 console.log('error: no key ' + key + ' in person_xlsx.json');
-                logData_person = logData_person + 'error: no key ' + key + ' at pos ' + pos + ' in person_xlsx.json' + '\n';
+                logData_person = logData_person + 'error: no key ' + key + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in xlsx file' + '\n';
                 //loop over persons_json array
                 for (let i = 0; i < persons_json.head.vars.length; i++) {
                     switch (persons_json.head.vars[i]) {
@@ -155,10 +172,11 @@ function buildReg(jsonJs_reg_files) {
             persons_json.results.bindings.push(person);
         } else {
             console.log('error: no key in person_text.json');
-            logData_person = logData_person + 'error: no key at pos ' + pos + ' in person_text.json' + '\n';
+            logData_person = logData_person + 'error: no key at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
 
+    //* place *//
     //read place json files
     jsonJs_in = jsonJs_reg_files['register_place_text']; //place.json
     jsonJs_in_xlsx = jsonJs_reg_files['register_place_xlsx']; //place_xlsx.json
@@ -191,7 +209,7 @@ function buildReg(jsonJs_reg_files) {
             //check if pid exists
             if (!item.o_pid_place) {
                 console.log('warning: no pid ' + key + ' in place_text.json');
-                logData_place = logData_place + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in place_text.json' + '\n';
+                logData_place = logData_place + 'warning: key ' + key + ' with no pid at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
                 pid = '';
             } else {
                 pid = item.o_pid_place.value;
@@ -199,7 +217,7 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //place_xlsx.json
                 console.log('error: no key ' + key + ' in place_xlsx.json');
-                logData_place = logData_place + 'error: no key ' + key + ' at pos ' + pos + ' in place_xlsx.json' + '\n';
+                logData_place = logData_place + 'error: no key ' + key + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in xlsx file' + '\n';
                 //loop over persons_json array
                 for (let i = 0; i < places_json.head.vars.length; i++) {
                     switch (places_json.head.vars[i]) {
@@ -230,7 +248,7 @@ function buildReg(jsonJs_reg_files) {
             //check if key in geo file exists
             if (!groupedByKey_geo[key]) { //place_geo.json
                 console.log('error: no key ' + key + ' in place_geo.json');
-                logData_place = logData_place + 'error: no key ' + key + ' at pos ' + pos + ' in place_geo.json' + '\n';
+                logData_place = logData_place + 'error: no key ' + key + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in place_geo.json file' + '\n';
                 place.lat = '';
                 place.long = '';
             } else {
@@ -245,10 +263,11 @@ function buildReg(jsonJs_reg_files) {
             places_json.results.bindings.push(place);
         } else {
             console.log('error: no key in place_text.json');
-            logData_place = logData_place + 'error: no key at pos ' + pos + ' in place_text.json' + '\n';
+            logData_place = logData_place + 'error: no key at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
-
+    
+    //* org *//
     //read org json files
     jsonJs_in = jsonJs_reg_files['register_org_text']; //org.json
     jsonJs_in_xlsx = jsonJs_reg_files['register_org_xlsx']; //org_xlsx.json
@@ -275,7 +294,7 @@ function buildReg(jsonJs_reg_files) {
             //check if pid exists
             if (!item.o_pid_org) {
                 console.log('warning: no pid ' + key + ' in org_text.json');
-                logData_org = logData_org + 'warning: key ' + key + ' with no pid at pos ' + pos + ' in org_text.json' + '\n';
+                logData_org = logData_org + 'warning: key ' + key + ' with no pid at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
                 pid = '';
             } else {
                 pid = item.o_pid_org.value;
@@ -283,7 +302,7 @@ function buildReg(jsonJs_reg_files) {
             //check if key in xlsx exists
             if (!groupedByKey_xlsx[key]) { //org_xlsx.json
                 console.log('error: no key ' + key + ' in org_xlsx.json');
-                logData_org = logData_org + 'error: no key ' + key + ' at pos ' + pos + ' in org_xlsx.json' + '\n';
+                logData_org = logData_org + 'error: no key ' + key + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in xlsx file' + '\n';
                 //loop over orgs_json array
                 for (let i = 0; i < orgs_json.head.vars.length; i++) {
                     switch (orgs_json.head.vars[i]) {
@@ -308,8 +327,8 @@ function buildReg(jsonJs_reg_files) {
                 if (pid === item_xlsx.B) {
                     org.pid = pid;
                 } else {
-                    console.log('error: pid mismatch in org_xlsx.json');
-                    logData_org = logData_org + 'error: pid mismatch at pos ' + pos + ' in org_xlsx.json' + '\n';
+                    console.log('warning: pid mismatch in org_xlsx.json');
+                    logData_org = logData_org + 'warning: pid mismatch at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in xlsx file' + '\n';
                 }
                 //key                
                 org.key = key;
@@ -321,10 +340,11 @@ function buildReg(jsonJs_reg_files) {
             orgs_json.results.bindings.push(org);
         } else {
             console.log('error: no key in org_text.json');
-            logData_org = logData_org + 'error: no key at pos ' + pos + ' in org_text.json' + '\n';
+            logData_org = logData_org + 'error: no key at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
 
+    //* index *//
     //read index json files
     jsonJs_in = jsonJs_reg_files['register_index_text']; //index.json
     jsonJs_in_xlsx = jsonJs_reg_files['register_index_xlsx']; //index_xlsx.json
@@ -355,7 +375,7 @@ function buildReg(jsonJs_reg_files) {
             //check if main in xlsx exists
             if (!groupedByKey_xlsx[main]) { //index_xlsx.json   
                 console.log('error: no main term ' + main + ' in index_xlsx.json');
-                logData_index = logData_index + 'error: no main term ' + main + ' at pos ' + pos + ' in index_xlsx.json' + '\n';
+                logData_index = logData_index + 'error: no main term ' + main + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in xlsx file' + '\n';
             } else {
                 //main
                 let items_xlsx = groupedByKey_xlsx[main];
@@ -365,7 +385,7 @@ function buildReg(jsonJs_reg_files) {
                     index.main = main;
                 } else {
                     console.log('error: main term ' + main + ' not in index_xlsx.json');
-                    logData_index = logData_index + 'error: main term ' + main + ' at pos ' + pos + ' not in index_xlsx.json' + '\n';
+                    logData_index = logData_index + 'error: main term ' + main + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' not in xlsx file' + '\n';
                 }
                 //sub                
                 //find item_xlsx.B in items_xlsx                
@@ -377,17 +397,16 @@ function buildReg(jsonJs_reg_files) {
                     let item_xlsx = items_xlsx[0];
                     item_xlsx.B = '' ;                    
                     console.log('error: sub term ' + sub + ' not in index_xlsx.json');
-                    logData_index = logData_index + 'error: sub term ' + sub + ' at pos ' + pos + ' not in index_xlsx.json' + '\n';
-                } else {
-                    index.sub = sub;
+                    logData_index = logData_index + 'error: sub term ' + sub + ' at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' not in xlsx file' + '\n';
                 }
+                index.sub = sub;                
             } ;            
             //pos
             index.pos = pos;
             indexes_json.results.bindings.push(index);
         } else {
             console.log('error: no main term in index_text.json');
-            logData_index = logData_index + 'error: no main term at pos ' + pos + ' in index_text.json' + '\n';
+            logData_index = logData_index + 'error: no main term at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
 
@@ -443,7 +462,7 @@ jsonFiles.forEach((file) => {
 });
 console.log('jsonJs_reg_files = ', jsonJs_reg_files);
 //build register json files
-let json_reg_files = buildReg(jsonJs_reg_files);
+let json_reg_files = buildReg(jsonJs_reg_files, groupedAll_files);
 //iterate over register json tmp files
 for (let key in json_reg_files) {
     let jsonStr = JSON.stringify(json_reg_files[key]);

@@ -14,7 +14,6 @@ async function getGNDData(gndUrl) {
     url: gndUrl,
     headers: { }
   };
-
   const response = await axios.request(config) ;
   return response ;
 }
@@ -28,8 +27,7 @@ async function getObject(obj) {
       console.log('gndUrl = ', gndUrl) ;
       gndUrls.push(gndUrl) ;      
       //gnd_api('https://d-nb.info/gnd/119148331/about/lds') ;      
-   }
-  
+   }  
 } ;
 
 function getArray(arr) {

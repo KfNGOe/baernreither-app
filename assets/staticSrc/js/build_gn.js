@@ -99,6 +99,6 @@ async function getGNDData(gndUrl) {
     console.log('end api calls') ;
     gnSets_json.Tabelle1 = gnSets ;
     gnSets_str = JSON.stringify(gnSets_json) ;
-    fs.writeFileSync('./data/json/register/register_place_temp.json', gnSets_str) ;
+    fs.writeFileSync('./data/json/register/register_place_geo.json', gnSets_str) ;
     console.log('json data write: ', gnSets_str.length, ' bytes') ;
   })() ;
