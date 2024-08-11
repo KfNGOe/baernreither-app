@@ -2,30 +2,9 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-const { exit } = require("process") ;
 
 var convert = require('xml-js') ;
-var i_N = 0 ;
-var N = 0 ;
-var i_level = 0 ;
-var i_startTag = 0 ; 
-var i_endTag = 0 ;
 var typeReg = '' ;
-
-// Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-
-const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_in_json_xlsx=process.env.filepath_in_json_xlsx ;
-const filepath_out_tei=process.env.filepath_out_tei ;
 
 function buildReg(teiJsFile, jsonJs_reg_files) {     
     //iterate over tei template file

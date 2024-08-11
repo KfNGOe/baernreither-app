@@ -35,11 +35,14 @@ anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
 ### convert xlsx to json
 *.xlsx -> build_register_xlsx2json.sh -> register_*_xlsx.json<br>
 
+### get geoname id's for places
+register_place_xlsx.json -> build_gn.sh -> register_place_geo.json<br>
+
 ### build register entities from all ttl files 
 /ttl/text/*.ttl -> build_register_texts_ttl2json.sh -> register_*_text.json<br>
 
 ### build register json tmp
-register_*_xlsx.json + register_*_text.json -> build_register_json.sh -> register_*_tmp.json<br>
+register_*_xlsx.json + register_*_text.json + register_place_geo.json -> build_register_json.sh -> register_*_tmp.json<br>
 
 ### convert register tmp to xml
 register_*_tmp.json -> build_register_json2tei.sh -> register_*.xml<br>

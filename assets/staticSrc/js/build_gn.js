@@ -2,13 +2,30 @@ const axios = require('axios') ;
 const fs = require('fs') ;
 var convert = require('xml-js');
 
-var gnSets = [] ;
 var gnSets_json = {} ;
 var gnSets_str = "" ;
 var gnSet = "" ;
 var gnUrl = "" ;
 
 var gndUrl = "" ;
+
+let gn_json = {
+    "head": {
+        "vars": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "Lemma_gn",
+            "Lat",
+            "Long"
+        ]
+    },
+    "results": {
+        "bindings": []
+    }
+};
+let gnSets = gn_json.results.bindings ;
 
 async function getGnData(gnUrl) {
     let config = {
@@ -49,10 +66,10 @@ async function getGNDData(gndUrl) {
   
     for (const item of places) {
       console.log('item = ', item) ;
-      //check if item.E exists
-        if (item.E && item.E.includes('https')) {
-            if(item.E.includes('geonames')) {
-                gnUrl = item.E ;
+      //check if item.C exists
+        if (item.C && item.C.includes('https')) {
+            if(item.C.includes('geonames')) {
+                gnUrl = item.C ;
                 gnUrl = gnUrl.replace('https://www.geonames.org/', 'https://sws.geonames.org/') ;
                 gnUrl= gnUrl.substring(0, gnUrl.lastIndexOf('/')) ;        
                 gnUrl = gnUrl.concat('/about.rdf') ;   
@@ -76,10 +93,10 @@ async function getGNDData(gndUrl) {
                 gnSets.push(gnSet) ;
                 console.log('gnSets: ', JSON.stringify(gnSets)) ;
             } else {
-                if(item.E.includes('gnd')) {                    
+                if(item.C.includes('gnd')) {                    
                     gnSet = item ;
                     gnSets.push(gnSet) ;
-                    /*gndUrl = item.E ;
+                    /*gndUrl = item.C ;
                     gndUrl = gndUrl.concat('/about/lds') ;
                     console.log('gndUrl = ', gndUrl) ;
 
@@ -92,13 +109,18 @@ async function getGNDData(gndUrl) {
             }
         } else {            
             //add item
-              gnSet = item ;
-              gnSets.push(gnSet) ;
+            console.log('no gnUrl found') ;            
+            gnSet = item ;
+            gnSets.push(gnSet) ;
         }      
     }          
     console.log('end api calls') ;
-    gnSets_json.Tabelle1 = gnSets ;
-    gnSets_str = JSON.stringify(gnSets_json) ;
+    //gnSets_json.Tabelle1 = gnSets ;
+    //delete first element of gnSets
+    gnSets.shift() ;
+    //put gnSets into gn_json
+    gn_json.results.bindings = gnSets ;
+    gnSets_str = JSON.stringify(gn_json) ;
     fs.writeFileSync('./data/json/register/register_place_geo.json', gnSets_str) ;
     console.log('json data write: ', gnSets_str.length, ' bytes') ;
   })() ;

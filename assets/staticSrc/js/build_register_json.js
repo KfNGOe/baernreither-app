@@ -190,7 +190,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
         return item.D;
     });
     //group by key geo
-    groupedByKey_geo = jsonJs_in_geo.results.groupBy(item => {  //place_geo.json
+    groupedByKey_geo = jsonJs_in_geo.results.bindings.groupBy(item => {  //place_geo.json
         return item.B;
     });
     //create log data

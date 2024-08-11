@@ -1,29 +1,7 @@
 // Importing the jsdom module
-const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-const { exit } = require("process") ;
-const ShortUniqueId = require('short-unique-id');
 
-// Creating a window with a document
-const dom = new jsdom.JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-//Instantiate ShortUniqueId
-const uid = new ShortUniqueId({ length: 10 });
-
-var convert = require('xml-js') ;
-
-function generateId() {
-    //random number + pos   
-    return uid.rnd() ;
-    //return item.pos.value ;
- }
 
 function buildId(jsonJs_reg_files) { 
     console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;
