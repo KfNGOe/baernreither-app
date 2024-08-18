@@ -34,7 +34,8 @@ const sleepUntil = async (f, timeoutMs) => {
   }
 
 synFinishedHook = function(num){} ;
-  
+
+//page scroll event
 function onContainerScroll(boxSide) {
 	let container = document.getElementById("auswahl-content-scroll_" + boxSide);
   
@@ -61,6 +62,8 @@ function onContainerScroll(boxSide) {
 	}
 	setPageNr(boxSide, currentPage);
   }
+
+//input page number event left box
 input_left.addEventListener("keypress", function(event) {	
 	if (event.key === "Enter") {	  
 		event.preventDefault();
@@ -69,6 +72,7 @@ input_left.addEventListener("keypress", function(event) {
 		setPage(pageNr, 'left') ;
 	}
 });
+//input page number event right box
 input_right.addEventListener("keypress", function(event) {
 	if (event.key === "Enter") {
 		event.preventDefault();
@@ -78,23 +82,28 @@ input_right.addEventListener("keypress", function(event) {
 	}
 });
 
+//left arrow click event left box
 arrow_left_left.addEventListener("click", function() {
 	console.log("left arrow of left box clicked") ;
 	stepPage('left','left') ;
 }) ;
+//right arrow click event left box
 arrow_right_left.addEventListener("click", function() {	
 	console.log("right arrow of left box clicked") ;
 	stepPage('right','left') ;
 }) ;
+//left arrow click event right box
 arrow_left_right.addEventListener("click", function() {
 	console.log("left arrow of right box clicked") ;
 	stepPage('left','right') ;			
 }) ;
+//right arrow click event right box
 arrow_right_right.addEventListener("click", function() {
 	console.log("right arrow of right box clicked") ;
 	stepPage('right','right') ;	
 }) ;
 
+//step page
 window.stepPage = function(arrowDir, boxSide) {
 	//get all page-locator
 	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
@@ -130,7 +139,7 @@ window.stepPage = function(arrowDir, boxSide) {
 		}	
 	}	
 }
-
+//set page
 window.setPage = function(page, boxSide) {
 	let container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
 	let anchors = document.getElementsByClassName("pageLocator " + boxSide) ;
@@ -143,8 +152,27 @@ window.setPage = function(page, boxSide) {
 			console.log("set page to: ", page);
 		}
 	}	
-}  
+}
+//get page number
+window.getPageNr = function(boxSide) {
+	let pageNr = $( '#page_input_' + boxSide ).val() ;
+	return pageNr ;
+} ;
+//set page number
+window.setPageNr = function(boxSide,pageNr) {
+	$( '#page_input_' + boxSide ).val(pageNr) ;
+} ;
+//get page count
+window.getPageCount = function(boxSide) {
+	let pageCount = $( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text() ;
+	return pageCount ;
+} ;
+//set page count
+window.setPageCount = function(boxSide,pageCount) {
+	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
+} ;
 
+//fetch file
 window.fetchData = async function(filepath) {
 	try {        
 		const response = await fetch(filepath, {
@@ -165,6 +193,7 @@ window.fetchData = async function(filepath) {
 	}
   } ;
 
+//set box nav bar years items
 window.boxNavItems = function(li,date,groupedByTitle) {	
 	//get title
 	let dispTitle = li.text() ;		
@@ -182,38 +211,19 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 	}
 } ;
 
-//function to get transcription type
+//get transcription type
 window.getTransType = function(boxSide) {
 	let type = $( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a.active').attr('id') ;
 	type = type === undefined ? 'dipl' : type.replace('_' + boxSide, '') ;		
 	return type ;
 } ;
-
-//function to set transcription type
+//set transcription type
 window.setTransType = function(boxSide,type) {	
 	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a').removeClass('active') ;
 	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a#' + type + '_' + boxSide).addClass('active') ;
 } ;
 
-window.getPageNr = function(boxSide) {
-	let pageNr = $( '#page_input_' + boxSide ).val() ;
-	return pageNr ;
-} ;
-
-window.setPageNr = function(boxSide,pageNr) {
-	$( '#page_input_' + boxSide ).val(pageNr) ;
-} ;
-
-window.getPageCount = function(boxSide) {
-	let pageCount = $( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text() ;
-	return pageCount ;
-} ;
-
-window.setPageCount = function(boxSide,pageCount) {
-	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
-} ;
-
-//function to set download link
+//set download link
 window.setDownloadLink = function(workTitle,boxSide) {
 	//get file name
 	let fileName = workTitle + '.xml' ;	
@@ -226,14 +236,13 @@ window.setDownloadLink = function(workTitle,boxSide) {
 	$( 'div#box-' + boxSide + ' div.download-tab a.down-ttl' ).attr('href', filepath) ;
 } ;
 
-//function to get work
+//get work
 window.getWork = function(boxSide) {
 	let work = $( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id') ;
 	work = work === undefined ? work : work.replace('work_' + boxSide + '_', '') ;	
 	return work ; 	
 }
-
-//function to set work
+//set work
 window.setWork = function(boxSide,workTitle) {
 	//convert short title to display title
 	dispTitle = short2DispTitle(workTitle) ;
@@ -247,6 +256,7 @@ window.setWork = function(boxSide,workTitle) {
 	$( '#works_' + boxSide + 'ul.dropdown-menu').find('a#' + workTitle + '_' + boxSide).addClass('active') ;		
 }
 
+//convert short title to display title
 window.short2DispTitle = function(short) {
 	let title = textData_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
@@ -254,6 +264,7 @@ window.short2DispTitle = function(short) {
 	title = title === undefined ? '' : title ;	
 	return title ;
 }
+//convert display title to short title
 window.disp2ShortTitle = function(disp) {
 	let title = textData_in.results.bindings.find((item, index) => {
 		return item.title.display === disp ;
@@ -263,7 +274,7 @@ window.disp2ShortTitle = function(disp) {
 	return title ;
 }
 
-//function to insert work data in DOM
+//insert work data in DOM
 window.insertAllText = function(filepath,boxSide) {
 	(async () => {
 		//remove old data
@@ -271,20 +282,20 @@ window.insertAllText = function(filepath,boxSide) {
 		//get text data			
 		let content_str = textsAllData[filepath] ;
 		let content = $.parseHTML(content_str) ;
-		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).html(content) ;
 		//set dipl text style
 		displayDiplText(boxSide) ;
 		//add class boxside to class pageLocator
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('span.pageLocator').addClass(boxSide) ;
 	})() ;
 }
-
-//function to insert Full text data in DOM
+//insert Full text data in DOM
 window.insertFullText = function(boxSide) {
 	displayFullText(boxSide) ;
 	console.log( "insert full text!" ) ;
 } ;
 
+//display Dipl text
 window.displayDiplText = function(boxSide) {
 	$('div#box-' + boxSide + ' .abbr').show();      //show all elements with abbr class
     $('div#box-' + boxSide + ' .expan').hide();		//hide all elements with expan class
@@ -297,7 +308,7 @@ window.displayDiplText = function(boxSide) {
 
 	console.log( "display Dipl text!" ) ;
 } ;
-
+//display Full text
 window.displayFullText = function(boxSide) {
 	$('div#box-' + boxSide + ' .expan').show();      
     $('div#box-' + boxSide + ' .abbr').hide();
@@ -310,7 +321,7 @@ window.displayFullText = function(boxSide) {
 	
 	console.log( "display Full text!" ) ;
 } ;
-
+//display Anchors
 window.displayAnchors = function() {
 	//get work title of left box
 	let shortTitle_left = getWork('left') ;
@@ -337,8 +348,7 @@ window.displayAnchors = function() {
 		}
 	}) ;
 } ;
-
-//function to highlight search results
+//highlight search results
 window.ssMark = function() {
 	//check hash if text included
 	if(hash.includes('text_')) {		
@@ -401,6 +411,7 @@ window.ssMark = function() {
 	}
 } ;
 
+//load event
 window.addEventListener('load', function() {
 	synFinishedHook = function(num) {
 	  //console.log('hook nr: ', num) ;    
@@ -422,6 +433,7 @@ window.addEventListener('load', function() {
 	}
   }) ;
 
+//document ready
 $( function() {
     console.log( "ready!" );
 	//get location #hash
@@ -995,7 +1007,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//check if note is clicked
 	if(href.includes('note')) {
 		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Anmerkung' + table_snips[2]) ;					
-		let note_text = $( '[href="' + href + '"] ~ span.note' ).text() ;		 
+		let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).text() ;		 
 		html_str = html_str.concat(table_snips[3] + note_text + table_snips[4] + table_snips[5]) ;
 	}	
 	//check if register index is clicked
