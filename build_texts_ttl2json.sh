@@ -14,11 +14,16 @@ for file in $inputDir*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Starting ttl to json transformation"
-        #export pathName
-        export pathName=$pathname
-        export name=$name        
-        ./build_text_ttl2json.sh
+          echo "Starting umlaut encoding"
+          #export filepaths to be used in the called scripts
+          export pathName=$pathname
+          export name=$name
+          export ext=".ttl"
+          ./build_encodeUmlauts.sh
+          echo "Starting ttl to json transformation"          
+          ./build_text_ttl2json.sh
+          echo "Starting umlaut decoding"
+          ./build_decodeUmlauts.sh
         fi
     fi
 done
