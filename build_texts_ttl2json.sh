@@ -23,6 +23,9 @@ for file in $inputDir*.ttl; do
           echo "Starting ttl to json transformation"          
           ./build_text_ttl2json.sh
           echo "Starting umlaut decoding"
+          export pathName="./data/json/all/"
+          export name="${name}_all"
+          export ext=".json"
           ./build_decodeUmlauts.sh
         fi
     fi
