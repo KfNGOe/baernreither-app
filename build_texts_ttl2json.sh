@@ -19,10 +19,14 @@ for file in $inputDir*.ttl; do
           export pathName=$pathname
           export name=$name
           export ext=".ttl"
+          #encode .ttl file
           ./build_encodeUmlauts.sh
           echo "Starting ttl to json transformation"          
           ./build_text_ttl2json.sh
           echo "Starting umlaut decoding"
+          #decode .ttl file
+          ./build_decodeUmlauts.sh
+          #decode .json file
           export pathName="./data/json/all/"
           export name="${name}_all"
           export ext=".json"

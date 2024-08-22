@@ -1,10 +1,10 @@
 const fs = require('fs');
 
-// Pfad zum Ordner mit den Textdateien
+//path to the folder with the text files
 const filepath_in = process.env.filepath_in ;
 const filepath_out = process.env.filepath_out ;
 
-// Funktion zum Ersetzen von HTML-Escape-Sequenzen durch Umlaute
+//function to replace HTML escape sequences with umlauts
 function replaceHtmlEntities(text) {
     return text
         .replace(/&auml;/g, 'ä')
@@ -16,24 +16,18 @@ function replaceHtmlEntities(text) {
         .replace(/&szlig;/g, 'ß');
 }
 
-// Funktion zum Einlesen der Dateien und Umwandeln der HTML-Sequenzen
+//function to read the files and replace the HTML escape sequences
 function processFiles() {    
-    fs.readFile(filepath_in, 'utf8', (err, data) => {
-        if (err) {
-            return console.log(`Fehler beim Lesen der Datei ${file}:`, err);
-        }        
-        // HTML-Escape-Sequenzen durch Umlaute ersetzen
-        const updatedData = replaceHtmlEntities(data);
+    let data = fs.readFileSync(filepath_in, 'utf8');
+    
+    //replace HTML escape sequences
+    const updatedData = replaceHtmlEntities(data);
         
-        // Datei mit konvertierten Umlauten speichern
-        fs.writeFile(filepath_out, updatedData, 'utf8', (err) => {
-            if (err) {
-                return console.log(`Fehler beim Schreiben der Datei ${file}:`, err);
-            }
-            console.log(`Datei ${file} wurde erfolgreich aktualisiert.`);
-        });
-    });
+    //save file with replaced umlauts
+    fs.writeFileSync(filepath_out, updatedData);
+    console.log('data write: ', updatedData.length, ' bytes');
 }        
 
-// Funktion aufrufen
+//call function
 processFiles();
+console.log('umlauts decoded');
