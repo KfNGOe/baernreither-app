@@ -315,7 +315,7 @@ window.displayFullText = function(boxSide) {
 	
 	$('div#box-' + boxSide + ' .add').css( "background-color", "transparent" );
 
-	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" );
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" ).hide();
 
 	$('div#box-' + boxSide + ' .del').hide();
 	

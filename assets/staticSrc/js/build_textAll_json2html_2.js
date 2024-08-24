@@ -2,10 +2,6 @@
 const jsdom = require("jsdom") ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-//const ShortUniqueId = require('short-unique-id');
-const { exit } = require("process") ;
-var convert = require('xml-js') ;
-const { group } = require("console");
 
 var pos_body = 0 ;
 var title_short = '' ;
@@ -19,9 +15,6 @@ const $ = require('jquery')(dom.window) ;
 //Instantiate ShortUniqueId
 //const uid = new ShortUniqueId({ length: 10 });
 
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_txt=process.env.filepath_out_txt ;
-
 function posStr2Nr(posStr) {
    let pos_tmp = posStr.substring(title_short.length + 1) ;   
    return +pos_tmp ;
@@ -30,12 +23,6 @@ function posStr2Nr(posStr) {
 function posNr2Str(posNr) {
    let pos_tmp = title_short + '_' + posNr.toString() ;   
    return pos_tmp ;
-}
-
-function generateId(item) {
-   //random number + pos   
-   //return uid.rnd() + '_' + item.pos.value ;
-   return item.pos.value ;
 }
 
 function groupAnnoFiles(jsonJs_anno_files) {
@@ -225,7 +212,7 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      html_str = html_str.concat('<p id="' + id + '">') ;                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/pb':
-                     classNames = classNames.concat('pb pageLocator') ;
+                     classNames = classNames.concat('pb pageLocator ') ;                                                             
                      item.forEach((item, index, array) => {                        
                         //console.log('item = ', item) ;
                         switch(item.attr.value) {
@@ -243,12 +230,18 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                            default:
                               break ;
                         }
-                     } ) ;                     
+                     }) ;
+                     //remove last space from classNames
+                     classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set 2nd id
                      id = 'pb_' + key ;
                      //concatenate html string
                      html_str = html_str.concat('<a href="' + href + '" id="' + id + '">' + html_str_tmp + '</a>') ;
                      html_str = html_str.concat('</span><br>') ;
+                     break ;                  
+                  case 'http://www.tei-c.org/ns/1.0/addSpan':
+                     console.log('addSpan: ', item) ;
+                     console.log('key = ', key) ;
                      break ;                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {                        
@@ -359,7 +352,7 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/note':                     
                      //set class
-                     classNames = classNames.concat('note ') ;
+                     classNames = classNames.concat('note ') ;                     
                      item.forEach((item) => {                        
                         switch(item.attr.value) {
                            case 'type':
@@ -374,12 +367,12 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                            default:
                               break ;
                         }
-                     } ) ;
+                     } ) ;                     
                      //remove last space from classNames
                      classNames = classNames.substring(0, classNames.length - 1) ;                     
                      //set id
                      id = 'note_' + key ;
-                     html_str = html_str.concat('<a href="#' + id + '"><img src="images/note.png" title="note"></a><span class="' + classNames + '" id="' + id + '" style="display: none">') ;
+                     html_str = html_str.concat('<span class="' + classNames + '"><a href="#' + id + '"><img src="images/note.png" title="note"></a></span><span class="' + classNames + '" id="' + id + '" style="display: none">') ;
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/ref':
                      //set class
@@ -667,7 +660,8 @@ jsonFiles.forEach((file) => {
    let fileNamePath = 'data/json/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_all = JSON.parse(json_in) ;   
+   let jsonJs_in_all = JSON.parse(json_in) ;
+   //build html strings   
    buildAllText(jsonJs_in_all, groupedBy_files) ;
    //write html strings to files
    fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_all_html.txt  
@@ -688,3 +682,18 @@ jsonFiles.forEach((file) => {
    //reset html string
    html_str = '' ;
 }) ;
+
+/*
+//check if pb is between addSpan and anchor pos
+                     if (groupedBySourceTarget_addSpan[title_short] !== undefined) {
+                        let item_anno = {} ;
+                        let item_hit = groupedBySourceTarget_addSpan[title_short].find((item_source) => {
+                           item_anno = item_source ;
+                           return (+item_source.start_target.value < posStr2Nr(key)) && (posStr2Nr(key) < +item_source.end_target.value) ;
+                        } ) ;
+                        if (item_hit !== undefined) {
+                           //set class
+                           classNames = classNames.concat('addSpan ') ;
+                        }
+                     }
+*/
