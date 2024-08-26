@@ -485,6 +485,17 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      hit_flag = true ;
                      //set class
                      classNames = classNames.concat('addSpan ') ;
+                     //set title "insertion" or "insert"
+                     switch(item_anno.type.value) {
+                        case 'insertion':
+                           title = 'insertion' ;
+                           break ;
+                        case 'insert':
+                           title = 'insert' ;
+                           break ;
+                        default:
+                           break ;
+                     }
                   }
                }
                //check if text is between choice pos
