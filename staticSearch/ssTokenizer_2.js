@@ -53,9 +53,56 @@ var tokenAll_tmp = {
     "tokenAll": []
  } ;
 
-const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
-const filepath_out_tei=process.env.filepath_out_tei ;
+//function to escape html entities
+function escapeHtmlEntities(text) {
+    const characterMap = {
+        'ä': '&auml;',
+        'Ä': '&Auml;',
+        'ö': '&ouml;',
+        'Ö': '&Ouml;',
+        'ü': '&uuml;',
+        'Ü': '&Uuml;',
+        'ß': '&szlig;',
+        '!': '&#33;',
+        '"': '&quot;',
+        '§': '&sect;',
+        '$': '&#36;',
+        '%': '&#37;',
+        '&': '&amp;',
+        '/': '&#47;',
+        '(': '&#40;',
+        ')': '&#41;',
+        '=': '&#61;',
+        '?': '&#63;',
+        '`': '&#96;',
+        '\'': '&#39;',
+        '*': '&#42;',
+        '<': '&lt;',
+        '>': '&gt;',
+        ',': '&#44;',
+        ';': '&#59;',
+        '.': '&#46;',
+        ':': '&#58;',
+        '-': '&#45;',
+        '_': '&#95;',
+        '^': '&#94;',
+        '°': '&#176;',
+        '@': '&#64;',
+        '€': '&euro;',
+        'µ': '&#181;',
+        '[': '&#91;',
+        ']': '&#93;',
+        '{': '&#123;',
+        '}': '&#125;',
+        '\\': '&#92;',
+        '|': '&#124;',
+        '~': '&#126;'
+    };
+
+    return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
+        return characterMap[match] || match;
+    });
+}
 
 var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) {
     return [
@@ -199,3 +246,11 @@ var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
 console.log('json data written: ', json_out.length, ' bytes')
+
+
+
+// Beispielnutzung
+let text = 'Das ist ein Test: Äpfel, Öfen und Überflüssig! Hier sind einige Symbole: §, €, µ, @, <>';
+let escapedText = escapeHtmlEntities(text);
+console.log(escapedText);
+
