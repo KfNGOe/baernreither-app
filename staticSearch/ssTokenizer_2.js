@@ -1,11 +1,9 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const normalize = require('normalize-space') ;
-const { groupBy } = require('core-js/actual/array/group-by') ;
-//const { groupBy } = require('core-js/actual/object/group-by') ;
-const { exit } = require("process");
-var convert = require('xml-js');
+const { TEST } = require('./assets/staticSrc/js/constants.js');
+//import { TEST } from './assets/staticSrc/js/constants.js';
+console.log(TEST) ;
 
 var Tokenizer = require('tokenize-text');
 var tokenize = new Tokenizer();
