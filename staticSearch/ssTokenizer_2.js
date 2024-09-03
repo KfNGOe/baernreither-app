@@ -1,8 +1,8 @@
+//import { TEST } from './assets/staticSrc/js/constants.js';
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const { TEST } = require('./assets/staticSrc/js/constants.js');
-//import { TEST } from './assets/staticSrc/js/constants.js';
+const { TEST } = require('../assets/staticSrc/js/constants.js');
 console.log(TEST) ;
 
 var Tokenizer = require('tokenize-text');

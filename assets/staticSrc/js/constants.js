@@ -1,4 +1,4 @@
 const TEST = "test";
 
-//module
-module.exports = { TEST };
+//module export
+exports.TEST = TEST;
