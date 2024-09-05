@@ -2,13 +2,12 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const { TEST } = require('../assets/staticSrc/js/constants.js');
-console.log(TEST) ;
+const { characterMap } = require('../assets/staticSrc/js/constants.js');
+const { entityMap } = require('../assets/staticSrc/js/constants.js');
+const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');
 var tokenize = new Tokenizer();
-
-const tokenOffset = 3 ;
 
 var tokens_tmp = [] ;
 var tokens12_tmp = [] ;
@@ -53,50 +52,6 @@ var tokenAll_tmp = {
 
 //function to escape html entities
 function escapeHtmlEntities(text) {
-    const characterMap = {
-        'ä': '&auml;',
-        'Ä': '&Auml;',
-        'ö': '&ouml;',
-        'Ö': '&Ouml;',
-        'ü': '&uuml;',
-        'Ü': '&Uuml;',
-        'ß': '&szlig;',
-        '!': '&#33;',
-        '"': '&quot;',
-        '§': '&sect;',
-        '$': '&#36;',
-        '%': '&#37;',
-        '&': '&amp;',
-        '/': '&#47;',
-        '(': '&#40;',
-        ')': '&#41;',
-        '=': '&#61;',
-        '?': '&#63;',
-        '`': '&#96;',
-        '\'': '&#39;',
-        '*': '&#42;',
-        '<': '&lt;',
-        '>': '&gt;',
-        ',': '&#44;',
-        ';': '&#59;',
-        '.': '&#46;',
-        ':': '&#58;',
-        '-': '&#45;',
-        '_': '&#95;',
-        '^': '&#94;',
-        '°': '&#176;',
-        '@': '&#64;',
-        '€': '&euro;',
-        'µ': '&#181;',
-        '[': '&#91;',
-        ']': '&#93;',
-        '{': '&#123;',
-        '}': '&#125;',
-        '\\': '&#92;',
-        '|': '&#124;',
-        '~': '&#126;'
-    };
-
     return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
         return characterMap[match] || match;
     });
@@ -143,14 +98,19 @@ function buildTokens(fullTextAll,textFull_files) {
                             token12_tmp = {
                                 "token": tokens[0].value
                             } ;
+                            //escape html entities '.','/','"' in token
+                            token12_tmp.token = escapeHtmlEntities(token12_tmp.token) ;
+                            /*
                             //check if token has a /
                             if (token12_tmp.token.includes('/')) {
+                                
                                 token12_tmp.token = token12_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
                             }
                             //check if token has a "
                             if (token12_tmp.token.includes('"')) {
                                 token12_tmp.token = token12_tmp.token.replaceAll('"','&quot;') ; //utf8 code for 
-                            }                    
+                            }
+                            */                    
                             tokens12_tmp.push(token12_tmp) ;                
                         }
                         tokensPoss12_tmp['tokens'] = tokens12_tmp ;
@@ -161,6 +121,10 @@ function buildTokens(fullTextAll,textFull_files) {
                         token_tmp = {
                             "token": tokens[0].value
                         } ;
+                        //token_tmp.token = '. / "' ;
+                        //escape html entities '.','/','"' in token
+                        token_tmp.token = escapeHtmlEntities(token_tmp.token) ;
+                        /*
                         //check if token has a /
                         if (token_tmp.token.includes('/')) {
                             token_tmp.token = token_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
@@ -168,7 +132,8 @@ function buildTokens(fullTextAll,textFull_files) {
                         //check if token has a "
                         if (token_tmp.token.includes('"')) {
                             token_tmp.token = token_tmp.token.replaceAll('"','&quot;') ; //utf8 code for "
-                        }                        
+                        }
+                        */                        
                         tokens_tmp.push(token_tmp) ;                
                     }                    
                     tokensPoss_tmp['tokens'] = tokens_tmp ;
@@ -209,6 +174,18 @@ function buildTokens(fullTextAll,textFull_files) {
     }) ;    
 } ; 
 
+/*
+// Beispielnutzung
+let text = 'Das ist ein Test: Äpfel, Öfen und Überflüssig! Hier sind einige Symbole: /, ., "';
+let escapedText = escapeHtmlEntities(text);
+console.log(escapedText);
+
+// Beispielnutzung
+//let escapedText = 'Das ist ein Test: &Auml;pfel, &Ouml;fen und &Uuml;berfl&uuml;ssig! Hier sind einige Symbole: &sect;, &euro;, &#181;, &#64;, &lt;&gt;';
+let originalText = unescapeHtmlEntities(escapedText);
+console.log(originalText);
+*/
+
 //get full texts
 //read json full directory
 let jsonFiles = fs.readdirSync('data/json/full/') ;
@@ -243,12 +220,4 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
-console.log('json data written: ', json_out.length, ' bytes')
-
-
-
-// Beispielnutzung
-let text = 'Das ist ein Test: Äpfel, Öfen und Überflüssig! Hier sind einige Symbole: §, €, µ, @, <>';
-let escapedText = escapeHtmlEntities(text);
-console.log(escapedText);
-
+console.log('json data written: ', json_out.length, ' bytes') ;
