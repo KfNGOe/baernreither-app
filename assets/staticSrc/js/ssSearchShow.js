@@ -1,6 +1,3 @@
-//test entityMap
-console.log('entityMap: ', entityMap) ;
-
 var html_str = '' ;
 
 //function to unescape html entities

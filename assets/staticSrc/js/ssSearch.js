@@ -1,6 +1,3 @@
-//test entityMap
-console.log('characterMap: ', characterMap) ;
-
 const separator = '|' ;
 const threeDots = '...' ;
 const tokenOffset = 3 ;
@@ -35,7 +32,7 @@ window.tokenize = function(input_search, searchTokens) {
   for (i_char = 0; i_char < tokens_N; i_char++) {
       tokens = input_search.slice(i_char, tokenOffset + i_char) ;
       //escape html entities '.','/','"' in token
-      tokens = escapeHtmlEntities(tokens) ;        
+      //tokens = escapeHtmlEntities(tokens) ;        
       //check if token has a "
       //if (tokens.includes('"')) {
       //    tokens = tokens.replace('"','&quot;') ; //utf8 code for "
@@ -249,8 +246,9 @@ $('button#ssDoSearch').on('click', function(event) {
           //}        
           console.log('input_search =', input_search) ;
           console.log('input_search length =', input_search.length) ;
-          //check search string          
+          //check search string                    
           let tokens_N = searchTokens.length ;                
+          /*
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
             //find token of search string in tokens string        
             let searchToken = separator + searchTokens[i_tok] + separator ;
@@ -260,6 +258,7 @@ $('button#ssDoSearch').on('click', function(event) {
               return ;              
             }
           }
+          */
           console.log('hits_arr =', hits_arr) ;          
           //build result array
           hits_arr.length = tokens_N ;

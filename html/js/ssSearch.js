@@ -1,5 +1,3 @@
-//import groupBy from "https://cdn.jsdelivr.net/npm/core-js-bundle@3.36.0/minified.js";
-//import { Octokit } from "https://cdn.skypack.dev/@octokit/core" ;
 const separator = '|' ;
 const threeDots = '...' ;
 const tokenOffset = 3 ;
@@ -18,22 +16,31 @@ var flag_index = true;
 var flag_searchDone = false;
 var test ;
 
-function tokenize (input_search, searchTokens) {
+searchFinishedHook = function(num){} ;
+
+//function to escape html entities
+window.escapeHtmlEntities = function(text) {
+  return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
+      return characterMap[match] || match;
+  });
+}
+
+window.tokenize = function(input_search, searchTokens) {
   let searchStrLength = input_search.length ;    
   let tokens_N = searchStrLength - 2 ;    
   let tokens = [] ;
   for (i_char = 0; i_char < tokens_N; i_char++) {
-      tokens = input_search.slice(i_char, tokenOffset + i_char) ;        
+      tokens = input_search.slice(i_char, tokenOffset + i_char) ;
+      //escape html entities '.','/','"' in token
+      //tokens = escapeHtmlEntities(tokens) ;        
       //check if token has a "
-      if (tokens.includes('"')) {
-          tokens = tokens.replace('"','&quot;') ; //utf8 code for "
-      }
+      //if (tokens.includes('"')) {
+      //    tokens = tokens.replace('"','&quot;') ; //utf8 code for "
+      //}
       searchTokens.push(tokens) ;                
   }
   return searchTokens ;
 };
-
-searchFinishedHook = function(num){} ;
 
 window.fetchData = async function(filepath) {
   try {        
@@ -77,34 +84,6 @@ window.addEventListener('load', function() {
       showResults() ;
     }        
   }
-}) ;
-
-$(document).ready(function() {
-  console.log("ready!");
-  (async () => {
-      //get search index
-      console.log('get search index start') ;
-      let filepath = './staticSearch/ssTokenString.txt' ;
-      text_in = await fetchData(filepath) ;
-      //get text data
-      filepath = './data/json/textData.json' ;
-      textData_in = await fetchData(filepath) ;
-      //get all texts
-      let textData_arr = textData_in.results.bindings
-      textData_arr.forEach(async function(result, index) {          
-        filepath = './data/json/all/' + result.fileName ;
-        allTexts[result.fileName] = await fetchData(filepath) ;
-      });
-      //get full texts
-      textData_arr.forEach(async function(result, index) {
-        let fileName_full = result.fileName.replace('_all', '_full') ;          
-        filepath = './data/json/full/' + fileName_full ;
-        fullTexts[fileName_full] = await fetchData(filepath) ;
-      });      
-      //filepath = './data/json/full/fullTextAll_tmp.json' ;
-      //fullTextAll = await fetchData(filepath) ;      
-      searchFinishedHook(1);
-  })() ;
 }) ;
 
 window.checkHitsNext = function(hit, hits_next) {
@@ -210,8 +189,37 @@ window.checkSpecChar = function(token) {
   return token ;
 }
 
+//document ready
+$( function() {
+  console.log("ready!");
+  (async () => {
+      //get search index
+      console.log('get search index start') ;
+      let filepath = './staticSearch/ssTokenString.txt' ;
+      text_in = await fetchData(filepath) ;
+      //get text data
+      filepath = './data/json/textData.json' ;
+      textData_in = await fetchData(filepath) ;
+      //get all texts
+      let textData_arr = textData_in.results.bindings
+      textData_arr.forEach(async function(result, index) {          
+        filepath = './data/json/all/' + result.fileName ;
+        allTexts[result.fileName] = await fetchData(filepath) ;
+      });
+      //get full texts
+      textData_arr.forEach(async function(result, index) {
+        let fileName_full = result.fileName.replace('_all', '_full') ;          
+        filepath = './data/json/full/' + fileName_full ;
+        fullTexts[fileName_full] = await fetchData(filepath) ;
+      });      
+      //filepath = './data/json/full/fullTextAll_tmp.json' ;
+      //fullTextAll = await fetchData(filepath) ;      
+      searchFinishedHook(1);
+  })() ;
+}) ;
+
 //start search on button click
-$('button#ssDoSearch').click(function(event) {
+$('button#ssDoSearch').on('click', function(event) {
   (async () => {
     event.preventDefault() ; //ATTENTION: this is important to prevent the form from being submitted; fetch will not work otherwise
     let click = $(this);
@@ -238,28 +246,27 @@ $('button#ssDoSearch').click(function(event) {
           //}        
           console.log('input_search =', input_search) ;
           console.log('input_search length =', input_search.length) ;
-          //check search string
-          //let searchStrLength = input_search.length ;    
-          //let tokens_N = searchStrLength - 2 ;
+          //check search string                    
           let tokens_N = searchTokens.length ;                
+          /*
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
             //find token of search string in tokens string        
             let searchToken = separator + searchTokens[i_tok] + separator ;
-            if (text_in.includes(searchToken)) {          
-              //if token found, fetch token file
-              let searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok] + '.json' ;            
-              hits_arr.push(await fetchData(searchTokenFilePath)) ;
-            } else {
-                console.log('search token "' + searchTokens[i_tok] + '" in "' + input_search + '" not found') ;
-                alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
-                return ;
+            if (!text_in.includes(searchToken)) {
+              console.log('search token "' + searchTokens[i_tok] + '" in "' + input_search + '" not found') ;
+              alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
+              return ;              
             }
           }
-          console.log('hits_arr =', hits_arr) ;
+          */
+          console.log('hits_arr =', hits_arr) ;          
           //build result array
+          hits_arr.length = tokens_N ;
+          //fetch 1st token file
+          let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
+          hits_arr.push(await fetchData(searchTokenFilePath)) ;
           let hits_start = hits_arr[0] ;
-          let hits_path_arr = new Array(hits_arr.length).fill(0) ;
-          //hits_path_arr[0] = hits_start ;
+          let hits_path_arr = new Array(hits_arr.length).fill(0) ;          
           let searchPathNr = hits_start.instances.length ;
           let result_arr_tmp = new Array(searchPathNr).fill(0) ;
           console.log('result_arr_tmp =', result_arr_tmp) ;
@@ -271,8 +278,7 @@ $('button#ssDoSearch').click(function(event) {
             hit_start.instances.push(hits_start.instances[index]) ;
             hits_path_arr[0] = hit_start ;
             result_arr_tmp[index] = JSON.parse(JSON.stringify(hits_path_arr)) ;
-          }) ;
-          //result_arr_test = JSON.parse(JSON.stringify(result_arr_tmp)) ;
+          }) ;          
           console.log('result_arr_tmp =', result_arr_tmp) ;
           
           //build search paths
@@ -287,6 +293,9 @@ $('button#ssDoSearch').click(function(event) {
                 //compare current hit with next hits
                 let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
                 if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
+                  //fetch next token file
+                  searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
+                  hits_arr.push(await fetchData(searchTokenFilePath)) ;
                   let hits_next = hits_arr[i_tok + 1] ;
                   console.log('hits next = ', hits_next) ;
                   let hit_next = checkHitsNext(hit, hits_next) ;
@@ -320,6 +329,9 @@ $('button#ssDoSearch').click(function(event) {
                   //compare current hit with next hits
                   let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
                   if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
+                    //fetch next token file
+                    searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
+                    hits_arr.push(await fetchData(searchTokenFilePath)) ;
                     let hits_next = hits_arr[i_tok + 1] ;
                     console.log('hits next = ', hits_next) ;
                     let hit_next = checkHitsNext(hit, hits_next) ;
@@ -402,7 +414,7 @@ $('button#ssDoSearch').click(function(event) {
           console.log('result_arr_tmp =', result_arr_tmp) ;
           result_arr = result_arr_tmp ;
           //hook search finished
-          searchFinishedHook(2);
+          searchFinishedHook(2);          
         }
       }
       else {

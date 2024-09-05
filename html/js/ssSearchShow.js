@@ -1,5 +1,12 @@
 var html_str = '' ;
 
+//function to unescape html entities
+window.unescapeHtmlEntities = function(text) {        
+    return text.replace(/&auml;|&Auml;|&ouml;|&Ouml;|&uuml;|&Uuml;|&szlig;|&#33;|&quot;|&sect;|&#36;|&#37;|&amp;|&#47;|&#40;|&#41;|&#61;|&#63;|&#96;|&#39;|&#42;|&lt;|&gt;|&#44;|&#59;|&#46;|&#58;|&#45;|&#95;|&#94;|&#176;|&#64;|&euro;|&#181;|&#91;|&#93;|&#123;|&#125;|&#92;|&#124;|&#126;/g, function(match) {
+        return entityMap[match] || match;
+    });
+}
+
 window.short2DispTitle = function(short) {
 	let title = textData_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
@@ -34,10 +41,12 @@ window.contextBefore = function(source, sourceFile, result_path) {
                 offset = result_path[0].instances[0].index ;
             } else {
                 if (!flagStart && startNr !== undefined) {                
+                    //unescape html entities '.','/','"' in token
+                    item_hit.cont.value = unescapeHtmlEntities(item_hit.cont.value) ;
                     //check if token has a '&quot;'
-                    if (item_hit.cont.value.includes('&quot;')) {
-                        item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
-                    }
+                    //if (item_hit.cont.value.includes('&quot;')) {
+                    //    item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
+                    //}
                     chN_pr = item_hit.cont.value.length ;
                     offset = chN_pr + result_path[0].instances[0].index - 2 ;
                 }        
@@ -103,10 +112,12 @@ window.contextAfter = function(source, sourceFile, result_path) {
                 }        
             }
             //get context after end token
+            //unescape html entities '.','/','"' in token
+            item_hit.cont.value = unescapeHtmlEntities(item_hit.cont.value) ;
             //check if token has a '&quot;'
-            if (item_hit.cont.value.includes('&quot;')) {
-                item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
-            }
+            //if (item_hit.cont.value.includes('&quot;')) {
+            //    item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
+            //}
             contextAfter =  item_hit.cont.value.substring(offset,chN_nxt) ; 
             //contextAfter =  sourceFile.results.bindings[index_source].cont.value.substring(offset,chN_nxt) ; 
             let countSpace = (contextAfter.match(/\s/g) || []).length ; //count spaces in contextBefore
