@@ -262,9 +262,11 @@ $('button#ssDoSearch').on('click', function(event) {
           console.log('hits_arr =', hits_arr) ;          
           //build result array
           hits_arr.length = tokens_N ;
+          searchTokens[0] = 'U+002F3' ;
           //fetch 1st token file
           let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
-          hits_arr.push(await fetchData(searchTokenFilePath)) ;
+          hits_arr[0] = await fetchData(searchTokenFilePath) ;
+          //hits_arr.push(await fetchData(searchTokenFilePath)) ;
           let hits_start = hits_arr[0] ;
           let hits_path_arr = new Array(hits_arr.length).fill(0) ;          
           let searchPathNr = hits_start.instances.length ;

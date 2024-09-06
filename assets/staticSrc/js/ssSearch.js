@@ -18,10 +18,10 @@ var test ;
 
 searchFinishedHook = function(num){} ;
 
-//function to escape html entities
-window.escapeHtmlEntities = function(text) {
+//function to convert char to utf
+window.char2utf = function(text) {
   return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
-      return characterMap[match] || match;
+      return char2utfMap[match] || match;
   });
 }
 
@@ -31,8 +31,8 @@ window.tokenize = function(input_search, searchTokens) {
   let tokens = [] ;
   for (i_char = 0; i_char < tokens_N; i_char++) {
       tokens = input_search.slice(i_char, tokenOffset + i_char) ;
-      //escape html entities '.','/','"' in token
-      //tokens = escapeHtmlEntities(tokens) ;        
+      //convert '.','/','"' in token to utf
+      //tokens = char2utf(tokens) ;        
       //check if token has a "
       //if (tokens.includes('"')) {
       //    tokens = tokens.replace('"','&quot;') ; //utf8 code for "
@@ -262,9 +262,11 @@ $('button#ssDoSearch').on('click', function(event) {
           console.log('hits_arr =', hits_arr) ;          
           //build result array
           hits_arr.length = tokens_N ;
+          searchTokens[0] = 'U+002F3' ;
           //fetch 1st token file
           let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
-          hits_arr.push(await fetchData(searchTokenFilePath)) ;
+          hits_arr[0] = await fetchData(searchTokenFilePath) ;
+          //hits_arr.push(await fetchData(searchTokenFilePath)) ;
           let hits_start = hits_arr[0] ;
           let hits_path_arr = new Array(hits_arr.length).fill(0) ;          
           let searchPathNr = hits_start.instances.length ;

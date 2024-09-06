@@ -2,8 +2,7 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const { characterMap } = require('../assets/staticSrc/js/constants.js');
-const { entityMap } = require('../assets/staticSrc/js/constants.js');
+const { char2utfMap } = require('../assets/staticSrc/js/constants.js');
 const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');
@@ -50,10 +49,10 @@ var tokenAll_tmp = {
     "tokenAll": []
  } ;
 
-//function to escape html entities
-function escapeHtmlEntities(text) {
+//function to convert char to utf
+function char2utf(text) {
     return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
-        return characterMap[match] || match;
+        return char2utfMap[match] || match;
     });
 }
 
@@ -98,8 +97,8 @@ function buildTokens(fullTextAll,textFull_files) {
                             token12_tmp = {
                                 "token": tokens[0].value
                             } ;
-                            //escape html entities '.','/','"' in token
-                            token12_tmp.token = escapeHtmlEntities(token12_tmp.token) ;
+                            //convert '.','/','"' in token to utf
+                            token12_tmp.token = char2utf(token12_tmp.token) ;
                             /*
                             //check if token has a /
                             if (token12_tmp.token.includes('/')) {
@@ -122,8 +121,8 @@ function buildTokens(fullTextAll,textFull_files) {
                             "token": tokens[0].value
                         } ;
                         //token_tmp.token = '. / "' ;
-                        //escape html entities '.','/','"' in token
-                        token_tmp.token = escapeHtmlEntities(token_tmp.token) ;
+                        //convert '.','/','"' in token to utf
+                        token_tmp.token = char2utf(token_tmp.token) ;
                         /*
                         //check if token has a /
                         if (token_tmp.token.includes('/')) {
@@ -177,7 +176,7 @@ function buildTokens(fullTextAll,textFull_files) {
 /*
 // Beispielnutzung
 let text = 'Das ist ein Test: Äpfel, Öfen und Überflüssig! Hier sind einige Symbole: /, ., "';
-let escapedText = escapeHtmlEntities(text);
+let escapedText = char2utf(text);
 console.log(escapedText);
 
 // Beispielnutzung
