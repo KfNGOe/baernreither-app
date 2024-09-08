@@ -1,9 +1,9 @@
 var html_str = '' ;
 
-//function to unescape html entities
-window.unescapeHtmlEntities = function(text) {        
-    return text.replace(/&auml;|&Auml;|&ouml;|&Ouml;|&uuml;|&Uuml;|&szlig;|&#33;|&quot;|&sect;|&#36;|&#37;|&amp;|&#47;|&#40;|&#41;|&#61;|&#63;|&#96;|&#39;|&#42;|&lt;|&gt;|&#44;|&#59;|&#46;|&#58;|&#45;|&#95;|&#94;|&#176;|&#64;|&euro;|&#181;|&#91;|&#93;|&#123;|&#125;|&#92;|&#124;|&#126;/g, function(match) {
-        return entityMap[match] || match;
+//function to convert utf to char
+window.utf2char = function(text) {        
+    return text.replace(/U\+[0-9A-F]{4}/g, function(match) {
+        return utf2charMap[match] || match;
     });
 }
 
@@ -41,8 +41,8 @@ window.contextBefore = function(source, sourceFile, result_path) {
                 offset = result_path[0].instances[0].index ;
             } else {
                 if (!flagStart && startNr !== undefined) {                
-                    //unescape html entities '.','/','"' in token
-                    item_hit.cont.value = unescapeHtmlEntities(item_hit.cont.value) ;
+                    //convert utf of '.','/','"' in token to char
+                    item_hit.cont.value = utf2char(item_hit.cont.value) ;
                     //check if token has a '&quot;'
                     //if (item_hit.cont.value.includes('&quot;')) {
                     //    item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
@@ -111,9 +111,9 @@ window.contextAfter = function(source, sourceFile, result_path) {
                     offset = result_path[result_path.length-1].instances[0].index + 1 ;
                 }        
             }
-            //get context after end token
-            //unescape html entities '.','/','"' in token
-            item_hit.cont.value = unescapeHtmlEntities(item_hit.cont.value) ;
+            //get context after end token            
+            //convert utf of '.','/','"' in token to char
+            item_hit.cont.value = utf2char(item_hit.cont.value) ;
             //check if token has a '&quot;'
             //if (item_hit.cont.value.includes('&quot;')) {
             //    item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "

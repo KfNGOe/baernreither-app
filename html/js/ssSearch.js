@@ -18,10 +18,10 @@ var test ;
 
 searchFinishedHook = function(num){} ;
 
-//function to escape html entities
-window.escapeHtmlEntities = function(text) {
+//function to convert char to utf
+window.char2utf = function(text) {
   return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
-      return characterMap[match] || match;
+      return char2utfMap[match] || match;
   });
 }
 
@@ -31,8 +31,8 @@ window.tokenize = function(input_search, searchTokens) {
   let tokens = [] ;
   for (i_char = 0; i_char < tokens_N; i_char++) {
       tokens = input_search.slice(i_char, tokenOffset + i_char) ;
-      //escape html entities '.','/','"' in token
-      //tokens = escapeHtmlEntities(tokens) ;        
+      //convert '.','/','"' in token to utf
+      //tokens = char2utf(tokens) ;        
       //check if token has a "
       //if (tokens.includes('"')) {
       //    tokens = tokens.replace('"','&quot;') ; //utf8 code for "
