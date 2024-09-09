@@ -32,7 +32,7 @@ window.tokenize = function(input_search, searchTokens) {
   for (i_char = 0; i_char < tokens_N; i_char++) {
       tokens = input_search.slice(i_char, tokenOffset + i_char) ;
       //convert '.','/','"' in token to utf
-      //tokens = char2utf(tokens) ;        
+      tokens = char2utf(tokens) ;        
       //check if token has a "
       //if (tokens.includes('"')) {
       //    tokens = tokens.replace('"','&quot;') ; //utf8 code for "
@@ -262,7 +262,7 @@ $('button#ssDoSearch').on('click', function(event) {
           console.log('hits_arr =', hits_arr) ;          
           //build result array
           hits_arr.length = tokens_N ;
-          searchTokens[0] = 'U+002F3' ;
+          //searchTokens[0] = 'dU+002E ' ;
           //fetch 1st token file
           let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
           hits_arr[0] = await fetchData(searchTokenFilePath) ;
