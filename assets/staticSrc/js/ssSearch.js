@@ -247,8 +247,7 @@ $('button#ssDoSearch').on('click', function(event) {
           console.log('input_search =', input_search) ;
           console.log('input_search length =', input_search.length) ;
           //check search string                    
-          let tokens_N = searchTokens.length ;                
-          /*
+          let tokens_N = searchTokens.length ;
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {        
             //find token of search string in tokens string        
             let searchToken = separator + searchTokens[i_tok] + separator ;
@@ -257,18 +256,17 @@ $('button#ssDoSearch').on('click', function(event) {
               alert('Suchausdruck "' + input_search + '" nicht gefunden!') ;
               return ;              
             }
-          }
-          */
-          console.log('hits_arr =', hits_arr) ;          
+          }          
+          //console.log('hits_arr =', hits_arr) ;          
           //build result array
-          hits_arr.length = tokens_N ;
+          //hits_arr.length = tokens_N ;
           //searchTokens[0] = 'dU+002E ' ;
           //fetch 1st token file
           let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
           hits_arr[0] = await fetchData(searchTokenFilePath) ;
           //hits_arr.push(await fetchData(searchTokenFilePath)) ;
           let hits_start = hits_arr[0] ;
-          let hits_path_arr = new Array(hits_arr.length).fill(0) ;          
+          let hits_path_arr = new Array(tokens_N).fill(0) ;          
           let searchPathNr = hits_start.instances.length ;
           let result_arr_tmp = new Array(searchPathNr).fill(0) ;
           console.log('result_arr_tmp =', result_arr_tmp) ;
