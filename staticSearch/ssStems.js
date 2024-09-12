@@ -33,8 +33,23 @@ const dom = new jsdom.JSDOM(`
 
 function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp    
     ssTokenStr = separator + ssTokenStr ;
-    groupedByToken = tokenAll_tmp.tokenAll.groupBy( item => {
-        //item['index'] = index_token ;
+    //group by token
+    groupedByToken = tokenAll_tmp.tokenAll.groupBy( item => {        
+        return item.token ;
+    }) ;
+    //get index of token in tokenAll_tmp
+    let tokenAll_tmp_index = {} ;
+    tokenAll_tmp_index['tokenAll'] = [] ;
+    let item_tmp_index = {} ;
+    tokenAll_tmp.tokenAll.forEach((item, index, array) => {
+        item_tmp_index['token'] = item.token ;
+        item_tmp_index['index_tok_all'] = index ;
+        tokenAll_tmp_index.tokenAll.push(item_tmp_index) ;
+        item_tmp_index = {} ;
+    }) ;
+    //group index by token
+    let groupedByToken_index = {} ;
+    groupedByToken_index = tokenAll_tmp_index.tokenAll.groupBy( item => {
         return item.token ;
     }) ;
     let allKeys = Object.keys(groupedByToken) ;
@@ -44,33 +59,51 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
         console.log('key = ', key) ;
         instances_tmp = [] ;
         instance_tmp = {} ;
+        //build instances
         groupedByToken[key].forEach((item, index, array) => {
-            //console.log('item = ', item) ;
-            console.log('index = ', index) ;
-            //instance_tmp.docId = title_short ;
+            //console.log('item = ', item) ;                        
             instance_tmp.index = item.index ;                        
             if (item.pos_nxt !== undefined) {
                 instance_tmp.pos_pr = item.pos_pr ;
                 instance_tmp.pos_nxt = item.pos_nxt ;
-                index_tokenAll = tokenAll_tmp.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos_pr === instance_tmp.pos_pr && item.pos_nxt === instance_tmp.pos_nxt) ;
-            } else {
+                //get token next and previous uri
+                let flag_tok_index = false ;
+                groupedByToken_index[item.token].forEach((item, index, array) => {
+                    let token_tmp = tokenAll_tmp.tokenAll[item.index_tok_all] ;
+                    if (token_tmp.index === instance_tmp.index && token_tmp.pos_pr === instance_tmp.pos_pr && token_tmp.pos_nxt === instance_tmp.pos_nxt) {
+                        flag_tok_index = true ;
+                        if (item.index_tok_all + 1 < countArrNr) {
+                            instance_tmp.token_next_uri = tokenAll_tmp.tokenAll[item.index_tok_all + 1].token + '.json' ;                            
+                        }
+                        if (item.index_tok_all > 0) {
+                            instance_tmp.token_prev_uri = tokenAll_tmp.tokenAll[item.index_tok_all - 1].token + '.json' ;                            
+                        }                        
+                    }                    
+                }) ;
+                if (!flag_tok_index) {
+                    console.log('index of token not found') ;
+                }                                
+            } else {                
                 instance_tmp.pos = item.pos ;
-                index_tokenAll = tokenAll_tmp.tokenAll.findIndex(item => item.token === key && item.index === instance_tmp.index && item.pos === instance_tmp.pos) ;
+                //get token next and previous uri
+                let flag_tok_index = false ;
+                groupedByToken_index[item.token].forEach((item, index, array) => {
+                    let token_tmp = tokenAll_tmp.tokenAll[item.index_tok_all] ;
+                    if (token_tmp.index === instance_tmp.index && token_tmp.pos === instance_tmp.pos) {
+                        flag_tok_index = true ;
+                        if (item.index_tok_all + 1 < countArrNr) {
+                            instance_tmp.token_next_uri = tokenAll_tmp.tokenAll[item.index_tok_all + 1].token + '.json' ;
+                        }
+                        if (item.index_tok_all > 0) {
+                            instance_tmp.token_prev_uri = tokenAll_tmp.tokenAll[item.index_tok_all - 1].token + '.json' ;
+                        }
+                    }                    
+                }) ;
+                if (!flag_tok_index) {
+                    console.log('index of token not found') ;
+                }               
             }
-            instance_tmp.chN = item.chN ;                        
-            //console.log('index_tokenAll = ', index_tokenAll) ;
-            if (index_tokenAll > -1) {
-                if (index_tokenAll + 1 < countArrNr) {
-                    instance_tmp.token_next_uri = tokenAll_tmp.tokenAll[index_tokenAll + 1].token + '.json' ;
-                    //console.log('instance_tmp = ', instance_tmp.token_next_uri) ;
-                }
-                if (index_tokenAll > 0) {
-                    instance_tmp.token_prev_uri = tokenAll_tmp.tokenAll[index_tokenAll - 1].token + '.json' ;
-                    //console.log('instance_tmp = ', instance_tmp.token_prev_uri) ;                                
-                }                       
-            } else {
-                console.log('index of token not found') ;                            
-            }
+            instance_tmp.chN = item.chN ;            
             instances_tmp.push(instance_tmp) ;
             instance_tmp = {} ;
         }) ;

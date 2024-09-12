@@ -1,16 +1,12 @@
+//import { TEST } from './assets/staticSrc/js/constants.js';
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const normalize = require('normalize-space') ;
-const { groupBy } = require('core-js/actual/array/group-by') ;
-//const { groupBy } = require('core-js/actual/object/group-by') ;
-const { exit } = require("process");
-var convert = require('xml-js');
+const { char2utfMap } = require('../assets/staticSrc/js/constants.js');
+const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');
 var tokenize = new Tokenizer();
-
-const tokenOffset = 3 ;
 
 var tokens_tmp = [] ;
 var tokens12_tmp = [] ;
@@ -23,17 +19,12 @@ var pos12_tmp = {} ;
 var tokens = [] ;
 var i_char = 0 ;
 var i_text = 0 ;
-var countTextN = 0 ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
 
 //templates
 const fullTextAll_temp = {
@@ -53,19 +44,18 @@ var tokenAll_tmp = {
     "tokenAll": []
  } ;
 
-const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json='./data/json/Bae_MF_6-2_full.json' ;
-const filepath_out_tei=process.env.filepath_out_tei ;
+//function to convert char to utf
+function char2utf(text) {
+    return text.replace(/[äÄöÖüÜß!"§$%&/()=?`'<>.,;:~^°@€µ[\]{}\\|]/g, function(match) {
+        return char2utfMap[match] || match;
+    });
+}
 
 var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) {
     return [
         text.slice(i_char, tokenOffset + i_char)                    
     ]
 });
-
-function countText(obj) {
-    return obj.results.bindings.length ;    
-} ;
 
 function buildTokens(fullTextAll,textFull_files) {
     let tokensPoss_tmp = {} ;
@@ -75,11 +65,16 @@ function buildTokens(fullTextAll,textFull_files) {
         i_text = index + 1 ;
         console.log('i_text = ', i_text) ;
         //iterate over keys
-        Object.keys(item).forEach((key) => {
-            //console.log('key = ', key, ', value = ', item[key]) ;
+        Object.keys(item).forEach((key) => {            
             switch(key) {
                 case 'cont':
-                    let text = item[key].value ;
+                    let text_in = item[key].value ;                    
+                    //check if text has a &quot;
+                    if (text_in.includes('&quot;')) {
+                        text = text_in.replaceAll('&quot;','"') ; //utf8 code for "
+                    } else {
+                        text = text_in ;
+                    }
                     let textLength = text.length ;
                     let N_char = textLength - 2 ;            
                     if (i_text > 1) {                        
@@ -91,10 +86,8 @@ function buildTokens(fullTextAll,textFull_files) {
                             token12_tmp = {
                                 "token": tokens[0].value
                             } ;
-                            //check if token has a /
-                            if (token12_tmp.token.includes('/')) {
-                                token12_tmp.token = token12_tmp.token.replace('/','0x2F') ; //utf8 code for /
-                            }                    
+                            //convert '.','/','"' in token to utf
+                            token12_tmp.token = char2utf(token12_tmp.token) ;                                                
                             tokens12_tmp.push(token12_tmp) ;                
                         }
                         tokensPoss12_tmp['tokens'] = tokens12_tmp ;
@@ -104,11 +97,9 @@ function buildTokens(fullTextAll,textFull_files) {
                         tokens = splitIn(text);
                         token_tmp = {
                             "token": tokens[0].value
-                        } ;
-                        //check if token has a /
-                        if (token_tmp.token.includes('/')) {
-                            token_tmp.token = token_tmp.token.replace('/','0x2F') ; //utf8 code for /
-                        }
+                        } ;                        
+                        //convert '.','/','"' in token to utf
+                        token_tmp.token = char2utf(token_tmp.token) ;                                                
                         tokens_tmp.push(token_tmp) ;                
                     }                    
                     tokensPoss_tmp['tokens'] = tokens_tmp ;
@@ -183,4 +174,4 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
-console.log('json data written: ', json_out.length, ' bytes')
+console.log('json data written: ', json_out.length, ' bytes') ;

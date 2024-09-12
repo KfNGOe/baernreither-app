@@ -19,17 +19,12 @@ var pos12_tmp = {} ;
 var tokens = [] ;
 var i_char = 0 ;
 var i_text = 0 ;
-var countTextN = 0 ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
 
 //templates
 const fullTextAll_temp = {
@@ -62,10 +57,6 @@ var splitIn = tokenize.split(function(text, currentToken, prevToken, nextToken) 
     ]
 });
 
-function countText(obj) {
-    return obj.results.bindings.length ;    
-} ;
-
 function buildTokens(fullTextAll,textFull_files) {
     let tokensPoss_tmp = {} ;
     let tokensPoss12_tmp = {} ;
@@ -74,12 +65,10 @@ function buildTokens(fullTextAll,textFull_files) {
         i_text = index + 1 ;
         console.log('i_text = ', i_text) ;
         //iterate over keys
-        Object.keys(item).forEach((key) => {
-            //console.log('key = ', key, ', value = ', item[key]) ;
+        Object.keys(item).forEach((key) => {            
             switch(key) {
                 case 'cont':
-                    let text_in = item[key].value ;
-                    let textLength_in = text_in.length ;
+                    let text_in = item[key].value ;                    
                     //check if text has a &quot;
                     if (text_in.includes('&quot;')) {
                         text = text_in.replaceAll('&quot;','"') ; //utf8 code for "
@@ -98,18 +87,7 @@ function buildTokens(fullTextAll,textFull_files) {
                                 "token": tokens[0].value
                             } ;
                             //convert '.','/','"' in token to utf
-                            token12_tmp.token = char2utf(token12_tmp.token) ;
-                            /*
-                            //check if token has a /
-                            if (token12_tmp.token.includes('/')) {
-                                
-                                token12_tmp.token = token12_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
-                            }
-                            //check if token has a "
-                            if (token12_tmp.token.includes('"')) {
-                                token12_tmp.token = token12_tmp.token.replaceAll('"','&quot;') ; //utf8 code for 
-                            }
-                            */                    
+                            token12_tmp.token = char2utf(token12_tmp.token) ;                                                
                             tokens12_tmp.push(token12_tmp) ;                
                         }
                         tokensPoss12_tmp['tokens'] = tokens12_tmp ;
@@ -119,20 +97,9 @@ function buildTokens(fullTextAll,textFull_files) {
                         tokens = splitIn(text);
                         token_tmp = {
                             "token": tokens[0].value
-                        } ;
-                        //token_tmp.token = '. / "' ;
+                        } ;                        
                         //convert '.','/','"' in token to utf
-                        token_tmp.token = char2utf(token_tmp.token) ;
-                        /*
-                        //check if token has a /
-                        if (token_tmp.token.includes('/')) {
-                            token_tmp.token = token_tmp.token.replaceAll('/','0x2F') ; //utf8 code for /
-                        }
-                        //check if token has a "
-                        if (token_tmp.token.includes('"')) {
-                            token_tmp.token = token_tmp.token.replaceAll('"','&quot;') ; //utf8 code for "
-                        }
-                        */                        
+                        token_tmp.token = char2utf(token_tmp.token) ;                                                
                         tokens_tmp.push(token_tmp) ;                
                     }                    
                     tokensPoss_tmp['tokens'] = tokens_tmp ;
@@ -172,18 +139,6 @@ function buildTokens(fullTextAll,textFull_files) {
         tokensPoss_tmp = {} ;        
     }) ;    
 } ; 
-
-/*
-// Beispielnutzung
-let text = 'Das ist ein Test: Äpfel, Öfen und Überflüssig! Hier sind einige Symbole: /, ., "';
-let escapedText = char2utf(text);
-console.log(escapedText);
-
-// Beispielnutzung
-//let escapedText = 'Das ist ein Test: &Auml;pfel, &Ouml;fen und &Uuml;berfl&uuml;ssig! Hier sind einige Symbole: &sect;, &euro;, &#181;, &#64;, &lt;&gt;';
-let originalText = unescapeHtmlEntities(escapedText);
-console.log(originalText);
-*/
 
 //get full texts
 //read json full directory
