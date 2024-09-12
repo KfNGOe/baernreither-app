@@ -8,11 +8,7 @@ const { sort } = require('core-js/actual/array/sort') ;
 const { exit } = require("process");
 
 const separator = '|' ;
-const title_short = 'Bae_TB_8' ;
 var groupedByToken = {} ;
-var tokenAll = {
-   "tokenAll": []
-} ;
 var index_tokenAll = 0 ;
 var ssTokenStr = '' ;
 var ssStem_tmp = {
@@ -35,14 +31,6 @@ const dom = new jsdom.JSDOM(`
 <body></body>
 `);
 
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-
-const filepath_in_tei=process.env.filepath_in_tei ;
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_tei=process.env.filepath_out_tei ;
-
 function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp    
     ssTokenStr = separator + ssTokenStr ;
     groupedByToken = tokenAll_tmp.tokenAll.groupBy( item => {
@@ -58,6 +46,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
         instance_tmp = {} ;
         groupedByToken[key].forEach((item, index, array) => {
             //console.log('item = ', item) ;
+            console.log('index = ', index) ;
             //instance_tmp.docId = title_short ;
             instance_tmp.index = item.index ;                        
             if (item.pos_nxt !== undefined) {
@@ -95,6 +84,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
     ssTokenStr = ssTokenStr.endsWith(separator) ? ssTokenStr.slice(0, -1) : ssTokenStr ;
 } ; 
 
+console.time('buildStems') ;
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_tmp.json', 'utf8');
 console.log('json data read: ', json_in.length, ' bytes') ;
@@ -104,4 +94,5 @@ countArrNr = tokenAll_tmp.tokenAll.length ;
 buildStems(tokenAll_tmp) ;
 //write text file
 fs.writeFileSync('./staticSearch/ssTokenString.txt', ssTokenStr ) ;
-console.log('text data written: ', ssTokenStr.length, ' bytes')
+console.log('text data written: ', ssTokenStr.length, ' bytes') ;
+console.timeEnd('buildStems') ;

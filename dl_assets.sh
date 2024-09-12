@@ -23,6 +23,7 @@ cp -r data/ttl/ html/data/
 cp -r data/tei_xmlId html/data/
 #mkdir -p html/data/img/
 #cp -r data/img/ html/data/
+rm -r html/staticSearch/
 mkdir -p html/staticSearch/
 cp -r staticSearch/stems html/staticSearch/
 cp -r staticSearch/ssTokenString.txt html/staticSearch/

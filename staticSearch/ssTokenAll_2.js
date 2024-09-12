@@ -60,21 +60,19 @@ function buildSearchTokenAll(tokenAll_tmp) {
                     tokenPos.forEach((item, index, array) => {
                         if (pos.length > 1) {                  
                             item['pos_pr'] = pos[0].pos ;
-                            item['pos_nxt'] = pos[1].pos ;
-                            item['chN'] = tokensLength + 2 ;
-                            tokenAll.tokenAll.push(item) ; 
+                            item['pos_nxt'] = pos[1].pos ;                            
                         } else {                  
-                            item['pos'] = pos[0].pos ;
-                            item['chN'] = tokensLength + 2 ;
-                            tokenAll.tokenAll.push(item) ; 
+                            item['pos'] = pos[0].pos ;                            
                         }
+                        item['chN'] = tokensLength + 2 ;
+                        tokenAll.tokenAll.push(item) ; 
                     }) ;
                     tokenPos = [] ;            
                     break ;
                 default:
                     break ;
             }
-      } ) ;
+      }) ;
    }) ;
 } ; 
 

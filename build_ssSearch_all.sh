@@ -9,7 +9,7 @@ node staticSearch/ssTokenAll_2.js
 echo "build all Tokens done"
 
 echo "build stems"
-node staticSearch/ssStems_2.js
+node staticSearch/ssStems.js
 echo "build stems done"
 
 echo "build complete search done!"

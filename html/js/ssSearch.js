@@ -284,19 +284,22 @@ $('button#ssDoSearch').on('click', function(event) {
           //build search paths
           for (i_tok = 0; i_tok < tokens_N; i_tok++) {
             console.log('i_tok = ', i_tok) ;
+            let hits_next = {} ;
+            if (i_tok < tokens_N-1) {
+              //fetch next token file
+              searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
+              hits_arr.push(await fetchData(searchTokenFilePath)) ;
+              hits_next = hits_arr[i_tok + 1] ;              
+            }
+            console.log('hits_arr = ', hits_arr) ;
             for (i_path = 0; i_path < searchPathNr; i_path++) {
               console.log('i_path = ', i_path) ;
-
               //check if token is first token of tokens string
               //and if token is not last token of tokens string
               if(i_tok === 0 && i_tok < tokens_N-1) {
                 //compare current hit with next hits
                 let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
-                if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
-                  //fetch next token file
-                  searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
-                  hits_arr.push(await fetchData(searchTokenFilePath)) ;
-                  let hits_next = hits_arr[i_tok + 1] ;
+                if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {                  
                   console.log('hits next = ', hits_next) ;
                   let hit_next = checkHitsNext(hit, hits_next) ;
                   if (hit_next !== undefined) {
@@ -328,11 +331,7 @@ $('button#ssDoSearch').on('click', function(event) {
                 if(0 < i_tok && i_tok < tokens_N-1) {
                   //compare current hit with next hits
                   let hit = result_arr_tmp[i_path][i_tok].instances[0] ;
-                  if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {
-                    //fetch next token file
-                    searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
-                    hits_arr.push(await fetchData(searchTokenFilePath)) ;
-                    let hits_next = hits_arr[i_tok + 1] ;
+                  if (hit.token_next_uri === searchTokens[i_tok+1] + '.json') {                    
                     console.log('hits next = ', hits_next) ;
                     let hit_next = checkHitsNext(hit, hits_next) ;
                     if (hit_next !== undefined) {
