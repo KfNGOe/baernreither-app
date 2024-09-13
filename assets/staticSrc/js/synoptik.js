@@ -322,7 +322,7 @@ window.displayFullText = function(boxSide) {
 	console.log( "display Full text!" ) ;
 } ;
 //display Anchors
-window.displayAnchors = function() {
+window.displayAnchors = function(classname) {
 	//get work title of left box
 	let shortTitle_left = getWork('left') ;
 	//get work title of right box
@@ -332,6 +332,7 @@ window.displayAnchors = function() {
 	//iterate over all anchors left
 	$( 'div#box-left a.anchor' ).each(function() {
 		let anchor = $( this ) ;
+		let next = anchor.next() ;
 		//get href of anchor
 		let href = anchor.attr('href') ;
 		if(href.includes(shortTitle_right)) {
@@ -901,14 +902,15 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 } ) ;
 
 //check if compare button is clicked
-$( 'div.compare-buttons .comp-equal' ).on('click',function() {
+$( 'div.compare-buttons .comp-equal' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
+	let className = click.attr('class') ;		
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
 	//select anchors to show
-	displayAnchors() ;
+	displayAnchors(className) ;
 	//show equal elements	
 	$( 'a.anchor.comp-span-equal' ).show();
 	$( 'a.anchor.comp-span-inequal' ).hide();
@@ -918,14 +920,15 @@ $( 'div.compare-buttons .comp-equal' ).on('click',function() {
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
 }) ;		
-$( 'div.compare-buttons .comp-inequal' ).click(function() {
+$( 'div.compare-buttons .comp-inequal' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
+	let className = click.attr('class') ;
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
 	//select anchors to show
-	displayAnchors() ;
+	displayAnchors(className) ;
 	//show not equal elements	
 	$( 'a.anchor.comp-span-inequal' ).show();
 	$( 'a.anchor.comp-span-equal' ).hide();
@@ -935,14 +938,15 @@ $( 'div.compare-buttons .comp-inequal' ).click(function() {
 	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
 }) ;
-$( 'div.compare-buttons .comp-not' ).click(function() {
+$( 'div.compare-buttons .comp-not' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
+	let className = click.attr('class') ;
 	click.addClass('comp-selected');			
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
 	//select anchors to show
-	displayAnchors() ;
+	displayAnchors(className) ;
 	//show missing elements
 	$( 'a.anchor.comp-span-not' ).show();
 	$( 'a.anchor.comp-span-equal' ).hide();
