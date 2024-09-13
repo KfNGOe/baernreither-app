@@ -4,11 +4,15 @@ const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
-var convert = require('xml-js') ;
 const { group } = require("console");
-
 const spaceMax = 5 ;
 const threeDots = '...' ;
+const comma = ',' ;
+const whspace = ' ' ;
+const birthchar = '∗' ;
+const deathchar = '†' ;
+
+var convert = require('xml-js') ;
 var title_short = '' ;
 var html_str = '' ;
 
@@ -18,19 +22,20 @@ const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
 
 //read register item text template
-let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ; 
-
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_txt=process.env.filepath_out_txt ;
+let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
+//load text data
+let textData_in = JSON.parse(fs.readFileSync('./data/json/textData.json', 'utf8')) ; 
 
 function posStr2Nr(posStr) {
    let pos_tmp = posStr.substring(title_short.length + 1) ;   
    return +pos_tmp ;
 }
 
-function posNr2Str(posNr) {
-   let pos_tmp = title_short + '_' + posNr.toString() ;   
-   return pos_tmp ;
+function short2DispTitle(short) {
+	let title = textData_in.results.bindings.find((item, index) => {
+		return item.title.short === short ;
+	}).title.display ;
+	return title ;
 }
 
 function contextBefore(index_hit,sourceFile) {
@@ -168,7 +173,8 @@ function pos_str(key_arr,annoFile,textFull_files) {
       } else {
          flag_source = false ;
          //append source to dom
-         $('html').find('body').find('div.accordion-item:last-child .accordion-button').append(source) ;
+         let source_disp = short2DispTitle(source) ;
+         $('html').find('body').find('div.accordion-item:last-child .accordion-button').append(source_disp) ;
       }
    }) ;
    //fetch html from dom and append to html_pos_str         
@@ -186,13 +192,13 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
    html_str = '' ;
    //group register by key/main      
    groupedByKey = jsonJs_reg_file.results.bindings.groupBy( item => {   
-      //filter index    
-      if (jsonJs_reg_file.head.vars[0] === 'key') {
+      //filter index      
+      if (jsonJs_reg_file.head.vars.includes('key')) {
          return item.key ;
-     } else {
+      } else {
          return item.main ;
-     }
-   }) ;
+      }
+   }) ;     
    //group anno by target source
    groupedBySourceTarget = jsonJs_anno_file.results.bindings.groupBy( item => {
       return item.source_target.value ;
@@ -200,110 +206,157 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
    //group anno by target start
    groupedByStart = jsonJs_anno_file.results.bindings.groupBy( item => {  //obj_1 = annoPerson.json
       return item.start_target.value ;
-   }) ;
-   let source_arr = [] ;
-   let sourceFile_arr = [] ;
+   }) ;   
    let annoFile = groupedByStart ;   
    //iterate over register keys
    Object.keys(groupedByKey).forEach((key) => {
       console.log('key = ', key) ;
-      //console.log('groupedByKey[key] = ', groupedByKey[key]) ;
-      let key_arr = groupedByKey[key] ;      
-      //index
-      if (key_arr[0].id.toLowerCase().includes('index')) {
-         //start new row
-         html_str = html_str.concat('<tr>') ;      
-         //id
-         let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
-         //main
-         let main = key_arr[0].main ;
-         html_str = html_str.concat('<td>' + main + '</td>') ;         
-         //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
-         //end row
-         html_str = html_str.concat('</tr>') ;   
+      if (key !== 'undefined') {
+         let key_arr = groupedByKey[key] ;      
+         //index
+         if (key_arr[0].id.toLowerCase().includes('index')) {         
+            //test if main is empty or undefined
+            if (key_arr[0].main === undefined || key_arr[0].main === '') {
+               html_str = html_str.concat('<tr style="display: none">') ;      
+               console.log('main empty or undefined') ;            
+            } else {
+               //group key_arr by sub
+               groupedBySub = key_arr.groupBy( item => {
+                  return item.sub ;
+               }) ;
+               //get length of groupedBySub
+               //let groupedBySub_length = Object.keys(groupedBySub).length ;
+               Object.keys(groupedBySub).forEach((key_sub, index) => {
+                  console.log('key_sub = ', key_sub) ;
+                  let key_sub_arr = groupedBySub[key_sub] ; 
+                  //start new row
+                  html_str = html_str.concat('<tr>') ;
+                  if (index === 0) {                  
+                     //main                  
+                     let id = key_arr[0].id ;   
+                     let main = key_arr[0].main ;
+                     //html_str = html_str.concat('<td rowspan="' + groupedBySub_length + '"><span id="' + id + '">' + main + '</span></td>') ;
+                     html_str = html_str.concat('<td><span id="' + id + '">' + main + '</span></td>') ;                  
+                  } else {
+                     //empty td
+                     html_str = html_str.concat('<td></td>') ;
+                  }
+                  //sub
+                  let sub = key_sub ;
+                  html_str = html_str.concat('<td><span>' + sub + '</span></td>') ;
+                  //pos                  
+                  html_str = html_str.concat(pos_str(key_sub_arr,annoFile,textFull_files)) ;
+                  //end row
+                  html_str = html_str.concat('</tr>') ;                              
+               }) ;            
+            }         
+         }
+         //org
+         if (key_arr[0].id.toLowerCase().includes('org')) {
+            //start new row
+            //test if name is empty or undefined
+            if (key_arr[0].name === undefined || key_arr[0].name === '') {
+               html_str = html_str.concat('<tr style="display: none">') ;      
+               console.log('name empty or undefined') ;            
+            } else {
+               html_str = html_str.concat('<tr>') ;         
+            }                  
+            //id
+            let id = key_arr[0].id ;
+            html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
+            //name
+            let name = key_arr[0].name ;
+            html_str = html_str.concat('<td><span id="' + id + '">' + name + '</span></td>') ;         
+            //pid
+            let pid = key_arr[0].pid ;
+            html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
+            //empty td
+            html_str = html_str.concat('<td></td>') ;
+            //pos         
+            html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+            //end row
+            html_str = html_str.concat('</tr>') ;   
+         }
+         //person
+         if (key_arr[0].id.toLowerCase().includes('person')) {
+            //start new row
+            html_str = html_str.concat('<tr>') ;      
+            //id
+            let id = key_arr[0].id ;
+            html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
+            //entry
+            let comma_entry = (key_arr[0].surname === '' || key_arr[0].forename === '') ? '' : comma ;
+            let whspace_entry_1 = (key_arr[0].surname === '' || key_arr[0].forename === '') ? '' : whspace ;
+            let whspace_entry_2 = (key_arr[0].addName === '') ? '' : whspace ;
+            let entry = key_arr[0].surname + comma_entry + whspace_entry_1 + key_arr[0].forename + whspace_entry_2 + key_arr[0].addName ;
+   
+            html_str = html_str.concat('<td><span id="' + id + '">' + entry + '</span></td>') ;
+            //life dates
+            let birth = key_arr[0].birth ;
+            let death = key_arr[0].death ;
+            let birthPlace = key_arr[0].birthPlace ;
+            let deathPlace = key_arr[0].deathPlace ;
+   
+            let birthchar_ld = (birth === '' && birthPlace === '') ? '' : birthchar ;
+            let whspace_ld_1 = (birth === '' && birthPlace === '') ? '' : whspace ;
+            let comma_ld_1 = (birthPlace === '' || birth === '') ? '' : comma ;
+            let whspace_ld_2 = (birthPlace === '' || birth === '') ? '' : whspace ;
+            let deathchar_ld = (death === '' && deathPlace === '') ? '' : deathchar ;
+            let whspace_ld_3 = (death === '' && deathPlace === '') ? '' : whspace ;
+            let comma_ld_2 = (deathPlace === '' || death === '') ? '' : comma ;
+            let whspace_ld_4 = (deathPlace === '' || death === '') ? '' : whspace ;
+            let birthDates = birthchar_ld + whspace_ld_1 + birth + comma_ld_1 + whspace_ld_2 + birthPlace ;
+            let deathDates = deathchar_ld + whspace_ld_3 + death + comma_ld_2 + whspace_ld_4 + deathPlace ;
+   
+            html_str = html_str.concat('<td>' + birthDates + '<br>' + deathDates + '</td>') ;
+            //description
+            let desc = key_arr[0].desc ;
+            html_str = html_str.concat('<td>' + desc + '</td>') ;
+            //pid
+            let pid = key_arr[0].pid ;
+            html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;      
+            //pos         
+            html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+            //end row
+            html_str = html_str.concat('</tr>') ;   
+         }      
+         //place
+         if (key_arr[0].id.toLowerCase().includes('place')) {
+            //build pid
+            let pid = key_arr[0].pid ;
+            let pid_name = '';
+            if(pid.includes('geonames')) {
+               pid_name = 'GN' ;
+               pid_nr = pid.replace('https://www.geonames.org/','') ;
+               pid_nr = pid_nr.replace(pid_nr.substring(pid_nr.lastIndexOf('/')),'') ;            
+            } ;
+            //start new row
+            html_str = html_str.concat('<tr>') ;      
+            //id
+            let id = key_arr[0].id ;
+            html_str = html_str.concat('<td style="display: none"><span>' + id + '</span></td>') ;
+            //name
+            let name = key_arr[0].name ;
+            //<a class="org" href="#reg_Bae_REG_Org_416">
+            html_str = html_str.concat('<td><span id="' + id + '">' + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + '</span></td>') ;
+            //name today
+            let name_today = key_arr[0].name_today ;
+            name_today = name_today === undefined ? '' : name_today ;
+            html_str = html_str.concat('<td>' + name_today + '</td>') ;
+            //lat
+            let lat = key_arr[0].lat ;
+            html_str = html_str.concat('<td style="display: none">' + lat + '</td>') ;
+            //long
+            let long = key_arr[0].long ;
+            html_str = html_str.concat('<td style="display: none">' + long + '</td>') ;
+            //pid         
+            html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">' + pid_name + '</a></td>') ;
+            //pos         
+            html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
+            //end row
+            html_str = html_str.concat('</tr>') ;   
+         }
       }
-      //org
-      if (key_arr[0].id.toLowerCase().includes('org')) {
-         //start new row
-         html_str = html_str.concat('<tr>') ;      
-         //id
-         let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
-         //name
-         let name = key_arr[0].name ;
-         html_str = html_str.concat('<td>' + name + '</td>') ;         
-         //pid
-         let pid = key_arr[0].pid ;
-         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;
-         //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
-         //end row
-         html_str = html_str.concat('</tr>') ;   
-      }
-      //person
-      if (key_arr[0].id.toLowerCase().includes('person')) {
-         //start new row
-         html_str = html_str.concat('<tr>') ;      
-         //id
-         let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
-         //entry
-         let entry = key_arr[0].surname + ', ' + key_arr[0].forename + ' ' + key_arr[0].addName ;
-         html_str = html_str.concat('<td>' + entry + '</td>') ;
-         //life dates
-         let birth = key_arr[0].birth ;
-         let death = key_arr[0].death ;
-         let birthPlace = key_arr[0].birthPlace ;
-         let deathPlace = key_arr[0].deathPlace ;
-         html_str = html_str.concat('<td>' + '∗ ' + birth +', ' + birthPlace +'<br>' + '† ' + death + ', ' + deathPlace + '</td>') ;
-         //description
-         let desc = key_arr[0].desc ;
-         html_str = html_str.concat('<td>' + desc + '</td>') ;
-         //pid
-         let pid = key_arr[0].pid ;
-         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">GND</a></td>') ;      
-         //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
-         //end row
-         html_str = html_str.concat('</tr>') ;   
-      }      
-      //place
-      if (key_arr[0].id.toLowerCase().includes('place')) {
-         //build pid
-         let pid = key_arr[0].pid ;
-         let pid_name = '';
-         if(pid.includes('geonames')) {
-            pid_name = 'GN' ;
-            pid_nr = pid.replace('http://www.geonames.org/','') ;
-            pid_nr = pid_nr.replace(pid_nr.substring(pid_nr.lastIndexOf('/')),'') ;            
-         } ;
-         //start new row
-         html_str = html_str.concat('<tr>') ;      
-         //id
-         let id = key_arr[0].id ;
-         html_str = html_str.concat('<td style="display: none"><span id="' + id + '">' + id + '</span></td>') ;
-         //name
-         let name = key_arr[0].name ;
-         //<a class="org" href="#reg_Bae_REG_Org_416">
-         html_str = html_str.concat('<td>' + '<a href="karte.html#' + pid_nr + '">' + name + '</a>' + '</td>') ;
-         //name today
-         let name_today = key_arr[0].name_today ;
-         html_str = html_str.concat('<td>' + name_today + '</td>') ;
-         //lat
-         let lat = key_arr[0].lat ;
-         html_str = html_str.concat('<td style="display: none">' + lat + '</td>') ;
-         //long
-         let long = key_arr[0].long ;
-         html_str = html_str.concat('<td style="display: none">' + long + '</td>') ;
-         //pid         
-         html_str = html_str.concat('<td>' + '<a href="' + pid + '" target="blank">' + pid_name + '</a></td>') ;
-         //pos         
-         html_str = html_str.concat(pos_str(key_arr,annoFile,textFull_files)) ;
-         //end row
-         html_str = html_str.concat('</tr>') ;   
-      }      
    }) ;
 } ; 
 
@@ -316,15 +369,16 @@ let textFull_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {   
    //read full text json files
-   let fileNamePath = 'data/json/full/' + file ;   
-   let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
-   console.log('json data read: ', json_in.length, ' bytes') ;
-   let jsonJs_in_full = JSON.parse(json_in) ;   
-   //read full text to files
-   let fileName = file.replace('.json','') ;
-   textFull_files[fileName] = jsonJs_in_full ;   
+   if(!file.includes('_tmp.json')) {
+      let fileNamePath = 'data/json/full/' + file ;   
+      let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
+      console.log('json data read: ', json_in.length, ' bytes') ;
+      let jsonJs_in_full = JSON.parse(json_in) ;   
+      //read full text to files
+      let fileName = file.replace('.json','') ;
+      textFull_files[fileName] = jsonJs_in_full ;   
+   }   
 }) ;
-//
 
 //get register
 //read json register directory
@@ -341,6 +395,13 @@ jsonFiles.forEach((file) => {
    if (count < 2 && !file.includes('_id')) {
       json_in = fs.readFileSync('data/json/register/' + file, 'utf8') ;
       let jsonJs_reg_file = JSON.parse(json_in) ;
+      //if org file sort by name
+      if(file.includes('org')) {
+         //sort by name         
+         jsonJs_reg_file.results.bindings.sort((a, b) => a.name.localeCompare(b.name));         
+         //delete '' from response array
+         jsonJs_reg_file.results.bindings = jsonJs_reg_file.results.bindings.filter(item => item.name !== '') ;         
+      }
       //use register file name to find corresponding anno file
       let fileName = file.replace('.json','').replace('register_','') ;      
       //iterate over anno files
@@ -359,7 +420,22 @@ jsonFiles.forEach((file) => {
       if (!fileName.toLowerCase().includes('indexsub')) {   
          let fileNamePath = 'data/txt/register/register_table_' + fileName + '.txt' ;    
          fs.writeFileSync(fileNamePath, html_str ) ;
-         console.log('html data written: ', html_str.length, ' bytes') ;  
+         console.log('html data written: ', html_str.length, ' bytes') ;
+         
+         //convert html strings to html    
+         let html = $.parseHTML(html_str) ;   
+         $('html').find('body').append('<div id="' + file.replace('.json', '') + '"></div>') ;    
+         $('html').find('body').children('div').append(html) ;   
+
+         //write html file
+         fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
+         fs.writeFileSync(fileNamePath, dom.serialize() ) ;
+         console.log('html data written: ', dom.serialize().length, ' bytes') ;
+
+         //remove appended html
+         $('html').find('body *').remove() ;
+         //reset html string
+         html_str = '' ;
       }      
    } ;      
 }) ;   
