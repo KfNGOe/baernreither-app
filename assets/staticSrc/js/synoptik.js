@@ -1,5 +1,6 @@
 var textData_in ;
 var annoCompData_in ;
+var annoTextCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
 var textsAllData = {};
@@ -332,7 +333,7 @@ window.displayAnchors = function(classname) {
 	//iterate over all anchors left
 	$( 'div#box-left a.anchor' ).each(function() {
 		let anchor = $( this ) ;
-		let next = anchor.next() ;
+		let next = anchor.next('span.' + classname) ;
 		//get href of anchor
 		let href = anchor.attr('href') ;
 		if(href.includes(shortTitle_right)) {
@@ -463,7 +464,10 @@ $( function() {
 		textData_in = await fetchData(filepath) ;				
 		//get anno compare data
 		filepath = './data/json/annoCompData.json' ;
-		annoCompData_in = await fetchData(filepath) ;		
+		annoCompData_in = await fetchData(filepath) ;
+		//get anno text compare data
+		filepath = './data/json/anno/annoTextComp.json' ;
+		annoTextCompData_in = await fetchData(filepath) ;
 		//get index register data
 		filepath = './data/json/register/register_index.json' ;
 		regIndexData_in = await fetchData(filepath) ;		
@@ -874,7 +878,11 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		click.parents('ul.dropdown-menu').removeClass('show') ;
 		//show compare buttons
 		$( 'div.compare-buttons' ).show() ;
-		console.log( "text comp clicked!" ) ;		
+		console.log( "text comp clicked!" ) ;
+		//prepare compare data	
+		//group anno text compare data by start target
+		let groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target) ;
+		console.log( "groupedByStartTarget: ", groupedByStartTarget ) ;
 	} 
 }) ;
 //check if one of other box buttons is clicked
