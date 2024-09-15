@@ -11,6 +11,7 @@ var input_left = document.getElementById("page_input_left") ;
 var input_right = document.getElementById("page_input_right") ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
+let groupedByStartTarget = {} ;
 
 const arrow_left_left = document.getElementById("arrow-left_left") ;
 const arrow_right_left = document.getElementById("arrow-right_left") ;
@@ -327,18 +328,43 @@ window.displayAnchors = function(classname) {
 	//get work title of left box
 	let shortTitle_left = getWork('left') ;
 	//get work title of right box
-	let shortTitle_right = getWork('right') ;	
-	//hide all anchors
-	$( 'a.anchor' ).hide() ;
+	let shortTitle_right = getWork('right') ;		
 	//iterate over all anchors left
 	$( 'div#box-left a.anchor' ).each(function() {
 		let anchor = $( this ) ;
-		let next = anchor.next('span.' + classname) ;
 		//get href of anchor
 		let href = anchor.attr('href') ;
-		if(href.includes(shortTitle_right)) {
+		if(href.includes(shortTitle_right) && anchor.hasClass(classname)) {
+			//show anchor
 			$(this).show() ;			
-		}
+			//get id of anchor
+			let id = anchor.attr('id') ;
+			//extract pos from id
+			let pos_anch = id.substring(id.lastIndexOf('_')+1) ;
+			//extract short title from id
+			let shortTitle = (id.substring(0, id.lastIndexOf('_'))).replace('comp_', '') ;
+			//get start + end target pos in annoTextCompData
+			let itemTarget = {} ; 
+			groupedByStartTarget[pos_anch].forEach(function(item, index) {
+				if(item.source_target.value === shortTitle) {
+					itemTarget = item ;
+				}
+			}) ;
+			let startTarget = itemTarget.start_target.value ;
+			let endTarget = itemTarget.end_target.value ;
+			//get span elements between start and end target
+			let idTitle = 'text_' + shortTitle + '_' ;
+			for (let i = startTarget; i < endTarget; i++) {
+				if(!(i++ === endTarget && i === startTarget)) {					
+					let span = 'span.' + classname + '[id="' + idTitle + i + '"]' ;	//<span class="comp-span-equal" id="text_Bae_TB_7_2811">...</span>
+					let span_hit = $( span ) ;	
+					if(span_hit !== undefined) {
+						//highlight span
+						$( span ).css( "background-color", "#f7e0c7" ) ;					
+					}
+				}
+			}				
+		}	
 	}) ;
 	//iterate over all anchors right
 	$( 'div#box-right a.anchor' ).each(function() {
@@ -881,7 +907,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		console.log( "text comp clicked!" ) ;
 		//prepare compare data	
 		//group anno text compare data by start target
-		let groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target) ;
+		groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target.value) ;
 		console.log( "groupedByStartTarget: ", groupedByStartTarget ) ;
 	} 
 }) ;
@@ -913,20 +939,19 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 $( 'div.compare-buttons .comp-equal' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
-	let className = click.attr('class') ;		
-	click.addClass('comp-selected');
-	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
-	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//select anchors to show
-	displayAnchors(className) ;
-	//show equal elements	
-	$( 'a.anchor.comp-span-equal' ).show();
-	$( 'a.anchor.comp-span-inequal' ).hide();
-	$( 'a.anchor.comp-span-not' ).hide();
-	//highlight equal elements
-	$( 'span.comp-span-equal' ).css( "background-color", "#f7e0c7" );
+	let className = 'comp-span-equal' ;
+	//make comp elements transparent
+	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
+	//hide all anchors
+	$( 'a.anchor' ).hide() ;
+	//select anchors to show and spans to highlight
+	displayAnchors(className) ;
+	//highlight equal button
+	click.addClass('comp-selected');
+	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
+	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');	
 }) ;		
 $( 'div.compare-buttons .comp-inequal' ).on('click', function() {
 	console.log( this );
@@ -935,16 +960,8 @@ $( 'div.compare-buttons .comp-inequal' ).on('click', function() {
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
 	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//select anchors to show
-	displayAnchors(className) ;
-	//show not equal elements	
-	$( 'a.anchor.comp-span-inequal' ).show();
-	$( 'a.anchor.comp-span-equal' ).hide();
-	$( 'a.anchor.comp-span-not' ).hide();	
-	//highlight not equal elements
-	$( 'span.comp-span-inequal' ).css( "background-color", "#f7e0c7" );
-	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
-	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
+	//select anchors to show and spans to highlight
+	displayAnchors(className) ;	
 }) ;
 $( 'div.compare-buttons .comp-not' ).on('click', function() {
 	console.log( this );
