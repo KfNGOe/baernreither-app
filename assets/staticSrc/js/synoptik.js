@@ -323,14 +323,11 @@ window.displayFullText = function(boxSide) {
 	
 	console.log( "display Full text!" ) ;
 } ;
-//display Anchors
-window.displayAnchors_box = function(this, shortTitle_box, classname) {
-	let anchor = $( this ) ;
+//display spans
+window.displaySpans = function(anchor, shortTitle_box, classname) {	
 	//get href of anchor
 	let href = anchor.attr('href') ;
-	if(href.includes(shortTitle_box) && anchor.hasClass(classname)) {
-		//show anchor
-		$(this).show() ;			
+	if(href.includes(shortTitle_box) && anchor.hasClass(classname)) {		
 		//get id of anchor
 		let id = anchor.attr('id') ;
 		//extract pos from id
@@ -348,31 +345,43 @@ window.displayAnchors_box = function(this, shortTitle_box, classname) {
 		let endTarget = itemTarget.end_target.value ;
 		//get span elements between start and end target
 		let idTitle = 'text_' + shortTitle + '_' ;
+		let i_nxt = 0 ;
 		for (let i = startTarget; i < endTarget; i++) {
-			if(!(i++ === endTarget && i === startTarget)) {					
-				let span = 'span.' + classname + '[id="' + idTitle + i + '"]' ;	//<span class="comp-span-equal" id="text_Bae_TB_7_2811">...</span>
+			i_nxt = i + 1 ;
+			if(!(i_nxt === endTarget && i === startTarget)) {				
+				if(i === '386') {
+					console.log( "i: ", i ) ;
+				}					
+				let span = 'span.' + classname + '[id="' + idTitle + i + '"]' ;
 				let span_hit = $( span ) ;	
 				if(span_hit !== undefined) {
 					//highlight span
 					$( span ).css( "background-color", "#f7e0c7" ) ;						
 				}
 			}
-		}				
-	}
+		}
+		//show anchor
+		let anchor_sel = $( 'a#' + id ) ;
+		$( anchor_sel ).show() ;
+	}	
 }
-window.displayAnchors = function(classname) {
+window.displayAnchorsSpans = function(classname) {
 	//get work title of left box
 	let shortTitle_left = getWork('left') ;
 	//get work title of right box
 	let shortTitle_right = getWork('right') ;		
 	//iterate over all anchors left
-	$( 'div#box-left a.anchor' ).each(function() {
-		displayAnchors_box(this, shortTitle_left, classname) ;			
+	$( 'div#box-left a.anchor' ).each(function() {		
+		let anchor = $( this ) ;		
+		//display spans			
+		displaySpans(anchor, shortTitle_right, classname) ;			
 	}) ;
 	console.log( "display anchors and spans left done" ) ;
 	//iterate over all anchors right	
 	$( 'div#box-right a.anchor' ).each(function() {
-		displayAnchors_box(this, shortTitle_right, classname) ;		
+		let anchor = $( this ) ;		
+		//display spans			
+		displaySpans(anchor, shortTitle_left, classname) ;		
 	}) ;
 	console.log( "display anchors and spans right done" ) ;	
 } ;
@@ -947,7 +956,7 @@ $( 'div.compare-buttons .comp-equal' ).on('click', function() {
 	//hide all anchors
 	$( 'a.anchor' ).hide() ;
 	//select anchors to show and spans to highlight
-	displayAnchors(className) ;
+	displayAnchorsSpans(className) ;
 	//highlight equal button
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
@@ -964,7 +973,7 @@ $( 'div.compare-buttons .comp-inequal' ).on('click', function() {
 	//hide all anchors
 	$( 'a.anchor' ).hide() ;
 	//select anchors to show and spans to highlight
-	displayAnchors(className) ;	
+	displayAnchorsSpans(className) ;	
 	//highlight inequal button
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
@@ -981,7 +990,7 @@ $( 'div.compare-buttons .comp-not' ).on('click', function() {
 	//hide all anchors
 	$( 'a.anchor' ).hide() ;
 	//select anchors to show
-	displayAnchors(className) ;
+	displayAnchorsSpans(className) ;
 	//highlight not button
 	click.addClass('comp-selected');
 	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
