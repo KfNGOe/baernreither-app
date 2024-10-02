@@ -1051,7 +1051,19 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//check if note is clicked
 	if(href.includes('note')) {
 		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Anmerkung' + table_snips[2]) ;					
-		let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).text() ;		 
+		//let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).text() ;
+		//get trans type
+		let type = getTransType(boxSide) ;
+		if(type === 'dipl') {			
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.abbr' ).show() ;
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.expan' ).hide() ;
+			
+		} else {
+			//type is full
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.abbr' ).hide() ;
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.expan' ).show() ;
+		}
+		let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).html() ;
 		html_str = html_str.concat(table_snips[3] + note_text + table_snips[4] + table_snips[5]) ;
 	}	
 	//check if register index is clicked
