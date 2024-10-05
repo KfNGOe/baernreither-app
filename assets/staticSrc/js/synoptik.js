@@ -1035,7 +1035,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 }) ;
 
 //check if linked entity in text is clicked
-$( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
+$( 'div.synoptik-box div.auswahl-content, div.synoptik-box div.meta-box' ).on('click','a',function() {
 	//find box of clicked element
 	let click = $( this ) ;
 	//get box side
