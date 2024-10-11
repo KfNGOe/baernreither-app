@@ -9,6 +9,7 @@ var markedHit ;
 var link ;
 var input_left = document.getElementById("page_input_left") ;
 var input_right = document.getElementById("page_input_right") ;
+var pageNrFacs ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
 let groupedByStartTarget = {} ;
@@ -50,28 +51,41 @@ function onContainerScroll(boxSide) {
   
 	//get all page-locator
 	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
-  
-	//get current page
-	var currentPage = 0;
-	for (var i = 0; i < anchors.length; i++) {
-	  let anchor = anchors[i];
-	  if (scroll >= anchor.offsetTop) {
-		currentPage = anchor.id;
-	  }
+
+	//check if facs is active
+	let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+	if(facs == undefined) {	
+		//get current page	
+		var currentPage = 0;
+		for (var i = 0; i < anchors.length; i++) {
+			let anchor = anchors[i];
+			if (scroll >= anchor.offsetTop) {
+				currentPage = anchor.id;
+			}
+		}
+		if(currentPage === 0) {
+			currentPage = getPageNr(boxSide) ;
+		}
+		setPageNr(boxSide, currentPage);	
 	}
-	if(currentPage === 0) {
-		currentPage = getPageNr(boxSide) ;
-	}
-	setPageNr(boxSide, currentPage);
-  }
+}
 
 //input page number event left box
-input_left.addEventListener("keypress", function(event) {	
+input_left.addEventListener("keypress", function(event) {		
 	if (event.key === "Enter") {	  
 		event.preventDefault();
 		console.log("Enter pressed") ;
-		let pageNr = input_left.value ;
-		setPage(pageNr, 'left') ;
+		//check if facs is active
+		let facs = $('#auswahl-content-scroll_left div.facs').html() ;
+		if(facs == undefined) {
+			let pageNr = input_left.value ;
+			setPage(pageNr, 'left') ;
+		} else {
+			//get pageNr of facs
+			let pageNr = pageNrFacs ;
+			//set pageNr
+			setPageNr('left', pageNr) ;
+		}		
 	}
 });
 //input page number event right box
@@ -79,8 +93,17 @@ input_right.addEventListener("keypress", function(event) {
 	if (event.key === "Enter") {
 		event.preventDefault();
 		console.log("Enter pressed") ;
-		let pageNr = input_right.value ;
-		setPage(pageNr, 'right') ;
+		//check if facs is active
+		let facs = $('#auswahl-content-scroll_right div.facs').html() ;
+		if(facs == undefined) {
+			let pageNr = input_right.value ;
+			setPage(pageNr, 'right') ;
+		} else {
+			//get pageNr of facs
+			let pageNr = pageNrFacs ;
+			//set pageNr
+			setPageNr('right', pageNr) ;
+		}		
 	}
 });
 
@@ -107,39 +130,41 @@ arrow_right_right.addEventListener("click", function() {
 
 //step page
 window.stepPage = function(arrowDir, boxSide) {
-	//get all page-locator
-	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
-
-	let pageNr = getPageNr(boxSide) ;
-	//check if pagenr is undefined
-	if(pageNr === '' || pageNr === undefined) {
-		return ;
-	} else {
-		//find index of pageNr in anchors
-		let index = 0 ;
-		for (var i = 0; i < anchors.length; i++) {
-			let anchor = anchors[i];
-			if (anchor.id == pageNr) {
-				index = i ;
-			}
-		}
-		//get next page
-		if(arrowDir === 'left') {
-			if(index === 0) {
-				return ;
-			} else {
-				let prevPage = anchors[index-1].id ;
-				setPage(prevPage, boxSide) ;	
-			}
+	let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+	if(facs == undefined) {
+		//get all page-locator
+		let anchors = document.getElementsByClassName("pageLocator " + boxSide);
+		let pageNr = getPageNr(boxSide) ;
+		//check if pagenr is undefined
+		if(pageNr === '' || pageNr === undefined) {
+			return ;
 		} else {
-			if(index === anchors.length-1) {
-				return ;
-			} else {
-				let nextPage = anchors[index+1].id ;
-				setPage(nextPage, boxSide) ;	
+			//find index of pageNr in anchors
+			let index = 0 ;
+			for (var i = 0; i < anchors.length; i++) {
+				let anchor = anchors[i];
+				if (anchor.id == pageNr) {
+					index = i ;
+				}
 			}
-		}	
-	}	
+			//get next page
+			if(arrowDir === 'left') {
+				if(index === 0) {
+					return ;
+				} else {
+					let prevPage = anchors[index-1].id ;
+					setPage(prevPage, boxSide) ;	
+				}
+			} else {
+				if(index === anchors.length-1) {
+					return ;
+				} else {
+					let nextPage = anchors[index+1].id ;
+					setPage(nextPage, boxSide) ;	
+				}
+			}	
+		}
+	}		
 }
 //set page
 window.setPage = function(page, boxSide) {
@@ -706,6 +731,10 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			//show old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
 			displayDiplText(boxSide) ;
+			//get page number
+			let pageNr = getPageNr(boxSide) ;
+			//set page
+			setPage(pageNr, boxSide) ;
 			$('a.anchor').hide() ;
 		}
 	}
@@ -765,15 +794,17 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	//get id of element
 	let id_facs = click.attr('id') ;
 	//check if clicked element is a facs type
-	if(id_facs.includes('facs')) {
+	if(id_facs.includes('facs')) {		
 		//get box side
 		let boxSide = id_facs.includes('_left') ? 'left' : 'right' ;
 		//get work
 		let workTitle = getWork(boxSide) ;		
 		//check if work is selected
-		if(workTitle !== undefined && workTitle !== '') {
+		if(workTitle !== undefined && workTitle !== '') {			
 			//get page number
 			let pageNr = getPageNr(boxSide) ;
+			//save page number
+			pageNrFacs = pageNr ;
 			//get id of pb element
 			let facsId = $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).children('a').attr('href') ;
 			//remove #
@@ -782,11 +813,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').hide() ;
 			//insert facs data in DOM
 			let div = '<div class="facs"><img src="./data/img/' + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
-			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;
-			//scroll to facs element
-			//$( 'div#box-' + boxSide + ' div.auswahl-content-scroll' ).animate({
-			//	scrollTop: $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).offset().top
-			//}, 1000) ;			
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;			
 			console.log( "facs clicked!" ) ;
 		} else {
 			alert('Please select a work!') ;
@@ -1011,22 +1038,32 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	let id_pb = click.attr('id') ;
 	//get box side
 	let boxSide_this = click.parents('div.synoptik-box').attr('id').includes('left') ? 'left' : 'right' ;	
-	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;
-	//get work
-	let workTitle_this = getWork(boxSide_this) ;
-	setWork(boxSide_opp,workTitle_this) ;
+	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;	
 	//get page number
 	let pageNr_this = id_pb ;
 	setPageNr(boxSide_opp,pageNr_this) ;
 	//get page count
 	let pageCount_this = getPageCount(boxSide_this) ;
 	setPageCount(boxSide_opp,pageCount_this) ;
+	//remove old text opposite content
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
+	//get work
+	let workTitle_this = getWork(boxSide_this) ;
+	setWork(boxSide_opp,workTitle_this) ;
+	//set transcription type to dipl
+	setTransType(boxSide_opp,'dipl') ;
+	//get file name
+	let filepath = workTitle_this ;	
+	//insert all text data in DOM	
+	insertAllText(filepath,boxSide_opp) ;			
+	//hide new text data content			
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').hide() ;
+	//save page number
+	pageNrFacs = pageNr_this ;	
 	//get id of pb element
 	let facsId = click.children('a').attr('href') ;
 	//remove #
 	facsId = facsId.replace('#', '') ;
-	//remove old text opposite content
-	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
