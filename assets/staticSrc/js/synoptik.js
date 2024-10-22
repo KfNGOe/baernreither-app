@@ -727,6 +727,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		let boxSide = id_trans.includes('_left') ? 'left' : 'right' ;
 		let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
 		if(facs !== undefined) {
+			//remove facs
 			$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
 			//show old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
@@ -860,7 +861,16 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		let workTitle = getWork(boxSide) ;		
 		//check if work is selected
 		if(workTitle !== undefined && workTitle !== '') {
-			console.log( "work selected!" ) ;			
+			console.log( "work selected!" ) ;
+			//check facs
+			let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+			if(facs !== undefined) {
+				//remove facs
+				$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
+				//show old text data content			
+				$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
+				//displayDiplText(boxSide) ;
+			}			
 			//group anno compare data by source target			
 			let groupedBySourceTarget = Object.groupBy(annoCompData_in.results.bindings, ({ source_target }) => source_target) ;
 			//get compare data
@@ -890,7 +900,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	//get box side of parents
 	let boxSide_this = id_this.includes('_left') ? 'left' : 'right' ;	
 	//check if clicked element is a transcription type
-	if(id_this.includes('text-comp')) {
+	if(id_this.includes('text-comp')) {		
 		//check if back class is set
 		if (!click.hasClass('back')) {
 			//set back class
@@ -944,9 +954,10 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		//prepare compare data	
 		//group anno text compare data by start target
 		groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target.value) ;
-		console.log( "groupedByStartTarget: ", groupedByStartTarget ) ;
+		//console.log( "groupedByStartTarget: ", groupedByStartTarget ) ;
 	} 
 }) ;
+
 //check if one of other box buttons is clicked
 $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 	console.log( "button clicked!" ) ;	
