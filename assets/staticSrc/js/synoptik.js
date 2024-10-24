@@ -309,9 +309,7 @@ window.insertAllText = function(filepath,boxSide) {
 		//get text data			
 		let content_str = textsAllData[filepath] ;
 		let content = $.parseHTML(content_str) ;
-		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).html(content) ;
-		//set dipl text style
-		displayDiplText(boxSide) ;
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).html(content) ;		
 		//add class boxside to class pageLocator
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('span.pageLocator').addClass(boxSide) ;
 	})() ;
@@ -322,6 +320,26 @@ window.insertFullText = function(boxSide) {
 	console.log( "insert full text!" ) ;
 } ;
 
+//get text data
+window.getText = function(boxSide, workTitle, pageNr, pageCount, transType) {
+    //set work title
+	setWork(boxSide,workTitle) ;
+	//set page number
+	setPageNr(boxSide, pageNr);
+	//set page count
+	setPageCount(boxSide, pageCount);
+	//set transcription type
+	setTransType(boxSide, transType);
+    try {
+        //insert all text data in DOM
+		let filePath = workTitle;
+		insertAllText(filePath, boxSide);        
+        console.log(`Content for ${workTitle} loaded into ${boxSide} box.`);
+    } catch (error) {
+        console.error('Error fetching text data:', error);
+    }
+}
+
 //display Dipl text
 window.displayDiplText = function(boxSide) {
 	$('div#box-' + boxSide + ' .abbr').show();      //show all elements with abbr class
@@ -329,9 +347,11 @@ window.displayDiplText = function(boxSide) {
 
 	$('div#box-' + boxSide + ' .add').css( "background-color", "rgb(217, 209, 236)" );
 
-	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" );
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" ).show();
 
-	$('div#box-' + boxSide + ' .del').show();		
+	$('div#box-' + boxSide + ' .del').show();
+
+	$('div#box-' + boxSide + ' span[id*="note"].note').hide();
 
 	console.log( "display Dipl text!" ) ;
 } ;
@@ -345,6 +365,8 @@ window.displayFullText = function(boxSide) {
 	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" ).hide();
 
 	$('div#box-' + boxSide + ' .del').hide();
+
+	$('div#box-' + boxSide + ' span[id*="note"].note').hide();
 	
 	console.log( "display Full text!" ) ;
 } ;
@@ -595,15 +617,12 @@ $( function() {
 			if(hash.includes('over_')) {
 				//get work title
 				let workTitle = hash.replace('#', '') ;			
-				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;
-				//workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;
-				//workTitle = workTitle + '_all.html'
+				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;				
 				setTransType('left','dipl') ;
-				//insert text data in DOM
-				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;				
-				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
+				//insert text data in DOM				
+				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;
 			} else {
-				//hash is from register or seach
+				//hash is from register or search
 				//set dummy link
 				link = $('<a>', {
 					id: 'hashDummy',
@@ -620,14 +639,10 @@ $( function() {
 				//check hash if text included
 				if(hash.includes('text_')) {
 					setTransType('left','full') ;
-				}		
+				}
+				//insert text data in DOM		
 				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
-				//TEST
-				//document.querySelector('#hashDummy').click();
-				console.log( "hashDummy clicked!" ) ;
-				//insert text data in DOM
-				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
-				//insertFullText('left') ;
+				console.log( "hashDummy clicked!" ) ;				
 				synFinishedHook(1);
 			}			
 		}		
@@ -677,39 +692,28 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let boxSide = id.includes('_left') ? 'left' : 'right' ;
 		//get work title
 		let workTitle = id.includes('_left') ? id.replace('_left', '') : id.replace('_right', '') ;
+		//get page number				
+		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;		
 		//get number of pages
 		let pageCount = textData_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle ;
-		}).pageCount ;
-		//put number of pages in DOM
-		$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;			
+		}).pageCount ;		
 		//get transcription type in nav-werke
-		let type = getTransType(boxSide) ;
-		type = type === undefined ? 'dipl' : type ;
-		//get file name
-		//let fileName = workTitle + '_all.html' ;	
-		let fileName = workTitle ;	
+		let transType = getTransType(boxSide) ;
+		transType = transType === undefined ? 'dipl' : transType ;
 		//get text data
-		//let filepath = './data/txt/' + fileName ;		
-		let filepath = fileName ;		
-		//set work
-		setWork(boxSide,workTitle) ;
-		//set page number				
-		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
-		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;
-		setPageNr(boxSide,pageNr) ;
+		getText(boxSide, workTitle, pageNr, pageCount, transType) ;
+		//check transcription type
+		if(transType === 'dipl') {
+			//set dipl text style
+			displayDiplText(boxSide) ;			
+		} else {
+			//set full text style
+			displayFullText(boxSide) ;
+		}
 		//set download link
 		setDownloadLink(workTitle,boxSide) ;		
-		//set transcription type
-		setTransType(boxSide,type) ;		
-		if(type === 'dipl') {		
-			//insert all text data in DOM	
-			insertAllText(filepath,boxSide) ;		
-		} else {
-			//insert Full text data in DOM
-			insertAllText(filepath,boxSide) ;
-			insertFullText(boxSide) ;
-		}
 	}
 	//hide dropdown
 	click.parents('ul.dropdown-menu').removeClass('show') ;
@@ -731,13 +735,23 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
 			//show old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
-			displayDiplText(boxSide) ;
+			//get transcription type
+			let transType = getTransType(boxSide) ;
+			//check if transcription type is dipl
+			if(transType === 'dipl') {
+				//display dipl text
+				displayDiplText(boxSide) ;
+			} else {
+				//display full text
+				displayFullText(boxSide) ;
+			}			
 			//get page number
 			let pageNr = getPageNr(boxSide) ;
 			//set page
 			setPage(pageNr, boxSide) ;
-			$('a.anchor').hide() ;
+			
 		}
+		$('a.anchor').hide() ;
 	}
 }) ;
 
@@ -765,19 +779,12 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 			let workTitle = getWork(boxSide) ;
 			//check worktitle
 			if(workTitle !== undefined && workTitle !== '') {
-				if(typeNew === 'dipl') {
-					//get file name
-					//let fileName = workTitle + '_all_html.txt' ;	
-					//let fileName = workTitle + '_all.html' ;	
-					let fileName = workTitle ;	
-					//get text data
-					//let filepath = './data/txt/' + fileName ;		
-					let filepath = fileName ;		
-					//insert all text data in DOM	
-					insertAllText(filepath, boxSide) ;
+				if(typeNew === 'dipl') {					
+					//display dipl text
+					displayDiplText(boxSide) ;						
 				} else {
-					//insert Full text data in DOM
-					insertFullText(boxSide) ;
+					//display full text
+					displayFullText(boxSide) ;					
 				}
 			} else {
 				alert('Please select a work!') ;				
@@ -868,8 +875,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 				//remove facs
 				$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
 				//show old text data content			
-				$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
-				//displayDiplText(boxSide) ;
+				$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;				
 			}			
 			//group anno compare data by source target			
 			let groupedBySourceTarget = Object.groupBy(annoCompData_in.results.bindings, ({ source_target }) => source_target) ;
@@ -882,9 +888,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			compData[0].source_body.forEach(function(result, index) {
 				let li = '<li><a class="dropdown-item" href="#" id="' + result + '_' + boxSide_opp + '">' + result + '</a></li>' ;
 				$( 'div#box-' + boxSide + ' a#text-comp_' + boxSide ).siblings('ul.dropdown-menu').append(li) ;
-			}) ;
-			//hide dropdown
-			//click.siblings('ul.dropdown-menu').removeClass('show') ;
+			}) ;			
 		} else {
 			alert('Please select a work!') ;
 		}
@@ -905,47 +909,35 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		if (!click.hasClass('back')) {
 			//set back class
 			click.parent('ul').siblings('a').addClass('back') ;
-		}		
+		}
+		//get actual transcription type
+		let type_this = getTransType(boxSide_this) ;
+		//check if dipl type is selected
+		if(type_this === 'dipl') {			
+			//display full text data
+			displayFullText(boxSide_this) ;			
+			//change trans to full text
+			setTransType(boxSide_this,'full') ;			
+		}				
 		//get id
 		let id_opp = click.children('a.dropdown-item').attr('id') ;
 		//get opposite box side 
 		let boxSide_opp = id_opp.includes('_left') ? 'left' : 'right' ;
 		//get work title of opposite text
 		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
-		//get actual transcription type
-		let type_this = getTransType(boxSide_this) ;
-		//check if all type is selected
-		if(type_this === 'dipl') {			
-			//insert full text data in DOM	
-			insertFullText(boxSide_this) ;
-			//change trans to full text
-			setTransType(boxSide_this,'full') ;			
-		}
-		//insert compare text data in DOM
-		//get opposite file name
-		//let fileName_opp = workTitle_opp + '_all.html' ;
-		let fileName_opp = workTitle_opp ;
-		//get opposite text data
-		//let filepath_opp = './data/txt/' + fileName_opp ;
-		let filepath_opp = fileName_opp ;
-		//insert all text data in DOM
-		insertAllText(filepath_opp, boxSide_opp) ;
-		//insert full text data in DOM
-		insertFullText(boxSide_opp) ;
-		//set work
-		setWork(boxSide_opp,workTitle_opp) ;
-		//set page number				
+		//get opposite page number
 		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
 		let pageNr_opp = groupedByTitle[workTitle_opp][0].firstPageNr ;
-		setPageNr(boxSide_opp,pageNr_opp) ;
-		//get number of pages
+		//get number of opposite pages
 		let pageCount_opp = textData_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle_opp ;
 		}).pageCount ;
-		//put number of pages in DOM
-		$( 'div#box-' + boxSide_opp + ' div.page-skip span#page_nr_' + boxSide_opp ).text(pageCount_opp) ;
-		//change trans to full text
-		setTransType(boxSide_opp,'full') ;
+		//get opposite transcription type
+		let transType_opp = 'full' ;
+		//get opposite text data
+		getText(boxSide_opp, workTitle_opp, pageNr_opp, pageCount_opp, transType_opp) ;
+		//display full opposite text data
+		displayFullText(boxSide_opp) ;				
 		//hide dropdown
 		click.parents('ul.dropdown-menu').removeClass('show') ;
 		//show compare buttons
@@ -953,9 +945,8 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		console.log( "text comp clicked!" ) ;
 		//prepare compare data	
 		//group anno text compare data by start target
-		groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target.value) ;
-		//console.log( "groupedByStartTarget: ", groupedByStartTarget ) ;
-	} 
+		groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target.value) ;		
+	}
 }) ;
 
 //check if one of other box buttons is clicked
@@ -1050,23 +1041,20 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//get box side
 	let boxSide_this = click.parents('div.synoptik-box').attr('id').includes('left') ? 'left' : 'right' ;	
 	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;	
-	//get page number
-	let pageNr_this = id_pb ;
-	setPageNr(boxSide_opp,pageNr_this) ;
-	//get page count
-	let pageCount_this = getPageCount(boxSide_this) ;
-	setPageCount(boxSide_opp,pageCount_this) ;
-	//remove old text opposite content
-	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
 	//get work
-	let workTitle_this = getWork(boxSide_this) ;
-	setWork(boxSide_opp,workTitle_this) ;
-	//set transcription type to dipl
-	setTransType(boxSide_opp,'dipl') ;
-	//get file name
-	let filepath = workTitle_this ;	
-	//insert all text data in DOM	
-	insertAllText(filepath,boxSide_opp) ;			
+	let workTitle_this = getWork(boxSide_this) ;	
+	//get page number
+	let pageNr_this = id_pb ;	
+	//get page count
+	let pageCount_this = getPageCount(boxSide_this) ;		
+	//get transcription type
+	let transType_this = 'dipl' ;	
+	//remove old text opposite content
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;	
+	//get text data
+	getText(boxSide_opp,workTitle_this,pageNr_this,pageCount_this,transType_this) ;
+	//display dipl text
+	displayDiplText(boxSide_opp) ;
 	//hide new text data content			
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').hide() ;
 	//save page number
