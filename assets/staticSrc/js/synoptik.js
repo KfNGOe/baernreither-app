@@ -949,7 +949,7 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	}
 }) ;
 
-//check if one of other box buttons is clicked
+//check if one of the other box buttons is clicked
 $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 	console.log( "button clicked!" ) ;	
 	let click = $( this ) ;
@@ -1265,4 +1265,13 @@ $( 'div.synoptik-box div.auswahl-content, div.synoptik-box div.meta-box' ).on('c
 	//show meta box
 	$( 'div#box-' + boxSide + ' div.meta-box' ).show() ;
 	console.log( "register clicked!" ) ;
+}) ;
+
+//check if a click inside the text box occurs
+$( 'div.synoptik-box div.auswahl-content' ).on('click', function(event) {
+	//check if this cklick is not a click on a link
+	if (!$(event.target).closest('a').length) {
+		//remove meta box content
+		$( 'div.meta-box' ).find('*').remove() ;
+	}
 }) ;
