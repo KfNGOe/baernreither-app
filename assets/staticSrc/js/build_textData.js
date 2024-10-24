@@ -123,7 +123,7 @@ jsonFiles.forEach((file,index_file) => {
         }
     } ) ;
     let pageCount = Object.keys(groupedByPage).length ;
-    textData_result.pageCount = Math.round(pageCount/2) ;
+    textData_result.pageCount = Math.round(pageCount) ;
     //get first page number
     let page_array = [] ;
     groupedByName['http://www.tei-c.org/ns/1.0/pb'].forEach((item, index_page) => {
