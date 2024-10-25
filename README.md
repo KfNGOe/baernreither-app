@@ -16,7 +16,7 @@ dev-baernreither-app
 /tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ### conversion text ttl to json
-/ttl/text/*.ttl -> build_texts_ttl2json.sh -> /*_all.json
+/ttl/text/*.ttl -> build_texts_ttl2json.sh -> *_all.json
 
 ### build annotation levels for full texts
 *.ttl -> build_anno*.sh -> anno*i.ttl
@@ -29,7 +29,9 @@ anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
 ### build full text json
 *_all.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
 
-### conversion texts all json to html 
+### conversion texts all json to html
+*_all.json -> build_textAll_json2html.sh -> data/txt/*_all_html.txt
+                                         -> data/html/*_all.html
 
 ## Workflow register
 ### convert xlsx to json
