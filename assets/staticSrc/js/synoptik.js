@@ -314,12 +314,6 @@ window.insertAllText = function(filepath,boxSide) {
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('span.pageLocator').addClass(boxSide) ;
 	})() ;
 }
-//insert Full text data in DOM
-window.insertFullText = function(boxSide) {
-	displayFullText(boxSide) ;
-	console.log( "insert full text!" ) ;
-} ;
-
 //get text data
 window.getText = function(boxSide, workTitle, pageNr, pageCount, transType) {
     //set work title
@@ -339,7 +333,6 @@ window.getText = function(boxSide, workTitle, pageNr, pageCount, transType) {
         console.error('Error fetching text data:', error);
     }
 }
-
 //display Dipl text
 window.displayDiplText = function(boxSide) {
 	$('div#box-' + boxSide + ' .abbr').show();      //show all elements with abbr class
@@ -347,7 +340,7 @@ window.displayDiplText = function(boxSide) {
 
 	$('div#box-' + boxSide + ' .add').css( "background-color", "rgb(217, 209, 236)" );
 
-	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" ).show();
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" );
 
 	$('div#box-' + boxSide + ' .del').show();
 
@@ -362,7 +355,7 @@ window.displayFullText = function(boxSide) {
 	
 	$('div#box-' + boxSide + ' .add').css( "background-color", "transparent" );
 
-	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" ).hide();
+	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" );
 
 	$('div#box-' + boxSide + ' .del').hide();
 
