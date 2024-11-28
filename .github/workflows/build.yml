@@ -34,7 +34,9 @@ jobs:
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh
       - id: files
-        uses: jitterbit/get-changed-files@v1      
+        if: ${{ github.event_name == 'push' }}        
+        uses: jitterbit/get-changed-files@v1
+      
       #- name: Build tei to ttl
       #  run: . ghactions-tei2ttl.sh
       #  env:
