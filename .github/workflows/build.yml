@@ -1,9 +1,10 @@
 name: Build project
 
 on:
-  push:
-    branches:
-      - main
+  #push:
+  #  branches:
+  #    - main
+  workflow_dispatch:
 
 jobs:
   build_infra:
@@ -20,11 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16.x"
-      - id: files
-        uses: jitterbit/get-changed-files@v1
-      - name: Install
-        run: sudo bash install.sh
+          node-version: "16.x"      
       - name: Start graphdb
         run: sudo bash gdb_start.sh &
       - name: Wait for graphdb
@@ -34,6 +31,10 @@ jobs:
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - name: Install
+        run: sudo bash install.sh
       #- name: Build tei to ttl
       #  run: . ghactions-tei2ttl.sh
       #  env:
