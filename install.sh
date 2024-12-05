@@ -17,6 +17,9 @@ npm install jsdom
 echo "Install excel to json library"
 npm install convert-excel-to-json
 
+echo "Install core-js"
+npm install core-js
+
 #COMMENTED OUT FOR NOW
 #npm install aspose.cells
 
