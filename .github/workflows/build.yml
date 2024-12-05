@@ -36,7 +36,8 @@ jobs:
       - name: Get repo list
         run: sudo bash gdb_getRepo.sh        
       - name: conversion texts ttl to json
-        run: sudo bash build_texts_ttl2json.sh      
+        run: sudo bash build_texts_ttl2json.sh
+      #- name: conversion texts json to html      
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"

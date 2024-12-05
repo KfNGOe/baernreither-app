@@ -24,7 +24,7 @@ const $ = require('jquery')(dom.window) ;
 //read register item text template
 let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
 //load text data
-let textData_in = JSON.parse(fs.readFileSync('./data/json/textData.json', 'utf8')) ; 
+let text_mdata_in = JSON.parse(fs.readFileSync('./data/json/text_mdata.json', 'utf8')) ; 
 
 function posStr2Nr(posStr) {
    let pos_tmp = posStr.substring(title_short.length + 1) ;   
@@ -32,7 +32,7 @@ function posStr2Nr(posStr) {
 }
 
 function short2DispTitle(short) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
 	}).title.display ;
 	return title ;

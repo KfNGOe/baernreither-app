@@ -30,22 +30,22 @@ function posNr2Str(posNr, posStr) {
 }
 
 //read text data json file
-let json_in = fs.readFileSync('data/json/textData_temp.json', 'utf8') ;
+let json_in = fs.readFileSync('data/json/text_mdata_temp.json', 'utf8') ;
 console.log('json data read: ', json_in.length, ' bytes') ;
 let jsonJs_in = JSON.parse(json_in) ;
-let textData_results = jsonJs_in ;
-let textData_temp = jsonJs_in.results.bindings[0] ;
+let text_mdata_results = jsonJs_in ;
+let text_mdata_temp = jsonJs_in.results.bindings[0] ;
 //delete template object
-delete textData_results.results.bindings[0] ;
-textData_results.results.bindings.shift() ;
+delete text_mdata_results.results.bindings[0] ;
+text_mdata_results.results.bindings.shift() ;
 //read json all directory
 jsonFiles = fs.readdirSync('data/json/all/') ;
 console.log('json files: ', jsonFiles) ;
 //iterate over all files
 jsonFiles.forEach((file,index_file) => {
     //write file name to text data
-    let textData_result = textData_temp ;
-    textData_result.fileName = file ;    
+    let text_mdata_result = text_mdata_temp ;
+    text_mdata_result.fileName = file ;    
     //read json all file
     let fileNamePath = 'data/json/all/' + file ;   
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
@@ -72,25 +72,25 @@ jsonFiles.forEach((file,index_file) => {
         pos = posNr2Str(pos_nr, pos) ;
         //pos = pos.substring(0, pos.lastIndexOf('_')) + '_' + (pos_nr+1).toString() ;
         //get title volume
-        textData_result.title.main = groupedByPos[pos][0].cont.value ;
+        text_mdata_result.title.main = groupedByPos[pos][0].cont.value ;
         //get title display
         if(file.includes('Bae_MF_6-1')) {
-            textData_result.title.display = 'Manuskript Fragmente 6/1' ;
+            text_mdata_result.title.display = 'Manuskript Fragmente 6/1' ;
         }
         if(file.includes('Bae_MF_6-2')) {
-            textData_result.title.display = 'Manuskript Fragmente 6/2' ;
+            text_mdata_result.title.display = 'Manuskript Fragmente 6/2' ;
         }
         if(file.includes('Bae_TB_7')) {
-            textData_result.title.display = 'Tagebuch 7' ;
+            text_mdata_result.title.display = 'Tagebuch 7' ;
         }
         if(file.includes('Bae_TB_8')) {
-            textData_result.title.display = 'Tagebuch 8' ;
+            text_mdata_result.title.display = 'Tagebuch 8' ;
         }
         //get title short
         //+3
         pos_nr = pos_nr + 3;
         pos = posNr2Str(pos_nr, pos);
-        textData_result.title.short = groupedByPos[pos][0].cont.value ;
+        text_mdata_result.title.short = groupedByPos[pos][0].cont.value ;
     } else {
         console.log('error: no title') ;
     }
@@ -103,9 +103,9 @@ jsonFiles.forEach((file,index_file) => {
         pos_tmp = date.pos.value ;
         pos_nr = posStr2Nr(pos_tmp) + 2 ;
         pos_tmp = posNr2Str(pos_nr, pos_tmp) ;
-        textData_result.date = groupedByPos[pos_tmp][0].cont.value ;
-        console.log('date: ', textData_result.date) ;
-        //textData_result.date = date.val.value ;
+        text_mdata_result.date = groupedByPos[pos_tmp][0].cont.value ;
+        console.log('date: ', text_mdata_result.date) ;
+        //text_mdata_result.date = date.val.value ;
     } else {
         console.log('error: no date') ;
     }
@@ -123,7 +123,7 @@ jsonFiles.forEach((file,index_file) => {
         }
     } ) ;
     let pageCount = Object.keys(groupedByPage).length ;
-    textData_result.pageCount = Math.round(pageCount) ;
+    text_mdata_result.pageCount = Math.round(pageCount) ;
     //get first page number
     let page_array = [] ;
     groupedByName['http://www.tei-c.org/ns/1.0/pb'].forEach((item, index_page) => {
@@ -131,13 +131,13 @@ jsonFiles.forEach((file,index_file) => {
             page_array.push(item.val.value) ;
         }
     }) ;
-    textData_result.firstPageNr = page_array[0] ;
+    text_mdata_result.firstPageNr = page_array[0] ;
     //add item object to text data    
-    textData_results.results.bindings.push(JSON.parse(JSON.stringify(textData_result))) ;
+    text_mdata_results.results.bindings.push(JSON.parse(JSON.stringify(text_mdata_result))) ;
     //reset text data result
-    textData_result = {} ;
+    text_mdata_result = {} ;
 }) ;
 //write text data json file
-let json_out = JSON.stringify(textData_results) ;
-fs.writeFileSync('data/json/textData.json', json_out) ;
+let json_out = JSON.stringify(text_mdata_results) ;
+fs.writeFileSync('data/json/text_mdata.json', json_out) ;
 console.log('json data written: ', json_out.length, ' bytes') ;

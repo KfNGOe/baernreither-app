@@ -18,7 +18,7 @@ dev-baernreither-app
 ### conversion text ttl to json
 /ttl/text/*.ttl -> build_texts_ttl2json.sh -> *_all.json
 
-### build annotation levels for full texts
+### build annotation levels
 *.ttl -> build_anno*.sh -> anno*i.ttl
                         -> anno*.json
 
@@ -81,7 +81,7 @@ data/json/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
 
 ## Workflow Data of Texts
 ### build Text Data
-*_all.json -> build_textData.sh -> textData.json
+*_all.json -> build_text_mdata.sh -> text_mdata.json
 
 # HTML Attribute values
 ## @class, @id and @href

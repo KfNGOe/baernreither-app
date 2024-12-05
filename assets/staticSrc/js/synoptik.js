@@ -1,5 +1,5 @@
-var textData_in ;
-var annoCompData_in ;
+var text_mdata_in ;
+var textComp_mdata_in ;
 var annoTextCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
@@ -225,12 +225,12 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 	//get title
 	let dispTitle = li.text() ;		
 	let title = disp2ShortTitle(dispTitle) ;
-	//get textdata for title
-	let textData = groupedByTitle[title] ;
-	//get date of textData
+	//get text_mdata for title
+	let text_mdata = groupedByTitle[title] ;
+	//get date of text_mdata
 	let dateData ;
-	dateData = textData[0].date.includes('-') ? textData[0].date.substring(0, textData[0].date.indexOf('-')) : textData[0].date ;		
-	//check if date of textData is equal to clicked date
+	dateData = text_mdata[0].date.includes('-') ? text_mdata[0].date.substring(0, text_mdata[0].date.indexOf('-')) : text_mdata[0].date ;		
+	//check if date of text_mdata is equal to clicked date
 	if(dateData !== date) {
 		li.hide() ;
 	} else {
@@ -285,7 +285,7 @@ window.setWork = function(boxSide,workTitle) {
 
 //convert short title to display title
 window.short2DispTitle = function(short) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
 	}).title.display ;
 	title = title === undefined ? '' : title ;	
@@ -293,7 +293,7 @@ window.short2DispTitle = function(short) {
 }
 //convert display title to short title
 window.disp2ShortTitle = function(disp) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.display === disp ;
 	}
 	).title.short ;
@@ -535,11 +535,11 @@ $( function() {
 	//set years containing works
 	(async () => {		
 		//get text data
-		let filepath = './data/json/textData.json' ;
-		textData_in = await fetchData(filepath) ;				
+		let filepath = './data/json/text_mdata.json' ;
+		text_mdata_in = await fetchData(filepath) ;				
 		//get anno compare data
-		filepath = './data/json/annoCompData.json' ;
-		annoCompData_in = await fetchData(filepath) ;
+		filepath = './data/json/textComp_mdata.json' ;
+		textComp_mdata_in = await fetchData(filepath) ;
 		//get anno text compare data
 		filepath = './data/json/anno/annoTextComp.json' ;
 		annoTextCompData_in = await fetchData(filepath) ;
@@ -573,10 +573,10 @@ $( function() {
 		file_txt = await fetchData(filepath) ;		
 		textsAllData['Bae_TB_8'] = file_txt ;
 
-		//get dates of textData
-		let textData_arr = textData_in.results.bindings ;		
+		//get dates of text_mdata
+		let text_mdata_arr = text_mdata_in.results.bindings ;		
 		let dateFile ;		
-		textData_arr.forEach(function(result, index) {
+		text_mdata_arr.forEach(function(result, index) {
 			if(result.date.includes('-')) {
 				dateFile = result.date.substring(0, result.date.indexOf('-')) ;
 			} else {
@@ -655,8 +655,8 @@ $( 'div.synoptik-box nav.scroll-nav li a' ).on('click',function() {
 	//	$( 'div#' + parent + ' nav.scroll-nav li a' ).removeClass('active');
 	//	click.addClass('active');	
 	//}	
-	//group textdata by title short
-	let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short)
+	//group text_mdata by title short
+	let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short)
 	//check box side
 	let boxSide = parent.includes('left') ? 'left' : 'right' ; 		
 	//iterate over synoptik-nav items
@@ -686,10 +686,10 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		//get work title
 		let workTitle = id.includes('_left') ? id.replace('_left', '') : id.replace('_right', '') ;
 		//get page number				
-		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short) ;
 		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;		
 		//get number of pages
-		let pageCount = textData_in.results.bindings.find((item, index) => {
+		let pageCount = text_mdata_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle ;
 		}).pageCount ;		
 		//get transcription type in nav-werke
@@ -871,7 +871,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 				$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;				
 			}			
 			//group anno compare data by source target			
-			let groupedBySourceTarget = Object.groupBy(annoCompData_in.results.bindings, ({ source_target }) => source_target) ;
+			let groupedBySourceTarget = Object.groupBy(textComp_mdata_in.results.bindings, ({ source_target }) => source_target) ;
 			//get compare data
 			let compData = groupedBySourceTarget[workTitle] ;
 			let boxSide_opp = boxSide === 'left' ? 'right' : 'left' ;
@@ -919,10 +919,10 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 		//get work title of opposite text
 		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
 		//get opposite page number
-		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short) ;
 		let pageNr_opp = groupedByTitle[workTitle_opp][0].firstPageNr ;
 		//get number of opposite pages
-		let pageCount_opp = textData_in.results.bindings.find((item, index) => {
+		let pageCount_opp = text_mdata_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle_opp ;
 		}).pageCount ;
 		//get opposite transcription type

@@ -243,14 +243,14 @@ window.showResults = function () {
         console.log('marked Hits ', markedHits_arr) ;
         if (Array.isArray(result_arr) && result_arr.length) {
             let source_arr = [] ;
-            let textData_arr = textData_in.results.bindings ;
+            let text_mdata_arr = text_mdata_in.results.bindings ;
             //get path length
             let searchPathNr = result_arr.length ;
             for (i_path = 0; i_path < searchPathNr; i_path++) {
                 //check source of result path
-                textData_arr.forEach(function(textData, index) {
+                text_mdata_arr.forEach(function(text_mdata, index) {
                     //check which source contains the title
-                    result_arr[i_path][0].instances[0].pos.includes(textData.title.short) ? source_arr.push(textData.title.short) : '' ;
+                    result_arr[i_path][0].instances[0].pos.includes(text_mdata.title.short) ? source_arr.push(text_mdata.title.short) : '' ;
                 }) ;
                 //source_arr[i_path] = result_arr[i_path][0].instances[0].docId ; 
                 console.log('source_arr: ', source_arr) ;

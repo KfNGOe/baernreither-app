@@ -30,14 +30,14 @@ function posNr2Str(posNr, posStr) {
 }
 
 //read compare data json file
-let json_in = fs.readFileSync('data/json/annoCompData_temp.json', 'utf8') ;
+let json_in = fs.readFileSync('data/json/textComp_mdata_temp.json', 'utf8') ;
 console.log('json data read: ', json_in.length, ' bytes') ;
 let jsonJs_in = JSON.parse(json_in) ;
-let annoCompData_results = jsonJs_in ;
-let annoCompData_temp = jsonJs_in.results.bindings[0] ;
+let textComp_mdata_results = jsonJs_in ;
+let textComp_mdata_temp = jsonJs_in.results.bindings[0] ;
 //delete template object
-delete annoCompData_results.results.bindings[0] ;   //after delete first object is null
-annoCompData_results.results.bindings.shift() ;
+delete textComp_mdata_results.results.bindings[0] ;   //after delete first object is null
+textComp_mdata_results.results.bindings.shift() ;
 //read anno compare json file
 //get compare data
 json_in = fs.readFileSync('data/json/anno/annoTextComp.json', 'utf8') ;
@@ -51,19 +51,19 @@ console.log('groupedBySourceTarget') ;
 Object.keys(groupedBySourceTarget).forEach((key, index) => {
     console.log(key) ;
     //add to data object
-    annoCompData_temp.source_target = key ;  
+    textComp_mdata_temp.source_target = key ;  
 
     let groupedBySourceBody = groupedBySourceTarget[key].groupBy( item => {
         return item.source_body.value ;        
     }) ;
     Object.keys(groupedBySourceBody).forEach((key, index) => {
-        annoCompData_temp.source_body.push(JSON.parse(JSON.stringify(key))) ;
+        textComp_mdata_temp.source_body.push(JSON.parse(JSON.stringify(key))) ;
     }) ;    
-    annoCompData_results.results.bindings.push(JSON.parse(JSON.stringify(annoCompData_temp))) ;
+    textComp_mdata_results.results.bindings.push(JSON.parse(JSON.stringify(textComp_mdata_temp))) ;
     //reset temp object
-    annoCompData_temp.source_body = [] ;    
+    textComp_mdata_temp.source_body = [] ;    
 }) ;
 //write compare data json file
-let json_out = JSON.stringify(annoCompData_results) ;
-fs.writeFileSync('data/json/annoCompData.json', json_out) ;
+let json_out = JSON.stringify(textComp_mdata_results) ;
+fs.writeFileSync('data/json/textComp_mdata.json', json_out) ;
 console.log('json data written: ', json_out.length, ' bytes') ;
