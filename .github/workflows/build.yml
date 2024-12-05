@@ -43,6 +43,8 @@ jobs:
         run: sudo bash build_annoTextFull.sh
       - name: build full text json
         run: sudo bash build_textFull_json2json.sh
+      - name: conversion texts all json to html
+        run: sudo bash build_textAll_json2html.sh
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"
