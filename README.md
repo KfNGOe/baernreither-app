@@ -19,7 +19,7 @@ dev-baernreither-app
 /ttl/text/*.ttl -> build_texts_ttl2json.sh -> *_all.json
 
 ### build annotation levels
-*.ttl -> build_anno*.sh -> anno*i.ttl
+*.ttl -> build_anno.sh -> build_anno*.sh -> anno*i.ttl
                         -> anno*.json
 
 ### build annotation level for full texts
