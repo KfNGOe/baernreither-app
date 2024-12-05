@@ -4,7 +4,7 @@ for script in ./build_anno*.sh;
 do 
   echo "Running $script"^
   #read -n 1    
-  if [ -f "$script" ] && [ "$script" != "./build_anno.sh" ]; then
+  if [ -f "$script" ] && [ "$script" != "./build_anno.sh" ] && [ "$script" != "./build_annoTextFull.sh" ] ; then
     ./"$script"
   fi
 done

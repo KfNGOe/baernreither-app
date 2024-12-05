@@ -16,11 +16,11 @@ dev-baernreither-app
 /tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ### conversion text ttl to json
-/ttl/text/*.ttl -> build_texts_ttl2json.sh -> *_all.json
+*.ttl -> build_texts_ttl2json.sh -> *_all.json<br>
 
 ### build annotation levels
 *.ttl -> build_anno.sh -> build_anno*.sh -> anno*i.ttl
-                        -> anno*.json
+                                          -> anno*.json
 
 ### build annotation level for full texts
 anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl

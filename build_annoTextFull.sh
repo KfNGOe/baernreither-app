@@ -63,6 +63,6 @@ export ext_out='.json'
 ./gdb_queryRepo.sh
 
 #remove tmp dir
-#rm -r $inputDir_tmp
+rm -r $inputDir_tmp
 
 echo "build anno text full done"
