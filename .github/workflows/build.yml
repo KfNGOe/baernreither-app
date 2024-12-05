@@ -1,18 +1,20 @@
 name: Build project
 
+
 on:
   #push:
-  #  branches:
-  #    - main
+  #  paths:      
+  #    - "data/ttl/text/**"
+  #    - "data/xlsx/**"
   workflow_dispatch:
 
 jobs:
-  build_infra:
+  build:
     name: Build infrastructure
     runs-on: ubuntu-latest
     steps:
       - name: Perform Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -32,15 +34,9 @@ jobs:
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
-        run: sudo bash gdb_getRepo.sh
-      - id: files
-        if: ${{ github.event_name == 'push' }}        
-        uses: jitterbit/get-changed-files@v1
-      
-      #- name: Build tei to ttl
-      #  run: . gh_tei2ttl.sh
-      #  env:
-      #    changes: ${{ steps.files.outputs.all }}
+        run: sudo bash gdb_getRepo.sh        
+      - name: conversion texts ttl to json
+        run: sudo bash build_texts_ttl2json.sh      
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"
