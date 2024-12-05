@@ -1,9 +1,11 @@
-echo read files from ttl directory
+echo "convert text ttl to json"
 
 inputDir="data/ttl/text/"
 
-for file in $inputDir*.ttl; do
-  #echo "$file"
+rm -rf ./data/json/all/*
+mkdir -p ./data/json/all
+
+for file in $inputDir*.ttl; do  
   #check if file is no template
     if [[ "$file" = *"Bae_"*  ]]
     then
