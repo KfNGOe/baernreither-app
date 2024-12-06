@@ -38,7 +38,11 @@ jobs:
     needs: setup_graphdb
     steps:
       - name: Perform Checkout
-        uses: actions/checkout@v3      
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          set -e
+          sudo bash install.sh      
       - name: Create repo in GraphDB
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
@@ -57,15 +61,10 @@ jobs:
       - name: Download Build Artifacts
         uses: actions/download-artifact@v3
         with:
-          name: build-files      
-      - name: Start graphdb
-        run: sudo bash gdb_start.sh &
-      - name: Wait for graphdb
-        run: sudo bash gdb_ping.sh
-        shell: bash
-      - name: Create repo
-        run: sudo bash gdb_createRepo.sh
-      - name: Get repo list
-        run: sudo bash gdb_getRepo.sh
-    
-
+          name: build-files
+      - name: Install dependencies
+        run: |
+          set -e
+          sudo bash install.sh      
+      - name: show files
+        run: ls -l
