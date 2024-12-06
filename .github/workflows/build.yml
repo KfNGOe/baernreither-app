@@ -20,10 +20,10 @@ jobs:
         with:
           java-version: "11"
           distribution: "adopt"
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16.x"      
+      #- name: Set up Node.js
+      #  uses: actions/setup-node@v2
+      #  with:
+      #    node-version: "16.x"      
       - name: Install
         run: sudo bash install.sh
       - name: Start graphdb
@@ -34,17 +34,14 @@ jobs:
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
-        run: sudo bash gdb_getRepo.sh        
-      - name: conversion texts ttl to json
-        run: sudo bash build_texts_ttl2json.sh
-      #- name: build annotation levels
-      #  run: sudo bash build_anno.sh
-      - name: build annotation levels for full texts
-        run: sudo bash build_annoTextFull.sh
-      - name: build full text json
-        run: sudo bash build_textFull_json2json.sh
-      - name: conversion texts all json to html
-        run: sudo bash build_textAll_json2html.sh
+        run: sudo bash gdb_getRepo.sh
+      - name: build texts
+        run: sudo bash build_texts.sh
+      - name: build register
+        run: sudo bash build_register.sh
+      - name: build search
+        run: sudo bash build_ssSearch_all.sh
+      
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"

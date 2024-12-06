@@ -34,7 +34,7 @@ echo "build anno levels of register"
 echo "build anno levels of register done"
 
 echo "convert register json to html"
-./build_register_json2html.sh
+#./build_register_json2html.sh
 echo "convert register json to html done"
 
 echo "build register done"
