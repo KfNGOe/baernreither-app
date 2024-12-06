@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build infrastructure
+  build_texts:
+    name: Build texts
     runs-on: ubuntu-latest
     steps:
       - name: Perform Checkout
