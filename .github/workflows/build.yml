@@ -25,22 +25,34 @@ jobs:
       #  with:
       #    node-version: "16.x"      
       - name: Install
-        run: sudo bash install.sh
+        run: |
+          set -e
+          sudo bash install.sh
       - name: Start graphdb
-        run: sudo bash gdb_start.sh &
+        run: |
+          set -e
+          sudo bash gdb_start.sh &
       - name: Wait for graphdb
         run: sudo bash gdb_ping.sh
         shell: bash
       - name: Create repo
         run: sudo bash gdb_createRepo.sh
       - name: Get repo list
-        run: sudo bash gdb_getRepo.sh
+        run: |
+          set -e
+          sudo bash gdb_getRepo.sh
       - name: build texts
-        run: sudo bash build_texts.sh
+        run: |
+          set -e
+          sudo bash build_texts.sh
       - name: build register
-        run: sudo bash build_register.sh
+        run: |
+          set -e
+          sudo bash build_register.sh
       - name: build search
-        run: sudo bash build_ssSearch_all.sh
+        run: |
+          set -e
+          sudo bash build_ssSearch_all.sh
       
       #- name: Commit files
       #  run: |

@@ -37,6 +37,7 @@ async function getGnData(gnUrl) {
     const response = await axios.request(config)
     .catch(error => {
         console.log(error) ;
+        throw error ;
     }) ;    
     return response ;
 }
