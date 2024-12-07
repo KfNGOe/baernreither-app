@@ -41,14 +41,14 @@ jobs:
         run: |
           set -e
           sudo bash gdb_getRepo.sh
-      - name: build texts
-        run: |
-          set -e
-          sudo bash build_texts.sh
       - name: build register
         run: |
           set -e
           sudo bash build_register.sh
+      - name: build texts
+        run: |
+          set -e
+          sudo bash build_texts.sh      
       - name: build search
         run: |
           set -e

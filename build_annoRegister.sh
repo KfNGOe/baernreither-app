@@ -22,6 +22,7 @@ for file in $inputDir*.ttl; do
         export pathName=$pathname
         export name=$name        
         ./gdb_importFile.sh
+        echo "Import text files done!"
         fi
     fi
 done
