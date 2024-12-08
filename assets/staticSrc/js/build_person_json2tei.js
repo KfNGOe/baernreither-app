@@ -222,14 +222,12 @@ function buildPerson(obj) {
 
 //read person template tei file
 let tei_in = fs.readFileSync('./data/tei/register/register_person_template.xml', 'utf8'); //./data/tei/register/register_person_template.xml
-console.log('tei data read: ', tei_in.length, ' bytes') ;
 
 //convert tei to js object
 var teiJs_in = convert.xml2js(tei_in, {compact: false, spaces: 2}) ;
 
 //read person json file
 let json_in = fs.readFileSync('./data/json/register/register_person.json', 'utf8'); //./data/json/register/register_person.json
-console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
@@ -249,4 +247,3 @@ let teiJs_out = teiJs_in ;
 var tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
 //write tei file
 fs.writeFileSync('./data/tei/register/register_person.xml', tei_out ) ;  //./data/tei/register/register_person.xml
-console.log('tei data written: ', tei_out.length, ' bytes')

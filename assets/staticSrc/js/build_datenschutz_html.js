@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 datenschutz_html = dom.serialize() ;
-console.log('datenschutz.html =' + LF, datenschutz_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/datenschutz.html', datenschutz_html ) ;
-console.log('html data written: ', datenschutz_html.length, ' bytes')

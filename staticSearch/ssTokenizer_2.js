@@ -143,7 +143,6 @@ function buildTokens(fullTextAll,textFull_files) {
 //get full texts
 //read json full directory
 let jsonFiles = fs.readdirSync('data/json/full/') ;
-console.log('json files: ', jsonFiles) ;
 //build full text from dipl text json files
 let textFull_files = {} ;
 //iterate over dipl files
@@ -174,4 +173,3 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
-console.log('json data written: ', json_out.length, ' bytes') ;

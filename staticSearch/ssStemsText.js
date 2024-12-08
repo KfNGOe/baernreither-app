@@ -78,10 +78,8 @@ function buildStemsText(tokenTextAll_tmp) {
 
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/tokensText/ssTokensText_tmp.json', 'utf8');
-console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 let tokenTextAll_tmp = JSON.parse(json_in) ;
 buildStemsText(tokenTextAll_tmp) ;
 //write text file
 fs.writeFileSync('./staticSearch/ssTokenString.txt', ssTokenStr ) ;
-console.log('text data written: ', ssTokenStr.length, ' bytes')

@@ -30,7 +30,6 @@ const config = new RepositoryClientConfig(endpoint)
     .setWriteTimeout(writeTimeout) ;    
     
 const repository = new RDFRepositoryClient(config) ;
-console.log('repository: ', repository.repositoryClientConfig) ;
 //console.log('repository: ', repository) ;
 
 let body = '' ;

@@ -23,7 +23,6 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
     //ATTENTION: no api type rdf4j here!
     apiType: 'REST'
 }) ;
-console.log('graph =', graph) ;
 //graphdb upload a file into graph
 graphDBEndpoint
     .uploadFromFile({        

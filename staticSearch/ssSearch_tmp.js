@@ -194,11 +194,9 @@ function checkHitsPrevious(hit, hits_prev) {
 
 //read file with tokens as string
 let text_in = fs.readFileSync('./staticSearch/ssTokenString.txt', 'utf8');
-console.log('text data read: ', text_in.length, ' bytes') ;
 
 //tokenize search string
 let searchStrLength = searchStr.length ;
-console.log('searchStrLength = ', searchStrLength) ;
 let tokens_N = searchStrLength - 2 ;
 searchTokens = [] ;            
 for (i_char = 0; i_char < tokens_N; i_char++) {
@@ -208,7 +206,6 @@ for (i_char = 0; i_char < tokens_N; i_char++) {
         } ;
     searchTokens.push(token) ;                
 }
-console.log('searchTokens =', searchTokens) ;
 
 //find first token of search string in tokens string
 searchToken = separator + searchTokens[0].token + separator ;

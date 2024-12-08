@@ -27,7 +27,6 @@ var appStack = {
 // Creating a window with a document
 const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
-console.log('dom = ', dom.serialize()) ;
 //dom =  <html><head></head><body></body></html>
 //$('div[id="content"]').append('<div>test</div>') ;
 //html = $('div[id="content"]').html() ;
@@ -76,7 +75,6 @@ function setRefValue(anchorSource, anchorRefSource, anchorId_pos_nr, anchorRef_p
 
 //read text comparison data
 let json_in = fs.readFileSync('./data/json/annoTextComp_1-2.json', 'utf8');
-console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
@@ -117,4 +115,3 @@ let test_html = dom.serialize() ;
 //write tei file
 //fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
 fs.writeFileSync('data/html/test.html', test_html ) ;  
-console.log('text data written: ', test_html.length, ' bytes')

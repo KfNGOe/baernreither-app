@@ -117,7 +117,6 @@ function buildStems(obj) {
 
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_test.json', 'utf8');
-console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
@@ -133,4 +132,3 @@ buildStems(jsonJs_in) ;
 //json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
 fs.writeFileSync('./staticSearch/ssTokenString.txt', ssTokenStr ) ;
-console.log('text data written: ', ssTokenStr.length, ' bytes')

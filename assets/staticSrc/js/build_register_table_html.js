@@ -77,13 +77,11 @@ function build_html(obj) {
 } ;
 //read html template
 html = fs.readFileSync("data/html/register_table_temp.html", 'utf8') ;
-console.log('html data read: ', html.length, ' bytes') ;   
 $('html').find('body').append(html) ;
 html = $('html').html() ;
 
 //read json data
 var json = fs.readFileSync(filepath_in, 'utf8');
-console.log('json data read: ', json.length, ' bytes')
 var jsonJs = JSON.parse(json) ;
 
 
@@ -93,4 +91,3 @@ html = $('html').find('body').html() ;
 
 //write html file    
 fs.writeFileSync(filepath_out, html) ;
-console.log('html data written: ', html.length, ' bytes') ;

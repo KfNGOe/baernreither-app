@@ -110,9 +110,7 @@ function buildJs(obj) {
 
 //read xml file
 var filepath = path_in_tei + filename + ext_xml ;
-console.log(filepath);
 var xml = fs.readFileSync(filepath, 'utf8');
-console.log('tei data read: ', xml.length, ' bytes')
 
 //convert xml to js object
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
@@ -123,14 +121,11 @@ if (i_startTag > i_endTag) {
 } else {
    N = i_endTag ;
 }
-console.log('N = ', N) ;
 i_startTag, i_endTag = 0 ;
 
 //write json file
 filepath = path_out_json + filename + ext_json ;
-console.log(filepath);
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync(filepath, xmlJsString ) ;
-console.log('json data written: ', xmlJsString.length, ' bytes')
 
 

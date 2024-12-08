@@ -215,9 +215,7 @@ function addXmlId(obj) {
 
 //read xml file
 var filepath = path_in_tei + filename + ext_xml ;
-console.log(filepath);
 var xml = fs.readFileSync(filepath, 'utf8');
-console.log('tei data read: ', xml.length, ' bytes') ;
 
 //get titleShort
 xmlDoc = $.parseXML( xml ),
@@ -233,30 +231,20 @@ if (replaceFlag) {
    console.log('replace & in attribute') ;
    replaceFlag = false ;
 } ;
-console.log('xml data escaped') ;
 
 //check elements
 checkElements(xmlJs) ;
 //count NaN in array
 let countNaN = arr_xmlId.filter(x => isNaN(x)).length ;
-console.log('number of xmlIds not found, not valid or empty = ', countNaN) ;
-console.log('xml data checked') ;
 
 //check if xml:id's are unique
 isUnique() ;
-console.log('unique xml:ids checked') ;
 
 //count elements
 countElements() ;
-console.log('xml data counted') ;
-console.log('number of tei elements = ', i_elements) ;
-console.log('number of xml:id = ', i_xmlId) ;
-console.log('number of last xml:id = ', i_xmlId_last) ;
 
 //add new xml:id
 addXmlId(xmlJs) ;
-console.log('new xml:id added') ;
-console.log('number of new xml:id = ', i_xmlId_new) ;
 
 //reset counters
 var i_xmlId = 0 ; //number of actual not empty xml:id's
@@ -266,25 +254,16 @@ var arr_xmlId = [] ; //array of all xml:id's
 
 //check elements
 checkElements(xmlJs) ;
-console.log('xml data checked') ;
 
 //count elements
 countElements() ;
-console.log('xml data counted') ;
-console.log('number of tei elements = ', i_elements) ;
-console.log('number of xml:id = ', i_xmlId) ;
-console.log('number of last xml:id = ', i_xmlId_last) ;
 
 //write xml file
 filepath = path_out_tei + filename + ext_xml ;
-console.log(filepath);
 xml = convert.js2xml(xmlJs, {compact: false, spaces: 2}) ;
 fs.writeFileSync(filepath, xml ) ;
-console.log('xml data written: ', xml.length, ' bytes')
 
 //write json file
 filepath = path_out_json + filename + ext_json ;
-console.log(filepath);
 var xmlJsString = JSON.stringify(xmlJs);
 fs.writeFileSync(filepath, xmlJsString ) ;
-console.log('json data written: ', xmlJsString.length, ' bytes') ;

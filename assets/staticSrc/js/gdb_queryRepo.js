@@ -26,7 +26,6 @@ const config = new RepositoryClientConfig(endpoint)
     .setWriteTimeout(writeTimeout) ;    
     
 const repository = new RDFRepositoryClient(config) ;
-console.log('repository: ', repository.repositoryClientConfig) ;
 
 var mimeType = process.env.mime_type ; //RDFMimeType.TURTLE
 var queryType = process.env.query_type ; //QueryType.CONSTRUCT

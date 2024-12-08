@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 zeitplantagebuecher_html = dom.serialize() ;
-console.log('zeitplantagebuecher.html =' + LF, zeitplantagebuecher_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/zeitplantagebuecher.html', zeitplantagebuecher_html ) ;
-console.log('html data written: ', zeitplantagebuecher_html.length, ' bytes')

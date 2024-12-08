@@ -37,7 +37,6 @@ function posStr2Nr(posStr) {
 //build full texts
 //read anno text full json file
 json_in = fs.readFileSync('./data/json/anno/annoTextFull.json', 'utf8') ; //data/json/annoTextFull.json
-console.log('json data read: ', json_in.length, ' bytes') ;
 //convert json to js object
 let jsonJs_in_annoFull = JSON.parse(json_in) ;
 //group by source target
@@ -46,7 +45,6 @@ groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => 
 } ) ;
 //read json all directory
 let jsonFiles = fs.readdirSync('data/json/all/') ;
-console.log('json files: ', jsonFiles) ;
 //build full text from all text json files
 let textFull_files = {} ;
 //iterate over *all files

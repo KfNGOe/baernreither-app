@@ -66,7 +66,6 @@ function buildFullText(obj) {
 
 //read full text json file
 let json_in = fs.readFileSync(filepath_in_json, 'utf8'); // ./data/json/fullText.json
-console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
@@ -75,4 +74,3 @@ buildFullText(jsonJs_in) ;
 
 //write tei file
 fs.writeFileSync(filepath_out_txt, fullText ) ;  //./data/tei/register/register_place.xml
-console.log('text data written: ', fullText.length, ' bytes')

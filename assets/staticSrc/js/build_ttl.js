@@ -87,9 +87,7 @@ function getTTL(item_obj) {
 
 //read json file
 var filepath = path_in_json + filename + ext_json ;
-console.log(filepath);
 var json = fs.readFileSync(filepath, 'utf8');
-console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;
 
@@ -105,4 +103,3 @@ jsonJs.statements.forEach((item, index, array) => {
 filepath = path_out_ttl + filename + ext_ttl ;
 //console.log('data: ', ttl);
 fs.writeFileSync(filepath, ttl ) ;
-console.log('ttl data written: ', ttl.length  , ' bytes')

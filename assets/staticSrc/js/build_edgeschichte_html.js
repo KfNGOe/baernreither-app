@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 edgeschichte_html = dom.serialize() ;
-console.log('editionsgeschichte.html =' + LF, edgeschichte_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/editionsgeschichte.html', edgeschichte_html ) ;
-console.log('html data written: ', edgeschichte_html.length, ' bytes')

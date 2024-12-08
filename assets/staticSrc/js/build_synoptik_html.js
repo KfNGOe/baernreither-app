@@ -33,7 +33,6 @@ $('html').find('head').append('<script src="https://cdn.jsdelivr.net/gh/highligh
 //insert title
 //read about file
 /*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-console.log('tei data read: ', xml.length, ' bytes') ;
 
 xmlDoc = $.parseXML( xml ) ,
 $xml = $( xmlDoc ),
@@ -70,10 +69,8 @@ var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
 synoptik_html = dom.serialize() ;
-console.log('synoptik.html =' + LF, synoptik_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
-console.log('html data written: ', synoptik_html.length, ' bytes')

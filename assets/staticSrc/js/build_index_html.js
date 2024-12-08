@@ -36,7 +36,6 @@ $('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jq
 //insert title
 //read about file
 /*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-console.log('tei data read: ', xml.length, ' bytes') ;
 
 xmlDoc = $.parseXML( xml ) ,
 $xml = $( xmlDoc ),
@@ -65,10 +64,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 index_html = dom.serialize() ;
-console.log('index.html =' + LF, index_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/index.html', index_html ) ;
-console.log('html data written: ', index_html.length, ' bytes')

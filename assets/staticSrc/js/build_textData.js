@@ -31,7 +31,6 @@ function posNr2Str(posNr, posStr) {
 
 //read text data json file
 let json_in = fs.readFileSync('data/json/text_mdata_temp.json', 'utf8') ;
-console.log('json data read: ', json_in.length, ' bytes') ;
 let jsonJs_in = JSON.parse(json_in) ;
 let text_mdata_results = jsonJs_in ;
 let text_mdata_temp = jsonJs_in.results.bindings[0] ;
@@ -40,7 +39,6 @@ delete text_mdata_results.results.bindings[0] ;
 text_mdata_results.results.bindings.shift() ;
 //read json all directory
 jsonFiles = fs.readdirSync('data/json/all/') ;
-console.log('json files: ', jsonFiles) ;
 //iterate over all files
 jsonFiles.forEach((file,index_file) => {
     //write file name to text data
@@ -140,4 +138,3 @@ jsonFiles.forEach((file,index_file) => {
 //write text data json file
 let json_out = JSON.stringify(text_mdata_results) ;
 fs.writeFileSync('data/json/text_mdata.json', json_out) ;
-console.log('json data written: ', json_out.length, ' bytes') ;

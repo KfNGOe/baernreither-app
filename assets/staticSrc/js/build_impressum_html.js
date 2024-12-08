@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 impressum_html = dom.serialize() ;
-console.log('impressum.html =' + LF, impressum_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/impressum.html', impressum_html ) ;
-console.log('html data written: ', impressum_html.length, ' bytes')

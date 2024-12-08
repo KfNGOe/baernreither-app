@@ -84,5 +84,4 @@ var persons = jsonJS.Tabelle1 ;
 getArray(persons) ;
 
 fs.writeFileSync('./data/ttl/annotation/person/instance/gnd/gnd.ttl', gndSets ) ;
-console.log('ttl data written: ', gndSets.length  , ' bytes')
 */

@@ -48,10 +48,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 map_html = dom.serialize() ;
-console.log('karte.html =' + LF, map_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/karte.html', map_html ) ;
-console.log('html data written: ', map_html.length, ' bytes')

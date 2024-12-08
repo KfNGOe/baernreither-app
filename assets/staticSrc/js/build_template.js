@@ -63,7 +63,6 @@ function getArray(arr) {
 } ;
 
 var xml = fs.readFileSync('data/tei/Tagebuch_Baernreither_8.xml', 'utf8');
-console.log('tei data read: ', xml.length, ' bytes')
 
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2});
 xmlJs.elements ;

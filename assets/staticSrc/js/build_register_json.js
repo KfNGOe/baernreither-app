@@ -428,7 +428,6 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
 //get texts all
 //read json all directory
 let jsonFiles = fs.readdirSync('data/json/all/') ;
-console.log('json files: ', jsonFiles) ;
 let groupedAll_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {   
@@ -448,7 +447,6 @@ jsonFiles.forEach((file) => {
 
 //read json register directory
 jsonFiles = fs.readdirSync('data/json/register/');
-console.log('json files: ', jsonFiles);
 //iterate over register files
 let jsonJs_reg_files = {};
 jsonFiles.forEach((file) => {
@@ -460,7 +458,6 @@ jsonFiles.forEach((file) => {
         jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg;
     }
 });
-console.log('jsonJs_reg_files = ', jsonJs_reg_files);
 //build register json files
 let json_reg_files = buildReg(jsonJs_reg_files, groupedAll_files);
 //iterate over register json tmp files

@@ -109,7 +109,6 @@ function buildSearchTest(obj) {
 
 //read test json file
 let json_in = fs.readFileSync('./staticSearch/ssTokens_template.json', 'utf8'); 
-console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
@@ -123,4 +122,3 @@ let jsonJs_out = tokenAll ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
 fs.writeFileSync('./staticSearch/tokens/tokenAll.json', json_out ) ;  
-console.log('json data written: ', json_out.length, ' bytes')

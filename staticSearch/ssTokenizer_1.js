@@ -162,13 +162,11 @@ function buildTokens(obj) {
 
 //read test json file
 let json_in = fs.readFileSync(filepath_in_json, 'utf8'); //data/json/Bae_MF_6-2_full.json
-console.log('json data read: ', json_in.length, ' bytes') ;
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;
 
 countTextN = jsonJs_in.results.bindings.length ;    
-console.log('countTextN = ', countTextN) ;
 
 buildTokens(jsonJs_in) ;
 
@@ -179,4 +177,3 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
 fs.writeFileSync('./staticSearch/ssTokens_tmp.json', json_out ) ;
-console.log('json data written: ', json_out.length, ' bytes')

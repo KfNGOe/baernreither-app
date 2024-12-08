@@ -363,7 +363,6 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
 //get full texts
 //read json full directory
 let jsonFiles = fs.readdirSync('data/json/full/') ;
-console.log('json files: ', jsonFiles) ;
 //build full text from dipl text json files
 let textFull_files = {} ;
 //iterate over dipl files
@@ -383,10 +382,8 @@ jsonFiles.forEach((file) => {
 //get register
 //read json register directory
 jsonFiles = fs.readdirSync('data/json/register/') ;
-console.log('json files: ', jsonFiles) ;
 //read json anno directory
 let jsonFiles_anno = fs.readdirSync('data/json/anno/') ;
-console.log('json files anno: ', jsonFiles_anno) ;
 //iterate over json file names
 jsonFiles.forEach((file) => {
    //choose ordinary register files

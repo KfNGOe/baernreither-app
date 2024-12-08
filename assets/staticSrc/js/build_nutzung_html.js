@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 nutzung_html = dom.serialize() ;
-console.log('nutzung.html =' + LF, nutzung_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/nutzung.html', nutzung_html ) ;
-console.log('html data written: ', nutzung_html.length, ' bytes')

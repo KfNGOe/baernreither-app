@@ -220,9 +220,7 @@ function buildRdf(obj) {
 
 //read json file
 var filepath = path_in_json + filename + ext_json ;
-console.log(filepath);
 var json = fs.readFileSync(filepath, 'utf8');
-console.log('json data read: ', json.length, ' bytes')
 
 var jsonJs = JSON.parse(json) ;
 //console.log('jsonJs = ', jsonJs) ;
@@ -234,7 +232,5 @@ stmtsListJs['statements'] = stmtsList ;
 
 //write json file
 filepath = path_out_json + filename + ext_json ;
-console.log(filepath);
 var stmtsListJsString = JSON.stringify(stmtsListJs);
 fs.writeFileSync(filepath, stmtsListJsString ) ;
-console.log('json data written: ', stmtsListJsString.length  , ' bytes')

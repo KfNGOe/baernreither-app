@@ -45,10 +45,8 @@ $('html').find('footer').replaceWith(footer) ;
 //$('html').find('body').append('<script src="js/nav-control.js"></script>') ;
 
 biographie_html = dom.serialize() ;
-console.log('biographie.html =' + LF, biographie_html) ;
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/biographie.html', biographie_html ) ;
-console.log('html data written: ', biographie_html.length, ' bytes')

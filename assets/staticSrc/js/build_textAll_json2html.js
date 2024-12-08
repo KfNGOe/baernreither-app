@@ -645,7 +645,6 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
 
 //read json anno directory
 let jsonFiles = fs.readdirSync('data/json/anno/') ;
-console.log('json files: ', jsonFiles) ;
 //iterate over anno files
 let jsonJs_anno_files = {} ;
 jsonFiles.forEach((file) => {
@@ -664,7 +663,6 @@ groupedBy_files = groupAnnoFiles(jsonJs_anno_files) ;
 
 //read json all directory
 jsonFiles = fs.readdirSync('data/json/all/') ;
-console.log('json files: ', jsonFiles) ;
 //iterate over files all
 jsonFiles.forEach((file) => {
    //read text all json files

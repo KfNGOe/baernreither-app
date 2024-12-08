@@ -213,7 +213,6 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
 
 //read json register directory
 let jsonFiles = fs.readdirSync('data/json/register/') ;
-console.log('json files: ', jsonFiles) ;
 //iterate over json files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
@@ -224,7 +223,6 @@ jsonFiles.forEach((file) => {
 }) ;
 //read tei register directory
 let teiFiles = fs.readdirSync('data/tei/register/') ;
-console.log('tei files: ', teiFiles) ;
 //iterate over tei files
 teiFiles.forEach((file) => {
     //filter template files

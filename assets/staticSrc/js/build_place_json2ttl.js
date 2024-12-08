@@ -4,7 +4,6 @@ const { groupBy } = require("core-js/actual/array/group-by") ;
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const date = new Date() ;
-console.log(date);
 
 var prefInstance = "kfngoei:" ;
 var prefOntology = "kfngoeo:" ;
@@ -152,7 +151,6 @@ function getArray(arr) {
 } ;
 
 var json = fs.readFileSync('./data/json_xlsx/place_xlsx.json', 'utf8');
-console.log('json data read: ', json.length, ' bytes')
 
 var jsonJS = JSON.parse(json) ;
 var persons = jsonJS.Tabelle1 ;
@@ -164,7 +162,6 @@ getArray(persons) ;
 //filepath = path_out_ttl + filename + ext_ttl ;
 //console.log(filepath);
 fs.writeFileSync('./data/ttl/annotation/place/instance/placei.ttl', ttl ) ;
-console.log('ttl data written: ', ttl.length  , ' bytes')
 
 //group by gnd
 //var personsGND = persons.groupBy(person => {

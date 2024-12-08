@@ -30,4 +30,3 @@ function processFiles() {
 
 //call function
 processFiles() ;
-console.log('umlauts encoded') ;

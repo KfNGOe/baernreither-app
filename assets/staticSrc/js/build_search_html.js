@@ -56,4 +56,3 @@ search_html = dom.serialize() ;
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/suche.html', search_html ) ;
-console.log('html data written: ', search_html.length, ' bytes')
