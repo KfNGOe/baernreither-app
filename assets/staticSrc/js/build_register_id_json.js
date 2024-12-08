@@ -45,7 +45,6 @@ function buildId(jsonJs_reg_files) {
 
 //read json register directory
 let jsonFiles = fs.readdirSync('data/json/register/') ;
-console.log('json files: ', jsonFiles) ;
 //iterate over register files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {

@@ -31,7 +31,6 @@ function posNr2Str(posNr, posStr) {
 
 //read compare data json file
 let json_in = fs.readFileSync('data/json/textComp_mdata_temp.json', 'utf8') ;
-console.log('json data read: ', json_in.length, ' bytes') ;
 let jsonJs_in = JSON.parse(json_in) ;
 let textComp_mdata_results = jsonJs_in ;
 let textComp_mdata_temp = jsonJs_in.results.bindings[0] ;
@@ -41,13 +40,11 @@ textComp_mdata_results.results.bindings.shift() ;
 //read anno compare json file
 //get compare data
 json_in = fs.readFileSync('data/json/anno/annoTextComp.json', 'utf8') ;
-console.log('json data read: ', json_in.length, ' bytes') ;
 let annoCompTexts = JSON.parse(json_in) ;
 //group anno compare data by source_target
 let groupedBySourceTarget = annoCompTexts.results.bindings.groupBy( item => {
     return item.source_target.value ;    
 } ) ;
-console.log('groupedBySourceTarget') ;
 Object.keys(groupedBySourceTarget).forEach((key, index) => {
     console.log(key) ;
     //add to data object
@@ -66,4 +63,3 @@ Object.keys(groupedBySourceTarget).forEach((key, index) => {
 //write compare data json file
 let json_out = JSON.stringify(textComp_mdata_results) ;
 fs.writeFileSync('data/json/textComp_mdata.json', json_out) ;
-console.log('json data written: ', json_out.length, ' bytes') ;

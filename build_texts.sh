@@ -20,8 +20,4 @@ echo "build full text json"
 ./build_textFull_json2json.sh
 echo "build full text json done"
 
-echo "conversion texts all json to html"
-./build_textAll_json2html.sh
-echo "conversion texts all json to html done"
-
 echo "build texts done"

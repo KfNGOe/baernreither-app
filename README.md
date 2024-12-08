@@ -32,9 +32,6 @@ anno*i.ttl -> build_annoTextFull.sh -> annoTextFulli.ttl
 ### build full text json
 *_all.json + annoTextFull.json -> build_textFull_json2json.sh -> *_full.json
 
-### conversion texts all json to html
-*_all.json -> build_textAll_json2html.sh -> data/txt/*_all_html.txt
-                                         -> data/html/*_all.html
 
 ## Workflow register
 ### convert xlsx to json
@@ -67,6 +64,7 @@ register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_
 data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt<br>
 <br>
 
+
 ## Workflow search
 ### tokenize full texts
 data/json/full/*_full.json -> build_ssTokenizer.sh -> ssTokens_tmp.json
@@ -81,6 +79,16 @@ tokenAll_tmp.json -> build_ssStems.sh   -> /stems/*.json
 ## build complete search
 data/json/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
                                                     -> ssTokenString.txt
+
+
+## Workflow html
+### conversion texts all json to html
+*_all.json + anno*.json -> build_textAll_json2html.sh -> data/txt/*_all_html.txt
+                                         -> data/html/*_all.html
+
+### convert register json to html 
+data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt
+
 
 # HTML Attribute values
 ## @class, @id and @href

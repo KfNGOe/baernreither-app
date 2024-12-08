@@ -30,7 +30,7 @@ $('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jq
 //insert title
 //read about file
 /*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-console.log('tei data read: ', xml.length, ' bytes') ;
+
 
 xmlDoc = $.parseXML( xml ) ,
 $xml = $( xmlDoc ),
@@ -53,7 +53,6 @@ $('html').find('main').replaceWith(main) ;
 var register_str = fs.readFileSync("data/txt/register/register_table_person.txt", 'utf8');
 var register = $.parseHTML(register_str) ;
 $('html').find('table.table tbody').replaceWith(register) ;
-console.log('dom: ', dom.serialize()) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
@@ -61,10 +60,9 @@ var footer = $.parseHTML(footer_str) ;
 $('html').find('footer').replaceWith(footer) ;
 
 register_html = dom.serialize() ;
-console.log('register.html =' + LF, register_html) ;
+
 
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
 fs.writeFileSync('html/register.html', register_html ) ;
-console.log('html data written: ', register_html.length, ' bytes')
