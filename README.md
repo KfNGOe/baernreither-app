@@ -58,11 +58,7 @@ register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_
 
 ### build anno levels of register
 /ttl/text/*.ttl + register_*_.ttl -> build_annoRegister.sh  -> anno*.ttl
-                                                            -> anno*_json.json
-
-### convert register json to html 
-data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt<br>
-<br>
+                                                            -> anno*.json
 
 
 ## Workflow search

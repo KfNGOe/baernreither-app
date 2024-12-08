@@ -115,9 +115,7 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                 }                
             }
         }) ;
-        console.log('pos_body = ', pos_body) ;
-        console.log('title_short = ', title_short) ; 
-        //BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)       
+                        //BIND(xsd:integer(SUBSTR(?o_pos_ch_end,strlen(?title_short)+2)) AS ?end_nr_ch)       
     }
     //group by pos
     groupedByPos = jsonJs_in_all.results.bindings.groupBy( item => {
@@ -240,8 +238,6 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      html_str = html_str.concat('</span><br>') ;
                      break ;                  
                   case 'http://www.tei-c.org/ns/1.0/addSpan':
-                     console.log('addSpan: ', item) ;
-                     console.log('key = ', key) ;
                      break ;                  
                   case 'http://www.tei-c.org/ns/1.0/anchor':                     
                      if (groupedByStartPos[posStr2Nr(key)] !== undefined) {                        
@@ -287,22 +283,26 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      if (!(index_main_item[0].start_target.value < posStr2Nr(key) && posStr2Nr(key) < index_main_item[0].end_target.value)) {
                         //set new index main term
                         index_main_item = [] ;
-                        groupedByStartPos_index[posStr2Nr(key)].forEach((item) => {
-                           if (item.source_target.value == title_short) {
-                              if(index_main_item.length == 0) {
-                              index_main_item.push(item) ;               
+                        if (groupedByStartPos_index[posStr2Nr(key)] === undefined) {
+                           console.log('pos = ', key, ' not in annoIndex') ;
+                        } else {
+                           groupedByStartPos_index[posStr2Nr(key)].forEach((item) => {
+                              if (item.source_target.value == title_short) {
+                                 if(index_main_item.length == 0) {
+                                 index_main_item.push(item) ;               
+                                 }
                               }
-                           }
-                        }) ;                        
-                        //set class
-                        classNames = classNames.concat('index') ;
-                        //set href           
-                        let pos_index = posStr2Nr(key) ;
-                        href = "reg_" + groupedByStartPos_index[pos_index][0].id.value ;                     
-                        //set id
-                        id = 'index_' + key ;
-                        //concatenate html string
-                        html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
+                           }) ;
+                           //set class
+                           classNames = classNames.concat('index') ;
+                           //set href           
+                           let pos_index = posStr2Nr(key) ;
+                           href = "reg_" + groupedByStartPos_index[pos_index][0].id.value ;                     
+                           //set id
+                           id = 'index_' + key ;
+                           //concatenate html string
+                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
+                        }
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/orgName':
