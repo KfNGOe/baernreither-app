@@ -58,4 +58,3 @@ echo "build datenschutz.html done"
 
 echo "build html pages done"
 
-./dl_assets.sh
