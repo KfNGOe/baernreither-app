@@ -11,8 +11,7 @@ function pos2xmlId(pos, groupedAll_files) {
             let groupedByXmlId = pos_array.groupBy(item => {
                 return item.attr.value;
             });
-            xmlId = groupedByXmlId['xml:id'][0].val.value ;
-            console.log('xmlId = ', xmlId) ;            
+            xmlId = groupedByXmlId['xml:id'][0].val.value ;            
         }
     });
     return xmlId ;
@@ -100,8 +99,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
     let logData_person = '';
 
     //iterate over text file
-    jsonJs_in.results.bindings.forEach((item) => { //person.json    
-        console.log('key = ', item.o_key_person.value);
+    jsonJs_in.results.bindings.forEach((item) => { //person.json            
         //check if key exists in person_text.json
         if (item.o_key_person) {
             let person = {};
@@ -191,7 +189,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
     });
     //group by key geo
     groupedByKey_geo = jsonJs_in_geo.results.bindings.groupBy(item => {  //place_geo.json
-        return item.B;
+        return item.D;
     });
     //create log data
     let logData_place = '';

@@ -22,7 +22,7 @@ dev-baernreither-app
 *_all.json -> build_text_mdata.sh -> text_mdata.json
 
 ### build annotation levels
-*.ttl -> build_anno.sh -> build_anno*.sh -> anno*i.ttl
+\*.ttl -> build_anno.sh -> build_anno\*.sh -> anno\*i.ttl
                                           -> anno*.json
 
 ### build annotation level for full texts

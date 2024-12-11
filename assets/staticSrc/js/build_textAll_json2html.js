@@ -7,6 +7,8 @@ var pos_body = 0 ;
 var title_short = '' ;
 //var groupedByPos = {} ;
 var html_str = '' ;
+//create log data
+var log_data = '' ;
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM() ;
@@ -96,8 +98,7 @@ function groupAnnoFiles(jsonJs_anno_files) {
 }
 
 function buildAllText(jsonJs_in_all, groupedBy_files) {   
-   html_str = '' ;   
-   //console.log('groupedBy_files =', groupedBy_files) ; 
+   html_str = '' ;      
    //find tei:body
     if (jsonJs_in_all.head !== undefined) {        
         jsonJs_in_all.results.bindings.forEach((item, index, array) => {
@@ -149,12 +150,9 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
       } ) ;      
      
    //iterate over pos
-   Object.keys(groupedByPos).forEach((key) => {
-      //console.log('key = ', key) ;
-      if (posStr2Nr(key) >= posStr2Nr(pos_body)) {
-         //console.log('key = ', key) ;
-         let item = groupedByPos[key] ;
-         //console.log('item = ', item) ;
+   Object.keys(groupedByPos).forEach((key) => {      
+      if (posStr2Nr(key) >= posStr2Nr(pos_body)) {         
+         let item = groupedByPos[key] ;         
          let classNames = "" ;
          let href = "" ;
          let title = "" ;
@@ -165,7 +163,6 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                switch(item[0].name.value) {
                   case 'http://www.tei-c.org/ns/1.0/div':                     
                      item.forEach((item) => {                        
-                        //console.log('item = ', item) ;
                         switch(item.attr.value) {
                            case 'type':
                               //set class
@@ -212,7 +209,6 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                   case 'http://www.tei-c.org/ns/1.0/pb':
                      classNames = classNames.concat('pb pageLocator ') ;                                                             
                      item.forEach((item, index, array) => {                        
-                        //console.log('item = ', item) ;
                         switch(item.attr.value) {
                            case 'facs':
                               //set href
@@ -272,10 +268,13 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                            html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '" style="display: none"><img src="images/anchor.png" title="click"></a>') ;                                                   
                         } else {
                            console.log('source target = ', title_short, ' not in anno items at pos = ', key) ; 
+                           //save log data
+                           log_data = log_data.concat('source target = ', title_short, ' not in anno items at pos = ', key, '\n') ;
                         }                        
                      } else {
                         console.log('key = ', key, ' not in annoTextComp') ;
-                        //html_str = html_str.concat('<a href="#" id="' + id + '"><img src="images/anchor.png" title="click" style="display: none"></a>') ;
+                        //save log data
+                        log_data = log_data.concat('key = ', key, ' not in annoTextComp\n') ;
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/index':                     
@@ -312,6 +311,8 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      let key_org = item[0].val.value ; 
                      if (groupedByKey_org[key_org] === undefined) {
                         console.log('key_org = ', key_org, ' not in annoOrg') ;
+                        //save log data
+                        log_data = log_data.concat('key_org = ', key_org, ' not in annoOrg\n') ;
                      } else {
                         href = "reg_" + groupedByKey_org[key_org][0].id.value ;                     
                         //set id
@@ -327,6 +328,8 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      let key_person = item[0].val.value ;
                      if (groupedByKey_person[key_person] === undefined) {
                         console.log('key_person = ', key_person, ' not in annoPerson') ;
+                        //save log data
+                        log_data = log_data.concat('key_person = ', key_person, ' not in annoPerson\n') ;
                      } else {
                         href = "reg_" + groupedByKey_person[key_person][0].id.value ;
                         //set id
@@ -341,7 +344,9 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      //set href
                      let key_place = item[0].val.value ;
                      if (groupedByKey_place[key_place] === undefined) {
-                        console.log('key_place = ', key_place, ' not in annoPlace') ;
+                        console.log('key_place = ', key_place, ' not in annoPlace') ;                        
+                        //save log data
+                        log_data = log_data.concat('key_place = ', key_place, ' not in annoPlace\n') ;
                      } else {
                         href = "reg_" + groupedByKey_place[key_place][0].id.value ;
                         //set id
@@ -633,8 +638,7 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                   html_str = html_str.concat('</span>') ;
                }                                             
                break ;
-            case 'https://github.com/KfNGOe/kfngoeo#Comment':
-               //console.log('Comment: ', item.cont.value) ;
+            case 'https://github.com/KfNGOe/kfngoeo#Comment':               
                break ;            
             default:
                break ;
@@ -685,6 +689,10 @@ jsonFiles.forEach((file) => {
    fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
    fs.writeFileSync(fileNamePath, dom.serialize() ) ;
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
+
+   //write log file
+   fileNamePath = 'data/txt/log/log_text.txt' ;
+   fs.writeFileSync(fileNamePath, log_data ) ;   
 
    //remove appended html
    $('html').find('body *').remove() ;

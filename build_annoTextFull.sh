@@ -12,6 +12,8 @@ mkdir -p $inputDir_tmp
 #copy files to tmp dir
 cp $inputDir*annoAbbri.ttl $inputDir*annoAppi.ttl $inputDir*annoDeli.ttl $inputDir*annoIndexSubi.ttl $inputDir*annoNotei.ttl $inputDir_tmp
 
+##### $inputDir*annoIndexSubi.ttl weglassen? checken #####
+
 for file in $inputDir_tmp*.ttl; do
   #echo "$file"
   #check if file is no template

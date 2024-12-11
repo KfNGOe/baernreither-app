@@ -15,6 +15,9 @@ const deathchar = '†' ;
 var convert = require('xml-js') ;
 var title_short = '' ;
 var html_str = '' ;
+//create log data
+var log_data = '' ;
+
 
 // Creating a window with a document
 const dom = new jsdom.JSDOM() ;
@@ -48,8 +51,7 @@ function contextBefore(index_hit,sourceFile) {
       item_before = sourceFile.results.bindings[index_before] ;
       contextBefore = item_before.cont.value + contextBefore ;
       countSpace = (contextBefore.match(/\s/g) || []).length ;
-      index_before-- ;
-      //console.log('countSpace = ', countSpace) ;      
+      index_before-- ;      
    }
    if (countSpace > spaceMax) {      
       contextBefore_arr = contextBefore.split(" ") ;
@@ -67,12 +69,10 @@ function contextAfter(index_hit,sourceFile) {
    let contextAfter_arr = [] ;
    let sourceMax = sourceFile.results.bindings.length - 1 ;   
    while (countSpace < spaceMax && index_after <= sourceMax) {
-      item_after = sourceFile.results.bindings[index_after] ;
-      //console.log('item_after = ', item_after.pos.value) ;      
+      item_after = sourceFile.results.bindings[index_after] ;      
       contextAfter =  contextAfter + item_after.cont.value ;
       countSpace = (contextAfter.match(/\s/g) || []).length ;
-      index_after++ ;
-      //console.log('countSpace = ', countSpace) ;      
+      index_after++ ;      
    }
    if (countSpace > spaceMax) {      
       contextAfter_arr = contextAfter.split(" ") ;
@@ -91,6 +91,8 @@ function entryContext(pos,source,sourceFile,annoFile) {
       endNr = pos_arr[0].end_target.value ;      
    } else {
       console.log('pos ' + pos + ' undefined') ;
+      //save log data
+      log_data = log_data.concat('pos ' + pos + ' undefined\n') ;
       endNr = startNr ;
    }   
    let index_hit = 0 ;
@@ -120,8 +122,7 @@ function entryContext(pos,source,sourceFile,annoFile) {
    return context_arr ;   
 }
 
-function pos_str(key_arr,annoFile,textFull_files) {
-   //console.log('key_arr = ', key_arr) ;
+function pos_str(key_arr,annoFile,textFull_files) {   
    let html_pos_str = '' ;
    let context_arr = [] ;
    groupedByPos = key_arr.groupBy( item => { //key_arr = one key of group register by key/main
@@ -130,8 +131,7 @@ function pos_str(key_arr,annoFile,textFull_files) {
    //table cell for pos
    html_pos_str = html_pos_str.concat('<td>' + '<div class="accordion" id="accordionSource">') ;   
    //iterate over sources
-   Object.keys(textFull_files).forEach((key_source) => {
-      //console.log('index = ', index) ;
+   Object.keys(textFull_files).forEach((key_source) => {      
       let sourceFile = textFull_files[key_source] ;
       //load template for register item into dom 
       $('html').find('body').append(reg_item_str) ;      
@@ -178,13 +178,11 @@ function pos_str(key_arr,annoFile,textFull_files) {
       }
    }) ;
    //fetch html from dom and append to html_pos_str         
-   html_pos_str = html_pos_str.concat($('html').find('body').html()) ;
-   //console.log('html_pos_str = ', html_pos_str) ;
+   html_pos_str = html_pos_str.concat($('html').find('body').html()) ;   
    //remove appended html from dom
    $('html').find('body *').remove() ;
    //close table cell for pos   
-   html_pos_str = html_pos_str.concat('</div>' + '</td>') ;
-   //console.log('html_pos_str = ', html_pos_str) ;
+   html_pos_str = html_pos_str.concat('</div>' + '</td>') ;   
    return html_pos_str ;   
 }
 
@@ -209,8 +207,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
    }) ;   
    let annoFile = groupedByStart ;   
    //iterate over register keys
-   Object.keys(groupedByKey).forEach((key) => {
-      console.log('key = ', key) ;
+   Object.keys(groupedByKey).forEach((key) => {      
       if (key !== 'undefined') {
          let key_arr = groupedByKey[key] ;      
          //index
@@ -218,7 +215,9 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
             //test if main is empty or undefined
             if (key_arr[0].main === undefined || key_arr[0].main === '') {
                html_str = html_str.concat('<tr style="display: none">') ;      
-               console.log('main empty or undefined') ;            
+               console.log('key ' + key + ': main term of index empty or undefined') ;
+               //save log data
+               log_data = log_data.concat('key ' + key + ': main term of index empty or undefined\n') ;
             } else {
                //group key_arr by sub
                groupedBySub = key_arr.groupBy( item => {
@@ -226,8 +225,7 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
                }) ;
                //get length of groupedBySub
                //let groupedBySub_length = Object.keys(groupedBySub).length ;
-               Object.keys(groupedBySub).forEach((key_sub, index) => {
-                  console.log('key_sub = ', key_sub) ;
+               Object.keys(groupedBySub).forEach((key_sub, index) => {                  
                   let key_sub_arr = groupedBySub[key_sub] ; 
                   //start new row
                   html_str = html_str.concat('<tr>') ;
@@ -257,7 +255,9 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
             //test if name is empty or undefined
             if (key_arr[0].name === undefined || key_arr[0].name === '') {
                html_str = html_str.concat('<tr style="display: none">') ;      
-               console.log('name empty or undefined') ;            
+               console.log('name empty or undefined') ;
+               //save log data               
+               log_data = log_data.concat('key ' + key + ': name of org empty or undefined\n') ;
             } else {
                html_str = html_str.concat('<tr>') ;         
             }                  
@@ -428,6 +428,10 @@ jsonFiles.forEach((file) => {
          fileNamePath = 'data/html/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
          fs.writeFileSync(fileNamePath, dom.serialize() ) ;
          console.log('html data written: ', dom.serialize().length, ' bytes') ;
+
+         //write log file
+         fileNamePath = 'data/txt/register/log/log_register.txt' ;
+         fs.writeFileSync(fileNamePath, log_data ) ;         
 
          //remove appended html
          $('html').find('body *').remove() ;
