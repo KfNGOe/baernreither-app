@@ -20,6 +20,7 @@ CONSTRUCT {
                 kfngoeo:start ?start_nr_target ;
             	kfngoeo:end ?end_nr_target ;
             ] ;
+            #uri for the main index element in the text
             kfngoeo:hasSelector ?s_start ;
         ] ;
 		kfngoeo:hasBody ?_bn_body 
@@ -106,7 +107,7 @@ WHERE {
             .
             FILTER(CONTAINS(?o_pos_term_start, ?title_short))
             BIND(xsd:integer(substr(?o_pos_term_start,strlen(?title_short)+2)) AS ?o_pos_term_start_nr)
-            BIND(concat(?title_short, '_', str(?o_pos_term_start_nr-1)) AS ?o_pos_start)
+            BIND(concat(?title_short, '_', str(?o_pos_term_start_nr-1)) AS ?o_pos_start)            
             ?s_start
                 a kfngoeo:StartTag ;
 				kfngoeo:elementName tei:index ;	

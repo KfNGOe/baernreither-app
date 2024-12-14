@@ -56,13 +56,21 @@ for file in $inputDir_reg*.ttl; do
         export path_out='./data/ttl/annotation/anno_web/instance/'
         if [[ "$file" = *"register_index"*  ]]
         then
+            echo "build anno index ttl"
             export file_rq='annoIndex'
             export file_out='annoIndexi'
+            export ext_out='.ttl'        
+            ./gdb_queryRepo.sh
+
+            echo "build anno index sub ttl"                
+            export file_rq='annoIndexSub'
+            export file_out='annoIndexSubi'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
         fi
         if [[ "$file" = *"register_org"*  ]]
         then
+            echo "build anno org ttl"
             export file_rq='annoOrg'
             export file_out='annoOrgi'
             export ext_out='.ttl'        
@@ -70,6 +78,7 @@ for file in $inputDir_reg*.ttl; do
         fi
         if [[ "$file" = *"register_person"*  ]]
         then
+            echo "build anno person ttl"
             export file_rq='annoPerson'
             export file_out='annoPersoni'
             export ext_out='.ttl'        
@@ -77,6 +86,7 @@ for file in $inputDir_reg*.ttl; do
         fi
         if [[ "$file" = *"register_place"*  ]]
         then
+            echo "build anno place ttl"
             export file_rq='annoPlace'
             export file_out='annoPlacei'
             export ext_out='.ttl'        
@@ -86,7 +96,7 @@ for file in $inputDir_reg*.ttl; do
 done
 
 echo "clear graphdb"
-#./gdb_clearRepo.sh
+./gdb_clearRepo.sh
 
 echo build anno register json
 echo read files from anno directory
@@ -112,55 +122,54 @@ for file in $inputDir_anno*.ttl; do
             export path_out='./data/json/anno/'
             if [[ "$file" = *"Indexi.ttl" ]]
             then               
-                echo "Import register files"                
-                ./gdb_importFile.sh
-                echo "Import register files done!"
+                echo "Import index ttl file"                
+                ./gdb_importFile.sh                
 
-                echo "build anno register json"                                
+                echo "build anno index json"                                
                 export file_rq='annoIndex_json'
                 export file_out='annoIndex'
                 export ext_out='.json'
+                ./gdb_queryRepo.sh                
+
+                echo "build anno index sub json"                                
+                export file_rq='annoIndexSub_json'
+                export file_out='annoIndexSub'
+                export ext_out='.json'
                 ./gdb_queryRepo.sh
-                echo "build anno register json done!"
+                
             fi
             if [[ "$file" = *"Orgi.ttl" ]]
             then
-                echo "Import register files"                
-                ./gdb_importFile.sh
-                echo "Import register files done!"
+                echo "Import anno org ttl file"                
+                ./gdb_importFile.sh                
                 
-                echo "build anno register json"                                
+                echo "build anno org json"
                 export file_rq='annoOrg_json'
                 export file_out='annoOrg'
                 export ext_out='.json'
-                ./gdb_queryRepo.sh
-                echo "build anno register json done!"
+                ./gdb_queryRepo.sh                
             fi
             if [[ "$file" = *"Personi.ttl" ]]
             then
-                echo "Import register files"                
+                echo "Import anno person ttl file"                
                 ./gdb_importFile.sh
-                echo "Import register files done!"
-                
-                echo "build anno register json"                                
+                                
+                echo "build anno person json"                                
                 export file_rq='annoPerson_json'
                 export file_out='annoPerson'
                 export ext_out='.json'
-                ./gdb_queryRepo.sh
-                echo "build anno register json done!"
+                ./gdb_queryRepo.sh                
             fi
             if [[ "$file" = *"Placei.ttl" ]]
             then
-                echo "Import register files"                
+                echo "Import anno place ttl file"
                 ./gdb_importFile.sh
-                echo "Import register files done!"
-                
-                echo "build anno register json"                                
+                                
+                echo "build anno place json"                                
                 export file_rq='annoPlace_json'
                 export file_out='annoPlace'
                 export ext_out='.json'
-                ./gdb_queryRepo.sh
-                echo "build anno register json done!"
+                ./gdb_queryRepo.sh                
             fi
         fi
     fi

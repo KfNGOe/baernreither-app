@@ -10,9 +10,8 @@ inputDir_tmp="data/ttl/annotation/anno_web/instance/tmp/"
 #make tmp dir
 mkdir -p $inputDir_tmp
 #copy files to tmp dir
-cp $inputDir*annoAbbri.ttl $inputDir*annoAppi.ttl $inputDir*annoDeli.ttl $inputDir*annoIndexSubi.ttl $inputDir*annoNotei.ttl $inputDir_tmp
-
-##### $inputDir*annoIndexSubi.ttl weglassen? checken #####
+cp $inputDir*annoAbbri.ttl $inputDir*annoAppi.ttl $inputDir*annoDeli.ttl $inputDir*annoNotei.ttl $inputDir_tmp
+#$inputDir*annoIndexSubi.ttl 
 
 for file in $inputDir_tmp*.ttl; do
   #echo "$file"

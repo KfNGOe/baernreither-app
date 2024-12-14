@@ -39,7 +39,7 @@ export ext_out='.ttl'
 ./gdb_queryRepo.sh
 
 echo "clear graphdb"
-#./gdb_clearRepo.sh
+./gdb_clearRepo.sh
 
 echo "import ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
