@@ -28,6 +28,8 @@ for file in $inputDir*.ttl; do
     fi
 done
 
+read -n 1 
+
 echo "build anno text compare ttl"
 export mime_type='text/turtle'
 export query_type='CONSTRUCT'
@@ -37,6 +39,8 @@ export path_out='./data/ttl/annotation/anno_web/instance/'
 export file_out='annoTextCompi'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
+
+read -n 1 
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
