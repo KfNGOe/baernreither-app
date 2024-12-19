@@ -4,7 +4,7 @@ const tokenOffset = 3 ;
 const spaceMax = 5 ;
 
 var text_in ;
-var textData_in ;
+var text_mdata_in ;
 var fullTextAll = {} ;
 var allTexts = {} ;
 var fullTexts = {} ;
@@ -198,22 +198,20 @@ $( function() {
       let filepath = './staticSearch/ssTokenString.txt' ;
       text_in = await fetchData(filepath) ;
       //get text data
-      filepath = './data/json/textData.json' ;
-      textData_in = await fetchData(filepath) ;
+      filepath = './data/json/text_mdata.json' ;
+      text_mdata_in = await fetchData(filepath) ;
       //get all texts
-      let textData_arr = textData_in.results.bindings
-      textData_arr.forEach(async function(result, index) {          
+      let text_mdata_arr = text_mdata_in.results.bindings
+      text_mdata_arr.forEach(async function(result, index) {          
         filepath = './data/json/all/' + result.fileName ;
         allTexts[result.fileName] = await fetchData(filepath) ;
       });
       //get full texts
-      textData_arr.forEach(async function(result, index) {
+      text_mdata_arr.forEach(async function(result, index) {
         let fileName_full = result.fileName.replace('_all', '_full') ;          
         filepath = './data/json/full/' + fileName_full ;
         fullTexts[fileName_full] = await fetchData(filepath) ;
       });      
-      //filepath = './data/json/full/fullTextAll_tmp.json' ;
-      //fullTextAll = await fetchData(filepath) ;      
       searchFinishedHook(1);
   })() ;
 }) ;

@@ -506,6 +506,10 @@ window.addEventListener('load', function() {
 	  }
 	  if (num == 2) {
 		ssMark() ;		
+	  }
+	  if (num == 3) {
+		//remove markedHits from text
+		$('mark').contents().unwrap() ;
 	  }        
 	}
   }) ;
@@ -744,7 +748,9 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			setPage(pageNr, boxSide) ;
 			
 		}
-		$('a.anchor').hide() ;
+		$('a.anchor').hide() ;				
+		//set hook for removing marked hits
+		synFinishedHook(3);		
 	}
 }) ;
 
@@ -818,7 +824,9 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			console.log( "facs clicked!" ) ;
 		} else {
 			alert('Please select a work!') ;
-		}		
+		}
+		//set hook for removing marked hits
+		synFinishedHook(3);
 	}
 }) ;
 
@@ -885,6 +893,8 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		} else {
 			alert('Please select a work!') ;
 		}
+		//set hook for removing marked hits
+		synFinishedHook(3);
 	}
 }) ;
 

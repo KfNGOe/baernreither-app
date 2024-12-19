@@ -412,9 +412,10 @@ jsonFiles.forEach((file) => {
       }) ;
       //build html string
       buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) ;
-      //write html strings to file
+      //write html
       //exclude indexsub
       if (!fileName.toLowerCase().includes('indexsub')) {   
+         //write html strings to text file   
          let fileNamePath = 'data/txt/register/register_table_' + fileName + '.txt' ;    
          fs.writeFileSync(fileNamePath, html_str ) ;
          console.log('html data written: ', html_str.length, ' bytes') ;

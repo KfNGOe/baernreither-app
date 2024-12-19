@@ -677,7 +677,7 @@ jsonFiles.forEach((file) => {
    //build html strings   
    buildAllText(jsonJs_in_all, groupedBy_files) ;
    //write html strings to files
-   fileNamePath = 'data/txt/' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_all_html.txt  
+   fileNamePath = 'data/txt/text' + file.replace('.json', '_html.txt') ;    //data/txt/Bae_TB_8_all_html.txt  
    fs.writeFileSync(fileNamePath, html_str ) ;  
    console.log('text data written: ', html_str.length, ' bytes')
    //convert html strings to html    

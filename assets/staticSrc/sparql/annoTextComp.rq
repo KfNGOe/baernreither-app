@@ -28,57 +28,20 @@ CONSTRUCT {
         ] ;         
     .
 }
-WHERE {
-    ?s_tei 
-        a kfngoeo:StartTag ;
-        kfngoeo:elementName tei:TEI ;
-        kfngoeo:elementPos ?o_pos_tei ;
-	.
-    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short_1)            
-    ?s_app 
-        a kfngoeo:StartTag ;
-        kfngoeo:elementName tei:app ;
-        kfngoeo:hasAttr [
-        	kfngoeo:attrName "from" ;
-            kfngoeo:attrValue ?o_app_from ; #xmlId of tei:anchor
-        ] ;
-        kfngoeo:hasAttr [
-        	kfngoeo:attrName "type" ;
-            kfngoeo:attrValue ?o_comp_status ;
-        ] ;
-        #kfngoeo:elementPos ?o_pos_app ;
-	.    
-    BIND(strafter(?o_app_from,'#') AS ?o_from)
-    FILTER(CONTAINS(?o_from, ?title_short_1))
-    OPTIONAL {
-    	?s_anch	        
-            kfngoeo:elementName tei:anchor ;
-            kfngoeo:hasAttr [
-                kfngoeo:attrName "xml:id" ;
-                kfngoeo:attrValue ?o_from ; #"Bae_TB_7_2060"
-            ] ;
-            kfngoeo:elementPos ?o_pos_from ; #"Bae_TB_7_123"
- 		.    
-    }
-    BIND(?title_short_1 AS ?title_body)
-    BIND(xsd:integer(substr(?o_pos_from,strlen(?title_body)+2)) AS ?start_nr_body)    
-    BIND(?o_comp_status AS ?comp_status)    
-    OPTIONAL {
-        BIND(IF(BOUND(?s_app), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
-    }
+WHERE {    
     {
-      SELECT ?s_app (MIN(?o_pos_nr_subtr) AS ?o_min) (?o_pos_app_start_nr - ?o_min AS ?start_nr_target) 
+      SELECT ?s_app_start (MIN(?o_pos_nr_subtr) AS ?o_min) (?o_pos_app_start_nr - ?o_min AS ?start_nr_target) 
         	(?o_pos_app_end_nr AS ?end_nr_target) (substr(?title_short,1,strlen(?title_short)-1) AS ?title_target)
         WHERE {
             #get element position of tei:TEI
-            ?s_tei_1 
+            ?s_tei 
                 a kfngoeo:StartTag ;
                 kfngoeo:elementName tei:TEI ;
-                kfngoeo:elementPos ?o_pos_tei_1 ;
+                kfngoeo:elementPos ?o_pos_tei ;
             .        
             #get short title from element position of tei:TEI
-            BIND(substr(?o_pos_tei_1,1,strlen(?o_pos_tei_1)-1) AS ?title_short)            
-            ?s_app 
+            BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)            
+            ?s_app_start 
                 a kfngoeo:StartTag ;
                 kfngoeo:elementName tei:app ;
                 kfngoeo:hasAttr [		
@@ -107,6 +70,34 @@ WHERE {
             BIND( (?o_pos_app_start_nr-?o_pos_anchor_nr) AS ?o_pos_nr_subtr)
             FILTER (?o_pos_nr_subtr > 0)        
         } 
-        GROUP BY ?s_app ?o_pos_app_start_nr ?o_pos_app_end_nr ?title_short      
+        GROUP BY ?s_app_start ?o_pos_app_start_nr ?o_pos_app_end_nr ?title_short      
+    }
+    ?s_app_start a kfngoeo:StartTag ;
+                 kfngoeo:elementPos ?o_pos_app ;
+                 kfngoeo:hasAttr [
+        			kfngoeo:attrName "from" ;
+                    kfngoeo:attrValue ?o_app_from ; #xmlId of tei:anchor
+        		 ] ;
+           		 kfngoeo:hasAttr [
+        		 	kfngoeo:attrName "type" ;
+            		kfngoeo:attrValue ?o_comp_status ;
+        		 ] ;
+	.
+    BIND(strafter(?o_app_from,'#') AS ?o_from)
+    OPTIONAL {
+    	?s_anch	        
+            kfngoeo:elementName tei:anchor ;
+            kfngoeo:hasAttr [
+                kfngoeo:attrName "xml:id" ;
+                kfngoeo:attrValue ?o_from ; 
+            ] ;
+            kfngoeo:elementPos ?o_pos_from ;
+		.
+    }
+    BIND(REPLACE(?o_pos_from, "(_[^_]+$)", "") AS ?title_body )
+    BIND(xsd:integer(substr(?o_pos_from,strlen(?title_body)+2)) AS ?start_nr_body)
+    BIND(?o_comp_status AS ?comp_status)    
+    OPTIONAL {
+        BIND(IF(BOUND(?s_app_start), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
     }
 }
