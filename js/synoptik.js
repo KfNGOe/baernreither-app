@@ -1,5 +1,6 @@
-var textData_in ;
-var annoCompData_in ;
+var text_mdata_in ;
+var textComp_mdata_in ;
+var annoTextCompData_in ;
 var regPersonData_in ;
 var regIndexData_in ;
 var textsAllData = {};
@@ -8,8 +9,10 @@ var markedHit ;
 var link ;
 var input_left = document.getElementById("page_input_left") ;
 var input_right = document.getElementById("page_input_right") ;
+var pageNrFacs ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
+let groupedByStartTarget = {} ;
 
 const arrow_left_left = document.getElementById("arrow-left_left") ;
 const arrow_right_left = document.getElementById("arrow-right_left") ;
@@ -34,7 +37,8 @@ const sleepUntil = async (f, timeoutMs) => {
   }
 
 synFinishedHook = function(num){} ;
-  
+
+//page scroll event
 function onContainerScroll(boxSide) {
 	let container = document.getElementById("auswahl-content-scroll_" + boxSide);
   
@@ -47,90 +51,122 @@ function onContainerScroll(boxSide) {
   
 	//get all page-locator
 	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
-  
-	//get current page
-	var currentPage = 0;
-	for (var i = 0; i < anchors.length; i++) {
-	  let anchor = anchors[i];
-	  if (scroll >= anchor.offsetTop) {
-		currentPage = anchor.id;
-	  }
+
+	//check if facs is active
+	let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+	if(facs == undefined) {	
+		//get current page	
+		var currentPage = 0;
+		for (var i = 0; i < anchors.length; i++) {
+			let anchor = anchors[i];
+			if (scroll >= anchor.offsetTop) {
+				currentPage = anchor.id;
+			}
+		}
+		if(currentPage === 0) {
+			currentPage = getPageNr(boxSide) ;
+		}
+		setPageNr(boxSide, currentPage);	
 	}
-	if(currentPage === 0) {
-		currentPage = getPageNr(boxSide) ;
-	}
-	setPageNr(boxSide, currentPage);
-  }
-input_left.addEventListener("keypress", function(event) {	
+}
+
+//input page number event left box
+input_left.addEventListener("keypress", function(event) {		
 	if (event.key === "Enter") {	  
 		event.preventDefault();
 		console.log("Enter pressed") ;
-		let pageNr = input_left.value ;
-		setPage(pageNr, 'left') ;
+		//check if facs is active
+		let facs = $('#auswahl-content-scroll_left div.facs').html() ;
+		if(facs == undefined) {
+			let pageNr = input_left.value ;
+			setPage(pageNr, 'left') ;
+		} else {
+			//get pageNr of facs
+			let pageNr = pageNrFacs ;
+			//set pageNr
+			setPageNr('left', pageNr) ;
+		}		
 	}
 });
+//input page number event right box
 input_right.addEventListener("keypress", function(event) {
 	if (event.key === "Enter") {
 		event.preventDefault();
 		console.log("Enter pressed") ;
-		let pageNr = input_right.value ;
-		setPage(pageNr, 'right') ;
+		//check if facs is active
+		let facs = $('#auswahl-content-scroll_right div.facs').html() ;
+		if(facs == undefined) {
+			let pageNr = input_right.value ;
+			setPage(pageNr, 'right') ;
+		} else {
+			//get pageNr of facs
+			let pageNr = pageNrFacs ;
+			//set pageNr
+			setPageNr('right', pageNr) ;
+		}		
 	}
 });
 
+//left arrow click event left box
 arrow_left_left.addEventListener("click", function() {
 	console.log("left arrow of left box clicked") ;
 	stepPage('left','left') ;
 }) ;
+//right arrow click event left box
 arrow_right_left.addEventListener("click", function() {	
 	console.log("right arrow of left box clicked") ;
 	stepPage('right','left') ;
 }) ;
+//left arrow click event right box
 arrow_left_right.addEventListener("click", function() {
 	console.log("left arrow of right box clicked") ;
 	stepPage('left','right') ;			
 }) ;
+//right arrow click event right box
 arrow_right_right.addEventListener("click", function() {
 	console.log("right arrow of right box clicked") ;
 	stepPage('right','right') ;	
 }) ;
 
+//step page
 window.stepPage = function(arrowDir, boxSide) {
-	//get all page-locator
-	let anchors = document.getElementsByClassName("pageLocator " + boxSide);
-
-	let pageNr = getPageNr(boxSide) ;
-	//check if pagenr is undefined
-	if(pageNr === '' || pageNr === undefined) {
-		return ;
-	} else {
-		//find index of pageNr in anchors
-		let index = 0 ;
-		for (var i = 0; i < anchors.length; i++) {
-			let anchor = anchors[i];
-			if (anchor.id == pageNr) {
-				index = i ;
-			}
-		}
-		//get next page
-		if(arrowDir === 'left') {
-			if(index === 0) {
-				return ;
-			} else {
-				let prevPage = anchors[index-1].id ;
-				setPage(prevPage, boxSide) ;	
-			}
+	let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+	if(facs == undefined) {
+		//get all page-locator
+		let anchors = document.getElementsByClassName("pageLocator " + boxSide);
+		let pageNr = getPageNr(boxSide) ;
+		//check if pagenr is undefined
+		if(pageNr === '' || pageNr === undefined) {
+			return ;
 		} else {
-			if(index === anchors.length-1) {
-				return ;
-			} else {
-				let nextPage = anchors[index+1].id ;
-				setPage(nextPage, boxSide) ;	
+			//find index of pageNr in anchors
+			let index = 0 ;
+			for (var i = 0; i < anchors.length; i++) {
+				let anchor = anchors[i];
+				if (anchor.id == pageNr) {
+					index = i ;
+				}
 			}
-		}	
-	}	
+			//get next page
+			if(arrowDir === 'left') {
+				if(index === 0) {
+					return ;
+				} else {
+					let prevPage = anchors[index-1].id ;
+					setPage(prevPage, boxSide) ;	
+				}
+			} else {
+				if(index === anchors.length-1) {
+					return ;
+				} else {
+					let nextPage = anchors[index+1].id ;
+					setPage(nextPage, boxSide) ;	
+				}
+			}	
+		}
+	}		
 }
-
+//set page
 window.setPage = function(page, boxSide) {
 	let container = document.getElementById("auswahl-content-scroll_" + boxSide) ;
 	let anchors = document.getElementsByClassName("pageLocator " + boxSide) ;
@@ -143,8 +179,27 @@ window.setPage = function(page, boxSide) {
 			console.log("set page to: ", page);
 		}
 	}	
-}  
+}
+//get page number
+window.getPageNr = function(boxSide) {
+	let pageNr = $( '#page_input_' + boxSide ).val() ;
+	return pageNr ;
+} ;
+//set page number
+window.setPageNr = function(boxSide,pageNr) {
+	$( '#page_input_' + boxSide ).val(pageNr) ;
+} ;
+//get page count
+window.getPageCount = function(boxSide) {
+	let pageCount = $( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text() ;
+	return pageCount ;
+} ;
+//set page count
+window.setPageCount = function(boxSide,pageCount) {
+	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
+} ;
 
+//fetch file
 window.fetchData = async function(filepath) {
 	try {        
 		const response = await fetch(filepath, {
@@ -165,16 +220,17 @@ window.fetchData = async function(filepath) {
 	}
   } ;
 
+//set box nav bar years items
 window.boxNavItems = function(li,date,groupedByTitle) {	
 	//get title
 	let dispTitle = li.text() ;		
 	let title = disp2ShortTitle(dispTitle) ;
-	//get textdata for title
-	let textData = groupedByTitle[title] ;
-	//get date of textData
+	//get text_mdata for title
+	let text_mdata = groupedByTitle[title] ;
+	//get date of text_mdata
 	let dateData ;
-	dateData = textData[0].date.includes('-') ? textData[0].date.substring(0, textData[0].date.indexOf('-')) : textData[0].date ;		
-	//check if date of textData is equal to clicked date
+	dateData = text_mdata[0].date.includes('-') ? text_mdata[0].date.substring(0, text_mdata[0].date.indexOf('-')) : text_mdata[0].date ;		
+	//check if date of text_mdata is equal to clicked date
 	if(dateData !== date) {
 		li.hide() ;
 	} else {
@@ -182,38 +238,19 @@ window.boxNavItems = function(li,date,groupedByTitle) {
 	}
 } ;
 
-//function to get transcription type
+//get transcription type
 window.getTransType = function(boxSide) {
 	let type = $( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a.active').attr('id') ;
 	type = type === undefined ? 'dipl' : type.replace('_' + boxSide, '') ;		
 	return type ;
 } ;
-
-//function to set transcription type
+//set transcription type
 window.setTransType = function(boxSide,type) {	
 	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a').removeClass('active') ;
 	$( '#trans_' + boxSide).siblings('ul.dropdown-menu').find('a#' + type + '_' + boxSide).addClass('active') ;
 } ;
 
-window.getPageNr = function(boxSide) {
-	let pageNr = $( '#page_input_' + boxSide ).val() ;
-	return pageNr ;
-} ;
-
-window.setPageNr = function(boxSide,pageNr) {
-	$( '#page_input_' + boxSide ).val(pageNr) ;
-} ;
-
-window.getPageCount = function(boxSide) {
-	let pageCount = $( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text() ;
-	return pageCount ;
-} ;
-
-window.setPageCount = function(boxSide,pageCount) {
-	$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;
-} ;
-
-//function to set download link
+//set download link
 window.setDownloadLink = function(workTitle,boxSide) {
 	//get file name
 	let fileName = workTitle + '.xml' ;	
@@ -226,14 +263,13 @@ window.setDownloadLink = function(workTitle,boxSide) {
 	$( 'div#box-' + boxSide + ' div.download-tab a.down-ttl' ).attr('href', filepath) ;
 } ;
 
-//function to get work
+//get work
 window.getWork = function(boxSide) {
 	let work = $( 'div#box-' + boxSide + ' div.page-skip div#work_' + boxSide +' span').attr('id') ;
 	work = work === undefined ? work : work.replace('work_' + boxSide + '_', '') ;	
 	return work ; 	
 }
-
-//function to set work
+//set work
 window.setWork = function(boxSide,workTitle) {
 	//convert short title to display title
 	dispTitle = short2DispTitle(workTitle) ;
@@ -247,15 +283,17 @@ window.setWork = function(boxSide,workTitle) {
 	$( '#works_' + boxSide + 'ul.dropdown-menu').find('a#' + workTitle + '_' + boxSide).addClass('active') ;		
 }
 
+//convert short title to display title
 window.short2DispTitle = function(short) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
 	}).title.display ;
 	title = title === undefined ? '' : title ;	
 	return title ;
 }
+//convert display title to short title
 window.disp2ShortTitle = function(disp) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.display === disp ;
 	}
 	).title.short ;
@@ -263,7 +301,7 @@ window.disp2ShortTitle = function(disp) {
 	return title ;
 }
 
-//function to insert work data in DOM
+//insert work data in DOM
 window.insertAllText = function(filepath,boxSide) {
 	(async () => {
 		//remove old data
@@ -271,20 +309,31 @@ window.insertAllText = function(filepath,boxSide) {
 		//get text data			
 		let content_str = textsAllData[filepath] ;
 		let content = $.parseHTML(content_str) ;
-		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(content) ;
-		//set dipl text style
-		displayDiplText(boxSide) ;
+		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).html(content) ;		
 		//add class boxside to class pageLocator
 		$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('span.pageLocator').addClass(boxSide) ;
 	})() ;
 }
-
-//function to insert Full text data in DOM
-window.insertFullText = function(boxSide) {
-	displayFullText(boxSide) ;
-	console.log( "insert full text!" ) ;
-} ;
-
+//get text data
+window.getText = function(boxSide, workTitle, pageNr, pageCount, transType) {
+    //set work title
+	setWork(boxSide,workTitle) ;
+	//set page number
+	setPageNr(boxSide, pageNr);
+	//set page count
+	setPageCount(boxSide, pageCount);
+	//set transcription type
+	setTransType(boxSide, transType);
+    try {
+        //insert all text data in DOM
+		let filePath = workTitle;
+		insertAllText(filePath, boxSide);        
+        console.log(`Content for ${workTitle} loaded into ${boxSide} box.`);
+    } catch (error) {
+        console.error('Error fetching text data:', error);
+    }
+}
+//display Dipl text
 window.displayDiplText = function(boxSide) {
 	$('div#box-' + boxSide + ' .abbr').show();      //show all elements with abbr class
     $('div#box-' + boxSide + ' .expan').hide();		//hide all elements with expan class
@@ -293,11 +342,13 @@ window.displayDiplText = function(boxSide) {
 
 	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "rgba(200, 190, 200, 0.2)" );
 
-	$('div#box-' + boxSide + ' .del').show();		
+	$('div#box-' + boxSide + ' .del').show();
+
+	$('div#box-' + boxSide + ' span[id*="note"].note').hide();
 
 	console.log( "display Dipl text!" ) ;
 } ;
-
+//display Full text
 window.displayFullText = function(boxSide) {
 	$('div#box-' + boxSide + ' .expan').show();      
     $('div#box-' + boxSide + ' .abbr').hide();
@@ -307,38 +358,74 @@ window.displayFullText = function(boxSide) {
 	$('div#box-' + boxSide + ' .addSpan').css( "background-color", "transparent" );
 
 	$('div#box-' + boxSide + ' .del').hide();
+
+	$('div#box-' + boxSide + ' span[id*="note"].note').hide();
 	
 	console.log( "display Full text!" ) ;
 } ;
-
-window.displayAnchors = function() {
+//display spans
+window.displaySpans = function(anchor, shortTitle_box, classname) {	
+	//get href of anchor
+	let href = anchor.attr('href') ;
+	if(href.includes(shortTitle_box) && anchor.hasClass(classname)) {		
+		//get id of anchor
+		let id = anchor.attr('id') ;
+		//extract pos from id
+		let pos_anch = id.substring(id.lastIndexOf('_')+1) ;
+		//extract short title from id
+		let shortTitle = (id.substring(0, id.lastIndexOf('_'))).replace('comp_', '') ;
+		//get start + end target pos in annoTextCompData
+		let itemTarget = {} ; 
+		groupedByStartTarget[pos_anch].forEach(function(item, index) {
+			if(item.source_target.value === shortTitle) {
+				itemTarget = item ;
+			}
+		}) ;
+		let startTarget = itemTarget.start_target.value ;
+		let endTarget = itemTarget.end_target.value ;
+		//get span elements between start and end target
+		let idTitle = 'text_' + shortTitle + '_' ;
+		let i_nxt = 0 ;
+		for (let i = startTarget; i < endTarget; i++) {
+			i_nxt = i + 1 ;
+			if(!(i_nxt === endTarget && i === startTarget)) {				
+				if(i === '386') {
+					console.log( "i: ", i ) ;
+				}					
+				let span = 'span.' + classname + '[id="' + idTitle + i + '"]' ;
+				let span_hit = $( span ) ;	
+				if(span_hit !== undefined) {
+					//highlight span
+					$( span ).css( "background-color", "#f7e0c7" ) ;						
+				}
+			}
+		}
+		//show anchor
+		let anchor_sel = $( 'a#' + id ) ;
+		$( anchor_sel ).show() ;
+	}	
+}
+window.displayAnchorsSpans = function(classname) {
 	//get work title of left box
 	let shortTitle_left = getWork('left') ;
 	//get work title of right box
-	let shortTitle_right = getWork('right') ;	
-	//hide all anchors
-	$( 'a.anchor' ).hide() ;
+	let shortTitle_right = getWork('right') ;		
 	//iterate over all anchors left
-	$( 'div#box-left a.anchor' ).each(function() {
-		let anchor = $( this ) ;
-		//get href of anchor
-		let href = anchor.attr('href') ;
-		if(href.includes(shortTitle_right)) {
-			$(this).show() ;			
-		}
+	$( 'div#box-left a.anchor' ).each(function() {		
+		let anchor = $( this ) ;		
+		//display spans			
+		displaySpans(anchor, shortTitle_right, classname) ;			
 	}) ;
-	//iterate over all anchors right
+	console.log( "display anchors and spans left done" ) ;
+	//iterate over all anchors right	
 	$( 'div#box-right a.anchor' ).each(function() {
-		let anchor = $( this ) ;
-		//get href of anchor
-		let href = anchor.attr('href') ;
-		if(href.includes(shortTitle_left)) {
-			$(this).show() ;
-		}
+		let anchor = $( this ) ;		
+		//display spans			
+		displaySpans(anchor, shortTitle_left, classname) ;		
 	}) ;
+	console.log( "display anchors and spans right done" ) ;	
 } ;
-
-//function to highlight search results
+//highlight search results
 window.ssMark = function() {
 	//check hash if text included
 	if(hash.includes('text_')) {		
@@ -401,6 +488,7 @@ window.ssMark = function() {
 	}
 } ;
 
+//load event
 window.addEventListener('load', function() {
 	synFinishedHook = function(num) {
 	  //console.log('hook nr: ', num) ;    
@@ -418,10 +506,15 @@ window.addEventListener('load', function() {
 	  }
 	  if (num == 2) {
 		ssMark() ;		
+	  }
+	  if (num == 3) {
+		//remove markedHits from text
+		$('mark').contents().unwrap() ;
 	  }        
 	}
   }) ;
 
+//document ready
 $( function() {
     console.log( "ready!" );
 	//get location #hash
@@ -446,11 +539,14 @@ $( function() {
 	//set years containing works
 	(async () => {		
 		//get text data
-		let filepath = './data/json/textData.json' ;
-		textData_in = await fetchData(filepath) ;				
+		let filepath = './data/json/text_mdata.json' ;
+		text_mdata_in = await fetchData(filepath) ;				
 		//get anno compare data
-		filepath = './data/json/annoCompData.json' ;
-		annoCompData_in = await fetchData(filepath) ;		
+		filepath = './data/json/textComp_mdata.json' ;
+		textComp_mdata_in = await fetchData(filepath) ;
+		//get anno text compare data
+		filepath = './data/json/anno/annoTextComp.json' ;
+		annoTextCompData_in = await fetchData(filepath) ;
 		//get index register data
 		filepath = './data/json/register/register_index.json' ;
 		regIndexData_in = await fetchData(filepath) ;		
@@ -481,10 +577,10 @@ $( function() {
 		file_txt = await fetchData(filepath) ;		
 		textsAllData['Bae_TB_8'] = file_txt ;
 
-		//get dates of textData
-		let textData_arr = textData_in.results.bindings ;		
+		//get dates of text_mdata
+		let text_mdata_arr = text_mdata_in.results.bindings ;		
 		let dateFile ;		
-		textData_arr.forEach(function(result, index) {
+		text_mdata_arr.forEach(function(result, index) {
 			if(result.date.includes('-')) {
 				dateFile = result.date.substring(0, result.date.indexOf('-')) ;
 			} else {
@@ -518,15 +614,12 @@ $( function() {
 			if(hash.includes('over_')) {
 				//get work title
 				let workTitle = hash.replace('#', '') ;			
-				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;
-				//workTitle = workTitle.substring(0,workTitle.lastIndexOf('_')) ;
-				//workTitle = workTitle + '_all.html'
+				workTitle = workTitle.substring(workTitle.indexOf('_')+1) ;				
 				setTransType('left','dipl') ;
-				//insert text data in DOM
-				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;				
-				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
+				//insert text data in DOM				
+				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;
 			} else {
-				//hash is from register or seach
+				//hash is from register or search
 				//set dummy link
 				link = $('<a>', {
 					id: 'hashDummy',
@@ -543,14 +636,10 @@ $( function() {
 				//check hash if text included
 				if(hash.includes('text_')) {
 					setTransType('left','full') ;
-				}		
+				}
+				//insert text data in DOM		
 				$( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu li a#' + workTitle + '_left' ).trigger('click') ;				
-				//TEST
-				//document.querySelector('#hashDummy').click();
-				console.log( "hashDummy clicked!" ) ;
-				//insert text data in DOM
-				//insertAllText('./data/txt/' + workTitle + '_all_html.txt','left') ;
-				//insertFullText('left') ;
+				console.log( "hashDummy clicked!" ) ;				
 				synFinishedHook(1);
 			}			
 		}		
@@ -570,8 +659,8 @@ $( 'div.synoptik-box nav.scroll-nav li a' ).on('click',function() {
 	//	$( 'div#' + parent + ' nav.scroll-nav li a' ).removeClass('active');
 	//	click.addClass('active');	
 	//}	
-	//group textdata by title short
-	let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short)
+	//group text_mdata by title short
+	let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short)
 	//check box side
 	let boxSide = parent.includes('left') ? 'left' : 'right' ; 		
 	//iterate over synoptik-nav items
@@ -600,39 +689,28 @@ $( 'div.synoptik-box div.werke-dropdown ul.dropdown-menu' ).on('click','li',func
 		let boxSide = id.includes('_left') ? 'left' : 'right' ;
 		//get work title
 		let workTitle = id.includes('_left') ? id.replace('_left', '') : id.replace('_right', '') ;
+		//get page number				
+		let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short) ;
+		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;		
 		//get number of pages
-		let pageCount = textData_in.results.bindings.find((item, index) => {
+		let pageCount = text_mdata_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle ;
-		}).pageCount ;
-		//put number of pages in DOM
-		$( 'div#box-' + boxSide + ' div.page-skip span#page_nr_' + boxSide ).text(pageCount) ;			
+		}).pageCount ;		
 		//get transcription type in nav-werke
-		let type = getTransType(boxSide) ;
-		type = type === undefined ? 'dipl' : type ;
-		//get file name
-		//let fileName = workTitle + '_all.html' ;	
-		let fileName = workTitle ;	
+		let transType = getTransType(boxSide) ;
+		transType = transType === undefined ? 'dipl' : transType ;
 		//get text data
-		//let filepath = './data/txt/' + fileName ;		
-		let filepath = fileName ;		
-		//set work
-		setWork(boxSide,workTitle) ;
-		//set page number				
-		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
-		let pageNr = groupedByTitle[workTitle][0].firstPageNr ;
-		setPageNr(boxSide,pageNr) ;
+		getText(boxSide, workTitle, pageNr, pageCount, transType) ;
+		//check transcription type
+		if(transType === 'dipl') {
+			//set dipl text style
+			displayDiplText(boxSide) ;			
+		} else {
+			//set full text style
+			displayFullText(boxSide) ;
+		}
 		//set download link
 		setDownloadLink(workTitle,boxSide) ;		
-		//set transcription type
-		setTransType(boxSide,type) ;		
-		if(type === 'dipl') {		
-			//insert all text data in DOM	
-			insertAllText(filepath,boxSide) ;		
-		} else {
-			//insert Full text data in DOM
-			insertAllText(filepath,boxSide) ;
-			insertFullText(boxSide) ;
-		}
 	}
 	//hide dropdown
 	click.parents('ul.dropdown-menu').removeClass('show') ;
@@ -650,12 +728,29 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		let boxSide = id_trans.includes('_left') ? 'left' : 'right' ;
 		let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
 		if(facs !== undefined) {
+			//remove facs
 			$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
 			//show old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;
-			displayDiplText(boxSide) ;
-			$('a.anchor').hide() ;
+			//get transcription type
+			let transType = getTransType(boxSide) ;
+			//check if transcription type is dipl
+			if(transType === 'dipl') {
+				//display dipl text
+				displayDiplText(boxSide) ;
+			} else {
+				//display full text
+				displayFullText(boxSide) ;
+			}			
+			//get page number
+			let pageNr = getPageNr(boxSide) ;
+			//set page
+			setPage(pageNr, boxSide) ;
+			
 		}
+		$('a.anchor').hide() ;				
+		//set hook for removing marked hits
+		synFinishedHook(3);		
 	}
 }) ;
 
@@ -683,19 +778,12 @@ $( 'div.synoptik-box div.nav-werke li.nav-item ul.dropdown-menu' ).on('click','l
 			let workTitle = getWork(boxSide) ;
 			//check worktitle
 			if(workTitle !== undefined && workTitle !== '') {
-				if(typeNew === 'dipl') {
-					//get file name
-					//let fileName = workTitle + '_all_html.txt' ;	
-					//let fileName = workTitle + '_all.html' ;	
-					let fileName = workTitle ;	
-					//get text data
-					//let filepath = './data/txt/' + fileName ;		
-					let filepath = fileName ;		
-					//insert all text data in DOM	
-					insertAllText(filepath, boxSide) ;
+				if(typeNew === 'dipl') {					
+					//display dipl text
+					displayDiplText(boxSide) ;						
 				} else {
-					//insert Full text data in DOM
-					insertFullText(boxSide) ;
+					//display full text
+					displayFullText(boxSide) ;					
 				}
 			} else {
 				alert('Please select a work!') ;				
@@ -713,15 +801,17 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 	//get id of element
 	let id_facs = click.attr('id') ;
 	//check if clicked element is a facs type
-	if(id_facs.includes('facs')) {
+	if(id_facs.includes('facs')) {		
 		//get box side
 		let boxSide = id_facs.includes('_left') ? 'left' : 'right' ;
 		//get work
 		let workTitle = getWork(boxSide) ;		
 		//check if work is selected
-		if(workTitle !== undefined && workTitle !== '') {
+		if(workTitle !== undefined && workTitle !== '') {			
 			//get page number
 			let pageNr = getPageNr(boxSide) ;
+			//save page number
+			pageNrFacs = pageNr ;
 			//get id of pb element
 			let facsId = $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).children('a').attr('href') ;
 			//remove #
@@ -730,15 +820,13 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').hide() ;
 			//insert facs data in DOM
 			let div = '<div class="facs"><img src="./data/img/' + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
-			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;
-			//scroll to facs element
-			//$( 'div#box-' + boxSide + ' div.auswahl-content-scroll' ).animate({
-			//	scrollTop: $( 'div#box-' + boxSide + ' div.auswahl-content' ).find('span.pb#' + pageNr).offset().top
-			//}, 1000) ;			
+			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;			
 			console.log( "facs clicked!" ) ;
 		} else {
 			alert('Please select a work!') ;
-		}		
+		}
+		//set hook for removing marked hits
+		synFinishedHook(3);
 	}
 }) ;
 
@@ -781,9 +869,17 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 		let workTitle = getWork(boxSide) ;		
 		//check if work is selected
 		if(workTitle !== undefined && workTitle !== '') {
-			console.log( "work selected!" ) ;			
+			console.log( "work selected!" ) ;
+			//check facs
+			let facs = $('#auswahl-content-scroll_' + boxSide + ' div.facs').html() ;
+			if(facs !== undefined) {
+				//remove facs
+				$('#auswahl-content-scroll_' + boxSide + ' div.facs').remove() ;
+				//show old text data content			
+				$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').show() ;				
+			}			
 			//group anno compare data by source target			
-			let groupedBySourceTarget = Object.groupBy(annoCompData_in.results.bindings, ({ source_target }) => source_target) ;
+			let groupedBySourceTarget = Object.groupBy(textComp_mdata_in.results.bindings, ({ source_target }) => source_target) ;
 			//get compare data
 			let compData = groupedBySourceTarget[workTitle] ;
 			let boxSide_opp = boxSide === 'left' ? 'right' : 'left' ;
@@ -793,12 +889,12 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			compData[0].source_body.forEach(function(result, index) {
 				let li = '<li><a class="dropdown-item" href="#" id="' + result + '_' + boxSide_opp + '">' + result + '</a></li>' ;
 				$( 'div#box-' + boxSide + ' a#text-comp_' + boxSide ).siblings('ul.dropdown-menu').append(li) ;
-			}) ;
-			//hide dropdown
-			//click.siblings('ul.dropdown-menu').removeClass('show') ;
+			}) ;			
 		} else {
 			alert('Please select a work!') ;
 		}
+		//set hook for removing marked hits
+		synFinishedHook(3);
 	}
 }) ;
 
@@ -811,60 +907,52 @@ $( 'div.synoptik-box div.nav-werke ul.dropdown-menu' ).on('click','li',function(
 	//get box side of parents
 	let boxSide_this = id_this.includes('_left') ? 'left' : 'right' ;	
 	//check if clicked element is a transcription type
-	if(id_this.includes('text-comp')) {
+	if(id_this.includes('text-comp')) {		
 		//check if back class is set
 		if (!click.hasClass('back')) {
 			//set back class
 			click.parent('ul').siblings('a').addClass('back') ;
-		}		
+		}
+		//get actual transcription type
+		let type_this = getTransType(boxSide_this) ;
+		//check if dipl type is selected
+		if(type_this === 'dipl') {			
+			//display full text data
+			displayFullText(boxSide_this) ;			
+			//change trans to full text
+			setTransType(boxSide_this,'full') ;			
+		}				
 		//get id
 		let id_opp = click.children('a.dropdown-item').attr('id') ;
 		//get opposite box side 
 		let boxSide_opp = id_opp.includes('_left') ? 'left' : 'right' ;
 		//get work title of opposite text
 		let workTitle_opp = id_opp.includes('_left') ? id_opp.replace('_left', '') : id_opp.replace('_right', '') ;
-		//get actual transcription type
-		let type_this = getTransType(boxSide_this) ;
-		//check if all type is selected
-		if(type_this === 'dipl') {			
-			//insert full text data in DOM	
-			insertFullText(boxSide_this) ;
-			//change trans to full text
-			setTransType(boxSide_this,'full') ;			
-		}
-		//insert compare text data in DOM
-		//get opposite file name
-		//let fileName_opp = workTitle_opp + '_all.html' ;
-		let fileName_opp = workTitle_opp ;
-		//get opposite text data
-		//let filepath_opp = './data/txt/' + fileName_opp ;
-		let filepath_opp = fileName_opp ;
-		//insert all text data in DOM
-		insertAllText(filepath_opp, boxSide_opp) ;
-		//insert full text data in DOM
-		insertFullText(boxSide_opp) ;
-		//set work
-		setWork(boxSide_opp,workTitle_opp) ;
-		//set page number				
-		let	groupedByTitle = Object.groupBy(textData_in.results.bindings, ({ title }) => title.short) ;
+		//get opposite page number
+		let	groupedByTitle = Object.groupBy(text_mdata_in.results.bindings, ({ title }) => title.short) ;
 		let pageNr_opp = groupedByTitle[workTitle_opp][0].firstPageNr ;
-		setPageNr(boxSide_opp,pageNr_opp) ;
-		//get number of pages
-		let pageCount_opp = textData_in.results.bindings.find((item, index) => {
+		//get number of opposite pages
+		let pageCount_opp = text_mdata_in.results.bindings.find((item, index) => {
 			return item.title.short === workTitle_opp ;
 		}).pageCount ;
-		//put number of pages in DOM
-		$( 'div#box-' + boxSide_opp + ' div.page-skip span#page_nr_' + boxSide_opp ).text(pageCount_opp) ;
-		//change trans to full text
-		setTransType(boxSide_opp,'full') ;
+		//get opposite transcription type
+		let transType_opp = 'full' ;
+		//get opposite text data
+		getText(boxSide_opp, workTitle_opp, pageNr_opp, pageCount_opp, transType_opp) ;
+		//display full opposite text data
+		displayFullText(boxSide_opp) ;				
 		//hide dropdown
 		click.parents('ul.dropdown-menu').removeClass('show') ;
 		//show compare buttons
 		$( 'div.compare-buttons' ).show() ;
-		console.log( "text comp clicked!" ) ;		
-	} 
+		console.log( "text comp clicked!" ) ;
+		//prepare compare data	
+		//group anno text compare data by start target
+		groupedByStartTarget = Object.groupBy(annoTextCompData_in.results.bindings, ({ start_target }) => start_target.value) ;		
+	}
 }) ;
-//check if one of other box buttons is clicked
+
+//check if one of the other box buttons is clicked
 $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 	console.log( "button clicked!" ) ;	
 	let click = $( this ) ;
@@ -889,56 +977,56 @@ $( 'div.synoptik-box ul.navbar-nav li.nav-item' ).on('click','a',function() {
 } ) ;
 
 //check if compare button is clicked
-$( 'div.compare-buttons .comp-equal' ).on('click',function() {
+$( 'div.compare-buttons .comp-equal' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
-	click.addClass('comp-selected');
-	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
-	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//select anchors to show
-	displayAnchors() ;
-	//show equal elements	
-	$( 'a.anchor.comp-span-equal' ).show();
-	$( 'a.anchor.comp-span-inequal' ).hide();
-	$( 'a.anchor.comp-span-not' ).hide();
-	//highlight equal elements
-	$( 'span.comp-span-equal' ).css( "background-color", "#f7e0c7" );
+	let className = 'comp-span-equal' ;
+	//make comp elements transparent
+	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
+	//hide all anchors
+	$( 'a.anchor' ).hide() ;
+	//select anchors to show and spans to highlight
+	displayAnchorsSpans(className) ;
+	//highlight equal button
+	click.addClass('comp-selected');
+	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
+	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');	
 }) ;		
-$( 'div.compare-buttons .comp-inequal' ).click(function() {
+$( 'div.compare-buttons .comp-inequal' ).on('click', function() {
 	console.log( this );
 	let click = $( this );
-	click.addClass('comp-selected');
-	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
-	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');
-	//select anchors to show
-	displayAnchors() ;
-	//show not equal elements	
-	$( 'a.anchor.comp-span-inequal' ).show();
-	$( 'a.anchor.comp-span-equal' ).hide();
-	$( 'a.anchor.comp-span-not' ).hide();	
-	//highlight not equal elements
-	$( 'span.comp-span-inequal' ).css( "background-color", "#f7e0c7" );
-	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
-	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
-}) ;
-$( 'div.compare-buttons .comp-not' ).click(function() {
-	console.log( this );
-	let click = $( this );
-	click.addClass('comp-selected');			
-	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
-	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');
-	//select anchors to show
-	displayAnchors() ;
-	//show missing elements
-	$( 'a.anchor.comp-span-not' ).show();
-	$( 'a.anchor.comp-span-equal' ).hide();
-	$( 'a.anchor.comp-span-inequal' ).hide();
-	//highlight missing elements
-	$( 'span.comp-span-not' ).css( "background-color", "#f7e0c7" );
+	let className = 'comp-span-inequal' ;
+	//make comp elements transparent
 	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
 	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
+	//hide all anchors
+	$( 'a.anchor' ).hide() ;
+	//select anchors to show and spans to highlight
+	displayAnchorsSpans(className) ;	
+	//highlight inequal button
+	click.addClass('comp-selected');
+	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
+	$( 'div.compare-buttons .comp-not' ).removeClass('comp-selected');	
+}) ;
+$( 'div.compare-buttons .comp-not' ).on('click', function() {
+	console.log( this );
+	let click = $( this );
+	let className = 'comp-span-not' ;
+	//make comp elements transparent
+	$( 'span.comp-span-equal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-inequal' ).css( "background-color", "transparent" );
+	$( 'span.comp-span-not' ).css( "background-color", "transparent" );
+	//hide all anchors
+	$( 'a.anchor' ).hide() ;
+	//select anchors to show
+	displayAnchorsSpans(className) ;
+	//highlight not button
+	click.addClass('comp-selected');
+	$( 'div.compare-buttons .comp-equal' ).removeClass('comp-selected');
+	$( 'div.compare-buttons .comp-inequal' ).removeClass('comp-selected');	
 }) ;
 
 //check if anchor is clicked
@@ -955,22 +1043,29 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	let id_pb = click.attr('id') ;
 	//get box side
 	let boxSide_this = click.parents('div.synoptik-box').attr('id').includes('left') ? 'left' : 'right' ;	
-	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;
+	let boxSide_opp = boxSide_this.includes('left') ? 'right' : 'left' ;	
 	//get work
-	let workTitle_this = getWork(boxSide_this) ;
-	setWork(boxSide_opp,workTitle_this) ;
+	let workTitle_this = getWork(boxSide_this) ;	
 	//get page number
-	let pageNr_this = id_pb ;
-	setPageNr(boxSide_opp,pageNr_this) ;
+	let pageNr_this = id_pb ;	
 	//get page count
-	let pageCount_this = getPageCount(boxSide_this) ;
-	setPageCount(boxSide_opp,pageCount_this) ;
+	let pageCount_this = getPageCount(boxSide_this) ;		
+	//get transcription type
+	let transType_this = 'dipl' ;	
+	//remove old text opposite content
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;	
+	//get text data
+	getText(boxSide_opp,workTitle_this,pageNr_this,pageCount_this,transType_this) ;
+	//display dipl text
+	displayDiplText(boxSide_opp) ;
+	//hide new text data content			
+	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').hide() ;
+	//save page number
+	pageNrFacs = pageNr_this ;	
 	//get id of pb element
 	let facsId = click.children('a').attr('href') ;
 	//remove #
 	facsId = facsId.replace('#', '') ;
-	//remove old text opposite content
-	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).find('*').remove() ;
 	//insert facs data in DOM
 	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
@@ -979,7 +1074,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 }) ;
 
 //check if linked entity in text is clicked
-$( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
+$( 'div.synoptik-box div.auswahl-content, div.synoptik-box div.meta-box' ).on('click','a',function() {
 	//find box of clicked element
 	let click = $( this ) ;
 	//get box side
@@ -995,7 +1090,19 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//check if note is clicked
 	if(href.includes('note')) {
 		html_str = html_str.concat(table_snips[0] + table_snips[1] + 'Anmerkung' + table_snips[2]) ;					
-		let note_text = $( '[href="' + href + '"] ~ span.note' ).text() ;		 
+		//let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).text() ;
+		//get trans type
+		let type = getTransType(boxSide) ;
+		if(type === 'dipl') {			
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.abbr' ).show() ;
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.expan' ).hide() ;
+			
+		} else {
+			//type is full
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.abbr' ).hide() ;
+			$( 'span.note[id="' + href.replace('#', '') + '"] span.expan' ).show() ;
+		}
+		let note_text = $( 'span.note[id="' + href.replace('#', '') + '"]' ).html() ;
 		html_str = html_str.concat(table_snips[3] + note_text + table_snips[4] + table_snips[5]) ;
 	}	
 	//check if register index is clicked
@@ -1161,4 +1268,13 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','a',function() {
 	//show meta box
 	$( 'div#box-' + boxSide + ' div.meta-box' ).show() ;
 	console.log( "register clicked!" ) ;
+}) ;
+
+//check if a click inside the text box occurs
+$( 'div.synoptik-box div.auswahl-content' ).on('click', function(event) {
+	//check if this cklick is not a click on a link
+	if (!$(event.target).closest('a').length) {
+		//remove meta box content
+		$( 'div.meta-box' ).find('*').remove() ;
+	}
 }) ;

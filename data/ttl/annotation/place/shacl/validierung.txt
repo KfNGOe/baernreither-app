@@ -1,5 +1,0 @@
-SHACL Apache Jena Konsole
-shacl validate --shapes customer-shapes.xml --data customer-object.xml > report-shacl.ttl
-
-SHACL Python Konsole
-pyshacl --shacl rectangle-shapes.xml -m -i rdfs -a -f human --output report-shacl.ttl rectangle-graph.xml

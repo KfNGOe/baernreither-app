@@ -1,7 +1,14 @@
 var html_str = '' ;
 
+//function to convert utf to char
+window.utf2char = function(text) {        
+    return text.replace(/U\+[0-9A-F]{4}/g, function(match) {
+        return utf2charMap[match] || match;
+    });
+}
+
 window.short2DispTitle = function(short) {
-	let title = textData_in.results.bindings.find((item, index) => {
+	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
 	}).title.display ;
 	title = title === undefined ? '' : title ;	
@@ -34,10 +41,12 @@ window.contextBefore = function(source, sourceFile, result_path) {
                 offset = result_path[0].instances[0].index ;
             } else {
                 if (!flagStart && startNr !== undefined) {                
+                    //convert utf of '.','/','"' in token to char
+                    item_hit.cont.value = utf2char(item_hit.cont.value) ;
                     //check if token has a '&quot;'
-                    if (item_hit.cont.value.includes('&quot;')) {
-                        item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
-                    }
+                    //if (item_hit.cont.value.includes('&quot;')) {
+                    //    item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
+                    //}
                     chN_pr = item_hit.cont.value.length ;
                     offset = chN_pr + result_path[0].instances[0].index - 2 ;
                 }        
@@ -52,8 +61,7 @@ window.contextBefore = function(source, sourceFile, result_path) {
             item_before = sourceFile.results.bindings[index_before] ;
             contextBefore = item_before.cont.value + contextBefore ;
             countSpace = (contextBefore.match(/\s/g) || []).length ;
-            index_before-- ;
-            //console.log('countSpace = ', countSpace) ;      
+            index_before-- ;            
             }
             if (countSpace > spaceMax) {      
             contextBefore_arr = contextBefore.split(" ") ;
@@ -102,14 +110,12 @@ window.contextAfter = function(source, sourceFile, result_path) {
                     offset = result_path[result_path.length-1].instances[0].index + 1 ;
                 }        
             }
-            //get context after end token
-            //check if token has a '&quot;'
-            if (item_hit.cont.value.includes('&quot;')) {
-                item_hit.cont.value = item_hit.cont.value.replaceAll('&quot;','"') ; //utf8 code for "
-            }
-            contextAfter =  item_hit.cont.value.substring(offset,chN_nxt) ; 
-            //contextAfter =  sourceFile.results.bindings[index_source].cont.value.substring(offset,chN_nxt) ; 
-            let countSpace = (contextAfter.match(/\s/g) || []).length ; //count spaces in contextBefore
+            //get context after end token            
+            //convert utf of '.','/','"' in token to char
+            item_hit.cont.value = utf2char(item_hit.cont.value) ;            
+            contextAfter =  item_hit.cont.value.substring(offset,chN_nxt) ;
+            //count spaces in contextBefore             
+            let countSpace = (contextAfter.match(/\s/g) || []).length ; 
             let item_after = {} ;
             let index_after = index_source + 1 ;
             let contextAfter_arr = [] ;
@@ -255,37 +261,28 @@ window.markedHit = function(source, sourceFile, result_path) {
 }
 //show search results after search
 window.showResults = function () {
-    (async () => {
-        console.log('showResults') ;
-        console.log('results: ', result_arr) ;
-        console.log('marked Hits ', markedHits_arr) ;
+    (async () => {        
         if (Array.isArray(result_arr) && result_arr.length) {
             let source_arr = [] ;
-            let textData_arr = textData_in.results.bindings ;            
+            let text_mdata_arr = text_mdata_in.results.bindings ;            
             //get path length
             let searchPathNr = result_arr.length ;
             for (i_path = 0; i_path < searchPathNr; i_path++) {
                 //check source of result path
-                textData_arr.forEach(function(textData, index) {
+                text_mdata_arr.forEach(function(text_mdata, index) {
                     //check which source contains the title
-                    result_arr[i_path][0].instances[0].pos.includes(textData.title.short) ? source_arr.push(textData.title.short) : '' ;
-                }) ;
-                //source_arr[i_path] = result_arr[i_path][0].instances[0].docId ; 
-                console.log('source_arr: ', source_arr) ;
+                    result_arr[i_path][0].instances[0].pos.includes(text_mdata.title.short) ? source_arr.push(text_mdata.title.short) : '' ;
+                }) ;                
             }
             //remove duplicates
-            source_arr = Array.from(new Set(source_arr)) ;
-            console.log('source_arr: ', source_arr) ;             
+            source_arr = Array.from(new Set(source_arr)) ;            
             //fetch source Files
             let sourceFile_arr = [] ;            
             let dispSource = '' ;
             for (let i_source = 0; i_source < source_arr.length; i_source++) {
                 let source = source_arr[i_source] ;                
-                sourceFile_arr.push(fullTexts[source + '_full.json']) ;    
-                //let fileNamePath = 'data/json/' + source + '_full.json' ;    //data/json/Bae_TB_8_full.json
-                //sourceFile_arr.push(await fetchData(fileNamePath)) ;                
-            }
-            //console.log('sourceFile_arr: ', sourceFile_arr) ;            
+                sourceFile_arr.push(fullTexts[source + '_full.json']) ;                    
+            }            
             //fill table data with source data            
             source_arr.forEach(function(source,index) {
                 dispSource = short2DispTitle(source) ;                
@@ -301,8 +298,7 @@ window.showResults = function () {
                         html_str = html_str.concat('<p>') ;
                         let contextBefore_str = contextBefore(source, sourceFile_arr[index], result_arr[i_path]) ;
                         let markedTokens_arr = markedHit(source, sourceFile_arr[index], result_arr[i_path]) ;
-                        markedHits_arr[i_path] = markedTokens_arr ;
-                        //href="synoptik.html#search_Bae_MF_6-1_144
+                        markedHits_arr[i_path] = markedTokens_arr ;                        
                         let hit = '<span class="search-highlight">' + '<a href="synoptik.html#text_' + markedHits_arr[i_path][0].pos + '" id="search_' + i_path + '">' + input_search + '</a>' + '</span>'
                         let contextAfter_str = contextAfter(source, sourceFile_arr[index], result_arr[i_path]) ;
                         html_str = html_str.concat(threeDots + contextBefore_str + hit + contextAfter_str + threeDots) ;

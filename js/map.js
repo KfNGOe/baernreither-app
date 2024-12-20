@@ -31,7 +31,7 @@ function setMarker(data) {
       continue;
     }
     let popup =
-      marker.B +
+      marker.A +
       "<br />" +
       "<b>Geo Names Id:</b><br /> " +
       '<div style="margin-left: 10px"><a href="' +
@@ -78,10 +78,10 @@ function setMarker(data) {
 function markerSelected(marker) {
   //is called when a marker is selected
 
-  console.log("marker_key", marker.B);
+  console.log("marker_key", marker.A);
   $(".toc_map").text(""); //clear the left side
 
-  $(".toc_map#name").text(marker.B); //set the place name in the toc
+  $(".toc_map#name").text(marker.A); //set the place name in the toc
   $(".toc_map#name_full").text(marker.D); //set the place details in the toc
   $(".toc_map#coordinates_lat").text(marker.Lat); //set the coordinates in the toc
   $(".toc_map#coordinates_long").text(marker.Long); //set the coordinates in the toc
