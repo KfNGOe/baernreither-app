@@ -76,7 +76,7 @@ function build_html(obj) {
    //console.log('result', length) ;
 } ;
 //read html template
-html = fs.readFileSync("data/html/register_table_temp.html", 'utf8') ;
+html = fs.readFileSync("data/html/register/register_table_temp.html", 'utf8') ;
 $('html').find('body').append(html) ;
 html = $('html').html() ;
 

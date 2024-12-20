@@ -55,4 +55,4 @@ search_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/suche.html', search_html ) ;
+fs.writeFileSync('data/html/suche.html', search_html ) ;

@@ -49,4 +49,4 @@ impressum_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/impressum.html', impressum_html ) ;
+fs.writeFileSync('data/html/impressum.html', impressum_html ) ;

@@ -1,40 +1,78 @@
 # bin/bash
 echo "copy assets"
 
+echo "remove html"
+rm -r html/
+echo "remove html done"
+
+echo "copy css"
+mkdir -p html/css/
+cp -r assets/css/ html/
+echo "copy css done"
+
+echo "copy data html"
+cp -r data/html/*.html html/
+echo "copy data html done"
+
+echo "copy data img"
+mkdir -p html/data/img/
+cp -r data/img/ html/data/
+echo "copy data img done"
+
+echo "copy data json"
+mkdir -p html/data/json/
+cp data/json/text_mdata.json html/data/json/
+cp data/json/textComp_mdata.json html/data/json/
+mkdir -p html/data/json/anno/
+cp data/json/anno/annoTextComp.json html/data/json/anno/
+mkdir -p html/data/json/register/
+cp data/json/register/register_index.json html/data/json/register/
+cp data/json/register/register_org.json html/data/json/register/
+cp data/json/register/register_person.json html/data/json/register/
+cp data/json/register/register_place.json html/data/json/register/
+cp data/json/register/register_place_temp.json html/data/json/register/
+mkdir -p html/data/json/all/
+cp -r data/json/all/ html/data/json/
+mkdir -p html/data/json/full/
+cp -r data/json/full/ html/data/json/
+echo "copy data json done"
+
+echo "copy data txt"
+mkdir -p html/data/txt/
+cp data/txt/text/*.txt html/data/txt/
+mkdir -p html/data/txt/register/
+cp data/txt/register/*.txt html/data/txt/register/
+echo "copy data txt done"
+
+echo "copy fonts"
+mkdir -p html/fonts/
+cp -r assets/fonts/ html/
+echo "copy fonts done"
+
+echo "copy images"
 mkdir -p html/images/
 mkdir -p html/images/favicons/
 cp -r assets/images/*.* html/images/
 cp -r assets/images/favicons/*.* html/images/favicons/
-mkdir -p html/css/
-cp -r assets/css/ html/
-mkdir -p html/data/json/
-cp -r data/json/ html/data/
-mkdir -p html/data/txt/
-cp -r data/txt/ html/data/
-cp -r data/ttl/ html/data/
-#cp -r data/html/biographie.html html/
-#cp -r data/html/datenschutz.html html/
-#cp -r data/html/editionsgeschichte.html html/
-#cp -r data/html/editionsrichtlinien.html html/
-#cp -r data/html/foerdernde.html html/
-#cp -r data/html/impressum.html html/
-#cp -r data/html/karte.html html/
-#cp -r data/html/uebersicht.html html/
-cp -r data/tei_xmlId html/data/
-#mkdir -p html/data/img/
-#cp -r data/img/ html/data/
-rm -r html/staticSearch/
+echo "copy images done"
+
+echo "copy js"
+mkdir -p html/js/
+cp -r assets/staticSrc/js/bootstrap.bundle.js html/js/
+cp -r assets/staticSrc/js/nav-control.js html/js/
+cp -r assets/staticSrc/js/index.js html/js/
+cp -r assets/staticSrc/js/register.js html/js/
+cp -r assets/staticSrc/js/synoptik.js html/js/
+cp -r assets/staticSrc/js/ssSearch.js html/js/
+cp -r assets/staticSrc/js/ssSearchShow.js html/js/
+cp -r assets/staticSrc/js/map.js html/js/
+cp -r assets/staticSrc/js/constants.js html/js/
+echo "copy js done"
+
+echo "copy staticSearch"
 mkdir -p html/staticSearch/
 cp -r staticSearch/stems html/staticSearch/
 cp -r staticSearch/ssTokenString.txt html/staticSearch/
-cp -r assets/staticSrc/js/bootstrap.bundle.js html/js
-cp -r assets/staticSrc/js/nav-control.js html/js
-cp -r assets/staticSrc/js/index.js html/js
-cp -r assets/staticSrc/js/register.js html/js
-cp -r assets/staticSrc/js/synoptik.js html/js
-cp -r assets/staticSrc/js/ssSearch.js html/js
-cp -r assets/staticSrc/js/ssSearchShow.js html/js
-cp -r assets/staticSrc/js/map.js html/js
-#cp -r assets/staticSrc/js/constants.js html/js
+echo "copy staticSearch done"
 
 echo "copy assets done"

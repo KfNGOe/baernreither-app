@@ -30,18 +30,7 @@ $('html').find('head').append('<script src="https://code.jquery.com/jquery-3.7.1
 $('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>') ;
 $('html').find('head').append('<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>') ;
 
-//insert title
-//read about file
-/*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-
-xmlDoc = $.parseXML( xml ) ,
-$xml = $( xmlDoc ),
-titleSub = $xml.find( "[type='sub']" ).text();
-
-$('html').find('head').append('<title>' + titleSub + '</title>') ;
-*/
 //build nav bar
-//var nav = navbar ;
 var header_nav_str = fs.readFileSync("assets/txt/partials/header-nav.txt", 'utf8');
 var header_nav = $.parseHTML(header_nav_str) ;
 $('html').find('header').replaceWith(header_nav) ;
@@ -52,16 +41,10 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build content of left box
-var content_left_str = fs.readFileSync("data/txt/Bae_TB_8_all_html.txt", 'utf8'); //data/txt/Bae_TB_8_all_html.txt
-var content_left = $.parseHTML(content_left_str) ;
 $('html').find(html_path_left).children().remove() ;
-//$('html').find(html_path_left).append(content_left) ;
 
 //build content of right box
-//var content_right_str = fs.readFileSync("data/txt/Bae_MF_6-2_all_html.txt", 'utf8'); //data/txt/Bae_MF_6-2_all_html.txt
-//var content_right = $.parseHTML(content_right_str) ;
 $('html').find(html_path_right).children().remove() ;
-//$('html').find(html_path_right).append(content_right) ;
 
 //build footer
 var footer_str = fs.readFileSync("assets/txt/partials/footer.txt", 'utf8');
@@ -71,6 +54,4 @@ $('html').find('footer').replaceWith(footer) ;
 synoptik_html = dom.serialize() ;
 
 //write html file
-//filepath = path_out_tei + filename + ext_xml ;
-//console.log(filepath);
-fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
+fs.writeFileSync('data/html/synoptik.html', synoptik_html ) ;

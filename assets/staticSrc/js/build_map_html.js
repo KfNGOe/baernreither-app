@@ -52,4 +52,4 @@ map_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/karte.html', map_html ) ;
+fs.writeFileSync('data/html/karte.html', map_html ) ;

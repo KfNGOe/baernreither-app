@@ -49,4 +49,4 @@ datenschutz_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/datenschutz.html', datenschutz_html ) ;
+fs.writeFileSync('data/html/datenschutz.html', datenschutz_html ) ;

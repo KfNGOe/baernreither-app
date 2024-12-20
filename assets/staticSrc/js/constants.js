@@ -103,5 +103,5 @@ const utf2charMap = {
 };
 
 //module export
-exports.char2utfMap = char2utfMap;
-exports.utf2charMap = utf2charMap;
+//exports.char2utfMap = char2utfMap;
+//exports.utf2charMap = utf2charMap;

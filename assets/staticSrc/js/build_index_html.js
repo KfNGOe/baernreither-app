@@ -68,4 +68,4 @@ index_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('html/index.html', index_html ) ;
+fs.writeFileSync('data/html/index.html', index_html ) ;

@@ -25,19 +25,7 @@ $('html').find('head').append(head) ;
 //build scripts
 $('html').find('head').append('<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>') ;
 $('html').find('head').append('<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>') ;
-    
 
-//insert title
-//read about file
-/*var xml = fs.readFileSync("data/meta/about.xml", 'utf8');
-
-
-xmlDoc = $.parseXML( xml ) ,
-$xml = $( xmlDoc ),
-titleSub = $xml.find( "[type='sub']" ).text();
-
-$('html').find('head').append('<title>' + titleSub + '</title>') ;
-*/
 //build nav bar
 //var nav = navbar ;
 var header_nav_str = fs.readFileSync("assets/txt/partials/header-nav.txt", 'utf8');
@@ -61,8 +49,5 @@ $('html').find('footer').replaceWith(footer) ;
 
 register_html = dom.serialize() ;
 
-
 //write html file
-//filepath = path_out_tei + filename + ext_xml ;
-//console.log(filepath);
-fs.writeFileSync('html/register.html', register_html ) ;
+fs.writeFileSync('data/html/register.html', register_html ) ;
