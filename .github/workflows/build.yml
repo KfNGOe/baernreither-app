@@ -1,6 +1,5 @@
 name: Build project
 
-
 on:
   #push:
   #  paths:      
@@ -25,52 +24,40 @@ jobs:
       #  with:
       #    node-version: "16.x"      
       - name: Install
-        run: |
-          set -e
+        run: |          
           sudo bash install.sh
       - name: Start graphdb
         run: |
-          set -e
           sudo bash gdb_start.sh &
       - name: Wait for graphdb
-        run: sudo bash gdb_ping.sh
+        run: |
+          sudo bash gdb_ping.sh
         shell: bash
       - name: Create repo
-        run: sudo bash gdb_createRepo.sh
+        run: |
+          sudo bash gdb_createRepo.sh
       - name: Get repo list
         run: |
-          set -e
           sudo bash gdb_getRepo.sh
       - name: build texts
         run: |
-          set -e
           sudo bash build_texts.sh
       - name: build register
         run: |
-          set -e
           sudo bash build_register.sh
       - name: build search
         run: |
-          set -e
           sudo bash build_ssSearch_all.sh
       - name: build html
         run: |
-          set -e
-          sudo bash build_html.sh
-      
+          sudo bash build_html.sh      
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"
       #    git config --global user.name "rh1967"
       #    git add data/ttl/text/          
       #    git commit -m "Update TTL files"
-      #    git push
-      #- name: Build ttl to ttl
-      #  run: sudo bash build_ttl2ttl.sh
-      #- name: Build ttl to json
-      #  run: sudo bash build_ttl2json.sh
-      #- name: Build json to html
-      #  run: sudo bash build_json2html.sh
+      #    git push      
       #- name: Pushes to baernreither-page
       #  uses: cpina/github-action-push-to-another-repository@main
       #  env:

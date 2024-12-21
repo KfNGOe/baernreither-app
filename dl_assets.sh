@@ -59,6 +59,8 @@ echo "copy images done"
 echo "copy js"
 mkdir -p html/js/
 cp -r assets/staticSrc/js/bootstrap.bundle.js html/js/
+cp -r assets/staticSrc/js/bootstrap.bundle.min.js html/js/
+cp -r assets/staticSrc/js/popper-init.js html/js/
 cp -r assets/staticSrc/js/nav-control.js html/js/
 cp -r assets/staticSrc/js/index.js html/js/
 cp -r assets/staticSrc/js/register.js html/js/
