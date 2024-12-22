@@ -1,0 +1,61 @@
+name: Build project
+
+on:
+  push:
+    paths:      
+      - "data/ttl/text/**"
+      - "data/xlsx/**"
+  
+
+jobs:
+  build_texts:
+    name: Build texts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: "11"
+          distribution: "adopt"           
+      - name: Install
+        run: |          
+          sudo bash install.sh
+      - name: Start graphdb
+        run: |
+          sudo bash gdb_start.sh &
+      - name: Wait for graphdb
+        run: |
+          sudo bash gdb_ping.sh
+        shell: bash
+      - name: Create repo
+        run: |
+          sudo bash gdb_createRepo.sh
+      - name: Get repo list
+        run: |
+          sudo bash gdb_getRepo.sh
+            
+      #- name: Commit files
+      #  run: |
+      #    git config --global user.email "richard.hoermann@inode.at"
+      #    git config --global user.name "rh1967"
+      #    git add data/ttl/text/          
+      #    git commit -m "Update TTL files"
+      #    git push      
+      #- name: Pushes to baernreither-page
+      #  uses: cpina/github-action-push-to-another-repository@main
+      #  env:
+      #    API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+      #  with:
+      #    source-directory: "html"
+      #    destination-github-username: "KfNGOe"
+      #    destination-repository-name: "baernreither-page"
+      #    user-email: baernreither-app@github.io
+      #    target-branch: main
+      #- name: Import data
+      #  run: sudo bash gdb_importFile.sh
+      #- name: Query data
+      #  run: sudo bash gdb_queryRepo.sh
+      #- name: build xml ID
+      #  run: sudo bash build_xmlId.sh
