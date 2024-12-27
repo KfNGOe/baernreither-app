@@ -1,10 +1,11 @@
 name: Build project
 
 on:
-  push:
-    paths:      
-      - "data/ttl/text/**"
-      - "data/xlsx/**"
+  #push:
+    #paths:      
+    #  - "data/ttl/text/**"
+    #  - "data/xlsx/**"
+  workflow_dispatch:
   
 
 jobs:
