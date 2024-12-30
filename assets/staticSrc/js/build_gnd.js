@@ -72,7 +72,7 @@ function getArray(arr) {
   
   //console.log('gndSets: ', gndSets) ;  
   
-  fs.writeFileSync('./data/ttl/annotation/person/instance/gnd/gnd.ttl', gndSets ) ;
+  fs.writeFileSync('./data/ttl/anno/person/instance/gnd/gnd.ttl', gndSets ) ;
   console.log('ttl data written: ', gndSets.length  , ' bytes')
   
 })() ;
@@ -83,5 +83,5 @@ var persons = jsonJS.Tabelle1 ;
 //console.log('jsonJS: ', persons[0]) ;
 getArray(persons) ;
 
-fs.writeFileSync('./data/ttl/annotation/person/instance/gnd/gnd.ttl', gndSets ) ;
+fs.writeFileSync('./data/ttl/anno/person/instance/gnd/gnd.ttl', gndSets ) ;
 */

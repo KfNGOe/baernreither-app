@@ -33,7 +33,7 @@ export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='annoDel'
-export path_out='./data/ttl/annotation/anno_web/instance/'
+export path_out='./data/ttl/anno/anno_web/instance/'
 export file_out='annoDeli'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
@@ -43,7 +43,7 @@ echo "clear graphdb"
 
 echo "import deli ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
-export pathName='data/ttl/annotation/anno_web/instance/'
+export pathName='data/ttl/anno/anno_web/instance/'
 export name='annoDeli'                
 ./gdb_importFile.sh
 

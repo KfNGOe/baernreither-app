@@ -13,7 +13,7 @@ dev-baernreither-app
 # Workflows
 ## Workflow texts
 ### conversion text xml to ttl
-/tei/*.xml -> build_tei2ttl.sh -> *.ttl<br>
+/tei/text/*.xml -> build_tei2ttl.sh -> *.ttl<br>
 
 ### conversion text ttl to json
 *.ttl -> build_texts_ttl2json.sh -> *_all.json<br>
@@ -63,7 +63,7 @@ register_id.json + register_*_tmp.json -> build_register_id_json.sh -> register_
 
 ## Workflow search
 ### tokenize full texts
-data/json/full/*_full.json -> build_ssTokenizer.sh -> ssTokens_tmp.json
+data/json/text/full/*_full.json -> build_ssTokenizer.sh -> ssTokens_tmp.json
 
 ### build all tokens
 ssTokens_tmp.json -> build_ssTokenAll.sh -> tokenAll_tmp.json
@@ -73,7 +73,7 @@ tokenAll_tmp.json -> build_ssStems.sh   -> /stems/*.json
                                         -> ssTokenString.txt
 
 ## build complete search
-data/json/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
+data/json/text/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
                                                     -> ssTokenString.txt
 
 
@@ -83,7 +83,7 @@ data/json/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
                                          -> data/html/*_all.html
 
 ### convert register json to html 
-data/json/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt
+data/json/text/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt
 
 
 # HTML Attribute values

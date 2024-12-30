@@ -64,7 +64,7 @@ else
                         #decode .ttl file
                         ./build_decodeUmlauts.sh
                         #decode .json file
-                        export pathName="./data/json/all/"
+                        export pathName="./data/json/text/all/"
                         export name="${name}_all"
                         export ext=".json"
                         ./build_decodeUmlauts.sh

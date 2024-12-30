@@ -362,14 +362,14 @@ function buildReg(jsonJs_reg_file,jsonJs_anno_file,textFull_files) {   //obj = r
 
 //get full texts
 //read json full directory
-let jsonFiles = fs.readdirSync('data/json/full/') ;
+let jsonFiles = fs.readdirSync('data/json/text/full/') ;
 //build full text from dipl text json files
 let textFull_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {   
    //read full text json files
    if(!file.includes('_tmp.json')) {
-      let fileNamePath = 'data/json/full/' + file ;   
+      let fileNamePath = 'data/json/text/full/' + file ;   
       let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
       console.log('json data read: ', json_in.length, ' bytes') ;
       let jsonJs_in_full = JSON.parse(json_in) ;   

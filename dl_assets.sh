@@ -31,10 +31,10 @@ cp data/json/register/register_org.json html/data/json/register/
 cp data/json/register/register_person.json html/data/json/register/
 cp data/json/register/register_place.json html/data/json/register/
 cp data/json/register/register_place_temp.json html/data/json/register/
-mkdir -p html/data/json/all/
-cp -r data/json/all/ html/data/json/
-mkdir -p html/data/json/full/
-cp -r data/json/full/ html/data/json/
+mkdir -p html/data/json/text/all/
+cp -r data/json/text/all/ html/data/json/
+mkdir -p html/data/json/text/full/
+cp -r data/json/text/full/ html/data/json/
 echo "copy data json done"
 
 echo "copy data txt"

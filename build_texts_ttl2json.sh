@@ -2,8 +2,8 @@ echo "convert text ttl to json"
 
 inputDir="data/ttl/text/"
 
-rm -rf ./data/json/all/*
-mkdir -p ./data/json/all
+rm -rf ./data/json/text/all/*
+mkdir -p ./data/json/text/all
 
 for file in $inputDir*.ttl; do  
   #check if file is no template
@@ -29,7 +29,7 @@ for file in $inputDir*.ttl; do
           #decode .ttl file
           ./build_decodeUmlauts.sh
           #decode .json file
-          export pathName="./data/json/all/"
+          export pathName="./data/json/text/all/"
           export name="${name}_all"
           export ext=".json"
           ./build_decodeUmlauts.sh

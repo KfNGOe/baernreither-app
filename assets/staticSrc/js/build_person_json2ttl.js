@@ -197,7 +197,7 @@ getArray(persons) ;
 //write ttl file
 //filepath = path_out_ttl + filename + ext_ttl ;
 //console.log(filepath);
-fs.writeFileSync('./data/ttl/annotation/person/instance/personi.ttl', ttl ) ;
+fs.writeFileSync('./data/ttl/anno/person/instance/personi.ttl', ttl ) ;
 
 //group by gnd
 //var personsGND = persons.groupBy(person => {

@@ -255,7 +255,7 @@ window.setDownloadLink = function(workTitle,boxSide) {
 	//get file name
 	let fileName = workTitle + '.xml' ;	
 	//get text data xml
-	let filepath = './data/tei_xmlId/' + fileName ;		
+	let filepath = './data/tei/text/' + fileName ;		
 	$( 'div#box-' + boxSide + ' div.download-tab a.down-xml' ).attr('href', filepath) ;
 	fileName = workTitle + '.ttl' ;	
 	//get text data ttl

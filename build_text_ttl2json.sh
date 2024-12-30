@@ -13,7 +13,7 @@ PATH_RQ='assets/staticSrc/sparql/'
 FILENAME_RQ='textAll_json'
 EXTENSION_RQ='.rq'
        
-PATH_OUT='./data/json/all/'
+PATH_OUT='./data/json/text/all/'
 #FILENAME_OUT=$name'_all'
 FILENAME_OUT="${FILENAME_IN}_all"
 EXTENSION_OUT='.json'

@@ -425,12 +425,12 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
 
 //get texts all
 //read json all directory
-let jsonFiles = fs.readdirSync('data/json/all/') ;
+let jsonFiles = fs.readdirSync('data/json/text/all/') ;
 let groupedAll_files = {} ;
 //iterate over dipl files
 jsonFiles.forEach((file) => {   
    //read text all json files   
-    let fileNamePath = 'data/json/all/' + file ;   
+    let fileNamePath = 'data/json/text/all/' + file ;   
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     console.log('json data read: ', json_in.length, ' bytes') ;
     let jsonJs_in_all = JSON.parse(json_in) ;

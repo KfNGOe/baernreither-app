@@ -29,7 +29,7 @@ done
 
 echo "build anno register ttl"
 echo read files from register directory
-inputDir_reg="data/ttl/annotation/register/instance/"
+inputDir_reg="data/ttl/anno/register/instance/"
 
 for file in $inputDir_reg*.ttl; do
   #echo "$file"
@@ -53,7 +53,7 @@ for file in $inputDir_reg*.ttl; do
         export mime_type='text/turtle'
         export query_type='CONSTRUCT'
         export path_rq='assets/staticSrc/sparql/'
-        export path_out='./data/ttl/annotation/anno_web/instance/'
+        export path_out='./data/ttl/anno/anno_web/instance/'
         if [[ "$file" = *"register_index"*  ]]
         then
             echo "build anno index ttl"
@@ -100,7 +100,7 @@ echo "clear graphdb"
 
 echo build anno register json
 echo read files from anno directory
-inputDir_anno="data/ttl/annotation/anno_web/instance/"
+inputDir_anno="data/ttl/anno/anno_web/instance/"
 
 for file in $inputDir_anno*.ttl; do
   #echo "$file"

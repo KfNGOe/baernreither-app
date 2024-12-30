@@ -1,6 +1,6 @@
 echo read files from tei directory
 
-inputDir="data/tei/"
+inputDir="data/tei/text/"
 
 for file in $inputDir*.xml; do
   #echo "$file"

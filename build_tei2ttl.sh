@@ -9,8 +9,8 @@ PATH_JSON_XMLID='./data/json_xmlId/'
 PATH_JSON_XMLJS='./data/json_xmlJs/'
 PATH_JSON_RDF='./data/json_rdf/'
 #PATH_TTL='./data/ttl/text/'
-#data/ttl/annotation/index
-PATH_TTL='./data/ttl/annotation/register/instance/'
+#data/ttl/anno/index
+PATH_TTL='./data/ttl/anno/register/instance/'
 
 FILENAME=$name
 #FILENAME='register_index'

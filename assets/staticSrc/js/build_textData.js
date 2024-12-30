@@ -38,14 +38,14 @@ let text_mdata_temp = jsonJs_in.results.bindings[0] ;
 delete text_mdata_results.results.bindings[0] ;
 text_mdata_results.results.bindings.shift() ;
 //read json all directory
-jsonFiles = fs.readdirSync('data/json/all/') ;
+jsonFiles = fs.readdirSync('data/json/text/all/') ;
 //iterate over all files
 jsonFiles.forEach((file,index_file) => {
     //write file name to text data
     let text_mdata_result = text_mdata_temp ;
     text_mdata_result.fileName = file ;    
     //read json all file
-    let fileNamePath = 'data/json/all/' + file ;   
+    let fileNamePath = 'data/json/text/all/' + file ;   
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     console.log('json data read: ', json_in.length, ' bytes') ;
     let text_all = JSON.parse(json_in) ;       

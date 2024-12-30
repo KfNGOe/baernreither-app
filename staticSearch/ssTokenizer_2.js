@@ -142,7 +142,7 @@ function buildTokens(fullTextAll,textFull_files) {
 
 //get full texts
 //read json full directory
-let jsonFiles = fs.readdirSync('data/json/full/') ;
+let jsonFiles = fs.readdirSync('data/json/text/full/') ;
 //build full text from dipl text json files
 let textFull_files = {} ;
 //iterate over dipl files
@@ -150,7 +150,7 @@ jsonFiles.forEach((file) => {
     //exclude _tmp.json files
     if (!file.includes('_tmp.json')) {
         //read full text json files
-        let fileNamePath = 'data/json/full/' + file ;   
+        let fileNamePath = 'data/json/text/full/' + file ;   
         let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
         console.log('json data read: ', json_in.length, ' bytes') ;
         let jsonJs_in_full = JSON.parse(json_in) ;   

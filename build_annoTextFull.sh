@@ -5,8 +5,8 @@ echo "clear graphdb"
 
 echo "import anno files to graphdb"
 echo read files from ttl tmp directory
-inputDir="data/ttl/annotation/anno_web/instance/"
-inputDir_tmp="data/ttl/annotation/anno_web/instance/tmp/"
+inputDir="data/ttl/anno/anno_web/instance/"
+inputDir_tmp="data/ttl/anno/anno_web/instance/tmp/"
 #make tmp dir
 mkdir -p $inputDir_tmp
 #copy files to tmp dir
@@ -39,7 +39,7 @@ export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='annoTextFull'
-export path_out='./data/ttl/annotation/anno_web/instance/'
+export path_out='./data/ttl/anno/anno_web/instance/'
 export file_out='annoTextFulli'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
@@ -49,7 +49,7 @@ echo "clear graphdb"
 
 echo "import anootextfulli ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
-export pathName='data/ttl/annotation/anno_web/instance/'
+export pathName='data/ttl/anno/anno_web/instance/'
 export name='annoTextFulli'                
 ./gdb_importFile.sh
 

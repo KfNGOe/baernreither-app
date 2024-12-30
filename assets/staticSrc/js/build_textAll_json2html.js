@@ -666,11 +666,11 @@ let groupedBy_files = {} ;
 groupedBy_files = groupAnnoFiles(jsonJs_anno_files) ;
 
 //read json all directory
-jsonFiles = fs.readdirSync('data/json/all/') ;
+jsonFiles = fs.readdirSync('data/json/text/all/') ;
 //iterate over files all
 jsonFiles.forEach((file) => {
    //read text all json files
-   let fileNamePath = 'data/json/all/' + file ;   
+   let fileNamePath = 'data/json/text/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_all = JSON.parse(json_in) ;

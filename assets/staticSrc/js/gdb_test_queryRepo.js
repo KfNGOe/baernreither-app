@@ -72,7 +72,7 @@ let body = '' ;
         // handle end of data
         console.log('end: ', body) ;        
         //fs.writeFileSync('./data/json/test.json', body, 'utf8') ;        
-        fs.writeFileSync('./data/ttl/annotation/anno_web/instance/annoPersoni_1.ttl', body, 'utf8') ;
+        fs.writeFileSync('./data/ttl/anno/anno_web/instance/annoPersoni_1.ttl', body, 'utf8') ;
         //console.log('json data written: ', body.length, ' bytes')
         console.log('ttl data written: ', body.length, ' bytes') ;
     }) ;

@@ -8,7 +8,7 @@ MIME_TYPE='text/turtle'
 echo "clear graphdb repo"
 endpoint=$ENDPOINT repo_name=$REPO_NAME node assets/staticSrc/js/gdb_clearRepo.js
 
-PATH_IN='./data/ttl/annotation/person/instance/'
+PATH_IN='./data/ttl/anno/person/instance/'
 FILENAME_IN='personi'
 EXTENSION_IN='.ttl'
 
@@ -16,7 +16,7 @@ echo "import file to graphdb repo"
 echo "import personi"
 endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
 
-PATH_IN='./data/ttl/annotation/anno_web/instance/'
+PATH_IN='./data/ttl/anno/anno_web/instance/'
 FILENAME_IN='annoPersoni'
 EXTENSION_IN='.ttl'
 

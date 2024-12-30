@@ -186,13 +186,13 @@ $( function() {
       //get all texts
       let text_mdata_arr = text_mdata_in.results.bindings
       text_mdata_arr.forEach(async function(result, index) {          
-        filepath = './data/json/all/' + result.fileName ;
+        filepath = './data/json/text/all/' + result.fileName ;
         allTexts[result.fileName] = await fetchData(filepath) ;
       });
       //get full texts
       text_mdata_arr.forEach(async function(result, index) {
         let fileName_full = result.fileName.replace('_all', '_full') ;          
-        filepath = './data/json/full/' + fileName_full ;
+        filepath = './data/json/text/full/' + fileName_full ;
         fullTexts[fileName_full] = await fetchData(filepath) ;
       });      
       searchFinishedHook(1);

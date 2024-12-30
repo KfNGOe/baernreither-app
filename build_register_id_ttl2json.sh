@@ -4,7 +4,7 @@ echo "clear graphdb"
 ./gdb_clearRepo.sh
 
 echo read files from ttl directory
-inputDir="data/ttl/annotation/register/instance/"
+inputDir="data/ttl/anno/register/instance/"
 
 for file in $inputDir*.ttl; do
   #echo "$file"

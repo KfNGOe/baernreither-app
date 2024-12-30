@@ -44,7 +44,7 @@ groupedBySource_annoFull = jsonJs_in_annoFull.results.bindings.groupBy( item => 
    return item.source_target.value ;
 } ) ;
 //read json all directory
-let jsonFiles = fs.readdirSync('data/json/all/') ;
+let jsonFiles = fs.readdirSync('data/json/text/all/') ;
 //build full text from all text json files
 let textFull_files = {} ;
 //iterate over *all files
@@ -54,7 +54,7 @@ jsonFiles.forEach((file) => {
    //init text full
    let text_full = JSON.parse(JSON.stringify(text_full_temp)) ;
    //read all text json files
-   let fileNamePath = 'data/json/all/' + file ;   
+   let fileNamePath = 'data/json/text/all/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_all = JSON.parse(json_in) ;
@@ -107,7 +107,7 @@ jsonFiles.forEach((file) => {
    //write full text to files
    //textFull_files[title_short + '_full'] = text_full ;   
    let fileName = title_short + '_full' ;
-   fileNamePath = 'data/json/full/' + fileName + '.json' ;
+   fileNamePath = 'data/json/text/full/' + fileName + '.json' ;
    let text_full_str = JSON.stringify(text_full) ; 
    fs.writeFileSync(fileNamePath, text_full_str, 'utf8') ;
    console.log('json data written: ', text_full_str.length, ' bytes') ;  
