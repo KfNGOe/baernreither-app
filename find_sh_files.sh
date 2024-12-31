@@ -11,9 +11,9 @@ find_sh_files() {
         # Add the found .sh file to the list
         all_files+=("$sh_file")
         # Uncomment the following lines for recursion
-        # if [[ -f "$sh_file" ]]; then
-        #     find_sh_files "$sh_file"
-        # fi
+        if [[ -f "$sh_file" ]]; then
+            find_sh_files "$sh_file"
+        fi
     done < <(grep -oP '\b\S+\.sh\b' "$file")
 }
 
