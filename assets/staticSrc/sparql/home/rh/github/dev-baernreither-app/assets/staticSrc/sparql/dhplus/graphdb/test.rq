@@ -1,0 +1,21 @@
+PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ( CONCAT(?name_dis, "test") AS ?cit )
+WHERE { 
+	?s  a dhpluso:Work ;
+        dhpluso:contribution ?s_contr ;
+    .
+    #works only if work dataset is connected with a person dataset    
+    OPTIONAL { ?s_contr a dhpluso:Contribution ;
+            		    dhpluso:agent ?s_agent ;
+                        dhpluso:role <http://id.loc.gov/vocabulary/relators/edt> ;
+			   .
+        	   ?s_agent a dhpluso:E21_Person ;
+            			dhpluso:P1_is_identified_by/rdfs:label ?name;			  			
+    		   .
+        	   BIND (CONCAT (?name, ": ") AS ?name_dis ) . 
+        	   FILTER (lang(?name) = "de") .
+               
+    }
+    FILTER (bound(?name)) .
+}

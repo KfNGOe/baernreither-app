@@ -1,0 +1,121 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+
+#import Text files + register files
+
+CONSTRUCT {
+    ?s_anno 	
+        a kfngoeo:AnnoPerson ;
+		rdfs:label "Annotation level of Person"@en ;
+		rdfs:isDefinedBy ?key ;        
+        kfngoeo:hasTarget 
+            [
+            kfngoeo:hasSource ?title_target ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr_target ;
+            	kfngoeo:end ?end_nr_target ;
+            ] ;
+            kfngoeo:hasSelector ?s_start ; 
+        ] ;
+		kfngoeo:hasBody ?_bn_body 
+    .
+    ?_bn_body
+            a kfngoeo:TextualBody;
+            kfngoeo:hasSource ?title_body ; 
+            kfngoeo:hasSelector ?_bn_body_selector ;
+            kfngoeo:hasSelector ?s_item ;	
+    .
+    ?_bn_body_selector
+        a kfngoeo:TextPositionSelector ;
+        kfngoeo:start ?start_nr_body ;
+    .
+}
+WHERE {    
+    {
+        SELECT DISTINCT ?s_item ?start_nr_body ?o_key_txt ?title_body
+        WHERE {
+            ?s_tei 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:TEI ;
+                kfngoeo:elementPos ?o_pos_tei ;
+                .            
+            BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+            ?s_item
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:item ;        
+                kfngoeo:elementPos ?o_pos_item ;
+                .
+            FILTER(CONTAINS(?o_pos_item, ?title_short))
+            BIND(xsd:integer(substr(?o_pos_item,strlen(?title_short)+2)) AS ?o_pos_item_nr)
+            BIND(concat(?title_short, '_', str(?o_pos_item_nr + 2)) AS ?o_pos_txt_nr)
+            ?s_txt 
+                a kfngoeo:Text ;
+                kfngoeo:hasContent ?o_key_txt ;
+                kfngoeo:elementPos ?o_pos_txt_nr ;
+                .            
+            BIND(?title_short AS ?title_body)
+            BIND(?o_pos_item_nr AS ?start_nr_body)
+        }        
+    }
+    OPTIONAL {
+        BIND (IF(BOUND(?o_key_txt), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing) AS ?s_anno)
+        BIND(IF(BOUND(?s_anno), BNODE(), ?nothing) AS ?_bn_body)
+        BIND(IF(BOUND(?s_anno), BNODE(), ?nothing) AS ?_bn_body_selector)
+    }
+    {
+        SELECT ?s_start ?o_key ?o_pos_start_nr ?o_pos_end_nr ?title_target
+		WHERE {            
+            ?s_tei_1 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:TEI ;
+                kfngoeo:elementPos ?o_pos_tei_1 ;
+            .
+            BIND(substr(?o_pos_tei_1,1,strlen(?o_pos_tei_1)-2) AS ?title_short)
+            ?s_text 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:text ;
+                kfngoeo:elementPos ?o_pos_text ;
+            .
+            FILTER(CONTAINS(?o_pos_text, ?title_short))
+            ?s_start 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:persName ;
+                kfngoeo:hasAttr [
+                    kfngoeo:attrName "key" ;
+                    kfngoeo:attrValue ?o_key ;
+                ] ;
+                kfngoeo:hasAttr [
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?xmlId;
+                ] ;
+                kfngoeo:elementPos ?o_pos_start ;
+            .
+            FILTER(CONTAINS(?o_pos_start, ?title_short))    
+            ?s_end 
+                a kfngoeo:EndTag ;
+                kfngoeo:elementName tei:persName ;		
+                kfngoeo:hasAttr [
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?xmlId;
+                ] ;
+                kfngoeo:elementPos ?o_pos_end ;    
+            .
+            BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)    
+            BIND(xsd:integer(substr(?o_pos_start,strlen(?title_short)+2)) AS ?o_pos_start_nr)        
+            FILTER(?o_pos_start_nr > ?o_pos_text_nr)
+            BIND(xsd:integer(substr(?o_pos_end,strlen(?title_short)+2)) AS ?o_pos_end_nr)            
+            BIND(?title_short AS ?title_target)
+        }
+    }
+    FILTER (?o_key = ?o_key_txt)
+    BIND(?o_key AS ?key)
+    BIND(?o_pos_start_nr AS ?start_nr_target)
+    BIND(?o_pos_end_nr AS ?end_nr_target)
+}
+ORDER BY ?o_key

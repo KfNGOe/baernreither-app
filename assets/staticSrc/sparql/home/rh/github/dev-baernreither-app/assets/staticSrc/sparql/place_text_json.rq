@@ -1,0 +1,40 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import Text files
+
+SELECT ?o_key_place ?o_pid_place ?o_pos_place
+WHERE {
+    ?s_tei a kfngoeo:StartTag ;
+           kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    ?s_text a kfngoeo:StartTag ;
+       kfngoeo:elementName tei:text ;
+       kfngoeo:elementPos ?o_pos_text ;
+	.
+    FILTER(CONTAINS(?o_pos_text, ?title_short))
+    BIND(xsd:integer(substr(?o_pos_text,strlen(?title_short)+2)) AS ?o_pos_text_nr)
+    ?s_place a kfngoeo:StartTag ;
+				kfngoeo:elementName tei:placeName ;
+                kfngoeo:hasAttr [
+                	kfngoeo:attrName "key" ;
+                    kfngoeo:attrValue ?o_key_place ;
+                ] ;
+                kfngoeo:elementPos ?o_pos_place ;
+			.
+    OPTIONAL {
+        ?s_place kfngoeo:hasAttr [
+            kfngoeo:attrName "ref" ;
+			kfngoeo:attrValue ?o_pid_place ;
+   		] ;                                   .
+    }    
+    BIND(xsd:integer(substr(?o_pos_place,strlen(?title_short)+2)) AS ?o_pos_place_nr)    
+    FILTER(?o_pos_place_nr > ?o_pos_text_nr)
+} GROUP BY ?o_key_place ?o_pid_place ?o_pos_place
+  ORDER BY ?o_key_place

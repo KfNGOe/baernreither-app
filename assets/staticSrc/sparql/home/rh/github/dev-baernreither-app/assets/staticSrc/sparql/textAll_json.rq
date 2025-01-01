@@ -1,0 +1,21 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+
+#import: Text files
+
+SELECT (?s_tei AS ?id) ?type ?name ?attr ?val ?cont ?pos
+WHERE { 
+	?s_tei a ?type ;        
+    	kfngoeo:elementPos ?pos ;
+    .   
+    OPTIONAL {
+        ?s_tei kfngoeo:elementName ?name ;
+               kfngoeo:hasAttr [
+					kfngoeo:attrName ?attr ;
+					kfngoeo:attrValue ?val ;
+		] ;
+    }
+    OPTIONAL {
+        ?s_tei kfngoeo:hasContent ?cont ;
+    }
+}

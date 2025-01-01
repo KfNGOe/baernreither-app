@@ -1,0 +1,128 @@
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dhpluso: <https://dhplus.sbg.ac.at/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX blcdf: <http://id.loc.gov/datatypes/>
+
+#result of the query are the volume nr in ?volnr and the work cited in ?cit of datatype string
+#SELECT ?name_dis
+SELECT DISTINCT ?volNr ?name ?mainTitle ?date ?member ?doi ?pdf ?pic ( CONCAT(?name_dis, ?mainTitle_dis, ?subTitle_dis, ?partNr_dis, ?partName_dis, ?respStmt_dis, ?provStmt_dis) AS ?cit )
+#?partNr
+?volNr_test
+
+WHERE
+{ 
+    ?s  a dhpluso:Work ;
+        dhpluso:hasInstance ?s_I ;
+        dhpluso:hasInstance/dhpluso:identifiedBy/rdf:value ?doi ;		                                                
+    .
+    OPTIONAL { ?s_contr_aut a dhpluso:Contribution ;
+                            ^dhpluso:contribution ?s ;
+            				dhpluso:agent ?s_agent ;
+                        	dhpluso:role <http://id.loc.gov/vocabulary/relators/aut> ;              				
+			   .
+        	   ?s_agent dhpluso:P1_is_identified_by/rdfs:label ?name;			  			
+    		   .
+        	   FILTER (lang(?name) = "de") .
+    }
+    OPTIONAL { ?s_contr_edt a dhpluso:Contribution ;
+                            ^dhpluso:contribution ?s ;
+            				dhpluso:agent ?s_agent ;
+                        	dhpluso:role <http://id.loc.gov/vocabulary/relators/edt> ;              				
+			   .
+        	   ?s_agent dhpluso:P1_is_identified_by/rdfs:label ?name;			  			
+    		   .
+        	   FILTER (lang(?name) = "de") .
+    }
+    BIND (IF (BOUND(?s_contr_aut), CONCAT (?name, ": "), "") AS ?name_dis ) .
+    
+    ?s_I a dhpluso:Instance ;
+        dhpluso:title/dhpluso:mainTitle ?mainTitle ;
+		dhpluso:hasSeries/dhpluso:seriesEnumeration ?volNr_source ;
+     	dhpluso:memberOf ?member ;
+	.
+    BIND ( CONCAT( UCASE(SUBSTR(?mainTitle,1,1)), SUBSTR(?mainTitle,2,STRLEN(?mainTitle)-1) ) AS ?mainTitle_conv ) .
+    BIND ( CONCAT (?mainTitle_conv, ". ") AS ?mainTitle_dis ) .
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:subtitle ?subTitle . }
+    BIND ( CONCAT( UCASE(SUBSTR(?subTitle,1,1)), SUBSTR(?subTitle,2,STRLEN(?subTitle)-1) ) AS ?subTitle_conv ) .
+    BIND (IF (BOUND(?subTitle), CONCAT (?subTitle_conv, ". "), "") AS ?subTitle_dis ) .
+    
+    BIND ( REPLACE(?volNr_source, "Band ", "", "i") AS ?volNr ) .
+    BIND (IF (CONTAINS(?volNr_source, ","), ?volNr_source, ?nothing) AS ?volNr_test ) .
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:partNumber ?partNr . }
+    BIND (IF (BOUND(?partNr), CONCAT (?partNr, ". "), "") AS ?partNr_dis ) .
+    
+    OPTIONAL { ?s_I dhpluso:title/dhpluso:partName ?partName . }
+    BIND ( CONCAT( UCASE(SUBSTR(?partName,1,1)), SUBSTR(?partName,2,STRLEN(?partName)-1) ) AS ?partName_conv ) .
+    BIND (IF (BOUND(?partName), CONCAT (?partName_conv, ". "), "") AS ?partName_dis ) .
+    
+    OPTIONAL { ?s_I dhpluso:responsibilityStatement ?respStmt_source . 
+        BIND ( IF( BOUND(?name) && BOUND(?s_contr_aut), REPLACE(?respStmt_source, STR(?name), "", "i"), ?respStmt_source) AS ?respStmt ) .    
+    }
+    BIND ( CONCAT( UCASE(SUBSTR(?respStmt,1,1)), SUBSTR(?respStmt,2,STRLEN(?respStmt)-1) ) AS ?respStmt_conv ) .
+    BIND (IF ( BOUND(?respStmt_source) && (?respStmt != ""), CONCAT (?respStmt_conv, ". "), "") AS ?respStmt_dis ) .
+    
+    OPTIONAL { ?s_I dhpluso:provisionActivityStatement ?provStmt . }
+    BIND (IF (BOUND(?provStmt), CONCAT (?provStmt, ". "), "") AS ?provStmt_dis ) . 
+    
+    OPTIONAL { 
+        ?s_I dhpluso:provisionActivity/dhpluso:date ?date . 
+        FILTER (datatype(?date) != blcdf:edtf )    
+    }
+    #OPTIONAL { ?s_I dhpluso:provisionActivity/dhpluso:agent ?publ . }
+        
+    OPTIONAL {
+        SELECT ?s ?pdf_nac         
+        WHERE {
+            ?s dhpluso:hasInstance/dhpluso:P67i_is_referred_to_by ?_pdf            
+			.
+            ?_pdf a dhpluso:E31_Document ;        	  			 
+                  rdf:value ?pdf_nac ;
+     		.           
+            FILTER(!STRSTARTS(STR(?pdf_nac), "AC"))            
+        }        
+    } .
+    OPTIONAL {
+        SELECT ?s ?pdf_ac                 
+        WHERE {
+            ?s dhpluso:hasInstance/dhpluso:P67i_is_referred_to_by ?_pdf
+            .
+            ?_pdf a dhpluso:E31_Document ;        	  			 
+                  rdf:value ?pdf_ac ;
+     		.            
+            FILTER(STRSTARTS(STR(?pdf_ac), "AC"))            
+        }        
+    } .    
+    BIND ( IF ( BOUND(?pdf_ac), ?pdf_ac, ?pdf_nac) AS ?pdf ) .
+    
+    OPTIONAL {
+        SELECT ?s ?img_nac        
+        WHERE {
+            ?s dhpluso:hasInstance/dhpluso:P67i_is_referred_to_by ?_img ;
+			.
+            ?_img a dhpluso:E38_Image ;        	  			 
+                  rdf:value ?img_nac ;
+     		.
+            FILTER(!STRSTARTS(STR(?img_nac), "AC"))
+        }        
+    } .
+    OPTIONAL {
+        SELECT ?s ?img_ac        
+        WHERE {
+            ?s dhpluso:hasInstance/dhpluso:P67i_is_referred_to_by ?_img ;
+			.
+            ?_img a dhpluso:E38_Image ;        	  			 
+                  rdf:value ?img_ac ;
+     		.
+            FILTER(STRSTARTS(STR(?img_ac), "AC"))
+        }        
+    } .
+    BIND ( IF ( BOUND(?img_ac), ?img_ac, ?img_nac) AS ?pic ) .    
+}
+
+
+#<author: ><mainTitle. ><subTitle .><partNumber .><partName .><responsibilityStatement .><provStmt .>
+
+#105 103 98 93 87 70 61 49 46 43 39 36 35 32 31 30 29 28 26 25 24 23 22 21 20 19 18 17 15 14 13 12 11 9 7 6 3 1
