@@ -11,11 +11,6 @@ const { group } = require("console");
 const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
-//Instantiate ShortUniqueId
-//const uid = new ShortUniqueId({ length: 10 });
-
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_txt=process.env.filepath_out_txt ;
 
 function posStr2Nr(posStr) {
    //let pos_tmp = posStr.substring(title_short.length + 1) ;   
