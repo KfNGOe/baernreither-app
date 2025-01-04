@@ -1,5 +1,10 @@
 echo "build texts"
 
+mkdir -p ./data/json/text/all/
+mkdir -p ./data/json/text/full/
+mkdir -p ./data/ttl/anno/anno_web/instance/
+mkdir -p ./data/json/anno/
+
 echo "conversion texts ttl to json"
 ./build_texts_ttl2json.sh
 echo "conversion texts ttl to json done"
