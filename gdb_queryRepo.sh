@@ -23,5 +23,4 @@ FILEPATH_RQ=$PATH_RQ$FILENAME_RQ$EXTENSION_RQ
 FILEPATH_OUT=$PATH_OUT$FILENAME_OUT$EXTENSION_OUT
 
 echo "query graphdb repo"
-echo "query graphdb repo"
 endpoint=$ENDPOINT repo_name=$REPO_NAME mime_type=$MIME_TYPE query_type=$QUERY_TYPE filepath_rq=$FILEPATH_RQ filepath_out=$FILEPATH_OUT node assets/staticSrc/js/gdb_queryRepo.js
