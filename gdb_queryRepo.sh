@@ -1,5 +1,5 @@
 ENDPOINT='http://localhost:7200'
-REPO_NAME='kfngoe_test'
+REPO_NAME='kfngoe_baern'
 
 #MIME_TYPE='text/turtle'
 #QUERY_TYPE='CONSTRUCT'

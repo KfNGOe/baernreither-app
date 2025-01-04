@@ -5,23 +5,16 @@ const {GetQueryPayload, QueryType} = require('graphdb').query ;
 const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 
 const endpoint = process.env.endpoint ; // 'http://localhost:7200'
-const repo_name = process.env.repo_name ; // 'kfngoe_test'
+const repo_name = process.env.repo_name ; // 'kfngoe_baern'
 
-//const path_rq = process.env.path_rq ; // 'assets/staticSrc/sparql/'
-//const file_rq = process.env.file_rq ; // 'annoPerson_1.rq'
-//const ext_rq = process.env.ext_rq ; // '.rq'
 const filepath_rq = process.env.filepath_rq ;
 
-//const path_out = process.env.path_out ; // '.data/ttl/anno/anno_web/instance/'
-//const file_out = process.env.file_out ; // 'annoPersoni_1'
-//const ext_out = process.env.ext_out ; // '.ttl'
 const filepath_out = process.env.filepath_out ;
 
 const readTimeout = 60000 ;
 const writeTimeout = 60000 ;
 const config = new RepositoryClientConfig(endpoint)
-    .setEndpoints([ endpoint + '/repositories/' + repo_name])
-    //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')
+    .setEndpoints([ endpoint + '/repositories/' + repo_name])    
     .setReadTimeout(readTimeout)
     .setWriteTimeout(writeTimeout) ;    
     
@@ -69,9 +62,7 @@ let body = '' ;
         // handle data
         body += chunk;        
     }) ;
-    result.on('end', () => {
-        // handle end of data
-        //console.log('data: ', body) ;        
+    result.on('end', () => {        
         fs.writeFileSync(filepath_out, body, 'utf8') ;        
         console.log('data written: ', body.length, ' bytes') ;
     }) ;
