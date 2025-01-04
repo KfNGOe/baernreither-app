@@ -36,6 +36,9 @@ jobs:
       - name: Get repo list
         run: |
           sudo bash gdb_getRepo.sh
+      - name: build texts
+        run: |
+          sudo bash build_texts.sh
             
       #- name: Commit files
       #  run: |
