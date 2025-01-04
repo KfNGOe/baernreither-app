@@ -10,8 +10,11 @@ inputDir_tmp="data/ttl/anno/anno_web/instance/tmp/"
 #make tmp dir
 mkdir -p $inputDir_tmp
 #copy files to tmp dir
-cp $inputDir*annoAbbri.ttl $inputDir*annoAppi.ttl $inputDir*annoDeli.ttl $inputDir*annoNotei.ttl $inputDir_tmp
+cp $inputDir/annoAbbri.ttl $inputDir/annoAppi.ttl $inputDir/annoDeli.ttl $inputDir/annoNotei.ttl $inputDir_tmp
 #$inputDir*annoIndexSubi.ttl 
+
+echo "Checkpoint 1: check files in tmp dir"
+read -p "Press Enter to continue..."
 
 for file in $inputDir_tmp*.ttl; do
   #echo "$file"
