@@ -17,6 +17,10 @@ echo "build annotation levels"
 ./build_anno.sh
 echo "build annotation levels done"
 
+echo "build annotation levels for text compare"
+./build_annoCompData.sh
+echo "build annotation levels for text compare done"
+
 echo "build annotation levels for full texts"
 ./build_annoTextFull.sh
 echo "build annotation levels for full texts done"
