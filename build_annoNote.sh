@@ -3,23 +3,14 @@ echo "build anno note"
 echo "clear graphdb"
 ./gdb_clearRepo.sh
 
-echo "import anno files to graphdb"
-echo read files from ttl tmp directory
-inputDir="data/ttl/anno/anno_web/instance/"
-inputDir_tmp="data/ttl/anno/anno_web/instance/tmp/"
-#make tmp dir
-mkdir -p $inputDir_tmp
-#copy files to tmp dir
-cp $inputDir/annoAbbri.ttl $inputDir/annoAppi.ttl $inputDir/annoDeli.ttl $inputDir/annoNotei.ttl $inputDir_tmp
-#$inputDir*annoIndexSubi.ttl 
+echo "import text files to graphdb"
+echo read files from ttl directory
+inputDir="data/ttl/text/"
 
-echo "Checkpoint 1: check files in tmp dir"
-read -p "Press Enter to continue..."
-
-for file in $inputDir_tmp*.ttl; do
+for file in $inputDir*.ttl; do
   #echo "$file"
   #check if file is no template
-    if [[ "$file" = *"anno"*  ]]
+    if [[ "$file" = *"Bae_"*  ]]
     then
         echo "Found ttl: ${file}"
         pathname=$(dirname "$file")/        
@@ -37,36 +28,33 @@ for file in $inputDir_tmp*.ttl; do
     fi
 done
 
-echo "build anno full text ttl"
+echo "build anno note ttl"
 export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
-export file_rq='annoTextFull'
+export file_rq='annoNote'
 export path_out='./data/ttl/anno/anno_web/instance/'
-export file_out='annoTextFulli'
+export file_out='annoNotei'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
 
-echo "import anootextfulli ttl to graphdb"
+echo "import notei ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
 export pathName='data/ttl/anno/anno_web/instance/'
-export name='annoTextFulli'                
+export name='annoNotei'                
 ./gdb_importFile.sh
 
-echo "build anno text full json"
+echo "build anno note json"
 export mime_type='application/sparql-results+json'
 export query_type='SELECT'
 export path_rq='assets/staticSrc/sparql/'
-export file_rq='annoTextFull_json'
+export file_rq='annoNote_json'
 export path_out='./data/json/anno/'
-export file_out='annoTextFull'
+export file_out='annoNote'
 export ext_out='.json'
 ./gdb_queryRepo.sh
 
-#remove tmp dir
-rm -r $inputDir_tmp
-
-echo "build anno text full done"
+echo "build anno note done!"
