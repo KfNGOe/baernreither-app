@@ -256,8 +256,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
                 item_geo.Long = item_geo.Long === undefined ? '' : item_geo.Long;
                 place.long = item_geo.Long;
             }
-            place.pos = pos;
-            //console.log('place = ', place) ;
+            place.pos = pos;            
             places_json.results.bindings.push(place);
         } else {
             console.log('error: no key in place_text.json');
@@ -333,8 +332,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
                 
             } ;
             //pos
-            org.pos = pos;
-            //console.log('org = ', org) ;
+            org.pos = pos;            
             orgs_json.results.bindings.push(org);
         } else {
             console.log('error: no key in org_text.json');
@@ -408,6 +406,12 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
         }
     });
     
+    //write log files    
+    fs.writeFileSync('data/txt/register/log/log_person.txt', logData_person);
+    fs.writeFileSync('data/txt/register/log/log_place.txt', logData_place);
+    fs.writeFileSync('data/txt/register/log/log_org.txt', logData_org);
+    fs.writeFileSync('data/txt/register/log/log_index.txt', logData_index);
+
     //return json register files
     let json_reg_files = {};
     json_reg_files['register_person'] = persons_json;

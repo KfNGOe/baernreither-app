@@ -3,6 +3,7 @@ echo "build register"
 mkdir -p ./data/json/register/
 mkdir -p ./data/tei/register/
 mkdir -p ./data/ttl/anno/register/instance/
+mkdir -p .data/txt/register/log/
 
 
 echo "convert xlsx to json"
