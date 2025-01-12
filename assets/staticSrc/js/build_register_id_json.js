@@ -27,7 +27,11 @@ function buildId(jsonJs_reg_files) {
                 if (key.includes('index')) {
                     if (item.main !== undefined) {
                         let id =  groupedByKey[item.main][0].id.value ;
-                        item.id = id ;                        
+                        if (item.main[0] !== undefined) {
+                            item.id = id ;
+                        } else {
+                            console.log('register index item without element in item.main: ', item) ;                            
+                        }                        
                     } else {
                         console.log('register index item without main key: ', item) ;
                     }
