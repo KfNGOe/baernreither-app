@@ -407,13 +407,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
             logData_index = logData_index + 'error: no main term at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
-
-    //write log files    
-    fs.writeFileSync('data/txt/register/log/log_person.txt', logData_person);
-    fs.writeFileSync('data/txt/register/log/log_place.txt', logData_place);
-    fs.writeFileSync('data/txt/register/log/log_org.txt', logData_org);
-    fs.writeFileSync('data/txt/register/log/log_index.txt', logData_index);
-
+    
     //return json register files
     let json_reg_files = {};
     json_reg_files['register_person'] = persons_json;
