@@ -39,6 +39,9 @@ jobs:
       - name: build texts
         run: |
           sudo bash build_texts.sh
+      - name: build register
+        run: |
+          sudo bash build_register.sh
             
       #- name: Commit files
       #  run: |
