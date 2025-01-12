@@ -11,23 +11,6 @@ const { group } = require("console");
 const dom = new jsdom.JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
-//Instantiate ShortUniqueId
-//const uid = new ShortUniqueId({ length: 10 });
-
-const filepath_in_json=process.env.filepath_in_json ;
-const filepath_out_txt=process.env.filepath_out_txt ;
-
-function posStr2Nr(posStr) {
-   //let pos_tmp = posStr.substring(title_short.length + 1) ;   
-   let pos_tmp = +posStr.substring(posStr.lastIndexOf('_')+1) ;
-   return +pos_tmp ;
-}
-
-function posNr2Str(posNr, posStr) {
-   //let pos_tmp = title_short + '_' + posNr.toString() ;
-   let pos_tmp = posStr.substring(0, posStr.lastIndexOf('_')) + '_' + posNr.toString() ;   
-   return pos_tmp ;
-}
 
 //read compare data json file
 let json_in = fs.readFileSync('data/json/textComp_mdata_temp.json', 'utf8') ;
@@ -45,8 +28,7 @@ let annoCompTexts = JSON.parse(json_in) ;
 let groupedBySourceTarget = annoCompTexts.results.bindings.groupBy( item => {
     return item.source_target.value ;    
 } ) ;
-Object.keys(groupedBySourceTarget).forEach((key, index) => {
-    console.log(key) ;
+Object.keys(groupedBySourceTarget).forEach((key, index) => {    
     //add to data object
     textComp_mdata_temp.source_target = key ;  
 
