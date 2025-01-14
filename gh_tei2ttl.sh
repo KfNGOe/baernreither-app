@@ -3,11 +3,10 @@
 #this script checks the changes of the last commit
 #Only works in github actions env!
 
-echo starting tei to tei with xmlid transformation
+echo starting tei to ttl transformation
  
-inputDir="data/tei/"
-outputDir="data/tei_xmlId/"
-#changes="data/tei/Bae_TB_8.xml"
+inputDir="data/tei/tei_toBuild/"
+outputDir="data/tei/tei_built/"
 
 filesChanged=false;
 
