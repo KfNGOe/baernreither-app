@@ -256,7 +256,8 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
                 item_geo.Long = item_geo.Long === undefined ? '' : item_geo.Long;
                 place.long = item_geo.Long;
             }
-            place.pos = pos;            
+            place.pos = pos;
+            //console.log('place = ', place) ;
             places_json.results.bindings.push(place);
         } else {
             console.log('error: no key in place_text.json');
@@ -332,7 +333,8 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
                 
             } ;
             //pos
-            org.pos = pos;            
+            org.pos = pos;
+            //console.log('org = ', org) ;
             orgs_json.results.bindings.push(org);
         } else {
             console.log('error: no key in org_text.json');
@@ -405,7 +407,7 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
             logData_index = logData_index + 'error: no main term at xmlId ' + pos2xmlId(pos, groupedAll_files) + ' in teixml file' + '\n';
         }
     });
-    
+
     //write log files    
     fs.writeFileSync('data/txt/register/log/log_person.txt', logData_person);
     fs.writeFileSync('data/txt/register/log/log_place.txt', logData_place);

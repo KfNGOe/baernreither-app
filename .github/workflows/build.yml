@@ -2,11 +2,10 @@ name: Build project
 
 on:
   #push:
-    #paths:      
-    #  - "data/ttl/text/**"
-    #  - "data/xlsx/**"
+  #  paths:      
+  #    - "data/ttl/text/**"
+  #    - "data/xlsx/**"
   workflow_dispatch:
-  
 
 jobs:
   build_texts:
@@ -19,7 +18,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: "11"
-          distribution: "adopt"           
+          distribution: "adopt"
+      #- name: Set up Node.js
+      #  uses: actions/setup-node@v2
+      #  with:
+      #    node-version: "16.x"      
       - name: Install
         run: |          
           sudo bash install.sh
@@ -42,7 +45,12 @@ jobs:
       - name: build register
         run: |
           sudo bash build_register.sh
-            
+      - name: build search
+        run: |
+          sudo bash build_ssSearch_all.sh
+      - name: build html
+        run: |
+          sudo bash build_html.sh      
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"

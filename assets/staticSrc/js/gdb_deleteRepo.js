@@ -21,7 +21,7 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
 
 //delete a repository
 graphDBEndpoint.deleteRepository({
-        id: 'kfngoe_baern',        
+        id: 'kfngoe_test',        
     })
     .then((result) => {
         console.log(result);

@@ -1,0 +1,105 @@
+<main id="register">
+    <h1>Register</h1>
+    <div class="row">
+      <div class="col-12 mt-4 mb-5">
+        <form class="search-category">
+          <!--
+          <div class="cat-head">Suche nach</div>
+        -->
+          <fieldset>
+            <input type="radio" name="sel_reg" value="Person" id="search-person">
+            <label for="search-person"> Personen</label>
+
+            <input type="radio" name="sel_reg" value="Institution" id="search-institution">
+            <label for="search-institution"> Institutionen</label> 
+
+
+            <input type="radio" name="sel_reg" value="Ort" id="search-place">
+            <label for="search-person"> Orte</label> 
+
+            <input type="radio" name="sel_reg" value="Index" id="search-index">
+            <label for="search-index"> Index</label>
+          </fieldset>
+        </form> 
+        <!--
+        <div class="search-alphabet">
+          Suche per Auflistung nach Anfangsbuchstaben
+          <div class="letters"><a href="">A</a><a href="">B</a><a href="">C</a><a href="">D</a><a href="">E</a><a href="">F</a><a href="">G</a><a href="">H</a><a href="">I</a><a href="">J</a><a href="">K</a><a href="">L</a><a href="">M</a><a href="">N</a><a href="">O</a><a href="">P</a><a href="">Q</a><a href="">R</a><a href="">S</a><a href="">T</a><a href="">U</a><a href="">V</a><a href="">W</a><a href="">X</a><a href="">Y</a><a href="">Z</a></div>
+        </div> -->
+        <!-- 
+        <div class="search-input">          
+          <label for="suche">Suche per Eingabefeld</label> 
+          <input type="search" id="suche" placeholder="Begriff hier eingeben">
+           <button type="submit" class="btn">Absenden</button>
+        </div>
+        -->
+        <div>
+          <h2>Einträge</h2>
+          <div class="table-register" id="person">
+            <table class="table table-striped table-borderless table-sm ">
+              <thead>
+                  <tr>
+                      <th scope="col" style="display: none">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Lebensdaten</th>
+                      <th scope="col">Kurzbio/Berufliche Funktionen</th>
+                      <th scope="col">PID</th>
+                      <th scope="col">Erwähnt in</th>
+                  </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="table-register" id="org" style="display: none">
+            <table class="table table-striped table-borderless table-sm ">
+              <thead>
+                  <tr>
+                      <th scope="col" style="display: none">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">PID</th>
+                      <th scope="col"></th>                                            
+                      <th scope="col">Erwähnt in</th>
+                  </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="table-register" id="place" style="display: none">
+            <table class="table table-striped table-borderless table-sm ">
+              <thead>
+                  <tr>
+                      <th scope="col" style="display: none">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">heute</th>
+                      <th scope="col">PID</th>                      
+                      <th scope="col">Erwähnt in</th>
+                  </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="table-register" id="index" style="display: none">
+            <table class="table table-striped table-borderless table-sm ">
+              <thead>
+                  <tr>                      
+                      <th scope="col">Hauptbegriff</th>                      
+                      <th scope="col">Unterbegriff</th>                      
+                      <th scope="col">Erwähnt in</th>
+                  </tr>
+              </thead>
+              <tbody>                
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- /row -->
+
+  </main>

@@ -1,0 +1,21 @@
+<main>
+      <h1>Karte</h1>
+      <div class="row">
+        <div class="col-4 li-col-content">
+          <p>Bitte einen Ort auf der Karte auswählen</p>
+          <h2><span class="toc_map" id="name"></span></h2>
+          <p><span class="toc_map" id="name_full"></span></p>
+          <p>Koordinaten: </br>
+            Long: <span class="toc_map" id="coordinates_long"></span></br>
+            Lat: <span class="toc_map" id="coordinates_lat"></span></p>
+          <!-- <h2>Schreibweisen</h2> -->
+          <p><span class="toc_map" id="writings"></span></p>
+        </div>
+        <div class="col-8 ps-3">
+          <div class="col-lg-9 right-column pl-5 pr-0 flex-grow-1 flex-shrink-0">
+            <div id="map" style="width: 800px; height: 500px; border: 1px solid #aaa"></div>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </main>

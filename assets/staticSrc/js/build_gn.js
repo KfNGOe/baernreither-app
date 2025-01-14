@@ -65,7 +65,8 @@ async function getGNDData(gndUrl) {
   
     console.log('start gn api calls') ;
   
-    for (const item of places) {      
+    for (const item of places) {
+      console.log('item = ', item) ;
       //check if item.C exists
         if (item.C && item.C.includes('https')) {
             if(item.C.includes('geonames')) {
@@ -82,16 +83,29 @@ async function getGNDData(gndUrl) {
                 let arr_js = js.elements[0].elements[0].elements ;
                 let lemma = arr_js.find(item => item.name === 'gn:name').elements[0].text ;
                 let wgs_lat = arr_js.find(item => item.name === 'wgs84_pos:lat').elements[0].text ;
-                let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;                
+                let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;
+                console.log('lemma: ', lemma) ;
+                console.log('wgs_lat: ', wgs_lat) ;
+                console.log('wgs_long: ', wgs_long) ;
                 item.Lemma_gn = lemma ;
                 item.Lat = wgs_lat ;
                 item.Long = wgs_long ;
                 gnSet = item ;
-                gnSets.push(gnSet) ;                
+                gnSets.push(gnSet) ;
+                console.log('gnSets: ', JSON.stringify(gnSets)) ;
             } else {
                 if(item.C.includes('gnd')) {                    
                     gnSet = item ;
-                    gnSets.push(gnSet) ;                    
+                    gnSets.push(gnSet) ;
+                    /*gndUrl = item.C ;
+                    gndUrl = gndUrl.concat('/about/lds') ;
+                    console.log('gndUrl = ', gndUrl) ;
+
+                    await getGndData(gndUrl).then(response => {
+                        //console.log('response.data: ', response.data) ;
+                        xml = response.data ;
+                        //gnSets = gndSets + gndSet ;
+                    })*/
                 }
             }
         } else {            
@@ -101,7 +115,8 @@ async function getGNDData(gndUrl) {
             gnSets.push(gnSet) ;
         }      
     }          
-    console.log('end api calls') ;    
+    console.log('end api calls') ;
+    //gnSets_json.Tabelle1 = gnSets ;
     //delete first element of gnSets
     gnSets.shift() ;
     //put gnSets into gn_json

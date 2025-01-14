@@ -1,6 +1,5 @@
 echo "build texts"
 
-mkdir -p ./data/tei/tei_toBuild/
 mkdir -p ./data/tei/tei_built/text/
 mkdir -p ./data/tei/tei_built/register/
 mkdir -p ./data/json/text/all/
