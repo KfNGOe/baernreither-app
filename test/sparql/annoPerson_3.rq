@@ -1,0 +1,45 @@
+#build Annotation level of Persons
+#build targets of annotations
+
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+
+CONSTRUCT {
+    ?s_anno a kfngoeo:AnnoPerson ;
+        rdfs:label "Annotation level of Persons"@en ;
+        
+        #key identifier for person
+    	rdfs:isDefinedBy ?o_key ;
+
+        #relation to target = the resource that is annotated
+        kfngoeo:hasTarget ?target_text ;
+
+        #relation to body = the annotation itself
+        kfngoeo:hasBody kfngoei:nnnnnn ;
+	.
+}
+WHERE {
+	
+    ?s_anno rdf:type kfngoeo:AnnoPerson ;
+            rdfs:isDefinedBy ?o_key ;
+            kfngoeo:hasTarget ?target ;
+    .
+    {
+        SELECT DISTINCT ?o_key_text (?s_text AS ?target_text)
+        WHERE {
+            OPTIONAL {
+                ?s_text rdf:type kfngoeo:StartTag ;
+                    kfngoeo:elementName tei:persName ;
+                    kfngoeo:hasAttr ?_bn ;
+                    .
+                ?_bn kfngoeo:attrName "key" ;
+                    kfngoeo:attrValue ?o_key_text ;
+                .                
+            }
+        }
+	}
+    FILTER (?o_key = ?o_key_text)    
+}

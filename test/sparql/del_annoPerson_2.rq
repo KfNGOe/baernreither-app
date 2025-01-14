@@ -1,0 +1,11 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+delete{
+    ?s_anno a kfngoeo:AnnoPerson ; 
+        	?p ?o ;
+    .    
+}
+where { 
+	?s_anno a kfngoeo:AnnoPerson ; 
+        	?p ?o ;
+    .
+} 

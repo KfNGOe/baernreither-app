@@ -1,0 +1,194 @@
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX gndo: <http://d-nb.info/standards/elementset/gnd#>
+PREFIX schema: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+    $this a dhpluso:E21_Person ;
+            owl:sameAs ?sameAs ;
+            dhpluso:creator ?c_pers ;
+            dhpluso:dateCreated ?dC_pers ;
+            dhpluso:dateModified ?dM_pers ;
+            dhpluso:datePublished ?dP_pers ;
+
+            dhpluso:P98i_was_born ?born ;
+            dhpluso:P100i_died_in ?died ;
+
+            dhpluso:source ?sgnd, ?swiki, ?sproj ;
+
+            dhpluso:P1_is_identified_by ?_name ;
+            dhpluso:P2_has_type ?_gender .
+
+    ?_name  a dhpluso:NameOfThePerson ;
+            rdfs:label ?label_wiki ;
+
+            ?propName ?name ;
+            ?propNameEnt ?nameEnt .
+
+    ?nameEnt    ?propNames ?names .
+
+    ?_gender    a dhpluso:Gender ;
+                dhpluso:gender ?gender .
+
+    ?stmt_name  a rdf:Statement ;
+
+                rdf:subject ?_name ;
+                rdf:predicate ?propName ;
+                rdf:object ?name ;
+
+                dhpluso:value-source-uri ?sgnd ;
+                dhpluso:value-source-prop ?p_name ;
+                dhpluso:value-code dhplusv:default .
+
+    ?stmt_names a rdf:Statement ;
+
+    rdf:subject ?nameEnt ;
+    rdf:predicate ?propNames ;
+    rdf:object ?names ;
+
+    dhpluso:value-source-uri ?sgnd ;
+    dhpluso:value-source-prop ?p_Names ;
+    dhpluso:value-code dhplusv:default .
+}
+WHERE {
+                    {
+                    SELECT $this ?sameAs ?c_pers ?dC_pers ?dM_pers ?dP_pers
+                    WHERE
+                    {
+                       $this a dhpluso:E21_Person ;
+
+                            dhpluso:creator ?c_pers ;
+                            dhpluso:dateCreated ?dC_pers ;
+                            dhpluso:dateModified ?dM_pers ;
+                            dhpluso:datePublished ?dP_pers .
+
+                       ?s owl:sameAs ?sameAs .
+                       FILTER (STRSTARTS(str(?sameAs),"https://orcid.org/") || STRSTARTS(str(?sameAs),"http://viaf.org/viaf/") )
+                    }
+                } .
+                {
+                    SELECT ?born ?died
+                    WHERE
+                    {
+                       $this dhpluso:P98i_was_born ?born ;
+                             dhpluso:P100i_died_in ?died .
+                    }
+                } .
+                {
+                    SELECT ?sgnd ?swiki ?sproj
+                    WHERE
+                    {
+                       $this a dhpluso:E21_Person .
+                       BIND (URI(CONCAT(str($this), "/gnd-local")) AS ?sgnd) .
+                       BIND (URI(CONCAT(str($this), "/wikiData-local")) AS ?swiki) .
+                       BIND (URI(CONCAT(str($this), "/projSpec")) AS ?sproj) .
+                    }
+                } .
+                {
+                    SELECT ?label_wiki
+                    WHERE
+                    {
+                        ?s  a wikibase:Item ;
+                            ^schema:about/a schema:Dataset ;
+                            rdfs:label ?label_wiki .
+                        FILTER ((lang(?label_wiki) = "de") || (lang(?label_wiki) = "en")) .
+                    }
+                } .
+                {
+                    SELECT DISTINCT ?propName ?name ?p_name ?stmt_name
+                    WHERE
+                    {
+                        ?s   gndo:preferredNameForThePerson|gndo:variantNameForThePerson|gndo:academicDegree|gndo:biographicalOrHistoricalInformation|gndo:functionOrRole ?name .
+                        ?s   ?p_name ?name .
+
+                        BIND (  IF ( ?p_name = gndo:preferredNameForThePerson, dhpluso:preferredNameForThePerson,
+                                    IF ( ?p_name = gndo:variantNameOfThePerson, dhpluso:variantNameOfThePerson,
+                                        IF ( ?p_name = gndo:academicDegree, dhpluso:academicDegree,
+                                            IF ( ?p_name = gndo:biographicalOrHistoricalInformation, dhpluso:biographicalOrHistoricalInformation,
+                                                IF ( ?p_name = gndo:functionOrRole, dhpluso:functionOrRole, ?nothing
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                                AS ?propName
+                        )
+                        BIND (  IF ( BOUND(?name), URI(CONCAT(STRUUID(), "/stmt")), ?nothing
+                                )
+                                AS ?stmt_name
+                        )
+                    }
+                } .
+                {
+                    SELECT DISTINCT ?propNameEnt ?nameEnt ?propNames ?names ?stmt_names ?p_Names
+                    WHERE
+                    {
+                        ?s   gndo:preferredNameEntityForThePerson|gndo:variantNameEntityForThePerson ?nameEnt .
+                        ?s   ?p ?nameEnt .
+
+                        OPTIONAL { ?nameEnt ?p_Names ?names . }
+
+                        BIND (  IF ( ?p = gndo:preferredNameEntityForThePerson, dhpluso:preferredNameEntityForThePerson, dhpluso:variantNameEntityForThePerson
+                                )
+                                AS ?propNameEnt
+                        )
+                        BIND (  IF   ( ?p_Names = gndo:forename, dhpluso:forename,
+                                        IF  ( ?p_Names = gndo:personalName, dhpluso:personalName,
+                                                IF ( ?p_Names = gndo:nameAddition, dhpluso:nameAddition,
+                                                        IF ( ?p_Names = gndo:surname, dhpluso:surname,
+                                                                IF ( ?p_Names = gndo:prefix, dhpluso:prefix,
+                                                                        IF ( ?p_Names = gndo:counting, dhpluso:counting, ?nothing
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                                AS ?propNames
+                        )
+                        BIND (  IF ( BOUND(?names), URI(CONCAT(STRUUID(), "/stmt")), ?nothing
+                                )
+                                AS ?stmt_names
+                        )
+                    }
+                } .
+                {
+                    SELECT ?gender
+                    WHERE
+                    {
+                       ?s gndo:gender ?gender .
+                    }
+                } .
+                {
+                    BIND(BNODE() AS ?_name) .
+                    BIND(BNODE() AS ?_gender) .
+                }
+            }
+            #LIMIT 1

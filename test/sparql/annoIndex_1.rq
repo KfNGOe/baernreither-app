@@ -1,0 +1,39 @@
+#build Annotation level of Index
+#keys from register index statements
+
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+#import: register_index
+
+CONSTRUCT {     
+	kfngoei:nnnn a kfngoeo:AnnoIndex ;
+        rdfs:label "Annotation level of Index"@en ;                
+    	rdfs:isDefinedBy ?o_key ;        
+        kfngoeo:hasTarget kfngoei:nnnnnn ;        
+        kfngoeo:hasBody kfngoei:nnnnnn ;
+    .
+}
+WHERE {
+    ?s_tei a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:TEI ;
+            kfngoeo:elementPos ?o_pos_tei ;
+ 	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+    ?s_item a kfngoeo:StartTag ;
+       		kfngoeo:elementName tei:item ;
+       		kfngoeo:elementPos ?o_pos_item ;
+	.
+    FILTER(CONTAINS(?o_pos_item, ?title_short))            
+    BIND(xsd:integer(substr(?o_pos_item,strlen(?title_short)+2)) AS ?o_pos_item_nr)
+    BIND(concat(?title_short, '_', str(?o_pos_item_nr+2)) AS ?o_pos_text)
+    ?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+   			kfngoeo:elementPos ?o_pos_text ;
+   	.
+    BIND (?o_text AS ?o_key)
+}

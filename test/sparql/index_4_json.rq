@@ -1,0 +1,41 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+#import: indexi_1.ttl, indexi_3.ttl 
+
+SELECT ?o_main ?o_sub ?o_pos_main
+WHERE {
+    ?s_tei kfngoeo:elementName tei:TEI ;
+           kfngoeo:elementPos ?o_pos_tei ;
+ 	.
+    BIND(substr(?o_pos_tei,1,strlen(?o_pos_tei)-1) AS ?title_short)
+    ?s_main a kfngoeo:Text_main;  
+		kfngoeo:hasContent ?o_main ;  		
+    .
+    ?s_term a kfngoeo:StartTag ;
+            kfngoeo:elementName tei:term ;
+            kfngoeo:hasAttr [
+               kfngoeo:attrName "key" ;
+               kfngoeo:attrValue ?o_main ;
+            ] ;			
+            kfngoeo:elementPos ?o_pos_main ;
+	.
+    FILTER(CONTAINS(?o_pos_main, ?title_short))            
+    BIND(xsd:integer(substr(?o_pos_main,strlen(?title_short)+1)) AS ?o_pos_main_nr)
+    BIND(concat(?title_short, str(?o_pos_main_nr+5)) AS ?o_pos_sub)    
+    OPTIONAL {
+    	?s_text a kfngoeo:Text ;
+			kfngoeo:hasContent ?o_text ;
+			kfngoeo:elementPos ?o_pos_sub ;
+ 		.
+    	BIND(IF(BOUND(?o_text), ?o_text, ?nothing) AS ?o_sub)
+        ?s_sub a kfngoeo:Text_sub;  
+			kfngoeo:hasContent ?o_sub ;
+    	.
+    }
+} 
+GROUP BY ?o_main ?o_sub ?o_pos_main
+ORDER BY ?o_main ?o_sub
