@@ -58,7 +58,7 @@ async function getGNDData(gndUrl) {
 
 (async () => {
     
-    var json = fs.readFileSync('./data/json/register/register_place_xlsx.json', 'utf8');
+    var json = fs.readFileSync('./data/json/anno/register/register_place_xlsx.json', 'utf8');
     console.log('json data read: ', json.length, ' bytes')
     var jsonJS = JSON.parse(json) ;
     var places = jsonJS.Tabelle1 ;
@@ -122,6 +122,6 @@ async function getGNDData(gndUrl) {
     //put gnSets into gn_json
     gn_json.results.bindings = gnSets ;
     gnSets_str = JSON.stringify(gn_json) ;
-    fs.writeFileSync('./data/json/register/register_place_geo.json', gnSets_str) ;
+    fs.writeFileSync('./data/json/anno/register/register_place_geo.json', gnSets_str) ;
     console.log('json data write: ', gnSets_str.length, ' bytes') ;
   })() ;

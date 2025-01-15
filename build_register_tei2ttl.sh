@@ -1,7 +1,8 @@
 echo "build ttl register from tei"
 
 echo read files from tei directory
-inputDir="data/tei/register/"
+inputDir="data/tei/anno/register/"
+outputDir="data/ttl/anno/register/"
 
 for file in $inputDir*.xml; do
   #echo "$file"

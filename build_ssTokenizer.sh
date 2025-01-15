@@ -1,4 +1,4 @@
 echo "tokenize texts"
-node staticSearch/ssTokenizer_2.js
+node staticSearch/ssTokenizer.js
 echo "tokenize texts done"
 

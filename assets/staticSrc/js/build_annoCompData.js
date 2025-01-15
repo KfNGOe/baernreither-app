@@ -22,7 +22,7 @@ delete textComp_mdata_results.results.bindings[0] ;   //after delete first objec
 textComp_mdata_results.results.bindings.shift() ;
 //read anno compare json file
 //get compare data
-json_in = fs.readFileSync('data/json/anno/annoTextComp.json', 'utf8') ;
+json_in = fs.readFileSync('data/json/anno/anno_web/annoTextComp.json', 'utf8') ;
 let annoCompTexts = JSON.parse(json_in) ;
 //group anno compare data by source_target
 let groupedBySourceTarget = annoCompTexts.results.bindings.groupBy( item => {

@@ -16,7 +16,7 @@ echo "import file to graphdb repo"
 echo "import personi"
 endpoint=$ENDPOINT repo_name=$REPO_NAME path_in=$PATH_IN file_in=$FILENAME_IN ext_in=$EXTENSION_IN mime_type=$MIME_TYPE node assets/staticSrc/js/gdb_importFile.js
 
-PATH_IN='./data/ttl/anno/anno_web/instance/'
+PATH_IN='./data/ttl/anno/anno_web/'
 FILENAME_IN='annoPersoni'
 EXTENSION_IN='.ttl'
 
@@ -28,7 +28,7 @@ PATH_RQ='assets/staticSrc/sparql/'
 FILENAME_RQ='person'
 EXTENSION_RQ='.rq'
 
-PATH_OUT='./data/json/register/'
+PATH_OUT='./data/json/anno/register/'
 FILENAME_OUT='person'
 EXTENSION_OUT='.json'
 

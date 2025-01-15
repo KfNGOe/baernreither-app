@@ -1,6 +1,7 @@
 echo read files from tei directory
 
 inputDir="data/tei/text/"
+outputDir="data/ttl/text/"
 
 for file in $inputDir*.xml; do
   #echo "$file"
@@ -16,7 +17,8 @@ for file in $inputDir*.xml; do
         then
         echo "Starting tei to ttl transformation"
         #export pathName
-        export pathName=$pathname
+        export pathName_in=$pathname
+        export pathName_out=$outputDir
         export name=$name
         ./build_tei2ttl.sh
         fi

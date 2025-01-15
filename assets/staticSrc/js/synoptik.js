@@ -545,19 +545,19 @@ $( function() {
 		filepath = './data/json/textComp_mdata.json' ;
 		textComp_mdata_in = await fetchData(filepath) ;
 		//get anno text compare data
-		filepath = './data/json/anno/annoTextComp.json' ;
+		filepath = './data/json/anno/anno_web/annoTextComp.json' ;
 		annoTextCompData_in = await fetchData(filepath) ;
 		//get index register data
-		filepath = './data/json/register/register_index.json' ;
+		filepath = './data/json/anno/register/register_index.json' ;
 		regIndexData_in = await fetchData(filepath) ;		
 		//get org register data
-		filepath = './data/json/register/register_org.json' ;
+		filepath = './data/json/anno/register/register_org.json' ;
 		regOrgData_in = await fetchData(filepath) ;
 		//get person register data
-		filepath = './data/json/register/register_person.json' ;
+		filepath = './data/json/anno/register/register_person.json' ;
 		regPersonData_in = await fetchData(filepath) ;
 		//get place register data
-		filepath = './data/json/register/register_place.json' ;
+		filepath = './data/json/anno/register/register_place.json' ;
 		regPlaceData_in = await fetchData(filepath) ;
 		
 		//get text all data		

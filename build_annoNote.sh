@@ -33,8 +33,8 @@ export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='annoNote'
-export path_out='./data/ttl/anno/anno_web/instance/'
-export file_out='annoNotei'
+export path_out='./data/ttl/anno/anno_web/'
+export file_out='annoNote'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
 
@@ -43,8 +43,8 @@ echo "clear graphdb"
 
 echo "import notei ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
-export pathName='data/ttl/anno/anno_web/instance/'
-export name='annoNotei'                
+export pathName='data/ttl/anno/anno_web/'
+export name='annoNote'
 ./gdb_importFile.sh
 
 echo "build anno note json"
@@ -52,7 +52,7 @@ export mime_type='application/sparql-results+json'
 export query_type='SELECT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='annoNote_json'
-export path_out='./data/json/anno/'
+export path_out='./data/json/anno/anno_web/'
 export file_out='annoNote'
 export ext_out='.json'
 ./gdb_queryRepo.sh

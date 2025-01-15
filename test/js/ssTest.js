@@ -108,7 +108,7 @@ function buildSearchTest(obj) {
 } ; 
 
 //read test json file
-let json_in = fs.readFileSync('./staticSearch/ssTokens_template.json', 'utf8'); 
+let json_in = fs.readFileSync('./staticSearch/ssTokens_temp.json', 'utf8'); 
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;

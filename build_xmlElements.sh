@@ -33,8 +33,8 @@ export mime_type='text/turtle'
 export query_type='CONSTRUCT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='test'
-export path_out='./data/ttl/anno/anno_web/instance/'
-export file_out='testi'
+export path_out='./data/ttl/anno/anno_web/'
+export file_out='test'
 export ext_out='.ttl'
 #./gdb_queryRepo.sh
 
@@ -43,8 +43,8 @@ echo "clear graphdb"
 
 echo "import test ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
-export pathName='data/ttl/anno/anno_web/instance/'
-export name='testi'                
+export pathName='data/ttl/anno/anno_web/'
+export name='test'
 #./gdb_importFile.sh
 
 echo "build test json"

@@ -25,12 +25,12 @@ cp data/json/text_mdata.json html/data/json/
 cp data/json/textComp_mdata.json html/data/json/
 mkdir -p html/data/json/anno/
 cp data/json/anno/annoTextComp.json html/data/json/anno/
-mkdir -p html/data/json/register/
-cp data/json/register/register_index.json html/data/json/register/
-cp data/json/register/register_org.json html/data/json/register/
-cp data/json/register/register_person.json html/data/json/register/
-cp data/json/register/register_place.json html/data/json/register/
-cp data/json/register/register_place_temp.json html/data/json/register/
+mkdir -p html/data/json/anno/register/
+cp data/json/anno/register/register_index.json html/data/json/anno/register/
+cp data/json/anno/register/register_org.json html/data/json/anno/register/
+cp data/json/anno/register/register_person.json html/data/json/anno/register/
+cp data/json/anno/register/register_place.json html/data/json/anno/register/
+cp data/json/anno/register/register_place_temp.json html/data/json/anno/register/
 mkdir -p html/data/json/text/all/
 cp -r data/json/text/all/ html/data/json/
 mkdir -p html/data/json/text/full/

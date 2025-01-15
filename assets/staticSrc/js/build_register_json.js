@@ -409,10 +409,10 @@ function buildReg(jsonJs_reg_files, groupedAll_files) {
     });
 
     //write log files    
-    fs.writeFileSync('data/txt/register/log/log_person.txt', logData_person);
-    fs.writeFileSync('data/txt/register/log/log_place.txt', logData_place);
-    fs.writeFileSync('data/txt/register/log/log_org.txt', logData_org);
-    fs.writeFileSync('data/txt/register/log/log_index.txt', logData_index);
+    fs.writeFileSync('data/txt/log/anno/register/log_person.txt', logData_person);
+    fs.writeFileSync('data/txt/log/anno/register/log_place.txt', logData_place);
+    fs.writeFileSync('data/txt/log/anno/register/log_org.txt', logData_org);
+    fs.writeFileSync('data/txt/log/anno/register/log_index.txt', logData_index);
 
     //return json register files
     let json_reg_files = {};
@@ -444,13 +444,13 @@ jsonFiles.forEach((file) => {
 }) ;
 
 //read json register directory
-jsonFiles = fs.readdirSync('data/json/register/');
+jsonFiles = fs.readdirSync('data/json/anno/register/');
 //iterate over register files
 let jsonJs_reg_files = {};
 jsonFiles.forEach((file) => {
     //read register *_text or *_xlsx file   
     if (file.includes('_text.json') || file.includes('_xlsx.json') || file.includes('_geo.json')) {
-        let fileNamePath = 'data/json/register/' + file;
+        let fileNamePath = 'data/json/anno/register/' + file;
         let json_in = fs.readFileSync(fileNamePath, 'utf8');
         var jsonJs_in_reg = JSON.parse(json_in);
         jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg;
@@ -462,6 +462,6 @@ let json_reg_files = buildReg(jsonJs_reg_files, groupedAll_files);
 for (let key in json_reg_files) {
     let jsonStr = JSON.stringify(json_reg_files[key]);
     //write json file
-    fs.writeFileSync('data/json/register/' + key + '_tmp.json', jsonStr);
+    fs.writeFileSync('data/json/anno/register/' + key + '_tmp.json', jsonStr);
     console.log('json data write: ', jsonStr.length, ' bytes');
 }

@@ -44,13 +44,13 @@ function buildId(jsonJs_reg_files) {
 }
 
 //read json register directory
-let jsonFiles = fs.readdirSync('data/json/register/') ;
+let jsonFiles = fs.readdirSync('data/json/anno/register/') ;
 //iterate over register files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    //read register *_tmp.json files   
    if (file.includes('_tmp.json') || file.includes('_id.json')) {
-    let fileNamePath = 'data/json/register/' + file ;
+    let fileNamePath = 'data/json/anno/register/' + file ;
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     var jsonJs_in_reg = JSON.parse(json_in) ;
     jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;
@@ -63,6 +63,6 @@ let json_reg_files = buildId(jsonJs_reg_files) ;
 for (let key in json_reg_files) {
     let jsonStr = JSON.stringify(json_reg_files[key]) ;
     //write json file
-    fs.writeFileSync('data/json/register/' + key + '.json', jsonStr) ;
+    fs.writeFileSync('data/json/anno/register/' + key + '.json', jsonStr) ;
     console.log('json file ' + key + ' written: ', jsonStr.length + ' bytes') ;
 }

@@ -18,3 +18,7 @@ cp -r assets/staticSrc/js/* /home/rh/github/baernreither-app/assets/staticSrc/js
 cp -r assets/staticSrc/sparql/* /home/rh/github/baernreither-app/assets/staticSrc/sparql/
 cp -r assets/txt/* /home/rh/github/baernreither-app/assets/txt/
 echo "deploy assets done"
+
+echo "deploy data"
+
+echo "deploy data done"

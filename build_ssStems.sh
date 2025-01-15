@@ -6,5 +6,5 @@ echo "mkdir stems"
 mkdir staticSearch/stems
 echo "mkdir stems done"
 echo "build stems"
-node staticSearch/ssStems_2.js
+node staticSearch/ssStems.js
 echo "build stems done"

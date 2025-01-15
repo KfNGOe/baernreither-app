@@ -381,16 +381,16 @@ jsonFiles.forEach((file) => {
 
 //get register
 //read json register directory
-jsonFiles = fs.readdirSync('data/json/register/') ;
+jsonFiles = fs.readdirSync('data/json/anno/register/') ;
 //read json anno directory
-let jsonFiles_anno = fs.readdirSync('data/json/anno/') ;
+let jsonFiles_anno = fs.readdirSync('data/json/anno/anno_web/') ;
 //iterate over json file names
 jsonFiles.forEach((file) => {
    //choose ordinary register files
    //count number of '_' in file name
    let count = (file.match(/_/g) || []).length ;
    if (count < 2 && !file.includes('_id')) {
-      json_in = fs.readFileSync('data/json/register/' + file, 'utf8') ;
+      json_in = fs.readFileSync('data/json/anno/register/' + file, 'utf8') ;
       let jsonJs_reg_file = JSON.parse(json_in) ;
       //if org file sort by name
       if(file.includes('org')) {
@@ -406,7 +406,7 @@ jsonFiles.forEach((file) => {
       jsonFiles_anno.forEach((file_anno) => {
          if (file_anno.toLowerCase().includes(fileName) && !(file_anno.toLocaleLowerCase().includes('sub'))) {          
             console.log('file_anno = ', file_anno) ;            
-            json_in = fs.readFileSync('data/json/anno/' + file_anno, 'utf8') ;
+            json_in = fs.readFileSync('data/json/anno/anno_web/' + file_anno, 'utf8') ;
             jsonJs_anno_file = JSON.parse(json_in) ;
          }            
       }) ;
@@ -431,7 +431,7 @@ jsonFiles.forEach((file) => {
          console.log('html data written: ', dom.serialize().length, ' bytes') ;
 
          //write log file
-         fileNamePath = 'data/txt/register/log/log_register.txt' ;
+         fileNamePath = 'data/txt/log/anno/register/log_register.txt' ;
          fs.writeFileSync(fileNamePath, log_data ) ;         
 
          //remove appended html

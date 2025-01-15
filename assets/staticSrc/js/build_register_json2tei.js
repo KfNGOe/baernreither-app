@@ -212,30 +212,30 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
 } ; 
 
 //read json register directory
-let jsonFiles = fs.readdirSync('data/json/register/') ;
+let jsonFiles = fs.readdirSync('data/json/anno/register/') ;
 //iterate over json files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    if(file.includes('_tmp.json')) {
-      let jsonFile = fs.readFileSync('data/json/register/' + file, 'utf8') ;
+      let jsonFile = fs.readFileSync('data/json/anno/register/' + file, 'utf8') ;
       jsonJs_reg_files[file] = JSON.parse(jsonFile) ;
    }
 }) ;
 //read tei register directory
-let teiFiles = fs.readdirSync('data/tei/register/') ;
+let teiFiles = fs.readdirSync('data/tei/anno/register/') ;
 //iterate over tei files
 teiFiles.forEach((file) => {
     //filter template files
-    if(file.includes('_template.xml')) {
-        let teiFile = fs.readFileSync('data/tei/register/' + file, 'utf8') ;
+    if(file.includes('_temp.xml')) {
+        let teiFile = fs.readFileSync('data/tei/anno/register/' + file, 'utf8') ;
         let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;      
         buildReg(teiJsFile, jsonJs_reg_files) ;
         let teiJs_out = teiJsFile ;
         //convert js object to tei
         let tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
         //write tei file
-        //data/tei/register
-        fs.writeFileSync('./data/tei/register/' + file.replace('_template', ''), tei_out ) ;  //./data/tei/register/register_person.xml
+        //data/tei/anno/register
+        fs.writeFileSync('./data/tei/anno/register/' + file.replace('_template', ''), tei_out ) ;  //./data/tei/anno/register/register_person.xml
         console.log('tei data written: ', tei_out.length, ' bytes')        
    }
 }) ;

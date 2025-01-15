@@ -73,4 +73,4 @@ var jsonJs_in = JSON.parse(json_in) ;
 buildFullText(jsonJs_in) ;
 
 //write tei file
-fs.writeFileSync(filepath_out_txt, fullText ) ;  //./data/tei/register/register_place.xml
+fs.writeFileSync(filepath_out_txt, fullText ) ;  //./data/tei/anno/register/register_place.xml

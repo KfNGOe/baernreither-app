@@ -2,7 +2,7 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
 const fs = require('fs');
-const { char2utfMap } = require('../assets/staticSrc/js/constants.js');
+const { char2utfMap } = require('../../assets/staticSrc/js/constants.js');
 const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');

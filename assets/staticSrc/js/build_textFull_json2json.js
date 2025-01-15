@@ -36,7 +36,7 @@ function posStr2Nr(posStr) {
 
 //build full texts
 //read anno text full json file
-json_in = fs.readFileSync('./data/json/anno/annoTextFull.json', 'utf8') ; //data/json/annoTextFull.json
+json_in = fs.readFileSync('./data/json/anno/anno_web/annoTextFull.json', 'utf8') ; //data/json/annoTextFull.json
 //convert json to js object
 let jsonJs_in_annoFull = JSON.parse(json_in) ;
 //group by source target

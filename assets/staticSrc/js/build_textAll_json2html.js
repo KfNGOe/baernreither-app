@@ -648,12 +648,12 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
 } ; 
 
 //read json anno directory
-let jsonFiles = fs.readdirSync('data/json/anno/') ;
+let jsonFiles = fs.readdirSync('data/json/anno/anno_web/') ;
 //iterate over anno files
 let jsonJs_anno_files = {} ;
 jsonFiles.forEach((file) => {
    //read anno text json files   
-   let fileNamePath = 'data/json/anno/' + file ;   
+   let fileNamePath = 'data/json/anno/anno_web/' + file ;   
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_anno = JSON.parse(json_in) ;

@@ -12,7 +12,7 @@ PATH_RQ=$path_rq
 FILENAME_RQ=$file_rq
 EXTENSION_RQ='.rq'
 
-#PATH_OUT='./data/ttl/anno/anno_web/instance/'
+#PATH_OUT='./data/ttl/anno/anno_web/'
 #FILENAME_OUT='annoPersoni_1'
 #EXTENSION_OUT='.ttl'
 PATH_OUT=$path_out

@@ -26,6 +26,9 @@ jobs:
       - name: Install
         run: |          
           sudo bash install.sh
+      - name: Set up dir
+        run: |
+          sudo bash setup_dir.sh
       - name: Start graphdb
         run: |
           sudo bash gdb_start.sh &

@@ -12,7 +12,7 @@ const repo_name = process.env.repo_name ; // 'kfngoe_test'
 //const ext_rq = process.env.ext_rq ; // '.rq'
 const filepath_rq = process.env.filepath_rq ;
 
-//const path_out = process.env.path_out ; // '.data/ttl/anno/anno_web/instance/'
+//const path_out = process.env.path_out ; // '.data/ttl/anno/anno_web/'
 //const file_out = process.env.file_out ; // 'annoPersoni_1'
 //const ext_out = process.env.ext_out ; // '.ttl'
 const filepath_out = process.env.filepath_out ;
