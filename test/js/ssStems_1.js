@@ -93,7 +93,7 @@ function buildStems(obj) {
                     ssStem_tmp.token = key ;
                     ssStem_tmp.instances = instances_tmp ;
                     //console.log('ssStem_tmp = ', ssStem_tmp) ;
-                    let ssStem_filePath = './staticSearch/json/stems/' + key + '.json' ;
+                    let ssStem_filePath = './staticSearch/data/json/stems/' + key + '.json' ;
                     json_out = JSON.stringify(ssStem_tmp, null, 2) ;
                     fs.writeFileSync(ssStem_filePath, json_out ) ;
                     //console.log('json data written: ', json_out.length, ' bytes')
@@ -116,7 +116,7 @@ function buildStems(obj) {
 } ; 
 
 //read test json file
-let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_test.json', 'utf8');
+let json_in = fs.readFileSync('./staticSearch/data/json/tokens/tokenAll_test.json', 'utf8');
 
 //convert json to js object
 var jsonJs_in = JSON.parse(json_in) ;

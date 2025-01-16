@@ -178,7 +178,7 @@ $( function() {
   (async () => {
       //get search index
       console.log('get search index start') ;
-      let filepath = './staticSearch/txt/ssTokenString.txt' ;
+      let filepath = './staticSearch/data/txt/ssTokenString.txt' ;
       text_in = await fetchData(filepath) ;
       //get text data
       filepath = './data/json/text_mdata.json' ;
@@ -230,7 +230,7 @@ $('button#ssDoSearch').on('click', function(event) {
             }
           }
           //fetch 1st token file
-          let searchTokenFilePath = './staticSearch/json/stems/' + searchTokens[0] + '.json' ;            
+          let searchTokenFilePath = './staticSearch/data/json/stems/' + searchTokens[0] + '.json' ;            
           hits_arr[0] = await fetchData(searchTokenFilePath) ;          
           let hits_start = hits_arr[0] ;
           let hits_path_arr = new Array(tokens_N).fill(0) ;          
@@ -251,7 +251,7 @@ $('button#ssDoSearch').on('click', function(event) {
             let hits_next = {} ;
             if (i_tok < tokens_N-1) {
               //fetch next token file
-              searchTokenFilePath = './staticSearch/json/stems/' + searchTokens[i_tok + 1] + '.json' ;            
+              searchTokenFilePath = './staticSearch/data/json/stems/' + searchTokens[i_tok + 1] + '.json' ;            
               hits_arr.push(await fetchData(searchTokenFilePath)) ;
               hits_next = hits_arr[i_tok + 1] ;              
             }            

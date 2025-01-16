@@ -172,4 +172,4 @@ let jsonJs_out = tokenAll_tmp ;
 //convert js object to json
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
-fs.writeFileSync('./staticSearch/tokens/ssTokens_tmp.json', json_out ) ;
+fs.writeFileSync('./staticSearch/data/json/tokens/ssTokens_tmp.json', json_out ) ;

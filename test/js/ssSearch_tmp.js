@@ -68,14 +68,14 @@ function hitsFilter(hits) {
 }
 /*
 function getInstances(hitFileName) {
-    let searchTokenFilePath = './staticSearch/json/stems/' + hitFileName ;
+    let searchTokenFilePath = './staticSearch/data/json/stems/' + hitFileName ;
     json_in = fs.readFileSync(searchTokenFilePath, 'utf8');
     jsonJs_in = JSON.parse(json_in) ;    
     return jsonJs_in.instances ;
 }
 */
 function getHits(hitFileName) {
-    let searchTokenFilePath = './staticSearch/json/stems/' + hitFileName ;
+    let searchTokenFilePath = './staticSearch/data/json/stems/' + hitFileName ;
     json_in = fs.readFileSync(searchTokenFilePath, 'utf8');
     jsonJs_in = JSON.parse(json_in) ;    
     return jsonJs_in ;

@@ -1,2 +1,2 @@
 echo "build ssSearch"
-node staticSearch/ssSearch.js
+node staticSearch/src/js/ssSearch.js

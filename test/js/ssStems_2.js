@@ -109,7 +109,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
         }) ;
         ssStem_tmp.token = key ;
         ssStem_tmp.instances = instances_tmp ;        
-        let ssStem_filePath = './staticSearch/json/stems/' + key + '.json' ;
+        let ssStem_filePath = './staticSearch/data/json/stems/' + key + '.json' ;
         json_out = JSON.stringify(ssStem_tmp, null, 2) ;
         fs.writeFileSync(ssStem_filePath, json_out ) ;
         //console.log(key,': json data written: ', json_out.length, ' bytes')
@@ -119,7 +119,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
 
 console.time('buildStems') ;
 //read test json file
-let json_in = fs.readFileSync('./staticSearch/tokens/tokenAll_tmp.json', 'utf8');
+let json_in = fs.readFileSync('./staticSearch/data/json/tokens/tokenAll_tmp.json', 'utf8');
 //convert json to js object
 let tokenAll_tmp = JSON.parse(json_in) ;
 countArrNr = tokenAll_tmp.tokenAll.length ;
