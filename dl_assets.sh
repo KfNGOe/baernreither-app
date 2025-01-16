@@ -73,7 +73,7 @@ echo "copy js done"
 
 echo "copy staticSearch"
 mkdir -p html/staticSearch/
-cp -r staticSearch/stems html/staticSearch/
+cp -r staticSearch/json/stems html/staticSearch/
 cp -r staticSearch/ssTokenString.txt html/staticSearch/
 echo "copy staticSearch done"
 

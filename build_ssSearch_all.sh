@@ -9,11 +9,11 @@ node staticSearch/ssTokenAll.js
 echo "build all Tokens done"
 
 echo "remove old stems"
-rm -r staticSearch/stems
+rm -r staticSearch/json/stems
 echo "remove old stems done"
 
 echo "mkdir stems"
-mkdir staticSearch/stems
+mkdir staticSearch/json/stems
 echo "mkdir stems done"
 
 echo "build stems"

@@ -69,7 +69,7 @@ function buildStemsText(tokenTextAll_tmp) {
                 ssStemText_tmp['pos_prev'] = prevKey ;
             } 
         }
-        let ssStemText_filePath = './staticSearch/stemsText/' + key + '.json' ;
+        let ssStemText_filePath = './staticSearch/json/stemsText/' + key + '.json' ;
         json_out = JSON.stringify(ssStemText_tmp, null, 2) ;
         fs.writeFileSync(ssStemText_filePath, json_out ) ;
         console.log(key,' at', index_key,': json data written: ', json_out.length, ' bytes')

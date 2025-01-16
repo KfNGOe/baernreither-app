@@ -93,7 +93,7 @@ function buildStems(obj) {
                     ssStem_tmp.token = key ;
                     ssStem_tmp.instances = instances_tmp ;
                     //console.log('ssStem_tmp = ', ssStem_tmp) ;
-                    let ssStem_filePath = './staticSearch/stems/' + key + '.json' ;
+                    let ssStem_filePath = './staticSearch/json/stems/' + key + '.json' ;
                     json_out = JSON.stringify(ssStem_tmp, null, 2) ;
                     fs.writeFileSync(ssStem_filePath, json_out ) ;
                     //console.log('json data written: ', json_out.length, ' bytes')
