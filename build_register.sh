@@ -1,5 +1,8 @@
 echo "build register"
 
+echo "create dir tmp"
+mkdir -p data/json/anno/register/tmp/
+
 echo "convert xlsx to json"
 ./build_register_xlsx2json.sh
 echo "convert xlsx to json done"
@@ -33,5 +36,7 @@ echo "build anno levels of register"
 ./build_annoRegister.sh
 echo "build anno levels of register done"
 
-echo "build register done"
+echo "delete tmp dir"
+rm -r data/json/anno/register/tmp/
 
+echo "build register done"

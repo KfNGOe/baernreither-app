@@ -416,7 +416,7 @@ jsonFiles.forEach((file) => {
       //exclude indexsub
       if (!fileName.toLowerCase().includes('indexsub')) {   
          //write html strings to text file   
-         let fileNamePath = 'data/txt/register/register_table_' + fileName + '.txt' ;    
+         let fileNamePath = 'data/txt/anno/register/register_table_' + fileName + '.txt' ;    
          fs.writeFileSync(fileNamePath, html_str ) ;
          console.log('html data written: ', html_str.length, ' bytes') ;
          

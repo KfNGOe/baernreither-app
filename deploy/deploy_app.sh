@@ -5,6 +5,7 @@ cp .github/workflows/build.yml /home/rh/github/baernreither-app/.github/workflow
 echo "deploy yml done"
 
 echo "deploy assets"
+rm -r /home/rh/github/baernreither-app/assets/*
 mkdir -p /home/rh/github/baernreither-app/assets/css/
 mkdir -p /home/rh/github/baernreither-app/assets/fonts/
 mkdir -p /home/rh/github/baernreither-app/assets/images/
@@ -20,5 +21,13 @@ cp -r assets/txt/* /home/rh/github/baernreither-app/assets/txt/
 echo "deploy assets done"
 
 echo "deploy data"
+rm -r /home/rh/github/baernreither-app/data/*
+mkdir -p /home/rh/github/baernreither-app/data/json/anno/anno_web/
+mkdir -p /home/rh/github/baernreither-app/data/json/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/json/temp/
+mkdir -p /home/rh/github/baernreither-app/data/json/text/all/
+mkdir -p /home/rh/github/baernreither-app/data/json/text/full/
+mkdir -p /home/rh/github/baernreither-app/data/json/text/mdata/
+
 
 echo "deploy data done"

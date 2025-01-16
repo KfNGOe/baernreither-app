@@ -40,8 +40,8 @@ echo "copy data json done"
 echo "copy data txt"
 mkdir -p html/data/txt/
 cp data/txt/text/*.txt html/data/txt/
-mkdir -p html/data/txt/register/
-cp data/txt/register/*.txt html/data/txt/register/
+mkdir -p html/data/txt/anno/register/
+cp data/txt/anno/register/*.txt html/data/txt/anno/register/
 echo "copy data txt done"
 
 echo "copy fonts"

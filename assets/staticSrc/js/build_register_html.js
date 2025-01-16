@@ -38,7 +38,7 @@ var main = $.parseHTML(main_str) ;
 $('html').find('main').replaceWith(main) ;
 
 //build register
-var register_str = fs.readFileSync("data/txt/register/register_table_person.txt", 'utf8');
+var register_str = fs.readFileSync("data/txt/anno/register/register_table_person.txt", 'utf8');
 var register = $.parseHTML(register_str) ;
 $('html').find('table.table tbody').replaceWith(register) ;
 

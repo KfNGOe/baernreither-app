@@ -71,16 +71,16 @@ $( function() {
     document.getElementById("search-person").checked = true;
     (async () => {				
 		//get register person data
-        let filepath = './data/txt/register/register_table_person.txt' ;
+        let filepath = './data/txt/anno/register/register_table_person.txt' ;
         regPersonData_in = await fetchData(filepath) ;
         //get register index data
-        filepath = './data/txt/register/register_table_index.txt' ;
+        filepath = './data/txt/anno/register/register_table_index.txt' ;
         regIndexData_in = await fetchData(filepath) ;
         //get register org data
-        filepath = './data/txt/register/register_table_org.txt' ;
+        filepath = './data/txt/anno/register/register_table_org.txt' ;
         regOrgData_in = await fetchData(filepath) ;
         //get register place data
-        filepath = './data/txt/register/register_table_place.txt' ;
+        filepath = './data/txt/anno/register/register_table_place.txt' ;
         regPlaceData_in = await fetchData(filepath) ;
 		
 		console.log( "data loaded!" ) ;
