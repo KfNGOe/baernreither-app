@@ -26,7 +26,7 @@ jobs:
       - name: Install
         run: |          
           sudo bash install.sh
-      - name: Set up dir
+      - name: Make dir
         run: |
           sudo bash setup_dir.sh
       - name: Start graphdb
@@ -53,7 +53,11 @@ jobs:
           sudo bash build_ssSearch_all.sh
       - name: build html
         run: |
-          sudo bash build_html.sh      
+          sudo bash build_html.sh   
+      - name: Del dir
+        run: |
+          sudo bash del_dir.sh
+
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"

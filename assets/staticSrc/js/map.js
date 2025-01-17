@@ -110,7 +110,7 @@ function getGeoNamesId(geoNamesUrl) {
 
 function init() {
   //fetch the json
-  const path = "./data/json/anno/register/register_place_temp.json";
+  const path = "./data/json/anno/register/tmp/register_place_temp.json";
   fetch(path).then((response) => {
     response.json().then((data) => {
       setMarker(data.results);

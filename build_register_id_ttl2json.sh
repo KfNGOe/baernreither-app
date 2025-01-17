@@ -32,7 +32,7 @@ export mime_type='application/sparql-results+json'
 export query_type='SELECT'
 export path_rq='assets/staticSrc/sparql/'
 export file_rq='register_id_json'
-export path_out='./data/json/anno/register/'
+export path_out='./data/json/anno/register/tmp/'
 export file_out='register_id'
 export ext_out='.json'
 ./gdb_queryRepo.sh

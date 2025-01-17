@@ -2,6 +2,7 @@ echo "Setting up directories..."
 
 mkdir -p ./data/json/anno/
 mkdir -p ./data/json/anno/register/
+mkdir -p ./data/json/anno/register/tmp/
 mkdir -p ./data/json/anno/anno_web/
 mkdir -p ./data/json/text/all/
 mkdir -p ./data/json/text/full/

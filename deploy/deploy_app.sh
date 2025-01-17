@@ -24,10 +24,10 @@ echo "deploy data"
 rm -r /home/rh/github/baernreither-app/data/*
 mkdir -p /home/rh/github/baernreither-app/data/json/anno/anno_web/
 mkdir -p /home/rh/github/baernreither-app/data/json/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/json/anno/register/tmp/
 mkdir -p /home/rh/github/baernreither-app/data/json/temp/
 mkdir -p /home/rh/github/baernreither-app/data/json/text/all/
 mkdir -p /home/rh/github/baernreither-app/data/json/text/full/
 mkdir -p /home/rh/github/baernreither-app/data/json/text/mdata/
-
-
+cp -r data/json/temp/* /home/rh/github/baernreither-app/data/json/temp/
 echo "deploy data done"

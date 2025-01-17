@@ -212,12 +212,12 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
 } ; 
 
 //read json register directory
-let jsonFiles = fs.readdirSync('data/json/anno/register/') ;
+let jsonFiles = fs.readdirSync('data/json/anno/register/tmp/') ;
 //iterate over json files
 let jsonJs_reg_files = {} ;
 jsonFiles.forEach((file) => {
    if(file.includes('_tmp.json')) {
-      let jsonFile = fs.readFileSync('data/json/anno/register/' + file, 'utf8') ;
+      let jsonFile = fs.readFileSync('data/json/anno/register/tmp/' + file, 'utf8') ;
       jsonJs_reg_files[file] = JSON.parse(jsonFile) ;
    }
 }) ;
@@ -235,7 +235,7 @@ teiFiles.forEach((file) => {
         let tei_out = convert.js2xml(teiJs_out, {compact: false, spaces: 2}) ;
         //write tei file
         //data/tei/anno/register
-        fs.writeFileSync('./data/tei/anno/register/' + file.replace('_template', ''), tei_out ) ;  //./data/tei/anno/register/register_person.xml
+        fs.writeFileSync('./data/tei/anno/register/' + file.replace('_temp', ''), tei_out ) ;  //./data/tei/anno/register/register_person.xml
         console.log('tei data written: ', tei_out.length, ' bytes')        
    }
 }) ;
