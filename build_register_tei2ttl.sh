@@ -7,7 +7,7 @@ outputDir="data/ttl/anno/register/"
 for file in $inputDir*.xml; do
   #echo "$file"
   #check if file is no template
-    if [[ "$file" != *"_template"*  ]]
+    if [[ "$file" != *"_temp"*  ]]
     then
         echo "Found tei: ${file}"
         pathname=$(dirname "$file")/        

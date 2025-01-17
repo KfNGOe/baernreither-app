@@ -222,12 +222,12 @@ jsonFiles.forEach((file) => {
    }
 }) ;
 //read tei register directory
-let teiFiles = fs.readdirSync('data/tei/anno/register/') ;
+let teiFiles = fs.readdirSync('data/tei/temp/') ;
 //iterate over tei files
 teiFiles.forEach((file) => {
     //filter template files
     if(file.includes('_temp.xml')) {
-        let teiFile = fs.readFileSync('data/tei/anno/register/' + file, 'utf8') ;
+        let teiFile = fs.readFileSync('data/tei/temp/' + file, 'utf8') ;
         let teiJsFile = convert.xml2js(teiFile, {compact: false, spaces: 2}) ;      
         buildReg(teiJsFile, jsonJs_reg_files) ;
         let teiJs_out = teiJsFile ;

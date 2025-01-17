@@ -25,7 +25,7 @@ function posNr2Str(posNr, posStr) {
 }
 
 //read text data json file
-let json_in = fs.readFileSync('data/json/text_mdata_temp.json', 'utf8') ;
+let json_in = fs.readFileSync('data/json/temp/text_mdata_temp.json', 'utf8') ;
 let jsonJs_in = JSON.parse(json_in) ;
 let text_mdata_results = jsonJs_in ;
 let text_mdata_temp = jsonJs_in.results.bindings[0] ;

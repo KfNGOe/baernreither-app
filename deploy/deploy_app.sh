@@ -30,4 +30,19 @@ mkdir -p /home/rh/github/baernreither-app/data/json/text/all/
 mkdir -p /home/rh/github/baernreither-app/data/json/text/full/
 mkdir -p /home/rh/github/baernreither-app/data/json/text/mdata/
 cp -r data/json/temp/* /home/rh/github/baernreither-app/data/json/temp/
+
+mkdir -p /home/rh/github/baernreither-app/data/meta/
+cp -r data/meta/* /home/rh/github/baernreither-app/data/meta/
+
+mkdir -p /home/rh/github/baernreither-app/data/tei/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/tei/temp/
+mkdir -p /home/rh/github/baernreither-app/data/tei/text/
+cp -r data/tei/temp/* /home/rh/github/baernreither-app/data/tei/temp/
+
+
+
+
+
+
+
 echo "deploy data done"
