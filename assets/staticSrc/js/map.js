@@ -30,14 +30,22 @@ function setMarker(data) {
       console.log("Skip marker", marker);
       continue;
     }
+    //check if there is a name today
+    let markerName;
+    if (marker.B == undefined) {
+      markerName = marker.A;
+    } else {
+      //name today
+      markerName = marker.B;
+    }
     let popup =
-      marker.A +
+      markerName +
       "<br />" +
       "<b>Geo Names Id:</b><br /> " +
       '<div style="margin-left: 10px"><a href="' +
-      marker.E +
+      marker.C +
       '" target="blank">' +
-      getGeoNamesId(marker.E) +
+      getGeoNamesId(marker.C) +
       "</a></div>";
     let m = L.marker([marker.Lat, marker.Long], {})
       .bindPopup(popup)
@@ -48,7 +56,7 @@ function setMarker(data) {
       markerUnselected();
     }); //when a popup is unselected call markerUnselected function
 
-    if (markerFlag == true && getGeoNamesId(marker.E) == geoID) {
+    if (markerFlag == true && getGeoNamesId(marker.C) == geoID) {
       console.log("catch geoID");
       markerTriggExt = marker;
       markerTriggExtObj = L.marker([markerTriggExt.Lat, markerTriggExt.Long], {}).bindPopup(popup); //generate a marker and bind popup and select callback to it ;
@@ -82,10 +90,10 @@ function markerSelected(marker) {
   $(".toc_map").text(""); //clear the left side
 
   $(".toc_map#name").text(marker.A); //set the place name in the toc
-  $(".toc_map#name_full").text(marker.D); //set the place details in the toc
+  $(".toc_map#name_today").text(marker.B); //set the place details in the toc
   $(".toc_map#coordinates_lat").text(marker.Lat); //set the coordinates in the toc
   $(".toc_map#coordinates_long").text(marker.Long); //set the coordinates in the toc
-  $(".toc_map#writings").text(marker.A);
+  $(".toc_map#wiki_link").attr('href', marker.Wiki); //set the wiki link in the toc  
 }
 
 function markerUnselected() {
@@ -110,10 +118,10 @@ function getGeoNamesId(geoNamesUrl) {
 
 function init() {
   //fetch the json
-  const path = "./data/json/anno/register/tmp/register_place_temp.json";
+  const path = "./data/json/anno/register/tmp/register_place_geo.json";
   fetch(path).then((response) => {
     response.json().then((data) => {
-      setMarker(data.results);
+      setMarker(data.results.bindings);
     });
   });
 }

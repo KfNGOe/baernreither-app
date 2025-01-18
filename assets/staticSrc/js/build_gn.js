@@ -2,12 +2,9 @@ const axios = require('axios') ;
 const fs = require('fs') ;
 var convert = require('xml-js');
 
-var gnSets_json = {} ;
 var gnSets_str = "" ;
 var gnSet = "" ;
 var gnUrl = "" ;
-
-var gndUrl = "" ;
 
 let gn_json = {
     "head": {
@@ -18,7 +15,8 @@ let gn_json = {
             "D",
             "Lemma_gn",
             "Lat",
-            "Long"
+            "Long",
+            "Wiki"
         ]
     },
     "results": {
@@ -65,9 +63,8 @@ async function getGNDData(gndUrl) {
   
     console.log('start gn api calls') ;
   
-    for (const item of places) {
-      console.log('item = ', item) ;
-      //check if item.C exists
+    for (const item of places) {      
+      //check if geoname url exists
         if (item.C && item.C.includes('https')) {
             if(item.C.includes('geonames')) {
                 gnUrl = item.C ;
@@ -79,33 +76,27 @@ async function getGNDData(gndUrl) {
                 await getGnData(gnUrl).then(response => {                    
                     xml = response.data ;                    
                 })
-                js = convert.xml2js(xml, {compact: false, spaces: 2}) ;
+                js = convert.xml2js(xml, {compact: false, spaces: 2}) ;                
                 let arr_js = js.elements[0].elements[0].elements ;
                 let lemma = arr_js.find(item => item.name === 'gn:name').elements[0].text ;
                 let wgs_lat = arr_js.find(item => item.name === 'wgs84_pos:lat').elements[0].text ;
                 let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;
-                console.log('lemma: ', lemma) ;
-                console.log('wgs_lat: ', wgs_lat) ;
-                console.log('wgs_long: ', wgs_long) ;
+                let wiki = arr_js.find(item => item.name === 'gn:wikipediaArticle');
+                if (wiki != undefined) {
+                    wiki = wiki.attributes ;
+                }                                
                 item.Lemma_gn = lemma ;
                 item.Lat = wgs_lat ;
                 item.Long = wgs_long ;
+                if (wiki != undefined && wiki['rdf:resource'].includes('en.wikipedia')) {                    
+                    item.Wiki = wiki['rdf:resource'] ;
+                }
                 gnSet = item ;
-                gnSets.push(gnSet) ;
-                console.log('gnSets: ', JSON.stringify(gnSets)) ;
+                gnSets.push(gnSet) ;                
             } else {
                 if(item.C.includes('gnd')) {                    
                     gnSet = item ;
-                    gnSets.push(gnSet) ;
-                    /*gndUrl = item.C ;
-                    gndUrl = gndUrl.concat('/about/lds') ;
-                    console.log('gndUrl = ', gndUrl) ;
-
-                    await getGndData(gndUrl).then(response => {
-                        //console.log('response.data: ', response.data) ;
-                        xml = response.data ;
-                        //gnSets = gndSets + gndSet ;
-                    })*/
+                    gnSets.push(gnSet) ;                    
                 }
             }
         } else {            
@@ -115,8 +106,7 @@ async function getGNDData(gndUrl) {
             gnSets.push(gnSet) ;
         }      
     }          
-    console.log('end api calls') ;
-    //gnSets_json.Tabelle1 = gnSets ;
+    console.log('end api calls') ;    
     //delete first element of gnSets
     gnSets.shift() ;
     //put gnSets into gn_json
