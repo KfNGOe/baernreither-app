@@ -691,7 +691,7 @@ jsonFiles.forEach((file) => {
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
 
    //write log file
-   fileNamePath = 'data/txt/log/log_text.txt' ;
+   fileNamePath = 'data/txt/log/text/log_text.txt' ;
    fs.writeFileSync(fileNamePath, log_data ) ;   
 
    //remove appended html

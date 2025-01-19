@@ -41,16 +41,24 @@ cp -r data/tei/temp/* /home/rh/github/baernreither-app/data/tei/temp/
 
 mkdie -p /home/rh/github/baernreither-app/data/ttl/anno/anno_web/
 mkdir -p /home/rh/github/baernreither-app/data/ttl/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/ttl/text/
 
+mkdir -p /home/rh/github/baernreither-app/data/txt/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/txt/log/anno/register/
+mkdir -p /home/rh/github/baernreither-app/data/txt/log/text/
 
-
-
-
-
-
-
-
-
-
-
+mkdir -p /home/rh/github/baernreither-app/data/xlsx/
 echo "deploy data done"
+
+echo "deploy search"
+rm -r /home/rh/github/baernreither-app/staticSearch/*
+mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/stems
+mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/temp/
+mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/tokens/
+mkdir -p /home/rh/github/baernreither-app/staticSearch/data/txt/
+cp -r staticSearch/data/json/temp/* /home/rh/github/baernreither-app/staticSearch/data/json/temp/
+echo "deploy data done"
+
+echo "deploy shell"
+cp ./*.sh /home/rh/github/baernreither-app/
+echo "deploy shell done"
