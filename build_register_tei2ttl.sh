@@ -17,7 +17,8 @@ for file in $inputDir*.xml; do
         if test -f "$file"
         then
         echo "Starting tei to ttl transformation"
-        export pathname
+        export pathname_in=$inputDir
+        export pathname_out=$outputDir
         export name
         ./build_tei2ttl.sh
         fi

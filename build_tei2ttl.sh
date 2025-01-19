@@ -1,7 +1,7 @@
 echo "build tei to ttl"
 
 PATH_TEI=$pathname_in
-PATH_TEI_XMLID='./data/tei/'
+PATH_TEI_XMLID='./data/tei_xmlId/'
 PATH_JSON_XMLID='./data/json_xmlId/'
 PATH_JSON_XMLJS='./data/json_xmlJs/'
 PATH_JSON_RDF='./data/json_rdf/'
@@ -14,6 +14,7 @@ EXTENSION_TTL='.ttl'
 EXTENSION_JSON='.json'
 
 echo "create temporary paths"
+mkdir -p $PATH_TEI_XMLID
 mkdir -p $PATH_JSON_XMLID
 mkdir -p $PATH_JSON_XMLJS
 mkdir -p $PATH_JSON_RDF
@@ -36,7 +37,11 @@ path_in_json=$PATH_JSON_XMLJS path_out_json=$PATH_JSON_RDF file=$FILENAME ext_js
 echo "build ttl"
 path_in_json=$PATH_JSON_RDF path_out_ttl=$PATH_TTL file=$FILENAME ext_json=$EXTENSION_JSON ext_ttl=$EXTENSION_TTL node assets/staticSrc/js/build_ttl.js
 
+echo copy tei_xmlId to tei
+cp $PATH_TEI_XMLID$FILENAME$EXTENSION_XML $PATH_TEI$FILENAME$EXTENSION_XML
+
 echo "remove temporary paths"
+rm -r $PATH_TEI_XMLID
 rm -r $PATH_JSON_XMLID
 rm -r $PATH_JSON_XMLJS
 rm -r $PATH_JSON_RDF

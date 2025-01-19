@@ -6,7 +6,7 @@
 echo starting tei to ttl transformation
  
 inputDir="data/tei/"
-outputDir="data/tei/"
+outputDir="data/ttl/text/"
 
 filesChanged=false;
 
@@ -30,13 +30,7 @@ else
                     echo "Found changed tei: ${changed_file}"
                     filesChanged=true;
                     name=$(basename "$changed_file" .xml)
-                    echo "changed tei filename: ${name}"  #name of the file without extension
-
-                    if test -f "$outputDir$name.xml"
-                    then
-                        echo "removing tei file in output dir"
-                        rm "$outputDir$name.xml"
-                    fi
+                    echo "changed tei filename: ${name}"  #name of the file without extension                    
 
                     if ! test -d "$outputDir"
                     then
@@ -47,33 +41,12 @@ else
                     if test -f "$changed_file"
                     then
                         echo "tei was changed/added. Starting transform"
-                        echo "Starting tei to tei with xmlid transformation"
+                        echo "Starting tei to ttl transformation"
+                        export pathname_in=$inputDir
+                        export pathname_out=$outputDir
                         export name                        
-                        ./build_tei2ttl.sh
-                        echo "Starting umlaut encoding"
-                        #export filepaths to be used in the called scripts
-                        export pathName=$pathname
-                        export name=$name
-                        export ext=".ttl"
-                        #encode .ttl file
-                        ./build_encodeUmlauts.sh
-                        echo "Starting ttl to json transformation"          
-                        ./build_text_ttl2json.sh
-                        echo "Starting umlaut decoding"
-                        #decode .ttl file
-                        ./build_decodeUmlauts.sh
-                        #decode .json file
-                        export pathName="./data/json/text/all/"
-                        export name="${name}_all"
-                        export ext=".json"
-                        ./build_decodeUmlauts.sh
-                    fi
-
-                    if test -f "$inputDir$name.xml"
-                    then
-                        echo "removing tei file in input dir"
-                        rm "$inputDir$name.xml"
-                    fi
+                        ./build_tei2ttl.sh                        
+                    fi                    
                 fi                
             fi
         done          

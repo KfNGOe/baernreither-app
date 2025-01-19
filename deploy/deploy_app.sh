@@ -60,5 +60,8 @@ cp -r staticSearch/data/json/temp/* /home/rh/github/baernreither-app/staticSearc
 echo "deploy data done"
 
 echo "deploy shell"
+rm -r /home/rh/github/baernreither-app/*.sh
 cp ./*.sh /home/rh/github/baernreither-app/
 echo "deploy shell done"
+
+echo "deploy baernreither-app done"
