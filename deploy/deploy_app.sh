@@ -56,7 +56,9 @@ mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/stems
 mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/temp/
 mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/tokens/
 mkdir -p /home/rh/github/baernreither-app/staticSearch/data/txt/
+mkdir -p /home/rh/github/baernreither-app/staticSearch/src/js/
 cp -r staticSearch/data/json/temp/* /home/rh/github/baernreither-app/staticSearch/data/json/temp/
+cp -r staticSearch/src/js/* /home/rh/github/baernreither-app/staticSearch/src/js/
 echo "deploy data done"
 
 echo "deploy shell"
