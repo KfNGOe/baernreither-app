@@ -39,7 +39,7 @@ mkdir -p /home/rh/github/baernreither-app/data/tei/temp/
 mkdir -p /home/rh/github/baernreither-app/data/tei/text/
 cp -r data/tei/temp/* /home/rh/github/baernreither-app/data/tei/temp/
 
-mkdie -p /home/rh/github/baernreither-app/data/ttl/anno/anno_web/
+mkdir -p /home/rh/github/baernreither-app/data/ttl/anno/anno_web/
 mkdir -p /home/rh/github/baernreither-app/data/ttl/anno/register/
 mkdir -p /home/rh/github/baernreither-app/data/ttl/text/
 
