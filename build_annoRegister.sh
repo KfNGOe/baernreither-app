@@ -29,7 +29,7 @@ done
 
 echo "build anno register ttl"
 echo read files from register directory
-inputDir_reg="data/ttl/anno/register/instance/"
+inputDir_reg="data/ttl/anno/register/"
 
 for file in $inputDir_reg*.ttl; do
   #echo "$file"
@@ -53,18 +53,18 @@ for file in $inputDir_reg*.ttl; do
         export mime_type='text/turtle'
         export query_type='CONSTRUCT'
         export path_rq='assets/staticSrc/sparql/'
-        export path_out='./data/ttl/anno/anno_web/instance/'
+        export path_out='./data/ttl/anno/anno_web/'
         if [[ "$file" = *"register_index"*  ]]
         then
             echo "build anno index ttl"
             export file_rq='annoIndex'
-            export file_out='annoIndexi'
+            export file_out='annoIndex'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh
 
             echo "build anno index sub ttl"                
             export file_rq='annoIndexSub'
-            export file_out='annoIndexSubi'
+            export file_out='annoIndexSub'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
         fi
@@ -72,7 +72,7 @@ for file in $inputDir_reg*.ttl; do
         then
             echo "build anno org ttl"
             export file_rq='annoOrg'
-            export file_out='annoOrgi'
+            export file_out='annoOrg'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
         fi
@@ -80,7 +80,7 @@ for file in $inputDir_reg*.ttl; do
         then
             echo "build anno person ttl"
             export file_rq='annoPerson'
-            export file_out='annoPersoni'
+            export file_out='annoPerson'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
         fi
@@ -88,7 +88,7 @@ for file in $inputDir_reg*.ttl; do
         then
             echo "build anno place ttl"
             export file_rq='annoPlace'
-            export file_out='annoPlacei'
+            export file_out='annoPlace'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
         fi        
@@ -100,7 +100,7 @@ echo "clear graphdb"
 
 echo build anno register json
 echo read files from anno directory
-inputDir_anno="data/ttl/anno/anno_web/instance/"
+inputDir_anno="data/ttl/anno/anno_web/"
 
 for file in $inputDir_anno*.ttl; do
   #echo "$file"
@@ -119,8 +119,8 @@ for file in $inputDir_anno*.ttl; do
             export mime_type='application/sparql-results+json'
             export query_type='SELECT'
             export path_rq='assets/staticSrc/sparql/'
-            export path_out='./data/json/anno/'
-            if [[ "$file" = *"Indexi.ttl" ]]
+            export path_out='./data/json/anno/anno_web/'
+            if [[ "$file" = *"Index.ttl" ]]
             then               
                 echo "Import index ttl file"                
                 ./gdb_importFile.sh                
@@ -138,7 +138,7 @@ for file in $inputDir_anno*.ttl; do
                 ./gdb_queryRepo.sh
                 
             fi
-            if [[ "$file" = *"Orgi.ttl" ]]
+            if [[ "$file" = *"Org.ttl" ]]
             then
                 echo "Import anno org ttl file"                
                 ./gdb_importFile.sh                
@@ -149,7 +149,7 @@ for file in $inputDir_anno*.ttl; do
                 export ext_out='.json'
                 ./gdb_queryRepo.sh                
             fi
-            if [[ "$file" = *"Personi.ttl" ]]
+            if [[ "$file" = *"Person.ttl" ]]
             then
                 echo "Import anno person ttl file"                
                 ./gdb_importFile.sh
@@ -160,7 +160,7 @@ for file in $inputDir_anno*.ttl; do
                 export ext_out='.json'
                 ./gdb_queryRepo.sh                
             fi
-            if [[ "$file" = *"Placei.ttl" ]]
+            if [[ "$file" = *"Place.ttl" ]]
             then
                 echo "Import anno place ttl file"
                 ./gdb_importFile.sh

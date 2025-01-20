@@ -20,7 +20,7 @@ echo "build zeitplantagebuecher.html"
 node assets/staticSrc/js/build_zeitplantagebuecher_html.js
 echo "build zeitplantagebuecher.html done"
 
-echo "build uerbersicht.html"
+echo "build uebersicht.html"
 node assets/staticSrc/js/build_uebersicht_html.js
 echo "build uebersicht.html done"
 

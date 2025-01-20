@@ -1,5 +1,5 @@
 ENDPOINT='http://localhost:7200'
-REPO_NAME='kfngoe_baern'
+REPO_NAME='kfngoe_test'
 
 PATH_IN=$pathName
 FILENAME_IN=$name

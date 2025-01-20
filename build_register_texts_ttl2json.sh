@@ -28,7 +28,7 @@ for file in $inputDir*.ttl; do
 done
 
 echo read xlsx register files from json directory
-inputDir_reg="data/json/register/"
+inputDir_reg="data/json/anno/register/tmp/"
 
 for file in $inputDir_reg*.json; do
   #echo "$file"
@@ -46,7 +46,7 @@ for file in $inputDir_reg*.json; do
             export mime_type='application/sparql-results+json'
             export query_type='SELECT'
             export path_rq='assets/staticSrc/sparql/'
-            export path_out='./data/json/register/'
+            export path_out='./data/json/anno/register/tmp/'
             if [[ "$file" = *"register_index"*  ]]
             then                
                 export file_rq='index_text_json'            

@@ -1,12 +1,13 @@
 echo "build ttl register from tei"
 
 echo read files from tei directory
-inputDir="data/tei/register/"
+inputDir="data/tei/anno/register/"
+outputDir="data/ttl/anno/register/"
 
 for file in $inputDir*.xml; do
   #echo "$file"
   #check if file is no template
-    if [[ "$file" != *"_template"*  ]]
+    if [[ "$file" != *"_temp"*  ]]
     then
         echo "Found tei: ${file}"
         pathname=$(dirname "$file")/        
@@ -16,7 +17,8 @@ for file in $inputDir*.xml; do
         if test -f "$file"
         then
         echo "Starting tei to ttl transformation"
-        export pathname
+        export pathname_in=$inputDir
+        export pathname_out=$outputDir
         export name
         ./build_tei2ttl.sh
         fi

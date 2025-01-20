@@ -1,0 +1,46 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import: Text files, annoTextCompi
+
+SELECT (?s_ttl AS ?id) (?o_source_target AS ?source_target) (?o_start_nr_target AS ?start_target) ?end_target (?o_source_body AS ?source_body) 
+        (?o_start_nr_body AS ?start_body) (?o_status AS ?status)
+WHERE { 
+	?s_ttl 
+        a kfngoeo:AnnoTextComparison ;
+        kfngoeo:hasTarget [
+        	kfngoeo:hasSource ?o_source_target ;
+    		kfngoeo:hasSelector [
+        		kfngoeo:start ?o_start_nr_target ;
+            	kfngoeo:end ?o_end_nr_target ;
+    		] ;
+    	] ;
+        kfngoeo:hasBody [
+			kfngoeo:hasSource ?o_source_body ;
+            kfngoeo:hasSelector ?o_start_nr_body ;
+   			rdfs:isDefinedBy ?o_status ;
+        ]
+    .
+    BIND(CONCAT(?o_source_target, '_', str(?o_end_nr_target)) AS ?o_end_app)
+    ?s_app_end 
+        a kfngoeo:EndTag ;
+		kfngoeo:elementName tei:app ;
+  		kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_xmlid ;
+        ] ;
+        kfngoeo:elementPos ?o_end_app ;
+	.
+    ?s_app_start
+        a kfngoeo:StartTag ;
+        kfngoeo:hasAttr [
+            kfngoeo:attrName "xml:id" ;
+            kfngoeo:attrValue ?o_xmlid ;
+        ] ;
+        kfngoeo:elementPos ?o_start_app ;
+	.    
+    BIND(xsd:integer(SUBSTR(?o_start_app,STRLEN(?o_source_target)+2)) AS ?end_target)  
+}

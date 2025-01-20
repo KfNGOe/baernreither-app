@@ -18,14 +18,15 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: "11"
-          distribution: "adopt"
-      #- name: Set up Node.js
-      #  uses: actions/setup-node@v2
-      #  with:
-      #    node-version: "16.x"      
+          distribution: "adopt"      
+      - id: files
+        uses: jitterbit/get-changed-files@v1      
       - name: Install
         run: |          
           sudo bash install.sh
+      - name: Make dir
+        run: |
+          sudo bash setup_dir.sh
       - name: Start graphdb
         run: |
           sudo bash gdb_start.sh &
@@ -39,6 +40,11 @@ jobs:
       - name: Get repo list
         run: |
           sudo bash gdb_getRepo.sh
+      - name: running tei transform
+        run: |          
+          . gh_tei2ttl.sh
+        env:
+          changes: ${{ steps.files.outputs.all }}
       - name: build texts
         run: |
           sudo bash build_texts.sh
@@ -50,7 +56,11 @@ jobs:
           sudo bash build_ssSearch_all.sh
       - name: build html
         run: |
-          sudo bash build_html.sh      
+          sudo bash build_html.sh   
+      - name: Del dir
+        run: |
+          sudo bash del_dir.sh
+
       #- name: Commit files
       #  run: |
       #    git config --global user.email "richard.hoermann@inode.at"

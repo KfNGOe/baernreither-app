@@ -34,4 +34,3 @@ echo "build anno levels of register"
 echo "build anno levels of register done"
 
 echo "build register done"
-

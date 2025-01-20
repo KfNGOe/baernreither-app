@@ -1,0 +1,23 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+#import: annoAbbri
+
+SELECT (?s_ttl AS ?id) (?o_source_target AS ?source_target) (?o_start_nr_target AS ?start_target) (?o_end_nr_target AS ?end_target)
+WHERE { 
+	?s_ttl 
+        a kfngoeo:AnnoAbbr ;
+        kfngoeo:hasTarget [
+        	kfngoeo:hasSource ?o_source_target ;
+    		kfngoeo:hasSelector [
+        		kfngoeo:start ?o_start_nr_target ;
+            	kfngoeo:end ?o_end_nr_target ;
+    		] ;			
+    	]        
+    .    
+}

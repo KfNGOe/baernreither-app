@@ -1,0 +1,74 @@
+PREFIX kfngoeo: <https://github.com/KfNGOe/kfngoeo#>
+PREFIX tei: <http://www.tei-c.org/ns/1.0/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kfngoei: <https://github.com/KfNGOe/kfngoei/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#import Text files
+
+CONSTRUCT {    
+    ?s_anno
+        a kfngoeo:AnnoNote ;
+        rdfs:label "Annotation level of Note"@en ;
+        kfngoeo:hasTarget [
+            kfngoeo:hasSource ?title_note ;
+            kfngoeo:hasSelector [
+                a kfngoeo:TextPositionSelector ;
+                kfngoeo:start ?start_nr ;
+                kfngoeo:end ?end_nr ;
+            ] ;
+            kfngoeo:hasSelector ?s_start ; 
+        ] ;
+        kfngoeo:hasBody ?text_note ;
+    .
+}
+WHERE {    
+    {
+    	SELECT ?s_start ?start_nr ?end_nr ?title_short (GROUP_CONCAT(?o_text) AS ?text_note)
+        WHERE {
+            ?s_tei 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:TEI ;
+                kfngoeo:elementPos ?o_pos_tei ;
+            .            
+            ?s_start 
+                a kfngoeo:StartTag ;
+                kfngoeo:elementName tei:note ;
+                kfngoeo:hasAttr [
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?o_id;
+                    ] ;
+                kfngoeo:hasAttr [
+                    kfngoeo:attrName ?o_name ;          		
+                    kfngoeo:attrValue ?o_val ;
+                    ] ;
+                kfngoeo:elementPos ?o_pos_start ;
+            .
+            ?s_end 
+                a kfngoeo:EndTag ;
+                kfngoeo:elementName tei:note ;
+                kfngoeo:hasAttr [            
+                    kfngoeo:attrName "xml:id" ;
+                    kfngoeo:attrValue ?o_id ;
+                ] ;                    
+                kfngoeo:elementPos ?o_pos_end ;
+            .            
+            BIND(SUBSTR(?o_pos_tei,1,strlen(?o_pos_tei)-2) AS ?title_short)
+            FILTER(CONTAINS(?o_pos_start, ?title_short))            
+            BIND(xsd:integer(substr(?o_pos_start,strlen(?title_short)+2)) AS ?start_nr)
+            BIND(xsd:integer(substr(?o_pos_end,strlen(?title_short)+2)) AS ?end_nr)
+            FILTER(?o_name = "type" || ?o_name = "place" || ?o_name = "n")
+            FILTER(?o_val = "editorial")
+            ?s_text 
+                a kfngoeo:Text ;
+                kfngoeo:hasContent ?o_text ;
+                kfngoeo:elementPos ?o_pos_text ;
+            .
+            BIND(xsd:integer(SUBSTR(?o_pos_text,strlen(?title_short)+2)) AS ?text_nr)
+    		FILTER(?start_nr < ?text_nr && ?text_nr < ?end_nr)            
+        } GROUP BY ?start_nr ?end_nr ?title_short ?s_start
+    }  
+    BIND (IF(BOUND(?start_nr), URI(CONCAT("https://github.com/KfNGOe/kfngoei/", STRUUID())), ?nothing ) AS ?s_anno)
+    BIND(?title_short AS ?title_note)
+}
