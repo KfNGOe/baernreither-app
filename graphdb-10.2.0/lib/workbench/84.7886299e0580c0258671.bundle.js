@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[84],{126:function(e,o){PluginRegistry.add("guide.step",[{guideBlockName:"download-guide-resource",getSteps:(e,o)=>({guideBlockName:"info-message",options:angular.extend({},{title:"guide.step_plugin.download-guide-resource.title",content:"guide.step_plugin.download-guide-resource.content",canBePaused:!0,forceReload:!0,resourceUrl:o.GuideUtils.toResourceDownloadUrl(e)},e)})}])}}]);
-//# sourceMappingURL=84.7886299e0580c0258671.bundle.js.map

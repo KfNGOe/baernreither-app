@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[235,234],{129:function(E,C,T){"use strict";T.r(C),T.d(C,"QueryType",(function(){return D}));const D={SELECT:"SELECT",CONSTRUCT:"CONSTRUCT",ASK:"ASK",DESCRIBE:"DESCRIBE",INSERT:"INSERT",DELETE:"DELETE",LOAD:"LOAD",CLEAR:"CLEAR",CREATE:"CREATE",DROP:"DROP",COPY:"COPY",MOVE:"MOVE",ADD:"ADD"}}}]);

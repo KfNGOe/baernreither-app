@@ -1,0 +1,187 @@
+[INFO ] 2025-01-22 08:58:35,655 [main | c.o.g.Config] Using 'file:/home/rh/github/dev-baernreither-app/graphdb-10.8.2/conf/logback.xml' as logback's configuration file
+[INFO ] 2025-01-22 08:58:35,995 [main | c.o.g.s.GraphDB] Starting GraphDB in workbench mode.
+[INFO ] 2025-01-22 08:58:46,756 [main | c.o.g.Config] GraphDB Home directory: /home/rh/github/dev-baernreither-app/graphdb-10.8.2
+[INFO ] 2025-01-22 08:58:46,756 [main | c.o.g.Config] GraphDB Config directory: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/conf
+[INFO ] 2025-01-22 08:58:46,757 [main | c.o.g.Config] GraphDB Data directory: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data
+[INFO ] 2025-01-22 08:58:46,757 [main | c.o.g.Config] GraphDB Work directory: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/work
+[INFO ] 2025-01-22 08:58:46,757 [main | c.o.g.Config] GraphDB Logs directory: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/logs
+[INFO ] 2025-01-22 08:58:46,978 [main | c.o.l.LicenseRegistry] License configuration: Embedded license
+[INFO ] 2025-01-22 08:58:46,978 [main | c.o.l.LicenseRegistry] License file: jar:file:/home/rh/github/dev-baernreither-app/graphdb-10.8.2/lib/graphdb-runtime-10.8.2.jar!/GRAPHDB_LITE.license
+[INFO ] 2025-01-22 08:58:46,982 [main | c.o.l.LicenseRegistry] Product:                 GRAPHDB_LITE
+[INFO ] 2025-01-22 08:58:46,982 [main | c.o.l.LicenseRegistry] Capabilities:            [LUCENE_CONNECTOR]
+[INFO ] 2025-01-22 08:58:46,983 [main | c.o.l.LicenseRegistry] Usage restriction:       null
+[INFO ] 2025-01-22 08:58:46,983 [main | c.o.l.LicenseRegistry] Licensee:                Freeware
+[INFO ] 2025-01-22 08:58:46,983 [main | c.o.l.LicenseRegistry] Permitted use:           THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[INFO ] 2025-01-22 08:58:46,983 [main | c.o.l.LicenseRegistry] Version:                 10.8
+[INFO ] 2025-01-22 08:58:46,984 [main | c.o.l.LicenseRegistry] Expiry date:             none
+[INFO ] 2025-01-22 08:58:46,984 [main | c.o.l.LicenseRegistry] Latest publication date: none
+[INFO ] 2025-01-22 08:58:46,984 [main | c.o.l.LicenseRegistry] Max CPU cores:           1
+[INFO ] 2025-01-22 08:58:47,773 [main | c.o.f.c.s.r.GraphDBRpcServer] Started gRPC server on port 7300 successfully
+[INFO ] 2025-01-22 08:58:50,763 [main | c.o.g.s.GraphDB] Started GraphDB in workbench mode at port 7200.
+[ERROR] 2025-01-22 09:25:24,719 [http-nio-7200-exec-2 | c.o.f.g.RetrievalChatController] TTYG error: List agents
+java.lang.IllegalStateException: Set the config property graphdb.openai.api-key to your OpenAI API key
+	at com.ontotext.graphdb.openai.OpenAIConfig.getApiKey(OpenAIConfig.java:38)
+	at com.ontotext.graphdb.gpt.chat.GptChat.prepareAssistantsClient(GptChat.java:189)
+	at com.ontotext.graphdb.gpt.chat.GptChat.<init>(GptChat.java:69)
+	at com.ontotext.graphdb.gpt.chat.GptChat.getInstance(GptChat.java:85)
+	at com.ontotext.forest.gpt.GptChatService.getGptChatInstance(GptChatService.java:53)
+	at com.ontotext.forest.gpt.GptChatService.getAllAgents(GptChatService.java:142)
+	at com.ontotext.forest.gpt.RetrievalChatController.listAgents(RetrievalChatController.java:98)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:903)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:809)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.ontotext.forest.security.AdminDelegatingFilterProxy.doFilter(AdminDelegatingFilterProxy.java:85)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.ontotext.forest.clusterproxy.ClusterFilterBean.doFilter(ClusterFilterBean.java:73)
+	at com.ontotext.forest.clusterproxy.ClusterLoadBalancerFilter.doFilterInternal(ClusterLoadBalancerFilter.java:25)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.ontotext.forest.core.request.RequestFilter.doFilterInternal(RequestFilter.java:47)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.github.ziplet.filter.compression.CompressingFilter.doFilter(CompressingFilter.java:263)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+[INFO ] 2025-01-22 09:25:24,778 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Version: 10.8, revision: -1991599925
+[INFO ] 2025-01-22 09:25:24,779 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Build date: Fri Dec 13 11:50:20 CET 2024
+[INFO ] 2025-01-22 09:25:24,809 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Started repository kfngoe_test in READ/WRITE mode.
+[INFO ] 2025-01-22 09:25:24,825 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'disable-sameAs' to value 'false'
+[INFO ] 2025-01-22 09:25:24,830 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '195.3K'
+[INFO ] 2025-01-22 09:25:24,831 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for tuples: 7829
+[INFO ] 2025-01-22 09:25:24,831 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for predicates: 1118
+[INFO ] 2025-01-22 09:25:24,831 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'in-memory-literal-properties' to value 'false'
+[INFO ] 2025-01-22 09:25:24,843 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Configured parameter graphdb.engine.onheap.allocation to true
+[INFO ] 2025-01-22 09:25:24,851 [repository-manager-0 | c.o.t.i.FileSystemHealth] Active locations health:
+[INFO ] 2025-01-22 09:25:24,855 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe_test: 73.0% (OK)
+[INFO ] 2025-01-22 09:25:24,856 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/rh/github/dev-baernreither-app/graphdb-10.8.2/logs: 73.0% (OK)
+[INFO ] 2025-01-22 09:25:24,856 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/rh/github/dev-baernreither-app/graphdb-10.8.2/work: 73.0% (OK)
+[INFO ] 2025-01-22 09:25:24,865 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Storage folder does not exist and is created: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe_test/storage
+[INFO ] 2025-01-22 09:25:24,889 [repository-manager-0 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-01-22 09:25:25,003 [repository-manager-0 | c.o.t.u.l.LimitedObjectCacheFactory] Using LRU cache type: synch
+[WARN ] 2025-01-22 09:25:25,225 [repository-manager-0 | c.o.t.b.AVLRepository] Clear triple statisctics collection
+[WARN ] 2025-01-22 09:25:25,233 [repository-manager-0 | c.o.t.b.AVLRepository] Clear PSOT collection
+[WARN ] 2025-01-22 09:25:25,234 [repository-manager-0 | c.o.t.b.AVLRepository] Clear POST collection
+[WARN ] 2025-01-22 09:25:25,234 [repository-manager-0 | c.o.t.b.AVLRepository] Rebuild triple collections. start entity pool scan...
+[WARN ] 2025-01-22 09:25:25,261 [repository-manager-0 | c.o.t.b.AVLRepository] Entity pool scan completed! Commiting...
+[WARN ] 2025-01-22 09:25:25,287 [repository-manager-0 | c.o.t.b.AVLRepository] Check whether all predicates in the predicate statistics have correct collection sizes.
+[INFO ] 2025-01-22 09:25:25,287 [repository-manager-0 | c.o.t.b.AVLRepository] Checked 0 entries in predicate statistics
+[WARN ] 2025-01-22 09:25:25,287 [repository-manager-0 | c.o.t.b.AVLRepository] Check for missing statement predicates in the predicate statistics
+[INFO ] 2025-01-22 09:25:25,305 [repository-manager-0 | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-01-22 09:25:25,529 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Searching for plugins available in the classpath...
+[INFO ] 2025-01-22 09:25:25,559 [repository-manager-0 | c.o.GraphDBConfigParameters] Reading external plugins from /home/rh/github/dev-baernreither-app/graphdb-10.8.2/lib/plugins
+[INFO ] 2025-01-22 09:25:25,559 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Registering external plugins...
+[INFO ] 2025-01-22 09:25:25,817 [repository-manager-0 | c.o.t.p.g.FunctionLoader] Registered 1 functions from package com.ontotext.trree.plugin.geo.
+[INFO ] 2025-01-22 09:25:25,950 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugins: GeoSPARQL, autocomplete, change-tracking, chatgpt-retrieval-connector, dependencies-plugin, direct, elasticsearch-connector, entity-change, expose-entity, geospatial, history, kafka-connector, literals-index, lucene-connector, magic-predicates, mongodb, notifications, notifications-logger, opensearch-connector, plugincontrol, proof, rdfrank, script, sequences, similarity, solr-connector, sparql-mm, sparql-template, text-mining, tx-rollback, utils
+[INFO ] 2025-01-22 09:25:26,656 [repository-manager-0 | c.o.t.g.FunctionLoader] Registered 50 functions from package com.useekm.geosparql.
+[INFO ] 2025-01-22 09:25:26,659 [repository-manager-0 | c.o.t.p.a.AutocompletePluginUtils] >>>>>>>> AutocompletePlugin: No configuration file found at /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe_test/storage/autocomplete/v2/config.properties. Assuming default options for plugin.
+[INFO ] 2025-01-22 09:25:26,707 [repository-manager-0 | c.o.t.p.g.GeoSpatialPlugin] Plugin:geospatial initialized
+[INFO ] 2025-01-22 09:25:26,711 [repository-manager-0 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-01-22 09:25:26,711 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe_test/storage/history/tx-metadata'
+[INFO ] 2025-01-22 09:25:26,712 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-01-22 09:25:26,754 [repository-manager-0 | c.o.p.literals-index] Full-text search functionality is disabled
+[INFO ] 2025-01-22 09:25:26,760 [repository-manager-0 | c.o.p.literals-index] Rebuilding literals indexes. Starting from id: 1
+[INFO ] 2025-01-22 09:25:26,774 [repository-manager-0 | c.o.p.literals-index] Complete in 0.011, num entries indexed:0
+[INFO ] 2025-01-22 09:25:26,787 [repository-manager-0 | c.o.t.p.p.PluginControlPlugin] Plugin:plugincontrol initialized
+[INFO ] 2025-01-22 09:25:27,017 [repository-manager-0 | c.o.g.s.FunctionLoader] Registered 58 functions from package com.github.tkurz.sparqlmm.function.
+[INFO ] 2025-01-22 09:25:27,349 [repository-manager-0 | c.o.t.s.i.PluginManager] Finished initializing plugins
+[INFO ] 2025-01-22 09:25:27,354 [repository-manager-0 | c.o.t.MemoryConfig] Configured global page cache size to 997 MB
+[INFO ] 2025-01-22 09:25:27,356 [repository-manager-0 | c.o.t.MemoryConfig] Max Heap Size: 3 GB
+[INFO ] 2025-01-22 09:25:27,356 [repository-manager-0 | c.o.t.MemoryConfig] Initial Heap Size: 1 GB
+[INFO ] 2025-01-22 09:25:27,424 [repository-manager-0 | c.o.r.p.ParallelLoader] Data will be parsed + resolved + loaded.
+[INFO ] 2025-01-22 09:25:27,436 [repository-manager-0 | c.o.r.p.ParallelLoader] Using 1 threads for inference
+[INFO ] 2025-01-22 09:26:15,430 [http-nio-7200-exec-7 | c.o.t.s.i.PluginManager] Shutting down plugins (DEFAULT)...
+[INFO ] 2025-01-22 09:26:15,459 [http-nio-7200-exec-7 | c.o.t.b.AVLRepository] NumberOfStatements = 70
+[INFO ] 2025-01-22 09:26:15,459 [http-nio-7200-exec-7 | c.o.t.b.AVLRepository] NumberOfExplicitStatements = 0
+[INFO ] 2025-01-22 09:26:15,460 [http-nio-7200-exec-7 | c.o.t.OwlimSchemaRepository] Shutting down entity pool
+[INFO ] 2025-01-22 09:26:15,490 [http-nio-7200-exec-7 | c.o.t.OwlimSchemaRepository] Entity pool was shut down
+[INFO ] 2025-01-22 09:28:19,329 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Version: 10.8, revision: -1991599925
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Build date: Fri Dec 13 11:50:20 CET 2024
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Started repository kfngoe in READ/WRITE mode.
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.c.AbstractParameter] Configured parameter 'disable-sameAs' to value 'false'
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '195.3K'
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.GraphDBConfigParameters] Cache pages for tuples: 7829
+[INFO ] 2025-01-22 09:28:19,330 [repository-manager-1 | c.o.GraphDBConfigParameters] Cache pages for predicates: 1118
+[INFO ] 2025-01-22 09:28:19,331 [repository-manager-1 | c.o.c.AbstractParameter] Configured parameter 'in-memory-literal-properties' to value 'false'
+[INFO ] 2025-01-22 09:28:19,331 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Configured parameter graphdb.engine.onheap.allocation to true
+[INFO ] 2025-01-22 09:28:19,332 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Storage folder does not exist and is created: /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe/storage
+[INFO ] 2025-01-22 09:28:19,332 [repository-manager-1 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[WARN ] 2025-01-22 09:28:19,372 [repository-manager-1 | c.o.t.b.AVLRepository] Clear triple statisctics collection
+[WARN ] 2025-01-22 09:28:19,373 [repository-manager-1 | c.o.t.b.AVLRepository] Clear PSOT collection
+[WARN ] 2025-01-22 09:28:19,373 [repository-manager-1 | c.o.t.b.AVLRepository] Clear POST collection
+[WARN ] 2025-01-22 09:28:19,374 [repository-manager-1 | c.o.t.b.AVLRepository] Rebuild triple collections. start entity pool scan...
+[WARN ] 2025-01-22 09:28:19,378 [repository-manager-1 | c.o.t.b.AVLRepository] Entity pool scan completed! Commiting...
+[WARN ] 2025-01-22 09:28:19,393 [repository-manager-1 | c.o.t.b.AVLRepository] Check whether all predicates in the predicate statistics have correct collection sizes.
+[INFO ] 2025-01-22 09:28:19,393 [repository-manager-1 | c.o.t.b.AVLRepository] Checked 0 entries in predicate statistics
+[WARN ] 2025-01-22 09:28:19,394 [repository-manager-1 | c.o.t.b.AVLRepository] Check for missing statement predicates in the predicate statistics
+[INFO ] 2025-01-22 09:28:19,394 [repository-manager-1 | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-01-22 09:28:19,447 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Searching for plugins available in the classpath...
+[INFO ] 2025-01-22 09:28:19,454 [repository-manager-1 | c.o.GraphDBConfigParameters] Reading external plugins from /home/rh/github/dev-baernreither-app/graphdb-10.8.2/lib/plugins
+[INFO ] 2025-01-22 09:28:19,454 [repository-manager-1 | c.o.t.OwlimSchemaRepository] Registering external plugins...
+[INFO ] 2025-01-22 09:28:19,583 [repository-manager-1 | c.o.t.p.g.FunctionLoader] Registered 1 functions from package com.ontotext.trree.plugin.geo.
+[INFO ] 2025-01-22 09:28:19,722 [repository-manager-1 | c.o.t.s.i.PluginManager] Initializing plugins: GeoSPARQL, autocomplete, change-tracking, chatgpt-retrieval-connector, dependencies-plugin, direct, elasticsearch-connector, entity-change, expose-entity, geospatial, history, kafka-connector, literals-index, lucene-connector, magic-predicates, mongodb, notifications, notifications-logger, opensearch-connector, plugincontrol, proof, rdfrank, script, sequences, similarity, solr-connector, sparql-mm, sparql-template, text-mining, tx-rollback, utils
+[INFO ] 2025-01-22 09:28:20,183 [repository-manager-1 | c.o.t.g.FunctionLoader] Registered 50 functions from package com.useekm.geosparql.
+[INFO ] 2025-01-22 09:28:20,189 [repository-manager-1 | c.o.t.p.a.AutocompletePluginUtils] >>>>>>>> AutocompletePlugin: No configuration file found at /home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe/storage/autocomplete/v2/config.properties. Assuming default options for plugin.
+[INFO ] 2025-01-22 09:28:20,210 [repository-manager-1 | c.o.t.p.g.GeoSpatialPlugin] Plugin:geospatial initialized
+[INFO ] 2025-01-22 09:28:20,214 [repository-manager-1 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-01-22 09:28:20,214 [repository-manager-1 | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/rh/github/dev-baernreither-app/graphdb-10.8.2/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-01-22 09:28:20,214 [repository-manager-1 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-01-22 09:28:20,337 [repository-manager-1 | c.o.p.literals-index] Full-text search functionality is disabled
+[INFO ] 2025-01-22 09:28:20,339 [repository-manager-1 | c.o.p.literals-index] Rebuilding literals indexes. Starting from id: 1
+[INFO ] 2025-01-22 09:28:20,346 [repository-manager-1 | c.o.p.literals-index] Complete in 0.007, num entries indexed:0
+[INFO ] 2025-01-22 09:28:20,361 [repository-manager-1 | c.o.t.p.p.PluginControlPlugin] Plugin:plugincontrol initialized
+[INFO ] 2025-01-22 09:28:20,582 [repository-manager-1 | c.o.g.s.FunctionLoader] Registered 58 functions from package com.github.tkurz.sparqlmm.function.
+[INFO ] 2025-01-22 09:28:20,594 [repository-manager-1 | c.o.t.s.i.PluginManager] Finished initializing plugins
+[INFO ] 2025-01-22 09:28:20,594 [repository-manager-1 | c.o.t.MemoryConfig] Configured global page cache size to 997 MB
+[INFO ] 2025-01-22 09:28:20,594 [repository-manager-1 | c.o.t.MemoryConfig] Max Heap Size: 3 GB
+[INFO ] 2025-01-22 09:28:20,594 [repository-manager-1 | c.o.t.MemoryConfig] Initial Heap Size: 1 GB
+[INFO ] 2025-01-22 09:28:20,630 [repository-manager-1 | c.o.r.p.ParallelLoader] Using 1 threads for inference
+[INFO ] 2025-01-22 09:28:28,960 [repositories/kfngoe | o.e.r.h.s.r.n.NamespacesController] GET namespace list
+[INFO ] 2025-01-22 09:28:29,026 [repositories/kfngoe | o.e.r.h.s.r.TupleQueryResultView] Request for query 3392903 is finished
+[INFO ] 2025-01-22 09:28:49,668 [repositories/kfngoe | o.e.r.h.s.r.n.NamespacesController] GET namespace list
+[INFO ] 2025-01-22 09:28:49,671 [repositories/kfngoe | o.e.r.h.s.r.TupleQueryResultView] Request for query 3392903 is finished
+[INFO ] 2025-01-22 09:29:48,639 [http-nio-7200-exec-7 | c.o.t.s.i.PluginManager] Shutting down plugins (DEFAULT)...
+[INFO ] 2025-01-22 09:29:48,658 [http-nio-7200-exec-7 | c.o.t.b.AVLRepository] NumberOfStatements = 70
+[INFO ] 2025-01-22 09:29:48,658 [http-nio-7200-exec-7 | c.o.t.b.AVLRepository] NumberOfExplicitStatements = 0
+[INFO ] 2025-01-22 09:29:48,659 [http-nio-7200-exec-7 | c.o.t.OwlimSchemaRepository] Shutting down entity pool
+[INFO ] 2025-01-22 09:29:48,681 [http-nio-7200-exec-7 | c.o.t.OwlimSchemaRepository] Entity pool was shut down

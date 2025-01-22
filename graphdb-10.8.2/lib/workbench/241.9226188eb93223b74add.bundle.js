@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[241],{294:function(n,t,o){"use strict";o.r(t),o.d(t,"YasguiQueryHttpMethod",(function(){return s}));const s={POST:"POST",GET:"GET"}}}]);

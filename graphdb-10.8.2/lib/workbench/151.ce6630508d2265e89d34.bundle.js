@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[151],{232:function(e,n){function a(e,n){const a=n.getSupportedLanguages();let r;return{getTranslations:()=>(r||(r={},a.forEach(n=>r[n]=e.getTranslationTable(n))),r)}}angular.module("graphdb.framework.core.services.translation-service",[]).service("TranslationService",a),a.$inject=["$translate","$languageService"]}}]);

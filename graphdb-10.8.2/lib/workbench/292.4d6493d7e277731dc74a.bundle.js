@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[292],{212:function(e,t){angular.module("graphdb.framework.rest.aclmanagement.service",[]).factory("AclManagementRestService",n),n.$inject=["$http"];function n(e){return{getAcl:function(t){return e.get(`rest/repositories/${t}/acl`)},updateAcl:function(t,n){return e.put(`rest/repositories/${t}/acl`,n)}}}}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[245],{372:function(s,e,t){"use strict";t.r(e),t.d(e,"YasrBeforeUpdateQueryResult",(function(){return i}));class i{constructor(){this.status=void 0,this.message=void 0,this.messageLabelKey=void 0,this.parameters=void 0}}}}]);

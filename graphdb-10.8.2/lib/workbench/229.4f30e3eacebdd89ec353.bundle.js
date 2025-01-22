@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[229],{166:function(s,e,a){"use strict";a.r(e),a.d(e,"NotificationMessageEvent",(function(){return o}));class o{constructor(s){this.TYPE=s.TYPE,this.message=s.payload.message,this.code=s.payload.code,this.messageType=s.payload.messageType}}}}]);

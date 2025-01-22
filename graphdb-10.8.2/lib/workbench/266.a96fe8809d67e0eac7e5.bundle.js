@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[266],{130:function(n,o,r){"use strict";r.r(o),r.d(o,"VIEW_SPARQL_EDITOR",(function(){return c}));const c="graphdb-workbench-sparql-editor"}}]);

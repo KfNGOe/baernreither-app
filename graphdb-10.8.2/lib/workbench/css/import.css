@@ -1,0 +1,68 @@
+.upload-buttons {
+    align-items: stretch;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.modal-footer .btn-group .import-format-dropdown-btn {
+    margin-right: 0;
+}
+
+.upload-buttons .btn {
+    display: flex;
+    height: 100%;
+    max-height: 100px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Remove the padding from the large button and move it to the nested link below . This allows the click over the button
+   to work in the entire button area. */
+.upload-buttons .upload-rdf-files-btn {
+    padding: 0;
+}
+
+.upload-buttons .upload-rdf-files-btn > a {
+    width: 100%;
+    padding: 0.75em 1.2em;
+}
+
+.grid-container {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.ng-hide.ng-hide-animate {
+    display: none !important;
+}
+
+#wb-import-fileInFiles .import-status .import-status-message .text-danger small {
+    white-space: pre-wrap;
+}
+
+.impex-popover {
+    max-width: 470px;
+}
+
+.impex-popover pre {
+    white-space: pre-wrap;
+}
+
+.file-size-prop,
+.server-import-directory-prop {
+    border-bottom: 1px dotted var(--secondary-color);
+}
+
+.import-resource-message-dialog .message {
+    color: #000000;
+    font-size: 15px;
+    resize: none;
+}
+

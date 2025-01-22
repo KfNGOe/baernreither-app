@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[231],{367:function(n,s,t){"use strict";t.r(s),t.d(s,"OngoingRequestsInfo",(function(){return o}));class o{constructor(n,s){this.queriesCount=n,this.updatesCount=s}}}}]);

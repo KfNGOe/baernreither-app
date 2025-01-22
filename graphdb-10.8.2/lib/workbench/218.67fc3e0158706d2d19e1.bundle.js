@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[218],{185:function(s,t,i){"use strict";i.r(t),i.d(t,"OntopConnectionInformation",(function(){return n}));class n{constructor(s="generic"){this.driverType=s,this.hostName="",this.port=void 0,this.databaseName="",this.username="",this.password="",this.driverClass="",this.url="",this.urlUserInput=""}}}}]);

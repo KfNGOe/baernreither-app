@@ -1,0 +1,22 @@
+<link href="css/ttyg/no-agents-view.css?v=2.8.2" rel="stylesheet"/>
+
+<div class="no-agents-view-component">
+    <div class="content">
+        <div class="alert alert-help mb-3" ng-bind-html="'ttyg.agent.messages.help_1' | translate | trustAsHtml"></div>
+        <div class="alert alert-help mb-3" ng-bind-html="'ttyg.agent.messages.help_2' | translate | trustAsHtml"></div>
+
+        <div class="actions">
+            <button class="btn btn-outline-primary btn-lg text-xs-left create-agent-btn"
+                    gdb-tooltip="{{!canModifyAgent ? ('ttyg.agent.fat_btn.create_agent.tooltip_disabled' | translate) : ''}}"
+                    ng-disabled="!canModifyAgent"
+                    ng-click="onCreateAgent()">
+                <i class="fa fa-message-bot fa-xl"></i>
+                <span class="text">{{'ttyg.agent.fat_btn.create_agent.label' | translate}}</span>
+            </button>
+        </div>
+
+        <div class="alert alert-warning mt-3">
+            <div ng-bind-html="'ttyg.agent.messages.help_config' | translate: {talkToGraphDocumentationLink: talkToGraphDocumentationLink} | trustAsHtml"></div>
+        </div>
+    </div>
+</div>

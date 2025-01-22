@@ -1,0 +1,99 @@
+.chat-list-component {
+    padding: 0 8px;
+    height: 100%;
+    clip: rect(0, auto, auto, 0);
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+}
+
+.chat-list-component:hover {
+    overflow-y: auto;
+}
+
+.chat-list-component .chat-group label {
+    color: var(--gray-color-dark);
+}
+
+.chat-list-component .chat-group ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.chat-list-component .chat-item .chat-detail {
+    padding: 6px 4px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.chat-list-component .chat-item .deleting-chat-loader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 6px 8px;
+    background-color: #00000066;
+    color: #fff;
+}
+
+.chat-list-component .chat-item .form-control {
+    padding: 4px 8px;
+}
+
+.chat-list-component .chat-item.selected {
+    background-color: var(--base-background-selected-color);
+}
+
+.chat-list-component .chat-item:not(.edited):hover {
+    background-color: var(--base-background-hover-color);
+    cursor: pointer;
+}
+
+.chat-list-component .chat-item.edited {
+    padding: 0;
+}
+
+.chat-list-component .chat-item.edited .chat-name {
+    width: 100%;
+}
+
+.chat-list-component .chat-item:not(.edited) .chat-name {
+    width: 90%;
+}
+
+.chat-list-component .chat-item .chat-name .inline-editable-text .editable-text-element {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.chat-list-component .chat-item .chat-name a {
+    text-decoration: none;
+    color: unset;
+}
+
+.chat-list-component .chat-item .btn-group {
+    display: flex;
+}
+
+.chat-list-component .chat-item .btn-group .dropdown-menu-right {
+    margin-top: 4px;
+}
+
+.chat-list-component .chat-item .btn-group .dropdown-item span {
+    margin-left: 8px;
+}
+
+.chat-list-component .chat-item .open-chat-actions-btn {
+    display: none;
+}
+
+.chat-list-component .chat-item:not(.edited):hover .open-chat-actions-btn {
+    display: block;
+}
+
+.chat-list-component .chat-name {
+    color: var(--secondary-color);
+    font-weight: 400;
+}

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[268],{141:function(s,i,n){"use strict";n.r(i),n.d(i,"TabQueryModel",(function(){return t}));class t{constructor(s,i,n,t=!0){this.queryName=s,this.query=i,this.owner=n,this.isPublic=t}}}}]);

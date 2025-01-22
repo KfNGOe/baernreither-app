@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[258],{91:function(T,e,i){"use strict";i.r(e),i.d(e,"SimilarityIndexType",(function(){return t}));const t={TEXT:"text",TEXT_LITERAL:"textLiteral",PREDICATION:"predication",isTextType:T=>t.TEXT===T,isTextLiteralType:T=>t.TEXT_LITERAL===T,isPredicationType:T=>t.PREDICATION===T}}}]);

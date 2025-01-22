@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[156],{247:function(r,e,t){"use strict";t.r(e);t(9);angular.module("graphdb.framework.externalsync.directives",[]).directive("createProgress",(function(){return{templateUrl:"pages/connectorProgress.html",controller:"CreateProgressCtrl",restrict:"EA"}}))}}]);

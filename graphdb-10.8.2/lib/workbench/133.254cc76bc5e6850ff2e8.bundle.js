@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[133],{220:function(e,o){function n(e,o){e.forceDelete=!1,e.ok=()=>{o.close(e.forceDelete)},e.cancel=()=>{o.dismiss("cancel")},e.onClick=e=>{e.stopPropagation()}}angular.module("graphdb.framework.clustermanagement.controllers.delete-cluster",[]).controller("DeleteClusterCtrl",n),n.$inject=["$scope","$uibModalInstance"]}}]);

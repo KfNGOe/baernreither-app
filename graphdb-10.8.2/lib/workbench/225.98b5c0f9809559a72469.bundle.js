@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[225],{165:function(a,s,n){"use strict";n.r(s),n.d(s,"DownloadAsEvent",(function(){return e}));class e{constructor(a){this.TYPE=a.TYPE,this.contentType=a.payload.value,this.pluginName=a.payload.pluginName,this.query=a.payload.query,this.infer=a.payload.infer,this.sameAs=a.payload.sameAs}}}}]);

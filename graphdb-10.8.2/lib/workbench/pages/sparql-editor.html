@@ -1,0 +1,14 @@
+<link href="css/sparql-editor.css?v=2.8.2" rel="stylesheet"/>
+
+<div class="sparql-editor-view">
+    <h1 id="title-container">
+        <span id="sparql-query-update-title-label">{{title}}</span>
+        <page-info-tooltip></page-info-tooltip>
+    </h1>
+
+    <div core-errors></div>
+
+    <yasgui-component id="query-editor" yasgui-config="yasguiConfig"
+                      ng-if="yasguiConfig && getActiveRepositoryNoError()"
+                      after-init="initViewFromUrlParams()"></yasgui-component>
+</div>

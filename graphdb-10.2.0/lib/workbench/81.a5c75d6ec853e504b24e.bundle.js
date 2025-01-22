@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[81],{123:function(e,i){PluginRegistry.add("route",[{url:"/guides",module:"graphdb.framework.guides",path:"guides/app",templateUrl:"pages/guides.html",title:"view.guides.title",controller:"GuidesCtrl",helpInfo:"view.guides.helpInfo"}]),PluginRegistry.add("main.menu",{items:[{label:"Guides",labelKey:"menu.guides.label",order:0,parent:"Help",icon:"paste",href:"guides",role:"ROLE_USER",guideSelector:"sub-menu-guide"}]})}}]);
-//# sourceMappingURL=81.a5c75d6ec853e504b24e.bundle.js.map

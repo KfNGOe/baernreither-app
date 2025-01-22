@@ -1,0 +1,60 @@
+.search-rdf-btn {
+  display: block;
+  border: 0;
+}
+
+.search-rdf-btn .icon-search {
+  font-size: 1.7em;
+}
+
+.close-rdf-search-btn{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -8px;
+}
+
+.search-rdf-input {
+  white-space: nowrap;
+  text-align: start;
+  font-weight: 300;
+
+  max-width: 100vw;
+  position: fixed;
+  top: -550px;
+  right: 3em;
+  z-index: 1;
+  display: block;
+  padding-right: 20px;
+  width: 60vw;
+
+    /* Safari */
+  -webkit-transition: top 0.3s ease-in, opacity 0.5s ease;
+  transition: top 0.3s ease-in, opacity 0.5s ease;
+}
+
+.show-rdf-search-box-visible {
+    top: 40px;
+    opacity: 1;
+}
+
+.show-rdf-search-box-invisible {
+    top: -550px;
+    opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .search-rdf-input {
+    width: 85vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .search-rdf-input {
+    width: 75vw;
+  }
+}
+
+.autocomplete-hint {
+    font-size: 12px;
+}
