@@ -13,7 +13,7 @@ const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
 
 //read compare data json file
-let json_in = fs.readFileSync('data/json/textComp_mdata_temp.json', 'utf8') ;
+let json_in = fs.readFileSync('data/json/temp/textComp_mdata_temp.json', 'utf8') ;
 let jsonJs_in = JSON.parse(json_in) ;
 let textComp_mdata_results = jsonJs_in ;
 let textComp_mdata_temp = jsonJs_in.results.bindings[0] ;
@@ -44,4 +44,4 @@ Object.keys(groupedBySourceTarget).forEach((key, index) => {
 }) ;
 //write compare data json file
 let json_out = JSON.stringify(textComp_mdata_results) ;
-fs.writeFileSync('data/json/textComp_mdata.json', json_out) ;
+fs.writeFileSync('data/json/text/mdata/textComp_mdata.json', json_out) ;

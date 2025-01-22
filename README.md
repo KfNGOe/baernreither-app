@@ -80,7 +80,7 @@ data/json/text/full/*_full.json -> build_ssSearch_all.sh -> /stems/*.json
 ## Workflow html
 ### conversion texts all json to html
 *_all.json + anno*.json -> build_textAll_json2html.sh -> data/txt/*_all_html.txt
-                                         -> data/html/*_all.html
+                                         -> html/*_all.html
 
 ### convert register json to html 
 data/json/text/full/*_full.json + register_*.json + anno*.json -> build_register_json2html.sh -> register_table_*.txt

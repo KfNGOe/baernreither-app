@@ -113,5 +113,5 @@ jsonJs_in.results.bindings.forEach((item, index, array) => {
 let test_html = dom.serialize() ;
 
 //write tei file
-//fs.writeFileSync('data/html/synoptik.html', synoptik_html ) ;
-fs.writeFileSync('data/html/test.html', test_html ) ;  
+//fs.writeFileSync('html/synoptik.html', synoptik_html ) ;
+fs.writeFileSync('html/test.html', test_html ) ;  

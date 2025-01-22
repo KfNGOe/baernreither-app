@@ -11,7 +11,7 @@ cp -r assets/css/ html/
 echo "copy css done"
 
 echo "copy data html"
-cp -r data/html/*.html html/
+cp -r html/*.html html/
 echo "copy data html done"
 
 echo "copy data img"

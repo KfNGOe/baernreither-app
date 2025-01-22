@@ -18,6 +18,7 @@ cp -r assets/images/* /home/rh/github/baernreither-app/assets/images/
 cp -r assets/staticSrc/js/* /home/rh/github/baernreither-app/assets/staticSrc/js/
 cp -r assets/staticSrc/sparql/* /home/rh/github/baernreither-app/assets/staticSrc/sparql/
 cp -r assets/txt/* /home/rh/github/baernreither-app/assets/txt/
+rm -r /home/rh/github/baernreither-app/assets/images/mockup
 echo "deploy assets done"
 
 echo "deploy data"
@@ -46,6 +47,7 @@ mkdir -p /home/rh/github/baernreither-app/data/ttl/text/
 mkdir -p /home/rh/github/baernreither-app/data/txt/anno/register/
 mkdir -p /home/rh/github/baernreither-app/data/txt/log/anno/register/
 mkdir -p /home/rh/github/baernreither-app/data/txt/log/text/
+mkdir -p /home/rh/github/baernreither-app/data/txt/text/
 
 mkdir -p /home/rh/github/baernreither-app/data/xlsx/
 echo "deploy data done"
@@ -55,6 +57,11 @@ rm -r /home/rh/github/baernreither-app/graphdb/*
 mkdir -p /home/rh/github/baernreither-app/graphdb/
 cp -r graphdb/* /home/rh/github/baernreither-app/graphdb/
 echo "deploy graphdb done"
+
+echo "deploy html"
+rm -r /home/rh/github/baernreither-app/html/*
+mkdir -p /home/rh/github/baernreither-app/html/
+echo "deploy html done"
 
 echo "deploy search"
 rm -r /home/rh/github/baernreither-app/staticSearch/*
@@ -70,6 +77,7 @@ echo "deploy data done"
 echo "deploy shell"
 rm -r /home/rh/github/baernreither-app/*.sh
 cp ./*.sh /home/rh/github/baernreither-app/
+cp deploy/deploy_html.sh /home/rh/github/baernreither-app/deploy_html.sh
 echo "deploy shell done"
 
 echo "deploy baernreither-app done"
