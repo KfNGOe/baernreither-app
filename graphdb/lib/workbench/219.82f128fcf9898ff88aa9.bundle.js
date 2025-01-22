@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[219],{187:function(i,n,t){"use strict";t.r(n),t.d(n,"OntopFileInfo",(function(){return s}));class s{constructor(i,n=!1){this.type=i,this.fileName="",this.loading=!1,this.required=n}}}}]);

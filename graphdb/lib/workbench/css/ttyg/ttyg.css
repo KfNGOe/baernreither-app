@@ -1,0 +1,146 @@
+:root {
+    --sidebar-width: 13vw;
+    --toolbar-height: 37px;
+    /* the gap between user and agent as well as between agent and agent messages */
+    --message-gap: 1.5rem;
+    --chat-height-vh-reduce: 12rem;
+    --chat-min-height: 300px;
+    --chat-panel-vh-reduce: 4rem;
+}
+
+@media (max-width: 1440px) {
+    :root {
+        --toolbar-height: 32px;
+    }
+}
+
+/*
+page layout styles
+*/
+
+/*override btn-small to properly center the icons */
+.ttyg-view .btn-sm {
+    padding: 0 !important;
+}
+
+.ttyg-view .toolbar {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+}
+
+/*
+common sidebar and slidepanel styles
+*/
+
+.ttyg-view .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ttyg-view .sidebar .sidebar-content {
+    height: calc(100% - var(--toolbar-height));
+    padding: 0;
+}
+
+.ttyg-view .sidebar .slide-panel {
+    /* adapt to view width but at least 220px, menu size ignored for all practical screen sizes */
+    max-width: var(--sidebar-width);
+    top: var(--toolbar-height) !important;
+}
+
+.ttyg-view .sidebar .slide-panel.slide-panel-expanded  {
+    /* adapt width according to available space but not more than 800px */
+    max-width: min(800px, 100% - var(--menu-width));
+}
+
+/*
+left sidebar
+*/
+
+.ttyg-view .left-sidebar .toolbar {
+    justify-content: space-between;
+    background-color: var(--base-background-color);
+}
+
+.ttyg-view .left-sidebar.collapsed .toolbar {
+    justify-content: start;
+    background-color: #fff;
+}
+
+.ttyg-view .left-sidebar .chat-list-panel {
+    background-color: var(--base-background-color);
+}
+
+/*
+right sidebar
+*/
+.ttyg-view .right-sidebar {
+    /* Lower the default z-index of the slide panel to prevent the repository menu overlapping by the panel. */
+    z-index: 997;
+}
+
+.ttyg-view .right-sidebar .toolbar {
+    justify-content: end;
+}
+
+.ttyg-view .right-sidebar.collapsed .toolbar {
+    justify-content: end;
+}
+
+/*
+chat area
+*/
+
+.ttyg-view .ttyg-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr var(--sidebar-width);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "left-sidebar chat-content right-sidebar";
+}
+
+.ttyg-view .chat-content {
+}
+
+.ttyg-view .chat-content .toolbar {
+    /*margin: auto;*/
+    padding: 0 1rem;
+}
+
+.ttyg-view .chat-content .chat {
+    max-width: calc(800px + 2rem);
+    margin: auto;
+    height: calc(100vh - var(--chat-height-vh-reduce));
+    min-height: var(--chat-min-height);
+    display: flex;
+    flex-direction: column;
+}
+
+.ttyg-view .chat-content .chat .selected-chat-panel {
+    height: calc(100vh - var(--chat-height-vh-reduce) - var(--chat-panel-vh-reduce));
+    min-height: calc(var(--chat-min-height) - var(--chat-panel-vh-reduce)) ;
+}
+
+.ttyg-view .controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.ttyg-view agent-select-menu {
+    width: 25vw;
+}
+
+.ttyg-view .chat-list-panel-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - var(--toolbar-height))
+}
+
+.ttyg-view .chat-list-panel-loader > div {
+    display: flex;
+    font-weight: 400;
+}

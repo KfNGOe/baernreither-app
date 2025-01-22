@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[222],{190:function(e,s,t){"use strict";t.r(s),t.d(s,"BeforeUpdateQueryResult",(function(){return r})),t.d(s,"BeforeUpdateQueryResultStatus",(function(){return u}));class r{constructor(e,s,t,r){this.status=e,this.mesage=r,this.messageLabelKey=s,this.parameters=t}}const u={ERROR:"error",SUCCESS:"success"}}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[217],{123:function(e,n,o){"use strict";o.r(n),o.d(n,"JdbcDriverType",(function(){return r}));const r={GENERIC:"generic",MY_SQL:"mySQL",POSTGRESS:"postgreSQL",ORACLE:"oracle",MS_SQL:"msSQL",DB2:"DB2",DREMIO:"dremio",DATABRICKS:"databricks",SNOWFLAKE:"snowflake"}}}]);

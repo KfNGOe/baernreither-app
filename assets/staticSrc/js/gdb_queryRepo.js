@@ -5,7 +5,7 @@ const {GetQueryPayload, QueryType} = require('graphdb').query ;
 const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 
 const endpoint = process.env.endpoint ; // 'http://localhost:7200'
-const repo_name = process.env.repo_name ; // 'kfngoe_test'
+const repo_name = process.env.repo_name ; // 'kfngoe'
 
 //const path_rq = process.env.path_rq ; // 'assets/staticSrc/sparql/'
 //const file_rq = process.env.file_rq ; // 'annoPerson_1.rq'
@@ -21,7 +21,7 @@ const readTimeout = 60000 ;
 const writeTimeout = 60000 ;
 const config = new RepositoryClientConfig(endpoint)
     .setEndpoints([ endpoint + '/repositories/' + repo_name])
-    //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')
+    //.setEndpoint('http://localhost:7200/repositories/kfngoe')
     .setReadTimeout(readTimeout)
     .setWriteTimeout(writeTimeout) ;    
     

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[220],{188:function(e,n,i){"use strict";i.r(n),i.d(n,"OntopFileType",(function(){return o}));const o={OBDA:"obdaFile",OWL:"owlFile",CONSTRAINT:"constraintFile",LENSES:"lensesFile",DB_METADATA:"dbMetadataFile"}}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[267],{378:function(s,t,n){"use strict";n.r(t),n.d(t,"MAX_VISIBLE_ERROR_CHARACTERS",(function(){return r})),n.d(t,"SparqlQueryErrorInfo",(function(){return o}));const r=160;class o{constructor(s="",t="",n=""){n&&n.length>r&&(this.shortenErrorMessage=n.substring(0,r)),this.status=s,this.statusText=t,this.responseText=n}}}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[239],{369:function(t,s,n){"use strict";n.r(s),n.d(s,"Tab",(function(){return i}));class i{constructor(t){this.tab=t,this.yasgui=t.yasgui}getId(){return this.tab.getId()}}}}]);

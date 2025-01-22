@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[227],{161:function(n,t,s){"use strict";s.r(t),s.d(t,"EventData",(function(){return o}));class o{constructor(n,t){this.TYPE=n,this.payload=t}}}}]);

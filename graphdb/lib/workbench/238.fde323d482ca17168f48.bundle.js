@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[238],{168:function(t,n,a){"use strict";a.r(n),a.d(n,"SaveQueryOpened",(function(){return e}));class e{constructor(t){this.tab=t.payload.tab}getTab(){return this.tab}}}}]);

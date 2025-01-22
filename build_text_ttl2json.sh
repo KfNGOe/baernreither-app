@@ -1,7 +1,7 @@
 echo "build text dipl version json"
 
 ENDPOINT='http://localhost:7200'
-REPO_NAME='kfngoe_test'
+REPO_NAME='kfngoe'
 
 #PATH_IN='./data/ttl/text/'
 PATH_IN=$pathName

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[260],{191:function(e,t,T){"use strict";T.r(t),T.d(t,"SimilarityResultType",(function(){return s}));const s={TERM_RESULT:"termResult",DOCUMENT_RESULT:"documentResult",ENTITY_RESULT:"entityResult",isResultDocumentType:e=>s.DOCUMENT_RESULT===e,isResultTermType:e=>s.TERM_RESULT===e}}}]);

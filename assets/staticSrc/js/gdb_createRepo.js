@@ -20,9 +20,9 @@ let graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
 }) ;
 
 //create a new repository graphdb client
-graphDBEndpoint.createRepository({
-        id: 'kfngoe_test',
-        title: 'kfngoe_test',
+graphDBEndpoint.createRepository({        
+        id: 'kfngoe',
+        title: 'kfngoe',
         location: '',        
     })
     .then((result) => {

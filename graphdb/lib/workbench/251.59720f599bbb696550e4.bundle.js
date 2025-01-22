@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[251],{144:function(i,o,t){"use strict";t.r(o),t.d(o,"ResourceDetails",(function(){return s}));class s{constructor(){this.image=void 0,this.uri=void 0,this.label=void 0,this.encodeURI=void 0,this.comment=void 0,this.context=void 0}}}}]);
