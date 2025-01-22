@@ -1,7 +1,7 @@
 echo "build ttl to json"
 
 ENDPOINT='http://localhost:7200'
-REPO_NAME='kfngoe_test'
+REPO_NAME='kfngoe'
 
 MIME_TYPE='text/turtle'
 

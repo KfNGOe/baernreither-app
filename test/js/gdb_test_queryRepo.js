@@ -24,8 +24,8 @@ const endpoint = 'http://localhost:7200' ;
 const readTimeout = 30000 ;
 const writeTimeout = 30000 ;
 const config = new RepositoryClientConfig(endpoint)
-    .setEndpoints(['http://localhost:7200/repositories/kfngoe_test'])
-    //.setEndpoint('http://localhost:7200/repositories/kfngoe_test')
+    .setEndpoints(['http://localhost:7200/repositories/kfngoe'])
+    //.setEndpoint('http://localhost:7200/repositories/kfngoe')
     .setReadTimeout(readTimeout)
     .setWriteTimeout(writeTimeout) ;    
     

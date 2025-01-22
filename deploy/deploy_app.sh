@@ -50,6 +50,12 @@ mkdir -p /home/rh/github/baernreither-app/data/txt/log/text/
 mkdir -p /home/rh/github/baernreither-app/data/xlsx/
 echo "deploy data done"
 
+echo "deploy graphdb"
+rm -r /home/rh/github/baernreither-app/graphdb/*
+mkdir -p /home/rh/github/baernreither-app/graphdb/
+cp -r graphdb/* /home/rh/github/baernreither-app/graphdb/
+echo "deploy graphdb done"
+
 echo "deploy search"
 rm -r /home/rh/github/baernreither-app/staticSearch/*
 mkdir -p /home/rh/github/baernreither-app/staticSearch/data/json/stems
