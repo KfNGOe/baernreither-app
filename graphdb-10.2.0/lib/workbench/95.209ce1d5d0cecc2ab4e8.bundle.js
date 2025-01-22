@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[95],{137:function(o,e){PluginRegistry.add("route",{url:"/import",module:"graphdb.framework.impex.import",path:"import/app",chunk:"import",controller:"CommonCtrl",templateUrl:"pages/import.html",title:"common.import",reloadOnSearch:!1,helpInfo:"view.import.helpInfo"}),PluginRegistry.add("main.menu",{items:[{label:"Import",labelKey:"common.import",href:"import",order:0,role:"IS_AUTHENTICATED_FULLY",icon:"icon-import",guideSelector:"menu-import"}]})}}]);
-//# sourceMappingURL=95.209ce1d5d0cecc2ab4e8.bundle.js.map
