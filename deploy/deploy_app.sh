@@ -59,7 +59,7 @@ cp -r graphdb/* /home/rh/github/baernreither-app/graphdb/
 echo "deploy graphdb done"
 
 echo "deploy html"
-rm -r /home/rh/github/baernreither-app/html/*
+rm -r /home/rh/github/baernreither-app/html/
 mkdir -p /home/rh/github/baernreither-app/html/
 echo "deploy html done"
 
