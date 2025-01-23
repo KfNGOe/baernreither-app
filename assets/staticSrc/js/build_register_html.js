@@ -50,4 +50,4 @@ $('html').find('footer').replaceWith(footer) ;
 register_html = dom.serialize() ;
 
 //write html file
-fs.writeFileSync('data/html/register.html', register_html ) ;
+fs.writeFileSync('html/register.html', register_html ) ;

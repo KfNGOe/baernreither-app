@@ -686,7 +686,7 @@ jsonFiles.forEach((file) => {
    $('html').find('body').children('div').append(html) ;   
 
    //write html file
-   fileNamePath = 'data/html/text/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
+   fileNamePath = 'html/text/' + file.replace('.json', '.html') ;    //html/Bae_TB_8_all.html
    fs.writeFileSync(fileNamePath, dom.serialize() ) ;
    console.log('html data written: ', dom.serialize().length, ' bytes') ;
 

@@ -49,4 +49,4 @@ zeitplantagebuecher_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('data/html/zeitplantagebuecher.html', zeitplantagebuecher_html ) ;
+fs.writeFileSync('html/zeitplantagebuecher.html', zeitplantagebuecher_html ) ;

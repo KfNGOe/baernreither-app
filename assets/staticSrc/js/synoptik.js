@@ -539,10 +539,10 @@ $( function() {
 	//set years containing works
 	(async () => {		
 		//get text data
-		let filepath = './data/json/text_mdata.json' ;
+		let filepath = './data/json/text/mdata/text_mdata.json' ;
 		text_mdata_in = await fetchData(filepath) ;				
 		//get anno compare data
-		filepath = './data/json/textComp_mdata.json' ;
+		filepath = './data/json/text/mdata/textComp_mdata.json' ;
 		textComp_mdata_in = await fetchData(filepath) ;
 		//get anno text compare data
 		filepath = './data/json/anno/anno_web/annoTextComp.json' ;

@@ -132,4 +132,4 @@ jsonFiles.forEach((file,index_file) => {
 }) ;
 //write text data json file
 let json_out = JSON.stringify(text_mdata_results) ;
-fs.writeFileSync('data/json/text_mdata.json', json_out) ;
+fs.writeFileSync('data/json/text/mdata/text_mdata.json', json_out) ;

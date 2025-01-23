@@ -181,7 +181,7 @@ $( function() {
       let filepath = './staticSearch/data/txt/ssTokenString.txt' ;
       text_in = await fetchData(filepath) ;
       //get text data
-      filepath = './data/json/text_mdata.json' ;
+      filepath = './data/json/text/mdata/text_mdata.json' ;
       text_mdata_in = await fetchData(filepath) ;
       //get all texts
       let text_mdata_arr = text_mdata_in.results.bindings

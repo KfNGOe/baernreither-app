@@ -54,4 +54,4 @@ $('html').find('footer').replaceWith(footer) ;
 synoptik_html = dom.serialize() ;
 
 //write html file
-fs.writeFileSync('data/html/synoptik.html', synoptik_html ) ;
+fs.writeFileSync('html/synoptik.html', synoptik_html ) ;

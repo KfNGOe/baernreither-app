@@ -49,4 +49,4 @@ nutzung_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('data/html/nutzung.html', nutzung_html ) ;
+fs.writeFileSync('html/nutzung.html', nutzung_html ) ;

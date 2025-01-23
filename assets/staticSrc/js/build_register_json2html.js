@@ -27,7 +27,7 @@ const $ = require('jquery')(dom.window) ;
 //read register item text template
 let reg_item_str = fs.readFileSync('./assets/txt/partials/register/register_item.txt', 'utf8') ;
 //load text data
-let text_mdata_in = JSON.parse(fs.readFileSync('./data/json/text_mdata.json', 'utf8')) ; 
+let text_mdata_in = JSON.parse(fs.readFileSync('./data/json/text/mdata/text_mdata.json', 'utf8')) ; 
 
 function posStr2Nr(posStr) {
    let pos_tmp = posStr.substring(title_short.length + 1) ;   
@@ -426,7 +426,7 @@ jsonFiles.forEach((file) => {
          $('html').find('body').children('div').append(html) ;   
 
          //write html file
-         fileNamePath = 'data/html/register/' + file.replace('.json', '.html') ;
+         fileNamePath = 'html/register/' + file.replace('.json', '.html') ;
          fs.writeFileSync(fileNamePath, dom.serialize() ) ;
          console.log('html data written: ', dom.serialize().length, ' bytes') ;
 

@@ -1,15 +1,26 @@
 name: Build project
-
 on:
   #push:
   #  paths:      
   #    - "data/ttl/text/**"
   #    - "data/xlsx/**"
+  #    - "html/data/img/**"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build_texts:
-    name: Build texts
+  build_pages:    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Perform Checkout
@@ -57,30 +68,19 @@ jobs:
       - name: build html
         run: |
           sudo bash build_html.sh   
-      - name: Del dir
+      - name: Deploy html
         run: |
-          sudo bash del_dir.sh
-
-      #- name: Commit files
-      #  run: |
-      #    git config --global user.email "richard.hoermann@inode.at"
-      #    git config --global user.name "rh1967"
-      #    git add data/ttl/text/          
-      #    git commit -m "Update TTL files"
-      #    git push      
-      #- name: Pushes to baernreither-page
-      #  uses: cpina/github-action-push-to-another-repository@main
-      #  env:
-      #    API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-      #  with:
-      #    source-directory: "html"
-      #    destination-github-username: "KfNGOe"
-      #    destination-repository-name: "baernreither-page"
-      #    user-email: baernreither-app@github.io
-      #    target-branch: main
-      #- name: Import data
-      #  run: sudo bash gdb_importFile.sh
-      #- name: Query data
-      #  run: sudo bash gdb_queryRepo.sh
-      #- name: build xml ID
-      #  run: sudo bash build_xmlId.sh
+          sudo bash deploy_html.sh
+      - name: Setup pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload html directory
+          path: './html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      
+      

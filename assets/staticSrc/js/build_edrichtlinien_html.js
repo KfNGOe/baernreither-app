@@ -49,4 +49,4 @@ edrichtlinien_html = dom.serialize() ;
 //write html file
 //filepath = path_out_tei + filename + ext_xml ;
 //console.log(filepath);
-fs.writeFileSync('data/html/editionsrichtlinien.html', edrichtlinien_html ) ;
+fs.writeFileSync('html/editionsrichtlinien.html', edrichtlinien_html ) ;
