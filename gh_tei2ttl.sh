@@ -14,6 +14,10 @@ if ! test -d "$inputDir"
 then
     echo "no input dir"
 else
+    if test -d "$inputDir/tei_pending"
+    then
+        rm -r "$inputDir/tei_pending"
+    fi
     if [ -z "$changes" ] 
     then
         echo "\$changes is empty"
