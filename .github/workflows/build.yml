@@ -1,11 +1,11 @@
 name: Build project
 on:
-  #push:
-  #  paths:      
-  #    - "data/ttl/text/**"
-  #    - "data/xlsx/**"
-  #    - "html/data/img/**"
-  workflow_dispatch:
+  push:
+    paths:      
+      - "data/ttl/text/**"
+      - "data/xlsx/**"
+      - "html/data/img/**"
+  #workflow_dispatch:
 
 permissions:
   contents: read
@@ -68,19 +68,23 @@ jobs:
       - name: build html
         run: |
           sudo bash build_html.sh   
-      - name: Deploy html
+      - name: deploy html
         run: |
           sudo bash deploy_html.sh
-      - name: Setup pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload html directory
-          path: './html'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-      
-      
-      
+      - name: push to repo
+        run: |
+          git config --global user.email "baernreither-app@github.io"
+          git config --global user.name "KfNGOe"
+          git add .
+          git commit -am "Deploy data"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-app.git main
+      #- name: Setup pages
+      #  uses: actions/configure-pages@v5
+      #- name: Upload artifact
+      #  uses: actions/upload-pages-artifact@v3
+      #  with:
+      #    # Upload html directory
+      #    path: './html'
+      #- name: Deploy to GitHub Pages
+      #  id: deployment
+      #  uses: actions/deploy-pages@v4
