@@ -21,7 +21,6 @@ mkdir -p $PATH_JSON_RDF
 mkdir -p $PATH_TTL
 
 dir $PATH_TTL
-ls -la ./data
 ls -la $PATH_TEI
 ls -la $PATH_TEI_XMLID
 ls -la $PATH_TTL

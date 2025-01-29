@@ -34,43 +34,55 @@ jobs:
         uses: jitterbit/get-changed-files@v1      
       - name: Install
         run: |          
-          sudo bash install.sh
+          chmod +x install.sh
+          ./install.sh
       - name: Make dir
         run: |
-          sudo bash setup_dir.sh
+          chmod +x setup_dir.sh
+          ./setup_dir.sh
       - name: Start graphdb
         run: |
-          sudo bash gdb_start.sh &
+          chmod +x gdb_start.sh
+          ./gdb_start.sh &
       - name: Wait for graphdb
         run: |
-          sudo bash gdb_ping.sh
+          chmod +x gdb_ping.sh
+          ./gdb_ping.sh
         shell: bash
       - name: Create repo
         run: |
-          sudo bash gdb_createRepo.sh
+          chmod +x gdb_createRepo.sh
+          ./gdb_createRepo.sh
       - name: Get repo list
         run: |
-          sudo bash gdb_getRepo.sh
+          chmod +x gdb_getRepo.sh
+          ./gdb_getRepo.sh
       - name: running tei transform
-        run: |          
-          . gh_tei2ttl.sh
+        run: |
+          chmod +x gh_tei2ttl.sh        
+          ./gh_tei2ttl.sh
         env:
           changes: ${{ steps.files.outputs.all }}
       - name: build texts
         run: |
-          sudo bash build_texts.sh
+          chmod +x build_texts.sh                
+          ./build_texts.sh
       - name: build register
         run: |
-          sudo bash build_register.sh
+          chmod +x build_register.sh
+          ./build_register.sh
       - name: build search
         run: |
-          sudo bash build_ssSearch_all.sh
+          chmod +x build_ssSearch_all.sh
+          ./build_ssSearch_all.sh
       - name: build html
         run: |
-          sudo bash build_html.sh   
+          chmod +x build_html.sh
+          ./build_html.sh   
       - name: deploy html
         run: |
-          sudo bash deploy_html.sh
+          chmod +x deploy_html.sh
+          ./deploy_html.sh
       - name: push to repo
         run: |
           git config --global user.email "baernreither-app@github.io"
