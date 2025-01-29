@@ -75,9 +75,11 @@ jobs:
         run: |
           git config --global user.email "baernreither-app@github.io"
           git config --global user.name "KfNGOe"
+          git status
           git add .
           git commit -am "Deploy data"
-          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-app.git main
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-app main          
+      
       #- name: Setup pages
       #  uses: actions/configure-pages@v5
       #- name: Upload artifact
