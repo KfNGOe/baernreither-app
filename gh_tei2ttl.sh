@@ -50,7 +50,7 @@ else
                         export pathname_in=$inputDir
                         export pathname_out=$outputDir
                         export name                        
-                        ./build_tei2ttl.sh                        
+                        sudo bash build_tei2ttl.sh                        
                     fi                    
                 fi                
             fi
