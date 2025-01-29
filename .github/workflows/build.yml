@@ -32,56 +32,47 @@ jobs:
           distribution: "adopt"      
       - id: files
         uses: jitterbit/get-changed-files@v1      
+      - name: set permissions
+        run: |
+          chmod +x *.sh        
       - name: Install
-        run: |          
-          chmod +x install.sh
+        run: |                    
           ./install.sh
       - name: Make dir
         run: |
-          chmod +x setup_dir.sh
           ./setup_dir.sh
       - name: Start graphdb
         run: |
-          chmod +x gdb_start.sh
           ./gdb_start.sh &
       - name: Wait for graphdb
-        run: |
-          chmod +x gdb_ping.sh
+        run: |          
           ./gdb_ping.sh
         shell: bash
       - name: Create repo
-        run: |
-          chmod +x gdb_createRepo.sh
+        run: |          
           ./gdb_createRepo.sh
       - name: Get repo list
-        run: |
-          chmod +x gdb_getRepo.sh
+        run: |          
           ./gdb_getRepo.sh
       - name: running tei transform
-        run: |
-          chmod +x gh_tei2ttl.sh        
+        run: |          
           ./gh_tei2ttl.sh
         env:
           changes: ${{ steps.files.outputs.all }}
       - name: build texts
-        run: |
-          chmod +x build_texts.sh                
+        run: |          
           ./build_texts.sh
       - name: build register
-        run: |
-          chmod +x build_register.sh
+        run: |          
           ./build_register.sh
       - name: build search
-        run: |
-          chmod +x build_ssSearch_all.sh
+        run: |          
           ./build_ssSearch_all.sh
       - name: build html
-        run: |
-          chmod +x build_html.sh
+        run: |          
           ./build_html.sh   
       - name: deploy html
-        run: |
-          chmod +x deploy_html.sh
+        run: |          
           ./deploy_html.sh
       - name: push to repo
         run: |

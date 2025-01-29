@@ -50,7 +50,6 @@ else
                         export pathname_in=$inputDir
                         export pathname_out=$outputDir
                         export name                        
-                        chmod +x ./build_tei2ttl.sh
                         ./build_tei2ttl.sh                        
                     fi                    
                 fi                
