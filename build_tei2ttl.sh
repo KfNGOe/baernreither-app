@@ -18,6 +18,10 @@ mkdir -p $PATH_TEI_XMLID
 mkdir -p $PATH_JSON_XMLID
 mkdir -p $PATH_JSON_XMLJS
 mkdir -p $PATH_JSON_RDF
+mkdir -p $PATH_TTL
+
+dir $PATH_TTL
+ls -la $PATH_TTL
 
 echo "${PATH_TEI}"
 echo "${FILENAME}"
@@ -36,6 +40,8 @@ path_in_json=$PATH_JSON_XMLJS path_out_json=$PATH_JSON_RDF file=$FILENAME ext_js
 
 echo "build ttl"
 path_in_json=$PATH_JSON_RDF path_out_ttl=$PATH_TTL file=$FILENAME ext_json=$EXTENSION_JSON ext_ttl=$EXTENSION_TTL node assets/staticSrc/js/build_ttl.js
+
+read -p "Press enter to continue"
 
 echo copy tei_xmlId to tei
 cp $PATH_TEI_XMLID$FILENAME$EXTENSION_XML $PATH_TEI$FILENAME$EXTENSION_XML
