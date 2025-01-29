@@ -5,7 +5,7 @@
 
 echo starting tei to ttl transformation
  
-inputDir="data/tei/"
+inputDir="data/tei/text/"
 outputDir="data/ttl/text/"
 
 filesChanged=false;
@@ -17,6 +17,7 @@ else
     if test -d "$inputDir/tei_pending"
     then
         rm -r "$inputDir/tei_pending"
+        dir "$inputDir"
     fi
     if [ -z "$changes" ] 
     then
