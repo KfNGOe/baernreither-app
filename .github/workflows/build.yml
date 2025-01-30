@@ -2,7 +2,7 @@ name: Build project
 on:
   push:
     paths:      
-      - "data/ttl/text/**"
+      - "data/tei/text/**"
       - "data/xlsx/**"
       - "html/data/img/**"
   #workflow_dispatch:
@@ -32,45 +32,48 @@ jobs:
           distribution: "adopt"      
       - id: files
         uses: jitterbit/get-changed-files@v1      
+      - name: set permissions
+        run: |
+          chmod +x *.sh        
       - name: Install
-        run: |          
-          sudo bash install.sh
+        run: |                    
+          ./install.sh
       - name: Make dir
         run: |
-          sudo bash setup_dir.sh
+          ./setup_dir.sh
       - name: Start graphdb
         run: |
-          sudo bash gdb_start.sh &
+          ./gdb_start.sh &
       - name: Wait for graphdb
-        run: |
-          sudo bash gdb_ping.sh
+        run: |          
+          ./gdb_ping.sh
         shell: bash
       - name: Create repo
-        run: |
-          sudo bash gdb_createRepo.sh
+        run: |          
+          ./gdb_createRepo.sh
       - name: Get repo list
-        run: |
-          sudo bash gdb_getRepo.sh
+        run: |          
+          ./gdb_getRepo.sh
       - name: running tei transform
         run: |          
-          . gh_tei2ttl.sh
+          ./gh_tei2ttl.sh
         env:
           changes: ${{ steps.files.outputs.all }}
       - name: build texts
-        run: |
-          sudo bash build_texts.sh
+        run: |          
+          ./build_texts.sh
       - name: build register
-        run: |
-          sudo bash build_register.sh
+        run: |          
+          ./build_register.sh
       - name: build search
-        run: |
-          sudo bash build_ssSearch_all.sh
+        run: |          
+          ./build_ssSearch_all.sh
       - name: build html
-        run: |
-          sudo bash build_html.sh   
+        run: |          
+          ./build_html.sh   
       - name: deploy html
-        run: |
-          sudo bash deploy_html.sh
+        run: |          
+          ./deploy_html.sh
       - name: push to repo
         run: |
           git config --global user.email "baernreither-app@github.io"
@@ -78,7 +81,7 @@ jobs:
           git status
           git add .
           git commit -am "Deploy data"
-          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-app main          
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-app main
       
       #- name: Setup pages
       #  uses: actions/configure-pages@v5

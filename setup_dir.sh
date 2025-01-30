@@ -15,4 +15,6 @@ mkdir -p ./data/txt/log/anno/register/
 mkdir -p ./data/txt/log/text/
 mkdir -p ./data/txt/text/
 
+ls -la ./data
+
 echo "Directories set up!"
