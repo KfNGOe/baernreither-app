@@ -1,11 +1,11 @@
 name: Build project
 on:
-  #push:
-  #  paths:      
-  #    - "data/tei/text/**"
-  #    - "data/xlsx/**"
-  #    - "html/data/img/**"
-  workflow_dispatch:
+  push:
+    paths:      
+      - "data/tei/text/**"
+      - "data/xlsx/**"
+      - "html/data/img/**"
+  #workflow_dispatch:
 
 permissions:
   contents: write
