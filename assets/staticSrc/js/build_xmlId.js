@@ -1,10 +1,11 @@
 // Importing the jsdom module 
 const jsdom = require("jsdom") ;
+const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 const { exit } = require("process");
 // Creating a window with a document
-const dom = new jsdom.JSDOM('<!DOCTYPE html><body></body>') ;
+const dom = new JSDOM('<!DOCTYPE html><body></body>') ;
 // Importing the jquery and providing it
 // with the window
 const $ = require("jquery")(dom.window);

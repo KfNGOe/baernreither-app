@@ -34,6 +34,9 @@ jobs:
           distribution: "adopt"      
       - id: files
         uses: jitterbit/get-changed-files@v1      
+      - name: Check node version
+        run: |
+          node -v        
       - name: set permissions
         run: |
           chmod +x *.sh        
