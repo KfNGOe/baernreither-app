@@ -10,7 +10,7 @@ var map_html = '' ;
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
 let karte_scripts = fs.readFileSync("assets/txt/partials/karte/karte_scripts.txt", 'utf8');
 dom_temp_str = dom_temp_str.concat(karte_scripts) ;
-const dom = new jsdom.JSDOM (dom_temp_str) ;
+const dom = new JSDOM (dom_temp_str) ;
 
 // Importing the jquery and providing it
 // with the window

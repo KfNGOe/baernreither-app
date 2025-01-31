@@ -1,5 +1,6 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
+const { JSDOM } = jsdom ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 const { exit } = require("process") ;
@@ -7,7 +8,7 @@ const { exit } = require("process") ;
 var fullText = '' ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
+const dom = new JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);

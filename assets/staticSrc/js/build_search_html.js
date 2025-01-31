@@ -12,7 +12,7 @@ var search_html = '' ;
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
 let search_scripts = fs.readFileSync("assets/txt/partials/search/search_scripts.txt", 'utf8');
 dom_temp_str = dom_temp_str.concat(search_scripts) ;
-const dom = new jsdom.JSDOM (dom_temp_str) ;
+const dom = new JSDOM (dom_temp_str) ;
 
 // Importing the jquery and providing it
 // with the window

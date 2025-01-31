@@ -13,7 +13,7 @@ var i_endTag = 0 ;
 var fullText = '' ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
+const dom = new JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);

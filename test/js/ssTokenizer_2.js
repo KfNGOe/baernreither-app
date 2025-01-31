@@ -21,7 +21,7 @@ var i_char = 0 ;
 var i_text = 0 ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
+const dom = new JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);

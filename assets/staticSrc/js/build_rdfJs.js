@@ -1,5 +1,3 @@
-// Importing the jsdom module
-const jsdom = require("jsdom") ;
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 

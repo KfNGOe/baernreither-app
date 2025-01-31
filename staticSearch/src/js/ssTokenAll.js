@@ -1,5 +1,6 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
+const { JSDOM } = jsdom ;
 const fs = require('fs');
 const normalize = require('normalize-space') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
@@ -14,7 +15,7 @@ var tokenPos = [] ;
 var tokensLength = 0 ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
+const dom = new JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);

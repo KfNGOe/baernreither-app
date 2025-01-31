@@ -25,7 +25,7 @@ var appStack = {
 } ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM() ;
+const dom = new JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
 //$('div[id="content"]').append('<div>test</div>') ;

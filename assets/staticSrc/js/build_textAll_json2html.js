@@ -1,5 +1,6 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
+const { JSDOM } = jsdom ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
 
@@ -11,7 +12,7 @@ var html_str = '' ;
 var log_data = '' ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM() ;
+const dom = new JSDOM() ;
 const $ = require('jquery')(dom.window) ;
 //dom =  <html><head></head><body></body></html>
 //Instantiate ShortUniqueId
