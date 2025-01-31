@@ -82,7 +82,8 @@ jobs:
       - name: Push Results Back to Source Repo
         run: |
           git config --global user.email "dev-baernreither-app@github.io"
-          git config --global user.name "rh1967"          
+          git config --global user.name "rh1967"
+          git status          
           git add .
           git commit -m "Automated update: Adding results from workflow" || echo "No changes to commit"
           git push origin main
