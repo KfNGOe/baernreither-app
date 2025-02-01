@@ -178,21 +178,21 @@ $( function() {
   (async () => {
       //get search index
       console.log('get search index start') ;
-      let filepath = './staticSearch/ssTokenString.txt' ;
+      let filepath = './staticSearch/data/txt/ssTokenString.txt' ;
       text_in = await fetchData(filepath) ;
       //get text data
-      filepath = './data/json/text_mdata.json' ;
+      filepath = './data/json/text/mdata/text_mdata.json' ;
       text_mdata_in = await fetchData(filepath) ;
       //get all texts
       let text_mdata_arr = text_mdata_in.results.bindings
       text_mdata_arr.forEach(async function(result, index) {          
-        filepath = './data/json/all/' + result.fileName ;
+        filepath = './data/json/text/all/' + result.fileName ;
         allTexts[result.fileName] = await fetchData(filepath) ;
       });
       //get full texts
       text_mdata_arr.forEach(async function(result, index) {
         let fileName_full = result.fileName.replace('_all', '_full') ;          
-        filepath = './data/json/full/' + fileName_full ;
+        filepath = './data/json/text/full/' + fileName_full ;
         fullTexts[fileName_full] = await fetchData(filepath) ;
       });      
       searchFinishedHook(1);
@@ -230,7 +230,7 @@ $('button#ssDoSearch').on('click', function(event) {
             }
           }
           //fetch 1st token file
-          let searchTokenFilePath = './staticSearch/stems/' + searchTokens[0] + '.json' ;            
+          let searchTokenFilePath = './staticSearch/data/json/stems/' + searchTokens[0] + '.json' ;            
           hits_arr[0] = await fetchData(searchTokenFilePath) ;          
           let hits_start = hits_arr[0] ;
           let hits_path_arr = new Array(tokens_N).fill(0) ;          
@@ -251,7 +251,7 @@ $('button#ssDoSearch').on('click', function(event) {
             let hits_next = {} ;
             if (i_tok < tokens_N-1) {
               //fetch next token file
-              searchTokenFilePath = './staticSearch/stems/' + searchTokens[i_tok + 1] + '.json' ;            
+              searchTokenFilePath = './staticSearch/data/json/stems/' + searchTokens[i_tok + 1] + '.json' ;            
               hits_arr.push(await fetchData(searchTokenFilePath)) ;
               hits_next = hits_arr[i_tok + 1] ;              
             }            

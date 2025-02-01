@@ -1,1 +1,383 @@
 [INFO ] 2025-02-01 00:00:53,680 [main | c.o.g.s.GraphDB] GraphDB log keep alive message
+[INFO ] 2025-02-01 07:36:14,640 [main | c.o.g.Config] Using 'file:/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/conf/logback.xml' as logback's configuration file
+[INFO ] 2025-02-01 07:36:15,097 [main | c.o.g.s.GraphDB] Starting GraphDB in workbench mode.
+[INFO ] 2025-02-01 07:36:25,195 [main | c.o.g.Config] GraphDB Home directory: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb
+[INFO ] 2025-02-01 07:36:25,195 [main | c.o.g.Config] GraphDB Config directory: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/conf
+[INFO ] 2025-02-01 07:36:25,195 [main | c.o.g.Config] GraphDB Data directory: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data
+[INFO ] 2025-02-01 07:36:25,196 [main | c.o.g.Config] GraphDB Work directory: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/work
+[INFO ] 2025-02-01 07:36:25,196 [main | c.o.g.Config] GraphDB Logs directory: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/logs
+[INFO ] 2025-02-01 07:36:25,720 [main | c.o.f.c.s.r.GraphDBRpcServer] Started gRPC server on port 7300 successfully
+[INFO ] 2025-02-01 07:36:26,940 [main | c.o.l.LicenseRegistry] License configuration: Embedded license
+[INFO ] 2025-02-01 07:36:26,941 [main | c.o.l.LicenseRegistry] License file: jar:file:/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/lib/graphdb-runtime-10.8.2.jar!/GRAPHDB_LITE.license
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Product:                 GRAPHDB_LITE
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Capabilities:            [LUCENE_CONNECTOR]
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Usage restriction:       null
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Licensee:                Freeware
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Permitted use:           THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Version:                 10.8
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Expiry date:             none
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Latest publication date: none
+[INFO ] 2025-02-01 07:36:26,945 [main | c.o.l.LicenseRegistry] Max CPU cores:           1
+[WARN ] 2025-02-01 07:36:27,643 [main | o.e.r.s.h.DirectoryLockManager] Removing invalid lock 23851@DESKTOP-FP4OP26
+[INFO ] 2025-02-01 07:36:29,236 [main | c.o.g.s.GraphDB] Started GraphDB in workbench mode at port 7200.
+[INFO ] 2025-02-01 07:36:33,727 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Version: 10.8, revision: -1991599925
+[INFO ] 2025-02-01 07:36:33,728 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Build date: Fri Dec 13 11:50:20 UTC 2024
+[INFO ] 2025-02-01 07:36:33,736 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Started repository kfngoe in READ/WRITE mode.
+[INFO ] 2025-02-01 07:36:33,745 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'disable-sameAs' to value 'false'
+[INFO ] 2025-02-01 07:36:33,749 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '195.3K'
+[INFO ] 2025-02-01 07:36:33,749 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for tuples: 7829
+[INFO ] 2025-02-01 07:36:33,750 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for predicates: 1118
+[INFO ] 2025-02-01 07:36:33,750 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'in-memory-literal-properties' to value 'false'
+[INFO ] 2025-02-01 07:36:33,753 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Configured parameter graphdb.engine.onheap.allocation to true
+[INFO ] 2025-02-01 07:36:33,756 [repository-manager-0 | c.o.t.i.FileSystemHealth] Active locations health:
+[INFO ] 2025-02-01 07:36:33,758 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe: 30.0% (OK)
+[INFO ] 2025-02-01 07:36:33,759 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/logs: 30.0% (OK)
+[INFO ] 2025-02-01 07:36:33,760 [repository-manager-0 | c.o.t.i.FileSystemHealth] /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/work: 30.0% (OK)
+[INFO ] 2025-02-01 07:36:33,763 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Storage folder does not exist and is created: /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage
+[INFO ] 2025-02-01 07:36:33,775 [repository-manager-0 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:33,848 [repository-manager-0 | c.o.t.u.l.LimitedObjectCacheFactory] Using LRU cache type: synch
+[WARN ] 2025-02-01 07:36:33,994 [repository-manager-0 | c.o.t.b.AVLRepository] Clear triple statisctics collection
+[WARN ] 2025-02-01 07:36:34,000 [repository-manager-0 | c.o.t.b.AVLRepository] Clear PSOT collection
+[WARN ] 2025-02-01 07:36:34,002 [repository-manager-0 | c.o.t.b.AVLRepository] Clear POST collection
+[WARN ] 2025-02-01 07:36:34,003 [repository-manager-0 | c.o.t.b.AVLRepository] Rebuild triple collections. start entity pool scan...
+[WARN ] 2025-02-01 07:36:34,042 [repository-manager-0 | c.o.t.b.AVLRepository] Entity pool scan completed! Commiting...
+[WARN ] 2025-02-01 07:36:34,091 [repository-manager-0 | c.o.t.b.AVLRepository] Check whether all predicates in the predicate statistics have correct collection sizes.
+[INFO ] 2025-02-01 07:36:34,091 [repository-manager-0 | c.o.t.b.AVLRepository] Checked 0 entries in predicate statistics
+[WARN ] 2025-02-01 07:36:34,091 [repository-manager-0 | c.o.t.b.AVLRepository] Check for missing statement predicates in the predicate statistics
+[INFO ] 2025-02-01 07:36:34,112 [repository-manager-0 | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:34,254 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Searching for plugins available in the classpath...
+[INFO ] 2025-02-01 07:36:34,275 [repository-manager-0 | c.o.GraphDBConfigParameters] Reading external plugins from /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/lib/plugins
+[INFO ] 2025-02-01 07:36:34,276 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Registering external plugins...
+[INFO ] 2025-02-01 07:36:34,478 [repository-manager-0 | c.o.t.p.g.FunctionLoader] Registered 1 functions from package com.ontotext.trree.plugin.geo.
+[INFO ] 2025-02-01 07:36:34,615 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugins: GeoSPARQL, autocomplete, change-tracking, chatgpt-retrieval-connector, dependencies-plugin, direct, elasticsearch-connector, entity-change, expose-entity, geospatial, history, kafka-connector, literals-index, lucene-connector, magic-predicates, mongodb, notifications, notifications-logger, opensearch-connector, plugincontrol, proof, rdfrank, script, sequences, similarity, solr-connector, sparql-mm, sparql-template, text-mining, tx-rollback, utils
+[INFO ] 2025-02-01 07:36:35,366 [repository-manager-0 | c.o.t.g.FunctionLoader] Registered 50 functions from package com.useekm.geosparql.
+[INFO ] 2025-02-01 07:36:35,369 [repository-manager-0 | c.o.t.p.a.AutocompletePluginUtils] >>>>>>>> AutocompletePlugin: No configuration file found at /home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/autocomplete/v2/config.properties. Assuming default options for plugin.
+[INFO ] 2025-02-01 07:36:35,419 [repository-manager-0 | c.o.t.p.g.GeoSpatialPlugin] Plugin:geospatial initialized
+[INFO ] 2025-02-01 07:36:35,424 [repository-manager-0 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:35,425 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:35,425 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:35,460 [repository-manager-0 | c.o.p.literals-index] Full-text search functionality is disabled
+[INFO ] 2025-02-01 07:36:35,468 [repository-manager-0 | c.o.p.literals-index] Rebuilding literals indexes. Starting from id: 1
+[INFO ] 2025-02-01 07:36:35,477 [repository-manager-0 | c.o.p.literals-index] Complete in 0.005, num entries indexed:0
+[INFO ] 2025-02-01 07:36:35,494 [repository-manager-0 | c.o.t.p.p.PluginControlPlugin] Plugin:plugincontrol initialized
+[INFO ] 2025-02-01 07:36:35,720 [repository-manager-0 | c.o.g.s.FunctionLoader] Registered 58 functions from package com.github.tkurz.sparqlmm.function.
+[INFO ] 2025-02-01 07:36:35,993 [repository-manager-0 | c.o.t.s.i.PluginManager] Finished initializing plugins
+[INFO ] 2025-02-01 07:36:35,995 [repository-manager-0 | c.o.t.MemoryConfig] Configured global page cache size to 496 MB
+[INFO ] 2025-02-01 07:36:35,997 [repository-manager-0 | c.o.t.MemoryConfig] Max Heap Size: 1 GB
+[INFO ] 2025-02-01 07:36:35,998 [repository-manager-0 | c.o.t.MemoryConfig] Initial Heap Size: 1 GB
+[INFO ] 2025-02-01 07:36:36,063 [repository-manager-0 | c.o.r.p.ParallelLoader] Data will be parsed + resolved + loaded.
+[INFO ] 2025-02-01 07:36:36,069 [repository-manager-0 | c.o.r.p.ParallelLoader] Using 1 threads for inference
+[INFO ] 2025-02-01 07:36:36,123 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:36,243 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:36,277 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:36,277 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:36,284 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:36,307 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:36,307 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:36,307 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:36,610 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:39,396 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -312297933
+[INFO ] 2025-02-01 07:36:40,244 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -312297933 is finished
+[INFO ] 2025-02-01 07:36:41,093 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:41,100 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:41,114 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:41,114 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:41,120 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:41,152 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:41,152 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:41,153 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:41,465 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:42,953 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1750530041
+[INFO ] 2025-02-01 07:36:43,037 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -1750530041 is finished
+[INFO ] 2025-02-01 07:36:43,382 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:43,389 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:43,397 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:43,397 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:43,399 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:43,426 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:43,426 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:43,427 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:43,769 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:44,022 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1572153137
+[INFO ] 2025-02-01 07:36:44,032 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1572153137 is finished
+[INFO ] 2025-02-01 07:36:44,260 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:44,267 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:44,273 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:44,274 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:44,275 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:44,300 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:44,301 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:44,301 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:44,564 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:46,121 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1987671613
+[INFO ] 2025-02-01 07:36:46,203 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -1987671613 is finished
+[INFO ] 2025-02-01 07:36:46,522 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:46,528 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:46,533 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:46,534 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:46,535 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:46,560 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:46,560 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:46,560 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:46,895 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:47,245 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1330610565
+[INFO ] 2025-02-01 07:36:47,261 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1330610565 is finished
+[INFO ] 2025-02-01 07:36:47,496 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:47,500 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:47,506 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:47,506 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:47,508 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:47,525 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:47,526 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:47,526 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:47,782 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:48,848 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -787145612
+[INFO ] 2025-02-01 07:36:48,869 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -787145612 is finished
+[INFO ] 2025-02-01 07:36:49,079 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:49,084 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:49,088 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:49,088 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:49,089 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:49,106 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:49,106 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:49,106 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:49,350 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:49,568 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 960915939
+[INFO ] 2025-02-01 07:36:49,579 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 960915939 is finished
+[INFO ] 2025-02-01 07:36:49,793 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:49,797 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:49,801 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:49,801 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:49,802 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:49,827 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:49,828 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:49,828 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:50,087 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:50,991 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -482359833
+[INFO ] 2025-02-01 07:36:51,340 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -482359833 is finished
+[INFO ] 2025-02-01 07:36:51,664 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:51,671 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:51,676 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:51,677 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:51,680 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:51,715 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:51,715 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:51,715 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:51,965 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:52,342 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1465126035
+[INFO ] 2025-02-01 07:36:52,377 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1465126035 is finished
+[INFO ] 2025-02-01 07:36:52,593 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:52,597 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:52,600 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:52,600 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:52,601 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:52,618 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:52,618 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:52,618 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:52,870 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:53,714 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1281291562
+[INFO ] 2025-02-01 07:36:53,732 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query 1281291562 is finished
+[INFO ] 2025-02-01 07:36:53,959 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:53,963 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:53,966 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:53,966 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:53,967 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:53,984 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:53,984 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:53,985 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:54,222 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:54,453 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 643980349
+[INFO ] 2025-02-01 07:36:54,459 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 643980349 is finished
+[INFO ] 2025-02-01 07:36:54,672 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:54,676 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:54,679 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:54,679 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:54,680 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:54,701 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:54,701 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:54,701 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:54,956 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:55,680 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -991525797
+[INFO ] 2025-02-01 07:36:55,726 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -991525797 is finished
+[INFO ] 2025-02-01 07:36:55,987 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:55,991 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:55,993 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:55,993 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:55,994 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:56,011 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:56,011 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:56,011 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:56,246 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:56,471 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1382241187
+[INFO ] 2025-02-01 07:36:56,482 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1382241187 is finished
+[INFO ] 2025-02-01 07:36:56,697 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:56,700 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:56,704 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:56,704 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:56,705 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:56,729 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:56,730 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:56,730 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:56,991 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:57,584 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1884108618
+[INFO ] 2025-02-01 07:36:57,621 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query 1884108618 is finished
+[INFO ] 2025-02-01 07:36:57,853 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:57,857 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:57,860 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:57,860 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:57,861 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:57,876 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:57,876 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:57,876 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:58,114 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:58,326 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1941551717
+[INFO ] 2025-02-01 07:36:58,332 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 1941551717 is finished
+[INFO ] 2025-02-01 07:36:58,551 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:58,555 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:58,558 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:58,558 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:58,559 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:58,578 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:58,578 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:58,578 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:36:58,864 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:36:59,501 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -358574714
+[INFO ] 2025-02-01 07:36:59,515 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -358574714 is finished
+[INFO ] 2025-02-01 07:36:59,752 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:36:59,756 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:36:59,763 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:36:59,763 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:36:59,764 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:36:59,788 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:36:59,788 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:36:59,788 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:00,022 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:00,229 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 274807485
+[INFO ] 2025-02-01 07:37:00,237 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 274807485 is finished
+[INFO ] 2025-02-01 07:37:00,507 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:00,510 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:00,513 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:00,513 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:00,514 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:00,530 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:00,530 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:00,530 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:00,778 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:01,394 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1067897456
+[INFO ] 2025-02-01 07:37:02,682 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query -1067897456 is finished
+[INFO ] 2025-02-01 07:37:03,005 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:03,011 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:03,015 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:03,015 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:03,016 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:03,037 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:03,037 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:03,038 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:03,278 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:03,507 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1050145835
+[INFO ] 2025-02-01 07:37:03,515 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1050145835 is finished
+[INFO ] 2025-02-01 07:37:03,740 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:03,745 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:03,749 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:03,749 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:03,750 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:03,765 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:03,766 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:03,766 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:04,016 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:04,655 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1548993191
+[INFO ] 2025-02-01 07:37:07,927 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query 1548993191 is finished
+[INFO ] 2025-02-01 07:37:08,224 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:08,554 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 2028186816
+[INFO ] 2025-02-01 07:37:08,580 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 2028186816 is finished
+[INFO ] 2025-02-01 07:37:09,332 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:09,335 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:09,339 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:09,339 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:09,340 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:09,358 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:09,358 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:09,359 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:09,605 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:09,833 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:10,219 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:10,489 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:10,715 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1225704119
+[INFO ] 2025-02-01 07:37:10,868 [repositories/kfngoe | c.o.g.s.GraphQueryResultView] Request for query 1225704119 is finished
+[INFO ] 2025-02-01 07:37:11,102 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:11,106 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:11,109 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:11,109 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:11,112 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:11,131 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:11,131 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:11,132 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:11,362 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:11,787 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -368717935
+[INFO ] 2025-02-01 07:37:11,818 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -368717935 is finished
+[INFO ] 2025-02-01 07:37:24,742 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:24,746 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:24,749 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:24,749 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:24,750 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:24,768 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:24,768 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:24,768 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:25,022 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:25,839 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1394135892
+[INFO ] 2025-02-01 07:37:25,884 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1394135892 is finished
+[INFO ] 2025-02-01 07:37:26,123 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1047566990
+[INFO ] 2025-02-01 07:37:26,148 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 1047566990 is finished
+[INFO ] 2025-02-01 07:37:26,403 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 848319588
+[INFO ] 2025-02-01 07:37:26,442 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 848319588 is finished
+[INFO ] 2025-02-01 07:37:26,754 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1504231498
+[INFO ] 2025-02-01 07:37:26,786 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 1504231498 is finished
+[INFO ] 2025-02-01 07:37:33,310 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:33,314 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:33,318 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:33,318 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:33,319 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:33,337 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:33,338 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:33,338 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:33,576 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:33,816 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:34,083 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:34,647 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:34,962 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 227613663
+[INFO ] 2025-02-01 07:37:35,009 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 227613663 is finished
+[INFO ] 2025-02-01 07:37:35,349 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:35,353 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:35,356 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:35,356 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:35,357 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:35,374 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:35,374 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:35,374 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:35,621 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:36,252 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:37,870 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:38,373 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:39,067 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:39,603 [repositories/kfngoe | c.o.g.s.StatementsController] POST SPARQL update request to repository
+[INFO ] 2025-02-01 07:37:39,606 [repositories/kfngoe | c.o.t.InferencerFactory] ruleSet=rdfsplus-optimized, partialRdfs=false
+[INFO ] 2025-02-01 07:37:39,609 [repositories/kfngoe | c.o.p.literals-index] Deleting the FTS indexes..
+[INFO ] 2025-02-01 07:37:39,609 [repositories/kfngoe | c.o.p.literals-index] Completed FTS indexes removal
+[INFO ] 2025-02-01 07:37:39,610 [repositories/kfngoe | c.o.p.history] Clearing the entire history
+[INFO ] 2025-02-01 07:37:39,627 [repositories/kfngoe | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2025-02-01 07:37:39,627 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'storage-folder' to value '/home/runner/work/dev-baernreither-app/dev-baernreither-app/graphdb/data/repositories/kfngoe/storage/history/tx-metadata'
+[INFO ] 2025-02-01 07:37:39,628 [repositories/kfngoe | c.o.c.AbstractParameter] Configured parameter 'entity-index-size' to value '97.7K'
+[INFO ] 2025-02-01 07:37:39,901 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:40,199 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 783722846
+[INFO ] 2025-02-01 07:37:40,241 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 783722846 is finished
+[INFO ] 2025-02-01 07:37:40,479 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1334020667
+[INFO ] 2025-02-01 07:37:40,485 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1334020667 is finished
+[INFO ] 2025-02-01 07:37:40,719 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:41,018 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 847805890
+[INFO ] 2025-02-01 07:37:41,055 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 847805890 is finished
+[INFO ] 2025-02-01 07:37:41,341 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:41,762 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query 1435727842
+[INFO ] 2025-02-01 07:37:41,862 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query 1435727842 is finished
+[INFO ] 2025-02-01 07:37:42,141 [repositories/kfngoe | c.o.g.s.StatementsController] POST data to repository
+[INFO ] 2025-02-01 07:37:42,437 [repositories/kfngoe | c.o.g.s.h.GraphDBQueryResultHandler] POST query -1422770872
+[INFO ] 2025-02-01 07:37:42,478 [repositories/kfngoe | c.o.g.s.TupleQueryResultView] Request for query -1422770872 is finished
