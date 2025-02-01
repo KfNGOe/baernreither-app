@@ -174,3 +174,4 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/data/json/tokens/ssTokens_tmp.json', json_out ) ;
+console.log('json data written: ', json_out.length, ' bytes')

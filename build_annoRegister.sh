@@ -21,6 +21,7 @@ for file in $inputDir*.ttl; do
         echo "Import text files"        
         export pathName=$pathname
         export name=$name        
+        export ext_out='.ttl'
         ./gdb_importFile.sh
         echo "Import text files done!"
         fi
@@ -46,7 +47,8 @@ for file in $inputDir_reg*.ttl; do
         echo "Import register files"        
         export pathName=$pathname
         export name=$name        
-        ./gdb_importFile.sh
+        export ext_out='.ttl'
+	    ./gdb_importFile.sh
         echo "Import register files done!"
         echo "build anno register"
         fi
@@ -123,6 +125,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Index.ttl" ]]
             then               
                 echo "Import index ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh                
 
                 echo "build anno index json"                                
@@ -141,6 +144,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Org.ttl" ]]
             then
                 echo "Import anno org ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh                
                 
                 echo "build anno org json"
@@ -152,6 +156,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Person.ttl" ]]
             then
                 echo "Import anno person ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh
                                 
                 echo "build anno person json"                                
@@ -163,6 +168,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Place.ttl" ]]
             then
                 echo "Import anno place ttl file"
+                export ext_out='.ttl'
                 ./gdb_importFile.sh
                                 
                 echo "build anno place json"                                

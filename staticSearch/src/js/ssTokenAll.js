@@ -22,8 +22,7 @@ const dom = new JSDOM(`
 
 function buildSearchTokenAll(tokenAll_tmp) {   
    tokenAll_tmp.tokenAll.forEach((item, index, array) => {      
-      Object.keys(item).forEach((key) => {
-            console.log('key = ', key) ;
+      Object.keys(item).forEach((key) => {            
             switch(key) {
                 case 'tokens':
                     let index_token = 0 ;
@@ -66,4 +65,5 @@ let jsonJs_out = tokenAll ;
 //convert js object to tei
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write tei file
-fs.writeFileSync('./staticSearch/data/json/tokens/tokenAll_tmp.json', json_out ) ;  
+fs.writeFileSync('./staticSearch/data/json/tokens/tokenAll_tmp.json', json_out ) ;
+console.log('json data written: ', json_out.length, ' bytes')

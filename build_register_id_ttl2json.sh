@@ -22,7 +22,8 @@ for file in $inputDir*.ttl; do
         #export pathName
         export pathName=$pathname
         export name=$name        
-        ./gdb_importFile.sh
+        export ext_out='.ttl'
+				./gdb_importFile.sh
         fi
     fi
 done

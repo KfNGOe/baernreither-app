@@ -658,8 +658,7 @@ jsonFiles.forEach((file) => {
    let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
    console.log('json data read: ', json_in.length, ' bytes') ;
    let jsonJs_in_anno = JSON.parse(json_in) ;
-   jsonJs_anno_files[file.replace('.json', '')] = jsonJs_in_anno ;
-   console.log('jsonJs_anno_files = ', jsonJs_anno_files) ;   
+   jsonJs_anno_files[file.replace('.json', '')] = jsonJs_in_anno ;   
 }) ;
 
 //groupBy anno files
@@ -693,7 +692,8 @@ jsonFiles.forEach((file) => {
 
    //write log file
    fileNamePath = 'data/txt/log/text/log_text.txt' ;
-   fs.writeFileSync(fileNamePath, log_data ) ;   
+   fs.writeFileSync(fileNamePath, log_data ) ;
+   console.log('log data written: ', log_data.length, ' bytes') ;   
 
    //remove appended html
    $('html').find('body *').remove() ;

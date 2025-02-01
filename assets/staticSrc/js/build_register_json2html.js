@@ -3,7 +3,6 @@ const jsdom = require("jsdom") ;
 const { JSDOM } = jsdom ;
 const fs = require('fs') ;
 const { groupBy } = require('core-js/actual/array/group-by') ;
-const ShortUniqueId = require('short-unique-id');
 const { exit } = require("process") ;
 const { group } = require("console");
 const spaceMax = 5 ;

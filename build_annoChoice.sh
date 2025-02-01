@@ -23,7 +23,8 @@ for file in $inputDir*.ttl; do
         #export pathName
         export pathName=$pathname
         export name=$name                
-        ./gdb_importFile.sh
+        export ext_out='.ttl'
+				./gdb_importFile.sh
         fi
     fi
 done
@@ -45,6 +46,7 @@ echo "import ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
 export pathName='data/ttl/anno/anno_web/'
 export name='annoChoice'
+export ext_out='.ttl'
 ./gdb_importFile.sh
 
 echo "build anno json"
