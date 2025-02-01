@@ -18,15 +18,18 @@ for file in $inputDir*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Import text files"        
+        echo "Import text file"        
         export pathName=$pathname
         export name=$name        
         export ext_out='.ttl'
         ./gdb_importFile.sh
-        echo "Import text files done!"
+        echo "Import text file done!"
         fi
     fi
 done
+echo "import text files done!"
+
+read -p "Press enter to continue"
 
 echo "build anno register ttl"
 echo read files from register directory
@@ -44,14 +47,17 @@ for file in $inputDir_reg*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Import register files"        
-        export pathName=$pathname
-        export name=$name        
-        export ext_out='.ttl'
-	    ./gdb_importFile.sh
-        echo "Import register files done!"
-        echo "build anno register"
+            echo "Import register file"        
+            export pathName=$pathname
+            export name=$name        
+            export ext_out='.ttl'
+            ./gdb_importFile.sh
+            echo "Import register file done!"        
         fi
+
+        read -p "Press enter to continue"
+
+        echo "build anno register"        
         export mime_type='text/turtle'
         export query_type='CONSTRUCT'
         export path_rq='assets/staticSrc/sparql/'
@@ -93,9 +99,13 @@ for file in $inputDir_reg*.ttl; do
             export file_out='annoPlace'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
-        fi        
+        fi
+        echo "build anno register done!"                
     fi
 done
+echo "build anno register ttl done!"
+
+read -p "Press enter to continue"
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
@@ -180,5 +190,6 @@ for file in $inputDir_anno*.ttl; do
         fi
     fi
 done
+echo build anno register json done!
 
 echo "build anno register done!"
