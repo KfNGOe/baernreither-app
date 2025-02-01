@@ -10,13 +10,13 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-kfngoei:8322c019-e2b4-4fb9-8539-f220bc82141e a kfngoeo:AnnoChoice;
+kfngoei:e4f3260f-769f-4125-91f9-1fd76a9e51d4 a kfngoeo:AnnoChoice;
   rdfs:label "Annotation level of Choice"@en;
-  kfngoeo:hasTarget _:cd10f939ee8f465f9399c1252b41c725811 .
+  kfngoeo:hasTarget _:96725ee69fca4e8395d0ad06efdf6280811 .
 
-_:cd10f939ee8f465f9399c1252b41c725811 kfngoeo:hasSource "Bae_MF_6-1";
-  kfngoeo:hasSelector _:cd10f939ee8f465f9399c1252b41c725812 .
+_:96725ee69fca4e8395d0ad06efdf6280811 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:96725ee69fca4e8395d0ad06efdf6280812 .
 
-_:cd10f939ee8f465f9399c1252b41c725812 a kfngoeo:TextPositionSelector;
+_:96725ee69fca4e8395d0ad06efdf6280812 a kfngoeo:TextPositionSelector;
   kfngoeo:start 2780;
   kfngoeo:end 2787 .
