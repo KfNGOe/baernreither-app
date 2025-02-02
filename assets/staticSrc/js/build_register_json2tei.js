@@ -149,8 +149,6 @@ function buildReg(teiJsFile, jsonJs_reg_files) {
                                         });
                                     }
                                 } else {
-                                    //typeReg is not index
-                                    console.log('typeReg', typeReg);
                                     //iterate over terms
                                     for (let i = 1; i < termsLength; i++) {
                                         //check if term exists

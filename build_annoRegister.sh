@@ -29,8 +29,6 @@ for file in $inputDir*.ttl; do
 done
 echo "import text files done!"
 
-read -p "Press enter to continue"
-
 echo "build anno register ttl"
 echo read files from register directory
 inputDir_reg="data/ttl/anno/register/"
@@ -54,8 +52,6 @@ for file in $inputDir_reg*.ttl; do
             ./gdb_importFile.sh
             echo "Import register file done!"        
         fi
-
-        read -p "Press enter to continue"
 
         echo "build anno register"        
         export mime_type='text/turtle'
@@ -104,8 +100,6 @@ for file in $inputDir_reg*.ttl; do
     fi
 done
 echo "build anno register ttl done!"
-
-read -p "Press enter to continue"
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh

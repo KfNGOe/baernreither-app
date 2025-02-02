@@ -387,9 +387,9 @@ let jsonFiles_anno = fs.readdirSync('data/json/anno/anno_web/') ;
 //iterate over json file names
 jsonFiles.forEach((file) => {
    //choose ordinary register files
-   //count number of '_' in file name
-   let count = (file.match(/_/g) || []).length ;
-   if (count < 2 && !file.includes('_id')) {
+   //check if file is a directory
+   let stats = fs.statSync('data/json/anno/register/' + file) ;
+   if (!stats.isDirectory()) {      
       json_in = fs.readFileSync('data/json/anno/register/' + file, 'utf8') ;
       let jsonJs_reg_file = JSON.parse(json_in) ;
       //if org file sort by name
@@ -438,6 +438,8 @@ jsonFiles.forEach((file) => {
          $('html').find('body *').remove() ;
          //reset html string
          html_str = '' ;
-      }      
-   } ;      
+      }   
+   } else {
+      console.log('file ' + file + ' is a directory') ;
+   }     
 }) ;   

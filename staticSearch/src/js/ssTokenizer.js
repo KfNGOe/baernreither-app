@@ -3,7 +3,7 @@
 const jsdom = require("jsdom") ;
 const { JSDOM } = jsdom ;
 const fs = require('fs');
-const { char2utfMap } = require('../../../assets/staticSrc/js/constants.js');
+const { char2utfMap } = require('./constants.js');
 const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');

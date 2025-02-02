@@ -279,31 +279,38 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/index':                     
-                     //check if pos is in index
-                     if (!(index_main_item[0].start_target.value < posStr2Nr(key) && posStr2Nr(key) < index_main_item[0].end_target.value)) {
-                        //set new index main term
-                        index_main_item = [] ;
-                        if (groupedByStartPos_index[posStr2Nr(key)] === undefined) {
-                           console.log('pos = ', key, ' not in annoIndex') ;
-                        } else {
-                           groupedByStartPos_index[posStr2Nr(key)].forEach((item) => {
-                              if (item.source_target.value == title_short) {
-                                 if(index_main_item.length == 0) {
-                                 index_main_item.push(item) ;               
+                     //check if main term exists
+                     if (index_main_item[0] !== undefined) {
+                        //check if pos is in index
+                        if (!(index_main_item[0].start_target.value < posStr2Nr(key) && posStr2Nr(key) < index_main_item[0].end_target.value)) {
+                           //set new index main term
+                           index_main_item = [] ;
+                           if (groupedByStartPos_index[posStr2Nr(key)] === undefined) {
+                              console.log('pos = ', key, ' not in annoIndex') ;
+                           } else {
+                              groupedByStartPos_index[posStr2Nr(key)].forEach((item) => {
+                                 if (item.source_target.value == title_short) {
+                                    if(index_main_item.length == 0) {
+                                    index_main_item.push(item) ;               
+                                    }
                                  }
-                              }
-                           }) ;
-                           //set class
-                           classNames = classNames.concat('index') ;
-                           //set href           
-                           let pos_index = posStr2Nr(key) ;
-                           href = "reg_" + groupedByStartPos_index[pos_index][0].id.value ;                     
-                           //set id
-                           id = 'index_' + key ;
-                           //concatenate html string
-                           html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
+                              }) ;
+                              //set class
+                              classNames = classNames.concat('index') ;
+                              //set href           
+                              let pos_index = posStr2Nr(key) ;
+                              href = "reg_" + groupedByStartPos_index[pos_index][0].id.value ;                     
+                              //set id
+                              id = 'index_' + key ;
+                              //concatenate html string
+                              html_str = html_str.concat('<a class="' + classNames + '" href="#' + href + '" id="' + id + '">')   
+                           }
                         }
-                     }
+                     } else {
+                        console.log('pos = ', key, ' not in annoIndex') ;
+                        //save log data
+                        log_data = log_data.concat('pos = ', key, ' not in annoIndex\n') ;
+                     }                     
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/orgName':
                      //set class
@@ -417,9 +424,16 @@ function buildAllText(jsonJs_in_all, groupedBy_files) {
                      html_str = html_str.concat('</p>') ;
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/index':
-                     //check if end pos of index main term
-                     if (index_main_item[0].end_target.value == posStr2Nr(key)) {                        
-                        html_str = html_str.concat('</a>') ;
+                     //check if main term exists
+                     if (index_main_item[0] !== undefined) {
+                        //check if end pos of index main term
+                        if (index_main_item[0].end_target.value == posStr2Nr(key)) {                        
+                           html_str = html_str.concat('</a>') ;
+                        }
+                     } else {
+                        console.log('pos = ', key, ' not in annoIndex') ;
+                        //save log data
+                        log_data = log_data.concat('pos = ', key, ' not in annoIndex\n') ;
                      }
                      break ;
                   case 'http://www.tei-c.org/ns/1.0/orgName': 

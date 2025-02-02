@@ -12,10 +12,7 @@ mkdir -p $inputDir_tmp
 #copy files to tmp dir
 cp $inputDir/annoAbbr.ttl $inputDir/annoApp.ttl $inputDir/annoDel.ttl $inputDir/annoNote.ttl $inputDir_tmp
 
-
-echo "Checkpoint 1: check files in tmp dir"
-read -p "Press Enter to continue..."
-
+#loop over files in tmp dir
 for file in $inputDir_tmp*.ttl; do
   #echo "$file"
   #check if file is no template
