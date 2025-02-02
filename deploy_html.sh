@@ -3,7 +3,7 @@ echo "deploy to html"
 
 echo "remove html"
 rm -r html/
-echo "remove html done"
+echo "remove html done \n"
 
 echo "deploy assets"
 mkdir -p html/css/
@@ -24,7 +24,7 @@ cp -r assets/staticSrc/js/register.js html/js/
 cp -r assets/staticSrc/js/ssSearch.js html/js/
 cp -r assets/staticSrc/js/ssSearchShow.js html/js/
 cp -r assets/staticSrc/js/synoptik.js html/js/
-echo "deploy assets done"
+echo "deploy assets done \n"
 
 echo "deploy data"
 mkdir -p html/data/img/
@@ -46,13 +46,13 @@ cp -r data/ttl/anno/register/ html/data/ttl/anno/register/
 cp -r data/ttl/text/ html/data/ttl/text/
 cp -r data/txt/anno/register/ html/data/txt/anno/register/
 cp -r data/txt/text/ html/data/txt/text/
-echo "deploy data done"
+echo "deploy data done \n"
 
 echo "deploy search"
 mkdir -p html/staticSearch/data/json/stems/
 mkdir -p html/staticSearch/data/txt/
 cp -r staticSearch/data/json/stems/ html/staticSearch/data/json/stems/
 cp -r staticSearch/data/txt/ssTokenString.txt html/staticSearch/data/txt/
-echo "deploy search done"
+echo "deploy search done \n"
 
-echo "deploy to html done"
+echo "deploy to html done \n"

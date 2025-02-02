@@ -53,8 +53,7 @@ jsonFiles.forEach((file) => {
     let fileNamePath = 'data/json/anno/register/tmp/' + file ;
     let json_in = fs.readFileSync(fileNamePath, 'utf8') ;
     var jsonJs_in_reg = JSON.parse(json_in) ;
-    jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;
-    //console.log('jsonJs_reg_files = ', jsonJs_reg_files) ;       
+    jsonJs_reg_files[file.replace('.json', '')] = jsonJs_in_reg ;    
    }
 }) ;
 //build register json files
