@@ -6,8 +6,7 @@ echo "clear graphdb"
 echo read files from ttl directory
 inputDir="data/ttl/anno/register/"
 
-for file in $inputDir*.ttl; do
-  #echo "$file"
+for file in $inputDir*.ttl; do  
   #check if file is no template
     if [[ "$file" = *"register_"*  ]]
     then
@@ -18,11 +17,11 @@ for file in $inputDir*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Import ttl to graphdb repo"
-        #export pathName
+        echo "Import ttl to graphdb repo"        
         export pathName=$pathname
         export name=$name        
-        ./gdb_importFile.sh
+        export ext_out='.ttl'
+				./gdb_importFile.sh
         fi
     fi
 done

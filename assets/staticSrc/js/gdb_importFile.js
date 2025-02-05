@@ -5,9 +5,6 @@ var connectFlag = false ;
 const endpoint = process.env.endpoint ;
 const repo_name = process.env.repo_name ;
 
-//const path_in = process.env.path_in ;
-//const file_in = process.env.file_in ;
-//const ext_in = process.env.ext_in ;
 const filepath = process.env.filepath ;
 
 const mime_type = process.env.mime_type ;

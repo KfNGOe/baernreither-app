@@ -12,10 +12,7 @@ mkdir -p $inputDir_tmp
 #copy files to tmp dir
 cp $inputDir/annoAbbr.ttl $inputDir/annoApp.ttl $inputDir/annoDel.ttl $inputDir/annoNote.ttl $inputDir_tmp
 
-
-echo "Checkpoint 1: check files in tmp dir"
-read -p "Press Enter to continue..."
-
+#loop over files in tmp dir
 for file in $inputDir_tmp*.ttl; do
   #echo "$file"
   #check if file is no template
@@ -32,7 +29,8 @@ for file in $inputDir_tmp*.ttl; do
         #export pathName
         export pathName=$pathname
         export name=$name                
-        ./gdb_importFile.sh
+        export ext_out='.ttl'
+				./gdb_importFile.sh
         fi
     fi
 done
@@ -54,6 +52,7 @@ echo "import anootextfulli ttl to graphdb"
 echo "Starting ttl import to graphdb repo"
 export pathName='data/ttl/anno/anno_web/'
 export name='annoTextFull'
+export ext_out='.ttl'
 ./gdb_importFile.sh
 
 echo "build anno text full json"

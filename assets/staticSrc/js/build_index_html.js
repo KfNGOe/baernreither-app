@@ -5,13 +5,6 @@ const { JSDOM } = jsdom ;
 const fs = require('fs');
 var convert = require('xml-js');
 
-const path_in_tei=process.env.path_in_tei 
-const path_out_json=process.env.path_out_json
-const path_out_tei=process.env.path_out_tei
-const filename = process.env.file; 
-const ext_xml=process.env.ext_xml
-const ext_json=process.env.ext_json
-
 var i_xmlId = 0 ;
 var index_html = '' ;
 
@@ -19,7 +12,7 @@ var index_html = '' ;
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
 let index_scripts = fs.readFileSync("assets/txt/partials/index/index_scripts.txt", 'utf8');
 dom_temp_str = dom_temp_str.concat(index_scripts) ;
-const dom = new jsdom.JSDOM (dom_temp_str) ;
+const dom = new JSDOM (dom_temp_str) ;
 
 // Importing the jquery and providing it
 // with the window

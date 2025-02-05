@@ -3,7 +3,8 @@ const fs = require('fs');
 
 // Importing the jsdom module
 const jsdom = require("jsdom");
-const dom = new jsdom.JSDOM('<html></html>') ;
+const { JSDOM } = jsdom;
+const dom = new JSDOM('<html></html>') ;
 const $ = require('jquery')(dom.window) ;
 
 const path_in = process.env.path_in ;

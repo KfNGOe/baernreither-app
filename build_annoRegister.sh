@@ -18,21 +18,22 @@ for file in $inputDir*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Import text files"        
+        echo "Import text file"        
         export pathName=$pathname
         export name=$name        
+        export ext_out='.ttl'
         ./gdb_importFile.sh
-        echo "Import text files done!"
+        echo "Import text file done!"
         fi
     fi
 done
+echo "import text files done!"
 
 echo "build anno register ttl"
 echo read files from register directory
 inputDir_reg="data/ttl/anno/register/"
 
-for file in $inputDir_reg*.ttl; do
-  #echo "$file"
+for file in $inputDir_reg*.ttl; do  
   #check if file is no template
     if [[ "$file" = *"register_"*  ]]
     then
@@ -43,13 +44,15 @@ for file in $inputDir_reg*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Import register files"        
-        export pathName=$pathname
-        export name=$name        
-        ./gdb_importFile.sh
-        echo "Import register files done!"
-        echo "build anno register"
+            echo "Import register file"        
+            export pathName=$pathname
+            export name=$name        
+            export ext_out='.ttl'
+            ./gdb_importFile.sh
+            echo "Import register file done!"        
         fi
+
+        echo "build anno register"        
         export mime_type='text/turtle'
         export query_type='CONSTRUCT'
         export path_rq='assets/staticSrc/sparql/'
@@ -60,7 +63,9 @@ for file in $inputDir_reg*.ttl; do
             export file_rq='annoIndex'
             export file_out='annoIndex'
             export ext_out='.ttl'        
-            ./gdb_queryRepo.sh
+            ./gdb_queryRepo.sh            
+
+            read -p "Press enter to continue"
 
             echo "build anno index sub ttl"                
             export file_rq='annoIndexSub'
@@ -91,9 +96,11 @@ for file in $inputDir_reg*.ttl; do
             export file_out='annoPlace'
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh        
-        fi        
+        fi
+        echo "build anno register done!"                
     fi
 done
+echo "build anno register ttl done!"
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh
@@ -123,6 +130,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Index.ttl" ]]
             then               
                 echo "Import index ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh                
 
                 echo "build anno index json"                                
@@ -141,6 +149,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Org.ttl" ]]
             then
                 echo "Import anno org ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh                
                 
                 echo "build anno org json"
@@ -152,6 +161,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Person.ttl" ]]
             then
                 echo "Import anno person ttl file"                
+                export ext_out='.ttl'
                 ./gdb_importFile.sh
                                 
                 echo "build anno person json"                                
@@ -163,6 +173,7 @@ for file in $inputDir_anno*.ttl; do
             if [[ "$file" = *"Place.ttl" ]]
             then
                 echo "Import anno place ttl file"
+                export ext_out='.ttl'
                 ./gdb_importFile.sh
                                 
                 echo "build anno place json"                                
@@ -174,5 +185,6 @@ for file in $inputDir_anno*.ttl; do
         fi
     fi
 done
+echo build anno register json done!
 
 echo "build anno register done!"

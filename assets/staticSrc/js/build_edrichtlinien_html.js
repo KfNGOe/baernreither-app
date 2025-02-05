@@ -10,7 +10,7 @@ var edrichtlinien_html = '' ;
 let dom_temp_str = fs.readFileSync("assets/txt/dom.txt", 'utf8');
 let index_scripts = fs.readFileSync("assets/txt/partials/index/index_scripts.txt", 'utf8');
 dom_temp_str = dom_temp_str.concat(index_scripts) ;
-const dom = new jsdom.JSDOM (dom_temp_str) ;
+const dom = new JSDOM (dom_temp_str) ;
 
 // Importing the jquery and providing it
 // with the window

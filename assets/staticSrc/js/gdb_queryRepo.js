@@ -7,21 +7,14 @@ const RDFMimeType = require('graphdb/lib/http/rdf-mime-type') ;
 const endpoint = process.env.endpoint ; // 'http://localhost:7200'
 const repo_name = process.env.repo_name ; // 'kfngoe'
 
-//const path_rq = process.env.path_rq ; // 'assets/staticSrc/sparql/'
-//const file_rq = process.env.file_rq ; // 'annoPerson_1.rq'
-//const ext_rq = process.env.ext_rq ; // '.rq'
 const filepath_rq = process.env.filepath_rq ;
 
-//const path_out = process.env.path_out ; // '.data/ttl/anno/anno_web/'
-//const file_out = process.env.file_out ; // 'annoPersoni_1'
-//const ext_out = process.env.ext_out ; // '.ttl'
 const filepath_out = process.env.filepath_out ;
 
 const readTimeout = 60000 ;
 const writeTimeout = 60000 ;
 const config = new RepositoryClientConfig(endpoint)
     .setEndpoints([ endpoint + '/repositories/' + repo_name])
-    //.setEndpoint('http://localhost:7200/repositories/kfngoe')
     .setReadTimeout(readTimeout)
     .setWriteTimeout(writeTimeout) ;    
     

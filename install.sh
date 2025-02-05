@@ -20,6 +20,9 @@ npm install convert-excel-to-json
 echo "Install core-js"
 npm install core-js
 
+echo "Install tokenize-text"
+npm install tokenize-text
+
 #COMMENTED OUT FOR NOW
 #npm install aspose.cells
 

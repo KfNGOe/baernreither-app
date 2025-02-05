@@ -1,8 +1,9 @@
 //import { TEST } from './assets/staticSrc/js/constants.js';
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
+const { JSDOM } = jsdom ;
 const fs = require('fs');
-const { char2utfMap } = require('../../../assets/staticSrc/js/constants.js');
+const { char2utfMap } = require('./constants.js');
 const tokenOffset = 3 ;
 
 var Tokenizer = require('tokenize-text');
@@ -21,7 +22,7 @@ var i_char = 0 ;
 var i_text = 0 ;
 
 // Creating a window with a document
-const dom = new jsdom.JSDOM(`
+const dom = new JSDOM(`
 <!DOCTYPE html>
 <body></body>
 `);
@@ -173,3 +174,4 @@ let jsonJs_out = tokenAll_tmp ;
 var json_out = JSON.stringify(jsonJs_out, null, 2) ;
 //write json file
 fs.writeFileSync('./staticSearch/data/json/tokens/ssTokens_tmp.json', json_out ) ;
+console.log('json data written: ', json_out.length, ' bytes')
