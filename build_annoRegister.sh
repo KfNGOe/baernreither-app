@@ -33,8 +33,7 @@ echo "build anno register ttl"
 echo read files from register directory
 inputDir_reg="data/ttl/anno/register/"
 
-for file in $inputDir_reg*.ttl; do
-  #echo "$file"
+for file in $inputDir_reg*.ttl; do  
   #check if file is no template
     if [[ "$file" = *"register_"*  ]]
     then

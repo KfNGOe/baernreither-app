@@ -51,6 +51,7 @@ jsonFiles.forEach((file,index_file) => {
     groupedByPos = text_all.results.bindings.groupBy( item => {
         return item.pos.value ;
     } ) ;
+    //title main
     let title = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
         return (item.name.value == 'http://www.tei-c.org/ns/1.0/title'            
             && item.attr.value == 'type'
@@ -85,7 +86,45 @@ jsonFiles.forEach((file,index_file) => {
         pos = posNr2Str(pos_nr, pos);
         text_mdata_result.title.short = groupedByPos[pos][0].cont.value ;
     } else {
-        console.log('error: no title') ;
+        console.log('error: no main title') ;
+    }
+    //title display
+    let title_dis = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
+        return (item.name.value == 'http://www.tei-c.org/ns/1.0/title'            
+            && item.attr.value == 'type'
+            && item.val.value == 'display') ;
+    }) ;
+    if (title_dis !== undefined) {
+        //get pos of item
+        let pos = title_dis.pos.value ;
+        let pos_nr = posStr2Nr(pos) ;        
+        //let pos_nr = +pos.substring(pos.lastIndexOf('_')+1) ;
+        pos_nr++ ;
+        pos = posNr2Str(pos_nr, pos) ;
+        //pos = pos.substring(0, pos.lastIndexOf('_')) + '_' + (pos_nr+1).toString() ;
+        //get title display
+        text_mdata_result.title.display = groupedByPos[pos][0].cont.value ;        
+    } else {
+        console.log('error: no display title') ;
+    }
+    //title short
+    let title_short = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        
+        return (item.name.value == 'http://www.tei-c.org/ns/1.0/title'            
+            && item.attr.value == 'type'
+            && item.val.value == 'short') ;
+    }) ;
+    if (title_short !== undefined) {
+        //get pos of item
+        let pos = title_short.pos.value ;
+        let pos_nr = posStr2Nr(pos) ;        
+        //let pos_nr = +pos.substring(pos.lastIndexOf('_')+1) ;
+        pos_nr++ ;
+        pos = posNr2Str(pos_nr, pos) ;
+        //pos = pos.substring(0, pos.lastIndexOf('_')) + '_' + (pos_nr+1).toString() ;
+        //get title display
+        text_mdata_result.title.short = groupedByPos[pos][0].cont.value ;        
+    } else {
+        console.log('error: no short title') ;
     }
     //find date in text_all json
     let date = groupedByType['https://github.com/KfNGOe/kfngoeo#StartTag'].find((item, index_title) => {        

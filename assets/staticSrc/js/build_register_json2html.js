@@ -37,7 +37,10 @@ function posStr2Nr(posStr) {
 function short2DispTitle(short) {
 	let title = text_mdata_in.results.bindings.find((item, index) => {
 		return item.title.short === short ;
-	}).title.display ;
+	})
+   
+   
+   .title.display ;
 	return title ;
 }
 

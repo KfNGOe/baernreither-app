@@ -81,23 +81,9 @@ jobs:
           ./deploy_html.sh
       - name: Push Results Back to Source Repo
         run: |
-          git config --global user.email "dev-baernreither-app@github.io"
-          git config --global user.name "rh1967"
+          git config --global user.email "baernreither-app@github.io"
+          git config --global user.name "KfNGOe"
           git status          
           git add .
-          git commit -m "Automated update: Adding results from workflow" || echo "No changes to commit"
+          git commit -m "Deploy data" || echo "No changes to commit"
           git push origin main
-
-
-
-
-      #- name: Setup pages
-      #  uses: actions/configure-pages@v5
-      #- name: Upload artifact
-      #  uses: actions/upload-pages-artifact@v3
-      #  with:
-      #    # Upload html directory
-      #    path: './html'
-      #- name: Deploy to GitHub Pages
-      #  id: deployment
-      #  uses: actions/deploy-pages@v4

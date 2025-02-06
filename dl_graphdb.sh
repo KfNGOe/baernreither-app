@@ -5,4 +5,4 @@ echo "install graphdb admin"
 npm i @innotrade/enapso-graphdb-admin --save
 
 echo "install graphdb.js"
-npm i graphdb
+npm i graphdb@3.0.2

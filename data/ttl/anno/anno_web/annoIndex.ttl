@@ -10,69 +10,69 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
-kfngoei:09fc6902-2d21-4b87-b167-5510e15665bd a kfngoeo:AnnoIndex;
+kfngoei:f66781de-453e-4867-a37a-c09725c71f2b a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Aristokratie";
-  kfngoeo:hasTarget _:d61a6c9b1e1844569aead1edca02305f696396;
-  kfngoeo:hasBody _:d61a6c9b1e1844569aead1edca02305f696388 .
+  kfngoeo:hasTarget _:e7e1e98d22f34ef4a6a53a904948b6b930835;
+  kfngoeo:hasBody _:e7e1e98d22f34ef4a6a53a904948b6b930827 .
 
-_:d61a6c9b1e1844569aead1edca02305f696396 kfngoeo:hasSource "Bae_MF_6-1";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696397, kfngoei:d75c8a00-c93f-4347-be86-224a5313b478 .
+_:e7e1e98d22f34ef4a6a53a904948b6b930835 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930836, kfngoei:d75c8a00-c93f-4347-be86-224a5313b478 .
 
-_:d61a6c9b1e1844569aead1edca02305f696397 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930836 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4141;
   kfngoeo:end 4145 .
 
-_:d61a6c9b1e1844569aead1edca02305f696388 a kfngoeo:TextualBody;
+_:e7e1e98d22f34ef4a6a53a904948b6b930827 a kfngoeo:TextualBody;
   kfngoeo:hasSource "Bae_REG_Index";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696389, kfngoei:886bf030-564f-46fb-be07-17fd07161b4d .
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930828, kfngoei:cb26b41d-0519-4e88-9d57-b94f408e3a72 .
 
-_:d61a6c9b1e1844569aead1edca02305f696389 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930828 a kfngoeo:TextPositionSelector;
   kfngoeo:start 39 .
 
-kfngoei:4e0ea2b3-ded8-426e-b50e-9534a6426eb9 a kfngoeo:AnnoIndex;
+kfngoei:83fc3838-6d4a-4b33-bb3e-7e3636b844be a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Oligarchie";
-  kfngoeo:hasTarget _:d61a6c9b1e1844569aead1edca02305f696398, _:d61a6c9b1e1844569aead1edca02305f696400;
-  kfngoeo:hasBody _:d61a6c9b1e1844569aead1edca02305f696392 .
+  kfngoeo:hasTarget _:e7e1e98d22f34ef4a6a53a904948b6b930837, _:e7e1e98d22f34ef4a6a53a904948b6b930839;
+  kfngoeo:hasBody _:e7e1e98d22f34ef4a6a53a904948b6b930831 .
 
-_:d61a6c9b1e1844569aead1edca02305f696398 kfngoeo:hasSource "Bae_MF_6-1";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696399, kfngoei:ed6f60d3-b531-4b82-a96b-c4bd5c4a677c .
+_:e7e1e98d22f34ef4a6a53a904948b6b930837 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930838, kfngoei:ed6f60d3-b531-4b82-a96b-c4bd5c4a677c .
 
-_:d61a6c9b1e1844569aead1edca02305f696399 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930838 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4135;
   kfngoeo:end 4139 .
 
-_:d61a6c9b1e1844569aead1edca02305f696392 a kfngoeo:TextualBody;
+_:e7e1e98d22f34ef4a6a53a904948b6b930831 a kfngoeo:TextualBody;
   kfngoeo:hasSource "Bae_REG_Index";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696393, kfngoei:2ccb6e2f-a9c8-49c3-a013-f0856e308c63 .
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930832, kfngoei:6410457a-57fe-4b53-a00f-8ac799a2c859 .
 
-_:d61a6c9b1e1844569aead1edca02305f696393 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930832 a kfngoeo:TextPositionSelector;
   kfngoeo:start 52 .
 
-_:d61a6c9b1e1844569aead1edca02305f696400 kfngoeo:hasSource "Bae_MF_6-1";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696401, kfngoei:829e4b82-62bd-4a87-800b-dc7f795e29e1 .
+_:e7e1e98d22f34ef4a6a53a904948b6b930839 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930840, kfngoei:829e4b82-62bd-4a87-800b-dc7f795e29e1 .
 
-_:d61a6c9b1e1844569aead1edca02305f696401 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930840 a kfngoeo:TextPositionSelector;
   kfngoeo:start 4216;
   kfngoeo:end 4220 .
 
-kfngoei:81c1cadd-d166-4e1d-8ca7-9e3444449127 a kfngoeo:AnnoIndex;
+kfngoei:834dc513-dd51-443f-98d1-de702991abde a kfngoeo:AnnoIndex;
   rdfs:label "Annotation level of Index"@en;
   rdfs:isDefinedBy "Wahlrechtsreform";
-  kfngoeo:hasTarget _:d61a6c9b1e1844569aead1edca02305f696402;
-  kfngoeo:hasBody _:d61a6c9b1e1844569aead1edca02305f696394 .
+  kfngoeo:hasTarget _:e7e1e98d22f34ef4a6a53a904948b6b930841;
+  kfngoeo:hasBody _:e7e1e98d22f34ef4a6a53a904948b6b930833 .
 
-_:d61a6c9b1e1844569aead1edca02305f696402 kfngoeo:hasSource "Bae_MF_6-1";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696403, kfngoei:82f0043a-f779-4956-8a37-fcafe0c7e744 .
+_:e7e1e98d22f34ef4a6a53a904948b6b930841 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930842, kfngoei:82f0043a-f779-4956-8a37-fcafe0c7e744 .
 
-_:d61a6c9b1e1844569aead1edca02305f696403 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930842 a kfngoeo:TextPositionSelector;
   kfngoeo:start 5187;
   kfngoeo:end 5191 .
 
-_:d61a6c9b1e1844569aead1edca02305f696394 a kfngoeo:TextualBody;
+_:e7e1e98d22f34ef4a6a53a904948b6b930833 a kfngoeo:TextualBody;
   kfngoeo:hasSource "Bae_REG_Index";
-  kfngoeo:hasSelector _:d61a6c9b1e1844569aead1edca02305f696395, kfngoei:df5fee99-f556-4854-8bdb-d8e5338d320b .
+  kfngoeo:hasSelector _:e7e1e98d22f34ef4a6a53a904948b6b930834, kfngoei:7d1c45a9-d3a7-4e5f-9167-106ce26c625e .
 
-_:d61a6c9b1e1844569aead1edca02305f696395 a kfngoeo:TextPositionSelector;
+_:e7e1e98d22f34ef4a6a53a904948b6b930834 a kfngoeo:TextPositionSelector;
   kfngoeo:start 63 .
