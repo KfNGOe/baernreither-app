@@ -63,8 +63,7 @@ function buildTokens(fullTextAll,textFull_files) {
     let tokensPoss12_tmp = {} ;
     //iterate over full text files
     fullTextAll.results.bindings.forEach((item, index) => {
-        i_text = index + 1 ;
-        console.log('i_text = ', i_text) ;
+        i_text = index + 1 ;        
         //iterate over keys
         Object.keys(item).forEach((key) => {            
             switch(key) {
