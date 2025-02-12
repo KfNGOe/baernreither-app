@@ -65,8 +65,6 @@ for file in $inputDir_reg*.ttl; do
             export ext_out='.ttl'        
             ./gdb_queryRepo.sh            
 
-            read -p "Press enter to continue"
-
             echo "build anno index sub ttl"                
             export file_rq='annoIndexSub'
             export file_out='annoIndexSub'
