@@ -1,0 +1,3667 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+kfngoei:33a14b9d-b216-4068-ada6-e29f2a6fd087 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Abgeordnetenhaus";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17545, _:8a7335dfa33f4e40a430136da3db085a17547,
+    _:8a7335dfa33f4e40a430136da3db085a17549, _:8a7335dfa33f4e40a430136da3db085a17551,
+    _:8a7335dfa33f4e40a430136da3db085a17553, _:8a7335dfa33f4e40a430136da3db085a17555,
+    _:8a7335dfa33f4e40a430136da3db085a17557, _:8a7335dfa33f4e40a430136da3db085a17559,
+    _:8a7335dfa33f4e40a430136da3db085a17561, _:8a7335dfa33f4e40a430136da3db085a17563,
+    _:8a7335dfa33f4e40a430136da3db085a17565, _:8a7335dfa33f4e40a430136da3db085a17567,
+    _:8a7335dfa33f4e40a430136da3db085a17569, _:8a7335dfa33f4e40a430136da3db085a17571,
+    _:8a7335dfa33f4e40a430136da3db085a17573, _:8a7335dfa33f4e40a430136da3db085a17575,
+    _:8a7335dfa33f4e40a430136da3db085a17577, _:8a7335dfa33f4e40a430136da3db085a17579,
+    _:8a7335dfa33f4e40a430136da3db085a17581, _:8a7335dfa33f4e40a430136da3db085a17583,
+    _:8a7335dfa33f4e40a430136da3db085a17585, _:8a7335dfa33f4e40a430136da3db085a17587,
+    _:8a7335dfa33f4e40a430136da3db085a17589, _:8a7335dfa33f4e40a430136da3db085a17591,
+    _:8a7335dfa33f4e40a430136da3db085a17593, _:8a7335dfa33f4e40a430136da3db085a17595,
+    _:8a7335dfa33f4e40a430136da3db085a17597, _:8a7335dfa33f4e40a430136da3db085a17599,
+    _:8a7335dfa33f4e40a430136da3db085a17601, _:8a7335dfa33f4e40a430136da3db085a17603,
+    _:8a7335dfa33f4e40a430136da3db085a17605, _:8a7335dfa33f4e40a430136da3db085a17607,
+    _:8a7335dfa33f4e40a430136da3db085a17609, _:8a7335dfa33f4e40a430136da3db085a17611,
+    _:8a7335dfa33f4e40a430136da3db085a17613, _:8a7335dfa33f4e40a430136da3db085a17615,
+    _:8a7335dfa33f4e40a430136da3db085a17617, _:8a7335dfa33f4e40a430136da3db085a17619,
+    _:8a7335dfa33f4e40a430136da3db085a17621, _:8a7335dfa33f4e40a430136da3db085a17623,
+    _:8a7335dfa33f4e40a430136da3db085a17625, _:8a7335dfa33f4e40a430136da3db085a17627,
+    _:8a7335dfa33f4e40a430136da3db085a17629, _:8a7335dfa33f4e40a430136da3db085a17631,
+    _:8a7335dfa33f4e40a430136da3db085a17633, _:8a7335dfa33f4e40a430136da3db085a17635,
+    _:8a7335dfa33f4e40a430136da3db085a17637, _:8a7335dfa33f4e40a430136da3db085a17639,
+    _:8a7335dfa33f4e40a430136da3db085a17641, _:8a7335dfa33f4e40a430136da3db085a17643,
+    _:8a7335dfa33f4e40a430136da3db085a17645, _:8a7335dfa33f4e40a430136da3db085a17647,
+    _:8a7335dfa33f4e40a430136da3db085a17649, _:8a7335dfa33f4e40a430136da3db085a17651,
+    _:8a7335dfa33f4e40a430136da3db085a17653, _:8a7335dfa33f4e40a430136da3db085a17655,
+    _:8a7335dfa33f4e40a430136da3db085a17657, _:8a7335dfa33f4e40a430136da3db085a17659,
+    _:8a7335dfa33f4e40a430136da3db085a17661, _:8a7335dfa33f4e40a430136da3db085a17663;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17425 .
+
+_:8a7335dfa33f4e40a430136da3db085a17545 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17546, kfngoei:cd4c8fe9-28a7-42e7-ab98-b319b86eb43d .
+
+_:8a7335dfa33f4e40a430136da3db085a17546 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 179;
+  kfngoeo:end 181 .
+
+_:8a7335dfa33f4e40a430136da3db085a17425 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17426, kfngoei:e06baeef-d1a0-4bfe-bfec-542bf3137348 .
+
+_:8a7335dfa33f4e40a430136da3db085a17426 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 39 .
+
+_:8a7335dfa33f4e40a430136da3db085a17547 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17548, kfngoei:8c538165-2ef1-45b0-a58c-d1eb99d970c3 .
+
+_:8a7335dfa33f4e40a430136da3db085a17548 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 395;
+  kfngoeo:end 397 .
+
+_:8a7335dfa33f4e40a430136da3db085a17549 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17550, kfngoei:cc905f67-3300-4549-ba3f-859d79ea313c .
+
+_:8a7335dfa33f4e40a430136da3db085a17550 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 865;
+  kfngoeo:end 867 .
+
+_:8a7335dfa33f4e40a430136da3db085a17551 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17552, kfngoei:a2084ef1-50b2-4a0d-889f-17d9f2594ecb .
+
+_:8a7335dfa33f4e40a430136da3db085a17552 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 869;
+  kfngoeo:end 871 .
+
+_:8a7335dfa33f4e40a430136da3db085a17553 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17554, kfngoei:2aaa6714-89d9-41c7-9429-f2176780fd34 .
+
+_:8a7335dfa33f4e40a430136da3db085a17554 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 952;
+  kfngoeo:end 954 .
+
+_:8a7335dfa33f4e40a430136da3db085a17555 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17556, kfngoei:3147f2e5-6489-4f9d-a2eb-4dea603c2286 .
+
+_:8a7335dfa33f4e40a430136da3db085a17556 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 964;
+  kfngoeo:end 966 .
+
+_:8a7335dfa33f4e40a430136da3db085a17557 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17558, kfngoei:5750dd45-3fda-4a29-b29b-a20069a2525f .
+
+_:8a7335dfa33f4e40a430136da3db085a17558 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1513;
+  kfngoeo:end 1515 .
+
+_:8a7335dfa33f4e40a430136da3db085a17559 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17560, kfngoei:2f63a84c-9dbc-4647-a2f0-dcb63fbc2792 .
+
+_:8a7335dfa33f4e40a430136da3db085a17560 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1658;
+  kfngoeo:end 1660 .
+
+_:8a7335dfa33f4e40a430136da3db085a17561 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17562, kfngoei:93188f01-fe46-4976-a3d6-9e852c3ae065 .
+
+_:8a7335dfa33f4e40a430136da3db085a17562 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1956;
+  kfngoeo:end 1958 .
+
+_:8a7335dfa33f4e40a430136da3db085a17563 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17564, kfngoei:62959e2b-82f9-4052-990e-e0dcc8979a8d .
+
+_:8a7335dfa33f4e40a430136da3db085a17564 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2260;
+  kfngoeo:end 2262 .
+
+_:8a7335dfa33f4e40a430136da3db085a17565 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17566, kfngoei:0c1aa995-e480-46f7-bed1-3db8ea646e83 .
+
+_:8a7335dfa33f4e40a430136da3db085a17566 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2306;
+  kfngoeo:end 2308 .
+
+_:8a7335dfa33f4e40a430136da3db085a17567 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17568, kfngoei:4122c4d0-10e7-4401-8534-e47e6efe8b37 .
+
+_:8a7335dfa33f4e40a430136da3db085a17568 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 682;
+  kfngoeo:end 684 .
+
+_:8a7335dfa33f4e40a430136da3db085a17569 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17570, kfngoei:77e078fb-6313-46bc-a17a-09103f3e863a .
+
+_:8a7335dfa33f4e40a430136da3db085a17570 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 984;
+  kfngoeo:end 986 .
+
+_:8a7335dfa33f4e40a430136da3db085a17571 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17572, kfngoei:caf5a646-d8d3-4510-819a-fff7871a1245 .
+
+_:8a7335dfa33f4e40a430136da3db085a17572 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 992;
+  kfngoeo:end 994 .
+
+_:8a7335dfa33f4e40a430136da3db085a17573 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17574, kfngoei:b30d4cd9-1b75-4deb-8440-3ceb9d2cd2bb .
+
+_:8a7335dfa33f4e40a430136da3db085a17574 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1049;
+  kfngoeo:end 1051 .
+
+_:8a7335dfa33f4e40a430136da3db085a17575 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17576, kfngoei:9e00414e-93ef-45b1-90ef-006af049bd88 .
+
+_:8a7335dfa33f4e40a430136da3db085a17576 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1174;
+  kfngoeo:end 1176 .
+
+_:8a7335dfa33f4e40a430136da3db085a17577 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17578, kfngoei:1fbec10a-8a00-4aee-b969-3a21cc15f55f .
+
+_:8a7335dfa33f4e40a430136da3db085a17578 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1274;
+  kfngoeo:end 1276 .
+
+_:8a7335dfa33f4e40a430136da3db085a17579 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17580, kfngoei:3984ee70-7722-4e64-89de-07317a008643 .
+
+_:8a7335dfa33f4e40a430136da3db085a17580 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1590;
+  kfngoeo:end 1592 .
+
+_:8a7335dfa33f4e40a430136da3db085a17581 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17582, kfngoei:d8a55b26-11af-4d15-bab8-b8b319c13eda .
+
+_:8a7335dfa33f4e40a430136da3db085a17582 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1615;
+  kfngoeo:end 1617 .
+
+_:8a7335dfa33f4e40a430136da3db085a17583 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17584, kfngoei:9c748e16-f777-4102-9e87-e1c1d16384b3 .
+
+_:8a7335dfa33f4e40a430136da3db085a17584 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1687;
+  kfngoeo:end 1689 .
+
+_:8a7335dfa33f4e40a430136da3db085a17585 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17586, kfngoei:93cbe203-d0e1-42c3-b018-df20e8d54b4b .
+
+_:8a7335dfa33f4e40a430136da3db085a17586 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1695;
+  kfngoeo:end 1697 .
+
+_:8a7335dfa33f4e40a430136da3db085a17587 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17588, kfngoei:e2181b69-355e-473b-ad36-cd7b02eaf33f .
+
+_:8a7335dfa33f4e40a430136da3db085a17588 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2048;
+  kfngoeo:end 2050 .
+
+_:8a7335dfa33f4e40a430136da3db085a17589 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17590, kfngoei:a4bfae3c-a55e-44ae-af25-82b5254c3a3a .
+
+_:8a7335dfa33f4e40a430136da3db085a17590 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2737;
+  kfngoeo:end 2739 .
+
+_:8a7335dfa33f4e40a430136da3db085a17591 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17592, kfngoei:aa7a4e11-165c-4de9-9c35-f7d611b3dad1 .
+
+_:8a7335dfa33f4e40a430136da3db085a17592 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2853;
+  kfngoeo:end 2855 .
+
+_:8a7335dfa33f4e40a430136da3db085a17593 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17594, kfngoei:9a5f7386-b516-4836-895f-7d8a4f40a2d9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17594 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3544;
+  kfngoeo:end 3546 .
+
+_:8a7335dfa33f4e40a430136da3db085a17595 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17596, kfngoei:655062b9-306f-4686-bd77-35183567469d .
+
+_:8a7335dfa33f4e40a430136da3db085a17596 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4180;
+  kfngoeo:end 4182 .
+
+_:8a7335dfa33f4e40a430136da3db085a17597 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17598, kfngoei:662a3bca-f76d-405b-b037-0b6e5be82977 .
+
+_:8a7335dfa33f4e40a430136da3db085a17598 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5645;
+  kfngoeo:end 5647 .
+
+_:8a7335dfa33f4e40a430136da3db085a17599 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17600, kfngoei:a2f32abc-d957-45b2-bbb4-5b4895ad83ea .
+
+_:8a7335dfa33f4e40a430136da3db085a17600 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5649;
+  kfngoeo:end 5651 .
+
+_:8a7335dfa33f4e40a430136da3db085a17601 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17602, kfngoei:7a95c3e1-d361-48cf-a325-1d1ff783f7f0 .
+
+_:8a7335dfa33f4e40a430136da3db085a17602 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5700;
+  kfngoeo:end 5702 .
+
+_:8a7335dfa33f4e40a430136da3db085a17603 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17604, kfngoei:ee264428-d664-43d5-b64c-4d03c637e100 .
+
+_:8a7335dfa33f4e40a430136da3db085a17604 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5828;
+  kfngoeo:end 5830 .
+
+_:8a7335dfa33f4e40a430136da3db085a17605 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17606, kfngoei:704d8b46-68c2-446d-b50f-98e36e473e5e .
+
+_:8a7335dfa33f4e40a430136da3db085a17606 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1228;
+  kfngoeo:end 1230 .
+
+_:8a7335dfa33f4e40a430136da3db085a17607 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17608, kfngoei:a63bb5ca-dc06-4c96-bdad-8d2eb897b290 .
+
+_:8a7335dfa33f4e40a430136da3db085a17608 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1255;
+  kfngoeo:end 1257 .
+
+_:8a7335dfa33f4e40a430136da3db085a17609 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17610, kfngoei:dc980b53-9819-4c67-b2f8-e909b7e1812a .
+
+_:8a7335dfa33f4e40a430136da3db085a17610 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2198;
+  kfngoeo:end 2200 .
+
+_:8a7335dfa33f4e40a430136da3db085a17611 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17612, kfngoei:30c3fefb-69d1-4df4-a4b7-da1d554e3970 .
+
+_:8a7335dfa33f4e40a430136da3db085a17612 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2208;
+  kfngoeo:end 2210 .
+
+_:8a7335dfa33f4e40a430136da3db085a17613 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17614, kfngoei:ba71f1ca-af11-482b-b94f-f1c4110f3430 .
+
+_:8a7335dfa33f4e40a430136da3db085a17614 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2601;
+  kfngoeo:end 2603 .
+
+_:8a7335dfa33f4e40a430136da3db085a17615 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17616, kfngoei:c246e51b-a8d8-4b9e-8e58-8ef0049736e3 .
+
+_:8a7335dfa33f4e40a430136da3db085a17616 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2783;
+  kfngoeo:end 2785 .
+
+_:8a7335dfa33f4e40a430136da3db085a17617 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17618, kfngoei:e1d3d23c-24b2-4304-a398-cdbe2fbf129a .
+
+_:8a7335dfa33f4e40a430136da3db085a17618 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3124;
+  kfngoeo:end 3126 .
+
+_:8a7335dfa33f4e40a430136da3db085a17619 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17620, kfngoei:7b5b6992-984c-4478-8b5c-62947d792b1c .
+
+_:8a7335dfa33f4e40a430136da3db085a17620 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3997;
+  kfngoeo:end 4006 .
+
+_:8a7335dfa33f4e40a430136da3db085a17621 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17622, kfngoei:c0aa766d-604c-4b6b-b7ee-920834dd606e .
+
+_:8a7335dfa33f4e40a430136da3db085a17622 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4018;
+  kfngoeo:end 4020 .
+
+_:8a7335dfa33f4e40a430136da3db085a17623 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17624, kfngoei:808e9e9e-da7f-4e74-8544-96e32ea85071 .
+
+_:8a7335dfa33f4e40a430136da3db085a17624 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4118;
+  kfngoeo:end 4120 .
+
+_:8a7335dfa33f4e40a430136da3db085a17625 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17626, kfngoei:290f5ad5-13a0-4a5e-bfd2-890fb5a162cc .
+
+_:8a7335dfa33f4e40a430136da3db085a17626 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4146;
+  kfngoeo:end 4148 .
+
+_:8a7335dfa33f4e40a430136da3db085a17627 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17628, kfngoei:e4ccfb16-13fa-4407-b9a5-43f48971d903 .
+
+_:8a7335dfa33f4e40a430136da3db085a17628 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4222;
+  kfngoeo:end 4224 .
+
+_:8a7335dfa33f4e40a430136da3db085a17629 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17630, kfngoei:498b9014-91b3-45c6-a878-a3226fe6d38f .
+
+_:8a7335dfa33f4e40a430136da3db085a17630 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4252;
+  kfngoeo:end 4254 .
+
+_:8a7335dfa33f4e40a430136da3db085a17631 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17632, kfngoei:0e184cc5-1daf-404c-9783-afe13409767f .
+
+_:8a7335dfa33f4e40a430136da3db085a17632 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5185;
+  kfngoeo:end 5187 .
+
+_:8a7335dfa33f4e40a430136da3db085a17633 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17634, kfngoei:e4e4c1c0-3242-4d8a-bf4c-2471f5bc8f98 .
+
+_:8a7335dfa33f4e40a430136da3db085a17634 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5450;
+  kfngoeo:end 5459 .
+
+_:8a7335dfa33f4e40a430136da3db085a17635 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17636, kfngoei:05a8a032-c880-4afb-8a0e-1c43d2740c08 .
+
+_:8a7335dfa33f4e40a430136da3db085a17636 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5814;
+  kfngoeo:end 5816 .
+
+_:8a7335dfa33f4e40a430136da3db085a17637 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17638, kfngoei:2470987b-a4d9-4f1f-92e3-b223f1bd6264 .
+
+_:8a7335dfa33f4e40a430136da3db085a17638 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5818;
+  kfngoeo:end 5820 .
+
+_:8a7335dfa33f4e40a430136da3db085a17639 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17640, kfngoei:9b9d6c09-2f56-496c-938c-9d67ab62afe3 .
+
+_:8a7335dfa33f4e40a430136da3db085a17640 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12888;
+  kfngoeo:end 12890 .
+
+_:8a7335dfa33f4e40a430136da3db085a17641 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17642, kfngoei:37db1968-5f2a-462e-995a-3d996c214ab9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17642 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12913;
+  kfngoeo:end 12915 .
+
+_:8a7335dfa33f4e40a430136da3db085a17643 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17644, kfngoei:e77c4884-bf29-4539-9fe7-6b6f8b6ef523 .
+
+_:8a7335dfa33f4e40a430136da3db085a17644 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 347;
+  kfngoeo:end 349 .
+
+_:8a7335dfa33f4e40a430136da3db085a17645 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17646, kfngoei:607b8d60-0c28-4349-a370-6a60dd20d5fe .
+
+_:8a7335dfa33f4e40a430136da3db085a17646 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1686;
+  kfngoeo:end 1688 .
+
+_:8a7335dfa33f4e40a430136da3db085a17647 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17648, kfngoei:f926844b-6203-42eb-81a8-b7b83b9d2307 .
+
+_:8a7335dfa33f4e40a430136da3db085a17648 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1849;
+  kfngoeo:end 1851 .
+
+_:8a7335dfa33f4e40a430136da3db085a17649 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17650, kfngoei:4ba65701-78aa-4ce9-b309-8da35df8921b .
+
+_:8a7335dfa33f4e40a430136da3db085a17650 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2639;
+  kfngoeo:end 2648 .
+
+_:8a7335dfa33f4e40a430136da3db085a17651 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17652, kfngoei:3a86f7c3-b7e7-40b3-904b-a8a7d5536be6 .
+
+_:8a7335dfa33f4e40a430136da3db085a17652 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4171;
+  kfngoeo:end 4173 .
+
+_:8a7335dfa33f4e40a430136da3db085a17653 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17654, kfngoei:754dc3ce-b0b1-43f1-95ca-e45430ea2fd1 .
+
+_:8a7335dfa33f4e40a430136da3db085a17654 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4175;
+  kfngoeo:end 4177 .
+
+_:8a7335dfa33f4e40a430136da3db085a17655 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17656, kfngoei:bf108c09-4d50-4d9f-958f-5a27b0370b91 .
+
+_:8a7335dfa33f4e40a430136da3db085a17656 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5385;
+  kfngoeo:end 5387 .
+
+_:8a7335dfa33f4e40a430136da3db085a17657 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17658, kfngoei:6c82a0f2-8d27-4bb2-a3c6-1a6b0f924c47 .
+
+_:8a7335dfa33f4e40a430136da3db085a17658 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5404;
+  kfngoeo:end 5406 .
+
+_:8a7335dfa33f4e40a430136da3db085a17659 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17660, kfngoei:518228c2-9c7a-4753-988b-772b7b817572 .
+
+_:8a7335dfa33f4e40a430136da3db085a17660 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5561;
+  kfngoeo:end 5563 .
+
+_:8a7335dfa33f4e40a430136da3db085a17661 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17662, kfngoei:484d2582-f014-4843-9143-fc171f03276f .
+
+_:8a7335dfa33f4e40a430136da3db085a17662 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6089;
+  kfngoeo:end 6091 .
+
+_:8a7335dfa33f4e40a430136da3db085a17663 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17664, kfngoei:db0a9150-f8f4-4b52-82b8-1e955d5a1fae .
+
+_:8a7335dfa33f4e40a430136da3db085a17664 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6400;
+  kfngoeo:end 6402 .
+
+kfngoei:a570756d-8e10-41df-bb7d-aad7ea9eb589 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "AltoAdige";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17665;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17427 .
+
+_:8a7335dfa33f4e40a430136da3db085a17665 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17666, kfngoei:b0dfc9f9-ba61-4893-8221-ffb96e77fb3b .
+
+_:8a7335dfa33f4e40a430136da3db085a17666 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2086;
+  kfngoeo:end 2088 .
+
+_:8a7335dfa33f4e40a430136da3db085a17427 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17428, kfngoei:5d6b6a77-6245-4f66-8ace-b7abedfc0b0e .
+
+_:8a7335dfa33f4e40a430136da3db085a17428 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 230 .
+
+kfngoei:32e08583-192e-41b3-84eb-4488a81efec0 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Arbeiterzeitung";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17667, _:8a7335dfa33f4e40a430136da3db085a17669,
+    _:8a7335dfa33f4e40a430136da3db085a17671;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17429 .
+
+_:8a7335dfa33f4e40a430136da3db085a17667 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17668, kfngoei:3da06aab-77c7-4c70-bddf-dcb6643aaaad .
+
+_:8a7335dfa33f4e40a430136da3db085a17668 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4749;
+  kfngoeo:end 4751 .
+
+_:8a7335dfa33f4e40a430136da3db085a17429 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17430, kfngoei:39a9b73b-435d-44b0-b4a7-b777828941d2 .
+
+_:8a7335dfa33f4e40a430136da3db085a17430 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 242 .
+
+_:8a7335dfa33f4e40a430136da3db085a17669 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17670, kfngoei:4979de12-bfe6-4030-a8b9-062b942b5046 .
+
+_:8a7335dfa33f4e40a430136da3db085a17670 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4765;
+  kfngoeo:end 4767 .
+
+_:8a7335dfa33f4e40a430136da3db085a17671 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17672, kfngoei:5c69cac9-3cd3-4094-ba74-2753e328e6b8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17672 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1517;
+  kfngoeo:end 1519 .
+
+kfngoei:ce7af148-01b7-43d6-b956-ff68ae420893 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Arsenal";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17673, _:8a7335dfa33f4e40a430136da3db085a17675;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17431 .
+
+_:8a7335dfa33f4e40a430136da3db085a17673 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17674, kfngoei:b6f0afef-ee69-425b-8d1b-26622e8341cb .
+
+_:8a7335dfa33f4e40a430136da3db085a17674 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5312;
+  kfngoeo:end 5314 .
+
+_:8a7335dfa33f4e40a430136da3db085a17431 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17432, kfngoei:1092447f-306b-4295-ad53-c8dd79a8d01c .
+
+_:8a7335dfa33f4e40a430136da3db085a17432 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 262 .
+
+_:8a7335dfa33f4e40a430136da3db085a17675 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17676, kfngoei:e2275eaa-379c-458e-84a3-506d822e8639 .
+
+_:8a7335dfa33f4e40a430136da3db085a17676 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11717;
+  kfngoeo:end 11719 .
+
+kfngoei:ea3575ea-e033-41cd-a08a-3522c4c6f5ce a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Bohemia";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17677, _:8a7335dfa33f4e40a430136da3db085a17679,
+    _:8a7335dfa33f4e40a430136da3db085a17681;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17433 .
+
+_:8a7335dfa33f4e40a430136da3db085a17677 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17678, kfngoei:379dde1b-f087-4d01-a47b-e9af101a1923 .
+
+_:8a7335dfa33f4e40a430136da3db085a17678 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 279;
+  kfngoeo:end 281 .
+
+_:8a7335dfa33f4e40a430136da3db085a17433 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17434, kfngoei:3648849c-3350-4591-b2d0-cb604d389ac7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17434 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 279 .
+
+_:8a7335dfa33f4e40a430136da3db085a17679 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17680, kfngoei:5e3fa59a-a39d-4344-b5c1-fbf24d0eaedd .
+
+_:8a7335dfa33f4e40a430136da3db085a17680 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 970;
+  kfngoeo:end 972 .
+
+_:8a7335dfa33f4e40a430136da3db085a17681 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17682, kfngoei:424facc1-5bf8-44eb-9e2e-5d924074d65d .
+
+_:8a7335dfa33f4e40a430136da3db085a17682 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2926;
+  kfngoeo:end 2928 .
+
+kfngoei:c9754a11-4d5f-42a4-a12b-c336f79be5b3 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "BudapestiHirlap";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17683;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17435 .
+
+_:8a7335dfa33f4e40a430136da3db085a17683 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17684, kfngoei:66f4d79f-e6e3-4598-b5d6-4814ee536b97 .
+
+_:8a7335dfa33f4e40a430136da3db085a17684 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6174;
+  kfngoeo:end 6176 .
+
+_:8a7335dfa33f4e40a430136da3db085a17435 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17436, kfngoei:db3db01d-93f9-4fa1-8d26-a1b1695befb7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17436 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 299 .
+
+kfngoei:4f0e8570-7853-4606-94d4-dfbd0e5aaa39 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Budgetausschuss";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17685, _:8a7335dfa33f4e40a430136da3db085a17687,
+    _:8a7335dfa33f4e40a430136da3db085a17689, _:8a7335dfa33f4e40a430136da3db085a17691,
+    _:8a7335dfa33f4e40a430136da3db085a17693, _:8a7335dfa33f4e40a430136da3db085a17695,
+    _:8a7335dfa33f4e40a430136da3db085a17697;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17437 .
+
+_:8a7335dfa33f4e40a430136da3db085a17685 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17686, kfngoei:ea54a6d4-d957-49f5-b188-2e7c6bd5d4c0 .
+
+_:8a7335dfa33f4e40a430136da3db085a17686 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 159;
+  kfngoeo:end 161 .
+
+_:8a7335dfa33f4e40a430136da3db085a17437 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17438, kfngoei:15428316-83a9-4bbc-ab41-7eeb57483377 .
+
+_:8a7335dfa33f4e40a430136da3db085a17438 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 311 .
+
+_:8a7335dfa33f4e40a430136da3db085a17687 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17688, kfngoei:fba6b1ef-5103-42e8-a597-11c656dabf95 .
+
+_:8a7335dfa33f4e40a430136da3db085a17688 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 127;
+  kfngoeo:end 129 .
+
+_:8a7335dfa33f4e40a430136da3db085a17689 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17690, kfngoei:a1c3d7af-b9eb-4359-8112-93ca091d2c73 .
+
+_:8a7335dfa33f4e40a430136da3db085a17690 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 160;
+  kfngoeo:end 162 .
+
+_:8a7335dfa33f4e40a430136da3db085a17691 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17692, kfngoei:4ed2adc8-6857-466e-aa8c-b28412017bd5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17692 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2787;
+  kfngoeo:end 2789 .
+
+_:8a7335dfa33f4e40a430136da3db085a17693 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17694, kfngoei:b8c78fad-c15e-49a0-93dd-f16513945df8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17694 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2892;
+  kfngoeo:end 2894 .
+
+_:8a7335dfa33f4e40a430136da3db085a17695 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17696, kfngoei:cbbd33b3-9cae-4b8e-8f26-24a116b291db .
+
+_:8a7335dfa33f4e40a430136da3db085a17696 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3003;
+  kfngoeo:end 3005 .
+
+_:8a7335dfa33f4e40a430136da3db085a17697 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17698, kfngoei:46fa9c78-2109-4eba-9a30-d0c43c544e60 .
+
+_:8a7335dfa33f4e40a430136da3db085a17698 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4398;
+  kfngoeo:end 4400 .
+
+kfngoei:f2a5b6b3-01e8-4db9-af9f-e29211f4d9c9 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Böhmischer Landtag";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17699;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17379 .
+
+_:8a7335dfa33f4e40a430136da3db085a17699 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17700, kfngoei:b7d023ec-9abc-457f-a4f5-6581681465f7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17700 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3145;
+  kfngoeo:end 3147 .
+
+_:8a7335dfa33f4e40a430136da3db085a17379 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Index";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17380, kfngoei:2f6faf60-06ac-4850-a0cf-de0f3c64108c .
+
+_:8a7335dfa33f4e40a430136da3db085a17380 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 120 .
+
+kfngoei:122e5ef1-207f-4fbe-a891-6dd38cf6219e a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Böhmischer Landtag";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17701;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17439 .
+
+_:8a7335dfa33f4e40a430136da3db085a17701 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17702, kfngoei:b7d023ec-9abc-457f-a4f5-6581681465f7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17702 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3145;
+  kfngoeo:end 3147 .
+
+_:8a7335dfa33f4e40a430136da3db085a17439 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17440, kfngoei:61a8093a-350b-491e-b311-ddc3e201a39f .
+
+_:8a7335dfa33f4e40a430136da3db085a17440 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 343 .
+
+kfngoei:08809784-cd77-4932-97b7-e4a78fcc3aca a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "ChristlichsozialePartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17703, _:8a7335dfa33f4e40a430136da3db085a17705,
+    _:8a7335dfa33f4e40a430136da3db085a17707, _:8a7335dfa33f4e40a430136da3db085a17709,
+    _:8a7335dfa33f4e40a430136da3db085a17711, _:8a7335dfa33f4e40a430136da3db085a17713,
+    _:8a7335dfa33f4e40a430136da3db085a17715;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17441 .
+
+_:8a7335dfa33f4e40a430136da3db085a17703 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17704, kfngoei:5d1d1f45-8151-4b80-9b9f-b3a2f0c288a2 .
+
+_:8a7335dfa33f4e40a430136da3db085a17704 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5123;
+  kfngoeo:end 5125 .
+
+_:8a7335dfa33f4e40a430136da3db085a17441 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17442, kfngoei:ed15c150-2bc1-4f8f-9cb4-0e665e429d64 .
+
+_:8a7335dfa33f4e40a430136da3db085a17442 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 357 .
+
+_:8a7335dfa33f4e40a430136da3db085a17705 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17706, kfngoei:bd4f92f9-bc69-40c5-a80d-05d3422e470e .
+
+_:8a7335dfa33f4e40a430136da3db085a17706 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6025;
+  kfngoeo:end 6027 .
+
+_:8a7335dfa33f4e40a430136da3db085a17707 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17708, kfngoei:dceed133-b056-4e62-a416-ae48fe3ffa8c .
+
+_:8a7335dfa33f4e40a430136da3db085a17708 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6056;
+  kfngoeo:end 6058 .
+
+_:8a7335dfa33f4e40a430136da3db085a17709 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17710, kfngoei:c9bd6d72-813c-46c6-b033-1820635e4932 .
+
+_:8a7335dfa33f4e40a430136da3db085a17710 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6130;
+  kfngoeo:end 6132 .
+
+_:8a7335dfa33f4e40a430136da3db085a17711 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17712, kfngoei:32d5dc5c-94a5-424b-a18f-a740eb1078b2 .
+
+_:8a7335dfa33f4e40a430136da3db085a17712 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6293;
+  kfngoeo:end 6295 .
+
+_:8a7335dfa33f4e40a430136da3db085a17713 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17714, kfngoei:e49dfdb6-1324-4548-bc5b-feb2c6425146 .
+
+_:8a7335dfa33f4e40a430136da3db085a17714 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2369;
+  kfngoeo:end 2371 .
+
+_:8a7335dfa33f4e40a430136da3db085a17715 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17716, kfngoei:978dbcc7-9f8a-432a-9f05-2f84e6ffce5a .
+
+_:8a7335dfa33f4e40a430136da3db085a17716 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4608;
+  kfngoeo:end 4610 .
+
+kfngoei:faee3abc-ea57-442a-abdf-9ee8e25463f8 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Delegationen";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17717, _:8a7335dfa33f4e40a430136da3db085a17719,
+    _:8a7335dfa33f4e40a430136da3db085a17721, _:8a7335dfa33f4e40a430136da3db085a17723,
+    _:8a7335dfa33f4e40a430136da3db085a17725, _:8a7335dfa33f4e40a430136da3db085a17727;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17443 .
+
+_:8a7335dfa33f4e40a430136da3db085a17717 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17718, kfngoei:8710d983-f669-440c-bd74-734019b3278b .
+
+_:8a7335dfa33f4e40a430136da3db085a17718 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4129;
+  kfngoeo:end 4131 .
+
+_:8a7335dfa33f4e40a430136da3db085a17443 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17444, kfngoei:5952e7c6-c53f-4ab5-ab38-6f29cbea5d03 .
+
+_:8a7335dfa33f4e40a430136da3db085a17444 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 389 .
+
+_:8a7335dfa33f4e40a430136da3db085a17719 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17720, kfngoei:1eb15fce-4b24-45eb-9a42-d604e153b0ed .
+
+_:8a7335dfa33f4e40a430136da3db085a17720 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 670;
+  kfngoeo:end 672 .
+
+_:8a7335dfa33f4e40a430136da3db085a17721 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17722, kfngoei:49cea0dd-80e5-427a-acd7-20dd903b1da4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17722 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8129;
+  kfngoeo:end 8131 .
+
+_:8a7335dfa33f4e40a430136da3db085a17723 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17724, kfngoei:ef37c24f-c51b-4748-821c-6b60c65f505e .
+
+_:8a7335dfa33f4e40a430136da3db085a17724 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9419;
+  kfngoeo:end 9421 .
+
+_:8a7335dfa33f4e40a430136da3db085a17725 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17726, kfngoei:9ca4b012-8f4b-4fa5-a631-91cf69ef53ac .
+
+_:8a7335dfa33f4e40a430136da3db085a17726 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13219;
+  kfngoeo:end 13221 .
+
+_:8a7335dfa33f4e40a430136da3db085a17727 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17728, kfngoei:e1055680-6e88-4250-a773-55a024ce7636 .
+
+_:8a7335dfa33f4e40a430136da3db085a17728 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13254;
+  kfngoeo:end 13256 .
+
+kfngoei:7f7e74ca-a488-4536-b830-440a59fbcb9e a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "DeutscheAgrarier";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17729, _:8a7335dfa33f4e40a430136da3db085a17731,
+    _:8a7335dfa33f4e40a430136da3db085a17733, _:8a7335dfa33f4e40a430136da3db085a17735,
+    _:8a7335dfa33f4e40a430136da3db085a17737, _:8a7335dfa33f4e40a430136da3db085a17739,
+    _:8a7335dfa33f4e40a430136da3db085a17741;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17445 .
+
+_:8a7335dfa33f4e40a430136da3db085a17729 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17730, kfngoei:68752097-e2e2-4bda-915a-0b472054e218 .
+
+_:8a7335dfa33f4e40a430136da3db085a17730 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5474;
+  kfngoeo:end 5476 .
+
+_:8a7335dfa33f4e40a430136da3db085a17445 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17446, kfngoei:55fef2dc-43bc-4ef1-9a1a-dc802662cde4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17446 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 418 .
+
+_:8a7335dfa33f4e40a430136da3db085a17731 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17732, kfngoei:ba1c401e-c995-4cf9-976a-d905e1a6e631 .
+
+_:8a7335dfa33f4e40a430136da3db085a17732 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5956;
+  kfngoeo:end 5958 .
+
+_:8a7335dfa33f4e40a430136da3db085a17733 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17734, kfngoei:5cfc3f4a-b352-481d-ba25-8f8824def79e .
+
+_:8a7335dfa33f4e40a430136da3db085a17734 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5992;
+  kfngoeo:end 5994 .
+
+_:8a7335dfa33f4e40a430136da3db085a17735 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17736, kfngoei:297edb1a-ba45-46d4-aa0f-7b54e3714d60 .
+
+_:8a7335dfa33f4e40a430136da3db085a17736 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6064;
+  kfngoeo:end 6066 .
+
+_:8a7335dfa33f4e40a430136da3db085a17737 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17738, kfngoei:fccd2e1f-4dfb-4672-8eca-b921c55956c5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17738 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6142;
+  kfngoeo:end 6144 .
+
+_:8a7335dfa33f4e40a430136da3db085a17739 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17740, kfngoei:3a8595bd-fb77-478b-b0a7-3bf3d60854c8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17740 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6361;
+  kfngoeo:end 6363 .
+
+_:8a7335dfa33f4e40a430136da3db085a17741 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17742, kfngoei:56acc465-4d59-41a4-8c0a-0462045ef29e .
+
+_:8a7335dfa33f4e40a430136da3db085a17742 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 688;
+  kfngoeo:end 690 .
+
+kfngoei:086b0182-58d6-4532-8924-3c3ce8e653fa a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "DeutscheVolkspartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17743, _:8a7335dfa33f4e40a430136da3db085a17745,
+    _:8a7335dfa33f4e40a430136da3db085a17747;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17447 .
+
+_:8a7335dfa33f4e40a430136da3db085a17743 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17744, kfngoei:63e18a4e-9981-4097-b69b-e8394db6b389 .
+
+_:8a7335dfa33f4e40a430136da3db085a17744 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2276;
+  kfngoeo:end 2278 .
+
+_:8a7335dfa33f4e40a430136da3db085a17447 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17448, kfngoei:cf4c9028-a6a6-4840-a17f-767d5fe51d10 .
+
+_:8a7335dfa33f4e40a430136da3db085a17448 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 450 .
+
+_:8a7335dfa33f4e40a430136da3db085a17745 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17746, kfngoei:9f8cd7af-99e1-4b30-90c1-f50de3c3d4af .
+
+_:8a7335dfa33f4e40a430136da3db085a17746 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2346;
+  kfngoeo:end 2348 .
+
+_:8a7335dfa33f4e40a430136da3db085a17747 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17748, kfngoei:779fcee4-dec7-4c7b-8728-31d6dec0cd21 .
+
+_:8a7335dfa33f4e40a430136da3db085a17748 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 876;
+  kfngoeo:end 878 .
+
+kfngoei:17127585-9ba6-40c1-9002-2b1ec5dec21c a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "DeutschradikalePartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17749, _:8a7335dfa33f4e40a430136da3db085a17751,
+    _:8a7335dfa33f4e40a430136da3db085a17753;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17449 .
+
+_:8a7335dfa33f4e40a430136da3db085a17749 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17750, kfngoei:d7345157-7fd7-41bd-9374-f7c851f0087a .
+
+_:8a7335dfa33f4e40a430136da3db085a17750 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5641;
+  kfngoeo:end 5643 .
+
+_:8a7335dfa33f4e40a430136da3db085a17449 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17450, kfngoei:f757291e-92a3-4bbb-9be2-e6ef45351e36 .
+
+_:8a7335dfa33f4e40a430136da3db085a17450 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 470 .
+
+_:8a7335dfa33f4e40a430136da3db085a17751 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17752, kfngoei:d949ff23-6e8c-463c-b2f6-4370f2435664 .
+
+_:8a7335dfa33f4e40a430136da3db085a17752 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6017;
+  kfngoeo:end 6019 .
+
+_:8a7335dfa33f4e40a430136da3db085a17753 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17754, kfngoei:bd37e242-60ad-4f9f-9a96-2e87cea104d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17754 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6042;
+  kfngoeo:end 6044 .
+
+kfngoei:a7208bb5-3065-4b50-be00-6e7413d3bee2 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Fortschrittspartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17755, _:8a7335dfa33f4e40a430136da3db085a17757;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17451 .
+
+_:8a7335dfa33f4e40a430136da3db085a17755 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17756, kfngoei:f084913a-4feb-4c6b-8f41-243e90b29b51 .
+
+_:8a7335dfa33f4e40a430136da3db085a17756 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6068;
+  kfngoeo:end 6070 .
+
+_:8a7335dfa33f4e40a430136da3db085a17451 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17452, kfngoei:3c7a0213-d878-4dd7-b937-6ba7fdc27e11 .
+
+_:8a7335dfa33f4e40a430136da3db085a17452 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 490 .
+
+_:8a7335dfa33f4e40a430136da3db085a17757 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17758, kfngoei:d128b501-85a1-4dc1-aa7b-cc4451a23058 .
+
+_:8a7335dfa33f4e40a430136da3db085a17758 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2393;
+  kfngoeo:end 2395 .
+
+kfngoei:f0815884-2d38-442b-aa23-e8c8eae173a5 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Handelsministerium";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17759;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17453 .
+
+_:8a7335dfa33f4e40a430136da3db085a17759 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17760, kfngoei:ef89e240-0d72-4d06-a1cb-a7f5277e3da5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17760 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3791;
+  kfngoeo:end 3793 .
+
+_:8a7335dfa33f4e40a430136da3db085a17453 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17454, kfngoei:0f7f4a89-358b-4d68-939c-7c1b8d4abc5b .
+
+_:8a7335dfa33f4e40a430136da3db085a17454 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 507 .
+
+kfngoei:57d8a1dc-caca-40cc-9e5c-444542c40e16 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "HeiligerStuhl";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17761;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17455 .
+
+_:8a7335dfa33f4e40a430136da3db085a17761 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17762, kfngoei:1fda7ff4-d2d1-4315-becc-996453345984 .
+
+_:8a7335dfa33f4e40a430136da3db085a17762 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9763;
+  kfngoeo:end 9765 .
+
+_:8a7335dfa33f4e40a430136da3db085a17455 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17456, kfngoei:d1417cee-242d-449b-9f7c-4a17439f708b .
+
+_:8a7335dfa33f4e40a430136da3db085a17456 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 521 .
+
+kfngoei:32d8ba51-1e39-4881-9c6a-d05ed078eeff a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Herrenhaus";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17763, _:8a7335dfa33f4e40a430136da3db085a17765,
+    _:8a7335dfa33f4e40a430136da3db085a17767, _:8a7335dfa33f4e40a430136da3db085a17769,
+    _:8a7335dfa33f4e40a430136da3db085a17771, _:8a7335dfa33f4e40a430136da3db085a17773,
+    _:8a7335dfa33f4e40a430136da3db085a17775, _:8a7335dfa33f4e40a430136da3db085a17777;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17457 .
+
+_:8a7335dfa33f4e40a430136da3db085a17763 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17764, kfngoei:6e809c65-c839-4777-8bcc-1bd192cd04f5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17764 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5518;
+  kfngoeo:end 5520 .
+
+_:8a7335dfa33f4e40a430136da3db085a17457 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17458, kfngoei:12a6236c-3c15-4460-853b-659358960181 .
+
+_:8a7335dfa33f4e40a430136da3db085a17458 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 535 .
+
+_:8a7335dfa33f4e40a430136da3db085a17765 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17766, kfngoei:91f17e32-906c-41fc-b2c8-1c956608a43c .
+
+_:8a7335dfa33f4e40a430136da3db085a17766 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5616;
+  kfngoeo:end 5618 .
+
+_:8a7335dfa33f4e40a430136da3db085a17767 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17768, kfngoei:d7ed916e-1e22-4be4-b4ab-5d3bd1f2ada8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17768 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5660;
+  kfngoeo:end 5662 .
+
+_:8a7335dfa33f4e40a430136da3db085a17769 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17770, kfngoei:c37c25f5-495e-4bdb-90dd-f1a68c91c887 .
+
+_:8a7335dfa33f4e40a430136da3db085a17770 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5704;
+  kfngoeo:end 5706 .
+
+_:8a7335dfa33f4e40a430136da3db085a17771 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17772, kfngoei:9557c2bf-b6f8-431b-8f49-6ad4cc3ada71 .
+
+_:8a7335dfa33f4e40a430136da3db085a17772 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5732;
+  kfngoeo:end 5734 .
+
+_:8a7335dfa33f4e40a430136da3db085a17773 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17774, kfngoei:78044336-cf7e-45df-80e9-41948eb11aeb .
+
+_:8a7335dfa33f4e40a430136da3db085a17774 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5738;
+  kfngoeo:end 5740 .
+
+_:8a7335dfa33f4e40a430136da3db085a17775 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17776, kfngoei:182b3aa3-5590-4853-88a4-a7d549d6440f .
+
+_:8a7335dfa33f4e40a430136da3db085a17776 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5746;
+  kfngoeo:end 5748 .
+
+_:8a7335dfa33f4e40a430136da3db085a17777 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17778, kfngoei:e0a6a035-b51a-4c23-8fe5-9bbd3734f821 .
+
+_:8a7335dfa33f4e40a430136da3db085a17778 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5783;
+  kfngoeo:end 5785 .
+
+_:8a7335dfa33f4e40a430136da3db085a17779 kfngoeo:hasSource "Bae_MF_6-2" .
+
+_:8a7335dfa33f4e40a430136da3db085a17780 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6343;
+  kfngoeo:end 6345 .
+
+_:8a7335dfa33f4e40a430136da3db085a17779 kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17780,
+    kfngoei:f10fa307-0d01-4e12-bd78-bf872c063f8d .
+
+kfngoei:32d8ba51-1e39-4881-9c6a-d05ed078eeff kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17779,
+    _:8a7335dfa33f4e40a430136da3db085a17781, _:8a7335dfa33f4e40a430136da3db085a17783,
+    _:8a7335dfa33f4e40a430136da3db085a17785, _:8a7335dfa33f4e40a430136da3db085a17787,
+    _:8a7335dfa33f4e40a430136da3db085a17789 .
+
+_:8a7335dfa33f4e40a430136da3db085a17781 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17782, kfngoei:32595b41-2113-4ed9-8ed5-d464493aa473 .
+
+_:8a7335dfa33f4e40a430136da3db085a17782 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5346;
+  kfngoeo:end 5348 .
+
+_:8a7335dfa33f4e40a430136da3db085a17783 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17784, kfngoei:e29572e5-ac9a-43cd-a0e4-c29717bb3475 .
+
+_:8a7335dfa33f4e40a430136da3db085a17784 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5400;
+  kfngoeo:end 5402 .
+
+_:8a7335dfa33f4e40a430136da3db085a17785 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17786, kfngoei:4d249da3-a7fb-4c43-a88d-aad3411a3599 .
+
+_:8a7335dfa33f4e40a430136da3db085a17786 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5576;
+  kfngoeo:end 5578 .
+
+_:8a7335dfa33f4e40a430136da3db085a17787 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17788, kfngoei:037472ad-5ca3-4ea0-b09a-474cd06fa96b .
+
+_:8a7335dfa33f4e40a430136da3db085a17788 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5610;
+  kfngoeo:end 5612 .
+
+_:8a7335dfa33f4e40a430136da3db085a17789 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17790, kfngoei:d6e0736d-c5ff-412b-82f1-a7c6774e9790 .
+
+_:8a7335dfa33f4e40a430136da3db085a17790 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5647;
+  kfngoeo:end 5649 .
+
+kfngoei:3bfaa399-5fd8-4303-95a0-e9fccfdac6fa a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "InstitutRevoltella";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17791;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17459 .
+
+_:8a7335dfa33f4e40a430136da3db085a17791 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17792, kfngoei:b98d754a-5c41-4fab-8c16-179ad44756f4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17792 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2229;
+  kfngoeo:end 2231 .
+
+_:8a7335dfa33f4e40a430136da3db085a17459 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17460, kfngoei:77d9002b-5c4b-495f-add9-205ecb8dbe23 .
+
+_:8a7335dfa33f4e40a430136da3db085a17460 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 588 .
+
+kfngoei:ba25e440-241f-422f-aa80-1bfe13623769 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Justizministerium";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17793, _:8a7335dfa33f4e40a430136da3db085a17795,
+    _:8a7335dfa33f4e40a430136da3db085a17797, _:8a7335dfa33f4e40a430136da3db085a17799;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17461 .
+
+_:8a7335dfa33f4e40a430136da3db085a17793 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17794, kfngoei:3f48546c-cfdc-4dfc-abd6-068bb396be87 .
+
+_:8a7335dfa33f4e40a430136da3db085a17794 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 197;
+  kfngoeo:end 199 .
+
+_:8a7335dfa33f4e40a430136da3db085a17461 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17462, kfngoei:62c82690-b348-4775-8917-d120f2b5a7ef .
+
+_:8a7335dfa33f4e40a430136da3db085a17462 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 602 .
+
+_:8a7335dfa33f4e40a430136da3db085a17795 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17796, kfngoei:be7f5736-1360-4183-8a74-fc09c62bd190 .
+
+_:8a7335dfa33f4e40a430136da3db085a17796 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 368;
+  kfngoeo:end 370 .
+
+_:8a7335dfa33f4e40a430136da3db085a17797 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17798, kfngoei:b90fed6b-faac-4b37-8101-6b333a694be6 .
+
+_:8a7335dfa33f4e40a430136da3db085a17798 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2066;
+  kfngoeo:end 2068 .
+
+_:8a7335dfa33f4e40a430136da3db085a17799 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17800, kfngoei:949ae70f-fed3-435b-801d-bfeeeceeec62 .
+
+_:8a7335dfa33f4e40a430136da3db085a17800 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3453;
+  kfngoeo:end 3455 .
+
+kfngoei:92c2780d-7112-4767-9efb-0e3e6f8f3906 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "KonservativerGrossgrundbesitz";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17801, _:8a7335dfa33f4e40a430136da3db085a17803;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17463 .
+
+_:8a7335dfa33f4e40a430136da3db085a17801 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17802, kfngoei:20994407-4011-476c-a610-1b3e5ccac11a .
+
+_:8a7335dfa33f4e40a430136da3db085a17802 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1477;
+  kfngoeo:end 1479 .
+
+_:8a7335dfa33f4e40a430136da3db085a17463 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17464, kfngoei:29e8b262-92a5-45c4-995b-63e2907a1713 .
+
+_:8a7335dfa33f4e40a430136da3db085a17464 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 625 .
+
+_:8a7335dfa33f4e40a430136da3db085a17803 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17804, kfngoei:6acdb752-1f3e-43e4-bd84-b1f5cbde0c18 .
+
+_:8a7335dfa33f4e40a430136da3db085a17804 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5463;
+  kfngoeo:end 5465 .
+
+kfngoei:bbdbcb72-3a5c-4943-b748-9dfbf3eadc3c a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Kriegsministerium";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17805;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17465 .
+
+_:8a7335dfa33f4e40a430136da3db085a17805 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17806, kfngoei:37eb1508-e657-4058-8a9b-685af44b128a .
+
+_:8a7335dfa33f4e40a430136da3db085a17806 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2644;
+  kfngoeo:end 2646 .
+
+_:8a7335dfa33f4e40a430136da3db085a17465 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17466, kfngoei:17328b77-6974-425e-930f-ee69e4b1d8da .
+
+_:8a7335dfa33f4e40a430136da3db085a17466 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 640 .
+
+kfngoei:d83178dd-a58e-4bf0-9847-b1c1e71164fb a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Kronrat";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17807;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17467 .
+
+_:8a7335dfa33f4e40a430136da3db085a17807 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17808, kfngoei:298345c9-130c-40a0-a4bc-e4d8e5fea391 .
+
+_:8a7335dfa33f4e40a430136da3db085a17808 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4357;
+  kfngoeo:end 4359 .
+
+_:8a7335dfa33f4e40a430136da3db085a17467 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17468, kfngoei:f3944bf1-56ea-4f91-87be-6cf38d9a404f .
+
+_:8a7335dfa33f4e40a430136da3db085a17468 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 654 .
+
+kfngoei:2e9beaf0-9ccf-4465-915c-531f43390087 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Landesausschuss";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17809;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17469 .
+
+_:8a7335dfa33f4e40a430136da3db085a17809 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17810, kfngoei:428db838-c7e8-495e-87d0-44e741ec3518 .
+
+_:8a7335dfa33f4e40a430136da3db085a17810 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2535;
+  kfngoeo:end 2537 .
+
+_:8a7335dfa33f4e40a430136da3db085a17469 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17470, kfngoei:1f3bcb8a-bdcd-4f1c-945f-75f1cc07fc14 .
+
+_:8a7335dfa33f4e40a430136da3db085a17470 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 666 .
+
+kfngoei:76df597f-0f2b-48aa-9a3c-109d075c19aa a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "LandtagBoehmen";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17811, _:8a7335dfa33f4e40a430136da3db085a17813,
+    _:8a7335dfa33f4e40a430136da3db085a17815, _:8a7335dfa33f4e40a430136da3db085a17817,
+    _:8a7335dfa33f4e40a430136da3db085a17819, _:8a7335dfa33f4e40a430136da3db085a17821,
+    _:8a7335dfa33f4e40a430136da3db085a17823, _:8a7335dfa33f4e40a430136da3db085a17825,
+    _:8a7335dfa33f4e40a430136da3db085a17827, _:8a7335dfa33f4e40a430136da3db085a17829,
+    _:8a7335dfa33f4e40a430136da3db085a17831, _:8a7335dfa33f4e40a430136da3db085a17833,
+    _:8a7335dfa33f4e40a430136da3db085a17835, _:8a7335dfa33f4e40a430136da3db085a17837,
+    _:8a7335dfa33f4e40a430136da3db085a17839, _:8a7335dfa33f4e40a430136da3db085a17841,
+    _:8a7335dfa33f4e40a430136da3db085a17843, _:8a7335dfa33f4e40a430136da3db085a17845,
+    _:8a7335dfa33f4e40a430136da3db085a17847, _:8a7335dfa33f4e40a430136da3db085a17849,
+    _:8a7335dfa33f4e40a430136da3db085a17851, _:8a7335dfa33f4e40a430136da3db085a17853,
+    _:8a7335dfa33f4e40a430136da3db085a17855, _:8a7335dfa33f4e40a430136da3db085a17857,
+    _:8a7335dfa33f4e40a430136da3db085a17859, _:8a7335dfa33f4e40a430136da3db085a17861,
+    _:8a7335dfa33f4e40a430136da3db085a17863, _:8a7335dfa33f4e40a430136da3db085a17865,
+    _:8a7335dfa33f4e40a430136da3db085a17867, _:8a7335dfa33f4e40a430136da3db085a17869;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17471 .
+
+_:8a7335dfa33f4e40a430136da3db085a17811 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17812, kfngoei:c9967c0c-23a6-4f0b-9655-c56b9dbc0eb4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17812 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 399;
+  kfngoeo:end 401 .
+
+_:8a7335dfa33f4e40a430136da3db085a17471 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17472, kfngoei:e7abb017-8596-4ec0-9ba0-8a80374612fb .
+
+_:8a7335dfa33f4e40a430136da3db085a17472 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 678 .
+
+_:8a7335dfa33f4e40a430136da3db085a17813 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17814, kfngoei:04f6f808-13fa-47ce-9619-4a69069cd0b4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17814 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 423;
+  kfngoeo:end 425 .
+
+_:8a7335dfa33f4e40a430136da3db085a17815 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17816, kfngoei:e0c78da9-4164-419b-82f4-512df18f0653 .
+
+_:8a7335dfa33f4e40a430136da3db085a17816 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1188;
+  kfngoeo:end 1190 .
+
+_:8a7335dfa33f4e40a430136da3db085a17817 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17818, kfngoei:b63e67ef-9605-4624-96bd-66d86a59e738 .
+
+_:8a7335dfa33f4e40a430136da3db085a17818 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1247;
+  kfngoeo:end 1249 .
+
+_:8a7335dfa33f4e40a430136da3db085a17819 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17820, kfngoei:af95f3cf-913c-40aa-a3ed-2fa154029039 .
+
+_:8a7335dfa33f4e40a430136da3db085a17820 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1272;
+  kfngoeo:end 1274 .
+
+_:8a7335dfa33f4e40a430136da3db085a17821 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17822, kfngoei:74c8e352-f534-4545-81f3-e728ee7cd8be .
+
+_:8a7335dfa33f4e40a430136da3db085a17822 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1317;
+  kfngoeo:end 1319 .
+
+_:8a7335dfa33f4e40a430136da3db085a17823 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17824, kfngoei:a65e00f7-d2e9-426b-b7a5-cf71db511bda .
+
+_:8a7335dfa33f4e40a430136da3db085a17824 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1321;
+  kfngoeo:end 1323 .
+
+_:8a7335dfa33f4e40a430136da3db085a17825 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17826, kfngoei:e1ce0e52-a84a-43e3-bb03-517e0e077538 .
+
+_:8a7335dfa33f4e40a430136da3db085a17826 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1340;
+  kfngoeo:end 1342 .
+
+_:8a7335dfa33f4e40a430136da3db085a17827 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17828, kfngoei:a36d2115-e17a-405d-8abd-a8b0aad21f1b .
+
+_:8a7335dfa33f4e40a430136da3db085a17828 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1369;
+  kfngoeo:end 1371 .
+
+_:8a7335dfa33f4e40a430136da3db085a17829 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17830, kfngoei:7b105280-a1b8-42d2-b4f0-0bd1d87a4de6 .
+
+_:8a7335dfa33f4e40a430136da3db085a17830 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1383;
+  kfngoeo:end 1385 .
+
+_:8a7335dfa33f4e40a430136da3db085a17831 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17832, kfngoei:6e3630d3-0e26-422a-b26e-e0300f99525a .
+
+_:8a7335dfa33f4e40a430136da3db085a17832 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1387;
+  kfngoeo:end 1389 .
+
+_:8a7335dfa33f4e40a430136da3db085a17833 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17834, kfngoei:dec2b91d-bffd-4b70-86b0-4fc42d1732f5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17834 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1391;
+  kfngoeo:end 1393 .
+
+_:8a7335dfa33f4e40a430136da3db085a17835 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17836, kfngoei:a39ee0aa-7e53-4081-ab1b-7ee5750bd6cf .
+
+_:8a7335dfa33f4e40a430136da3db085a17836 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1397;
+  kfngoeo:end 1399 .
+
+_:8a7335dfa33f4e40a430136da3db085a17837 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17838, kfngoei:33ced5f4-1825-440a-9adb-e1a90d995a9f .
+
+_:8a7335dfa33f4e40a430136da3db085a17838 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 978;
+  kfngoeo:end 980 .
+
+_:8a7335dfa33f4e40a430136da3db085a17839 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17840, kfngoei:30e03614-99fa-40a9-93d4-95122b699bd6 .
+
+_:8a7335dfa33f4e40a430136da3db085a17840 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1437;
+  kfngoeo:end 1439 .
+
+_:8a7335dfa33f4e40a430136da3db085a17841 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17842, kfngoei:ef6f54b5-a5b8-4c66-93ca-4317b165ddab .
+
+_:8a7335dfa33f4e40a430136da3db085a17842 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1739;
+  kfngoeo:end 1741 .
+
+_:8a7335dfa33f4e40a430136da3db085a17843 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17844, kfngoei:885d263b-1517-47b5-8308-c67adeb47452 .
+
+_:8a7335dfa33f4e40a430136da3db085a17844 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3176;
+  kfngoeo:end 3178 .
+
+_:8a7335dfa33f4e40a430136da3db085a17845 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17846, kfngoei:fd86e0ba-d418-4c3d-81d2-3272ae5c62aa .
+
+_:8a7335dfa33f4e40a430136da3db085a17846 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3195;
+  kfngoeo:end 3197 .
+
+_:8a7335dfa33f4e40a430136da3db085a17847 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17848, kfngoei:c516023f-713d-4b3e-926f-582e5abbd6cf .
+
+_:8a7335dfa33f4e40a430136da3db085a17848 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4226;
+  kfngoeo:end 4236 .
+
+_:8a7335dfa33f4e40a430136da3db085a17849 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17850, kfngoei:ec538b7d-8aca-4425-999d-e067561f5f28 .
+
+_:8a7335dfa33f4e40a430136da3db085a17850 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4599;
+  kfngoeo:end 4601 .
+
+_:8a7335dfa33f4e40a430136da3db085a17851 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17852, kfngoei:f78b158c-5f2a-462f-8bfd-9fef68834564 .
+
+_:8a7335dfa33f4e40a430136da3db085a17852 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4702;
+  kfngoeo:end 4704 .
+
+_:8a7335dfa33f4e40a430136da3db085a17853 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17854, kfngoei:3d4cec6c-d42c-4921-bfeb-e33e1b0f02f4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17854 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4742;
+  kfngoeo:end 4744 .
+
+_:8a7335dfa33f4e40a430136da3db085a17855 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17856, kfngoei:7bc291b9-b709-4a86-8248-3362226e9039 .
+
+_:8a7335dfa33f4e40a430136da3db085a17856 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4789;
+  kfngoeo:end 4791 .
+
+_:8a7335dfa33f4e40a430136da3db085a17857 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17858, kfngoei:c2853f3f-8e41-4f84-9c98-61fea0b1a252 .
+
+_:8a7335dfa33f4e40a430136da3db085a17858 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4841;
+  kfngoeo:end 4843 .
+
+_:8a7335dfa33f4e40a430136da3db085a17859 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17860, kfngoei:627a9806-3ec5-4635-9f80-4eeeb6d17ff4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17860 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4948;
+  kfngoeo:end 4950 .
+
+_:8a7335dfa33f4e40a430136da3db085a17861 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17862, kfngoei:8fdeae03-372c-4194-a1dd-2e91934ecff8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17862 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4956;
+  kfngoeo:end 4958 .
+
+_:8a7335dfa33f4e40a430136da3db085a17863 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17864, kfngoei:b30445c4-1cf9-4ad9-a5ea-03202e9d7beb .
+
+_:8a7335dfa33f4e40a430136da3db085a17864 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4968;
+  kfngoeo:end 4970 .
+
+_:8a7335dfa33f4e40a430136da3db085a17865 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17866, kfngoei:c0ee9a9d-97b5-41a2-aa32-e90123d3acee .
+
+_:8a7335dfa33f4e40a430136da3db085a17866 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5008;
+  kfngoeo:end 5010 .
+
+_:8a7335dfa33f4e40a430136da3db085a17867 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17868, kfngoei:805e523a-d2b7-43fa-a3f8-d3358a58ae17 .
+
+_:8a7335dfa33f4e40a430136da3db085a17868 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5052;
+  kfngoeo:end 5054 .
+
+_:8a7335dfa33f4e40a430136da3db085a17869 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17870, kfngoei:8bc7d4bf-3d83-4b69-8b98-244326a11d24 .
+
+_:8a7335dfa33f4e40a430136da3db085a17870 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1026;
+  kfngoeo:end 1036 .
+
+kfngoei:296b7218-a5b6-467b-a270-9dec03928a1b a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "MagnatenhausReichstag";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17871;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17473 .
+
+_:8a7335dfa33f4e40a430136da3db085a17871 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17872, kfngoei:7655b8c6-0bdf-4750-9120-37038c9956aa .
+
+_:8a7335dfa33f4e40a430136da3db085a17872 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2396;
+  kfngoeo:end 2398 .
+
+_:8a7335dfa33f4e40a430136da3db085a17473 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17474, kfngoei:6aed0313-f075-4492-973f-f4187ea9147a .
+
+_:8a7335dfa33f4e40a430136da3db085a17474 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 779 .
+
+kfngoei:fc3735fe-1230-4698-be22-ab7cf34196b7 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "MagyarOrszag";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17873, _:8a7335dfa33f4e40a430136da3db085a17875;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17475 .
+
+_:8a7335dfa33f4e40a430136da3db085a17873 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17874, kfngoei:bd52cb5b-8131-4966-b7c7-142a7834b148 .
+
+_:8a7335dfa33f4e40a430136da3db085a17874 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4041;
+  kfngoeo:end 4043 .
+
+_:8a7335dfa33f4e40a430136da3db085a17475 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17476, kfngoei:a95080ca-49e3-4245-89a6-f7cb7288eadc .
+
+_:8a7335dfa33f4e40a430136da3db085a17476 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 793 .
+
+_:8a7335dfa33f4e40a430136da3db085a17875 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17876, kfngoei:6ad85b6a-08bc-4fef-8ca4-daa683ceadc5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17876 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9213;
+  kfngoeo:end 9215 .
+
+kfngoei:65bc99a7-1625-4ed3-ad24-35ebe43bcf11 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "MinisteriumdesAeussern";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17877;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17477 .
+
+_:8a7335dfa33f4e40a430136da3db085a17877 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17878, kfngoei:99eea491-3d1d-42db-b219-1ed2bb40e06c .
+
+_:8a7335dfa33f4e40a430136da3db085a17878 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4951;
+  kfngoeo:end 4953 .
+
+_:8a7335dfa33f4e40a430136da3db085a17477 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17478, kfngoei:ca749be6-44e7-44d1-a8c4-9d5ea30a4d6f .
+
+_:8a7335dfa33f4e40a430136da3db085a17478 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 808 .
+
+kfngoei:3236dec0-7785-4b67-a185-dd03914927f6 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "MinisteriumdesInnern";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17879, _:8a7335dfa33f4e40a430136da3db085a17881;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17479 .
+
+_:8a7335dfa33f4e40a430136da3db085a17879 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17880, kfngoei:ac537f01-1d5e-49bb-ad3a-dc9cb9087951 .
+
+_:8a7335dfa33f4e40a430136da3db085a17880 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1145;
+  kfngoeo:end 1147 .
+
+_:8a7335dfa33f4e40a430136da3db085a17479 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17480, kfngoei:5f45ad78-9c37-49ba-9e0e-2c4692415495 .
+
+_:8a7335dfa33f4e40a430136da3db085a17480 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 822 .
+
+_:8a7335dfa33f4e40a430136da3db085a17881 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17882, kfngoei:ba7a431b-25cd-43a1-87b5-3efea8fd396e .
+
+_:8a7335dfa33f4e40a430136da3db085a17882 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2032;
+  kfngoeo:end 2034 .
+
+kfngoei:2c75d74f-1dca-46bd-a2ff-0bb0d7ea32a6 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "MinisteriumfuerLandesverteidigung";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17883;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17481 .
+
+_:8a7335dfa33f4e40a430136da3db085a17883 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17884, kfngoei:ad49922b-2790-4e45-8a03-748879b6f7ef .
+
+_:8a7335dfa33f4e40a430136da3db085a17884 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6285;
+  kfngoeo:end 6287 .
+
+_:8a7335dfa33f4e40a430136da3db085a17481 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17482, kfngoei:0752fdbf-853a-4449-b3c0-4287a8b1085f .
+
+_:8a7335dfa33f4e40a430136da3db085a17482 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 839 .
+
+kfngoei:dfcf448a-90f6-4e95-9af0-2f939a794b66 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Montagspresse";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17885, _:8a7335dfa33f4e40a430136da3db085a17887;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17483 .
+
+_:8a7335dfa33f4e40a430136da3db085a17885 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17886, kfngoei:b2ca0cce-7788-4d70-bc02-414718ba3543 .
+
+_:8a7335dfa33f4e40a430136da3db085a17886 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1387;
+  kfngoeo:end 1389 .
+
+_:8a7335dfa33f4e40a430136da3db085a17483 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17484, kfngoei:3ad011a2-d40e-45c7-bddd-2c2738df7696 .
+
+_:8a7335dfa33f4e40a430136da3db085a17484 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 853 .
+
+_:8a7335dfa33f4e40a430136da3db085a17887 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17888, kfngoei:b5d22203-7fb3-4668-9ec3-a675cdd810fa .
+
+_:8a7335dfa33f4e40a430136da3db085a17888 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5747;
+  kfngoeo:end 5749 .
+
+kfngoei:d9be73ab-eff3-4404-82c3-c24ef5bccb97 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Nationalpartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17889, _:8a7335dfa33f4e40a430136da3db085a17891;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17485 .
+
+_:8a7335dfa33f4e40a430136da3db085a17889 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17890, kfngoei:bf20b9e4-cfc6-4446-af1d-988823beba95 .
+
+_:8a7335dfa33f4e40a430136da3db085a17890 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4474;
+  kfngoeo:end 4476 .
+
+_:8a7335dfa33f4e40a430136da3db085a17485 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17486, kfngoei:88f5df78-abd1-43fe-a305-76e790e8b926 .
+
+_:8a7335dfa33f4e40a430136da3db085a17486 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 868 .
+
+_:8a7335dfa33f4e40a430136da3db085a17891 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17892, kfngoei:bff0307c-c79b-4ec1-b5ca-241d3df060da .
+
+_:8a7335dfa33f4e40a430136da3db085a17892 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 10059;
+  kfngoeo:end 10061 .
+
+kfngoei:b6906979-5b7c-4075-ad23-6e596c1bbf0f a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "NeueFreiePresse";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17893, _:8a7335dfa33f4e40a430136da3db085a17895,
+    _:8a7335dfa33f4e40a430136da3db085a17897, _:8a7335dfa33f4e40a430136da3db085a17899,
+    _:8a7335dfa33f4e40a430136da3db085a17901;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17487 .
+
+_:8a7335dfa33f4e40a430136da3db085a17893 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17894, kfngoei:b3846475-9b1c-4db7-939f-f79f38e0a1b2 .
+
+_:8a7335dfa33f4e40a430136da3db085a17894 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1968;
+  kfngoeo:end 1970 .
+
+_:8a7335dfa33f4e40a430136da3db085a17487 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17488, kfngoei:0e55f637-c3cb-439f-989f-84aef5fc3fdd .
+
+_:8a7335dfa33f4e40a430136da3db085a17488 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 883 .
+
+_:8a7335dfa33f4e40a430136da3db085a17895 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17896, kfngoei:7f45e373-a851-41a8-aed6-f34d63d60191 .
+
+_:8a7335dfa33f4e40a430136da3db085a17896 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 579;
+  kfngoeo:end 588 .
+
+_:8a7335dfa33f4e40a430136da3db085a17897 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17898, kfngoei:e8c3250d-b2ce-445e-83fb-07f3b8f4964d .
+
+_:8a7335dfa33f4e40a430136da3db085a17898 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1308;
+  kfngoeo:end 1310 .
+
+_:8a7335dfa33f4e40a430136da3db085a17899 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17900, kfngoei:3577e6a0-7c87-422b-b7ee-afdf0f218359 .
+
+_:8a7335dfa33f4e40a430136da3db085a17900 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1319;
+  kfngoeo:end 1321 .
+
+_:8a7335dfa33f4e40a430136da3db085a17901 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17902, kfngoei:4ef36858-bf8b-4c0f-ba21-4082a3b0d4f9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17902 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1407;
+  kfngoeo:end 1409 .
+
+kfngoei:f64a7e8f-7907-41c7-8152-f6ef0b4b46d2 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "NeueFreiePresseRedaktion";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17903, _:8a7335dfa33f4e40a430136da3db085a17905;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17489 .
+
+_:8a7335dfa33f4e40a430136da3db085a17903 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17904, kfngoei:a991c5c6-f1a5-4933-91bf-edc2d25ac924 .
+
+_:8a7335dfa33f4e40a430136da3db085a17904 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13045;
+  kfngoeo:end 13054 .
+
+_:8a7335dfa33f4e40a430136da3db085a17489 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17490, kfngoei:a54207cb-6e46-4580-8303-5d5f23012624 .
+
+_:8a7335dfa33f4e40a430136da3db085a17490 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 909 .
+
+_:8a7335dfa33f4e40a430136da3db085a17905 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17906, kfngoei:de23fc19-54cc-497e-882e-24cbcdf8d098 .
+
+_:8a7335dfa33f4e40a430136da3db085a17906 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13436;
+  kfngoeo:end 13438 .
+
+kfngoei:fdcca477-86c2-45b7-acfb-e915d27ef1c2 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "NorddeutscherLloyd";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17907;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17491 .
+
+_:8a7335dfa33f4e40a430136da3db085a17907 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17908, kfngoei:f3d5047b-cbc5-4659-ba86-dd013f2c0ad7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17908 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1709;
+  kfngoeo:end 1711 .
+
+_:8a7335dfa33f4e40a430136da3db085a17491 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17492, kfngoei:481117ad-f376-4fdb-ab33-b04579d197b3 .
+
+_:8a7335dfa33f4e40a430136da3db085a17492 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 926 .
+
+kfngoei:1a26c729-b91f-4db3-ac5f-5c49f3ea65a9 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Notstandsausschuss";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17909;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17493 .
+
+_:8a7335dfa33f4e40a430136da3db085a17909 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17910, kfngoei:58fdbe91-ad44-4583-b15d-c70c98bb0df9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17910 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 741;
+  kfngoeo:end 743 .
+
+_:8a7335dfa33f4e40a430136da3db085a17493 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17494, kfngoei:99f86e6f-c959-4c7f-a7d1-df83ae020fd8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17494 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 940 .
+
+kfngoei:a4b776cb-a930-4996-8257-18e520d27a75 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Obzor";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17911;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17495 .
+
+_:8a7335dfa33f4e40a430136da3db085a17911 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17912, kfngoei:e6723479-3e13-4dd5-9e9f-d9cd33877c5a .
+
+_:8a7335dfa33f4e40a430136da3db085a17912 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4597;
+  kfngoeo:end 4599 .
+
+_:8a7335dfa33f4e40a430136da3db085a17495 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17496, kfngoei:578107c0-e5ce-46c0-8429-88c12ea8fe21 .
+
+_:8a7335dfa33f4e40a430136da3db085a17496 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 952 .
+
+kfngoei:36e478ea-399f-4c56-9e9a-fd195189087e a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Obzorpartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17913;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17497 .
+
+_:8a7335dfa33f4e40a430136da3db085a17913 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17914, kfngoei:c787ed74-4932-439a-a13d-256c235cc4e7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17914 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 10272;
+  kfngoeo:end 10274 .
+
+_:8a7335dfa33f4e40a430136da3db085a17497 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17498, kfngoei:55f75c72-6f50-4f49-96bd-ed5bca9f4f76 .
+
+_:8a7335dfa33f4e40a430136da3db085a17498 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 964 .
+
+kfngoei:3188664f-d2fd-4da0-9a78-55a8a19ea02f a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "PesterLloyd";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17915, _:8a7335dfa33f4e40a430136da3db085a17917,
+    _:8a7335dfa33f4e40a430136da3db085a17919;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17499 .
+
+_:8a7335dfa33f4e40a430136da3db085a17915 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17916, kfngoei:8e069107-1ca9-4d72-856d-497f876f9a00 .
+
+_:8a7335dfa33f4e40a430136da3db085a17916 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4342;
+  kfngoeo:end 4344 .
+
+_:8a7335dfa33f4e40a430136da3db085a17499 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17500, kfngoei:b40efff9-ab51-40b9-8e95-89d7fae0cfe4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17500 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 976 .
+
+_:8a7335dfa33f4e40a430136da3db085a17917 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17918, kfngoei:64ea8981-b2c9-4718-a5cc-571ad79abcd4 .
+
+_:8a7335dfa33f4e40a430136da3db085a17918 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9674;
+  kfngoeo:end 9676 .
+
+_:8a7335dfa33f4e40a430136da3db085a17919 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17920, kfngoei:60c9417e-8122-4567-af69-cd207caab544 .
+
+_:8a7335dfa33f4e40a430136da3db085a17920 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9681;
+  kfngoeo:end 9683 .
+
+kfngoei:6c952246-1dd6-418a-a474-d241e98caaa6 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Polenklub";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17921;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17501 .
+
+_:8a7335dfa33f4e40a430136da3db085a17921 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17922, kfngoei:93e96cf2-175a-4d99-bd5f-326c5866987c .
+
+_:8a7335dfa33f4e40a430136da3db085a17922 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2553;
+  kfngoeo:end 2555 .
+
+_:8a7335dfa33f4e40a430136da3db085a17501 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17502, kfngoei:cd4996b7-4152-4a7e-a88e-dc1d72eb7580 .
+
+_:8a7335dfa33f4e40a430136da3db085a17502 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 996 .
+
+kfngoei:51db9c26-8a1d-4e41-b506-6c7f56b19f78 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Popolo";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17923;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17503 .
+
+_:8a7335dfa33f4e40a430136da3db085a17923 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17924, kfngoei:f5e543ef-33e0-4d26-8d6e-d63518a2ee5e .
+
+_:8a7335dfa33f4e40a430136da3db085a17924 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2090;
+  kfngoeo:end 2092 .
+
+_:8a7335dfa33f4e40a430136da3db085a17503 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17504, kfngoei:9289bc7a-76aa-4a99-a362-ff242a430ca7 .
+
+_:8a7335dfa33f4e40a430136da3db085a17504 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1010 .
+
+kfngoei:d3ac19a4-e925-434a-a843-f0633a70ce3b a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "PragerTagblatt";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17925, _:8a7335dfa33f4e40a430136da3db085a17927;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17505 .
+
+_:8a7335dfa33f4e40a430136da3db085a17925 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17926, kfngoei:ffc6fd30-9512-455d-8812-da13f5665afd .
+
+_:8a7335dfa33f4e40a430136da3db085a17926 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1476;
+  kfngoeo:end 1478 .
+
+_:8a7335dfa33f4e40a430136da3db085a17505 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17506, kfngoei:684bd9df-2aab-4b4d-9b72-245511ccf21d .
+
+_:8a7335dfa33f4e40a430136da3db085a17506 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1022 .
+
+_:8a7335dfa33f4e40a430136da3db085a17927 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17928, kfngoei:12b9f885-32c3-4846-a121-316bdac1aeca .
+
+_:8a7335dfa33f4e40a430136da3db085a17928 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 898;
+  kfngoeo:end 900 .
+
+kfngoei:a7cceb1f-818e-4a51-9390-dae6ac6af390 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "RathausWien";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17929;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17507 .
+
+_:8a7335dfa33f4e40a430136da3db085a17929 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17930, kfngoei:a6b1e739-cf12-46ae-9968-f59e196c9b00 .
+
+_:8a7335dfa33f4e40a430136da3db085a17930 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11158;
+  kfngoeo:end 11160 .
+
+_:8a7335dfa33f4e40a430136da3db085a17507 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17508, kfngoei:1152b5d1-093c-4e06-9a0b-1a832d3538f5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17508 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1039 .
+
+kfngoei:a4614b54-8c8d-4b32-a680-632af019074d a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Reichsgericht";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17931;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17509 .
+
+_:8a7335dfa33f4e40a430136da3db085a17931 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17932, kfngoei:1dff0d8b-c6cc-4e2f-90df-8530f8777cb0 .
+
+_:8a7335dfa33f4e40a430136da3db085a17932 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6259;
+  kfngoeo:end 6261 .
+
+_:8a7335dfa33f4e40a430136da3db085a17509 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17510, kfngoei:0d9ec60f-25d6-464f-a8d9-0f7a4582831b .
+
+_:8a7335dfa33f4e40a430136da3db085a17510 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1053 .
+
+kfngoei:1be01f2a-b715-43ee-af45-3eeb15e71121 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Reichsrat";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17933, _:8a7335dfa33f4e40a430136da3db085a17937,
+    _:8a7335dfa33f4e40a430136da3db085a17941, _:8a7335dfa33f4e40a430136da3db085a17945,
+    _:8a7335dfa33f4e40a430136da3db085a17949, _:8a7335dfa33f4e40a430136da3db085a17953,
+    _:8a7335dfa33f4e40a430136da3db085a17957, _:8a7335dfa33f4e40a430136da3db085a17961,
+    _:8a7335dfa33f4e40a430136da3db085a17965, _:8a7335dfa33f4e40a430136da3db085a17969,
+    _:8a7335dfa33f4e40a430136da3db085a17973, _:8a7335dfa33f4e40a430136da3db085a17977,
+    _:8a7335dfa33f4e40a430136da3db085a17981;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17405 .
+
+_:8a7335dfa33f4e40a430136da3db085a17933 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17934, kfngoei:cd6b3d4e-bac3-4cf0-a0fb-983eb0b45c6d .
+
+_:8a7335dfa33f4e40a430136da3db085a17934 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 373;
+  kfngoeo:end 375 .
+
+_:8a7335dfa33f4e40a430136da3db085a17405 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Index";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17406, kfngoei:b9625528-d23e-4855-89bf-ce2188d908e9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17406 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 593 .
+
+kfngoei:c0907722-fa9a-47d0-8e0f-f14d2efa1e0e a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Reichsrat";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17935, _:8a7335dfa33f4e40a430136da3db085a17939,
+    _:8a7335dfa33f4e40a430136da3db085a17943, _:8a7335dfa33f4e40a430136da3db085a17947,
+    _:8a7335dfa33f4e40a430136da3db085a17951, _:8a7335dfa33f4e40a430136da3db085a17955,
+    _:8a7335dfa33f4e40a430136da3db085a17959, _:8a7335dfa33f4e40a430136da3db085a17963,
+    _:8a7335dfa33f4e40a430136da3db085a17967, _:8a7335dfa33f4e40a430136da3db085a17971,
+    _:8a7335dfa33f4e40a430136da3db085a17975, _:8a7335dfa33f4e40a430136da3db085a17979,
+    _:8a7335dfa33f4e40a430136da3db085a17983;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17511 .
+
+_:8a7335dfa33f4e40a430136da3db085a17935 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17936, kfngoei:cd6b3d4e-bac3-4cf0-a0fb-983eb0b45c6d .
+
+_:8a7335dfa33f4e40a430136da3db085a17936 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 373;
+  kfngoeo:end 375 .
+
+_:8a7335dfa33f4e40a430136da3db085a17511 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17512, kfngoei:0f118587-9f14-4649-ac71-8ea652b7354a .
+
+_:8a7335dfa33f4e40a430136da3db085a17512 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1067 .
+
+_:8a7335dfa33f4e40a430136da3db085a17937 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17938, kfngoei:d5d87220-db3b-4285-bf06-85eec614b1dd .
+
+_:8a7335dfa33f4e40a430136da3db085a17938 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 477;
+  kfngoeo:end 479 .
+
+_:8a7335dfa33f4e40a430136da3db085a17939 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17940, kfngoei:d5d87220-db3b-4285-bf06-85eec614b1dd .
+
+_:8a7335dfa33f4e40a430136da3db085a17940 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 477;
+  kfngoeo:end 479 .
+
+_:8a7335dfa33f4e40a430136da3db085a17941 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17942, kfngoei:87d32605-2c81-4740-9a15-1d9b0896a61a .
+
+_:8a7335dfa33f4e40a430136da3db085a17942 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 650;
+  kfngoeo:end 652 .
+
+_:8a7335dfa33f4e40a430136da3db085a17943 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17944, kfngoei:87d32605-2c81-4740-9a15-1d9b0896a61a .
+
+_:8a7335dfa33f4e40a430136da3db085a17944 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 650;
+  kfngoeo:end 652 .
+
+_:8a7335dfa33f4e40a430136da3db085a17945 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17946, kfngoei:dce6c5d6-d550-496a-9680-f1100ad9c8ce .
+
+_:8a7335dfa33f4e40a430136da3db085a17946 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1325;
+  kfngoeo:end 1327 .
+
+_:8a7335dfa33f4e40a430136da3db085a17947 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17948, kfngoei:dce6c5d6-d550-496a-9680-f1100ad9c8ce .
+
+_:8a7335dfa33f4e40a430136da3db085a17948 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1325;
+  kfngoeo:end 1327 .
+
+_:8a7335dfa33f4e40a430136da3db085a17949 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17950, kfngoei:26d45d58-8430-4169-af8c-43faa08a0776 .
+
+_:8a7335dfa33f4e40a430136da3db085a17950 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1554;
+  kfngoeo:end 1556 .
+
+_:8a7335dfa33f4e40a430136da3db085a17951 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17952, kfngoei:26d45d58-8430-4169-af8c-43faa08a0776 .
+
+_:8a7335dfa33f4e40a430136da3db085a17952 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1554;
+  kfngoeo:end 1556 .
+
+_:8a7335dfa33f4e40a430136da3db085a17953 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17954, kfngoei:513ddad3-0418-4936-a865-67ff078546c1 .
+
+_:8a7335dfa33f4e40a430136da3db085a17954 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1562;
+  kfngoeo:end 1564 .
+
+_:8a7335dfa33f4e40a430136da3db085a17955 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17956, kfngoei:513ddad3-0418-4936-a865-67ff078546c1 .
+
+_:8a7335dfa33f4e40a430136da3db085a17956 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1562;
+  kfngoeo:end 1564 .
+
+_:8a7335dfa33f4e40a430136da3db085a17957 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17958, kfngoei:a1663601-782b-448a-b196-709b4ffa7c1d .
+
+_:8a7335dfa33f4e40a430136da3db085a17958 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1570;
+  kfngoeo:end 1572 .
+
+_:8a7335dfa33f4e40a430136da3db085a17959 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17960, kfngoei:a1663601-782b-448a-b196-709b4ffa7c1d .
+
+_:8a7335dfa33f4e40a430136da3db085a17960 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1570;
+  kfngoeo:end 1572 .
+
+_:8a7335dfa33f4e40a430136da3db085a17961 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17962, kfngoei:79b79919-e279-4ebf-8e8a-102d6219f0e5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17962 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2072;
+  kfngoeo:end 2074 .
+
+_:8a7335dfa33f4e40a430136da3db085a17963 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17964, kfngoei:79b79919-e279-4ebf-8e8a-102d6219f0e5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17964 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2072;
+  kfngoeo:end 2074 .
+
+_:8a7335dfa33f4e40a430136da3db085a17965 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17966, kfngoei:65d93561-5199-4b66-887a-693c47aebb62 .
+
+_:8a7335dfa33f4e40a430136da3db085a17966 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2088;
+  kfngoeo:end 2090 .
+
+_:8a7335dfa33f4e40a430136da3db085a17967 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17968, kfngoei:65d93561-5199-4b66-887a-693c47aebb62 .
+
+_:8a7335dfa33f4e40a430136da3db085a17968 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2088;
+  kfngoeo:end 2090 .
+
+_:8a7335dfa33f4e40a430136da3db085a17969 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17970, kfngoei:9f67a954-934f-46df-82af-6199f2d8a195 .
+
+_:8a7335dfa33f4e40a430136da3db085a17970 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2382;
+  kfngoeo:end 2384 .
+
+_:8a7335dfa33f4e40a430136da3db085a17971 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17972, kfngoei:9f67a954-934f-46df-82af-6199f2d8a195 .
+
+_:8a7335dfa33f4e40a430136da3db085a17972 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2382;
+  kfngoeo:end 2384 .
+
+_:8a7335dfa33f4e40a430136da3db085a17973 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17974, kfngoei:3d4cbf43-1bba-4167-b672-6a7832c36df5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17974 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2657;
+  kfngoeo:end 2659 .
+
+_:8a7335dfa33f4e40a430136da3db085a17975 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17976, kfngoei:3d4cbf43-1bba-4167-b672-6a7832c36df5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17976 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2657;
+  kfngoeo:end 2659 .
+
+_:8a7335dfa33f4e40a430136da3db085a17977 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17978, kfngoei:6e0fd20d-4e34-48cc-9e5b-017b42fe9a3c .
+
+_:8a7335dfa33f4e40a430136da3db085a17978 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3650;
+  kfngoeo:end 3652 .
+
+_:8a7335dfa33f4e40a430136da3db085a17979 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17980, kfngoei:6e0fd20d-4e34-48cc-9e5b-017b42fe9a3c .
+
+_:8a7335dfa33f4e40a430136da3db085a17980 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3650;
+  kfngoeo:end 3652 .
+
+_:8a7335dfa33f4e40a430136da3db085a17981 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17982, kfngoei:05d0c656-ae32-46eb-b0ff-dbd517a22904 .
+
+_:8a7335dfa33f4e40a430136da3db085a17982 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3660;
+  kfngoeo:end 3662 .
+
+_:8a7335dfa33f4e40a430136da3db085a17983 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17984, kfngoei:05d0c656-ae32-46eb-b0ff-dbd517a22904 .
+
+_:8a7335dfa33f4e40a430136da3db085a17984 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3660;
+  kfngoeo:end 3662 .
+
+_:8a7335dfa33f4e40a430136da3db085a17985 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17986, kfngoei:cd827a94-8969-4079-b0c2-ff9bd9fb2f50 .
+
+_:8a7335dfa33f4e40a430136da3db085a17986 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 613;
+  kfngoeo:end 615 .
+
+kfngoei:1be01f2a-b715-43ee-af45-3eeb15e71121 kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17985,
+    _:8a7335dfa33f4e40a430136da3db085a17989, _:8a7335dfa33f4e40a430136da3db085a17993,
+    _:8a7335dfa33f4e40a430136da3db085a17997, _:8a7335dfa33f4e40a430136da3db085a18001,
+    _:8a7335dfa33f4e40a430136da3db085a18005, _:8a7335dfa33f4e40a430136da3db085a18009,
+    _:8a7335dfa33f4e40a430136da3db085a18013, _:8a7335dfa33f4e40a430136da3db085a18017,
+    _:8a7335dfa33f4e40a430136da3db085a18021, _:8a7335dfa33f4e40a430136da3db085a18025,
+    _:8a7335dfa33f4e40a430136da3db085a18029, _:8a7335dfa33f4e40a430136da3db085a18033,
+    _:8a7335dfa33f4e40a430136da3db085a18037, _:8a7335dfa33f4e40a430136da3db085a18041,
+    _:8a7335dfa33f4e40a430136da3db085a18045, _:8a7335dfa33f4e40a430136da3db085a18049,
+    _:8a7335dfa33f4e40a430136da3db085a18053, _:8a7335dfa33f4e40a430136da3db085a18057,
+    _:8a7335dfa33f4e40a430136da3db085a18061, _:8a7335dfa33f4e40a430136da3db085a18065,
+    _:8a7335dfa33f4e40a430136da3db085a18069, _:8a7335dfa33f4e40a430136da3db085a18073,
+    _:8a7335dfa33f4e40a430136da3db085a18077, _:8a7335dfa33f4e40a430136da3db085a18081,
+    _:8a7335dfa33f4e40a430136da3db085a18085, _:8a7335dfa33f4e40a430136da3db085a18089,
+    _:8a7335dfa33f4e40a430136da3db085a18093, _:8a7335dfa33f4e40a430136da3db085a18097,
+    _:8a7335dfa33f4e40a430136da3db085a18101, _:8a7335dfa33f4e40a430136da3db085a18105,
+    _:8a7335dfa33f4e40a430136da3db085a18109, _:8a7335dfa33f4e40a430136da3db085a18113,
+    _:8a7335dfa33f4e40a430136da3db085a18117, _:8a7335dfa33f4e40a430136da3db085a18121,
+    _:8a7335dfa33f4e40a430136da3db085a18125, _:8a7335dfa33f4e40a430136da3db085a18129,
+    _:8a7335dfa33f4e40a430136da3db085a18133, _:8a7335dfa33f4e40a430136da3db085a18137,
+    _:8a7335dfa33f4e40a430136da3db085a18141, _:8a7335dfa33f4e40a430136da3db085a18145,
+    _:8a7335dfa33f4e40a430136da3db085a18149 .
+
+_:8a7335dfa33f4e40a430136da3db085a17987 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17988, kfngoei:cd827a94-8969-4079-b0c2-ff9bd9fb2f50 .
+
+_:8a7335dfa33f4e40a430136da3db085a17988 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 613;
+  kfngoeo:end 615 .
+
+kfngoei:c0907722-fa9a-47d0-8e0f-f14d2efa1e0e kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a17987,
+    _:8a7335dfa33f4e40a430136da3db085a17991, _:8a7335dfa33f4e40a430136da3db085a17995,
+    _:8a7335dfa33f4e40a430136da3db085a17999, _:8a7335dfa33f4e40a430136da3db085a18003,
+    _:8a7335dfa33f4e40a430136da3db085a18007, _:8a7335dfa33f4e40a430136da3db085a18011,
+    _:8a7335dfa33f4e40a430136da3db085a18015, _:8a7335dfa33f4e40a430136da3db085a18019,
+    _:8a7335dfa33f4e40a430136da3db085a18023, _:8a7335dfa33f4e40a430136da3db085a18027,
+    _:8a7335dfa33f4e40a430136da3db085a18031, _:8a7335dfa33f4e40a430136da3db085a18035,
+    _:8a7335dfa33f4e40a430136da3db085a18039, _:8a7335dfa33f4e40a430136da3db085a18043,
+    _:8a7335dfa33f4e40a430136da3db085a18047, _:8a7335dfa33f4e40a430136da3db085a18051,
+    _:8a7335dfa33f4e40a430136da3db085a18055, _:8a7335dfa33f4e40a430136da3db085a18059,
+    _:8a7335dfa33f4e40a430136da3db085a18063, _:8a7335dfa33f4e40a430136da3db085a18067,
+    _:8a7335dfa33f4e40a430136da3db085a18071, _:8a7335dfa33f4e40a430136da3db085a18075,
+    _:8a7335dfa33f4e40a430136da3db085a18079, _:8a7335dfa33f4e40a430136da3db085a18083,
+    _:8a7335dfa33f4e40a430136da3db085a18087, _:8a7335dfa33f4e40a430136da3db085a18091,
+    _:8a7335dfa33f4e40a430136da3db085a18095, _:8a7335dfa33f4e40a430136da3db085a18099,
+    _:8a7335dfa33f4e40a430136da3db085a18103, _:8a7335dfa33f4e40a430136da3db085a18107,
+    _:8a7335dfa33f4e40a430136da3db085a18111, _:8a7335dfa33f4e40a430136da3db085a18115,
+    _:8a7335dfa33f4e40a430136da3db085a18119, _:8a7335dfa33f4e40a430136da3db085a18123,
+    _:8a7335dfa33f4e40a430136da3db085a18127, _:8a7335dfa33f4e40a430136da3db085a18131,
+    _:8a7335dfa33f4e40a430136da3db085a18135, _:8a7335dfa33f4e40a430136da3db085a18139,
+    _:8a7335dfa33f4e40a430136da3db085a18143, _:8a7335dfa33f4e40a430136da3db085a18147,
+    _:8a7335dfa33f4e40a430136da3db085a18151 .
+
+_:8a7335dfa33f4e40a430136da3db085a17989 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17990, kfngoei:9fff36f2-374b-4845-9e2d-1c3c8122cc8e .
+
+_:8a7335dfa33f4e40a430136da3db085a17990 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1161;
+  kfngoeo:end 1163 .
+
+_:8a7335dfa33f4e40a430136da3db085a17991 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17992, kfngoei:9fff36f2-374b-4845-9e2d-1c3c8122cc8e .
+
+_:8a7335dfa33f4e40a430136da3db085a17992 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1161;
+  kfngoeo:end 1163 .
+
+_:8a7335dfa33f4e40a430136da3db085a17993 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17994, kfngoei:a74435c6-f08e-4a7a-8c0d-f2abf2301765 .
+
+_:8a7335dfa33f4e40a430136da3db085a17994 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1239;
+  kfngoeo:end 1241 .
+
+_:8a7335dfa33f4e40a430136da3db085a17995 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17996, kfngoei:a74435c6-f08e-4a7a-8c0d-f2abf2301765 .
+
+_:8a7335dfa33f4e40a430136da3db085a17996 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1239;
+  kfngoeo:end 1241 .
+
+_:8a7335dfa33f4e40a430136da3db085a17997 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17998, kfngoei:2904f229-252a-481e-a6b4-5a3cc603aeb5 .
+
+_:8a7335dfa33f4e40a430136da3db085a17998 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1306;
+  kfngoeo:end 1308 .
+
+_:8a7335dfa33f4e40a430136da3db085a17999 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18000, kfngoei:2904f229-252a-481e-a6b4-5a3cc603aeb5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18000 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1306;
+  kfngoeo:end 1308 .
+
+_:8a7335dfa33f4e40a430136da3db085a18001 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18002, kfngoei:01b9d3ce-017f-418f-bdb6-fd7c5cc865d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18002 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1345;
+  kfngoeo:end 1347 .
+
+_:8a7335dfa33f4e40a430136da3db085a18003 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18004, kfngoei:01b9d3ce-017f-418f-bdb6-fd7c5cc865d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18004 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1345;
+  kfngoeo:end 1347 .
+
+_:8a7335dfa33f4e40a430136da3db085a18005 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18006, kfngoei:1bcbeb23-acac-4ae5-9b6b-0cde6566f350 .
+
+_:8a7335dfa33f4e40a430136da3db085a18006 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1429;
+  kfngoeo:end 1431 .
+
+_:8a7335dfa33f4e40a430136da3db085a18007 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18008, kfngoei:1bcbeb23-acac-4ae5-9b6b-0cde6566f350 .
+
+_:8a7335dfa33f4e40a430136da3db085a18008 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1429;
+  kfngoeo:end 1431 .
+
+_:8a7335dfa33f4e40a430136da3db085a18009 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18010, kfngoei:ea300c90-4638-425a-9362-f82880fc023f .
+
+_:8a7335dfa33f4e40a430136da3db085a18010 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1501;
+  kfngoeo:end 1503 .
+
+_:8a7335dfa33f4e40a430136da3db085a18011 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18012, kfngoei:ea300c90-4638-425a-9362-f82880fc023f .
+
+_:8a7335dfa33f4e40a430136da3db085a18012 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1501;
+  kfngoeo:end 1503 .
+
+_:8a7335dfa33f4e40a430136da3db085a18013 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18014, kfngoei:add53b11-b9c5-4b69-8e1a-8e9ffc4f7f97 .
+
+_:8a7335dfa33f4e40a430136da3db085a18014 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1780;
+  kfngoeo:end 1782 .
+
+_:8a7335dfa33f4e40a430136da3db085a18015 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18016, kfngoei:add53b11-b9c5-4b69-8e1a-8e9ffc4f7f97 .
+
+_:8a7335dfa33f4e40a430136da3db085a18016 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1780;
+  kfngoeo:end 1782 .
+
+_:8a7335dfa33f4e40a430136da3db085a18017 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18018, kfngoei:6328353c-5c34-4df5-8a5e-92d59cc590ab .
+
+_:8a7335dfa33f4e40a430136da3db085a18018 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1868;
+  kfngoeo:end 1870 .
+
+_:8a7335dfa33f4e40a430136da3db085a18019 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18020, kfngoei:6328353c-5c34-4df5-8a5e-92d59cc590ab .
+
+_:8a7335dfa33f4e40a430136da3db085a18020 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1868;
+  kfngoeo:end 1870 .
+
+_:8a7335dfa33f4e40a430136da3db085a18021 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18022, kfngoei:5cf97d43-e05c-4563-bb55-476e9f3df997 .
+
+_:8a7335dfa33f4e40a430136da3db085a18022 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1979;
+  kfngoeo:end 1981 .
+
+_:8a7335dfa33f4e40a430136da3db085a18023 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18024, kfngoei:5cf97d43-e05c-4563-bb55-476e9f3df997 .
+
+_:8a7335dfa33f4e40a430136da3db085a18024 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1979;
+  kfngoeo:end 1981 .
+
+_:8a7335dfa33f4e40a430136da3db085a18025 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18026, kfngoei:f0aea327-6136-4f8e-bd6c-02cfca9a30dc .
+
+_:8a7335dfa33f4e40a430136da3db085a18026 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1995;
+  kfngoeo:end 1997 .
+
+_:8a7335dfa33f4e40a430136da3db085a18027 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18028, kfngoei:f0aea327-6136-4f8e-bd6c-02cfca9a30dc .
+
+_:8a7335dfa33f4e40a430136da3db085a18028 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1995;
+  kfngoeo:end 1997 .
+
+_:8a7335dfa33f4e40a430136da3db085a18029 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18030, kfngoei:f4f83ff8-0325-4742-8254-50170462ab1b .
+
+_:8a7335dfa33f4e40a430136da3db085a18030 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4341;
+  kfngoeo:end 4343 .
+
+_:8a7335dfa33f4e40a430136da3db085a18031 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18032, kfngoei:f4f83ff8-0325-4742-8254-50170462ab1b .
+
+_:8a7335dfa33f4e40a430136da3db085a18032 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4341;
+  kfngoeo:end 4343 .
+
+_:8a7335dfa33f4e40a430136da3db085a18033 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18034, kfngoei:196b5d50-31ff-4eb7-85f2-18795826ea6d .
+
+_:8a7335dfa33f4e40a430136da3db085a18034 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4353;
+  kfngoeo:end 4355 .
+
+_:8a7335dfa33f4e40a430136da3db085a18035 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18036, kfngoei:196b5d50-31ff-4eb7-85f2-18795826ea6d .
+
+_:8a7335dfa33f4e40a430136da3db085a18036 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4353;
+  kfngoeo:end 4355 .
+
+_:8a7335dfa33f4e40a430136da3db085a18037 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18038, kfngoei:f66da47e-1651-40ec-add5-2892bd4a7609 .
+
+_:8a7335dfa33f4e40a430136da3db085a18038 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4499;
+  kfngoeo:end 4501 .
+
+_:8a7335dfa33f4e40a430136da3db085a18039 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18040, kfngoei:f66da47e-1651-40ec-add5-2892bd4a7609 .
+
+_:8a7335dfa33f4e40a430136da3db085a18040 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4499;
+  kfngoeo:end 4501 .
+
+_:8a7335dfa33f4e40a430136da3db085a18041 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18042, kfngoei:e767992d-cc8b-4a86-9ce6-ad511227aead .
+
+_:8a7335dfa33f4e40a430136da3db085a18042 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4615;
+  kfngoeo:end 4617 .
+
+_:8a7335dfa33f4e40a430136da3db085a18043 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18044, kfngoei:e767992d-cc8b-4a86-9ce6-ad511227aead .
+
+_:8a7335dfa33f4e40a430136da3db085a18044 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4615;
+  kfngoeo:end 4617 .
+
+_:8a7335dfa33f4e40a430136da3db085a18045 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18046, kfngoei:1214c22a-13b5-414f-8b27-732f8019b9c0 .
+
+_:8a7335dfa33f4e40a430136da3db085a18046 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4745;
+  kfngoeo:end 4747 .
+
+_:8a7335dfa33f4e40a430136da3db085a18047 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18048, kfngoei:1214c22a-13b5-414f-8b27-732f8019b9c0 .
+
+_:8a7335dfa33f4e40a430136da3db085a18048 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4745;
+  kfngoeo:end 4747 .
+
+_:8a7335dfa33f4e40a430136da3db085a18049 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18050, kfngoei:55dee5df-a7ba-41c2-a9c7-6b290027720c .
+
+_:8a7335dfa33f4e40a430136da3db085a18050 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4811;
+  kfngoeo:end 4813 .
+
+_:8a7335dfa33f4e40a430136da3db085a18051 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18052, kfngoei:55dee5df-a7ba-41c2-a9c7-6b290027720c .
+
+_:8a7335dfa33f4e40a430136da3db085a18052 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4811;
+  kfngoeo:end 4813 .
+
+_:8a7335dfa33f4e40a430136da3db085a18053 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18054, kfngoei:8a036359-ad67-4a25-8780-9f4ad1bb1d6d .
+
+_:8a7335dfa33f4e40a430136da3db085a18054 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5978;
+  kfngoeo:end 5980 .
+
+_:8a7335dfa33f4e40a430136da3db085a18055 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18056, kfngoei:8a036359-ad67-4a25-8780-9f4ad1bb1d6d .
+
+_:8a7335dfa33f4e40a430136da3db085a18056 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5978;
+  kfngoeo:end 5980 .
+
+_:8a7335dfa33f4e40a430136da3db085a18057 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18058, kfngoei:891394f9-0b31-4571-85bd-4ef271073b17 .
+
+_:8a7335dfa33f4e40a430136da3db085a18058 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1057;
+  kfngoeo:end 1059 .
+
+_:8a7335dfa33f4e40a430136da3db085a18059 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18060, kfngoei:891394f9-0b31-4571-85bd-4ef271073b17 .
+
+_:8a7335dfa33f4e40a430136da3db085a18060 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1057;
+  kfngoeo:end 1059 .
+
+_:8a7335dfa33f4e40a430136da3db085a18061 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18062, kfngoei:ebfcd53c-342e-413b-8a49-a2f83573382a .
+
+_:8a7335dfa33f4e40a430136da3db085a18062 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1084;
+  kfngoeo:end 1086 .
+
+_:8a7335dfa33f4e40a430136da3db085a18063 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18064, kfngoei:ebfcd53c-342e-413b-8a49-a2f83573382a .
+
+_:8a7335dfa33f4e40a430136da3db085a18064 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1084;
+  kfngoeo:end 1086 .
+
+_:8a7335dfa33f4e40a430136da3db085a18065 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18066, kfngoei:0b6e060a-df47-408e-af22-fe0b160fd6a3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18066 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2294;
+  kfngoeo:end 2296 .
+
+_:8a7335dfa33f4e40a430136da3db085a18067 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18068, kfngoei:0b6e060a-df47-408e-af22-fe0b160fd6a3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18068 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2294;
+  kfngoeo:end 2296 .
+
+_:8a7335dfa33f4e40a430136da3db085a18069 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18070, kfngoei:e016fc94-f5e2-4ad1-9a77-265e814d10fc .
+
+_:8a7335dfa33f4e40a430136da3db085a18070 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2305;
+  kfngoeo:end 2307 .
+
+_:8a7335dfa33f4e40a430136da3db085a18071 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18072, kfngoei:e016fc94-f5e2-4ad1-9a77-265e814d10fc .
+
+_:8a7335dfa33f4e40a430136da3db085a18072 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2305;
+  kfngoeo:end 2307 .
+
+_:8a7335dfa33f4e40a430136da3db085a18073 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18074, kfngoei:642579ba-daea-4b57-bb72-e76eb16161d3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18074 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2545;
+  kfngoeo:end 2547 .
+
+_:8a7335dfa33f4e40a430136da3db085a18075 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18076, kfngoei:642579ba-daea-4b57-bb72-e76eb16161d3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18076 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2545;
+  kfngoeo:end 2547 .
+
+_:8a7335dfa33f4e40a430136da3db085a18077 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18078, kfngoei:30b0ef9a-7491-442f-9e34-bc7b5314971f .
+
+_:8a7335dfa33f4e40a430136da3db085a18078 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2564;
+  kfngoeo:end 2566 .
+
+_:8a7335dfa33f4e40a430136da3db085a18079 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18080, kfngoei:30b0ef9a-7491-442f-9e34-bc7b5314971f .
+
+_:8a7335dfa33f4e40a430136da3db085a18080 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2564;
+  kfngoeo:end 2566 .
+
+_:8a7335dfa33f4e40a430136da3db085a18081 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18082, kfngoei:d187c1ef-26c7-4ee6-a1a8-56ff93718da0 .
+
+_:8a7335dfa33f4e40a430136da3db085a18082 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3055;
+  kfngoeo:end 3057 .
+
+_:8a7335dfa33f4e40a430136da3db085a18083 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18084, kfngoei:d187c1ef-26c7-4ee6-a1a8-56ff93718da0 .
+
+_:8a7335dfa33f4e40a430136da3db085a18084 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3055;
+  kfngoeo:end 3057 .
+
+_:8a7335dfa33f4e40a430136da3db085a18085 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18086, kfngoei:42c46bdc-15ea-4288-ba80-05dd48f9d24b .
+
+_:8a7335dfa33f4e40a430136da3db085a18086 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3083;
+  kfngoeo:end 3085 .
+
+_:8a7335dfa33f4e40a430136da3db085a18087 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18088, kfngoei:42c46bdc-15ea-4288-ba80-05dd48f9d24b .
+
+_:8a7335dfa33f4e40a430136da3db085a18088 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3083;
+  kfngoeo:end 3085 .
+
+_:8a7335dfa33f4e40a430136da3db085a18089 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18090, kfngoei:c0b5cf1a-5cb9-4405-b12d-14c95d5a3d9d .
+
+_:8a7335dfa33f4e40a430136da3db085a18090 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3302;
+  kfngoeo:end 3304 .
+
+_:8a7335dfa33f4e40a430136da3db085a18091 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18092, kfngoei:c0b5cf1a-5cb9-4405-b12d-14c95d5a3d9d .
+
+_:8a7335dfa33f4e40a430136da3db085a18092 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3302;
+  kfngoeo:end 3304 .
+
+_:8a7335dfa33f4e40a430136da3db085a18093 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18094, kfngoei:913cfcfa-f36e-49e7-a3b4-fdcbae49dc9c .
+
+_:8a7335dfa33f4e40a430136da3db085a18094 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3581;
+  kfngoeo:end 3583 .
+
+_:8a7335dfa33f4e40a430136da3db085a18095 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18096, kfngoei:913cfcfa-f36e-49e7-a3b4-fdcbae49dc9c .
+
+_:8a7335dfa33f4e40a430136da3db085a18096 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3581;
+  kfngoeo:end 3583 .
+
+_:8a7335dfa33f4e40a430136da3db085a18097 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18098, kfngoei:2fb85806-ec14-4287-89a4-5c220b926a9f .
+
+_:8a7335dfa33f4e40a430136da3db085a18098 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3655;
+  kfngoeo:end 3657 .
+
+_:8a7335dfa33f4e40a430136da3db085a18099 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18100, kfngoei:2fb85806-ec14-4287-89a4-5c220b926a9f .
+
+_:8a7335dfa33f4e40a430136da3db085a18100 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3655;
+  kfngoeo:end 3657 .
+
+_:8a7335dfa33f4e40a430136da3db085a18101 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18102, kfngoei:49e32637-a5a5-4aa9-9bfc-6da5080b6d47 .
+
+_:8a7335dfa33f4e40a430136da3db085a18102 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4313;
+  kfngoeo:end 4315 .
+
+_:8a7335dfa33f4e40a430136da3db085a18103 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18104, kfngoei:49e32637-a5a5-4aa9-9bfc-6da5080b6d47 .
+
+_:8a7335dfa33f4e40a430136da3db085a18104 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4313;
+  kfngoeo:end 4315 .
+
+_:8a7335dfa33f4e40a430136da3db085a18105 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18106, kfngoei:97a7bd2d-23f3-45e1-a85b-3e89944e9077 .
+
+_:8a7335dfa33f4e40a430136da3db085a18106 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4797;
+  kfngoeo:end 4799 .
+
+_:8a7335dfa33f4e40a430136da3db085a18107 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18108, kfngoei:97a7bd2d-23f3-45e1-a85b-3e89944e9077 .
+
+_:8a7335dfa33f4e40a430136da3db085a18108 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4797;
+  kfngoeo:end 4799 .
+
+_:8a7335dfa33f4e40a430136da3db085a18109 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18110, kfngoei:4a5fab58-ea0c-468e-83cc-e475a63014bc .
+
+_:8a7335dfa33f4e40a430136da3db085a18110 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5253;
+  kfngoeo:end 5262 .
+
+_:8a7335dfa33f4e40a430136da3db085a18111 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18112, kfngoei:4a5fab58-ea0c-468e-83cc-e475a63014bc .
+
+_:8a7335dfa33f4e40a430136da3db085a18112 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5253;
+  kfngoeo:end 5262 .
+
+_:8a7335dfa33f4e40a430136da3db085a18113 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18114, kfngoei:03a33077-bea0-4726-81a3-2025d5e735f4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18114 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5268;
+  kfngoeo:end 5277 .
+
+_:8a7335dfa33f4e40a430136da3db085a18115 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18116, kfngoei:03a33077-bea0-4726-81a3-2025d5e735f4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18116 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5268;
+  kfngoeo:end 5277 .
+
+_:8a7335dfa33f4e40a430136da3db085a18117 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18118, kfngoei:ae7bd30e-2775-4ea6-bf76-8c704348e939 .
+
+_:8a7335dfa33f4e40a430136da3db085a18118 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5287;
+  kfngoeo:end 5296 .
+
+_:8a7335dfa33f4e40a430136da3db085a18119 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18120, kfngoei:ae7bd30e-2775-4ea6-bf76-8c704348e939 .
+
+_:8a7335dfa33f4e40a430136da3db085a18120 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5287;
+  kfngoeo:end 5296 .
+
+_:8a7335dfa33f4e40a430136da3db085a18121 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18122, kfngoei:ed48a14e-a310-44ae-8382-691c561203b4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18122 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5914;
+  kfngoeo:end 5916 .
+
+_:8a7335dfa33f4e40a430136da3db085a18123 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18124, kfngoei:ed48a14e-a310-44ae-8382-691c561203b4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18124 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5914;
+  kfngoeo:end 5916 .
+
+_:8a7335dfa33f4e40a430136da3db085a18125 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18126, kfngoei:aebc3e4c-5fad-495d-9c83-9a5788b81e01 .
+
+_:8a7335dfa33f4e40a430136da3db085a18126 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6398;
+  kfngoeo:end 6400 .
+
+_:8a7335dfa33f4e40a430136da3db085a18127 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18128, kfngoei:aebc3e4c-5fad-495d-9c83-9a5788b81e01 .
+
+_:8a7335dfa33f4e40a430136da3db085a18128 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6398;
+  kfngoeo:end 6400 .
+
+_:8a7335dfa33f4e40a430136da3db085a18129 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18130, kfngoei:0a09b56d-76fe-4e37-8c4b-3981442c444b .
+
+_:8a7335dfa33f4e40a430136da3db085a18130 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8463;
+  kfngoeo:end 8465 .
+
+_:8a7335dfa33f4e40a430136da3db085a18131 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18132, kfngoei:0a09b56d-76fe-4e37-8c4b-3981442c444b .
+
+_:8a7335dfa33f4e40a430136da3db085a18132 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8463;
+  kfngoeo:end 8465 .
+
+_:8a7335dfa33f4e40a430136da3db085a18133 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18134, kfngoei:18629d9e-a834-4104-ab6f-57a6580d86aa .
+
+_:8a7335dfa33f4e40a430136da3db085a18134 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8480;
+  kfngoeo:end 8482 .
+
+_:8a7335dfa33f4e40a430136da3db085a18135 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18136, kfngoei:18629d9e-a834-4104-ab6f-57a6580d86aa .
+
+_:8a7335dfa33f4e40a430136da3db085a18136 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 8480;
+  kfngoeo:end 8482 .
+
+_:8a7335dfa33f4e40a430136da3db085a18137 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18138, kfngoei:bcc087cf-5246-4821-bb25-1c1728c395d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18138 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12659;
+  kfngoeo:end 12668 .
+
+_:8a7335dfa33f4e40a430136da3db085a18139 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18140, kfngoei:bcc087cf-5246-4821-bb25-1c1728c395d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18140 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12659;
+  kfngoeo:end 12668 .
+
+_:8a7335dfa33f4e40a430136da3db085a18141 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18142, kfngoei:f90a2aed-07dc-4eb6-b61d-b95a6338a197 .
+
+_:8a7335dfa33f4e40a430136da3db085a18142 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12854;
+  kfngoeo:end 12863 .
+
+_:8a7335dfa33f4e40a430136da3db085a18143 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18144, kfngoei:f90a2aed-07dc-4eb6-b61d-b95a6338a197 .
+
+_:8a7335dfa33f4e40a430136da3db085a18144 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12854;
+  kfngoeo:end 12863 .
+
+_:8a7335dfa33f4e40a430136da3db085a18145 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18146, kfngoei:89972b9b-cbe6-4b47-baf8-afbd05fa733a .
+
+_:8a7335dfa33f4e40a430136da3db085a18146 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4011;
+  kfngoeo:end 4013 .
+
+_:8a7335dfa33f4e40a430136da3db085a18147 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18148, kfngoei:89972b9b-cbe6-4b47-baf8-afbd05fa733a .
+
+_:8a7335dfa33f4e40a430136da3db085a18148 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4011;
+  kfngoeo:end 4013 .
+
+_:8a7335dfa33f4e40a430136da3db085a18149 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18150, kfngoei:d51ace5d-dba3-4c18-8d87-16b0c24a10f3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18150 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6320;
+  kfngoeo:end 6322 .
+
+_:8a7335dfa33f4e40a430136da3db085a18151 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18152, kfngoei:d51ace5d-dba3-4c18-8d87-16b0c24a10f3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18152 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6320;
+  kfngoeo:end 6322 .
+
+kfngoei:e5f9f14d-9411-4639-8083-d021ec9e984c a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Reichstag";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18153, _:8a7335dfa33f4e40a430136da3db085a18155,
+    _:8a7335dfa33f4e40a430136da3db085a18157, _:8a7335dfa33f4e40a430136da3db085a18159,
+    _:8a7335dfa33f4e40a430136da3db085a18161, _:8a7335dfa33f4e40a430136da3db085a18163,
+    _:8a7335dfa33f4e40a430136da3db085a18165, _:8a7335dfa33f4e40a430136da3db085a18167,
+    _:8a7335dfa33f4e40a430136da3db085a18169, _:8a7335dfa33f4e40a430136da3db085a18171,
+    _:8a7335dfa33f4e40a430136da3db085a18173, _:8a7335dfa33f4e40a430136da3db085a18175,
+    _:8a7335dfa33f4e40a430136da3db085a18177, _:8a7335dfa33f4e40a430136da3db085a18179,
+    _:8a7335dfa33f4e40a430136da3db085a18181, _:8a7335dfa33f4e40a430136da3db085a18183,
+    _:8a7335dfa33f4e40a430136da3db085a18185, _:8a7335dfa33f4e40a430136da3db085a18187,
+    _:8a7335dfa33f4e40a430136da3db085a18189;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17513 .
+
+_:8a7335dfa33f4e40a430136da3db085a18153 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18154, kfngoei:2ddaba90-2fc3-4f9a-8923-5d0ae46b819c .
+
+_:8a7335dfa33f4e40a430136da3db085a18154 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2386;
+  kfngoeo:end 2388 .
+
+_:8a7335dfa33f4e40a430136da3db085a17513 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17514, kfngoei:2ae238ee-b7c8-48bc-93db-e11d27e3dcdd .
+
+_:8a7335dfa33f4e40a430136da3db085a17514 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1243 .
+
+_:8a7335dfa33f4e40a430136da3db085a18155 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18156, kfngoei:a5c8ac57-836f-427b-9622-0c6b0e428abc .
+
+_:8a7335dfa33f4e40a430136da3db085a18156 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4095;
+  kfngoeo:end 4097 .
+
+_:8a7335dfa33f4e40a430136da3db085a18157 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18158, kfngoei:a6a043f4-e3fb-43cc-a91b-afed06fd22f4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18158 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5220;
+  kfngoeo:end 5222 .
+
+_:8a7335dfa33f4e40a430136da3db085a18159 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18160, kfngoei:c81473e4-962b-471a-a19c-5f5c7b57d8ab .
+
+_:8a7335dfa33f4e40a430136da3db085a18160 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5228;
+  kfngoeo:end 5230 .
+
+_:8a7335dfa33f4e40a430136da3db085a18161 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18162, kfngoei:f78d970c-0afd-4a01-98fc-203bf87d6ee7 .
+
+_:8a7335dfa33f4e40a430136da3db085a18162 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5236;
+  kfngoeo:end 5238 .
+
+_:8a7335dfa33f4e40a430136da3db085a18163 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18164, kfngoei:42eb2375-4e52-41c3-84a2-41e15c4be0cd .
+
+_:8a7335dfa33f4e40a430136da3db085a18164 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1808;
+  kfngoeo:end 1810 .
+
+_:8a7335dfa33f4e40a430136da3db085a18165 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18166, kfngoei:5f4cc327-3099-4122-b35b-cbc97d827f7e .
+
+_:8a7335dfa33f4e40a430136da3db085a18166 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3675;
+  kfngoeo:end 3677 .
+
+_:8a7335dfa33f4e40a430136da3db085a18167 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18168, kfngoei:43c3ff66-6325-4e42-a8fd-1f66b5fd474b .
+
+_:8a7335dfa33f4e40a430136da3db085a18168 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5918;
+  kfngoeo:end 5920 .
+
+_:8a7335dfa33f4e40a430136da3db085a18169 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18170, kfngoei:812b2534-0719-4536-9ec2-bd0a96880fb3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18170 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 9307;
+  kfngoeo:end 9309 .
+
+_:8a7335dfa33f4e40a430136da3db085a18171 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18172, kfngoei:7912872d-7cef-49b0-991b-e3d6a7fb3b21 .
+
+_:8a7335dfa33f4e40a430136da3db085a18172 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11533;
+  kfngoeo:end 11535 .
+
+_:8a7335dfa33f4e40a430136da3db085a18173 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18174, kfngoei:1d58feac-f7cc-435d-82ca-67856b64e490 .
+
+_:8a7335dfa33f4e40a430136da3db085a18174 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11550;
+  kfngoeo:end 11552 .
+
+_:8a7335dfa33f4e40a430136da3db085a18175 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18176, kfngoei:e642cd53-4cc0-4dee-a466-f5eb9a130c2f .
+
+_:8a7335dfa33f4e40a430136da3db085a18176 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 11575;
+  kfngoeo:end 11577 .
+
+_:8a7335dfa33f4e40a430136da3db085a18177 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18178, kfngoei:9fd6f528-7c9b-41b3-aebb-782b617b5ce3 .
+
+_:8a7335dfa33f4e40a430136da3db085a18178 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12714;
+  kfngoeo:end 12716 .
+
+_:8a7335dfa33f4e40a430136da3db085a18179 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18180, kfngoei:7ab57a30-61a5-4457-a732-92183f6f75d5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18180 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13164;
+  kfngoeo:end 13166 .
+
+_:8a7335dfa33f4e40a430136da3db085a18181 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18182, kfngoei:60de65ef-3b72-4b53-900b-1b5a1b545672 .
+
+_:8a7335dfa33f4e40a430136da3db085a18182 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13168;
+  kfngoeo:end 13170 .
+
+_:8a7335dfa33f4e40a430136da3db085a18183 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18184, kfngoei:69e48e9a-945c-42eb-ad27-e7a6728161e6 .
+
+_:8a7335dfa33f4e40a430136da3db085a18184 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13172;
+  kfngoeo:end 13174 .
+
+_:8a7335dfa33f4e40a430136da3db085a18185 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18186, kfngoei:c4485ba5-830d-4854-ab81-daa0287d3330 .
+
+_:8a7335dfa33f4e40a430136da3db085a18186 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13232;
+  kfngoeo:end 13234 .
+
+_:8a7335dfa33f4e40a430136da3db085a18187 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18188, kfngoei:000707ad-91f0-404e-a356-f2959a27b7c5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18188 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13352;
+  kfngoeo:end 13354 .
+
+_:8a7335dfa33f4e40a430136da3db085a18189 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18190, kfngoei:73356c8b-9b55-45a6-b533-e24da72f80e1 .
+
+_:8a7335dfa33f4e40a430136da3db085a18190 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13379;
+  kfngoeo:end 13381 .
+
+kfngoei:c7777543-a81a-49cf-97f1-c71816900e94 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "SchoenererAlldeutsche";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18191, _:8a7335dfa33f4e40a430136da3db085a18193,
+    _:8a7335dfa33f4e40a430136da3db085a18195, _:8a7335dfa33f4e40a430136da3db085a18197,
+    _:8a7335dfa33f4e40a430136da3db085a18199, _:8a7335dfa33f4e40a430136da3db085a18201,
+    _:8a7335dfa33f4e40a430136da3db085a18203, _:8a7335dfa33f4e40a430136da3db085a18205,
+    _:8a7335dfa33f4e40a430136da3db085a18207, _:8a7335dfa33f4e40a430136da3db085a18209,
+    _:8a7335dfa33f4e40a430136da3db085a18211, _:8a7335dfa33f4e40a430136da3db085a18213;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17515 .
+
+_:8a7335dfa33f4e40a430136da3db085a18191 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18192, kfngoei:6e8d97b7-fb00-49c5-a014-dd79086745be .
+
+_:8a7335dfa33f4e40a430136da3db085a18192 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2645;
+  kfngoeo:end 2647 .
+
+_:8a7335dfa33f4e40a430136da3db085a17515 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17516, kfngoei:bad24c33-d33d-4528-8e48-749dd93478ba .
+
+_:8a7335dfa33f4e40a430136da3db085a17516 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1311 .
+
+_:8a7335dfa33f4e40a430136da3db085a18193 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18194, kfngoei:6f78ffca-5a08-4618-b3c5-183d8a4e6380 .
+
+_:8a7335dfa33f4e40a430136da3db085a18194 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2752;
+  kfngoeo:end 2754 .
+
+_:8a7335dfa33f4e40a430136da3db085a18195 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18196, kfngoei:7602b449-72df-4995-9632-919d5130ed2e .
+
+_:8a7335dfa33f4e40a430136da3db085a18196 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2774;
+  kfngoeo:end 2776 .
+
+_:8a7335dfa33f4e40a430136da3db085a18197 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18198, kfngoei:f6c669aa-f41c-4283-96b9-ddefb2117095 .
+
+_:8a7335dfa33f4e40a430136da3db085a18198 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5454;
+  kfngoeo:end 5456 .
+
+_:8a7335dfa33f4e40a430136da3db085a18199 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18200, kfngoei:b733207e-d536-4272-8b95-e2495512882d .
+
+_:8a7335dfa33f4e40a430136da3db085a18200 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5637;
+  kfngoeo:end 5639 .
+
+_:8a7335dfa33f4e40a430136da3db085a18201 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18202, kfngoei:1dc450b4-13ba-4e73-b8fb-a213a385ed36 .
+
+_:8a7335dfa33f4e40a430136da3db085a18202 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6092;
+  kfngoeo:end 6094 .
+
+_:8a7335dfa33f4e40a430136da3db085a18203 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18204, kfngoei:c7afc142-79f1-447d-aaab-5873775b1eb4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18204 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4014;
+  kfngoeo:end 4016 .
+
+_:8a7335dfa33f4e40a430136da3db085a18205 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18206, kfngoei:e38f78ab-5718-4ee3-956f-093c18c97237 .
+
+_:8a7335dfa33f4e40a430136da3db085a18206 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4045;
+  kfngoeo:end 4047 .
+
+_:8a7335dfa33f4e40a430136da3db085a18207 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18208, kfngoei:3f44f920-3e2e-45ce-864b-af3a06ffab94 .
+
+_:8a7335dfa33f4e40a430136da3db085a18208 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1715;
+  kfngoeo:end 1717 .
+
+_:8a7335dfa33f4e40a430136da3db085a18209 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18210, kfngoei:ac5ea88b-a113-417f-b0de-6c0e43dbc16d .
+
+_:8a7335dfa33f4e40a430136da3db085a18210 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1732;
+  kfngoeo:end 1734 .
+
+_:8a7335dfa33f4e40a430136da3db085a18211 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18212, kfngoei:d32f33a8-7616-43dc-883e-bde57dd2983a .
+
+_:8a7335dfa33f4e40a430136da3db085a18212 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5080;
+  kfngoeo:end 5082 .
+
+_:8a7335dfa33f4e40a430136da3db085a18213 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18214, kfngoei:0816bd1e-f6ce-473f-b6e1-43490f12b2af .
+
+_:8a7335dfa33f4e40a430136da3db085a18214 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5381;
+  kfngoeo:end 5383 .
+
+kfngoei:b5c81e40-30d1-4e0d-a4de-9d5778dd41bd a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Skupschtina";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18215, _:8a7335dfa33f4e40a430136da3db085a18217;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17517 .
+
+_:8a7335dfa33f4e40a430136da3db085a18215 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18216, kfngoei:dc1b4213-0a7f-4a9c-8674-e5f740e11125 .
+
+_:8a7335dfa33f4e40a430136da3db085a18216 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 968;
+  kfngoeo:end 970 .
+
+_:8a7335dfa33f4e40a430136da3db085a17517 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17518, kfngoei:641b347f-4bf8-40c7-9211-973abd231c4c .
+
+_:8a7335dfa33f4e40a430136da3db085a17518 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1358 .
+
+_:8a7335dfa33f4e40a430136da3db085a18217 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18218, kfngoei:4b209e9b-d90f-441d-975f-8b1a8c48abf5 .
+
+_:8a7335dfa33f4e40a430136da3db085a18218 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4159;
+  kfngoeo:end 4161 .
+
+kfngoei:8ef470f2-1bd2-4cca-a880-6a0b030a9c28 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Sozialdemokraten";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18219, _:8a7335dfa33f4e40a430136da3db085a18221,
+    _:8a7335dfa33f4e40a430136da3db085a18223, _:8a7335dfa33f4e40a430136da3db085a18225,
+    _:8a7335dfa33f4e40a430136da3db085a18227, _:8a7335dfa33f4e40a430136da3db085a18229,
+    _:8a7335dfa33f4e40a430136da3db085a18231, _:8a7335dfa33f4e40a430136da3db085a18233,
+    _:8a7335dfa33f4e40a430136da3db085a18235, _:8a7335dfa33f4e40a430136da3db085a18237,
+    _:8a7335dfa33f4e40a430136da3db085a18239, _:8a7335dfa33f4e40a430136da3db085a18241,
+    _:8a7335dfa33f4e40a430136da3db085a18243, _:8a7335dfa33f4e40a430136da3db085a18245,
+    _:8a7335dfa33f4e40a430136da3db085a18247, _:8a7335dfa33f4e40a430136da3db085a18249,
+    _:8a7335dfa33f4e40a430136da3db085a18251;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17519 .
+
+_:8a7335dfa33f4e40a430136da3db085a18219 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18220, kfngoei:669700ba-de33-479e-8ca7-896f5546cca8 .
+
+_:8a7335dfa33f4e40a430136da3db085a18220 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1598;
+  kfngoeo:end 1600 .
+
+_:8a7335dfa33f4e40a430136da3db085a17519 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17520, kfngoei:d0c44cfa-f3de-4020-b9a8-9f92d5c71271 .
+
+_:8a7335dfa33f4e40a430136da3db085a17520 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1375 .
+
+_:8a7335dfa33f4e40a430136da3db085a18221 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18222, kfngoei:ec360879-e062-4f79-9dc0-b1d1e0c0aed9 .
+
+_:8a7335dfa33f4e40a430136da3db085a18222 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1983;
+  kfngoeo:end 1985 .
+
+_:8a7335dfa33f4e40a430136da3db085a18223 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18224, kfngoei:fca7a3c5-48ee-48a3-86b7-5768ec173b25 .
+
+_:8a7335dfa33f4e40a430136da3db085a18224 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2107;
+  kfngoeo:end 2109 .
+
+_:8a7335dfa33f4e40a430136da3db085a18225 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18226, kfngoei:3cf0e663-f366-4020-b3b1-174dd89acfb9 .
+
+_:8a7335dfa33f4e40a430136da3db085a18226 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2598;
+  kfngoeo:end 2600 .
+
+_:8a7335dfa33f4e40a430136da3db085a18227 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18228, kfngoei:7a83b48c-dbf8-4070-b6a5-dcbdfba33c90 .
+
+_:8a7335dfa33f4e40a430136da3db085a18228 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2620;
+  kfngoeo:end 2622 .
+
+_:8a7335dfa33f4e40a430136da3db085a18229 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18230, kfngoei:69c9b964-4633-464f-a8b3-4ba5057cb0d9 .
+
+_:8a7335dfa33f4e40a430136da3db085a18230 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4741;
+  kfngoeo:end 4743 .
+
+_:8a7335dfa33f4e40a430136da3db085a18231 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18232, kfngoei:1f5c2766-85cd-4b73-80a1-18d4145b905b .
+
+_:8a7335dfa33f4e40a430136da3db085a18232 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4997;
+  kfngoeo:end 4999 .
+
+_:8a7335dfa33f4e40a430136da3db085a18233 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18234, kfngoei:25b15dbc-6a71-40de-8b52-079e3694c47c .
+
+_:8a7335dfa33f4e40a430136da3db085a18234 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5198;
+  kfngoeo:end 5200 .
+
+_:8a7335dfa33f4e40a430136da3db085a18235 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18236, kfngoei:d89de931-879b-4b26-8640-6abaf1f49393 .
+
+_:8a7335dfa33f4e40a430136da3db085a18236 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5233;
+  kfngoeo:end 5235 .
+
+_:8a7335dfa33f4e40a430136da3db085a18237 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18238, kfngoei:7148dc8e-47af-41eb-9cbc-fcd41922daa7 .
+
+_:8a7335dfa33f4e40a430136da3db085a18238 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6060;
+  kfngoeo:end 6062 .
+
+_:8a7335dfa33f4e40a430136da3db085a18239 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18240, kfngoei:5a2e2d11-cfd1-4711-bc87-1a1753f2e5fc .
+
+_:8a7335dfa33f4e40a430136da3db085a18240 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6096;
+  kfngoeo:end 6098 .
+
+_:8a7335dfa33f4e40a430136da3db085a18241 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18242, kfngoei:797ca87a-5437-46a7-a79a-2f1714175305 .
+
+_:8a7335dfa33f4e40a430136da3db085a18242 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6114;
+  kfngoeo:end 6116 .
+
+_:8a7335dfa33f4e40a430136da3db085a18243 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18244, kfngoei:06e3f100-5c2c-44ce-bc65-841564e0a5b7 .
+
+_:8a7335dfa33f4e40a430136da3db085a18244 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3993;
+  kfngoeo:end 3995 .
+
+_:8a7335dfa33f4e40a430136da3db085a18245 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18246, kfngoei:7c9e7a0b-f7af-4880-a112-63f605244371 .
+
+_:8a7335dfa33f4e40a430136da3db085a18246 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 235;
+  kfngoeo:end 237 .
+
+_:8a7335dfa33f4e40a430136da3db085a18247 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18248, kfngoei:d63f740b-d315-4930-aff1-edcc221df3f1 .
+
+_:8a7335dfa33f4e40a430136da3db085a18248 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1488;
+  kfngoeo:end 1490 .
+
+_:8a7335dfa33f4e40a430136da3db085a18249 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18250, kfngoei:f767c8d9-dc1b-4790-aa21-880675666763 .
+
+_:8a7335dfa33f4e40a430136da3db085a18250 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1773;
+  kfngoeo:end 1775 .
+
+_:8a7335dfa33f4e40a430136da3db085a18251 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18252, kfngoei:1c800bca-8238-45d2-9097-22807a195a31 .
+
+_:8a7335dfa33f4e40a430136da3db085a18252 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4688;
+  kfngoeo:end 4690 .
+
+kfngoei:5861ec27-8644-4818-a469-4795bd2558db a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "StatthaltereiBoehmen";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18253;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17521 .
+
+_:8a7335dfa33f4e40a430136da3db085a18253 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18254, kfngoei:0eb9568d-d546-49bb-a0f3-058843fa5ef2 .
+
+_:8a7335dfa33f4e40a430136da3db085a18254 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 861;
+  kfngoeo:end 863 .
+
+_:8a7335dfa33f4e40a430136da3db085a17521 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17522, kfngoei:9ea77352-aca6-4600-bbf6-76936cc0b77c .
+
+_:8a7335dfa33f4e40a430136da3db085a17522 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1437 .
+
+_:8a7335dfa33f4e40a430136da3db085a18255 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18256 .
+
+_:8a7335dfa33f4e40a430136da3db085a18256 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 3989;
+  kfngoeo:end 3991 .
+
+_:8a7335dfa33f4e40a430136da3db085a18255 kfngoeo:hasSelector kfngoei:09d8ad12-7d86-421c-b3e4-bd1899c7608c .
+
+kfngoei:5861ec27-8644-4818-a469-4795bd2558db kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18255 .
+
+kfngoei:1fcd5cde-32c7-4ae8-b431-290b68531ec9 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "TschechischeKarlsUniversitaet";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18257;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17523 .
+
+_:8a7335dfa33f4e40a430136da3db085a18257 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18258, kfngoei:03b9475a-47df-4e0a-8b56-a926ac5b3f60 .
+
+_:8a7335dfa33f4e40a430136da3db085a18258 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2543;
+  kfngoeo:end 2545 .
+
+_:8a7335dfa33f4e40a430136da3db085a17523 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17524, kfngoei:0ffdda85-bd09-4ec1-bd5c-75c36d0a6d18 .
+
+_:8a7335dfa33f4e40a430136da3db085a17524 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1454 .
+
+kfngoei:aad233fd-c731-4c46-97ed-3c73698daa31 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Unabhaengigkeitspartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18259, _:8a7335dfa33f4e40a430136da3db085a18261;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17525 .
+
+_:8a7335dfa33f4e40a430136da3db085a18259 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18260, kfngoei:206cc336-8292-49e1-8de9-5490f1eb7235 .
+
+_:8a7335dfa33f4e40a430136da3db085a18260 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12220;
+  kfngoeo:end 12222 .
+
+_:8a7335dfa33f4e40a430136da3db085a17525 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17526, kfngoei:c62ccc79-4d04-41cc-bd60-257cabe0b78d .
+
+_:8a7335dfa33f4e40a430136da3db085a17526 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1468 .
+
+_:8a7335dfa33f4e40a430136da3db085a18261 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18262, kfngoei:86f2397a-8b66-41fa-84ac-ac46c5b98a84 .
+
+_:8a7335dfa33f4e40a430136da3db085a18262 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 13567;
+  kfngoeo:end 13569 .
+
+kfngoei:1c552e92-fdda-46c5-9fb0-93127643af75 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "VereinfuerSocialpolitik";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18263;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17527 .
+
+_:8a7335dfa33f4e40a430136da3db085a18263 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18264, kfngoei:11b2daaa-3bcd-400c-ab44-9b599faec55e .
+
+_:8a7335dfa33f4e40a430136da3db085a18264 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1734;
+  kfngoeo:end 1736 .
+
+_:8a7335dfa33f4e40a430136da3db085a17527 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17528, kfngoei:0371d107-1d44-4aa8-a1e9-e96067076fcf .
+
+_:8a7335dfa33f4e40a430136da3db085a17528 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1483 .
+
+kfngoei:e88de884-e4f2-48cd-beda-59db845be64f a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "VereinigteDeutscheLinke";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18265;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17529 .
+
+_:8a7335dfa33f4e40a430136da3db085a18265 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18266, kfngoei:91bd6d9a-3511-4d1e-9a12-006bf45e265b .
+
+_:8a7335dfa33f4e40a430136da3db085a18266 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 980;
+  kfngoeo:end 982 .
+
+_:8a7335dfa33f4e40a430136da3db085a17529 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17530, kfngoei:b7928a0b-7b9f-469e-bc60-75279301bf39 .
+
+_:8a7335dfa33f4e40a430136da3db085a17530 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1497 .
+
+kfngoei:aa966433-9630-46a2-a175-d757295dbf63 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Verfassungspartei";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18267, _:8a7335dfa33f4e40a430136da3db085a18269;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17531 .
+
+_:8a7335dfa33f4e40a430136da3db085a18267 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18268, kfngoei:0326ff33-2607-41e9-8374-7d1b6a11b742 .
+
+_:8a7335dfa33f4e40a430136da3db085a18268 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5606;
+  kfngoeo:end 5608 .
+
+_:8a7335dfa33f4e40a430136da3db085a17531 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17532, kfngoei:85df2979-40f8-49f1-a2e4-92d53c050f75 .
+
+_:8a7335dfa33f4e40a430136da3db085a17532 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1511 .
+
+_:8a7335dfa33f4e40a430136da3db085a18269 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18270, kfngoei:034d95af-4f37-47fb-a38d-7929c984d635 .
+
+_:8a7335dfa33f4e40a430136da3db085a18270 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5636;
+  kfngoeo:end 5638 .
+
+kfngoei:8a11e613-e0ec-45bb-a467-dd5acec72a4a a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "VerfassungstreuerGrossgrundbesitz";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18271, _:8a7335dfa33f4e40a430136da3db085a18273,
+    _:8a7335dfa33f4e40a430136da3db085a18275, _:8a7335dfa33f4e40a430136da3db085a18277,
+    _:8a7335dfa33f4e40a430136da3db085a18279, _:8a7335dfa33f4e40a430136da3db085a18281,
+    _:8a7335dfa33f4e40a430136da3db085a18283, _:8a7335dfa33f4e40a430136da3db085a18285,
+    _:8a7335dfa33f4e40a430136da3db085a18287, _:8a7335dfa33f4e40a430136da3db085a18289;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17533 .
+
+_:8a7335dfa33f4e40a430136da3db085a18271 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18272, kfngoei:44025856-18f8-4b2d-9ade-716ece11150f .
+
+_:8a7335dfa33f4e40a430136da3db085a18272 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 209;
+  kfngoeo:end 211 .
+
+_:8a7335dfa33f4e40a430136da3db085a17533 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17534, kfngoei:6e0b748b-7081-412c-8791-e1864956bdc0 .
+
+_:8a7335dfa33f4e40a430136da3db085a17534 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1526 .
+
+_:8a7335dfa33f4e40a430136da3db085a18273 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18274, kfngoei:78153755-1bb5-420a-8952-fbe24c988c9b .
+
+_:8a7335dfa33f4e40a430136da3db085a18274 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 262;
+  kfngoeo:end 264 .
+
+_:8a7335dfa33f4e40a430136da3db085a18275 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18276, kfngoei:728adbb4-5d72-4ef7-9e22-4bf56a5baf4f .
+
+_:8a7335dfa33f4e40a430136da3db085a18276 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5433;
+  kfngoeo:end 5435 .
+
+_:8a7335dfa33f4e40a430136da3db085a18277 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18278, kfngoei:a42428da-458b-4c76-93c4-d7b19170a383 .
+
+_:8a7335dfa33f4e40a430136da3db085a18278 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5470;
+  kfngoeo:end 5472 .
+
+_:8a7335dfa33f4e40a430136da3db085a18279 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18280, kfngoei:5edff4b6-6aa6-4240-b655-fad9724da519 .
+
+_:8a7335dfa33f4e40a430136da3db085a18280 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 6347;
+  kfngoeo:end 6349 .
+
+_:8a7335dfa33f4e40a430136da3db085a18281 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18282, kfngoei:343dbe97-ff82-4711-a5d9-3b7fecfca5e0 .
+
+_:8a7335dfa33f4e40a430136da3db085a18282 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2825;
+  kfngoeo:end 2827 .
+
+_:8a7335dfa33f4e40a430136da3db085a18283 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18284, kfngoei:e43afac5-e837-4c44-b9a7-dd2e7a006ece .
+
+_:8a7335dfa33f4e40a430136da3db085a18284 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2900;
+  kfngoeo:end 2902 .
+
+_:8a7335dfa33f4e40a430136da3db085a18285 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18286, kfngoei:a5b5f765-7392-4338-8b67-adac567b7bd7 .
+
+_:8a7335dfa33f4e40a430136da3db085a18286 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5052;
+  kfngoeo:end 5054 .
+
+_:8a7335dfa33f4e40a430136da3db085a18287 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18288, kfngoei:a1e3a890-3bd7-4276-a3d8-5457c6c309c4 .
+
+_:8a7335dfa33f4e40a430136da3db085a18288 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5153;
+  kfngoeo:end 5155 .
+
+_:8a7335dfa33f4e40a430136da3db085a18289 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18290, kfngoei:cf2416d2-a7b2-4091-974e-65d929ef7f7b .
+
+_:8a7335dfa33f4e40a430136da3db085a18290 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5459;
+  kfngoeo:end 5461 .
+
+kfngoei:81d6c573-5e41-44e9-a327-0f34de67dd14 a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Verwaltungsgerichtshof";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18291, _:8a7335dfa33f4e40a430136da3db085a18293;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17535 .
+
+_:8a7335dfa33f4e40a430136da3db085a18291 kfngoeo:hasSource "Bae_MF_6-1";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18292, kfngoei:5df703b6-bd55-41c8-b28c-6ad0d559c614 .
+
+_:8a7335dfa33f4e40a430136da3db085a18292 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5663;
+  kfngoeo:end 5665 .
+
+_:8a7335dfa33f4e40a430136da3db085a17535 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17536, kfngoei:2494af8a-fb75-4b9c-8da7-47c55ccea763 .
+
+_:8a7335dfa33f4e40a430136da3db085a17536 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1567 .
+
+_:8a7335dfa33f4e40a430136da3db085a18293 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18294, kfngoei:2029c4a2-bf78-4f8e-86e0-3ce092ce98b7 .
+
+_:8a7335dfa33f4e40a430136da3db085a18294 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 12272;
+  kfngoeo:end 12274 .
+
+kfngoei:e8275bc1-1089-4d7e-8151-dbf4cce6d77e a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Wahlreformausschuss";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18295, _:8a7335dfa33f4e40a430136da3db085a18297,
+    _:8a7335dfa33f4e40a430136da3db085a18299, _:8a7335dfa33f4e40a430136da3db085a18301,
+    _:8a7335dfa33f4e40a430136da3db085a18303;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17537 .
+
+_:8a7335dfa33f4e40a430136da3db085a18295 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18296, kfngoei:0942f642-6491-40b6-8d08-4fa1a52cc819 .
+
+_:8a7335dfa33f4e40a430136da3db085a18296 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1153;
+  kfngoeo:end 1155 .
+
+_:8a7335dfa33f4e40a430136da3db085a17537 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17538, kfngoei:a76943d7-d064-44f8-a32f-a824819eefe8 .
+
+_:8a7335dfa33f4e40a430136da3db085a17538 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1584 .
+
+_:8a7335dfa33f4e40a430136da3db085a18297 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18298, kfngoei:a3451a6f-9ab7-4fb0-8f97-b2f6e24afc3a .
+
+_:8a7335dfa33f4e40a430136da3db085a18298 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1193;
+  kfngoeo:end 1195 .
+
+_:8a7335dfa33f4e40a430136da3db085a18299 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18300, kfngoei:82e55fef-93bf-4424-81ab-c1291644c38b .
+
+_:8a7335dfa33f4e40a430136da3db085a18300 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4285;
+  kfngoeo:end 4287 .
+
+_:8a7335dfa33f4e40a430136da3db085a18301 kfngoeo:hasSource "Bae_MF_6-2";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18302, kfngoei:9cfcaa78-3ae3-4e9f-a018-04be6a8ab0cb .
+
+_:8a7335dfa33f4e40a430136da3db085a18302 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4856;
+  kfngoeo:end 4858 .
+
+_:8a7335dfa33f4e40a430136da3db085a18303 kfngoeo:hasSource "Bae_TB_8";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18304, kfngoei:d1eda81a-e30d-46a1-ae10-af94d286ff03 .
+
+_:8a7335dfa33f4e40a430136da3db085a18304 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 4439;
+  kfngoeo:end 4441 .
+
+kfngoei:a068a68e-bf26-45fe-b4e5-97d4e35b021c a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "WienerZeitung";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18305;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17539 .
+
+_:8a7335dfa33f4e40a430136da3db085a18305 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18306, kfngoei:e53b1d83-9524-4ffb-9822-0d64d037a41e .
+
+_:8a7335dfa33f4e40a430136da3db085a18306 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1399;
+  kfngoeo:end 1401 .
+
+_:8a7335dfa33f4e40a430136da3db085a17539 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17540, kfngoei:4be05d7d-aa88-40f1-8b16-6809aa2daad9 .
+
+_:8a7335dfa33f4e40a430136da3db085a17540 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1608 .
+
+kfngoei:6dfe6d17-4a37-43fc-9168-4e685cc9cbbf a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Zentrum";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18307;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17541 .
+
+_:8a7335dfa33f4e40a430136da3db085a18307 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18308, kfngoei:b7bb7909-7e97-42a9-99d4-b553c83ac488 .
+
+_:8a7335dfa33f4e40a430136da3db085a18308 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 2549;
+  kfngoeo:end 2551 .
+
+_:8a7335dfa33f4e40a430136da3db085a17541 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17542, kfngoei:9e30ab57-e9ba-4356-b762-517af20d670f .
+
+_:8a7335dfa33f4e40a430136da3db085a17542 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1622 .
+
+kfngoei:bbc286e1-6057-4f28-9cd2-021de9feeeef a kfngoeo:AnnoOrg;
+  rdfs:label "Annotation level of Organization"@en;
+  rdfs:isDefinedBy "Zollausschuss";
+  kfngoeo:hasTarget _:8a7335dfa33f4e40a430136da3db085a18309, _:8a7335dfa33f4e40a430136da3db085a18311;
+  kfngoeo:hasBody _:8a7335dfa33f4e40a430136da3db085a17543 .
+
+_:8a7335dfa33f4e40a430136da3db085a18309 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18310, kfngoei:dcfd5aaf-2120-4a9c-b7a6-a27a0d5f4e1b .
+
+_:8a7335dfa33f4e40a430136da3db085a18310 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5129;
+  kfngoeo:end 5131 .
+
+_:8a7335dfa33f4e40a430136da3db085a17543 a kfngoeo:TextualBody;
+  kfngoeo:hasSource "Bae_REG_Org";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a17544, kfngoei:b5038db9-2fc4-4386-8667-e1b125343385 .
+
+_:8a7335dfa33f4e40a430136da3db085a17544 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 1634 .
+
+_:8a7335dfa33f4e40a430136da3db085a18311 kfngoeo:hasSource "Bae_TB_7";
+  kfngoeo:hasSelector _:8a7335dfa33f4e40a430136da3db085a18312, kfngoei:a7b421f7-dcdb-4d2a-9790-be55062366dd .
+
+_:8a7335dfa33f4e40a430136da3db085a18312 a kfngoeo:TextPositionSelector;
+  kfngoeo:start 5510;
+  kfngoeo:end 5512 .
