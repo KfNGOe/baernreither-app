@@ -119,7 +119,7 @@ function buildStems(tokenAll_tmp) {   //obj -> tokenAll_tmp
 } ; 
 
 console.time('buildStems') ;
-//read test json file
+//read json file
 let json_in = fs.readFileSync('./staticSearch/data/json/tokens/tokenAll_tmp.json', 'utf8');
 //convert json to js object
 let tokenAll_tmp = JSON.parse(json_in) ;
