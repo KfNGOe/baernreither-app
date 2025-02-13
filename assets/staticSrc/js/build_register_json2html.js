@@ -421,7 +421,7 @@ jsonFiles.forEach((file) => {
          //write html strings to text file   
          let fileNamePath = 'data/txt/anno/register/register_table_' + fileName + '.txt' ;    
          fs.writeFileSync(fileNamePath, html_str ) ;
-         console.log('html data written: ', html_str.length, ' bytes') ;
+         console.log('txt data written: ', html_str.length, ' bytes') ;
          
          //convert html strings to html    
          let html = $.parseHTML(html_str) ;   
@@ -429,9 +429,9 @@ jsonFiles.forEach((file) => {
          $('html').find('body').children('div').append(html) ;   
 
          //write html file
-         fileNamePath = 'html/register/' + file.replace('.json', '.html') ;
-         fs.writeFileSync(fileNamePath, dom.serialize() ) ;
-         console.log('html data written: ', dom.serialize().length, ' bytes') ;
+         //fileNamePath = 'html/register/' + file.replace('.json', '.html') ;
+         //fs.writeFileSync(fileNamePath, dom.serialize() ) ;
+         //console.log('html data written: ', dom.serialize().length, ' bytes') ;
 
          //write log file
          fileNamePath = 'data/txt/log/anno/register/log_register.txt' ;
