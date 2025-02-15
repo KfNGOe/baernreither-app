@@ -37,7 +37,7 @@ jobs:
       - name: Check node version
         run: |
           node -v        
-      - name: set permissions
+      - name: Set permissions
         run: |
           chmod +x *.sh        
       - name: Install
@@ -59,26 +59,37 @@ jobs:
       - name: Get repo list
         run: |          
           ./gdb_getRepo.sh
-      - name: running tei transform
+      - name: Running tei transform
         run: |          
           ./gh_tei2ttl.sh
         env:
           changes: ${{ steps.files.outputs.all }}
-      - name: build texts
+      - name: Build texts
         run: |          
           ./build_texts.sh
-      - name: build register
+      - name: Build register
         run: |          
           ./build_register.sh
-      - name: build search
+      - name: Build search
         run: |          
           ./build_ssSearch_all.sh
-      - name: build html
+      - name: Build html
         run: |          
           ./build_html.sh
-      - name: deploy html
+      - name: Deploy html
         run: |          
           ./deploy_html.sh
+      - name: Deploy tei with xmlid to data repo
+        run: |
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
+          cp -r data/tei_xmlId/** baernreither-data/data/tei/
+          cd baernreither-data
+          git config --global user.email "baernreither-data@github.io"
+          git config --global user.name "KfNGOe"
+          git status
+          git add ./data/tei
+          git commit -am "Deploy tei data" || echo "No changes to commit"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main      
       - name: Push Results Back to Source Repo
         run: |
           git config --global user.email "baernreither-app@github.io"
