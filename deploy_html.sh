@@ -1,10 +1,6 @@
 # bin/bash
 echo "deploy to html"
 
-echo "remove html"
-rm -r html/
-echo "remove html done"
-
 echo "deploy assets"
 mkdir -p html/css/
 mkdir -p html/fonts/
