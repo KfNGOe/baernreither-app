@@ -26,14 +26,18 @@ jobs:
       - name: Perform Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-      - name: Push Results Back to Source Repo
+          token: ${{ secrets.ACCESS_TOKEN }}      
+      - name: Deploy tei with xmlid to data repo
         run: |
-          git config --global user.email "dev-baernreither-app@github.io"
-          git config --global user.name "rh1967"          
-          git add .
-          git commit -m "Automated update: Adding results from workflow" || echo "No changes to commit"
-          git push origin main
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/rh1967/dev-baernreither-data.git          
+          cp -r data/tei_xmlId/** baernreither-data/data/tei/          
+          cd dev-baernreither-data
+          git config --global user.email "dev-baernreither-data@github.io"
+          git config --global user.name "rh1967"
+          git status
+          git add ./data/tei
+          git commit -am "Deploy tei data"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/rh1967/dev-baernreither-data.git main
 
 
 #- name: Setup pages

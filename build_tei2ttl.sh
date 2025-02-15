@@ -39,7 +39,6 @@ echo copy tei_xmlId to tei
 cp $PATH_TEI_XMLID$FILENAME$EXTENSION_XML $PATH_TEI$FILENAME$EXTENSION_XML
 
 echo "remove temporary paths"
-rm -r $PATH_TEI_XMLID
 rm -r $PATH_JSON_XMLID
 rm -r $PATH_JSON_XMLJS
 rm -r $PATH_JSON_RDF
