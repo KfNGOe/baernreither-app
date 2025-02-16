@@ -1,0 +1,433 @@
+@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> .
+@prefix kfngoei: <https://github.com/KfNGOe/kfngoei/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames: <http://www.geonames.org/ontology#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix gnd: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix tei: <http://www.tei-c.org/ns/1.0/> .
+
+kfngoei:9a94828a-06fc-424d-89d4-a60116bdfc76
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:TEI ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xmlns"^^xsd:string ;
+		kfngoeo:attrValue <http://www.tei-c.org/ns/1.0> ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_1"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_1"^^xsd:string ;
+ .
+
+kfngoei:dd0de432-034d-4469-9093-3e66dbd82988
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:teiHeader ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_2"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_2"^^xsd:string ;
+ .
+
+kfngoei:e2784a5a-9bd1-43e8-8267-e8dd2a8fbb4a
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:fileDesc ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_3"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_3"^^xsd:string ;
+ .
+
+kfngoei:77aea1a5-3a22-4a2f-b10a-ed1a5b446074
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:titleStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_4"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_4"^^xsd:string ;
+ .
+
+kfngoei:d6d897b0-9ba3-4210-9b38-5498e3b82a3e
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:title ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "label"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_5"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_5"^^xsd:string ;
+ .
+
+kfngoei:95dd9f76-c858-4191-af9d-5fcd8bc94d55
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "Personenregister"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_6"^^xsd:string ;
+ .
+
+kfngoei:a591c0b2-ec81-42a7-abcf-3cab9bd36bda
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:title ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_5"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_7"^^xsd:string ;
+ .
+
+kfngoei:b8987c0a-b0a3-49a4-92e7-e56844edfeb7
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:title ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "short"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_6"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_8"^^xsd:string ;
+ .
+
+kfngoei:8337f897-fd09-4dfd-ac05-3e4805c9a759
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "Bae_REG_Person"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_9"^^xsd:string ;
+ .
+
+kfngoei:b0bda252-f1cc-4767-962b-2324dc3251ce
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:title ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_6"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_10"^^xsd:string ;
+ .
+
+kfngoei:4b5c1133-0627-4d89-871b-3fe9e19dc4a3
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:respStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_7"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_11"^^xsd:string ;
+ .
+
+kfngoei:202a7324-3506-44de-8e1f-c741dc13563b
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:resp ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_8"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_12"^^xsd:string ;
+ .
+
+kfngoei:e64f6bf3-5176-4cde-9fc1-6f555d652ff2
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "providing the content"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_13"^^xsd:string ;
+ .
+
+kfngoei:736ec325-4d16-4f62-84a7-eabaed334dd1
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:resp ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_8"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_14"^^xsd:string ;
+ .
+
+kfngoei:a217d229-74f6-4dfd-8795-fe6c141338cd
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:name ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_9"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_15"^^xsd:string ;
+ .
+
+kfngoei:b287e3b2-abab-47af-b26a-2b67e42e52e9
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "Christof Aichner"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_16"^^xsd:string ;
+ .
+
+kfngoei:91d36e67-8867-49f5-b784-468b324ef83f
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:name ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_9"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_17"^^xsd:string ;
+ .
+
+kfngoei:c33a8367-7f61-48c9-8d77-7affa327245c
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:name ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_10"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_18"^^xsd:string ;
+ .
+
+kfngoei:aa5d5839-efd1-482c-900e-cc227241c287
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "Doris Corradini"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_19"^^xsd:string ;
+ .
+
+kfngoei:38148bde-d75f-4709-9406-860cd237ba8e
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:name ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_10"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_20"^^xsd:string ;
+ .
+
+kfngoei:8dbd8e94-908a-4764-abbb-a29889a92ef1
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:respStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_7"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_21"^^xsd:string ;
+ .
+
+kfngoei:13672ccb-fc82-4e52-950e-df9c0a8377dd
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:titleStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_4"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_22"^^xsd:string ;
+ .
+
+kfngoei:3a6b5ae7-799a-41dc-8fdc-6521570bfcaa
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:publicationStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_11"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_23"^^xsd:string ;
+ .
+
+kfngoei:4fc21000-c80a-4efe-9416-b50822f5e509
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:p ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_12"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_24"^^xsd:string ;
+ .
+
+kfngoei:ecdbe545-f986-4262-87bd-4dfe1b39fccd
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:idno ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "handle"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_13"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_25"^^xsd:string ;
+ .
+
+kfngoei:121a6928-bb8b-4276-9220-c0de229862e0
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:p ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_12"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_26"^^xsd:string ;
+ .
+
+kfngoei:4851908f-0fa3-4340-b9df-d507e35e21db
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:publicationStmt ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_11"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_27"^^xsd:string ;
+ .
+
+kfngoei:3d579678-f22e-4276-b780-148e74131810
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:sourceDesc ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_14"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_28"^^xsd:string ;
+ .
+
+kfngoei:3aace144-dbec-42b1-944a-4fda1f928aa2
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:p ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_15"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_29"^^xsd:string ;
+ .
+
+kfngoei:dc2ce88d-05df-480b-9b8b-a600fedc6a62
+	a kfngoeo:Text ;
+	kfngoeo:hasContent "Personenregister der Baernreither Werke"^^xsd:string ;
+	kfngoeo:elementPos "Bae_REG_Person_30"^^xsd:string ;
+ .
+
+kfngoei:503f1236-b24d-4f8e-8d7a-689dff0d4eb0
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:p ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_15"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_31"^^xsd:string ;
+ .
+
+kfngoei:59da2967-3e61-4da4-b2f7-871ec0af330b
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:sourceDesc ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_14"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_32"^^xsd:string ;
+ .
+
+kfngoei:5870b622-db84-4465-8517-f84b9f80183a
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:fileDesc ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_3"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_33"^^xsd:string ;
+ .
+
+kfngoei:833595cc-c98e-4856-a63f-3b66b2ae7cd6
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:teiHeader ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_2"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_34"^^xsd:string ;
+ .
+
+kfngoei:ed4649d1-8d5c-40e4-a1d6-3e63b3c60ab6
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:text ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_16"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_35"^^xsd:string ;
+ .
+
+kfngoei:0a60495a-68d6-475a-80cf-5436a6cf6ef4
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:body ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_17"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_36"^^xsd:string ;
+ .
+
+kfngoei:5de25a2b-7b52-43e0-83c1-f4c8d6d9b714
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:div ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "type"^^xsd:string ;
+		kfngoeo:attrValue "person_keywords"^^xsd:string ;
+	] ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_18"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_37"^^xsd:string ;
+ .
+
+kfngoei:5df00d09-0a1d-4abe-86ee-a25aa541a1c0
+	a kfngoeo:StartTag ;
+	kfngoeo:elementName tei:list ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_19"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_38"^^xsd:string ;
+ .
+
+kfngoei:a0afdb92-c736-4a56-a4b5-688aa99aa3f6
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:div ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_18"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_39"^^xsd:string ;
+ .
+
+kfngoei:73c6055f-3f4e-40ee-9f62-90dc63902aa0
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:body ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_17"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_40"^^xsd:string ;
+ .
+
+kfngoei:d27d3ba4-953b-4ccb-8575-790c287314cb
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:text ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_16"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_41"^^xsd:string ;
+ .
+
+kfngoei:cbc78925-1adf-4864-9fa2-bc472c7ec81f
+	a kfngoeo:EndTag ;
+	kfngoeo:elementName tei:TEI ;
+	kfngoeo:hasAttr [
+		kfngoeo:attrName "xml:id"^^xsd:string ;
+		kfngoeo:attrValue "Bae_REG_Person_1"^^xsd:string ;
+	] ;
+	kfngoeo:elementPos "Bae_REG_Person_42"^^xsd:string ;
+ .
+
