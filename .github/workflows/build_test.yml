@@ -30,7 +30,8 @@ jobs:
       - name: Deploy tei with xmlid to data repo
         run: |
           git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/rh1967/dev-baernreither-data.git          
-          cp -r data/tei_xmlId/** dev-baernreither-data/data/tei/          
+          mkdir -p dev-baernreither-data/data/tei/tei_built
+          cp -r data/tei_xmlId/** dev-baernreither-data/data/tei/tei_built/
           cd dev-baernreither-data
           git config --global user.email "dev-baernreither-data@github.io"
           git config --global user.name "rh1967"

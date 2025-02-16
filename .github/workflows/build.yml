@@ -82,6 +82,7 @@ jobs:
       - name: Deploy tei with xmlid to data repo
         run: |
           git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
+          mkdir -p baernreither-data/data/tei/tei_built
           cp -r data/tei_xmlId/** baernreither-data/data/tei/tei_built/
           cd baernreither-data
           git config --global user.email "baernreither-data@github.io"
@@ -97,4 +98,4 @@ jobs:
           git status          
           git add ./data ./html/*.html -- ':!./data/tei/text'
           git commit -m "Deploy data" || echo "No changes to commit"
-          git push main
+          git push origin main
