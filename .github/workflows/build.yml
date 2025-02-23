@@ -67,17 +67,18 @@ jobs:
       - name: Build texts
         run: |          
           ./build_texts.sh
-      - name: Deploy texts with xmlId to data repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          source-directory: "data/tei_xmlId"
-          target-directory: "data/tei/tei_built"
-          destination-github-username: "KfNGOe"
-          destination-repository-name: "baernreither-data"
-          user-email: baernreither-data@github.io
-          target-branch: main  
+      - name: Deploy texts with xmlId to data repo        
+        run: |
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
+          mkdir -p baernreither-app/data/tei/tei_built
+          cp -r data/tei_xmlId/** baernreither-data/data/tei/tei_built/
+          cd baernreither-data
+          git config --global user.email "baernreither-data@github.io"
+          git config --global user.name "KfNGOe"
+          git status
+          git add ./data/tei/tei_built
+          git commit -am "Deploy data to data repo" || echo "No changes to commit"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main
       - name: Build register
         run: |          
           ./build_register.sh
