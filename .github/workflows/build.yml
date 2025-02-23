@@ -90,11 +90,11 @@ jobs:
           destination-repository-name: "baernreither-data"
           user-email: baernreither-data@github.io
           target-branch: main
-      - name: Push Results Back to Source Repo
+      - name: Redeploy to app repo
         run: |
           git config --global user.email "baernreither-app@github.io"
           git config --global user.name "KfNGOe"
           git status          
-          git add ./data/json ./html/*.html
+          git add data/json html/*.html
           git commit -m "Deploy data back to app repo" || echo "No changes to commit"
           git push origin main
