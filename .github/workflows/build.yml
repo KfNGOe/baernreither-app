@@ -59,7 +59,7 @@ jobs:
       - name: Get repo list
         run: |          
           ./gdb_getRepo.sh
-      - name: Running tei transform
+      - name: Transform texts
         run: |          
           ./gh_tei2ttl.sh
         env:
@@ -67,6 +67,17 @@ jobs:
       - name: Build texts
         run: |          
           ./build_texts.sh
+      - name: Deploy texts with xmlId to data repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          source-directory: "data/tei_xmlId"
+          target-directory: "data/tei/tei_built"
+          destination-github-username: "KfNGOe"
+          destination-repository-name: "baernreither-data"
+          user-email: baernreither-data@github.io
+          target-branch: main  
       - name: Build register
         run: |          
           ./build_register.sh
@@ -79,17 +90,6 @@ jobs:
       - name: Deploy html
         run: |          
           ./deploy_html.sh
-      - name: Deploy tei with xmlid to data repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          source-directory: "data/tei_xmlId"
-          target-directory: "data/tei/tei_built"
-          destination-github-username: "KfNGOe"
-          destination-repository-name: "baernreither-data"
-          user-email: baernreither-data@github.io
-          target-branch: main
       - name: Redeploy to app repo
         run: |
           git config --global user.email "baernreither-app@github.io"
@@ -97,4 +97,4 @@ jobs:
           git status          
           git add data/json html/*.html
           git commit -m "Deploy data back to app repo" || echo "No changes to commit"
-          git push origin main
+          git push
