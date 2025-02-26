@@ -59,7 +59,7 @@ jobs:
       - name: Get repo list
         run: |          
           ./gdb_getRepo.sh
-      - name: Running tei transform
+      - name: Transform texts
         run: |          
           ./gh_tei2ttl.sh
         env:
@@ -67,6 +67,18 @@ jobs:
       - name: Build texts
         run: |          
           ./build_texts.sh
+      - name: Deploy texts with xmlId to data repo        
+        run: |
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
+          mkdir -p baernreither-app/data/tei/tei_built          
+          find data/tei/tei_xmlId -type f -exec cp -r {} baernreither-data/data/tei/tei_built/ \;          
+          cd baernreither-data
+          git config --global user.email "baernreither-data@github.io"
+          git config --global user.name "KfNGOe"
+          git status
+          git add ./data/tei/tei_built
+          git commit -am "Deploy data to data repo" || echo "No changes to commit"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main
       - name: Build register
         run: |          
           ./build_register.sh
@@ -79,22 +91,11 @@ jobs:
       - name: Deploy html
         run: |          
           ./deploy_html.sh
-      - name: Deploy tei with xmlid to data repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          source-directory: "data/tei_xmlId"
-          target-directory: "data/tei/tei_built"
-          destination-github-username: "rh1967"
-          destination-repository-name: "dev-baernreither-data"
-          user-email: dev-baernreither-data@github.io
-          target-branch: main
       - name: Redeploy to app repo
         run: |
-          git config --global user.email "dev-baernreither-app@github.io"
-          git config --global user.name "rh1967"
+          git config --global user.email "baernreither-app@github.io"
+          git config --global user.name "KfNGOe"
           git status          
-          git add data/json html/*.html
+          git add html/*.html html/css/ html/data/ html/fonts/ html/img/ html/js/ html/staticSearch/
           git commit -m "Deploy data back to app repo" || echo "No changes to commit"
           git push
