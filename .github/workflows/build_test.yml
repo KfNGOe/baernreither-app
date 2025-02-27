@@ -48,7 +48,7 @@ jobs:
           git config --global user.email "dev-baernreither-app@github.io"
           git config --global user.name "rh1967"
           git status          
-          git add html/*.html html/css/ html/data/ html/fonts/ html/img/ html/js/ html/staticSearch/
+          git add html/*.html
           git commit -m "Deploy data back to app repo" || echo "No changes to commit"
           git push
 
