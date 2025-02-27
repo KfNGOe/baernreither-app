@@ -26,12 +26,16 @@ jobs:
       - name: Perform Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}      
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: rm data
+        run: |
+          rm -rf data/tei_xmlId/*
+          cp -r data/tei/text/Bae_MF_6-1.xml data/tei_xmlId/
       - name: Deploy tei with xmlid to data repo
         run: |
           git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/rh1967/dev-baernreither-data.git          
           mkdir -p dev-baernreither-data/data/tei/tei_built          
-          if [ -d "data/tei/tei_xmlId" ]; then cp -r data/tei/tei_xmlId/* dev-baernreither-data/data/tei/tei_built/; fi
+          if [ -d "data/tei_xmlId" ]; then cp -r data/tei_xmlId/* dev-baernreither-data/data/tei/tei_built/; fi
           cd dev-baernreither-data
           git config --global user.email "dev-baernreither-data@github.io"
           git config --global user.name "rh1967"
