@@ -36,8 +36,8 @@ jobs:
           git config --global user.email "dev-baernreither-data@github.io"
           git config --global user.name "rh1967"
           git status
-          git add ./data/tei
-          git commit -am "Deploy tei data" || echo "No changes to commit"
+          git add ./data/tei/tei_built
+          git commit -am "Deploy data to data repo" || echo "No changes to commit"
           git push https://${{ secrets.ACCESS_TOKEN }}@github.com/rh1967/dev-baernreither-data.git main
       - name: Push Results Back to Source Repo
         run: |
