@@ -96,6 +96,6 @@ jobs:
           git config --global user.email "baernreither-app@github.io"
           git config --global user.name "KfNGOe"
           git status          
-          git add html/*.html html/css/ html/data/ html/fonts/ html/img/ html/js/ html/staticSearch/
+          git add html/*.html html/css/ html/data/ html/fonts/ html/images/ html/js/ html/staticSearch/
           git commit -m "Deploy data back to app repo" || echo "No changes to commit"
           git push
