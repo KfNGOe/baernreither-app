@@ -34,7 +34,7 @@ mkdir -p html/data/ttl/text/
 mkdir -p html/data/txt/anno/register/
 mkdir -p html/data/txt/text/
 cp -r data/json/anno/anno_web/annoTextComp.json html/data/json/anno/anno_web/
-cp -r data/json/anno/register/* html/data/json/anno/register/
+cp -r data/json/anno/register/*.json html/data/json/anno/register/
 cp -r data/json/text/all/* html/data/json/text/all/
 cp -r data/json/text/full/* html/data/json/text/full/
 cp -r data/json/text/mdata/* html/data/json/text/mdata/
