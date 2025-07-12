@@ -98,4 +98,14 @@ jobs:
       #     git status          
       #     git add html/*.html html/css/ html/data/ html/fonts/ html/images/ html/js/ html/staticSearch/
       #     git commit -m "Deploy data back to app repo" || echo "No changes to commit"
-      #
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./html
+      #     publish_branch: gh-pages
+      
+        
+          
+       
