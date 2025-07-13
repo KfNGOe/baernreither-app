@@ -33,6 +33,7 @@ mkdir -p html/data/ttl/anno/register/
 mkdir -p html/data/ttl/text/
 mkdir -p html/data/txt/anno/register/
 mkdir -p html/data/txt/text/
+cp -r data/img/* html/data/img/
 cp -r data/json/anno/anno_web/annoTextComp.json html/data/json/anno/anno_web/
 cp -r data/json/anno/register/* html/data/json/anno/register/
 cp -r data/json/text/all/* html/data/json/text/all/
@@ -42,6 +43,7 @@ cp -r data/ttl/anno/register/* html/data/ttl/anno/register/
 cp -r data/ttl/text/* html/data/ttl/text/
 cp -r data/txt/anno/register/* html/data/txt/anno/register/
 cp -r data/txt/text/* html/data/txt/text/
+rm -rf data/img/*
 echo "deploy data done"
 
 echo "deploy search"

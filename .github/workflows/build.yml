@@ -4,7 +4,7 @@ on:
     paths:      
       - "data/tei/text/**"
       - "data/xlsx/**"
-      - "html/data/img/**"
+      - "data/img/**"
   #workflow_dispatch:
 
 permissions:
@@ -43,9 +43,9 @@ jobs:
        - name: Install
          run: |                    
            ./install.sh
-       #- name: Make dir
-       #  run: |
-       #    ./setup_dir.sh
+       - name: Make dir
+         run: |
+           ./setup_dir.sh
        - name: Start graphdb
          run: |
            ./gdb_start.sh &

@@ -11,7 +11,7 @@ echo "Removing files from build trigger paths..."
 PATHS=(
     "data/tei/text"
     "data/xlsx"
-    "html/data/img"
+    "data/img"
 )
 
 # Function to safely remove files in a directory

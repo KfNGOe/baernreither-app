@@ -7,7 +7,6 @@ mkdir -p ./data/json/text/full/
 mkdir -p ./data/json/text/mdata/
 
 mkdir -p ./data/tei/anno/register/
-mkdir -p ./data/tei/text/
 
 mkdir -p ./data/ttl/anno/anno_web/
 mkdir -p ./data/ttl/anno/register/
