@@ -59,9 +59,9 @@ jobs:
        - name: Get repo list
          run: |          
            ./gdb_getRepo.sh
-       - name: Transform texts
+       - name: Convert texts
          run: |          
-           ./gh_tei2ttl.sh
+           ./build_tei2ttl_all.sh
          env:
            changes: ${{ steps.files.outputs.all }}
        - name: Build texts

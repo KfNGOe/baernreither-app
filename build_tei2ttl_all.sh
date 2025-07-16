@@ -3,7 +3,7 @@
 #this script checks the changes of the last commit
 #Only works in github actions env!
 
-echo "tei to ttl transformation"
+echo "tei to ttl conversion"
  
 inputDir="data/tei/text/"
 outputDir="data/ttl/text/"
@@ -58,4 +58,4 @@ else
     fi
 fi
 
-echo "tei to ttl transformation done \n"
+echo "tei to ttl conversion done \n"
