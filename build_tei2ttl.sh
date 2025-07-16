@@ -43,7 +43,6 @@ echo "build ttl"
 filepath_in_json=$FILEPATH_JSON_RDF filepath_out_ttl=$FILEPATH_TTL node assets/staticSrc/js/build_ttl.js
 
 echo copy tei_xmlId to tei
-cp $PATH_TEI_XMLID$FILENAME$EXTENSION_XML $PATH_TEI$FILENAME$EXTENSION_XML
 cp $FILEPATH_TEI_XMLID $FILEPATH_TEI
 
 echo "remove temporary paths"
