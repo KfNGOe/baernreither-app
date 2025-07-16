@@ -28,7 +28,7 @@ mkdir -p "$PATH_JSON_RDF"
 mkdir -p "$PATH_TTL"
 
 echo "normalize whitespace"
-filepath_in_tei=$FILEPATH_TEI node assets/staticSrc/js/normalize_ws.js
+filepath_in_tei=$FILEPATH_TEI filepath_out_tei=$FILEPATH_TEI node assets/staticSrc/js/normalize_ws.js
 
 echo "build xml ID"
 filepath_in_tei=$FILEPATH_TEI filepath_out_tei=$FILEPATH_TEI_XMLID filepath_out_json=$FILEPATH_JSON_XMLID node assets/staticSrc/js/build_xmlId.js

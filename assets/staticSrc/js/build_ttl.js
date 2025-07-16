@@ -29,14 +29,9 @@ const prefix =   "@prefix kfngoeo: <https://github.com/KfNGOe/kfngoeo#> ." + LF
                + "@prefix tei: <http://www.tei-c.org/ns/1.0/> ." + LF
               ;
 
-const path_in_json=process.env.path_in_json ;
-const path_out_ttl=process.env.path_out_ttl ;
-const filename = process.env.file ;
-const ext_json=process.env.ext_json ;
-const ext_ttl=process.env.ext_ttl ;
+const filepath_in_json=process.env.filepath_in_json ;
+const filepath_out_ttl=process.env.filepath_out_ttl ;
 
-var s_ttl, p_ttl, o_ttl = "" ;
-var ttl_template = s_ttl + p_ttl + o_ttl  ;
 var ttl = "" ;
 
 ttl = ttl + prefix + LF ;
@@ -86,8 +81,7 @@ function getTTL(item_obj) {
 }
 
 //read json file
-var filepath = path_in_json + filename + ext_json ;
-var json = fs.readFileSync(filepath, 'utf8');
+var json = fs.readFileSync(filepath_in_json, 'utf8');
 
 var jsonJs = JSON.parse(json) ;
 
@@ -100,6 +94,5 @@ jsonJs.statements.forEach((item, index, array) => {
 } ) ;
 
 //write ttl file
-filepath = path_out_ttl + filename + ext_ttl ;
 //console.log('data: ', ttl);
-fs.writeFileSync(filepath, ttl ) ;
+fs.writeFileSync(filepath_out_ttl, ttl) ;

@@ -2,13 +2,11 @@
 const normalize = require('normalize-space') ;
 const fs = require('fs');
 
-const path = process.env.path ;
-const file = process.env.file; 
-const ext = process.env.ext ;
-const filepath = path + file + ext ;
+const filepath_in_tei=process.env.filepath_in_tei ;
+const filepath_out_tei=process.env.filepath_out_tei ;
 
-var xml = fs.readFileSync(filepath , 'utf8');
+var xml = fs.readFileSync(filepath_in_tei , 'utf8');
 
 var xml_ws = normalize(xml) ;
 
-fs.writeFileSync(filepath, xml_ws ) ;
+fs.writeFileSync(filepath_out_tei, xml_ws ) ;

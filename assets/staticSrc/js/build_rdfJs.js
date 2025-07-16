@@ -15,10 +15,8 @@ var i_stmt = 1 ;
 var N = 0 ;
 var titleShort = "" ;
 
-const path_in_json=process.env.path_in_json 
-const path_out_json=process.env.path_out_json
-const filename = process.env.file;
-const ext_json=process.env.ext_json
+const filepath_in_json=process.env.filepath_in_json
+const filepath_out_ttl=process.env.filepath_out_ttl
 
 /////////////////////////// Functions ///////////////////////////
 
@@ -217,8 +215,7 @@ function buildRdf(obj) {
 //////////////////////////////////////////////////////
 
 //read json file
-var filepath = path_in_json + filename + ext_json ;
-var json = fs.readFileSync(filepath, 'utf8');
+var json = fs.readFileSync(filepath_in_json, 'utf8');
 
 var jsonJs = JSON.parse(json) ;
 //console.log('jsonJs = ', jsonJs) ;
@@ -229,6 +226,5 @@ buildRdf(jsonJs) ;
 stmtsListJs['statements'] = stmtsList ;
 
 //write json file
-filepath = path_out_json + filename + ext_json ;
 var stmtsListJsString = JSON.stringify(stmtsListJs);
-fs.writeFileSync(filepath, stmtsListJsString ) ;
+fs.writeFileSync(filepath_out_ttl, stmtsListJsString ) ;

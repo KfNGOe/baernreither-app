@@ -1,31 +1,15 @@
 // Importing the jsdom module
 const jsdom = require("jsdom") ;
-const { JSDOM } = jsdom ;
 const fs = require('fs');
-const normalize = require('normalize-space') ;
 
 var convert = require('xml-js');
-var i_N = 0 ;
 var N = 0 ;
 var i_level = 0 ;
 var i_startTag = 0 ; 
 var i_endTag = 0 ;
 
-// Creating a window with a document
-const dom = new JSDOM(`
-<!DOCTYPE html>
-<body></body>
-`);
-
-// Importing the jquery and providing it
-// with the window
-const jquery = require("jquery")(dom.window);
-
-const path_in_tei=process.env.path_in_tei 
-const path_out_json=process.env.path_out_json
-const filename = process.env.file; 
-const ext_xml=process.env.ext_xml
-const ext_json=process.env.ext_json
+const filepath_in_tei=process.env.filepath_in_tei
+const filepath_out_json=process.env.filepath_out_json
 
 function buildJs(obj) {
    let length = Object.keys(obj).length ;
@@ -110,8 +94,7 @@ function buildJs(obj) {
 } ; 
 
 //read xml file
-var filepath = path_in_tei + filename + ext_xml ;
-var xml = fs.readFileSync(filepath, 'utf8');
+var xml = fs.readFileSync(filepath_in_tei, 'utf8');
 
 //convert xml to js object
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
@@ -125,8 +108,7 @@ if (i_startTag > i_endTag) {
 i_startTag, i_endTag = 0 ;
 
 //write json file
-filepath = path_out_json + filename + ext_json ;
 var xmlJsString = JSON.stringify(xmlJs);
-fs.writeFileSync(filepath, xmlJsString ) ;
+fs.writeFileSync(filepath_out_json, xmlJsString ) ;
 
 
