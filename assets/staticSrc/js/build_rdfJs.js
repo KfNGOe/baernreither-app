@@ -16,7 +16,7 @@ var N = 0 ;
 var titleShort = "" ;
 
 const filepath_in_json=process.env.filepath_in_json
-const filepath_out_ttl=process.env.filepath_out_ttl
+const filepath_out_json=process.env.filepath_out_json
 
 /////////////////////////// Functions ///////////////////////////
 
@@ -227,4 +227,4 @@ stmtsListJs['statements'] = stmtsList ;
 
 //write json file
 var stmtsListJsString = JSON.stringify(stmtsListJs);
-fs.writeFileSync(filepath_out_ttl, stmtsListJsString ) ;
+fs.writeFileSync(filepath_out_json, stmtsListJsString ) ;
