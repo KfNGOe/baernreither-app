@@ -67,17 +67,31 @@ jobs:
        - name: Build texts
          run: |          
            ./build_texts.sh
+       - name: Validate
+         run: |
+           ./validate.sh | tee validation_results.txt
+         continue-on-error: true
        - name: Deploy texts with xmlId to data repo        
          run: |
+           VALID=$(grep "Valid:" validation_results.txt | awk '{print $2}')
+           INVALID=$(grep "Invalid:" validation_results.txt | awk '{print $2}')
+           TOTAL=$(grep "Total:" validation_results.txt | awk '{print $2}')
            git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
-           mkdir -p baernreither-data/data/tei/tei_built          
-           if [ -d "data/tei/text" ]; then cp -r data/tei/text/* baernreither-data/data/tei/tei_built/; fi
+           mkdir -p baernreither-data/data/tei/tei_built
+           # Only copy valid files
+           if [ -f "valid_files.txt" ] && [ -s "valid_files.txt" ]; then
+             while IFS= read -r filename; do
+               if [ -f "data/tei/text/$filename" ]; then
+                 cp "data/tei/text/$filename" baernreither-data/data/tei/tei_built/
+               fi
+             done < valid_files.txt
+           fi
            cd baernreither-data
            git config --global user.email "baernreither-data@github.io"
            git config --global user.name "KfNGOe"
            git status
            git add ./data/tei/tei_built
-           git commit -am "Deploy data to data repo" || echo "No changes to commit"
+           git commit -am "Deploy data to data repo [Validation: $VALID/$TOTAL valid, $INVALID invalid]" || echo "No changes to commit"
            git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main
        - name: Build register
          run: |          
