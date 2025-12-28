@@ -43,6 +43,10 @@ jobs:
        - name: Install
          run: |                    
            ./install.sh
+       - name: Install jing
+         run: |
+           sudo apt-get update
+           sudo apt-get install -y jing
        - name: Make dir
          run: |
            ./setup_dir.sh
