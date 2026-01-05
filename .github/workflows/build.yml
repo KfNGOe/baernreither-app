@@ -80,6 +80,17 @@ jobs:
            VALID=$(grep "Valid:" validation_results.txt | awk '{print $2}')
            INVALID=$(grep "Invalid:" validation_results.txt | awk '{print $2}')
            TOTAL=$(grep "Total:" validation_results.txt | awk '{print $2}')
+           # Get list of invalid files
+           INVALID_FILES=""
+           if [ -f "valid_files.txt" ]; then
+             for file in data/tei/text/*.xml; do
+               filename=$(basename "$file")
+               if ! grep -q "^${filename}$" valid_files.txt; then
+                 INVALID_FILES="${INVALID_FILES}${filename}, "
+               fi
+             done
+             INVALID_FILES=${INVALID_FILES%, }
+           fi
            git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
            mkdir -p baernreither-data/data/tei/tei_built
            # Copy all files
@@ -93,7 +104,11 @@ jobs:
            git config --global user.name "KfNGOe"
            git status
            git add ./data/tei/tei_built ./data/tei/tei_toBuild
-           git commit -am "Deploy data to data repo [Validation: $VALID/$TOTAL valid, $INVALID invalid]" || echo "No changes to commit"
+           if [ -n "$INVALID_FILES" ]; then
+             git commit -am "Deploy data to data repo [Validation: $VALID/$TOTAL valid, $INVALID invalid: $INVALID_FILES]" || echo "No changes to commit"
+           else
+             git commit -am "Deploy data to data repo [Validation: $VALID/$TOTAL valid, $INVALID invalid]" || echo "No changes to commit"
+           fi
            git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main
        - name: Build register
          run: |          
