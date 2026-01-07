@@ -94,7 +94,9 @@ jobs:
            git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
            mkdir -p baernreither-data/data/tei/tei_built
            # Copy all files
-           cp data/tei/text/*.xml baernreither-data/data/tei/tei_built/
+           if [ -d data/tei/text ] && [ -n "$(ls -A data/tei/text/*.xml 2>/dev/null)" ]; then
+             cp data/tei/text/*.xml baernreither-data/data/tei/tei_built/
+           fi           
            cd baernreither-data
            # Clean up files without xmlId
            if [ -d data/tei/tei_toBuild ] && [ -n "$(ls -A data/tei/tei_toBuild/*.xml 2>/dev/null)" ]; then
