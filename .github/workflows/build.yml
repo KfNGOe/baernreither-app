@@ -93,37 +93,15 @@ jobs:
            fi
            git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
            mkdir -p baernreither-data/data/tei/tei_built
-           mkdir -p baernreither-data/data/tei/tei_toBuild
-           # Clean up old files in both directories
-           if [ -n "$(ls -A baernreither-data/data/tei/tei_built/*.xml 2>/dev/null)" ]; then
-             rm baernreither-data/data/tei/tei_built/*.xml
-           fi
-           if [ -n "$(ls -A baernreither-data/data/tei/tei_toBuild/*.xml 2>/dev/null)" ]; then
-             rm baernreither-data/data/tei/tei_toBuild/*.xml
-           fi
-           # Copy valid files to tei_built and invalid files to tei_toBuild
-           if [ -f "valid_files.txt" ] && [ -s "valid_files.txt" ]; then
-             # Copy valid files
-             while IFS= read -r filename; do
-               if [ -f "data/tei/text/$filename" ]; then
-                 cp "data/tei/text/$filename" baernreither-data/data/tei/tei_built/
-               fi
-             done < valid_files.txt
-             # Copy invalid files
-             for file in data/tei/text/*.xml; do
-               filename=$(basename "$file")
-               if ! grep -q "^${filename}$" valid_files.txt; then
-                 cp "$file" baernreither-data/data/tei/tei_toBuild/
-               fi
-             done
-           else
-             # No validation results, copy all to tei_built
-             if [ -d data/tei/text ] && [ -n "$(ls -A data/tei/text/*.xml 2>/dev/null)" ]; then
-               cp data/tei/text/*.xml baernreither-data/data/tei/tei_built/
-             fi
-           fi
+           # Copy all files
+           if [ -d data/tei/text ] && [ -n "$(ls -A data/tei/text/*.xml 2>/dev/null)" ]; then
+             cp data/tei/text/*.xml baernreither-data/data/tei/tei_built/
+           fi           
            cd baernreither-data
-           # Clean up is no longer needed as we copy directly to the right folders
+           # Clean up files without xmlId
+           if [ -d data/tei/tei_toBuild ] && [ -n "$(ls -A data/tei/tei_toBuild/*.xml 2>/dev/null)" ]; then
+           rm data/tei/tei_toBuild/*.xml
+           fi
            git config --global user.email "baernreither-data@github.io"
            git config --global user.name "KfNGOe"
            git status
