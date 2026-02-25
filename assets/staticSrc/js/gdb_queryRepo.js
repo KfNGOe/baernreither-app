@@ -11,8 +11,8 @@ const filepath_rq = process.env.filepath_rq ;
 
 const filepath_out = process.env.filepath_out ;
 
-const readTimeout = 60000 ;
-const writeTimeout = 60000 ;
+const readTimeout = 300000 ;
+const writeTimeout = 300000 ;
 const config = new RepositoryClientConfig(endpoint)
     .setEndpoints([ endpoint + '/repositories/' + repo_name])
     .setReadTimeout(readTimeout)

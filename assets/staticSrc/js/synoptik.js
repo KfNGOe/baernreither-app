@@ -10,6 +10,8 @@ var link ;
 var input_left = document.getElementById("page_input_left") ;
 var input_right = document.getElementById("page_input_right") ;
 var pageNrFacs ;
+var hostRepoFacs = 'https://kfngoe.github.io/lfs-data/' ;
+var pathFacs = 'baernreither/img/' ;
 
 let table_snips = ["<table>","<thead><td><b>","</b></td></thead>","<tr><td>","</td></tr>", "</table>"] ;
 let groupedByStartTarget = {} ;
@@ -259,7 +261,7 @@ window.setDownloadLink = function(workTitle,boxSide) {
 	$( 'div#box-' + boxSide + ' div.download-tab a.down-xml' ).attr('href', filepath) ;
 	fileName = workTitle + '.ttl' ;	
 	//get text data ttl
-	filepath = './data/ttl/text/' + fileName ;		//data/ttl/text/Bae_MF_6-1.ttl
+	filepath = './data/ttl/text/all/' + fileName ;		//data/ttl/text/all/Bae_MF_6-1.ttl
 	$( 'div#box-' + boxSide + ' div.download-tab a.down-ttl' ).attr('href', filepath) ;
 } ;
 
@@ -560,22 +562,13 @@ $( function() {
 		filepath = './data/json/anno/register/register_place.json' ;
 		regPlaceData_in = await fetchData(filepath) ;
 		
-		//get text all data		
-		filepath = './data/txt/Bae_MF_6-1_all_html.txt' ; 
-		let file_txt = await fetchData(filepath) ;		
-		textsAllData['Bae_MF_6-1'] = file_txt ;
-
-		filepath = './data/txt/Bae_MF_6-2_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;		
-		textsAllData['Bae_MF_6-2'] = file_txt ;
-
-		filepath = './data/txt/Bae_TB_7_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;		
-		textsAllData['Bae_TB_7'] = file_txt ;
-
-		filepath = './data/txt/Bae_TB_8_all_html.txt' ;
-		file_txt = await fetchData(filepath) ;		
-		textsAllData['Bae_TB_8'] = file_txt ;
+		//get text all data - loop through all texts from metadata
+		for (const result of text_mdata_in.results.bindings) {
+			let workTitle = result.title.short;
+			filepath = './data/txt/text/' + workTitle + '_all_html.txt';
+			let file_txt = await fetchData(filepath);
+			textsAllData[workTitle] = file_txt;
+		}
 
 		//get dates of text_mdata
 		let text_mdata_arr = text_mdata_in.results.bindings ;		
@@ -819,7 +812,7 @@ $( 'div.synoptik-box div.nav-werke li.nav-item' ).on('click','a',function() {
 			//hide old text data content			
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).find('*').hide() ;
 			//insert facs data in DOM
-			let div = '<div class="facs"><img src="./data/img/' + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
+			let div = '<div class="facs"><img src="' + hostRepoFacs + pathFacs + workTitle + '/' + facsId + '.jpg" alt="facs"></div>' ;
 			$( 'div#box-' + boxSide + ' div.auswahl-content div.col-12' ).append(div) ;			
 			console.log( "facs clicked!" ) ;
 		} else {
@@ -1067,7 +1060,7 @@ $( 'div.synoptik-box div.auswahl-content' ).on('click','span.pb',function() {
 	//remove #
 	facsId = facsId.replace('#', '') ;
 	//insert facs data in DOM
-	let div = '<div class="facs"><img src="./data/img/' + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
+	let div = '<div class="facs"><img src="' + hostRepoFacs + pathFacs + workTitle_this + '/' + facsId + '.jpg" alt="facs"></div>' ;
 	$( 'div#box-' + boxSide_opp + ' div.auswahl-content div.col-12' ).append(div) ;
 	//remove meta box content
 	$( 'div.meta-box' ).find('*').remove() ;			

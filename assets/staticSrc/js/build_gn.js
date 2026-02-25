@@ -34,7 +34,7 @@ async function getGnData(gnUrl) {
     } ;    
     const response = await axios.request(config)
     .catch(error => {
-        console.log(error) ;
+        console.log('Axios error for URL:', gnUrl, '- Error:', error.message) ;
         throw error ;
     }) ;    
     return response ;
@@ -73,26 +73,33 @@ async function getGNDData(gndUrl) {
                 gnUrl = gnUrl.concat('/about.rdf') ;   
                 console.log('gnUrl = ', gnUrl) ;
 
-                await getGnData(gnUrl).then(response => {                    
-                    xml = response.data ;                    
-                })
-                js = convert.xml2js(xml, {compact: false, spaces: 2}) ;                
-                let arr_js = js.elements[0].elements[0].elements ;
-                let lemma = arr_js.find(item => item.name === 'gn:name').elements[0].text ;
-                let wgs_lat = arr_js.find(item => item.name === 'wgs84_pos:lat').elements[0].text ;
-                let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;
-                let wiki = arr_js.find(item => item.name === 'gn:wikipediaArticle');
-                if (wiki != undefined) {
-                    wiki = wiki.attributes ;
-                }                                
-                item.Lemma_gn = lemma ;
-                item.Lat = wgs_lat ;
-                item.Long = wgs_long ;
-                if (wiki != undefined && wiki['rdf:resource'].includes('en.wikipedia')) {                    
-                    item.Wiki = wiki['rdf:resource'] ;
-                }
-                gnSet = item ;
-                gnSets.push(gnSet) ;                
+                try {
+                    await getGnData(gnUrl).then(response => {                    
+                        xml = response.data ;                    
+                    })
+                    js = convert.xml2js(xml, {compact: false, spaces: 2}) ;                
+                    let arr_js = js.elements[0].elements[0].elements ;
+                    let lemma = arr_js.find(item => item.name === 'gn:name').elements[0].text ;
+                    let wgs_lat = arr_js.find(item => item.name === 'wgs84_pos:lat').elements[0].text ;
+                    let wgs_long = arr_js.find(item => item.name === 'wgs84_pos:long').elements[0].text ;
+                    let wiki = arr_js.find(item => item.name === 'gn:wikipediaArticle');
+                    if (wiki != undefined) {
+                        wiki = wiki.attributes ;
+                    }                                
+                    item.Lemma_gn = lemma ;
+                    item.Lat = wgs_lat ;
+                    item.Long = wgs_long ;
+                    if (wiki != undefined && wiki['rdf:resource'].includes('en.wikipedia')) {                    
+                        item.Wiki = wiki['rdf:resource'] ;
+                    }
+                    gnSet = item ;
+                    gnSets.push(gnSet) ;
+                } catch (error) {
+                    console.log('Error fetching data from URL:', gnUrl, '- Error:', error.message) ;
+                    // Add the item without geonames data
+                    gnSet = item ;
+                    gnSets.push(gnSet) ;
+                }                
             } else {
                 if(item.C.includes('gnd')) {                    
                     gnSet = item ;
@@ -101,7 +108,7 @@ async function getGNDData(gndUrl) {
             }
         } else {            
             //add item
-            console.log('no gnUrl found') ;            
+            console.log('Error:', item.C, ' without https found') ;            
             gnSet = item ;
             gnSets.push(gnSet) ;
         }      
