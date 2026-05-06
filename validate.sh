@@ -3,6 +3,7 @@
 # Validate and auto-fix TEI files against RNG schema
 
 SCHEMA="schema/tei_minimal.rng"
+SCHEMA_ALL="schema/tei_all.rng"
 TEI_DIR="data/tei/text"
 
 echo "Validating TEI files with auto-fix capabilities"
@@ -19,6 +20,12 @@ fi
 # Check if schema exists
 if [ ! -f "$SCHEMA" ]; then
     echo "Error: Schema file not found: $SCHEMA"
+    exit 1
+fi
+
+# Check if full schema exists
+if [ ! -f "$SCHEMA_ALL" ]; then
+    echo "Error: Schema file not found: $SCHEMA_ALL"
     exit 1
 fi
 
@@ -49,40 +56,40 @@ FIXED=0
 fix_schema_reference() {
     local file="$1"
     local temp_file="${file}.tmp"
-    
+
     # Check if file has XML declaration
     if head -1 "$file" | grep -q '<?xml'; then
         # Get the XML declaration
         XML_DECL=$(head -1 "$file")
-        
-        # Check if schema reference already exists
-        if grep -q 'xml-model' "$file"; then
-            # Remove old schema references and add correct one
+
+        # Check for real xml-model PI (not inside a comment)
+        if grep -qP '^\s*<\?xml-model' "$file"; then
+            # Schema PI exists → replace with SCHEMA (tei_minimal.rng)
             sed '/<\?xml-model/d' "$file" > "$temp_file"
             {
                 echo "$XML_DECL"
-                echo '<?xml-model href="../../../schema/tei_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>'
+                echo "<?xml-model href=\"../../../$SCHEMA\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
                 tail -n +2 "$temp_file"
             } > "$file"
         else
-            # Add schema reference after XML declaration
+            # No schema PI or only in comment → use SCHEMA_ALL (tei_all.rng)
             {
                 echo "$XML_DECL"
-                echo '<?xml-model href="../../../schema/tei_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>'
+                echo "<?xml-model href=\"../../../$SCHEMA_ALL\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
                 tail -n +2 "$file"
             } > "$temp_file"
             mv "$temp_file" "$file"
         fi
     else
-        # No XML declaration, add both
+        # No XML declaration → add declaration and SCHEMA_ALL
         {
             echo '<?xml version="1.0" encoding="UTF-8"?>'
-            echo '<?xml-model href="../../../schema/tei_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>'
+            echo "<?xml-model href=\"../../../$SCHEMA_ALL\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
             cat "$file"
         } > "$temp_file"
         mv "$temp_file" "$file"
     fi
-    
+
     rm -f "$temp_file"
 }
 
@@ -95,13 +102,17 @@ for file in "$TEI_DIR"/*.xml; do
     CHECKS_FAILED=0
     NEEDS_FIX=false
     
-    # CHECK 1: Schema reference in TEI file
+    # CHECK 1: Schema reference in TEI file (tei_minimal.rng or tei_all.rng)
     echo -n "  [1/3] Schema reference check... "
-    if grep -q 'xml-model.*href="\.\./\.\./\.\./schema/tei_minimal.rng"' "$file"; then
+    if grep -qP '^\s*<\?xml-model' "$file" && grep -qE 'href="\.\./\.\./\.\./schema/tei_(minimal|all)\.rng"' "$file"; then
         echo "✓ Pass"
         ((CHECKS_PASSED++))
     else
-        echo "✗ Fail (schema reference missing or incorrect)"
+        if grep -q 'xml-model' "$file" && ! grep -qP '^\s*<\?xml-model' "$file"; then
+            echo "✗ Fail (schema reference is in a comment)"
+        else
+            echo "✗ Fail (schema reference missing or incorrect)"
+        fi
         ((CHECKS_FAILED++))
         NEEDS_FIX=true
     fi
@@ -117,12 +128,12 @@ for file in "$TEI_DIR"/*.xml; do
         ((CHECKS_FAILED++))
         NEEDS_FIX=true
     else
-        SCHEMA_REF=$(grep -o 'xml-model.*href="[^"]*tei_minimal.rng"' "$file" | grep -o 'href="[^"]*"' | sed 's/href="//;s/"//' | head -1)
+        SCHEMA_REF=$(grep -oP '^\s*<\?xml-model[^>]*href="\K[^"]*' "$file" | head -1)
         if [ -z "$SCHEMA_REF" ]; then
             echo "✗ Fail (no schema reference)"
             ((CHECKS_FAILED++))
             NEEDS_FIX=true
-        elif [[ "$SCHEMA_REF" == "../../../schema/tei_minimal.rng" ]]; then
+        elif [[ "$SCHEMA_REF" == "../../../schema/tei_minimal.rng" ]] || [[ "$SCHEMA_REF" == "../../../schema/tei_all.rng" ]]; then
             echo "✓ Pass"
             ((CHECKS_PASSED++))
         else
@@ -136,16 +147,21 @@ for file in "$TEI_DIR"/*.xml; do
     if [ "$NEEDS_FIX" = true ]; then
         echo "  → Auto-fixing schema reference..."
         fix_schema_reference "$file"
-        echo "    ✓ Fixed: Added portable schema reference (../../../schema/tei_minimal.rng)"
+        echo "    ✓ Fixed: Schema reference updated"
         ((FIXED++))
         # Re-check after fix
         CHECKS_PASSED=2
         CHECKS_FAILED=0
     fi
     
-    # CHECK 3: VS Code (Linux) validation with jing
-    echo -n "  [3/3] Jing validation (VS Code/Linux)... "
-    jing "$SCHEMA" "$file" 2>&1 | grep -v "^\[warning\]" > /tmp/jing_output.txt
+    # CHECK 3: Jing validation with the schema referenced in the file
+    echo -n "  [3/3] Jing validation... "
+    if grep -qE 'href="\.\./\.\./\.\./schema/tei_all\.rng"' "$file"; then
+        VALIDATE_SCHEMA="$SCHEMA_ALL"
+    else
+        VALIDATE_SCHEMA="$SCHEMA"
+    fi
+    jing "$VALIDATE_SCHEMA" "$file" 2>&1 | grep -v "^\[warning\]" > /tmp/jing_output.txt
     
     if [ ! -s /tmp/jing_output.txt ]; then
         echo "✓ Pass"
