@@ -5,7 +5,7 @@ echo "clear graphdb"
 
 echo "import text files to graphdb"
 echo read files from ttl directory
-inputDir="data/ttl/text/"
+inputDir="data/ttl/text/all/"
 
 for file in $inputDir*.ttl; do
   #echo "$file"
@@ -19,7 +19,7 @@ for file in $inputDir*.ttl; do
         echo "ttl filename: ${name}"  #name of the file without extension
         if test -f "$file"
         then
-        echo "Starting ttl import to graphdb repo"
+        echo "Starting ttl import to graphdb"
         #export pathName
         export pathName=$pathname
         export name=$name                
@@ -28,6 +28,21 @@ for file in $inputDir*.ttl; do
         fi
     fi
 done
+
+echo "import metadata of text files"
+export pathName='data/ttl/text/mdata/'
+export name='text_mdata'
+export ext_out='.ttl'
+./gdb_importFile.sh
+
+echo "precompute annoNote ttl"
+node assets/staticSrc/js/build_note_json2ttl.js
+
+echo "import precomputed annoNote ttl to graphdb"
+export pathName='data/ttl/anno/anno_web/'
+export name='annoNote_tmp'
+export ext_out='.ttl'
+./gdb_importFile.sh
 
 echo "build anno note ttl"
 export mime_type='text/turtle'
@@ -38,6 +53,9 @@ export path_out='./data/ttl/anno/anno_web/'
 export file_out='annoNote'
 export ext_out='.ttl'
 ./gdb_queryRepo.sh
+
+echo "remove annoNote_tmp ttl"
+rm -f ./data/ttl/anno/anno_web/annoNote_tmp.ttl
 
 echo "clear graphdb"
 ./gdb_clearRepo.sh

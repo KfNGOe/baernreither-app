@@ -1,6 +1,6 @@
 echo "convert text ttl to json"
 
-inputDir="data/ttl/text/"
+inputDir="data/ttl/text/all/"
 
 rm -rf ./data/json/text/all/*
 mkdir -p ./data/json/text/all

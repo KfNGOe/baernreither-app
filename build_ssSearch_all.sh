@@ -20,4 +20,4 @@ echo "build stems"
 node staticSearch/src/js/ssStems.js
 echo "build stems done \n"
 
-echo "build complete search done \n!"
+echo "build complete search done! \n"

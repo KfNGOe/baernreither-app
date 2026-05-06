@@ -3,7 +3,7 @@ echo "build text dipl version json"
 ENDPOINT='http://localhost:7200'
 REPO_NAME='kfngoe'
 
-#PATH_IN='./data/ttl/text/'
+#PATH_IN='./data/ttl/text/all/'
 PATH_IN=$pathName
 FILENAME_IN=$name
 #FILENAME_IN='Bae_TB_8'

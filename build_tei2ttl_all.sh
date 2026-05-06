@@ -6,7 +6,7 @@
 echo "tei to ttl conversion"
  
 inputDir="data/tei/text/"
-outputDir="data/ttl/text/"
+outputDir="data/ttl/text/all/"
 
 filesChanged=false;
 

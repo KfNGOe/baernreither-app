@@ -5,7 +5,7 @@ echo "clear graphdb"
 
 echo "import text files to graphdb"
 echo read files from ttl directory
-inputDir="data/ttl/text/"
+inputDir="data/ttl/text/all/"
 
 for file in $inputDir*.ttl; do
   #echo "$file"

@@ -12,5 +12,5 @@ echo "build pages"
 ./build_pages_html.sh
 echo "build pages done \n"
 
-echo "build html pages done \n"
+echo "build html pages done! \n"
 

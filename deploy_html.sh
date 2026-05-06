@@ -20,30 +20,28 @@ cp -r assets/staticSrc/js/register.js html/js/
 cp -r assets/staticSrc/js/ssSearch.js html/js/
 cp -r assets/staticSrc/js/ssSearchShow.js html/js/
 cp -r assets/staticSrc/js/synoptik.js html/js/
+rm -r html/images/mockup
 echo "deploy assets done"
 
 echo "deploy data"
-mkdir -p html/data/img/
 mkdir -p html/data/json/anno/anno_web/
 mkdir -p html/data/json/anno/register/
 mkdir -p html/data/json/text/all/
 mkdir -p html/data/json/text/full/
 mkdir -p html/data/json/text/mdata/
 mkdir -p html/data/ttl/anno/register/
-mkdir -p html/data/ttl/text/
+mkdir -p html/data/ttl/text/all/
 mkdir -p html/data/txt/anno/register/
 mkdir -p html/data/txt/text/
-cp -r data/img/* html/data/img/
 cp -r data/json/anno/anno_web/annoTextComp.json html/data/json/anno/anno_web/
 cp -r data/json/anno/register/* html/data/json/anno/register/
 cp -r data/json/text/all/* html/data/json/text/all/
 cp -r data/json/text/full/* html/data/json/text/full/
 cp -r data/json/text/mdata/* html/data/json/text/mdata/
 cp -r data/ttl/anno/register/* html/data/ttl/anno/register/
-cp -r data/ttl/text/* html/data/ttl/text/
+cp -r data/ttl/text/all/* html/data/ttl/text/all/
 cp -r data/txt/anno/register/* html/data/txt/anno/register/
 cp -r data/txt/text/* html/data/txt/text/
-rm -rf data/img/*
 echo "deploy data done"
 
 echo "deploy search"
