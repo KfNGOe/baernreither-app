@@ -217,7 +217,7 @@ var xml = fs.readFileSync(filepath_in_tei, 'utf8');
 //get titleShort
 xmlDoc = $.parseXML( xml ),
 $xml = $( xmlDoc ),
-titleShort = $xml.find( "[type='short']" ).text();
+titleShort = $xml.find( "teiHeader titleStmt title[type='short']" ).text();
 
 //convert xml to js object
 var xmlJs = convert.xml2js(xml, {compact: false, spaces: 2}) ;
