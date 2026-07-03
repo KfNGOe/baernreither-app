@@ -52,45 +52,73 @@ FIXED=0
 # Create file to store list of valid files
 > valid_files.txt
 
+# These helpers treat the file as a whole (not line-by-line), so it doesn't
+# matter whether the xml-model PI shares a line with the XML declaration,
+# sits on its own line, or appears more than once.
+
+# True (exit 0) if a real, non-commented <?xml-model?> PI exists anywhere in the file
+has_real_xml_model_pi() {
+    local file="$1"
+    perl -0777 -ne '
+        s/<!--.*?-->//gs;
+        exit(/<\?xml-model\b/ ? 0 : 1);
+    ' "$file"
+}
+
+# Prints the href of the first real, non-commented <?xml-model?> PI (empty if none)
+get_xml_model_href() {
+    local file="$1"
+    perl -0777 -ne '
+        s/<!--.*?-->//gs;
+        print $1 if /<\?xml-model\b[^>]*href="([^"]*)"/;
+    ' "$file"
+}
+
+# Prints how many real, non-commented <?xml-model?> PIs exist in the file
+count_real_xml_model_pi() {
+    local file="$1"
+    perl -0777 -ne '
+        s/<!--.*?-->//gs;
+        my @m = /<\?xml-model\b/g;
+        print scalar(@m);
+    ' "$file"
+}
+
 # Function to add or fix schema reference
 fix_schema_reference() {
     local file="$1"
     local temp_file="${file}.tmp"
+    local target_schema
 
-    # Check if file has XML declaration
-    if head -1 "$file" | grep -q '<?xml'; then
-        # Get the XML declaration
-        XML_DECL=$(head -1 "$file")
-
-        # Check for real xml-model PI (not inside a comment)
-        if grep -qP '^\s*<\?xml-model' "$file"; then
-            # Schema PI exists → replace with SCHEMA (tei_minimal.rng)
-            sed '/<\?xml-model/d' "$file" > "$temp_file"
-            {
-                echo "$XML_DECL"
-                echo "<?xml-model href=\"../../../$SCHEMA\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
-                tail -n +2 "$temp_file"
-            } > "$file"
-        else
-            # No schema PI or only in comment → use SCHEMA_ALL (tei_all.rng)
-            {
-                echo "$XML_DECL"
-                echo "<?xml-model href=\"../../../$SCHEMA_ALL\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
-                tail -n +2 "$file"
-            } > "$temp_file"
-            mv "$temp_file" "$file"
-        fi
+    if has_real_xml_model_pi "$file"; then
+        # Schema PI exists (anywhere) → normalize to SCHEMA (tei_minimal.rng)
+        target_schema="$SCHEMA"
     else
-        # No XML declaration → add declaration and SCHEMA_ALL
-        {
-            echo '<?xml version="1.0" encoding="UTF-8"?>'
-            echo "<?xml-model href=\"../../../$SCHEMA_ALL\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>"
-            cat "$file"
-        } > "$temp_file"
-        mv "$temp_file" "$file"
+        # No schema PI, or only in a comment → use SCHEMA_ALL (tei_all.rng)
+        target_schema="$SCHEMA_ALL"
     fi
 
-    rm -f "$temp_file"
+    perl -0777 -CSD -e '
+        my ($target) = @ARGV;
+        local $/;
+        my $content = <STDIN>;
+
+        # Remove every real (non-commented) xml-model PI, wherever it sits;
+        # leave commented-out ones untouched.
+        $content =~ s/(<!--.*?-->)|<\?xml-model\b[^>]*\?>\s*/defined($1) ? $1 : ""/gse;
+
+        # Ensure an XML declaration exists
+        if ($content !~ /^\s*<\?xml\b/) {
+            $content = qq{<?xml version="1.0" encoding="UTF-8"?>\n} . $content;
+        }
+
+        # Insert exactly one xml-model PI right after the XML declaration
+        my $pi = qq{<?xml-model href="../../../$target" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>};
+        $content =~ s/(<\?xml\b[^?]*\?>)/$1\n$pi/;
+
+        print $content;
+    ' "$target_schema" < "$file" > "$temp_file"
+    mv "$temp_file" "$file"
 }
 
 # Validate each file
@@ -104,11 +132,14 @@ for file in "$TEI_DIR"/*.xml; do
     
     # CHECK 1: Schema reference in TEI file (tei_minimal.rng or tei_all.rng)
     echo -n "  [1/3] Schema reference check... "
-    if grep -qP '^\s*<\?xml-model' "$file" && grep -qE 'href="\.\./\.\./\.\./schema/tei_(minimal|all)\.rng"' "$file"; then
+    PI_COUNT=$(count_real_xml_model_pi "$file")
+    if [ "$PI_COUNT" -eq 1 ] && grep -qE 'href="\.\./\.\./\.\./schema/tei_(minimal|all)\.rng"' "$file"; then
         echo "✓ Pass"
         ((CHECKS_PASSED++))
     else
-        if grep -q 'xml-model' "$file" && ! grep -qP '^\s*<\?xml-model' "$file"; then
+        if [ "$PI_COUNT" -gt 1 ]; then
+            echo "✗ Fail (duplicate schema references found)"
+        elif grep -q 'xml-model' "$file" && [ "$PI_COUNT" -eq 0 ]; then
             echo "✗ Fail (schema reference is in a comment)"
         else
             echo "✗ Fail (schema reference missing or incorrect)"
@@ -128,7 +159,7 @@ for file in "$TEI_DIR"/*.xml; do
         ((CHECKS_FAILED++))
         NEEDS_FIX=true
     else
-        SCHEMA_REF=$(grep -oP '^\s*<\?xml-model[^>]*href="\K[^"]*' "$file" | head -1)
+        SCHEMA_REF=$(get_xml_model_href "$file")
         if [ -z "$SCHEMA_REF" ]; then
             echo "✗ Fail (no schema reference)"
             ((CHECKS_FAILED++))
