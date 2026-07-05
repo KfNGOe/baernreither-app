@@ -31,9 +31,9 @@ jobs:
          uses: actions/setup-java@v4
          with:
            java-version: "11"
-           distribution: "adopt"      
+           distribution: "adopt"       
        - id: files
-         uses: jitterbit/get-changed-files@v1      
+         uses: tj-actions/changed-files@v45
        - name: Check node version
          run: |
            node -v        
