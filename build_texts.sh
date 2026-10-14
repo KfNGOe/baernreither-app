@@ -1,9 +1,5 @@
 echo "build texts"
 
-echo "conversion texts ttl to json"
-./build_texts_ttl2json.sh
-echo "conversion texts ttl to json done \n"
-
 echo "build text metadata"
 ./build_text_mdata.sh
 echo "build text metadata done \n"

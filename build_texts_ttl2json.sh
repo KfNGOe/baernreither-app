@@ -2,10 +2,20 @@ echo "convert text ttl to json"
 
 inputDir="data/ttl/text/all/"
 
-rm -rf ./data/json/text/all/*
+teiDir="data/tei/text/"
+
 mkdir -p ./data/json/text/all
 
-for file in $inputDir*.ttl; do  
+# only convert the ttl files whose tei/xml changed ($changes is set by the github action)
+files=()
+for changed_file in ${changes:-}; do
+    if [[ "$changed_file" == *"$teiDir"* && "$changed_file" == *".xml" ]]
+    then
+        files+=("$inputDir$(basename "$changed_file" .xml).ttl")
+    fi
+done
+
+for file in "${files[@]}"; do  
   #check if file is no template
     if [[ "$file" = *"Bae_"*  ]]
     then
