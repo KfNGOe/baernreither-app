@@ -64,10 +64,10 @@ jobs:
          run: |          
            ./gdb_getRepo.sh
        - name: Convert texts
-         run: |          
-           ./build_tei2ttl_all.sh
+         run: |
+           ./convert_texts.sh
          env:
-           changes: ${{ steps.files.outputs.all }}
+           changes: ${{ steps.files.outputs.all_changed_files }}
        - name: Build texts
          run: |          
            ./build_texts.sh
