@@ -91,7 +91,7 @@ jobs:
              done
              INVALID_FILES=${INVALID_FILES%, }
            fi
-           git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git          
+           git clone https://github.com/KfNGOe/baernreither-data.git
            mkdir -p baernreither-data/data/tei/tei_built
            # Copy all files
            if [ -d data/tei/text ] && [ -n "$(ls -A data/tei/text/*.xml 2>/dev/null)" ]; then
@@ -111,7 +111,14 @@ jobs:
            else
              git commit -am "Deploy data to data repo [Validation: $VALID/$TOTAL valid, $INVALID invalid]" || echo "No changes to commit"
            fi
-           git push https://${{ secrets.ACCESS_TOKEN }}@github.com/KfNGOe/baernreither-data.git main
+           if [ -z "$ACCESS_TOKEN" ]; then
+             echo "ACCESS_TOKEN secret is required to push to baernreither-data"
+             exit 1
+           fi
+           AUTH_HEADER=$(printf 'x-access-token:%s' "$ACCESS_TOKEN" | base64 -w0)
+           git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $AUTH_HEADER" push origin main
+         env:
+           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
        - name: Build register
          run: |          
            ./build_register.sh
